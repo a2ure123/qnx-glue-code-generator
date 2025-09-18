@@ -1,0 +1,47 @@
+{
+  "name": "sprintf",
+  "synopsis": "int sprintf(char *s, const char *format, ...);",
+  "description": "The sprintf() function formats and stores a series of characters and values in the array pointed to by s. Each argument (if any) is converted and output according to the corresponding format specifier in the format string.",
+  "parameters": [
+    {
+      "name": "s",
+      "type": "char *",
+      "description": "Pointer to a buffer where the resulting C-string is stored.",
+      "is_pointer": true,
+      "is_const": false,
+      "is_optional": false
+    },
+    {
+      "name": "format",
+      "type": "const char *",
+      "description": "C string that contains a format string that follows the same specifications as format in printf.",
+      "is_pointer": true,
+      "is_const": true,
+      "is_optional": false
+    }
+  ],
+  "return_type": "int",
+  "return_description": "On success, the total number of characters written is returned. This count does not include the additional null-character automatically appended at the end of the string.",
+  "headers": [
+    {
+      "filename": "stdio.h",
+      "path": "<stdio.h>",
+      "is_system": true
+    }
+  ],
+  "libraries": [
+    "libc"
+  ],
+  "examples": [],
+  "see_also": [
+    "printf()",
+    "fprintf()",
+    "snprintf()",
+    "vprintf()",
+    "vfprintf()",
+    "vsprintf()",
+    "vsnprintf()"
+  ],
+  "classification": "ANSI, POSIX 1003.1",
+  "safety": "Cancellation point: No\nInterrupt handler: Yes\nSignal handler: Yes\nThread safe: Yes"
+}

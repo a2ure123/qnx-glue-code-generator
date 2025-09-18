@@ -225,13 +225,13 @@ class OptimizedGeminiVectorizer:
             try:
                 self.chroma_client.delete_collection(name=self.collection_name)
                 logger.info(f"已删除现有collection: {self.collection_name}")
-            except ValueError:
+            except (ValueError, Exception):
                 pass  # Collection不存在
         
         try:
             self.collection = self.chroma_client.get_collection(name=self.collection_name)
             logger.info(f"获取现有collection: {self.collection_name}")
-        except ValueError:
+        except (ValueError, Exception):
             self.collection = self.chroma_client.create_collection(
                 name=self.collection_name,
                 metadata={"description": "QNX函数文档向量数据库 - 优化版本"}

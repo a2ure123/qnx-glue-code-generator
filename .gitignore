@@ -40,6 +40,10 @@ env/
 *.cache
 cache/
 
+# 项目数据目录
+gen_code_v2/data/
+*/data/
+
 # 日志文件
 *.log
 logs/
