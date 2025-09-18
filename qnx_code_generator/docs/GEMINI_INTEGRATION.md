@@ -1,32 +1,32 @@
-# Gemini集成说明
+# Gemini Integration Documentation
 
-## 概述
+## Overview
 
-本项目现已集成Gemini AI进行向量化和JSON数据提取，提供更高效的QNX函数文档处理能力。
+This project now integrates Gemini AI for vectorization and JSON data extraction, providing more efficient QNX function documentation processing capabilities.
 
-## 新增组件
+## New Components
 
-### 1. 优化的Gemini向量化器 (`optimized_gemini_vectorizer.py`)
+### 1. Optimized Gemini Vectorizer (`optimized_gemini_vectorizer.py`)
 
-**特性:**
-- 使用 `gemini-embedding-001` 模型进行向量化
-- 支持并行处理和批量embedding
-- 自动错误重试和指数退避
-- 高效的ChromaDB存储
+**Features:**
+- Uses `gemini-embedding-001` model for vectorization
+- Supports parallel processing and batch embedding
+- Automatic error retry and exponential backoff
+- Efficient ChromaDB storage
 
-**主要功能:**
+**Main Functions:**
 ```python
 from optimized_gemini_vectorizer import OptimizedGeminiVectorizer
 
-# 初始化
+# Initialize
 vectorizer = OptimizedGeminiVectorizer()
 
-# 向量化文档
-documents = [{"id": "func1", "content": "函数描述", "metadata": {...}}]
+# Vectorize documents
+documents = [{"id": "func1", "content": "function description", "metadata": {...}}]
 stats = vectorizer.vectorize_documents(documents)
 
-# 查询相似文档
-results = vectorizer.query_similar("查询文本", n_results=5)
+# Query similar documents
+results = vectorizer.query_similar("query text", n_results=5)
 ```
 
 ### 2. Gemini 2.5 Flash JSON提取器 (`gemini_flash_json_extractor.py`)

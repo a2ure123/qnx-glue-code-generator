@@ -1,0 +1,71 @@
+{
+  "qnx_system": {
+    "root_path": "/home/a2ure/Desktop/qnx700",
+    "env_setup_script": "/home/a2ure/Desktop/qnx700/qnxsdp-env.sh",
+    "header_search_paths": [
+      "/home/a2ure/Desktop/qnx700/target/qnx7/usr/include",
+      "/home/a2ure/Desktop/qnx700/target/qnx7/usr/include/sys",
+      "/home/a2ure/Desktop/qnx700/target/qnx7/usr/include/c++",
+      "/home/a2ure/Desktop/qnx700/host/linux/x86_64/usr/include",
+      "/usr/include",
+      "/usr/local/include"
+    ],
+    "symbol_library_paths": [
+      "/home/a2ure/Desktop/qnx700/target/qnx7/x86_64/lib",
+      "/home/a2ure/Desktop/qnx700/target/qnx7/x86_64/usr/lib",
+      "/home/a2ure/Desktop/qnx700/target/qnx7/armle-v7/lib",
+      "/home/a2ure/Desktop/qnx700/target/qnx7/armle-v7/usr/lib"
+    ],
+    "gdb_executable": "ntox86_64-gdb",
+    "gdb_fallback": "gdb",
+    "preferred_architecture": "x86_64"
+  },
+  "ai_settings": {
+    "provider": "gemini",
+    "gemini": {
+      "api_key_env": "GEMINI_API_KEY",
+      "model": "gemini-2.5-flash",
+      "embedding_model": "embedding-001",
+      "max_tokens": 2000,
+      "temperature": 0.1,
+      "batch_size": 32
+    },
+    "openai": {
+      "api_key_env": "OPENAI_API_KEY", 
+      "model": "gpt-3.5-turbo",
+      "chat_model": "gpt-4o-mini",
+      "embedding_model": "text-embedding-3-small",
+      "max_tokens": 4000,
+      "temperature": 0.1,
+      "batch_size": 16
+    }
+  },
+  "network_settings": {
+    "proxy": {
+      "enabled": false,
+      "http_proxy": "http://127.0.0.1:7890",
+      "https_proxy": "http://127.0.0.1:7890",
+      "no_proxy": "localhost,127.0.0.1"
+    },
+    "request_settings": {
+      "timeout": 30,
+      "max_retries": 3,
+      "retry_delay": 1.0
+    }
+  },
+  "debug_settings": {
+    "enable_gdb_analysis": true,
+    "symbol_file_extensions": [".sym", ".so", ".a"],
+    "max_function_declarations": 20,
+    "header_content_preview_size": 2000
+  },
+  "processing_settings": {
+    "max_worker_threads": 3,
+    "api_request_delay_range": [0.5, 2.0],
+    "enable_multithreading": true
+  },
+  "logging": {
+    "level": "INFO",
+    "suppress_third_party": true
+  }
+}

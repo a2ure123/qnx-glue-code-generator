@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "qnx-functions": {
+      "command": "python",
+      "args": ["qnx_mcp_server.py"],
+      "cwd": "/home/a2ure/Desktop/afl-qnx/gen_code_v2"
+    }
+  }
+}

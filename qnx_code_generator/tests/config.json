@@ -33,8 +33,9 @@
     "openai": {
       "api_key_env": "OPENAI_API_KEY", 
       "model": "gpt-3.5-turbo",
+      "chat_model": "gpt-4o-mini",
       "embedding_model": "text-embedding-3-small",
-      "max_tokens": 2000,
+      "max_tokens": 4000,
       "temperature": 0.1,
       "batch_size": 16
     }
@@ -44,6 +45,11 @@
     "symbol_file_extensions": [".sym", ".so", ".a"],
     "max_function_declarations": 20,
     "header_content_preview_size": 2000
+  },
+  "processing_settings": {
+    "max_worker_threads": 3,
+    "api_request_delay_range": [0.5, 2.0],
+    "enable_multithreading": true
   },
   "logging": {
     "level": "INFO",
