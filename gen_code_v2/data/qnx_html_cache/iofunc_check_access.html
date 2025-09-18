@@ -1,0 +1,369 @@
+
+<!DOCTYPE html
+  PUBLIC "" "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />        
+      <meta name="copyright" content="(C) Copyright 2005" /><meta name="DC.rights.owner" content="(C) Copyright 2005" /><meta name="DC.Type" content="reference" /><meta name="DC.Title" content="iofunc_check_access()" /><meta name="abstract" content="Check access permissions" /><meta name="description" content="Check access permissions" /><meta name="indexterms" content="iofunc_check_access()" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-i.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.resmgr/topic/about.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/i/iofunc_ability_check.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/i/iofunc_chmod.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/i/iofunc_client_info_able.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/i/iofunc_client_info_ext.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/i/iofunc_open.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/i/iofunc_read_verify.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/i/iofunc_write_verify.html" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="iofunc_check_access" /><meta name="DC.Language" content="en-us" /><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/commonltr.css"><!----></link><title>iofunc_check_access()</title><link rel="canonical" type="html" href="https://www.qnx.com/developers/docs/7.1/#com.qnx.doc.neutrino.lib_ref/" /><!--  Generated with Oxygen version 18.1, build number 2017020917.  --><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/webhelp_topic.css"><!----></link><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/skins/skin.css" /><script type="text/javascript"><!--
+            
+            var prefix = "../../../index.html";
+            
+            --></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-1.11.3.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.cookie.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-ui.custom.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.highlight-3.js"><!----></script><script type="text/javascript" charset="utf-8" src="../../../oxygen-webhelp/resources/js/webhelp_topic.js"><!----></script><script type="text/javascript"> var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-27400275-1']); _gaq.push(['_setDomainName', 'www.qnx.com']);_gaq.push(['_setAllowLinker', true]);_gaq.push(['_trackPageview']);(function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script></head>
+<body onload="highlightSearchTerm()" class="frmBody" id="iofunc_check_access">
+<table class="nav"><tbody><tr><td colspan="2"><div id="printlink"><button onClick="window.print()" title="Print this page" aria-label="Print this page"></button></div><div id="permalink"><a href="#" title="Link to this page"></a></div></td></tr><tr><td style="width:75%;"><span class="topic_breadcrumb_links"><span class="topic_breadcrumb_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-i.html" title="I">I</a></span></span></td><td><span id="topic_navigation_links" class="navheader">
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-i.html" title="I"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">I</span></a></span>  </span></td></tr></tbody></table>
+
+
+<h1 class="title topictitle1"><span class="keyword apiname">iofunc_check_access()</span></h1>
+<table width="100%"><tbody><tr><td align="left"><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">QNX SDP</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">7.1</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">C Library Reference</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">API</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">Developer</button></td><td align="right"><span style="margin:0px 5px; font-size:0.9em;">Updated: October 28, 2024</span></td></tr></tbody></table>
+
+
+<div class="body refbody"><p class="shortdesc"><em class="ph i">Check access permissions</em></p>
+
+
+<div class="section refsyn"><h2 class="title sectiontitle">Synopsis:</h2>
+
+<pre class="pre codeblock">
+#include &lt;sys/iofunc.h&gt;
+
+int iofunc_check_access(
+        resmgr_context_t *<var class="keyword varname">ctp</var>,
+        const iofunc_attr_t *<var class="keyword varname">attr</var>,
+        mode_t <var class="keyword varname">checkmode</var>,
+        const struct _client_info *<var class="keyword varname">info</var> );
+</pre>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Arguments:</h2>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><var class="keyword varname">ctp</var></dt>
+
+<dd class="dd">A pointer to a
+  <a class="xref" href="../r/resmgr_context_t.html" title="Context information that's passed between resource-manager functions"><span class="keyword dtype">resmgr_context_t</span></a>
+  structure that the resource-manager library uses to pass context information
+  between functions.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">attr</var></dt>
+
+<dd class="dd">A pointer to the
+  <a class="xref" href="iofunc_attr_t.html" title="I/O attribute structure"><span class="keyword dtype">iofunc_attr_t</span></a>
+  structure that defines the characteristics of the device that's
+  associated with the resource manager.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">checkmode</var></dt>
+
+<dd class="dd">The type and access permissions that you want to check for the resource.
+  For more information, see below.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">info</var></dt>
+
+<dd class="dd">A pointer to a <span class="keyword dtype">_client_info</span> structure that contains the
+  information about a client connection.
+  For information about this structure, see
+  <a class="xref" href="../c/connectclientinfo.html" title="Get information about a client connection"><span class="keyword apiname">ConnectClientInfo()</span></a>.
+  You can get this structure by calling
+  <a class="xref" href="iofunc_client_info_ext.html" title="Return information about a client connection"><span class="keyword apiname">iofunc_client_info_ext()</span></a>.
+</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Library:</h2>
+
+
+<p class="p"><span class="ph filepath">libc</span></p>
+
+
+<p class="p">
+Use the <span class="keyword option">-l c</span> option to
+<a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/q/qcc.html"><span class="keyword cmdname">qcc</span></a>
+to link against this library.
+This library is usually included automatically.
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Description:</h2>
+
+
+<p class="p">
+
+
+The <span class="keyword apiname">iofunc_check_access()</span> function
+verifies that the client is allowed
+access to the resource, as specified by a combination of
+who the client is (<var class="keyword varname">info</var>), and the resource attributes
+<var class="keyword varname">attr</var>-&gt;<var class="keyword varname">mode</var>, <var class="keyword varname">attr</var>-&gt;<var class="keyword varname">uid</var> and
+<var class="keyword varname">attr</var>-&gt;<var class="keyword varname">gid</var>.
+Access is tested based upon the <var class="keyword varname">checkmode</var> parameter.
+</p>
+
+
+<p class="p">
+The <var class="keyword varname">checkmode</var> parameter determines which checks are done.
+It's a bitwise OR of the following constants:
+</p>
+
+
+<dl class="dl" compact="compact">
+
+<dt class="dt dlterm"><span class="keyword const">S_ISUID</span></dt>
+
+<dd class="dd">Verifies that the effective user ID of the client is equal to the user ID
+  specified by the <var class="keyword varname">attr</var>-&gt;<var class="keyword varname">uid</var> member.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">S_ISGID</span></dt>
+
+<dd class="dd">Verifies that the effective group ID or one of the supplementary
+  group IDs of the client is equal to the group ID specified by the
+  <var class="keyword varname">attr</var>-&gt;<var class="keyword varname">gid</var> member.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">S_IREAD</span></dt>
+
+<dd class="dd">Verifies that the client has READ access to the resource as specified by
+  <var class="keyword varname">attr</var>-&gt;<var class="keyword varname">mode</var>.
+
+  <p class="p">
+  If the client's effective user ID matches
+  that of <var class="keyword varname">attr</var>-&gt;<var class="keyword varname">uid</var>, then the
+  permission check is made against the owner
+  permission field of <var class="keyword varname">attr</var>-&gt;<var class="keyword varname">mode</var>
+  (mask 0700 octal).
+  </p>
+
+
+  <p class="p">
+  If the client's effective user ID doesn't
+  match that of <var class="keyword varname">attr</var>-&gt;<var class="keyword varname">uid</var>, then if the
+  client's effective group ID matches that of
+  <var class="keyword varname">attr</var>-&gt;<var class="keyword varname">gid</var>, or one of the client's
+  supplementary group IDs matches
+  <var class="keyword varname">attr</var>-&gt;<var class="keyword varname">gid</var>, the check is made against
+  the group permission field of <var class="keyword varname">attr</var>-&gt;<var class="keyword varname">mode</var>
+  (mask 0070 octal).
+  </p>
+
+
+  <p class="p">
+  If none of the group fields match, the check
+  is made against the other permission field of
+  <var class="keyword varname">attr</var>-&gt;<var class="keyword varname">mode</var> (mask 0007 octal).
+  </p>
+
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">S_IWRITE</span></dt>
+
+<dd class="dd">Same as <span class="keyword const">S_IREAD</span>, except WRITE access is tested.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">S_IEXEC</span></dt>
+
+<dd class="dd">Same as <span class="keyword const">S_IREAD</span>, except EXECUTE access is tested.
+  Note that since most resource managers don't actually execute code, the
+  execute access is typically used in its directory sense,
+  i.e., to test for directory accessibility, rather than execute access.
+</dd>
+
+
+
+</dl>
+
+
+<p class="p">
+The <span class="keyword const">S_ISUID</span> and <span class="keyword const">S_ISGID</span>
+flags are mutually exclusive, that is, you may specify at most one of them.
+In conjunction with the <span class="keyword const">S_ISUID</span> and
+<span class="keyword const">S_ISGID</span> flags, you may specify zero or
+more of the <span class="keyword const">S_IREAD</span>, <span class="keyword const">S_IWRITE</span>,
+and <span class="keyword const">S_IEXEC</span> flags.
+If no flags are specified, the permission checks are
+performed for privileged (<span class="ph filepath">root</span>) access.
+</p>
+
+
+<p class="p">
+Here's some pseudo-code to try to explain this:
+</p>
+
+
+<pre class="pre codeblock">
+if an ability check was requested using iofunc_client_info_able(),
+  and the check failed:
+    return EACCES
+
+if superuser:
+    return EOK
+
+if S_ISUID and effective user ID == file user ID:
+    return EOK
+
+if S_ISGID and effective group ID == file group ID, or
+  a supplemental group ID == file group ID:
+    return EOK
+
+if S_IREAD or S_IWRITE or S_IEXEC:
+    if caller's user ID == effective user ID:
+        if all permissions are set in file's owner mode bits:
+            return EOK
+        else:
+            return EACCES
+
+    if ( caller's group ID or supplementary group IDs ) ==
+       effective group ID:
+        if all permissions are set in file's group mode bits:
+            return EOK
+        else:
+            return EACCES
+
+    if all permissions are set in file's other mode bits:
+        return EOK
+    else:
+        return EACCES
+
+return EPERM
+</pre>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Returns:</h2>
+
+
+<dl class="dl" compact="compact">
+
+<dt class="dt dlterm"><span class="keyword const">EACCES</span></dt>
+
+<dd class="dd">The client doesn't have permissions to do the operation.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">ENOSYS</span></dt>
+
+<dd class="dd"><span class="keyword const">NULL</span> was passed for <var class="keyword varname">info</var> structure.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EOK</span></dt>
+
+<dd class="dd">Successful completion.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EPERM</span></dt>
+
+<dd class="dd">The group ID or owner ID didn't match.</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Classification:</h2>
+
+<p class="p"><a class="xref" href="../summary.html#summary__CLASSIFICATION">QNX Neutrino</a></p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+<thead class="thead" align="left">
+<tr><th class="entry" valign="top" id="d2014888e431">Safety:</th>
+<th class="entry" valign="top" id="d2014888e433">Â </th>
+</tr>
+
+</thead>
+
+<tbody class="tbody">
+<tr><td class="entry" valign="top" headers="d2014888e431 d2014888e433 ">Cancellation point</td>
+<td class="entry" valign="top" headers="d2014888e431 d2014888e433 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2014888e431 d2014888e433 ">Interrupt handler</td>
+<td class="entry" valign="top" headers="d2014888e431 d2014888e433 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2014888e431 d2014888e433 ">Signal handler</td>
+<td class="entry" valign="top" headers="d2014888e431 d2014888e433 ">Yes</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2014888e431 d2014888e433 ">Thread</td>
+<td class="entry" valign="top" headers="d2014888e431 d2014888e433 ">Yes</td>
+</tr>
+
+</tbody>
+
+</table>
+</div>
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="related-links"><div class="relinfo relconcepts"><strong>Related concepts</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.resmgr/topic/about.html" title="Writing a Resource Manager">Writing a Resource Manager</a></div>
+</div>
+<div class="relinfo relref"><strong>Related reference</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/i/iofunc_ability_check.html" title="Verify that the client has a given resource manager ability">iofunc_ability_check()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/i/iofunc_chmod.html" title="Handle an _IO_CHMOD message">iofunc_chmod()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/i/iofunc_client_info_able.html" title="Return information about a client connection, including abilities">iofunc_client_info_able()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/i/iofunc_client_info_ext.html" title="Return information about a client connection">iofunc_client_info_ext()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/i/iofunc_open.html" title="Verify a client's ability to open or to create a resource">iofunc_open()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/i/iofunc_read_verify.html" title="Verify a client's read access to a resource">iofunc_read_verify()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/i/iofunc_write_verify.html" title="Verify a client's write access to a resource">iofunc_write_verify()</a></div>
+</div>
+</div><div class="navfooter"><!---->
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-i.html" title="I"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">I</span></a></span>  </div>
+</body>
+</html>

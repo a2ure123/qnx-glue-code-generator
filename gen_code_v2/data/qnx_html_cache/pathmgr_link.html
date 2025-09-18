@@ -1,0 +1,694 @@
+
+<!DOCTYPE html
+  PUBLIC "" "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />        
+      <meta name="copyright" content="(C) Copyright 2005" /><meta name="DC.rights.owner" content="(C) Copyright 2005" /><meta name="DC.Type" content="reference" /><meta name="DC.Title" content="pathmgr_link()" /><meta name="abstract" content="Create a node in the path space that represents the mountpoint of a device or filesystem" /><meta name="description" content="Create a node in the path space that represents the mountpoint of a device or filesystem" /><meta name="indexterms" content="pathmgr_link()" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-p.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/p/pathmgr_symlink.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/p/pathmgr_unlink.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/p/procmgr_ability.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/s/symlink.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/u/unlink.html" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="pathmgr_link" /><meta name="DC.Language" content="en-us" /><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/commonltr.css"><!----></link><title>pathmgr_link()</title><link rel="canonical" type="html" href="https://www.qnx.com/developers/docs/7.1/#com.qnx.doc.neutrino.lib_ref/" /><!--  Generated with Oxygen version 18.1, build number 2017020917.  --><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/webhelp_topic.css"><!----></link><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/skins/skin.css" /><script type="text/javascript"><!--
+            
+            var prefix = "../../../index.html";
+            
+            --></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-1.11.3.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.cookie.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-ui.custom.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.highlight-3.js"><!----></script><script type="text/javascript" charset="utf-8" src="../../../oxygen-webhelp/resources/js/webhelp_topic.js"><!----></script><script type="text/javascript"> var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-27400275-1']); _gaq.push(['_setDomainName', 'www.qnx.com']);_gaq.push(['_setAllowLinker', true]);_gaq.push(['_trackPageview']);(function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script></head>
+<body onload="highlightSearchTerm()" class="frmBody" id="pathmgr_link">
+<table class="nav"><tbody><tr><td colspan="2"><div id="printlink"><button onClick="window.print()" title="Print this page" aria-label="Print this page"></button></div><div id="permalink"><a href="#" title="Link to this page"></a></div></td></tr><tr><td style="width:75%;"><span class="topic_breadcrumb_links"><span class="topic_breadcrumb_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-p.html" title="P">P</a></span></span></td><td><span id="topic_navigation_links" class="navheader">
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-p.html" title="P"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">P</span></a></span>  </span></td></tr></tbody></table>
+
+
+<h1 class="title topictitle1"><span class="keyword apiname">pathmgr_link()</span></h1>
+<table width="100%"><tbody><tr><td align="left"><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">QNX SDP</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">7.1</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">C Library Reference</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">API</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">Developer</button></td><td align="right"><span style="margin:0px 5px; font-size:0.9em;">Updated: October 28, 2024</span></td></tr></tbody></table>
+
+
+
+<div class="body refbody"><p class="shortdesc"><em class="ph i">Create a node in the path space that represents the mountpoint of a device or filesystem</em></p>
+
+
+<div class="section">
+<p class="p">
+
+
+
+
+</p>
+
+</div>
+
+
+<div class="section refsyn"><h2 class="title sectiontitle">Synopsis:</h2>
+
+<pre class="pre codeblock">
+#include &lt;sys/pathmgr.h&gt;
+
+int pathmgr_link( const char *<var class="keyword varname">path</var>,
+                  uint32_t <var class="keyword varname">nd</var>,
+                  pid_t <var class="keyword varname">pid</var>,
+                  int <var class="keyword varname">chid</var>,
+                  unsigned <var class="keyword varname">handle</var>,
+                  enum _file_type <var class="keyword varname">file_type</var>,
+                  unsigned <var class="keyword varname">flags</var> );
+</pre>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Arguments:</h2>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><var class="keyword varname">path</var></dt>
+
+<dd class="dd">The path that you want to link to, or <span class="keyword const">NULL</span> to link to <span class="ph filepath">/</span>.</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">nd</var></dt>
+
+<dd class="dd">The node descriptor of the node (e.g., <span class="keyword const">ND_LOCAL_NODE</span> for
+  the local node) of the process you want to associate the link with; see
+  <span class="q">&#147;<a class="xref" href="#pathmgr_link__NodeDescriptors">Node descriptors</a>,&#148;</span>
+  below.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">pid</var></dt>
+
+<dd class="dd">The process ID to associate with the link, or 0 for the calling process.</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">chid</var></dt>
+
+<dd class="dd">The channel ID to associate with the link.</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">handle</var></dt>
+
+<dd class="dd">A handle to associate with the link.</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">file_type</var></dt>
+
+<dd class="dd">The file type; one of the following (defined in
+  <span class="ph filepath">&lt;sys/ftype.h&gt;</span>):
+
+  <ul class="ul">
+  <li class="li"><span class="keyword const">_FTYPE_ANY</span> â the path name can be anything.
+    
+  </li>
+
+
+  <li class="li"><span class="keyword const">_FTYPE_LINK</span> â reserved for the process manager.
+    
+  </li>
+
+
+  <li class="li"><span class="keyword const">_FTYPE_MOUNT</span> â receive mount requests on the path
+    (<var class="keyword varname">path</var> must be <span class="keyword const">NULL</span>).
+    
+  </li>
+
+
+  <li class="li"><span class="keyword const">_FTYPE_MQ</span> â reserved for an alternate message-queue manager.
+    
+  </li>
+
+
+  <li class="li"><span class="keyword const">_FTYPE_MQUEUE</span> â reserved for a traditional message-queue manager.
+    
+  </li>
+
+
+  <li class="li"><span class="keyword const">_FTYPE_PIPE</span> â reserved for a pipe manager.
+    
+  </li>
+
+
+  <li class="li"><span class="keyword const">_FTYPE_SEM</span> â reserved for a semaphore manager.
+    
+  </li>
+
+
+  <li class="li"><span class="keyword const">_FTYPE_SHMEM</span> â reserved for a shared memory object.
+    
+  </li>
+
+
+  <li class="li"><span class="keyword const">_FTYPE_SOCKET</span> â reserved for a socket manager.
+    
+  </li>
+
+
+  <li class="li"><span class="keyword const">_FTYPE_SYMLINK</span> â reserved for the Process Manager.
+    
+  </li>
+
+
+  </ul>
+
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">flags</var></dt>
+
+<dd class="dd">0, or a combination of the following:
+
+  <ul class="ul">
+  <li class="li"><span class="keyword const">PATHMGR_FLAG_AFTER</span></li>
+
+  <li class="li"><span class="keyword const">PATHMGR_FLAG_BEFORE</span></li>
+
+  <li class="li"><span class="keyword const">PATHMGR_FLAG_DIR</span></li>
+
+  <li class="li"><span class="keyword const">PATHMGR_FLAG_FTYPEALL</span></li>
+
+  <li class="li"><span class="keyword const">PATHMGR_FLAG_FTYPEONLY</span></li>
+
+  <li class="li"><span class="keyword const">PATHMGR_FLAG_OPAQUE</span></li>
+
+  <li class="li"><span class="keyword const">PATHMGR_FLAG_SELF</span></li>
+
+  <li class="li"><span class="keyword const">PATHMGR_FLAG_STICKY</span></li>
+
+  </ul>
+
+
+  <p class="p">  For more information, see
+  <span class="q">&#147;<a class="xref" href="#pathmgr_link__flags">The <var class="keyword varname">flags</var> argument</a>,&#148;</span>
+  below.
+  </p>
+
+</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Library:</h2>
+
+
+<p class="p"><span class="ph filepath">libc</span></p>
+
+
+<p class="p">Use the <span class="keyword option">-l c</span> option to
+<a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/q/qcc.html"><span class="keyword cmdname">qcc</span></a>
+to link against this library.
+This library is usually included automatically.
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Description:</h2>
+
+
+<p class="p">
+The <span class="keyword apiname">pathmgr_link()</span> function creates a node in the
+path space that represents the mountpoint of a device or filesystem.
+It implements high-level APIs such as
+<a class="xref" href="../n/name_attach.html" title="Register a name in the pathname space and create a channel"><span class="keyword apiname">name_attach()</span></a>
+and
+<a class="xref" href="../r/resmgr_attach.html" title="Attach a path to the pathname space"><span class="keyword apiname">resmgr_attach()</span></a>.
+You probably don't need to call <span class="keyword apiname">pathmgr_link()</span> directly.
+</p>
+
+
+<p class="p">
+The <var class="keyword varname">nd</var>, <var class="keyword varname">pid</var>, <var class="keyword varname">chid</var>, and <var class="keyword varname">handle</var>
+together identify who handles the specified path; for more information, see
+<span class="q">&#147;<a class="xref" href="../../../com.qnx.doc.neutrino.getting_started/topic/s1_resmgr_Client_view.html">The client's view</a>&#148;</span>
+in the Resource Managers chapter of <cite class="cite">Getting Started with <span class="keyword">QNX Neutrino</span></cite>.
+</p>
+
+
+<p class="p" id="pathmgr_link__flags"><strong class="ph b">The <var class="keyword varname">flags</var> argument</strong></p>
+
+
+<p class="p">
+The <var class="keyword varname">flags</var> argument specifies additional information to control
+the pathname resolution:
+</p>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><span class="keyword const">PATHMGR_FLAG_AFTER</span></dt>
+
+<dd class="dd">Force the path to be resolved after others with the same pathname at
+  the same mountpoint.
+  
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">PATHMGR_FLAG_BEFORE</span></dt>
+
+<dd class="dd">Force the path to be resolved before others with the same pathname at
+  the same mountpoint.
+  
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">PATHMGR_FLAG_DIR</span></dt>
+
+<dd class="dd">Treat the pathname as a directory and allow the resolving of
+  longer pathnames.  The <span class="keyword const">_IO_CONNECT</span> message contains
+  the pathname passed to the client <span class="keyword apiname">open()</span> with the matching
+  prefix stripped off. Without this flag, the pathname is treated as a
+  simple file requiring an exact match.
+  
+
+  
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" width="90%" frame="border" border="1" rules="all">
+
+  <thead class="thead" align="left">
+  <tr>
+    <th class="entry" valign="top" id="d2312429e464">Attached path</th>
+
+    <th class="entry" valign="top" id="d2312429e467">Opened path</th>
+
+    <th class="entry" valign="top" id="d2312429e470"><span class="keyword const">PATHMGR_FLAG_DIR</span> set</th>
+
+    <th class="entry" valign="top" id="d2312429e475"><span class="keyword const">PATHMGR_FLAG_DIR</span> clear</th>
+
+  </tr>
+
+  </thead>
+
+
+  <tbody class="tbody">
+  <tr>
+    <td class="entry" valign="top" headers="d2312429e464 d2312429e467 d2312429e470 d2312429e475 "><span class="ph filepath">/a/b</span></td>
+
+    <td class="entry" valign="top" headers="d2312429e464 d2312429e467 d2312429e470 d2312429e475 "><span class="ph filepath">/a/b</span></td>
+
+    <td class="entry" valign="top" headers="d2312429e464 d2312429e467 d2312429e470 d2312429e475 ">Match ""</td>
+
+    <td class="entry" valign="top" headers="d2312429e464 d2312429e467 d2312429e470 d2312429e475 ">Match ""</td>
+
+  </tr>
+
+
+  <tr>
+    <td class="entry" valign="top" headers="d2312429e464 d2312429e467 d2312429e470 d2312429e475 "><span class="ph filepath">/a/b</span></td>
+
+    <td class="entry" valign="top" headers="d2312429e464 d2312429e467 d2312429e470 d2312429e475 "><span class="ph filepath">/a/b/c</span></td>
+
+    <td class="entry" valign="top" headers="d2312429e464 d2312429e467 d2312429e470 d2312429e475 ">Match <span class="ph filepath">c</span></td>
+
+    <td class="entry" valign="top" headers="d2312429e464 d2312429e467 d2312429e470 d2312429e475 ">No match</td>
+
+  </tr>
+
+
+  <tr>
+    <td class="entry" valign="top" headers="d2312429e464 d2312429e467 d2312429e470 d2312429e475 "><span class="ph filepath">/a/b</span></td>
+
+    <td class="entry" valign="top" headers="d2312429e464 d2312429e467 d2312429e470 d2312429e475 "><span class="ph filepath">/a/b/c/d</span></td>
+
+    <td class="entry" valign="top" headers="d2312429e464 d2312429e467 d2312429e470 d2312429e475 ">Match <span class="ph filepath">c/d</span></td>
+
+    <td class="entry" valign="top" headers="d2312429e464 d2312429e467 d2312429e470 d2312429e475 ">No match</td>
+
+  </tr>
+
+
+  <tr>
+    <td class="entry" valign="top" headers="d2312429e464 d2312429e467 d2312429e470 d2312429e475 "><span class="ph filepath">/a/b</span></td>
+
+    <td class="entry" valign="top" headers="d2312429e464 d2312429e467 d2312429e470 d2312429e475 "><span class="ph filepath">/a/bc</span></td>
+
+    <td class="entry" valign="top" headers="d2312429e464 d2312429e467 d2312429e470 d2312429e475 ">No match</td>
+
+    <td class="entry" valign="top" headers="d2312429e464 d2312429e467 d2312429e470 d2312429e475 ">No match</td>
+
+  </tr>
+
+
+  </tbody>
+
+  </table>
+</div>
+
+
+  <p class="p">
+  You can't attach a directory pathname that contains, as a subset,
+  an existing file pathname.  Likewise, you can't attach a file
+  pathname that's a subset of an existing directory pathname.
+  </p>
+
+
+  
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+
+  <thead class="thead" align="left">
+  <tr>
+    <th class="entry" valign="top" id="d2312429e571">Existing path</th>
+
+    <th class="entry" valign="top" id="d2312429e574">New path</th>
+
+    <th class="entry" valign="top" id="d2312429e577">New path allowed?</th>
+
+  </tr>
+
+  </thead>
+
+
+  <tbody class="tbody">
+  <tr>
+    <td class="entry" valign="top" headers="d2312429e571 d2312429e574 d2312429e577 ">Directory <span class="ph filepath">/a/b</span></td>
+
+    <td class="entry" valign="top" headers="d2312429e571 d2312429e574 d2312429e577 ">Directory <span class="ph filepath">/a</span></td>
+
+    <td class="entry" valign="top" headers="d2312429e571 d2312429e574 d2312429e577 ">Yes</td>
+
+  </tr>
+
+
+  <tr>
+    <td class="entry" valign="top" headers="d2312429e571 d2312429e574 d2312429e577 ">Directory <span class="ph filepath">/a/b</span></td>
+
+    <td class="entry" valign="top" headers="d2312429e571 d2312429e574 d2312429e577 ">Directory <span class="ph filepath">/a/b/c</span></td>
+
+    <td class="entry" valign="top" headers="d2312429e571 d2312429e574 d2312429e577 ">Yes</td>
+
+  </tr>
+
+
+  <tr>
+    <td class="entry" valign="top" headers="d2312429e571 d2312429e574 d2312429e577 ">File <span class="ph filepath">/a/b</span></td>
+
+    <td class="entry" valign="top" headers="d2312429e571 d2312429e574 d2312429e577 ">Directory <span class="ph filepath">/a</span></td>
+
+    <td class="entry" valign="top" headers="d2312429e571 d2312429e574 d2312429e577 ">Yes</td>
+
+  </tr>
+
+
+  <tr>
+    <td class="entry" valign="top" headers="d2312429e571 d2312429e574 d2312429e577 ">File <span class="ph filepath">/a/b</span></td>
+
+    <td class="entry" valign="top" headers="d2312429e571 d2312429e574 d2312429e577 ">Directory <span class="ph filepath">/a/b/c</span></td>
+
+    <td class="entry" valign="top" headers="d2312429e571 d2312429e574 d2312429e577 ">No; the directory is beneath a file</td>
+
+  </tr>
+
+
+  <tr>
+    <td class="entry" valign="top" headers="d2312429e571 d2312429e574 d2312429e577 ">Directory <span class="ph filepath">/a/b</span></td>
+
+    <td class="entry" valign="top" headers="d2312429e571 d2312429e574 d2312429e577 ">File <span class="ph filepath">/a</span></td>
+
+    <td class="entry" valign="top" headers="d2312429e571 d2312429e574 d2312429e577 ">No; the directory is beneath a file</td>
+
+  </tr>
+
+
+  <tr>
+    <td class="entry" valign="top" headers="d2312429e571 d2312429e574 d2312429e577 ">Directory <span class="ph filepath">/a/b</span></td>
+
+    <td class="entry" valign="top" headers="d2312429e571 d2312429e574 d2312429e577 ">File <span class="ph filepath">/a/b/c</span></td>
+
+    <td class="entry" valign="top" headers="d2312429e571 d2312429e574 d2312429e577 ">Yes</td>
+
+  </tr>
+
+
+  <tr>
+    <td class="entry" valign="top" headers="d2312429e571 d2312429e574 d2312429e577 ">File <span class="ph filepath">/a/b</span></td>
+
+    <td class="entry" valign="top" headers="d2312429e571 d2312429e574 d2312429e577 ">File <span class="ph filepath">/a</span></td>
+
+    <td class="entry" valign="top" headers="d2312429e571 d2312429e574 d2312429e577 ">Yes</td>
+
+  </tr>
+
+
+  <tr>
+    <td class="entry" valign="top" headers="d2312429e571 d2312429e574 d2312429e577 ">File <span class="ph filepath">/a/b</span></td>
+
+    <td class="entry" valign="top" headers="d2312429e571 d2312429e574 d2312429e577 ">File <span class="ph filepath">/a/b/c</span></td>
+
+    <td class="entry" valign="top" headers="d2312429e571 d2312429e574 d2312429e577 ">Yes</td>
+
+  </tr>
+
+  </tbody>
+
+  </table>
+</div>
+
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">PATHMGR_FLAG_FTYPEALL</span></dt>
+
+<dd class="dd">Handle requests for all file types.
+  You must specify a registration file type of <span class="keyword const">_FTYPE_ALL</span>.
+  
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">PATHMGR_FLAG_FTYPEONLY</span></dt>
+
+<dd class="dd">Handle only requests for the specific filetype indicated. 
+  The pathname must be <span class="keyword const">NULL</span>.
+  
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">PATHMGR_FLAG_OPAQUE</span></dt>
+
+<dd class="dd">Don't resolve paths to mountpoints on a path shorter than this 
+  (i.e., find the longest match against all pathnames attached).
+  
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">PATHMGR_FLAG_SELF</span></dt>
+
+<dd class="dd">Allow requests to resolve back to this server.
+  
+
+  <div class="cautiontitle">CAUTION:</div><div class="note caution">
+  Be very careful if you set <span class="keyword const">PATHMGR_FLAG_SELF</span> because
+  it's possible for a deadlock to occur.
+  For more information, see
+  <span class="q">&#147;<a class="xref" href="../../../com.qnx.doc.neutrino.sys_arch/topic/ipc_Robust.html">Robust implementations with Send/Receive/Reply</a>&#148;</span>
+  in the Interprocess Communication (IPC) chapter of the <cite class="cite">System Architecture</cite> guide.
+  </div>
+
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">PATHMGR_FLAG_STICKY</span></dt>
+
+<dd class="dd">No ID is associated with the path.
+  You must use
+  <a class="xref" href="pathmgr_unlink.html" title="Remove a link"><span class="keyword apiname">pathmgr_unlink()</span></a>
+  to remove the link.
+</dd>
+
+
+
+</dl>
+
+
+<p class="p" id="pathmgr_link__NodeDescriptors"><strong class="ph b">Node descriptors</strong></p>
+
+
+<p class="p">
+The <var class="keyword varname">nd</var> (node descriptor) is a temporary numeric description
+of a remote node.
+For more information, see the
+<a class="xref" href="../../../com.qnx.doc.neutrino.sys_arch/topic/qnet.html">Qnet Networking</a>
+chapter of the <cite class="cite">System Architecture</cite> guide.
+</p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+<thead class="thead" align="left">
+<tr>
+  <th class="entry" valign="top" id="d2312429e839">To:</th>
+
+  <th class="entry" valign="top" id="d2312429e842">Use this function:</th>
+
+</tr>
+
+</thead>
+
+
+<tbody class="tbody">
+
+<tr>
+  <td class="entry" valign="top" headers="d2312429e839 d2312429e842 ">Compare two <var class="keyword varname">nd</var> objects</td>
+
+  <td class="entry" valign="top" headers="d2312429e839 d2312429e842 "><a class="xref" href="../n/nd_node_cmp.html" title="Compare two node descriptors"><span class="keyword apiname">ND_NODE_CMP()</span></a></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d2312429e839 d2312429e842 ">Convert a <var class="keyword varname">nd</var> to text</td>
+
+  <td class="entry" valign="top" headers="d2312429e839 d2312429e842 "><a class="xref" href="../n/netmgr_ndtostr.html" title="Convert a node descriptor into a string"><span class="keyword apiname">netmgr_ndtostr()</span></a></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d2312429e839 d2312429e842 ">Convert text to a <var class="keyword varname">nd</var></td>
+
+  <td class="entry" valign="top" headers="d2312429e839 d2312429e842 "><a class="xref" href="../n/netmgr_strtond.html" title="Convert a string into a node descriptor"><span class="keyword apiname">netmgr_strtond()</span></a></td>
+
+</tr>
+
+
+</tbody>
+
+</table>
+</div>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Returns:</h2>
+
+
+<p class="p">
+A unique ID for the link, or -1 if an error occurred
+(<a class="xref" href="../e/errno.html" title="Thread-local error variable"><var class="keyword varname">errno</var></a> is set).
+</p>
+
+</div>
+
+  
+<div class="section"><h2 class="title sectiontitle">Errors:</h2>
+ 
+  
+<dl class="dl">
+
+<dt class="dt dlterm"><span class="keyword const">EACCES</span></dt>
+
+    
+<dd class="dd">(QNX Neutrino 7.0 or later) One of the following occurred:
+<ul class="ul">
+<li class="li">Security policies are in use and there is no rule to permit the use of that path.</li>
+
+<li class="li">The process is sandboxed and the path is denied.</li>
+
+</ul>
+</dd>
+
+
+  
+
+<dt class="dt dlterm"><span class="keyword const">ENOMEM</span></dt>
+
+<dd class="dd">There isn't enough free memory to complete the operation.</dd>
+
+
+  
+
+<dt class="dt dlterm"><span class="keyword const">EPERM</span></dt>
+
+<dd class="dd">The calling process doesn't have the required permission; see
+<a class="xref" href="procmgr_ability.html" title="Control a process's ability to perform certain operations"><span class="keyword apiname">procmgr_ability()</span></a>.
+</dd>
+
+ 
+
+</dl>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Classification:</h2>
+
+<p class="p"><a class="xref" href="../summary.html#summary__CLASSIFICATION">QNX Neutrino</a></p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+<thead class="thead" align="left">
+<tr><th class="entry" valign="top" id="d2312429e1001">Safety:</th>
+<th class="entry" valign="top" id="d2312429e1003">Â </th>
+</tr>
+
+</thead>
+
+<tbody class="tbody">
+<tr><td class="entry" valign="top" headers="d2312429e1001 d2312429e1003 ">Cancellation point</td>
+<td class="entry" valign="top" headers="d2312429e1001 d2312429e1003 ">Yes</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2312429e1001 d2312429e1003 ">Interrupt handler</td>
+<td class="entry" valign="top" headers="d2312429e1001 d2312429e1003 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2312429e1001 d2312429e1003 ">Signal handler</td>
+<td class="entry" valign="top" headers="d2312429e1001 d2312429e1003 ">Yes</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2312429e1001 d2312429e1003 ">Thread</td>
+<td class="entry" valign="top" headers="d2312429e1001 d2312429e1003 ">Yes</td>
+</tr>
+
+</tbody>
+
+</table>
+</div>
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="related-links"><div class="relinfo relref"><strong>Related reference</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/p/pathmgr_symlink.html" title="Create a symlink">pathmgr_symlink()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/p/pathmgr_unlink.html" title="Remove a link">pathmgr_unlink()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/p/procmgr_ability.html" title="Control a process's ability to perform certain operations">procmgr_ability()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/s/symlink.html" title="Create a symbolic link to a path">symlink()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/u/unlink.html" title="Remove a link to a file">unlink()</a></div>
+</div>
+</div><div class="navfooter"><!---->
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-p.html" title="P"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">P</span></a></span>  </div>
+</body>
+</html>

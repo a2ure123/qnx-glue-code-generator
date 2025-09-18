@@ -1,0 +1,372 @@
+
+<!DOCTYPE html
+  PUBLIC "" "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />        
+      <meta name="copyright" content="(C) Copyright 2005" /><meta name="DC.rights.owner" content="(C) Copyright 2005" /><meta name="DC.Type" content="reference" /><meta name="DC.Title" content="recvmsg()" /><meta name="abstract" content="Receive a message and its header from a socket" /><meta name="description" content="Receive a message and its header from a socket" /><meta name="indexterms" content="recvmsg()" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-r.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/r/recv.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/r/recvfrom.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/r/recvmmsg.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/s/sendmmsg.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/s/sendmsg.html" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="recvmsg" /><meta name="DC.Language" content="en-us" /><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/commonltr.css"><!----></link><title>recvmsg()</title><link rel="canonical" type="html" href="https://www.qnx.com/developers/docs/7.1/#com.qnx.doc.neutrino.lib_ref/" /><!--  Generated with Oxygen version 18.1, build number 2017020917.  --><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/webhelp_topic.css"><!----></link><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/skins/skin.css" /><script type="text/javascript"><!--
+            
+            var prefix = "../../../index.html";
+            
+            --></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-1.11.3.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.cookie.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-ui.custom.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.highlight-3.js"><!----></script><script type="text/javascript" charset="utf-8" src="../../../oxygen-webhelp/resources/js/webhelp_topic.js"><!----></script><script type="text/javascript"> var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-27400275-1']); _gaq.push(['_setDomainName', 'www.qnx.com']);_gaq.push(['_setAllowLinker', true]);_gaq.push(['_trackPageview']);(function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script></head>
+<body onload="highlightSearchTerm()" class="frmBody" id="recvmsg">
+<table class="nav"><tbody><tr><td colspan="2"><div id="printlink"><button onClick="window.print()" title="Print this page" aria-label="Print this page"></button></div><div id="permalink"><a href="#" title="Link to this page"></a></div></td></tr><tr><td style="width:75%;"><span class="topic_breadcrumb_links"><span class="topic_breadcrumb_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-r.html" title="R">R</a></span></span></td><td><span id="topic_navigation_links" class="navheader">
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-r.html" title="R"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">R</span></a></span>  </span></td></tr></tbody></table>
+
+
+<h1 class="title topictitle1"><span class="keyword apiname">recvmsg()</span></h1>
+<table width="100%"><tbody><tr><td align="left"><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">QNX SDP</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">7.1</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">C Library Reference</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">API</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">Developer</button></td><td align="right"><span style="margin:0px 5px; font-size:0.9em;">Updated: October 28, 2024</span></td></tr></tbody></table>
+
+
+<div class="body refbody"><p class="shortdesc"><em class="ph i">Receive a message and its header from a socket</em></p>
+
+
+<div class="section refsyn"><h2 class="title sectiontitle">Synopsis:</h2>
+
+<pre class="pre codeblock">
+#include &lt;sys/types.h&gt;
+#include &lt;sys/socket.h&gt;
+
+ssize_t recvmsg( int <var class="keyword varname">s</var>,
+                 struct msghdr * <var class="keyword varname">msg</var>,
+                 int <var class="keyword varname">flags</var> );
+</pre>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Arguments:</h2>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><var class="keyword varname">s</var></dt>
+
+<dd class="dd">The descriptor for the socket; see
+  <a class="xref" href="../s/socket.html" title="Create an endpoint for communication"><span class="keyword apiname">socket()</span></a>.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">msg</var></dt>
+
+<dd class="dd">A pointer to a <span class="keyword dtype">msghdr</span> structure where the function can store the message header; see below.</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">flags</var></dt>
+
+<dd class="dd">A combination formed by ORing one or more of the values:
+
+  <ul class="ul">
+  <li class="li"><span class="keyword const">MSG_DONTWAIT</span> â if no data is available, then instead of blocking,
+      return immediately with the error EAGAIN.
+      
+  </li>
+
+
+  <li class="li"><span class="keyword const">MSG_NOTIFICATION</span> â if the flag is not set, then the function returns data.
+    If a notification has arrived, then the flag is set and it returns a notification in the <var class="keyword varname">msg_iov</var> field.
+    
+  </li>
+
+
+  <li class="li"><span class="keyword const">MSG_OOB</span> â process out-of-band data.
+    This flag requests receipt of out-of-band data that wouldn't be received in the normal data stream.
+    You can't use this flag with protocols that place expedited data at the head of the normal data queue.
+    
+    
+    
+  </li>
+
+
+  <li class="li"><span class="keyword const">MSG_PEEK</span> â peek at the incoming message.
+    This flag causes the receive operation to return data from the
+    beginning of the receive queue without removing that data from the queue.
+    Thus, a subsequent receive call will return the same data.
+    
+    
+    
+  </li>
+
+
+  <li class="li"><span class="keyword const">MSG_WAITALL</span> â wait for full request or error. This
+    flag requests that the operation block until the full
+    request is satisfied. But the call may still return less
+    data than requested if a signal is caught, if an error or
+    disconnect occurs, or if the next data to be received is of a different type than that returned.
+    
+  </li>
+
+
+  <li class="li"><span class="keyword const">MSG_WAITFORONE</span> â wait for one packet or an error. This flag causes the
+    operation to block until at least one packet is available. With this setting, you can receive
+    as many as <var class="keyword varname">vlen</var> packets, but if only one is available, then the function
+    returns one. However, the call may return less data than available under the following scenarios:
+    <ul class="ul">
+      <li class="li">a signal is caught</li>
+
+      <li class="li">an error or disconnect occurs</li>
+
+      <li class="li">the incoming packet is a different data type from the one previously received</li>
+
+    </ul>
+
+    This flag turns on <span class="keyword const">MSG_DONTWAIT</span> after the first message has been received.
+    
+  </li>
+
+  </ul>
+
+</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Library:</h2>
+
+
+<p class="p"><span class="ph filepath">libsocket</span></p>
+
+
+<p class="p">
+Use the <span class="keyword option">-l socket</span> option to
+<a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/q/qcc.html"><span class="keyword cmdname">qcc</span></a>
+to link against this library.
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Description:</h2>
+
+
+<p class="p">
+The <span class="keyword apiname">recvmsg()</span> routine receives a message from a
+socket, <var class="keyword varname">s</var>, whether or not it's connection-oriented.
+
+
+
+
+
+</p>
+
+
+<p class="p">
+The <span class="keyword apiname">recvmsg()</span> call uses a <span class="keyword dtype">msghdr</span>
+structure to minimize the number of directly supplied parameters.
+This structure, defined in <span class="ph filepath">&lt;sys/socket.h&gt;</span>, has the following form:
+
+</p>
+
+
+<pre class="pre codeblock">
+struct msghdr {
+        void            *msg_name;      /* optional address */
+        socklen_t       msg_namelen;    /* size of address */
+        struct iovec    *msg_iov;       /* scatter/gather array */
+        int             msg_iovlen;     /* # elements in msg_iov */
+        void            *msg_control;   /* ancillary data, see below */
+        socklen_t       msg_controllen; /* ancillary data buffer len */
+        int             msg_flags;      /* flags on received message */
+};
+</pre>
+
+
+<p class="p">
+The <var class="keyword varname">msg_name</var> and <var class="keyword varname">msg_namelen</var>
+parameters specify the address (source address 
+for <span class="keyword apiname">recvmsg()</span>; destination address for  
+<a class="xref" href="../s/sendmsg.html" title="Send a message and its header to a socket"><span class="keyword apiname">sendmsg()</span></a>)
+if the socket is unconnected; 
+the <var class="keyword varname">msg_name</var> parameter may be given
+as a null pointer if no names are desired or required.
+</p>
+
+
+<p class="p">
+The <var class="keyword varname">msg_iov</var> and <var class="keyword varname">msg_iovlen</var> parameters
+describe scatter-gather locations, as discussed in
+<a class="xref" href="read.html" title="Read bytes from a file"><span class="keyword apiname">read()</span></a>.
+</p>
+
+
+<p class="p">
+The <var class="keyword varname">msg_control</var> parameter, whose length is
+determined by <var class="keyword varname">msg_controllen</var>, points to a buffer
+for other protocol-control related messages or for other
+miscellaneous ancillary data. The messages are of the form:
+</p>
+
+
+<pre class="pre codeblock">
+struct cmsghdr {
+        socklen_t       cmsg_len;       /* data byte count, including hdr */
+        int             cmsg_level;     /* originating protocol */
+        int             cmsg_type;      /* protocol-specific type */
+        /* followed by  unsigned char  cmsg_data[]; */
+};
+</pre>
+
+
+<p class="p">With <var class="keyword varname">recvmsg()</var> and <var class="keyword varname">recvmmsg()</var>, 
+  the length in <var class="keyword varname">msg_controllen</var> must not exceed <span class="keyword const">SSIZE_MAX</span> 
+  (see <span class="ph filepath">&lt;limits.h&gt;</span>), or the function fails and sets 
+  <var class="keyword varname">errno</var> to <span class="keyword const">EOVERFLOW</span>.
+  With <var class="keyword varname">sendmsg()</var> or <var class="keyword varname">sendmmsg()</var>, 
+  <var class="keyword varname">msg_controllen</var> must not exceed 
+  <span class="keyword const">SSIZE_MAX</span><tt class="ph tt"> - sizeof(_io_sock_sendto) - sizeof(socklen_t)</tt>, 
+  or <span class="keyword const">EOVERFLOW</span> occurs.
+</p>
+
+
+<p class="p">
+The <var class="keyword varname">msg_flags</var> field is set on return according to the message received:
+</p>
+
+
+<dl class="dl" compact="compact">
+
+<dt class="dt dlterm"><span class="keyword const">MSG_CTRUNC</span></dt>
+
+<dd class="dd">Indicates that some control data was discarded due to lack of space in the buffer for ancillary data.
+  
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">MSG_EOR</span></dt>
+
+<dd class="dd">Indicates end-of-record; the data returned completed a record.
+  
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">MSG_OOB</span></dt>
+
+<dd class="dd">Indicates that expedited or out-of-band data was received.
+  
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">MSG_TRUNC</span></dt>
+
+<dd class="dd">Indicates that the trailing portion of a datagram was discarded
+  because the datagram was larger than the buffer supplied.
+  
+</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Returns:</h2>
+
+
+<p class="p">
+The number of bytes received, or -1 if an error occurs
+(<a class="xref" href="../e/errno.html" title="Thread-local error variable"><var class="keyword varname">errno</var></a> is set).
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Errors:</h2>
+
+
+<dl class="dl" compact="compact">
+
+
+<dt class="dt dlterm"><span class="keyword const">ENOMEM</span></dt>
+
+<dd class="dd">Not enough memory.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EOVERFLOW</span></dt>
+
+<dd class="dd">An attempt was made to receive an amount of data that exceeds the allowable limit.</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Classification:</h2>
+
+<p class="p"><a class="xref" href="../summary.html#summary__CLASSIFICATION">POSIX 1003.1</a></p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+<thead class="thead" align="left">
+<tr><th class="entry" valign="top" id="d2489490e501">Safety:</th>
+<th class="entry" valign="top" id="d2489490e503">Â </th>
+</tr>
+
+</thead>
+
+<tbody class="tbody">
+<tr><td class="entry" valign="top" headers="d2489490e501 d2489490e503 ">Cancellation point</td>
+<td class="entry" valign="top" headers="d2489490e501 d2489490e503 ">Yes</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2489490e501 d2489490e503 ">Interrupt handler</td>
+<td class="entry" valign="top" headers="d2489490e501 d2489490e503 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2489490e501 d2489490e503 ">Signal handler</td>
+<td class="entry" valign="top" headers="d2489490e501 d2489490e503 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2489490e501 d2489490e503 ">Thread</td>
+<td class="entry" valign="top" headers="d2489490e501 d2489490e503 ">Yes</td>
+</tr>
+
+</tbody>
+
+</table>
+</div>
+
+</div>
+
+
+</div>
+
+
+<div class="related-links"><div class="relinfo relref"><strong>Related reference</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/r/recv.html" title="Receive a message from a socket">recv()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/r/recvfrom.html" title="Receive a message from the socket at a specified address">recvfrom()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/r/recvmmsg.html" title="Receive multiple messages and their headers from a socket">recvmmsg()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/s/sendmmsg.html" title="Send multiple messages to a socket">sendmmsg()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/s/sendmsg.html" title="Send a message and its header to a socket">sendmsg()</a></div>
+</div>
+</div><div class="navfooter"><!---->
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-r.html" title="R"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">R</span></a></span>  </div>
+</body>
+</html>

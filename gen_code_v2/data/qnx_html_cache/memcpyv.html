@@ -1,0 +1,282 @@
+
+<!DOCTYPE html
+  PUBLIC "" "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />        
+      <meta name="copyright" content="(C) Copyright 2005" /><meta name="DC.rights.owner" content="(C) Copyright 2005" /><meta name="DC.Type" content="reference" /><meta name="DC.Title" content="memcpyv()" /><meta name="abstract" content="Copy data from one I/O vector to another" /><meta name="description" content="Copy data from one I/O vector to another" /><meta name="indexterms" content="memcpyv()" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-m.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/m/memccpy.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/m/memcpy.html" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="memcpyv" /><meta name="DC.Language" content="en-us" /><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/commonltr.css"><!----></link><title>memcpyv()</title><link rel="canonical" type="html" href="https://www.qnx.com/developers/docs/7.1/#com.qnx.doc.neutrino.lib_ref/" /><!--  Generated with Oxygen version 18.1, build number 2017020917.  --><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/webhelp_topic.css"><!----></link><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/skins/skin.css" /><script type="text/javascript"><!--
+            
+            var prefix = "../../../index.html";
+            
+            --></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-1.11.3.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.cookie.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-ui.custom.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.highlight-3.js"><!----></script><script type="text/javascript" charset="utf-8" src="../../../oxygen-webhelp/resources/js/webhelp_topic.js"><!----></script><script type="text/javascript"> var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-27400275-1']); _gaq.push(['_setDomainName', 'www.qnx.com']);_gaq.push(['_setAllowLinker', true]);_gaq.push(['_trackPageview']);(function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script></head>
+<body onload="highlightSearchTerm()" class="frmBody" id="memcpyv">
+<table class="nav"><tbody><tr><td colspan="2"><div id="printlink"><button onClick="window.print()" title="Print this page" aria-label="Print this page"></button></div><div id="permalink"><a href="#" title="Link to this page"></a></div></td></tr><tr><td style="width:75%;"><span class="topic_breadcrumb_links"><span class="topic_breadcrumb_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-m.html" title="M">M</a></span></span></td><td><span id="topic_navigation_links" class="navheader">
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-m.html" title="M"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">M</span></a></span>  </span></td></tr></tbody></table>
+
+
+<h1 class="title topictitle1"><span class="keyword apiname">memcpyv()</span></h1>
+<table width="100%"><tbody><tr><td align="left"><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">QNX SDP</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">7.1</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">C Library Reference</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">API</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">Developer</button></td><td align="right"><span style="margin:0px 5px; font-size:0.9em;">Updated: October 28, 2024</span></td></tr></tbody></table>
+
+
+<div class="body refbody"><p class="shortdesc"><em class="ph i">Copy data from one I/O vector to another</em></p>
+
+
+<div class="section refsyn"><h2 class="title sectiontitle">Synopsis:</h2>
+
+<pre class="pre codeblock">
+#include &lt;string.h&gt;
+
+size_t memcpyv( const struct iovec *<var class="keyword varname">dst</var>,
+                int <var class="keyword varname">dparts</var>,
+                size_t <var class="keyword varname">doff</var>,
+                const struct iovec *<var class="keyword varname">src</var>,
+                int <var class="keyword varname">sparts</var>,
+                size_t <var class="keyword varname">soff</var> );
+</pre>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Arguments:</h2>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><var class="keyword varname">dst</var></dt>
+
+<dd class="dd">An array of <span class="keyword dtype">iovec</span> structures that you want to copy the
+  data to.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">dparts</var></dt>
+
+<dd class="dd">The number of entries in the <var class="keyword varname">dst</var> array.</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">doff</var></dt>
+
+<dd class="dd">The offset into data represented by the <var class="keyword varname">dst</var> array to start copying to.</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">src</var></dt>
+
+<dd class="dd">An array of <span class="keyword dtype">iovec</span> structures that you want to copy the
+  data from.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">sparts</var></dt>
+
+<dd class="dd">The number of entries in the <var class="keyword varname">src</var> array.</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">soff</var></dt>
+
+<dd class="dd">The offset into data represented by the <var class="keyword varname">src</var> array to start copying from.</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Library:</h2>
+
+
+<p class="p"><span class="ph filepath">libc</span></p>
+
+<p class="p">Use the <span class="keyword option">-l c</span> option to
+<a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/q/qcc.html"><span class="keyword cmdname">qcc</span></a>
+to link against this library.
+This library is usually included automatically.</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Description:</h2>
+
+
+<p class="p">
+
+
+
+The <span class="keyword apiname">memcpyv()</span> function copies
+data pointed to by the <var class="keyword varname">src</var> I/O vector,
+starting at offset <var class="keyword varname">soff</var>,
+to the <var class="keyword varname">dst</var> I/O vector, starting at offset <var class="keyword varname">doff</var>.
+The number of parts in each I/O vector is specified by
+<var class="keyword varname">sparts</var> and <var class="keyword varname">dparts</var>.
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Returns:</h2>
+
+
+<p class="p">
+The number of bytes copied.
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Examples:</h2>
+
+
+<p class="p">
+This example copies data from a two-part I/O vector, starting at offset 5, into a three-part vector, starting
+at offset 3:
+</p>
+
+
+<pre class="pre codeblock">
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;sys/types.h&gt;
+#include &lt;unistd.h&gt;
+
+void print_buffer (char * buffer, char * buffer_name,
+                   int buffer_len)
+{
+        int i;
+        
+        printf ("   %s: '", buffer_name);
+        for (i = 0; i &lt; buffer_len; i++)
+        {
+                if (buffer[i] == 0)
+                  printf ("_");
+                else
+                  printf ("%c", buffer[i]);
+        }
+        printf ("'\n");
+}
+        
+int main( void )
+{
+   char msg1a[10]="1234567890",
+        msg1b[20]="abcdefghijklmnop",
+        msg2a[10], msg2b[10], msg2c[20];
+        
+   iov_t dest[3], source[2];
+   int dparts=3, sparts=2;
+   size_t nbytes, doffset=3, soffset=5;
+        
+   SETIOV (source + 0, &amp;msg1a, sizeof (msg1a));
+   SETIOV (source + 1, &amp;msg1b, sizeof (msg1b));
+        
+   printf ("Original data:\n");
+   print_buffer (msg1a, "msg1a", sizeof (msg1a));
+   print_buffer (msg1b, "msg1b", sizeof (msg1b));
+
+   SETIOV (dest + 0, &amp;msg2a, sizeof (msg2a));
+   SETIOV (dest + 1, &amp;msg2b, sizeof (msg2b));
+   SETIOV (dest + 2, &amp;msg2c, sizeof (msg2c));
+   memset (msg2a, 0, sizeof (msg2a));
+   memset (msg2b, 0, sizeof (msg2b));
+   memset (msg2c, 0, sizeof (msg2c));
+   
+   nbytes = memcpyv ( dest, dparts, doffset,
+                      source, sparts, soffset );
+   printf ( "\nCopied %d bytes:\n", nbytes );
+   print_buffer (msg2a, "msg2a", sizeof (msg2a));
+   print_buffer (msg2b, "msg2b", sizeof (msg2b));
+   print_buffer (msg2c, "msg2c", sizeof (msg2c));
+
+   return EXIT_SUCCESS;
+}
+</pre>
+
+
+<p class="p">
+This program produces the following output:
+</p>
+
+
+<pre class="pre codeblock">
+Original data:
+   msg1a: '1234567890'
+   msg1b: 'abcdefghijklmnop____'
+
+Copied 25 bytes:
+   msg2a: '___67890ab'
+   msg2b: 'cdefghijkl'
+   msg2c: 'mnop________________'
+</pre>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Classification:</h2>
+
+<p class="p"><a class="xref" href="../summary.html#summary__CLASSIFICATION">QNX Neutrino</a></p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+<thead class="thead" align="left">
+<tr><th class="entry" valign="top" id="d2186658e241">Safety:</th>
+<th class="entry" valign="top" id="d2186658e243">Â </th>
+</tr>
+
+</thead>
+
+<tbody class="tbody">
+<tr><td class="entry" valign="top" headers="d2186658e241 d2186658e243 ">Cancellation point</td>
+<td class="entry" valign="top" headers="d2186658e241 d2186658e243 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2186658e241 d2186658e243 ">Interrupt handler</td>
+<td class="entry" valign="top" headers="d2186658e241 d2186658e243 ">Yes</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2186658e241 d2186658e243 ">Signal handler</td>
+<td class="entry" valign="top" headers="d2186658e241 d2186658e243 ">Yes</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2186658e241 d2186658e243 ">Thread</td>
+<td class="entry" valign="top" headers="d2186658e241 d2186658e243 ">Yes</td>
+</tr>
+
+</tbody>
+
+</table>
+</div>
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="related-links"><div class="relinfo relref"><strong>Related reference</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/m/memccpy.html" title="Copy bytes between buffers until a given byte is found">memccpy()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/m/memcpy.html" title="Copy bytes from one buffer to another">memcpy(), memcpy_isr()</a></div>
+</div>
+</div><div class="navfooter"><!---->
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-m.html" title="M"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">M</span></a></span>  </div>
+</body>
+</html>

@@ -1,0 +1,273 @@
+
+<!DOCTYPE html
+  PUBLIC "" "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />        
+      <meta name="copyright" content="(C) Copyright 2005" /><meta name="DC.rights.owner" content="(C) Copyright 2005" /><meta name="DC.Type" content="reference" /><meta name="DC.Title" content="fgetws()" /><meta name="abstract" content="Read a string of wide characters from a stream" /><meta name="description" content="Read a string of wide characters from a stream" /><meta name="indexterms" content="fgetws()" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-f.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/e/errno.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/f/feof.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/f/ferror.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/f/fgets.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/f/fputwc.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/f/fputws.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/f/fwide.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/g/getdelim.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/g/gets.html" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="fgetws" /><meta name="DC.Language" content="en-us" /><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/commonltr.css"><!----></link><title>fgetws()</title><link rel="canonical" type="html" href="https://www.qnx.com/developers/docs/7.1/#com.qnx.doc.neutrino.lib_ref/" /><!--  Generated with Oxygen version 18.1, build number 2017020917.  --><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/webhelp_topic.css"><!----></link><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/skins/skin.css" /><script type="text/javascript"><!--
+            
+            var prefix = "../../../index.html";
+            
+            --></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-1.11.3.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.cookie.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-ui.custom.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.highlight-3.js"><!----></script><script type="text/javascript" charset="utf-8" src="../../../oxygen-webhelp/resources/js/webhelp_topic.js"><!----></script><script type="text/javascript"> var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-27400275-1']); _gaq.push(['_setDomainName', 'www.qnx.com']);_gaq.push(['_setAllowLinker', true]);_gaq.push(['_trackPageview']);(function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script></head>
+<body onload="highlightSearchTerm()" class="frmBody" id="fgetws">
+<table class="nav"><tbody><tr><td colspan="2"><div id="printlink"><button onClick="window.print()" title="Print this page" aria-label="Print this page"></button></div><div id="permalink"><a href="#" title="Link to this page"></a></div></td></tr><tr><td style="width:75%;"><span class="topic_breadcrumb_links"><span class="topic_breadcrumb_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-f.html" title="F">F</a></span></span></td><td><span id="topic_navigation_links" class="navheader">
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-f.html" title="F"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">F</span></a></span>  </span></td></tr></tbody></table>
+
+
+<h1 class="title topictitle1"><span class="keyword apiname">fgetws()</span></h1>
+<table width="100%"><tbody><tr><td align="left"><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">QNX SDP</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">7.1</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">C Library Reference</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">API</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">Developer</button></td><td align="right"><span style="margin:0px 5px; font-size:0.9em;">Updated: October 28, 2024</span></td></tr></tbody></table>
+
+
+<div class="body refbody"><p class="shortdesc"><em class="ph i">Read a string of wide characters from a stream</em></p>
+
+
+<div class="section refsyn"><h2 class="title sectiontitle">Synopsis:</h2>
+
+<pre class="pre codeblock">
+#include &lt;wchar.h&gt;
+
+wchar_t * fgetws( wchar_t * <var class="keyword varname">buf</var>, 
+                  int <var class="keyword varname">n</var>, 
+                  FILE * <var class="keyword varname">fp</var> );
+</pre>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Arguments:</h2>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><var class="keyword varname">buf</var></dt>
+
+<dd class="dd">A pointer to a buffer in which <span class="keyword apiname">fgetws()</span> can store the
+  wide characters that it reads.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">n</var></dt>
+
+<dd class="dd">The maximum number of characters to read.</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">fp</var></dt>
+
+<dd class="dd">The stream from which to read the characters.</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Library:</h2>
+
+
+<p class="p"><span class="ph filepath">libc</span></p>
+
+<p class="p">Use the <span class="keyword option">-l c</span> option to
+<a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/q/qcc.html"><span class="keyword cmdname">qcc</span></a>
+to link against this library.
+This library is usually included automatically.
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Description:</h2>
+
+
+<p class="p">
+
+
+
+The <span class="keyword apiname">fgetws()</span> function reads a string of wide characters from the stream specified by <var class="keyword varname">fp</var>, and stores them in the array specified by <var class="keyword varname">buf</var>.
+</p>
+
+
+<p class="p">
+It stops reading wide characters when one of the following occurs:
+</p>
+
+
+<ul class="ul">
+<li class="li">the end-of-file is reached</li>
+
+<li class="li">a newline (<samp class="ph codeph">'\n'</samp>) character is read</li>
+
+<li class="li"><var class="keyword varname">n</var>-1 characters have been read</li>
+
+</ul>
+
+
+<p class="p">
+The <span class="keyword apiname">fgetws()</span> function places a <span class="keyword const">NUL</span> at the end of the string.
+</p>
+
+
+<div class="note note"><span class="notetitle">Note:</span> 
+Don't assume all strings have newline characters.
+A newline character isn't present when more than
+<var class="keyword varname">n</var>-1 characters occur before the newline.
+
+<p class="p">
+Also, a newline character might not appear as the last character in a
+file when the end-of-file is reached.
+</p>
+
+</div>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Returns:</h2>
+
+
+<ul class="ul">
+<li class="li">If successful, <span class="keyword apiname">fgetws()</span> returns <var class="keyword varname">buf</var>.</li>
+
+
+<li class="li">If the end-of-file indicator for the stream is set or the stream is at the end of the file,
+  <span class="keyword apiname">fgetws()</span> sets the end-of-file indicator and returns <span class="keyword const">NULL</span>.
+</li>
+
+
+<li class="li">If an error occurred, <span class="keyword apiname">fgetws()</span> sets the error indicator for the stream, sets
+  <a class="xref" href="../e/errno.html" title="Thread-local error variable"><var class="keyword varname">errno</var></a>,
+  and returns <span class="keyword const">NULL</span>.
+</li>
+
+
+</ul>
+
+
+<div class="note note"><span class="notetitle">Note:</span> 
+Use
+<a class="xref" href="feof.html" title="Test a stream's end-of-file flag"><span class="keyword apiname">feof()</span></a>
+or
+<a class="xref" href="ferror.html" title="Test a stream's error flag"><span class="keyword apiname">ferror()</span></a>
+to distinguish an end-of-file condition from an error.
+</div>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Errors:</h2>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><span class="keyword const">EAGAIN</span></dt>
+
+<dd class="dd">The <span class="keyword const">O_NONBLOCK</span> flag is set for <var class="keyword varname">fp</var> and would have been
+  blocked by this operation.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EBADF</span></dt>
+
+<dd class="dd">The file descriptor for <var class="keyword varname">fp</var> isn't  valid for reading.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EINTR</span></dt>
+
+<dd class="dd">A signal terminated the read operation; no data was transferred.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EIO</span></dt>
+
+<dd class="dd">Either a physical I/O error has occurred, or the process is in the background and is being ignored or blocked.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EOVERFLOW</span></dt>
+
+<dd class="dd">Cannot read at or beyond the offset maximum for this stream.</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Classification:</h2>
+
+<p class="p"><a class="xref" href="../summary.html#summary__CLASSIFICATION">ANSI</a>,
+<a class="xref" href="../summary.html#summary__CLASSIFICATION">POSIX 1003.1</a></p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+<thead class="thead" align="left">
+<tr><th class="entry" valign="top" id="d1441281e326">Safety:</th>
+<th class="entry" valign="top" id="d1441281e328">Â </th>
+</tr>
+
+</thead>
+
+<tbody class="tbody">
+<tr><td class="entry" valign="top" headers="d1441281e326 d1441281e328 ">Cancellation point</td>
+<td class="entry" valign="top" headers="d1441281e326 d1441281e328 ">Yes</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d1441281e326 d1441281e328 ">Interrupt handler</td>
+<td class="entry" valign="top" headers="d1441281e326 d1441281e328 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d1441281e326 d1441281e328 ">Signal handler</td>
+<td class="entry" valign="top" headers="d1441281e326 d1441281e328 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d1441281e326 d1441281e328 ">Thread</td>
+<td class="entry" valign="top" headers="d1441281e326 d1441281e328 ">Yes</td>
+</tr>
+
+</tbody>
+
+</table>
+</div>
+
+</div>
+
+
+</div>
+
+
+<div class="related-links"><div class="relinfo relref"><strong>Related reference</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/e/errno.html" title="Thread-local error variable">errno</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/f/feof.html" title="Test a stream's end-of-file flag">feof()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/f/ferror.html" title="Test a stream's error flag">ferror()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/f/fgets.html" title="Read a string from a stream">fgets()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/f/fputwc.html" title="Write a wide character to a stream">fputwc()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/f/fputws.html" title="Write a wide-character string to an output stream">fputws()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/f/fwide.html" title="Set and get the stream orientation">fwide()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/g/getdelim.html" title="Read a delimited record from a stream">getdelim(), getline()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/g/gets.html" title="Get a string of characters from standard input">gets()</a></div>
+</div>
+</div><div class="navfooter"><!---->
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-f.html" title="F"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">F</span></a></span>  </div>
+</body>
+</html>

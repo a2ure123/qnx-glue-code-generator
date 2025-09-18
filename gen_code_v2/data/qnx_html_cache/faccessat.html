@@ -1,0 +1,323 @@
+
+<!DOCTYPE html
+  PUBLIC "" "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />        
+      <meta name="copyright" content="(C) Copyright 2005" /><meta name="DC.rights.owner" content="(C) Copyright 2005" /><meta name="DC.Type" content="reference" /><meta name="DC.Title" content="faccessat()" /><meta name="abstract" content="Check if a file or directory at a given location can be accessed" /><meta name="description" content="Check if a file or directory at a given location can be accessed" /><meta name="indexterms" content="faccessat()" /><meta name="DC.subject" content=", faccessat()" /><meta name="keywords" content=", faccessat()" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-f.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/a/access.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/c/chmod.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/e/eaccess.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/e/errno.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/f/fstat.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/s/stat.html" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="faccessat" /><meta name="DC.Language" content="en-us" /><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/commonltr.css"><!----></link><title>faccessat()</title><link rel="canonical" type="html" href="https://www.qnx.com/developers/docs/7.1/#com.qnx.doc.neutrino.lib_ref/" /><!--  Generated with Oxygen version 18.1, build number 2017020917.  --><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/webhelp_topic.css"><!----></link><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/skins/skin.css" /><script type="text/javascript"><!--
+            
+            var prefix = "../../../index.html";
+            
+            --></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-1.11.3.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.cookie.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-ui.custom.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.highlight-3.js"><!----></script><script type="text/javascript" charset="utf-8" src="../../../oxygen-webhelp/resources/js/webhelp_topic.js"><!----></script><script type="text/javascript"> var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-27400275-1']); _gaq.push(['_setDomainName', 'www.qnx.com']);_gaq.push(['_setAllowLinker', true]);_gaq.push(['_trackPageview']);(function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script></head>
+<body onload="highlightSearchTerm()" class="frmBody" id="faccessat">
+<table class="nav"><tbody><tr><td colspan="2"><div id="printlink"><button onClick="window.print()" title="Print this page" aria-label="Print this page"></button></div><div id="permalink"><a href="#" title="Link to this page"></a></div></td></tr><tr><td style="width:75%;"><span class="topic_breadcrumb_links"><span class="topic_breadcrumb_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-f.html" title="F">F</a></span></span></td><td><span id="topic_navigation_links" class="navheader">
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-f.html" title="F"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">F</span></a></span>  </span></td></tr></tbody></table>
+
+
+<h1 class="title topictitle1"><span class="keyword apiname">faccessat()</span></h1>
+<table width="100%"><tbody><tr><td align="left"><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">QNX SDP</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">7.1</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">C Library Reference</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">API</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">Developer</button></td><td align="right"><span style="margin:0px 5px; font-size:0.9em;">Updated: October 28, 2024</span></td></tr></tbody></table>
+
+
+
+
+<div class="body refbody"><p class="shortdesc"><em class="ph i">Check if a file or directory at a given location can be accessed</em></p>
+
+
+<div class="section refsyn"><h2 class="title sectiontitle">Synopsis:</h2>
+
+<pre class="pre codeblock">
+#include &lt;fcntl.h&gt;
+
+int faccessat( int <var class="keyword varname">dirfd</var>,
+               const char* const <var class="keyword varname">path</var>,
+               int const <var class="keyword varname">amode</var>,
+               int const <var class="keyword varname">flags</var> );
+</pre>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Arguments:</h2>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><var class="keyword varname">dirfd</var></dt>
+
+<dd class="dd">A file descriptor that indicates the base directory for relative file paths.
+    The pathname given in <var class="keyword varname">path</var> is resolved by appending it to the directory associated with <var class="keyword varname">dirfd</var>.
+    You can set this argument to <span class="keyword const">AT_FDCWD</span> to use the current working directory as the base directory.
+    <div class="note note"><span class="notetitle">Note:</span> The QNX Neutrino implementation of the <span class="keyword apiname">*at()</span> functions differ from the POSIX standards.
+        You must use a file descriptor obtained from an <span class="keyword apiname">open()</span> or <span class="keyword apiname">openat()</span> call with the
+        <a class="xref" href="../o/open.html#open__O_DIRECTORY"><span class="keyword const">O_DIRECTORY</span></a> flag set, rather than the <span class="keyword const">O_SEARCH</span>
+        flag on POSIX. Otherwise, the function fails and sets <var class="keyword varname">errno</var> to <span class="keyword const">ENOTDIR</span>.</div>
+
+    <p class="p">If <var class="keyword varname">path</var> specifies an absolute path, <var class="keyword varname">dirfd</var> has no effect.</p>
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">path</var></dt>
+
+<dd class="dd">The pathname of the file or directory whose accessibility you want to check.
+    This can be absolute or relative; for details of how relative pathname resolution is done, see above.</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">amode</var></dt>
+
+<dd class="dd">Either the bitwise-inclusive OR of the access permissions to be checked
+    (<span class="keyword const">R_OK</span>, <span class="keyword const">W_OK</span>, <span class="keyword const">X_OK</span>) or the existence test (<span class="keyword const">F_OK</span>).</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">flags</var></dt>
+
+<dd class="dd">A bitfield of the following flags:
+    <ul class="ul">
+        <li class="li"><span class="keyword const">AT_EACCESS</span> â 
+            perform the accessibility check of the file or directory (and the directory permissions check during pathname resolution)
+            using the effective user ID and group ID instead of the real user ID and group ID</li>
+
+    </ul>
+
+</dd>
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Library:</h2>
+
+
+<p class="p"><span class="ph filepath">libc</span></p>
+
+
+<p class="p">
+Use the <span class="keyword option">-l c</span> option to
+<a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/q/qcc.html"><span class="keyword cmdname">qcc</span></a>
+to link against this library.
+This library is usually included automatically.
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Description:</h2>
+
+
+<p class="p">
+The <span class="keyword apiname">faccessat()</span> function checks if the file or directory named by <var class="keyword varname">path</var> is accessible based on the
+permissions in <var class="keyword varname">amode</var>. The <var class="keyword varname">path</var> argument can contain an absolute or relative path. In the latter case,
+the <var class="keyword varname">dirfd</var> argument is used to resolve the pathname, as explained in this argument's description (above).
+</p>
+
+
+<p class="p">
+The function checks if directory searches are permitted using the current permissions of the directory underlying the file descriptor.
+</p>
+
+
+<p class="p">
+When the <var class="keyword varname">flags</var> field is 0, this function is equivalent to <span class="keyword apiname">access()</span> when <var class="keyword varname">path</var> is
+an absolute and not a relative path.
+For details about other possible <var class="keyword varname">flags</var> settings, see this argument's description (above).
+</p>
+
+
+<p class="p">
+This function can be used to test for the existence of a file or directory or to check if a certain user has read, write, or execute access
+to it. However, the permissions can change between the time the client calls this function and the time they access the file or directory.
+</p>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Returns:</h2>
+
+
+<dl class="dl" compact="compact">
+
+<dt class="dt dlterm">0</dt>
+
+<dd class="dd">The file or directory exists and can be accessed with the specified mode.</dd>
+
+
+
+
+<dt class="dt dlterm">-1</dt>
+
+<dd class="dd">The file or directory can't be accessed with the specified mode,
+    or an error occurred (<a class="xref" href="../e/errno.html" title="Thread-local error variable"><var class="keyword varname">errno</var></a> is set).</dd>
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Errors:</h2>
+
+
+<dl class="dl" compact="compact">
+
+
+<dt class="dt dlterm"><span class="keyword const">EACCES</span></dt>
+
+<dd class="dd">The file or directory doesn't permit the requested access, search permission is denied on a component of the path prefix,
+    or you don't have permission to search the directory underlying <var class="keyword varname">dirfd</var>.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EBADF</span></dt>
+
+<dd class="dd">The <var class="keyword varname">path</var> argument does not specify an absolute path and the <var class="keyword varname">dirfd</var> argument is
+  neither <span class="keyword const">AT_FDCWD</span> nor a valid file descriptor open for reading.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EINVAL</span></dt>
+
+<dd class="dd">An invalid value was specified for <var class="keyword varname">amode</var> or <var class="keyword varname">flag</var>.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">ELOOP</span></dt>
+
+<dd class="dd">During resolution of the <var class="keyword varname">path</var> argument, 
+  a loop was found in the symbolic links or more than <span class="keyword const">SYMLOOP_MAX</span> symbolic links were encountered.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">ENAMETOOLONG</span></dt>
+
+<dd class="dd">The length of the entire pathname exceeds <span class="keyword const">PATH_MAX</span>,
+  or the path component generated from a symbolic link resolution has a length exceeding <span class="keyword const">PATH_MAX</span>.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">ENOENT</span></dt>
+
+<dd class="dd">A component of the specified path doesn't name an existing file, or <var class="keyword varname">path</var> is an empty string.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">ENOTDIR</span></dt>
+
+<dd class="dd">One of the following conditions is true:
+    <ul class="ul">
+        <li class="li">A component of the path prefix names an existing file that is neither a directory nor a symbolic link to one.</li>
+
+        <li class="li">The <var class="keyword varname">path</var> argument contains at least one non-slash character, ends with at least one slash character
+            (<tt class="ph tt">/</tt>), and the last component names an existing file that is neither a directory nor a symbolic link to one.</li>
+
+        <li class="li">The <var class="keyword varname">path</var> argument is not an absolute path and <var class="keyword varname">dirfd</var> is associated with a non-directory
+            file.</li>
+
+        <li class="li">The file descriptor in <var class="keyword varname">dirfd</var> was created without <span class="keyword const">O_DIRECTORY</span> set.</li>
+
+    </ul>
+
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EROFS</span></dt>
+
+<dd class="dd">Write access is requested for a file on a read-only filesystem.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">ETXTBSY</span></dt>
+
+<dd class="dd">Write access is requested for a pure procedure (shared text) file that is being executed.</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+
+
+
+<div class="section"><h2 class="title sectiontitle">Classification:</h2>
+
+<p class="p"><a class="xref" href="../summary.html#summary__CLASSIFICATION">POSIX 2008</a></p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+<thead class="thead" align="left">
+<tr><th class="entry" valign="top" id="d1411716e442">Safety:</th>
+<th class="entry" valign="top" id="d1411716e444">Â </th>
+</tr>
+
+</thead>
+
+<tbody class="tbody">
+<tr><td class="entry" valign="top" headers="d1411716e442 d1411716e444 ">Cancellation point</td>
+<td class="entry" valign="top" headers="d1411716e442 d1411716e444 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d1411716e442 d1411716e444 ">Interrupt handler</td>
+<td class="entry" valign="top" headers="d1411716e442 d1411716e444 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d1411716e442 d1411716e444 ">Signal handler</td>
+<td class="entry" valign="top" headers="d1411716e442 d1411716e444 ">Yes</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d1411716e442 d1411716e444 ">Thread</td>
+<td class="entry" valign="top" headers="d1411716e442 d1411716e444 ">Yes</td>
+</tr>
+
+</tbody>
+
+</table>
+</div>
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="related-links"><div class="relinfo relref"><strong>Related reference</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/a/access.html" title="Check to see if a file or directory can be accessed">access()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/c/chmod.html" title="Change the permissions for a file">chmod()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/e/eaccess.html" title="Check to see if the effective user ID can access a file or directory">eaccess()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/e/errno.html" title="Thread-local error variable">errno</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/f/fstat.html" title="Get file information, given a file description">fstat(), fstat64()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/s/stat.html" title="Get information about a file or directory, given a path">stat(), stat64()</a></div>
+</div>
+</div><div class="navfooter"><!---->
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-f.html" title="F"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">F</span></a></span>  </div>
+</body>
+</html>

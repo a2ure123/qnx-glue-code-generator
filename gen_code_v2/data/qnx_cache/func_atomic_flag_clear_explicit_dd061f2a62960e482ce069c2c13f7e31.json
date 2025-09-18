@@ -1,0 +1,24 @@
+{
+  "function_name": "atomic_flag_clear_explicit",
+  "url": "https://www.qnx.com/developers/docs/7.1/com.qnx.doc.neutrino.lib_ref/topic/a/atomic_flag_clear.html",
+  "synopsis": "void atomic_flag_clear_explicit( volatile atomic_flag *obj,",
+  "description": "",
+  "headers": [
+    "#include <stdatomic.h>"
+  ],
+  "parameters": [
+    {
+      "name": "obj",
+      "description": "A pointer to the atomic flag that you want to clear."
+    },
+    {
+      "name": "order",
+      "description": "(atomic_flag_clear_explicit() only) The\n  memory_order\n  to use for the operation."
+    }
+  ],
+  "return_values": [],
+  "examples": [
+    "#include <stdatomic.h>\n\nvoid atomic_flag_clear( volatile atomic_flag *obj );\n\nvoid atomic_flag_clear_explicit( volatile atomic_flag *obj,\n                                 memory_order order );"
+  ],
+  "full_content": "Function: atomic_flag_clear_explicit\nURL: https://www.qnx.com/developers/docs/7.1/com.qnx.doc.neutrino.lib_ref/topic/a/atomic_flag_clear.html\nSynopsis: void atomic_flag_clear_explicit( volatile atomic_flag *obj,\nHeaders: #include <stdatomic.h>\nParameters:\n  - obj: A pointer to the atomic flag that you want to clear.\n  - order: (atomic_flag_clear_explicit() only) The\n  memory_order\n  to use for the operation.\nExamples:\nExample 1:\n#include <stdatomic.h>\n\nvoid atomic_flag_clear( volatile atomic_flag *obj );\n\nvoid atomic_flag_clear_explicit( volatile atomic_flag *obj,\n                                 memory_order order );"
+}

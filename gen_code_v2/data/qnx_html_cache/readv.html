@@ -1,0 +1,426 @@
+
+<!DOCTYPE html
+  PUBLIC "" "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />        
+      <meta name="copyright" content="(C) Copyright 2005" /><meta name="DC.rights.owner" content="(C) Copyright 2005" /><meta name="DC.Type" content="reference" /><meta name="DC.Title" content="readv()" /><meta name="abstract" content="Read bytes from a file" /><meta name="description" content="Read bytes from a file" /><meta name="indexterms" content="readv()" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-r.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/c/close.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/c/creat.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/d/dup.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/d/dup2.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/e/errno.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/f/fcntl.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/l/lseek.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/o/open.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/p/pipe.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/p/poll.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/r/read.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/r/readblock.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/w/write.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/w/writev.html" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="readv" /><meta name="DC.Language" content="en-us" /><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/commonltr.css"><!----></link><title>readv()</title><link rel="canonical" type="html" href="https://www.qnx.com/developers/docs/7.1/#com.qnx.doc.neutrino.lib_ref/" /><!--  Generated with Oxygen version 18.1, build number 2017020917.  --><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/webhelp_topic.css"><!----></link><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/skins/skin.css" /><script type="text/javascript"><!--
+            
+            var prefix = "../../../index.html";
+            
+            --></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-1.11.3.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.cookie.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-ui.custom.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.highlight-3.js"><!----></script><script type="text/javascript" charset="utf-8" src="../../../oxygen-webhelp/resources/js/webhelp_topic.js"><!----></script><script type="text/javascript"> var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-27400275-1']); _gaq.push(['_setDomainName', 'www.qnx.com']);_gaq.push(['_setAllowLinker', true]);_gaq.push(['_trackPageview']);(function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script></head>
+<body onload="highlightSearchTerm()" class="frmBody" id="readv">
+<table class="nav"><tbody><tr><td colspan="2"><div id="printlink"><button onClick="window.print()" title="Print this page" aria-label="Print this page"></button></div><div id="permalink"><a href="#" title="Link to this page"></a></div></td></tr><tr><td style="width:75%;"><span class="topic_breadcrumb_links"><span class="topic_breadcrumb_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-r.html" title="R">R</a></span></span></td><td><span id="topic_navigation_links" class="navheader">
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-r.html" title="R"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">R</span></a></span>  </span></td></tr></tbody></table>
+
+
+<h1 class="title topictitle1"><span class="keyword apiname">readv()</span></h1>
+<table width="100%"><tbody><tr><td align="left"><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">QNX SDP</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">7.1</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">C Library Reference</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">API</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">Developer</button></td><td align="right"><span style="margin:0px 5px; font-size:0.9em;">Updated: October 28, 2024</span></td></tr></tbody></table>
+
+
+<div class="body refbody"><p class="shortdesc"><em class="ph i">Read bytes from a file</em></p>
+
+
+<div class="section refsyn"><h2 class="title sectiontitle">Synopsis:</h2>
+
+<pre class="pre codeblock">
+#include &lt;sys/uio.h&gt;
+
+ssize_t readv( int <var class="keyword varname">filedes</var>,
+               const iov_t* <var class="keyword varname">iov</var>,
+               int <var class="keyword varname">nparts</var> );
+</pre>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Arguments:</h2>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><var class="keyword varname">filedes</var></dt>
+
+<dd class="dd">The descriptor of the file that you want to read from.</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">iov</var></dt>
+
+<dd class="dd">An array of <span class="keyword dtype">iov_t</span> objects where the function can store the data that it reads.
+The combined size (i.e., the sum of the length values) of the objects must not exceed 
+<span class="keyword const">SSIZE_MAX</span> (see <span class="ph filepath">&lt;limits.h&gt;</span>), or the function fails 
+and sets <var class="keyword varname">errno</var> to <span class="keyword const">EINVAL</span>.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">nparts</var></dt>
+
+<dd class="dd">The number of entries in the <var class="keyword varname">iov</var> array.
+  The maximum number of entries is <span class="keyword const">UIO_MAXIOV</span>.
+  
+  
+</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Library:</h2>
+
+
+<p class="p"><span class="ph filepath">libc</span></p>
+
+
+<p class="p">
+Use the <span class="keyword option">-l c</span> option to
+<a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/q/qcc.html"><span class="keyword cmdname">qcc</span></a>
+to link against this library.
+This library is usually included automatically.
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Description:</h2>
+
+
+<p class="p">
+
+
+
+
+
+
+
+The <span class="keyword apiname">readv()</span> function attempts to read from
+the file associated with the open file descriptor, <var class="keyword varname">filedes</var>,
+placing the data into <var class="keyword varname">nparts</var> buffers specified by the members
+of the <var class="keyword varname">iov</var> array: <var class="keyword varname">iov[0]</var>, <var class="keyword varname">iov[1]</var>, â¦
+<var class="keyword varname">iov[nparts - 1]</var>.
+</p>
+
+
+<p class="p">
+On a regular file or other file capable of seeking, <span class="keyword apiname">readv()</span>
+starts at a position in the file given by the file offset associated
+with <var class="keyword varname">filedes</var>. Before successfully returning from
+<span class="keyword apiname">readv()</span>, the file offset is incremented by the number of bytes
+actually read.
+</p>
+
+
+<p class="p">
+
+The <var class="keyword varname">iov_t</var> structure contains the following members:
+</p>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><var class="keyword varname">iov_base, iov_base_const</var></dt>
+
+<dd class="dd">The base address of a memory area where data should be placed.</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">iov_len</var></dt>
+
+<dd class="dd">The length of the memory area.</dd>
+
+
+
+</dl>
+
+
+<p class="p">
+The <span class="keyword apiname">readv()</span> function always fills one buffer completely before proceeding to
+the next. 
+</p>
+
+
+<div class="note note"><span class="notetitle">Note:</span> 
+The <span class="keyword apiname">readv()</span> call ignores advisory locks that may have
+been set by the 
+<a class="xref" href="../f/fcntl.html" title="Provide control over an open file"><span class="keyword apiname">fcntl()</span></a> function.
+</div>
+
+
+<p class="p">
+On a file not capable of seeking, <span class="keyword apiname">readv()</span> starts at the current
+position.
+</p>
+
+
+<p class="p">
+When <span class="keyword apiname">readv()</span> returns successfully, its return value is the
+number of bytes actually read and placed in the buffer.
+POSIX requires that this number never be greater than the combined sizes of the <var class="keyword varname">iov</var> buffers,
+but that depends on the underlying resource manager.
+The number may be less than the combined sizes if, for example:
+</p>
+
+
+<ul class="ul">
+<li class="li">The number of bytes left in the file is less than the combined size
+  of the <var class="keyword varname">iov</var> buffers.
+</li>
+
+
+<li class="li">The <span class="keyword apiname">readv()</span> request was interrupted by a signal.</li>
+
+
+<li class="li">The file is a pipe (or FIFO) or a special file, and has
+  fewer bytes immediately available for reading.
+  For example, reading from a file associated with a terminal may return one
+  typed line of data.
+</li>
+
+
+</ul>
+
+
+<p class="p">
+If <span class="keyword apiname">readv()</span> is interrupted by a signal before it reads any data,
+it returns -1 and sets <a class="xref" href="../e/errno.html" title="Thread-local error variable"><var class="keyword varname">errno</var></a>
+to <span class="keyword const">EINTR</span>.
+However, if <span class="keyword apiname">readv()</span> is interrupted by a signal
+after it has successfully read some data, it returns the number of bytes read.
+</p>
+
+
+<p class="p">
+No data is transferred past the current end-of-file. If the starting
+position is at or after the end-of-file, <span class="keyword apiname">readv()</span> returns zero.
+If the file is a device special file, the result of subsequent calls
+to <span class="keyword apiname">readv()</span> will work, based on the then current state of the
+device (that is, the end of file is transitory).
+</p>
+
+
+<p class="p">
+When attempting to read from an empty pipe or FIFO:
+</p>
+
+
+<ol class="ol">
+<li class="li">If no process has the pipe open for writing, <span class="keyword apiname">readv()</span> returns 0
+  to indicate end-of-file.
+</li>
+
+
+<li class="li">If a process has the pipe open for writing, and <span class="keyword const">O_NONBLOCK</span>
+  is set, <span class="keyword apiname">readv()</span> returns -1 and sets <var class="keyword varname">errno</var> to
+  <span class="keyword const">EAGAIN</span>.
+  
+</li>
+
+
+<li class="li">If a process has the pipe open for writing, and <span class="keyword const">O_NONBLOCK</span>
+  is clear, <span class="keyword apiname">read()</span> blocks until some data is written, or the pipe 
+  is closed by all processes that had opened it for writing.
+</li>
+
+
+</ol>
+
+
+<p class="p">
+When attempting to read from a file (other than a pipe or FIFO) that
+supports nonblocking reads and has no data currently available:
+</p>
+
+
+<ol class="ol">
+<li class="li">If <span class="keyword const">O_NONBLOCK</span> is set, <span class="keyword apiname">readv()</span> returns -1 and
+  sets <var class="keyword varname">errno</var> to <span class="keyword const">EAGAIN</span>.
+</li>
+
+
+<li class="li">If <span class="keyword const">O_NONBLOCK</span> is clear, <span class="keyword apiname">readv()</span> blocks until
+  some data is available.
+</li>
+
+
+<li class="li">The <span class="keyword const">O_NONBLOCK</span> flag has no effect if some data is available.</li>
+
+
+</ol>
+
+
+<p class="p">
+If you call <span class="keyword apiname">readv()</span> on a portion of a file, prior to the
+end-of-file, that hasn't been written, it returns bytes with the value zero.
+</p>
+
+
+<p class="p">
+
+If <span class="keyword apiname">readv()</span> succeeds, the <var class="keyword varname">st_atime</var> field of the file is
+marked for update.
+</p>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Returns:</h2>
+
+
+<p class="p">
+The number of bytes read, or -1 if an error occurred
+(<a class="xref" href="../e/errno.html" title="Thread-local error variable"><var class="keyword varname">errno</var></a> is set).
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Errors:</h2>
+
+
+<dl class="dl" compact="compact">
+
+<dt class="dt dlterm"><span class="keyword const">EAGAIN</span></dt>
+
+<dd class="dd">The <span class="keyword const">O_NONBLOCK</span> flag is set for the file descriptor, and 
+  the process would be delayed in the read operation.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EBADF</span></dt>
+
+<dd class="dd">The file descriptor, <var class="keyword varname">filedes</var>, isn't a valid file descriptor
+  open for reading.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EINTR</span></dt>
+
+<dd class="dd">The read operation was interrupted by a signal, and either no data was
+  transferred, or the resource manager responsible for that file doesn't
+  report partial transfers.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EINVAL</span></dt>
+
+<dd class="dd">The <var class="keyword varname">nparts</var> argument is less than or equal to 0, or greater than
+  <span class="keyword const">UIO_MAXIOV</span>. Or, an attempt was made to read a number bytes that exceeds 
+  the allowable limit.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EIO</span></dt>
+
+<dd class="dd">A physical I/O error occurred (for example, a bad block on a disk).
+  The precise meaning is device-dependent.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EISDIR</span></dt>
+
+<dd class="dd">The file descriptor is for a directory.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">ENOSYS</span></dt>
+
+<dd class="dd">The <span class="keyword apiname">readv()</span> function isn't implemented for the filesystem specified
+  by <var class="keyword varname">filedes</var>.
+</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Classification:</h2>
+
+
+<p class="p"><a class="xref" href="../summary.html#summary__CLASSIFICATION">POSIX 1003.1 XSI</a></p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+<thead class="thead" align="left">
+<tr><th class="entry" valign="top" id="d2484268e557">Safety:</th>
+<th class="entry" valign="top" id="d2484268e559">Â </th>
+</tr>
+
+</thead>
+
+<tbody class="tbody">
+<tr><td class="entry" valign="top" headers="d2484268e557 d2484268e559 ">Cancellation point</td>
+<td class="entry" valign="top" headers="d2484268e557 d2484268e559 ">Yes</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2484268e557 d2484268e559 ">Interrupt handler</td>
+<td class="entry" valign="top" headers="d2484268e557 d2484268e559 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2484268e557 d2484268e559 ">Signal handler</td>
+<td class="entry" valign="top" headers="d2484268e557 d2484268e559 ">Yes</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2484268e557 d2484268e559 ">Thread</td>
+<td class="entry" valign="top" headers="d2484268e557 d2484268e559 ">Yes</td>
+</tr>
+
+</tbody>
+
+</table>
+</div>
+
+</div>
+
+
+</div>
+
+
+<div class="related-links"><div class="relinfo relref"><strong>Related reference</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/c/close.html" title="Close a file">close()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/c/creat.html" title="Create and open a file (low-level)">creat(), creat64()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/d/dup.html" title="Duplicate a file descriptor">dup()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/d/dup2.html" title="Duplicate a file descriptor, specifying the new descriptor">dup2()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/e/errno.html" title="Thread-local error variable">errno</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/f/fcntl.html" title="Provide control over an open file">fcntl()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/l/lseek.html" title="Set the current read/write file offset">lseek(), lseek64()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/o/open.html" title="Open a file">open(), open64()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/p/pipe.html" title="Create a pipe">pipe()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/p/poll.html" title="Multiplex input/output over a set of file descriptors">poll()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/r/read.html" title="Read bytes from a file">read()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/r/readblock.html" title="Read blocks of data from a file">readblock()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/w/write.html" title="Write bytes to a file">write()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/w/writev.html" title="Write bytes to a file">writev()</a></div>
+</div>
+</div><div class="navfooter"><!---->
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-r.html" title="R"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">R</span></a></span>  </div>
+</body>
+</html>

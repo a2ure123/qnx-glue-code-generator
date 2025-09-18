@@ -1,0 +1,380 @@
+
+<!DOCTYPE html
+  PUBLIC "" "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />        
+      <meta name="copyright" content="(C) Copyright 2005" /><meta name="DC.rights.owner" content="(C) Copyright 2005" /><meta name="DC.Type" content="reference" /><meta name="DC.Title" content="resmgr_detach(), resmgr_detach_ctp()" /><meta name="abstract" content="Remove a pathname from the pathname space" /><meta name="description" content="Remove a pathname from the pathname space" /><meta name="indexterms" content="resmgr_detach(), resmgr_detach_ctp()" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-r.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.resmgr/topic/about.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.getting_started/topic/s1_resmgr.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/d/dispatch_create.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/d/dispatch_create_channel.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/r/resmgr_attach.html" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="resmgr_detach" /><meta name="DC.Language" content="en-us" /><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/commonltr.css"><!----></link><title>resmgr_detach(), resmgr_detach_ctp()</title><link rel="canonical" type="html" href="https://www.qnx.com/developers/docs/7.1/#com.qnx.doc.neutrino.lib_ref/" /><!--  Generated with Oxygen version 18.1, build number 2017020917.  --><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/webhelp_topic.css"><!----></link><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/skins/skin.css" /><script type="text/javascript"><!--
+            
+            var prefix = "../../../index.html";
+            
+            --></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-1.11.3.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.cookie.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-ui.custom.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.highlight-3.js"><!----></script><script type="text/javascript" charset="utf-8" src="../../../oxygen-webhelp/resources/js/webhelp_topic.js"><!----></script><script type="text/javascript"> var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-27400275-1']); _gaq.push(['_setDomainName', 'www.qnx.com']);_gaq.push(['_setAllowLinker', true]);_gaq.push(['_trackPageview']);(function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script></head>
+<body onload="highlightSearchTerm()" class="frmBody" id="resmgr_detach">
+<table class="nav"><tbody><tr><td colspan="2"><div id="printlink"><button onClick="window.print()" title="Print this page" aria-label="Print this page"></button></div><div id="permalink"><a href="#" title="Link to this page"></a></div></td></tr><tr><td style="width:75%;"><span class="topic_breadcrumb_links"><span class="topic_breadcrumb_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-r.html" title="R">R</a></span></span></td><td><span id="topic_navigation_links" class="navheader">
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-r.html" title="R"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">R</span></a></span>  </span></td></tr></tbody></table>
+
+
+<h1 class="title topictitle1"><span class="keyword apiname">resmgr_detach()</span>, <span class="keyword apiname">resmgr_detach_ctp()</span></h1>
+<table width="100%"><tbody><tr><td align="left"><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">QNX SDP</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">7.1</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">C Library Reference</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">API</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">Developer</button></td><td align="right"><span style="margin:0px 5px; font-size:0.9em;">Updated: October 28, 2024</span></td></tr></tbody></table>
+
+
+<div class="body refbody"><p class="shortdesc"><em class="ph i">Remove a pathname from the pathname space</em></p>
+
+
+<div class="section refsyn"><h2 class="title sectiontitle">Synopsis:</h2>
+
+<pre class="pre codeblock">
+#include &lt;sys/iofunc.h&gt;
+#include &lt;sys/dispatch.h&gt;
+
+int resmgr_detach( dispatch_t * <var class="keyword varname">dpp</var>,
+                   int <var class="keyword varname">id</var>,
+                   unsigned <var class="keyword varname">flags</var> );
+
+int resmgr_detach_ctp( const dispatch_t *<var class="keyword varname">dpp</var>,
+                       resmgr_context_t *<var class="keyword varname">ctp</var>,
+                       const int <var class="keyword varname">id</var>,
+                       const unsigned <var class="keyword varname">flags</var> );
+</pre>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Arguments:</h2>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><var class="keyword varname">dpp</var></dt>
+
+<dd class="dd">A dispatch handle created by a successful call to
+  <a class="xref" href="../d/dispatch_create.html" title="Allocate a dispatch structure and create the channel associated with it"><span class="keyword apiname">dispatch_create()</span></a>.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">ctp</var></dt>
+
+<dd class="dd">(<span class="keyword apiname">resmgr_detach_ctp()</span> only) A pointer to a
+  <a class="xref" href="resmgr_context_t.html" title="Context information that's passed between resource-manager functions"><span class="keyword dtype">resmgr_context_t</span></a>
+  structure that the resource-manager library uses to pass context information between functions,
+  or <span class="keyword const">NULL</span> (see below).
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">id</var></dt>
+
+<dd class="dd">The link ID that
+  <a class="xref" href="resmgr_attach.html" title="Attach a path to the pathname space"><span class="keyword apiname">resmgr_attach()</span></a>
+  returned.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">flags</var></dt>
+
+<dd class="dd">Flags that affect the operation.
+  The possible <var class="keyword varname">flags</var> (defined in <span class="ph filepath">&lt;sys/dispatch.h&gt;</span>
+  and <span class="ph filepath">&lt;sys/resmgr.h&gt;</span>) are:
+
+  <ul class="ul">
+  <li class="li"><span class="keyword const">_RESMGR_DETACH_ALL</span> â
+    detach the name from the namespace and invalidate all open bindings.
+    
+  </li>
+
+
+  <li class="li"><span class="keyword const">_RESMGR_DETACH_CLOSE</span> â close all bindings when detaching.
+    
+  </li>
+
+
+  <li class="li"><span class="keyword const">_RESMGR_DETACH_PATHNAME</span> â
+    detach only the name from the namespace, leaving existing bindings intact.
+    This option is useful when you're unlinking a file or device,
+    and you want to remove the name, but you want processes with 
+    open files to continue to use it until they close.
+    
+  </li>
+
+
+  </ul>
+
+</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Library:</h2>
+
+
+<p class="p"><span class="ph filepath">libc</span></p>
+
+
+<p class="p">
+Use the <span class="keyword option">-l c</span> option to
+<a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/q/qcc.html"><span class="keyword cmdname">qcc</span></a>
+to link against this library.
+This library is usually included automatically.
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Description:</h2>
+
+
+<p class="p">
+
+
+
+
+
+The <span class="keyword apiname">resmgr_detach()</span> and <span class="keyword apiname">resmgr_detach_ctp()</span> functions remove the pathname indicated by
+<var class="keyword varname">id</var> from the pathname space
+of context <var class="keyword varname">dpp</var>.
+The <span class="keyword apiname">resmgr_detach_ctp()</span> function includes a pointer to the <span class="keyword dtype">resmgr_context_t</span>
+structure, which lets the function get information about the link currently being operated on.
+This latter function can be used only if the <span class="keyword const">_RESMGR_FLAG_DETACH_CTP</span> flag was passed in to
+<span class="keyword apiname">resmgr_attach()</span>.
+</p>
+
+
+<div class="p">
+There are two main circumstances in which a resource manager may want to or need to detach a registered pathname:
+<ol class="ol">
+    <li class="li">If a resource manager needs to be detached from within one of its message-handling functions, the framework must ensure 
+        there is no deadlock while accessing its internal structures.
+        Usually this state information is passed through thread-local storage, but in some rare cases you may need more control over this.
+        By setting <span class="keyword const">_RESMGR_FLAG_DETACH_CTP</span>, you can request that the state instead be passed through the 
+        <var class="keyword varname">ctp</var> structure. If this flag is set, you must use <span class="keyword apiname">resmgr_detach_ctp()</span>; otherwise, 
+        you should use <span class="keyword apiname">resmgr_detach()</span>.</li>
+
+    <li class="li">For a non-client reason, such as a device being removed. 
+        In this case, there is not the same synchronization issue with accessing internal structures.
+        If <span class="keyword const">_RESMGR_FLAG_DETACH_CTP</span> was set, then <span class="keyword apiname">resmgr_detach_ctp()</span> must be called with 
+        <span class="keyword const">NULL</span> for the <var class="keyword varname">ctp</var> argument.</li>
+
+</ol>
+
+</div>
+
+
+<p class="p"><strong class="ph b">Blocking states</strong></p>
+
+
+<p class="p">
+These functions block until the <span class="keyword dtype">RESMGR_HANDLE_T</span>
+that was passed to the corresponding 
+<a class="xref" href="resmgr_attach.html" title="Attach a path to the pathname space"><span class="keyword apiname">resmgr_attach()</span></a>
+isn't being used in any connection function.
+</p>
+
+
+<p class="p">
+The effect that this has on servers is generally minimal.  
+You should follow the following precautions to prevent potential deadlock situations:
+</p>
+
+
+<ul class="ul">
+<li class="li">If you're using the <span class="keyword dtype">RESMGR_HANDLE_T</span> as an attribute, 
+  and that attribute is locked in any of the connection callouts (i.e., open, unlink, mount, etc.),
+  then should unlock it before calling <span class="keyword apiname">resmgr_detach*()</span>.
+  This allows any pending connection requests to complete before they're consequently invalidated.
+
+  <div class="note note"><span class="notetitle">Note:</span> 
+  If you call <span class="keyword apiname">resmgr_detach*()</span> from within a connection function,
+  then the internal reference counting takes this into account and the server doesn't deadlock.
+  </div>
+
+</li>
+
+
+<li class="li">If two or more <span class="keyword apiname">resmgr_detach*()</span> requests come in simultaneously, only one of the
+  requests is served.  
+  The superfluous request will return with an error of -1 and <var class="keyword varname">errno</var> set to <span class="keyword const">ENOENT</span>
+  to indicate that the detachment process has already begun, and the entry is now invalid.
+  If dynamically allocated, you should release <span class="keyword dtype">RESMGR_HANDLE_T</span> only after a
+  successful return from <span class="keyword apiname">resmgr_detach*()</span>.
+</li>
+
+
+<li class="li">If <span class="keyword apiname">resmgr_detach()*</span> is called and an existing client connection is established,
+  then the I/O callout table is redirected for that client connection.
+  The client will receive an error of <span class="keyword const">EBADF</span> when it uses the <var class="keyword varname">fd</var>
+  associated with that connection.
+</li>
+
+
+</ul>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Returns:</h2>
+
+
+<dl class="dl" compact="compact">
+
+<dt class="dt dlterm">0</dt>
+
+<dd class="dd">Success. </dd>
+
+
+
+
+<dt class="dt dlterm">-1</dt>
+
+<dd class="dd">An error occurred (<a class="xref" href="../e/errno.html" title="Thread-local error variable"><var class="keyword varname">errno</var></a> is set).</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Errors:</h2>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><span class="keyword const">EINVAL</span></dt>
+
+<dd class="dd">The <var class="keyword varname">id</var> was never attached with
+  <a class="xref" href="resmgr_attach.html" title="Attach a path to the pathname space"><span class="keyword apiname">resmgr_attach()</span></a>.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">ENOENT</span></dt>
+
+<dd class="dd">A previous detachment request is in progress, or the <var class="keyword varname">id</var>
+  has already been detached.
+</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section" id="resmgr_detach__Examples"><h2 class="title sectiontitle">Examples:</h2>
+
+
+<pre class="pre codeblock">
+#include &lt;sys/dispatch.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main( int argc, char **argv ) {
+   dispatch_t  *dpp;
+   int         id;
+
+   if ( (dpp = dispatch_create()) == NULL ) {
+      fprintf( stderr, "%s: Unable to allocate \
+               dispatch handle.\n",argv[0] );
+      return EXIT_FAILURE;
+   }
+
+   id = resmgr_attach ( â¦ );
+
+   â¦
+
+   if ( resmgr_detach( dpp, id, 0) == -1 ) {
+      fprintf( stderr, "Failed to remove pathname \
+               from the pathname space.\n" );
+      return EXIT_FAILURE;
+}
+</pre>
+
+
+<p class="p">
+For examples using the dispatch interface, see
+<a class="xref" href="../d/dispatch_create.html" title="Allocate a dispatch structure and create the channel associated with it"><span class="keyword apiname">dispatch_create()</span></a>,
+<a class="xref" href="../m/message_attach.html" title="Attach a message range"><span class="keyword apiname">message_attach()</span></a>,
+<a class="xref" href="resmgr_attach.html" title="Attach a path to the pathname space"><span class="keyword apiname">resmgr_attach()</span></a>,
+and
+<a class="xref" href="../t/thread_pool_create.html" title="Create a thread pool handle"><span class="keyword apiname">thread_pool_create()</span></a>.
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Classification:</h2>
+
+
+<p class="p"><a class="xref" href="../summary.html#summary__CLASSIFICATION">QNX Neutrino</a></p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+<thead class="thead" align="left">
+<tr><th class="entry" valign="top" id="d2510117e507">Safety:</th>
+<th class="entry" valign="top" id="d2510117e509">Â </th>
+</tr>
+
+</thead>
+
+<tbody class="tbody">
+<tr><td class="entry" valign="top" headers="d2510117e507 d2510117e509 ">Cancellation point</td>
+<td class="entry" valign="top" headers="d2510117e507 d2510117e509 ">Yes</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2510117e507 d2510117e509 ">Interrupt handler</td>
+<td class="entry" valign="top" headers="d2510117e507 d2510117e509 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2510117e507 d2510117e509 ">Signal handler</td>
+<td class="entry" valign="top" headers="d2510117e507 d2510117e509 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2510117e507 d2510117e509 ">Thread</td>
+<td class="entry" valign="top" headers="d2510117e507 d2510117e509 ">Yes</td>
+</tr>
+
+</tbody>
+
+</table>
+</div>
+
+</div>
+
+
+</div>
+
+
+<div class="related-links"><div class="relinfo relconcepts"><strong>Related concepts</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.resmgr/topic/about.html" title="Writing a Resource Manager">Writing a Resource Manager</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.getting_started/topic/s1_resmgr.html" title="Resource Managers (Getting Started with QNX Neutrino)">Resource Managers (Getting Started with <span class="keyword">QNX Neutrino</span>)</a></div>
+</div>
+<div class="relinfo relref"><strong>Related reference</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/d/dispatch_create.html" title="Allocate a dispatch structure and create the channel associated with it">dispatch_create()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/d/dispatch_create_channel.html" title="Allocate a dispatch structure, specifying a channel ID">dispatch_create_channel()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/r/resmgr_attach.html" title="Attach a path to the pathname space">resmgr_attach()</a></div>
+</div>
+</div><div class="navfooter"><!---->
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-r.html" title="R"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">R</span></a></span>  </div>
+</body>
+</html>

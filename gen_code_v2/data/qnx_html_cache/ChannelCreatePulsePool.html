@@ -1,0 +1,990 @@
+
+<!DOCTYPE html
+  PUBLIC "" "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />        
+      <meta name="copyright" content="(C) Copyright 2005" /><meta name="DC.rights.owner" content="(C) Copyright 2005" /><meta name="DC.Type" content="reference" /><meta name="DC.Title" content="ChannelCreate(), ChannelCreate_r(), ChannelCreatePulsePool()" /><meta name="abstract" content="Create a communications channel" /><meta name="description" content="Create a communications channel" /><meta name="indexterms" content="ChannelCreate(), ChannelCreate_r(), ChannelCreatePulsePool()" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-c.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.getting_started/topic/s1_msg.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/c/channeldestroy.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/c/close.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/c/connectattach.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/c/connectdetach.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/m/_msg_info.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/m/msgpause.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/m/msgreceive.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/m/msgreplyv.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/m/msgsendv.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/m/msgsendpulse.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/m/msgsendpulseptr.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/n/name_attach.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/n/name_close.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/n/name_open.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/p/_pulse.html" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="channelcreate" /><meta name="DC.Language" content="en-us" /><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/commonltr.css"><!----></link><title>ChannelCreate(), ChannelCreate_r(), ChannelCreatePulsePool()</title><link rel="canonical" type="html" href="https://www.qnx.com/developers/docs/7.1/#com.qnx.doc.neutrino.lib_ref/" /><!--  Generated with Oxygen version 18.1, build number 2017020917.  --><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/webhelp_topic.css"><!----></link><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/skins/skin.css" /><script type="text/javascript"><!--
+            
+            var prefix = "../../../index.html";
+            
+            --></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-1.11.3.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.cookie.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-ui.custom.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.highlight-3.js"><!----></script><script type="text/javascript" charset="utf-8" src="../../../oxygen-webhelp/resources/js/webhelp_topic.js"><!----></script><script type="text/javascript"> var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-27400275-1']); _gaq.push(['_setDomainName', 'www.qnx.com']);_gaq.push(['_setAllowLinker', true]);_gaq.push(['_trackPageview']);(function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script></head>
+<body onload="highlightSearchTerm()" class="frmBody" id="channelcreate">
+<table class="nav"><tbody><tr><td colspan="2"><div id="printlink"><button onClick="window.print()" title="Print this page" aria-label="Print this page"></button></div><div id="permalink"><a href="#" title="Link to this page"></a></div></td></tr><tr><td style="width:75%;"><span class="topic_breadcrumb_links"><span class="topic_breadcrumb_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-c.html" title="C">C</a></span></span></td><td><span id="topic_navigation_links" class="navheader">
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-c.html" title="C"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">C</span></a></span>  </span></td></tr></tbody></table>
+
+
+<h1 class="title topictitle1"><span class="keyword apiname">ChannelCreate()</span>, <span class="keyword apiname">ChannelCreate_r()</span>, <span class="keyword apiname">ChannelCreatePulsePool()</span></h1>
+<table width="100%"><tbody><tr><td align="left"><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">QNX SDP</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">7.1</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">C Library Reference</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">API</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">Developer</button></td><td align="right"><span style="margin:0px 5px; font-size:0.9em;">Updated: October 28, 2024</span></td></tr></tbody></table>
+
+
+
+<div class="body refbody"><p class="shortdesc"><em class="ph i">Create a communications channel</em></p>
+
+
+<div class="section refsyn"><h2 class="title sectiontitle">Synopsis:</h2>
+
+<pre class="pre codeblock">
+#include &lt;sys/neutrino.h&gt;
+
+int ChannelCreate( unsigned <var class="keyword varname">flags</var> );
+
+int ChannelCreate_r( unsigned <var class="keyword varname">flags</var> );
+
+int ChannelCreatePulsePool( unsigned <var class="keyword varname">flags</var>,
+                            struct nto_channel_config  const* <var class="keyword varname">config</var> );
+</pre>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Arguments:</h2>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><var class="keyword varname">flags</var></dt>
+
+<dd class="dd">Flags that can be used to request notification pulses from the kernel or request other changes
+            in behavior; a combination of the following: <ul class="ul">
+              <li class="li"><a class="xref" href="#channelcreate__CoidDisconnect"><span class="keyword const">_NTO_CHF_COID_DISCONNECT</span></a></li>
+
+              <li class="li"><a class="xref" href="#channelcreate__Disconnect"><span class="keyword const">_NTO_CHF_DISCONNECT</span></a></li>
+
+              <li class="li"><a class="xref" href="#channelcreate__Fixed"><span class="keyword const">_NTO_CHF_FIXED_PRIORITY</span></a></li>
+
+              <li class="li"><a class="xref" href="#channelcreate__InheritRunmask"><span class="keyword const">_NTO_CHF_INHERIT_RUNMASK</span></a></li>
+
+              <li class="li"><a class="xref" href="#channelcreate__MsgPausing"><span class="keyword const">_NTO_CHF_MSG_PAUSING</span></a></li>
+
+              <li class="li"><a class="xref" href="#channelcreate__NetMsg"><span class="keyword const">_NTO_CHF_NET_MSG</span></a></li>
+
+              <li class="li"><a class="xref" href="#channelcreate__Private"><span class="keyword const">_NTO_CHF_PRIVATE</span></a></li>
+
+              
+              
+              <li class="li"><a class="xref" href="#channelcreate__ThreadDeath"><span class="keyword const">_NTO_CHF_THREAD_DEATH</span></a></li>
+
+              <li class="li"><a class="xref" href="#channelcreate__Unblock"><span class="keyword const">_NTO_CHF_UNBLOCK</span></a></li>
+
+            </ul>
+
+            
+            <p class="p"> For more information, see below.</p>
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">config</var></dt>
+
+<dd class="dd">(<span class="keyword apiname">ChannelCreatePulsePool()</span> only)
+  A pointer to a <span class="keyword dtype">struct nto_channel_config</span> that specifies the attributes of the private pulse pool; see
+  <span class="q">&#147;<a class="xref" href="#channelcreate__Pulse_pool">Creating a private pulse pool</a>,&#148;</span> below.
+</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Library:</h2>
+
+
+<p class="p"><span class="ph filepath">libc</span></p>
+
+<p class="p">Use the <span class="keyword option">-l c</span> option to
+<a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/q/qcc.html"><span class="keyword cmdname">qcc</span></a>
+to link against this library.
+This library is usually included automatically.
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Description:</h2>
+
+
+<p class="p">
+
+
+
+
+
+The <span class="keyword apiname">ChannelCreate()</span> and <span class="keyword apiname">ChannelCreate_r()</span>
+kernel calls create a channel that can be used to receive messages and pulses.
+Once created, the channel is owned by the process and isn't bound to the creating thread.
+These functions are identical, except in the way they indicate errors.
+See the <a class="xref" href="#channelcreate__Returns">Returns</a> section for details.
+</p>
+
+
+<p class="p">
+<span class="keyword apiname">ChannelCreatePulsePool()</span> is similar to <span class="keyword apiname">ChannelCreate()</span> but creates a private
+pulse pool for the channel; see
+<span class="q">&#147;<a class="xref" href="#channelcreate__Pulse_pool">Creating a private pulse pool</a>,&#148;</span>
+below.
+</p>
+
+
+<p class="p">
+Threads wishing to communicate with the channel attach to it by calling
+<a class="xref" href="connectattach.html" title="Establish a connection between a process and a channel"><span class="keyword apiname">ConnectAttach()</span></a>.
+The threads may be in the same process, or in another process on the same
+node (or a remote node if the network manager is running).
+</p>
+
+
+<div class="note note"><span class="notetitle">Note:</span> 
+If a process wants other processes to communicate with it, it typically uses
+  <a class="xref" href="../n/name_attach.html" title="Register a name in the pathname space and create a channel"><span class="keyword apiname">name_attach()</span></a> or
+  <a class="xref" href="../r/resmgr_attach.html" title="Attach a path to the pathname space"><span class="keyword apiname">resmgr_attach()</span></a>
+to create a channel and associate a name with it, and the sender process uses
+  <a class="xref" href="../n/name_open.html" title="Open a name to connect to a server"><span class="keyword apiname">name_open()</span></a> or
+  <a class="xref" href="../o/open.html" title="Open a file"><span class="keyword apiname">open()</span></a> respectively
+to locate that name and create a connection to it.
+</div>
+
+
+<p class="p">
+Once attached, these threads use
+<a class="xref" href="../m/msgsendv.html" title="Send a message to a channel"><span class="keyword apiname">MsgSendv()</span></a> or
+<a class="xref" href="../m/msgsendpulse.html" title="Send a pulse to a process"><span class="keyword apiname">MsgSendPulse()</span></a>
+to enqueue messages and pulses on the channel.
+Messages and pulses are enqueued in priority order.
+</p>
+
+
+<p class="p">
+To dequeue and read messages and pulses from a channel, use
+<a class="xref" href="../m/msgreceive.html" title="Wait for a message or pulse on a channel"><span class="keyword apiname">MsgReceive()</span></a>.
+Any number of threads may call
+<span class="keyword apiname">MsgReceive()</span> at the same time, in which case they block and
+queue (if no messages or pulses are waiting) for a message or pulse to arrive.
+A multithreaded server typically creates multiple threads and has them
+all RECEIVE-blocked on the channel.
+</p>
+
+
+<p class="p">
+The return value of <span class="keyword apiname">ChannelCreate()</span> is a channel ID
+and identifies the newly created channel owned by the calling process.
+Most managers use a single channel for most, if not all,
+their communications with clients.
+
+</p>
+
+
+<p class="p">
+
+
+
+By default, when a message is received from a channel, the thread priority
+of the receiver is set to match that of the thread that sent the message.
+This basic priority inheritance prevents priority inversion.
+If a message arrives at a channel and there's no thread waiting to receive it,
+the system boosts (if necessary) all threads in the process that have received
+a message from the channel in the past.
+This boost prevents a priority inversion of the client in the case where all threads are currently
+working on behalf of other clients, perhaps at a lower priority.
+For more information, see
+<span class="q">&#147;<a class="xref" href="../../../com.qnx.doc.neutrino.sys_arch/topic/ipc_Server_boost.html">Server boost</a>&#148;</span>
+in the Interprocess Communication chapter of the <cite class="cite">System Architecture</cite> guide.
+</p>
+
+
+<p class="p">
+Priority inheritance can be disabled by setting
+<span class="keyword const">_NTO_CHF_FIXED_PRIORITY</span> in the <var class="keyword varname">flags</var> argument.
+In this case a thread's priority isn't affected by messages it
+receives on a channel.
+
+</p>
+
+
+<p class="p">
+A manager typically involves the following loop.
+There may be one or more threads in the loop at a time.
+Typically your program calls <span class="keyword apiname">ChannelCreate()</span> only once, and
+all threads block on that channel.
+</p>
+
+
+<pre class="pre codeblock">
+chid = ChannelCreate(flags);
+...
+for(;;) {
+    /*
+    rcvid = MsgReceive(chid, &amp;msg, sizeof(msg), &amp;info);
+
+    if(rcvid == -1 ) {
+        // handle error
+    } else if (rcvid == 0 ) {
+        // handle pulse
+    } else {
+       // handle message, typically identified by a message type
+       /* msg is filled in by MsgReceive() */
+       switch(msg.type) {
+           ...
+       }
+       MsgReply(rcvid, status, &amp;reply, sizeof(reply));
+    }
+}
+</pre>
+
+
+<p class="p">
+
+Some of the channel flags in the <var class="keyword varname">flags</var> argument request changes from
+the default behavior; others request notification pulses from the kernel.
+The pulses are received by <span class="keyword apiname">MsgReceive()</span> on the
+channel and are described by a
+<a class="xref" href="../p/_pulse.html" title="Structure that describes a pulse"><span class="keyword dtype">_pulse</span></a>
+structure.
+</p>
+
+
+<p class="p">
+The channel flags and (where appropriate) associated values for the pulse's
+<var class="keyword varname">code</var> and <var class="keyword varname">value</var> are described below:
+</p>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm" id="channelcreate__CoidDisconnect"><span class="keyword const">_NTO_CHF_COID_DISCONNECT</span></dt>
+
+<dd class="dd">Deliver a pulse to this channel for each connection that belongs to the calling process
+  when the channel that the connection is attached to is destroyed.
+  
+  
+
+  <div class="p">
+  <div class="fig fignone">
+  <img class="image" src="../../images/channel_flag_coid_disconnect.png" />
+  </div>
+
+  </div>
+
+
+  <p class="p">
+  In this scenario, your process is acting as a client to a server.
+  If the server's channel is destroyed, a pulse is sent to your new channel (the one you're creating with this call)
+  for each connection from your process to the server's channel.
+  </p>
+
+
+  
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+  <thead class="thead" align="left">
+  <tr>
+    <th class="entry" valign="top" id="d1285558e464">Pulse code</th>
+
+    <th class="entry" valign="top" id="d1285558e467">Pulse value</th>
+
+  </tr>
+
+  </thead>
+
+
+  <tbody class="tbody">
+  <tr>
+    <td class="entry" valign="top" headers="d1285558e464 d1285558e467 "><span class="keyword const">_PULSE_CODE_COIDDEATH</span></td>
+
+    <td class="entry" valign="top" headers="d1285558e464 d1285558e467 ">Connection ID (<var class="keyword varname">coid</var>) of a connection that was attached to a destroyed channel</td>
+
+  </tr>
+
+  </tbody>
+
+  </table>
+</div>
+
+
+  <p class="p">
+  Note that if a server exits or closes its channel at more or less
+  the same time that the client closes a connection to the channel, the
+  kernel might or might not send a <span class="keyword const">_PULSE_CODE_COIDDEATH</span> pulse to the client.
+  If the client then opens a new connection to another server before
+  getting the pulse, the pulse will seem to indicate that it's the new server that has died.
+  Your code for handling the <span class="keyword const">_PULSE_CODE_COIDDEATH</span> pulse
+  needs to include something like this:
+  
+  </p>
+
+
+<pre class="pre codeblock">
+void
+got_pulse(struct _pulse *pulse) {
+    if(pulse-&gt;type == _PULSE_CODE_COIDDEATH) {
+        int coid = pulse-&gt;value.sival_int;
+
+        if(ConnectServerInfo(0, coid, NULL) != coid) {
+            // server's really gone, so clean up the connection state
+        } else {
+            // stale pulse; probably can ignore it
+        }
+    }
+}
+</pre>
+
+</dd>
+
+
+
+
+<dt class="dt dlterm" id="channelcreate__Disconnect"><span class="keyword const">_NTO_CHF_DISCONNECT</span></dt>
+
+<dd class="dd">Deliver a pulse when all connections from a client process on this channel are detached (e.g.,
+  <a class="xref" href="close.html" title="Close a file"><span class="keyword apiname">close()</span></a>,
+  <a class="xref" href="connectdetach.html" title="Break a connection between a process and a channel"><span class="keyword apiname">ConnectDetach()</span></a>,
+  <a class="xref" href="../n/name_close.html" title="Close a server connection that was opened by name_open()"><span class="keyword apiname">name_close()</span></a>).
+  
+  
+  
+  
+  
+  
+
+  <div class="p">
+  <div class="fig fignone">
+  <img class="image" src="../../images/channel_flag_disconnect.png" />
+  </div>
+
+  </div>
+
+
+  <p class="p">
+  In this scenario, your process is acting as a server.
+  If the client detaches all of its connections to the channel (the one you're creating with this call),
+  a pulse is sent to the channel.
+  </p>
+
+
+  
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+  <thead class="thead" align="left">
+  <tr>
+    <th class="entry" valign="top" id="d1285558e617">Pulse code</th>
+
+    <th class="entry" valign="top" id="d1285558e620">Pulse value</th>
+
+  </tr>
+
+  </thead>
+
+
+  <tbody class="tbody">
+  <tr>
+    <td class="entry" valign="top" headers="d1285558e617 d1285558e620 "><span class="keyword const">_PULSE_CODE_DISCONNECT</span></td>
+
+    <td class="entry" valign="top" headers="d1285558e617 d1285558e620 ">None</td>
+
+  </tr>
+
+  </tbody>
+
+  </table>
+</div>
+
+
+  <p class="p">
+  If a process dies without detaching all its connections,
+  the kernel detaches them for it.
+  When this flag is set, the server must call
+  <span class="keyword apiname">ConnectDetach</span>(Â <var class="keyword varname">scoid</var>Â ) where <var class="keyword varname">scoid</var> is
+  the server connection ID in the pulse message.
+  Failure to do so leaves an invalid server connection ID that can't be reused.
+  Over time, the server may run out of available IDs. If this flag isn't set,
+  the kernel removes the server connection ID automatically, making it available for reuse.
+  </p>
+
+</dd>
+
+
+
+
+<dt class="dt dlterm" id="channelcreate__Fixed"><span class="keyword const">_NTO_CHF_FIXED_PRIORITY</span></dt>
+
+<dd class="dd">Suppress priority inheritance when receiving messages.
+  Receiving threads won't change their priorities to those of the sending threads.
+  If you're using adaptive partitioning, the receiving threads won't run in
+  the sending threads' partitions.
+  
+  
+  
+  
+  
+</dd>
+
+
+
+
+<dt class="dt dlterm" id="channelcreate__InheritRunmask"><span class="keyword const">_NTO_CHF_INHERIT_RUNMASK</span></dt>
+
+<dd class="dd">When a thread receives a message on the channel, the thread inherits the sender's runmask;
+            this means the sender's runmask completely replaces the receiver's runmaskâthis
+            inheritance does <em class="ph i">not</em> restrict the processors that the receiver can run on to the
+            intersection of the two runmasks.
+            When a thread receives a pulse on the channel, the thread's runmask is set to the
+            thread's inherit mask; for information about inherit masks, refer to
+            <span class="q">&#147;<a class="xref" href="../../../com.qnx.doc.neutrino.prog/topic/multicore_processor_affinity.html">Processor affinity, runmasks, and inherit masks</a>&#148;</span>
+            in the <cite class="cite">Programmer's Guide</cite>.
+            <p class="p">If the receiving thread is running on a processor that the new
+                runmask excludes, the thread is rescheduled.</p>
+
+            
+            
+            
+          </dd>
+
+
+
+
+<dt class="dt dlterm" id="channelcreate__MsgPausing"><span class="keyword const">_NTO_CHF_MSG_PAUSING</span></dt>
+
+<dd class="dd">
+  
+  
+  
+  Inform the kernel that the server supports message pausing by implementing
+  the pause/resume protocol that resolves page faults of client message-passing buffers.
+  <p class="p">
+    Pausing a message allows the kernel to avoid deadlock.
+    When the kernel resolves things (possibly by loading an appropriate page of memory), it sends a
+    <span class="keyword const">_PULSE_CODE_RESTART</span> to the server, which can then try again
+    to read, write, or reply to the message. For more information, see the entry for
+    <a class="xref" href="../m/msgpause.html" title="Pause the processing of a message"><span class="keyword apiname">MsgPause()</span></a>.
+  </p>
+
+</dd>
+
+
+
+
+<dt class="dt dlterm" id="channelcreate__NetMsg"><span class="keyword const">_NTO_CHF_NET_MSG</span></dt>
+
+<dd class="dd">Reserved for the 
+  <a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/i/io-pkt.html"><span class="keyword cmdname">io_pkt*</span></a>
+  resource manager.
+  
+</dd>
+
+
+
+
+<dt class="dt dlterm" id="channelcreate__Private"><span class="keyword const">_NTO_CHF_PRIVATE</span></dt>
+
+<dd class="dd">Mark the channel as being private.
+  There are some cases where it's useful to have a channel for a process's
+  internal use, but you don't want other people to be able to attach to it.
+  If another process calls
+  <a class="xref" href="connectattach.html" title="Establish a connection between a process and a channel"><span class="keyword apiname">ConnectAttach()</span></a>
+  to attach to your process's private channel, that call fails with an error code of <span class="keyword const">EPERM</span>.
+  
+  
+
+  <p class="p">
+  In order to create a public channel (i.e., <em class="ph i">without</em> <span class="keyword const">_NTO_CHF_PRIVATE</span> set),
+  your process must have the <span class="keyword const">PROCMGR_AID_PUBLIC_CHANNEL</span> ability enabled.
+  For more information, see
+  <a class="xref" href="../p/procmgr_ability.html" title="Control a process's ability to perform certain operations"><span class="keyword apiname">procmgr_ability()</span></a>.
+  
+  </p>
+
+</dd>
+
+
+
+
+
+
+<dt class="dt dlterm" id="channelcreate__ThreadDeath"><span class="keyword const">_NTO_CHF_THREAD_DEATH</span></dt>
+
+<dd class="dd">Deliver a pulse on the death of any thread in the process that owns the channel.
+  
+  
+
+  
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+  <thead class="thead" align="left">
+  <tr>
+    <th class="entry" valign="top" id="d1285558e876">Pulse code</th>
+
+    <th class="entry" valign="top" id="d1285558e879">Pulse value</th>
+
+  </tr>
+
+  </thead>
+
+
+  <tbody class="tbody">
+  <tr>
+    <td class="entry" valign="top" headers="d1285558e876 d1285558e879 "><span class="keyword const">_PULSE_CODE_THREADDEATH</span></td>
+
+    <td class="entry" valign="top" headers="d1285558e876 d1285558e879 ">Thread ID (<var class="keyword varname">tid</var>)</td>
+
+  </tr>
+
+  </tbody>
+
+  </table>
+</div>
+
+</dd>
+
+
+
+
+<dt class="dt dlterm" id="channelcreate__Unblock"><span class="keyword const">_NTO_CHF_UNBLOCK</span></dt>
+
+<dd class="dd">Deliver a pulse when a thread that's REPLY-blocked on a channel
+  attempts to unblock before its message is replied to.
+  This occurs between the time of a
+  <a class="xref" href="../m/msgreceive.html" title="Wait for a message or pulse on a channel"><span class="keyword apiname">MsgReceive()</span></a> and a
+  <a class="xref" href="../m/msgreplyv.html" title="Reply with a message"><span class="keyword apiname">MsgReplyv()</span></a>
+  by the server.
+  The sending thread may be unblocked because of a signal or a kernel timeout.
+  
+  
+
+  
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+  <thead class="thead" align="left">
+  <tr>
+    <th class="entry" valign="top" id="d1285558e946">Pulse code</th>
+
+    <th class="entry" valign="top" id="d1285558e949">Pulse value</th>
+
+  </tr>
+
+  </thead>
+
+
+  <tbody class="tbody">
+  <tr>
+    <td class="entry" valign="top" headers="d1285558e946 d1285558e949 "><span class="keyword const">_PULSE_CODE_UNBLOCK</span></td>
+
+    <td class="entry" valign="top" headers="d1285558e946 d1285558e949 ">Receive ID (<var class="keyword varname">rcvid</var>)</td>
+
+  </tr>
+
+  </tbody>
+
+  </table>
+</div>
+
+
+  <div class="note note"><span class="notetitle">Note:</span> 
+  In most cases, you'll set the <span class="keyword const">_NTO_CHF_UNBLOCK</span> flag.
+  </div>
+
+
+  <p class="p">
+  If the sending thread unblocks, <span class="keyword apiname">MsgReplyv()</span> fails.
+  The manager may not be in a position to handle this failure.
+  It's also possible that the client will die because of the signal and never send another message.
+  If the manager is holding onto resources for the client (such as an open file),
+  it may want to receive notification that the client wants to break out of its
+  <a class="xref" href="../m/msgsendv.html" title="Send a message to a channel"><span class="keyword apiname">MsgSendv()</span></a>.
+  </p>
+
+
+  <p class="p">
+  
+  Setting the <span class="keyword const">_NTO_CHF_UNBLOCK</span> bit in <var class="keyword varname">flags</var> prevents a
+  thread that's in the REPLY-blocked state from unblocking.
+  Instead, a pulse is sent to the channel, informing the manager that the client wishes to unblock.
+  In the case of a signal, the signal will be pending on the client thread.
+  When the manager replies, the client is unblocked and at that point, any pending signals are acted upon.
+  From the client's point of view, its <span class="keyword apiname">MsgSendv()</span> will have
+  completed normally and any signal will have arrived on the opcode following the successful kernel call.
+  </p>
+
+
+  <p class="p">
+  When the manager receives the pulse, it can do one of these things:
+  </p>
+
+
+  <ul class="ul">
+  <li class="li">If it believes that it will be replying shortly, it can discard the pulse,
+    resulting in a small latency in the unblocking, or it can signal the client.
+    A short blocking request to a filesystem often takes this approach.
+  </li>
+
+
+  <li class="li">If the reply is going to take some time or an unknown amount of time,
+    the manager should cancel the current operation and reply back with
+    an error or whatever data is available at this time in the reply message to the client thread.
+    A request to a device manager waiting for input would take this approach.
+  </li>
+
+
+  </ul>
+
+</dd>
+
+
+
+</dl>
+
+
+<p class="p" id="channelcreate__Pulse_pool"><strong class="ph b">Creating a private pulse pool</strong></p>
+
+
+<p class="p">
+
+
+Under normal circumstances, pulses are allocated from a global pool when they're delivered
+and there isn't a thread waiting to receive them.
+Doing the allocation in this context may be undesirable as pulses are meant to be small, low-overhead messages.
+Privileged and unprivileged processes share the same global pool,
+and unprivileged processes can interfere by receiving and not handling large numbers of pulses.
+Additionally, pulse delivery may fail in low-memory situations.
+</p>
+
+
+<p class="p">
+Creating a pulse pool for a channel reduces interference in these ways:
+</p>
+
+
+<ul class="ul">
+<li class="li">Unrelated processes can't affect the pulse allocation for the channel.</li>
+
+<li class="li">A process that becomes unable to process its pulses in a timely manner can't exhaust system resources
+  because the global pool isn't used.
+</li>
+
+</ul>
+
+
+<p class="p">
+The <span class="keyword apiname">ChannelCreatePulsePool()</span> function lets you create channels with fixed pools of
+pulses that ensure well-behaved servers can receive pulses under most circumstances.
+The pool itself is allocated when the kernel channel object is created.
+
+</p>
+
+
+<p class="p">
+
+When a pulse is sent to a channel that has its own pulse pool, and there's no thread available to receive
+the pulse, the pulse pool is used.
+
+If there are no available pulses in the pool, by default the channel owner is terminated with a
+<span class="keyword const">SIGKILL</span>.
+To specify the attributes of the private pulse pool, including what to do when there are no available pulses,
+use the <span class="keyword dtype">struct nto_channel_config</span> that 
+the <var class="keyword varname">config</var> argument to <span class="keyword apiname">ChannelCreatePulsePool()</span> points to:
+</p>
+
+
+<pre class="pre codeblock">
+struct nto_channel_config {
+    struct sigevent event;
+    unsigned num_pulses;
+    unsigned rearm_threshold;
+    unsigned options;
+    unsigned reserved[3];
+};
+</pre>
+
+
+<p class="p">
+The members include the following:
+</p>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><var class="keyword varname">event</var></dt>
+
+<dd class="dd">A
+  <a class="xref" href="../s/sigevent.html" title="Structure that describes an event"><span class="keyword dtype">sigevent</span></a>
+  that you want to be delivered when a pulse can't be obtained from the pool.
+  The event type must be <span class="keyword const">SIGEV_SEM</span> or <span class="keyword const">SIGEV_NONE</span>.
+  If you want to use this event, you must set <span class="keyword const">_NTO_CHO_CUSTOM_EVENT</span> in the <var class="keyword varname">options</var>
+  member. The event doesn't need to be registered.
+  
+  
+
+  <p class="p">
+  Providing a <span class="keyword dtype">sigevent</span> of type <span class="keyword const">SIGEV_NONE</span> allows a channel to silently drop pulses,
+  but dropping pulses can leave the system in an inconsistent state.
+  For example:
+  </p>
+
+
+  <ul class="ul">
+  <li class="li">Dropping a pulse from an interrupt <span class="keyword dtype">sigevent</span> could cause a driver to leave an interrupt masked.</li>
+
+  <li class="li">Dropping a disconnect pulse could leak a scoid or client entry in a server (e.g., a resource manager).</li>
+
+  </ul>
+
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">num_pulses</var></dt>
+
+<dd class="dd">The number of pulses in the pool.</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">rearm_threshold</var></dt>
+
+<dd class="dd">A basic flow-control mechanism for the dropped-pulse notification.
+  Once an event is delivered, no further event will be delivered until the pool utilization drops below the threshold.
+  The classes of values for <var class="keyword varname">rearm_threshold</var> are as follows:
+
+  
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+
+  <thead class="thead" align="left">
+  <tr>
+    <th class="entry" valign="top" id="d1285558e1179">If <var class="keyword varname">rearm_threshold</var> is:</th>
+
+    <th class="entry" valign="top" id="d1285558e1185">Then the notification:</th>
+
+  </tr>
+
+  </thead>
+
+
+  <tbody class="tbody">
+  <tr>
+    <td class="entry" valign="top" headers="d1285558e1179 d1285558e1185 ">0</td>
+
+    <td class="entry" valign="top" headers="d1285558e1179 d1285558e1185 ">Fires once and never rearms</td>
+
+  </tr>
+
+
+  <tr>
+    <td class="entry" valign="top" headers="d1285558e1179 d1285558e1185 ">1 through <var class="keyword varname">num_pulses</var></td>
+
+    <td class="entry" valign="top" headers="d1285558e1179 d1285558e1185 ">Fires and rearms when the pool utilization drops below the value of <var class="keyword varname">rearm_threshold</var></td>
+
+  </tr>
+
+
+  <tr>
+    <td class="entry" valign="top" headers="d1285558e1179 d1285558e1185 ">Greater than <var class="keyword varname">num_pulses</var></td>
+
+    <td class="entry" valign="top" headers="d1285558e1179 d1285558e1185 ">Is permanently armed.
+      Be careful not to overwhelm the system.
+    </td>
+
+  </tr>
+
+
+  </tbody>
+
+  </table>
+</div>
+
+
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">options</var></dt>
+
+<dd class="dd">A bitwise OR of zero or more of the following flags:
+
+  <ul class="ul">
+  <li class="li"><span class="keyword const">_NTO_CHO_CUSTOM_EVENT</span> â use the <span class="keyword dtype">sigevent</span> specified in
+    the <var class="keyword varname">event</var> member to notify the channel's owner when a pulse can't be allocated from the pool.
+    If you don't set this flag, and a pulse can't be allocated, a <span class="keyword const">SIGKILL</span> is delivered
+    to the channel owner.
+    
+  </li>
+
+
+  </ul>
+
+</dd>
+
+
+
+</dl>
+
+
+<p class="p"><strong class="ph b">Blocking states</strong></p>
+
+
+
+
+<p class="p">
+These calls don't block.
+</p>
+
+</div>
+
+
+
+<div class="section" id="channelcreate__Returns"><h2 class="title sectiontitle">Returns:</h2>
+
+
+<p class="p">
+The channel ID of the newly created channel.
+If an error occurs:
+</p>
+
+
+<ul class="ul">
+<li class="li"><span class="keyword apiname">ChannelCreate()</span> and <span class="keyword apiname">ChannelCreatePulsePool()</span> return -1 and set
+  <a class="xref" href="../e/errno.html" title="Thread-local error variable"><var class="keyword varname">errno</var></a>.
+</li>
+
+
+<li class="li"><span class="keyword apiname">ChannelCreate_r()</span> returns the negative of a value from the Errors section
+  and <strong class="ph b">doesn't</strong> set <var class="keyword varname">errno</var>.
+</li>
+
+
+</ul>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Errors:</h2>
+
+
+<dl class="dl" compact="compact">
+
+<dt class="dt dlterm"><span class="keyword const">EAGAIN</span></dt>
+
+<dd class="dd">All kernel channel objects are in use.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EINVAL</span></dt>
+
+<dd class="dd">(<span class="keyword apiname">ChannelCreatePulsePool()</span> only)
+  An argument was invalid.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">ENOMEM</span></dt>
+
+<dd class="dd">(<span class="keyword apiname">ChannelCreatePulsePool()</span> only)
+  There wasn't enough memory to create the pulse pool.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EOVERFLOW</span></dt>
+
+<dd class="dd">(<span class="keyword apiname">ChannelCreatePulsePool()</span> only)
+  An arithmetic overflow occurred because <var class="keyword varname">num_pulses</var> was too large.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EPERM</span></dt>
+
+<dd class="dd">The process tried to create a public channel without having the required permission; see
+  <a class="xref" href="../p/procmgr_ability.html" title="Control a process's ability to perform certain operations"><span class="keyword apiname">procmgr_ability()</span></a>.
+</dd>
+
+
+
+  
+    <dt class="dt dlterm"><span class="keyword const">ENOTSUP</span></dt>
+
+    <dd class="dd">Unsupported channel flag requested.</dd>
+
+  
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Classification:</h2>
+
+<p class="p"><a class="xref" href="../summary.html#summary__CLASSIFICATION"><span class="keyword">QNX Neutrino</span></a></p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+<thead class="thead" align="left">
+<tr><th class="entry" valign="top" id="d1285558e1420">Safety:</th>
+<th class="entry" valign="top" id="d1285558e1422">Â </th>
+</tr>
+
+</thead>
+
+<tbody class="tbody">
+<tr><td class="entry" valign="top" headers="d1285558e1420 d1285558e1422 ">Cancellation point</td>
+<td class="entry" valign="top" headers="d1285558e1420 d1285558e1422 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d1285558e1420 d1285558e1422 ">Interrupt handler</td>
+<td class="entry" valign="top" headers="d1285558e1420 d1285558e1422 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d1285558e1420 d1285558e1422 ">Signal handler</td>
+<td class="entry" valign="top" headers="d1285558e1420 d1285558e1422 ">Yes</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d1285558e1420 d1285558e1422 ">Thread</td>
+<td class="entry" valign="top" headers="d1285558e1420 d1285558e1422 ">Yes</td>
+</tr>
+
+</tbody>
+
+</table>
+</div>
+
+</div>
+
+
+</div>
+
+
+<div class="related-links"><div class="relinfo relconcepts"><strong>Related concepts</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.getting_started/topic/s1_msg.html" title="Message Passing (Getting Started with QNX Neutrino)">Message Passing (Getting Started with <span class="keyword">QNX Neutrino</span>)</a></div>
+</div>
+<div class="relinfo relref"><strong>Related reference</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/c/channeldestroy.html" title="Destroy a communications channel">ChannelDestroy(), ChannelDestroy_r()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/c/close.html" title="Close a file">close()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/c/connectattach.html" title="Establish a connection between a process and a channel">ConnectAttach(), ConnectAttach_r()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/c/connectdetach.html" title="Break a connection between a process and a channel">ConnectDetach(), ConnectDetach_r()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/m/_msg_info.html" title="Information about a message">_msg_info</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/m/msgpause.html" title="Pause the processing of a message">MsgPause(), MsgPause_r()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/m/msgreceive.html" title="Wait for a message or pulse on a channel">MsgReceive(), MsgReceive_r()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/m/msgreplyv.html" title="Reply with a message">MsgReplyv(), MsgReplyv_r()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/m/msgsendv.html" title="Send a message to a channel">MsgSendv(), MsgSendv_r()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/m/msgsendpulse.html" title="Send a pulse to a process">MsgSendPulse(), MsgSendPulse_r()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/m/msgsendpulseptr.html" title="Send a pulse (containing a pointer) to a process">MsgSendPulsePtr(), MsgSendPulsePtr_r()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/n/name_attach.html" title="Register a name in the pathname space and create a channel">name_attach()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/n/name_close.html" title="Close a server connection that was opened by name_open()">name_close()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/n/name_open.html" title="Open a name to connect to a server">name_open()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/p/_pulse.html" title="Structure that describes a pulse">_pulse</a></div>
+</div>
+</div><div class="navfooter"><!---->
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-c.html" title="C"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">C</span></a></span>  </div>
+</body>
+</html>

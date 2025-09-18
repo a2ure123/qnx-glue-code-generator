@@ -1,0 +1,541 @@
+
+<!DOCTYPE html
+  PUBLIC "" "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />        
+      <meta name="copyright" content="(C) Copyright 2005" /><meta name="DC.rights.owner" content="(C) Copyright 2005" /><meta name="DC.Type" content="reference" /><meta name="DC.Title" content="select(), pselect()" /><meta name="abstract" content="Check for files that are ready for reading or writing or have an exceptional condition pending" /><meta name="description" content="Check for files that are ready for reading or writing or have an exceptional condition pending" /><meta name="indexterms" content="select(), pselect()" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-s.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.resmgr/topic/messages_HANDLING_ionotify.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.prog/topic/timing.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/e/errno.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/f/fcntl.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/i/ionotify.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/p/poll.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/r/read.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/s/sysconf.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/t/tcsetattr.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/w/write.html" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="select" /><meta name="DC.Language" content="en-us" /><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/commonltr.css"><!----></link><title>select(), pselect()</title><link rel="canonical" type="html" href="https://www.qnx.com/developers/docs/7.1/#com.qnx.doc.neutrino.lib_ref/" /><!--  Generated with Oxygen version 18.1, build number 2017020917.  --><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/webhelp_topic.css"><!----></link><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/skins/skin.css" /><script type="text/javascript"><!--
+            
+            var prefix = "../../../index.html";
+            
+            --></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-1.11.3.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.cookie.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-ui.custom.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.highlight-3.js"><!----></script><script type="text/javascript" charset="utf-8" src="../../../oxygen-webhelp/resources/js/webhelp_topic.js"><!----></script><script type="text/javascript"> var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-27400275-1']); _gaq.push(['_setDomainName', 'www.qnx.com']);_gaq.push(['_setAllowLinker', true]);_gaq.push(['_trackPageview']);(function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script></head>
+<body onload="highlightSearchTerm()" class="frmBody" id="select">
+<table class="nav"><tbody><tr><td colspan="2"><div id="printlink"><button onClick="window.print()" title="Print this page" aria-label="Print this page"></button></div><div id="permalink"><a href="#" title="Link to this page"></a></div></td></tr><tr><td style="width:75%;"><span class="topic_breadcrumb_links"><span class="topic_breadcrumb_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-s.html" title="S">S</a></span></span></td><td><span id="topic_navigation_links" class="navheader">
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-s.html" title="S"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">S</span></a></span>  </span></td></tr></tbody></table>
+
+
+<h1 class="title topictitle1"><span class="keyword apiname">select()</span>, <span class="keyword apiname">pselect()</span></h1>
+<table width="100%"><tbody><tr><td align="left"><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">QNX SDP</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">7.1</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">C Library Reference</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">API</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">Developer</button></td><td align="right"><span style="margin:0px 5px; font-size:0.9em;">Updated: October 28, 2024</span></td></tr></tbody></table>
+
+
+<div class="body refbody"><p class="shortdesc"><em class="ph i">Check for files that are ready for reading or writing or have an exceptional condition pending</em></p>
+
+
+<div class="section refsyn"><h2 class="title sectiontitle">Synopsis:</h2>
+
+<pre class="pre codeblock">
+#include &lt;sys/select.h&gt;
+
+int select( int <var class="keyword varname">width</var>,
+            fd_set * <var class="keyword varname">readfds</var>,
+            fd_set * <var class="keyword varname">writefds</var>,
+            fd_set * <var class="keyword varname">exceptfds</var>,
+            struct timeval * <var class="keyword varname">timeout</var> );
+
+int pselect( int <var class="keyword varname">width</var>,
+             fd_set * <var class="keyword varname">readfds</var>,
+             fd_set * <var class="keyword varname">writefds</var>,
+             fd_set * <var class="keyword varname">exceptfds</var>,
+             struct timespec * restrict <var class="keyword varname">timeout</var>,
+             const sigset_t * restrict <var class="keyword varname">sigmask</var> );
+
+FD_SET( int <var class="keyword varname">fd</var>, fd_set * <var class="keyword varname">fdset</var> );
+FD_CLR( int <var class="keyword varname">fd</var>, fd_set * <var class="keyword varname">fdset</var> );
+FD_ISSET( int <var class="keyword varname">fd</var>, fd_set * <var class="keyword varname">fdset</var> );
+FD_ZERO( fd_set * <var class="keyword varname">fdset</var> );
+</pre>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Arguments:</h2>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><var class="keyword varname">width</var></dt>
+
+<dd class="dd">The number of descriptors to check in the given sets.
+  Only the descriptors from 0 through (<var class="keyword varname">width</var> - 1) in the descriptor
+  sets are examined. 
+  Therefore, the value of <var class="keyword varname">width</var> must be at least as large as:
+
+  <p class="p">
+  (<var class="keyword varname">highest valued file descriptor in the sets</var>) + 1
+  
+  
+  </p>
+
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">readfds</var></dt>
+
+<dd class="dd"><span class="keyword const">NULL</span>, or a pointer to a <span class="keyword dtype">fd_set</span> object that
+  specifies the descriptors to check for files that are ready for reading.
+  The function replaces the set with the file descriptors that are actually ready for reading.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">writefds</var></dt>
+
+<dd class="dd"><span class="keyword const">NULL</span>, or a pointer to a <span class="keyword dtype">fd_set</span> object that
+  specifies the descriptors to check for files that are ready for writing.
+  The function replaces the set with the file descriptors that are actually ready for writing.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">exceptfds</var></dt>
+
+<dd class="dd"><span class="keyword const">NULL</span>, or a pointer to a <span class="keyword dtype">fd_set</span> object that
+  specifies the descriptors to check for files that have an exceptional condition pending.
+  The function replaces the set with the file descriptors that actually have an exceptional condition pending.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">timeout</var></dt>
+
+<dd class="dd"><span class="keyword const">NULL</span>, or a pointer to a structure that
+  specifies how long to wait for the selection to complete:
+
+  <ul class="ul">
+  <li class="li">For <span class="keyword apiname">select()</span>, it's a <span class="keyword dtype">struct timeval</span> that specifies the timeout
+    in seconds and microseconds.
+  </li>
+
+
+  <li class="li">For <span class="keyword apiname">pselect()</span>, it's a <span class="keyword dtype">struct timespec</span> that specifies the timeout
+    in seconds and nanoseconds.
+  </li>
+
+
+  </ul>
+
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">sigmask</var></dt>
+
+<dd class="dd">(<span class="keyword apiname">pselect()</span> only) <span class="keyword const">NULL</span>, or a pointer to a <span class="keyword dtype">sigset_t</span> that
+  specifies a signal mask to apply temporarily to the caller.
+</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Library:</h2>
+
+
+<p class="p"><span class="ph filepath">libc</span></p>
+
+
+<p class="p">
+Use the <span class="keyword option">-l c</span> option to
+<a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/q/qcc.html"><span class="keyword cmdname">qcc</span></a>
+to link against this library.
+This library is usually included automatically.
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Description:</h2>
+
+
+        <div class="note note"><span class="notetitle">Note:</span> QNX recommends that you use <a class="xref" href="../p/poll.html" title="Multiplex input/output over a set of file descriptors"><span class="keyword apiname">poll()</span></a> instead of <span class="keyword apiname">select()</span> to examine file
+          descriptor sets. (For information on some of the limitations of
+            <span class="keyword apiname">select()</span>, see the information on <span class="keyword const">FD_SETSIZE</span>
+          below.)</div>
+
+
+<p class="p">
+The <span class="keyword apiname">select()</span> function examines the file descriptor sets whose
+addresses are passed in <var class="keyword varname">readfds</var>, <var class="keyword varname">writefds</var>, and <var class="keyword varname">exceptfds</var> 
+to see if some of their descriptors are ready for reading, 
+ready for writing, or have an exceptional condition pending.
+Any of <var class="keyword varname">readfds</var>, <var class="keyword varname">writefds</var>, and <var class="keyword varname">exceptfds</var> may
+be <span class="keyword const">NULL</span> pointers if no descriptors are of interest.
+
+
+
+
+
+
+</p>
+
+
+<p class="p">
+
+The <span class="keyword apiname">pselect()</span> function is similar to <span class="keyword apiname">select()</span>;
+if <var class="keyword varname">sigmask</var> isn't <span class="keyword const">NULL</span>, <span class="keyword apiname">pselect()</span> replaces the
+caller's signal mask with the set of signals pointed to by <var class="keyword varname">sigmask</var> before examining the descriptors,
+and restores the caller's signal mask before returning.
+Calling <span class="keyword apiname">pselect()</span> with a <var class="keyword varname">sigmask</var> of <span class="keyword const">NULL</span> is the
+same as calling <span class="keyword apiname">select()</span>.
+Both <span class="keyword apiname">select()</span> and <span class="keyword apiname">pselect()</span> are implemented using
+<a class="xref" href="../p/poll.html" title="Multiplex input/output over a set of file descriptors"><span class="keyword apiname">poll()</span></a>.
+</p>
+
+
+<p class="p">
+The <span class="keyword">QNX Neutrino</span> implementation of <span class="keyword apiname">select()</span> is built on top of
+<a class="xref" href="../i/ionotify.html" title="Arm a resource manager"><span class="keyword apiname">ionotify()</span></a>.
+Generally, you use <span class="keyword apiname">ionotify()</span> if you want to combine input from file descriptors with
+<span class="keyword">QNX Neutrino</span> messaging in the same process.
+Use <span class="keyword apiname">select()</span> when you're handling multiple file descriptors from sockets, pipes,
+serial ports, and so on.
+</p>
+
+
+<p class="p">
+The <span class="keyword apiname">select()</span> function replaces the given descriptor
+sets with subsets consisting of those descriptors that are ready for the
+requested operation, and returns the total number of ready descriptors in all the sets.
+</p>
+
+
+<p class="p">
+If <var class="keyword varname">timeout</var> isn't <span class="keyword const">NULL</span>, 
+it specifies a maximum interval to wait for the selection to complete. 
+If <var class="keyword varname">timeout</var> is <span class="keyword const">NULL</span>, 
+<span class="keyword apiname">select()</span> blocks until one of the selected conditions occurs. 
+To effect a poll, the <var class="keyword varname">timeout</var> argument should be a non-<span class="keyword const">NULL</span> pointer, 
+pointing to a zero-valued <span class="keyword dtype">timeval</span> or <span class="keyword dtype">timespec</span> structure.
+</p>
+
+
+<div class="note note"><span class="notetitle">Note:</span> 
+Because of the nature of time measurement,
+the function might actually wait longer than the specified time.
+Polling can also interfere with the kernel's efforts to manage power usage.
+For more information, see the
+<span class="q">&#147;<a class="xref" href="../../../com.qnx.doc.neutrino.prog/topic/timing.html">Understanding the Microkernel's Concept of Time</a>&#148;</span>
+chapter of the <span class="keyword">QNX Neutrino</span> <cite class="cite">Programmer's Guide</cite>.
+</div>
+
+
+<p class="p">
+        
+        <span class="keyword const">FD_SETSIZE</span> specifies the highest file descriptor number that the
+          <span class="keyword dtype">fd_set</span> structure supports and must be set to one more than the highest file
+        descriptor number that the <span class="keyword dtype">fd_set</span> objects use. Its default value is 256.</p>
+
+      <div class="p">
+        <div class="dangertitle">DANGER</div><div class="note danger">By default, the OS allows a maximum of 1000 file descriptors per
+          process, which well exceeds the maximum number of descriptors allowed by the default
+            <span class="keyword const">FD_SETSIZE</span> value. To avoid errors, use <span class="keyword apiname">poll()</span> instead
+          of <span class="keyword apiname">select()</span> (which also is more efficient at handling a sparse list of
+          file descriptors). Alternatively, set <span class="keyword const">FD_SETSIZE</span> to the appropriate value
+          before you include <span class="ph filepath">&lt;sys/select.h&gt;</span> or
+            <span class="ph filepath">&lt;sys/time.h&gt;</span>.</div>
+
+      </div>
+
+
+<p class="p">
+If you use <span class="keyword apiname">select()</span> with a timeout, you should reset the
+timeout value after calling <span class="keyword apiname">select()</span>. 
+</p>
+
+
+<div class="note note"><span class="notetitle">Note:</span> 
+If you're using <span class="keyword apiname">select()</span> in conjunction with the socket API package, 
+note that selecting for reading on a socket descriptor on which a 
+<a class="xref" href="../l/listen.html" title="Listen for connections on a socket"><span class="keyword apiname">listen()</span></a>
+has been performed indicates that a subsequent 
+<a class="xref" href="../a/accept.html" title="Accept a connection on a socket"><span class="keyword apiname">accept()</span></a> 
+on that descriptor won't block.
+</div>
+
+
+
+
+<p class="p" id="select__FDSets"><strong class="ph b">Manipulating file-descriptor sets</strong></p>
+
+
+<p class="p">
+
+
+
+
+
+At least the following macros are defined in 
+<span class="ph filepath">&lt;sys/select.h&gt;</span> for manipulating file-descriptor sets:
+</p>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><span class="keyword apiname">FD_ZERO</span>( &amp;<var class="keyword varname">fdset</var> )</dt>
+
+<dd class="dd">Initialize a descriptor set <var class="keyword varname">fdset</var> to the null set.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword apiname">FD_SET</span>( <var class="keyword varname">fd</var>, &amp;<var class="keyword varname">fdset</var> )</dt>
+
+<dd class="dd">Add the file descriptor <var class="keyword varname">fd</var> to the set <var class="keyword varname">fdset</var>.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword apiname">FD_CLR</span>( <var class="keyword varname">fd</var>, &amp;<var class="keyword varname">fdset</var> )</dt>
+
+<dd class="dd">Remove <var class="keyword varname">fd</var> from <var class="keyword varname">fdset</var>.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword apiname">FD_ISSET</span>( <var class="keyword varname">fd</var>, &amp;<var class="keyword varname">fdset</var> )</dt>
+
+<dd class="dd">Is nonzero if <var class="keyword varname">fd</var> is a member of <var class="keyword varname">fdset</var>; otherwise, zero.</dd>
+
+
+
+</dl>
+
+
+<p class="p">
+The behavior of these macros is undefined if a descriptor value is
+less than zero, or greater than or equal to <span class="keyword const">FD_SETSIZE</span>.
+
+</p>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Returns:</h2>
+
+
+<p class="p">
+The number of ready descriptors in the descriptor sets,
+0 if the <var class="keyword varname">timeout</var> expired, or -1 if an error occurs
+(<a class="xref" href="../e/errno.html" title="Thread-local error variable"><var class="keyword varname">errno</var></a> is set).
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Errors:</h2>
+
+
+<dl class="dl" compact="compact">
+
+<dt class="dt dlterm"><span class="keyword const">EBADF</span></dt>
+
+<dd class="dd">One of the descriptor sets specified an invalid descriptor.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EFAULT</span></dt>
+
+<dd class="dd">One of the pointers given in the call referred to a nonexistent portion of the address space for the process.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EINTR</span></dt>
+
+<dd class="dd">A signal was delivered before any of the selected events occurred, or before the time limit expired.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EINVAL</span></dt>
+
+<dd class="dd">A component of the pointed-to time limit is outside the acceptable range.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">ENOMEM</span></dt>
+
+<dd class="dd">Not enough memory.</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Examples:</h2>
+
+
+<pre class="pre codeblock">
+/*
+ *  This example opens a console and a serial port for
+ *  read mode, and calls select() with a 5 second timeout.
+ *  It waits for data to be available on either descriptor.
+ */
+
+#include &lt;unistd.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;fcntl.h&gt;
+#include &lt;sys/select.h&gt;
+
+int main( void )
+{
+    int console, serial;
+    struct timeval tv;
+    fd_set rfd;
+    int n;
+
+    if( ( console = open( "/dev/con1", O_RDONLY ) ) == -1
+    ||    ( serial  = open( "/dev/ser1", O_RDONLY ) ) == -1 )
+    {
+      perror( "open" );
+      return EXIT_FAILURE;
+    }
+
+    /*
+     * Clear the set of read file descriptors, and
+     * add the two we just got from the open calls.
+     */
+    FD_ZERO( &amp;rfd );
+    FD_SET( console, &amp;rfd );
+    FD_SET( serial,  &amp;rfd );
+
+    /*
+     *    Set a 5 second timeout.
+     */
+    tv.tv_sec = 5;
+    tv.tv_usec = 0;
+
+    switch ( n = select( 1 + max( console, serial ),
+           &amp;rfd, 0, 0, &amp;tv ) ) {
+      case -1:
+        perror( "select" );
+        return EXIT_FAILURE;
+      case  0:
+        puts( "select timed out" );
+        break;
+      default:
+        printf( "%d descriptors ready ...\n", n );
+        if( FD_ISSET( console, &amp;rfd ) )
+          puts( " -- console descriptor has data pending" );
+        if( FD_ISSET( serial, &amp;rfd ) )
+          puts( " -- serial descriptor has data pending" );
+    }
+    return EXIT_SUCCESS;
+}
+</pre>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Classification:</h2>
+
+<p class="p"><a class="xref" href="../summary.html#summary__CLASSIFICATION">POSIX 1003.1</a></p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+<thead class="thead" align="left">
+<tr><th class="entry" valign="top" id="d2570508e764">Safety:</th>
+<th class="entry" valign="top" id="d2570508e766">Â </th>
+</tr>
+
+</thead>
+
+<tbody class="tbody">
+<tr><td class="entry" valign="top" headers="d2570508e764 d2570508e766 ">Cancellation point</td>
+<td class="entry" valign="top" headers="d2570508e764 d2570508e766 ">Yes</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2570508e764 d2570508e766 ">Interrupt handler</td>
+<td class="entry" valign="top" headers="d2570508e764 d2570508e766 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2570508e764 d2570508e766 ">Signal handler</td>
+<td class="entry" valign="top" headers="d2570508e764 d2570508e766 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2570508e764 d2570508e766 ">Thread</td>
+<td class="entry" valign="top" headers="d2570508e764 d2570508e766 ">Read the <em class="ph i">Caveats</em></td>
+</tr>
+
+</tbody>
+
+</table>
+</div>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Caveats:</h2>
+
+
+<p class="p">
+The <span class="keyword apiname">select()</span> function works only with raw file descriptors; 
+it doesn't work with file descriptors in edited mode. 
+See the <span class="keyword const">ICANON</span> flag in the description of the 
+<a class="xref" href="../t/tcgetattr.html" title="Get the current terminal control settings"><span class="keyword apiname">tcgetattr()</span></a> function.
+</p>
+
+
+<p class="p">
+The <span class="keyword apiname">select()</span> function is thread safe as long as the <var class="keyword varname">fd</var>
+sets used by each thread point to memory that is specific to that thread. 
+</p>
+
+
+<p class="p">
+In <span class="keyword">QNX Neutrino</span>, if multiple threads block in <span class="keyword apiname">select()</span> on the 
+same <var class="keyword varname">fd</var> for the same
+condition, all threads may unblock when the condition is satisfied. 
+This may differ from other implementations where only one thread may unblock. 
+</p>
+
+
+</div>
+
+
+</div>
+
+
+<div class="related-links"><div class="relinfo relconcepts"><strong>Related concepts</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.resmgr/topic/messages_HANDLING_ionotify.html" title="Handling ionotify(), poll(), and select() (Writing a Resource Manager)">Handling ionotify(), poll(), and select() (Writing a Resource Manager)</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.prog/topic/timing.html" title="Understanding the Microkernel's Concept of Time (QNX Neutrino Programmer's Guide)">Understanding the Microkernel's Concept of Time (<span class="keyword">QNX Neutrino</span> Programmer's Guide)</a></div>
+</div>
+<div class="relinfo relref"><strong>Related reference</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/e/errno.html" title="Thread-local error variable">errno</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/f/fcntl.html" title="Provide control over an open file">fcntl()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/i/ionotify.html" title="Arm a resource manager">ionotify()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/p/poll.html" title="Multiplex input/output over a set of file descriptors">poll()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/r/read.html" title="Read bytes from a file">read()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/s/sysconf.html" title="Return the value of a configurable system limit or option">sysconf()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/t/tcsetattr.html" title="Change the terminal control settings for a device">tcsetattr()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/w/write.html" title="Write bytes to a file">write()</a></div>
+</div>
+</div><div class="navfooter"><!---->
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-s.html" title="S"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">S</span></a></span>  </div>
+</body>
+</html>

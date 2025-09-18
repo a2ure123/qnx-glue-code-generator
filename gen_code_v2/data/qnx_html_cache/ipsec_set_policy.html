@@ -1,0 +1,458 @@
+
+<!DOCTYPE html
+  PUBLIC "" "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />        
+      <meta name="copyright" content="(C) Copyright 2005" /><meta name="DC.rights.owner" content="(C) Copyright 2005" /><meta name="DC.Type" content="reference" /><meta name="DC.Title" content="ipsec_set_policy()" /><meta name="abstract" content="Generate an IPsec policy specification structure from a readable string" /><meta name="description" content="Generate an IPsec policy specification structure from a readable string" /><meta name="indexterms" content="ipsec_set_policy()" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-i.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/i/ipsec_proto.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/i/ipsec_strerror.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.utilities/topic/s/setkey.html" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="ipsec_set_policy" /><meta name="DC.Language" content="en-us" /><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/commonltr.css"><!----></link><title>ipsec_set_policy()</title><link rel="canonical" type="html" href="https://www.qnx.com/developers/docs/7.1/#com.qnx.doc.neutrino.lib_ref/" /><!--  Generated with Oxygen version 18.1, build number 2017020917.  --><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/webhelp_topic.css"><!----></link><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/skins/skin.css" /><script type="text/javascript"><!--
+            
+            var prefix = "../../../index.html";
+            
+            --></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-1.11.3.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.cookie.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-ui.custom.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.highlight-3.js"><!----></script><script type="text/javascript" charset="utf-8" src="../../../oxygen-webhelp/resources/js/webhelp_topic.js"><!----></script><script type="text/javascript"> var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-27400275-1']); _gaq.push(['_setDomainName', 'www.qnx.com']);_gaq.push(['_setAllowLinker', true]);_gaq.push(['_trackPageview']);(function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script></head>
+<body onload="highlightSearchTerm()" class="frmBody" id="ipsec_set_policy">
+<table class="nav"><tbody><tr><td colspan="2"><div id="printlink"><button onClick="window.print()" title="Print this page" aria-label="Print this page"></button></div><div id="permalink"><a href="#" title="Link to this page"></a></div></td></tr><tr><td style="width:75%;"><span class="topic_breadcrumb_links"><span class="topic_breadcrumb_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-i.html" title="I">I</a></span></span></td><td><span id="topic_navigation_links" class="navheader">
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-i.html" title="I"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">I</span></a></span>  </span></td></tr></tbody></table>
+
+
+<h1 class="title topictitle1"><span class="keyword apiname">ipsec_set_policy()</span></h1>
+<table width="100%"><tbody><tr><td align="left"><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">QNX SDP</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">7.1</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">C Library Reference</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">API</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">Developer</button></td><td align="right"><span style="margin:0px 5px; font-size:0.9em;">Updated: October 28, 2024</span></td></tr></tbody></table>
+
+
+<div class="body refbody"><p class="shortdesc"><em class="ph i">Generate an IPsec policy specification structure from a readable string</em></p>
+
+
+<div class="section">
+
+<p class="p">
+
+
+
+</p>
+
+</div>
+
+
+<div class="section refsyn"><h2 class="title sectiontitle">Synopsis:</h2>
+
+<pre class="pre codeblock">
+#include &lt;netinet6/ipsec.h&gt;
+
+char* ipsec_set_policy( char <var class="keyword varname">*policy</var>, 
+                        int <var class="keyword varname">len</var> );
+</pre>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Arguments:</h2>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><var class="keyword varname">policy</var></dt>
+
+<dd class="dd">A string that describes a <samp class="ph codeph">struct sadb_x_policy</samp> and
+  optionally a <samp class="ph codeph">struct sadb_x_ipsecrequest</samp>, formatted as described below.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">len</var></dt>
+
+<dd class="dd">The length of the policy string.</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Library:</h2>
+
+
+<p class="p"><span class="ph filepath">libipsec</span></p>
+
+
+<p class="p">
+Use the <span class="keyword option">-l ipsec</span> option to
+<a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/q/qcc.html"><span class="keyword cmdname">qcc</span></a>
+to link against this library.
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Description:</h2>
+
+
+<p class="p">
+
+
+The <span class="keyword apiname">ipsec_set_policy()</span> function generates an IPsec
+policy specification structure, namely a <span class="keyword dtype">struct sadb_x_policy</span> 
+and potentially a  <span class="keyword dtype">struct sadb_x_ipsecrequest</span> from a policy 
+specification given as a C string.
+The <span class="keyword apiname">ipsec_set_policy()</span> function allocates a buffer, stores the
+corresponding IPsec policy specification structure in it, and returns a
+pointer to the buffer.
+</p>
+
+
+<div class="note note"><span class="notetitle">Note:</span> 
+You should release the buffer returned by <span class="keyword apiname">ipsec_set_policy()</span> 
+by calling
+<a class="xref" href="../f/free.html" title="Deallocate a block of memory"><span class="keyword apiname">free()</span></a>.
+See the example below.
+</div>
+
+
+<p class="p">
+The policy specifications can include the following variables:
+</p>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><var class="keyword varname">direction</var></dt>
+
+<dd class="dd">The direction in which to apply the policy.
+  This must be <samp class="ph codeph">in</samp> or <samp class="ph codeph">out</samp>
+
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">priority_specification</var></dt>
+
+<dd class="dd">The priority for the policy.
+  This is a signed integer that controls the placement of the
+  policy within the security policy database (SPD).
+  Policies with higher priorities are
+  placed closer to the beginning of the list, and those with lower priorities
+  are placed closer to the end of the list.
+  Policies with equal priorities are added at the end of the group
+  of such policies.
+  You can specify the priority only when <span class="ph filepath">libipsec</span> has been
+  compiled.
+</dd>
+
+
+
+</dl>
+
+
+<p class="p">
+The policy specifications include the following:
+</p>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><var class="keyword varname">direction</var> [<var class="keyword varname">priority_specification</var>] <samp class="ph codeph">discard</samp></dt>
+
+<dd class="dd">Drop any packets that match the policy.</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">direction</var> [<var class="keyword varname">priority_specification</var>] <samp class="ph codeph">entrust</samp></dt>
+
+<dd class="dd">Consult the SPD defined by
+  <a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/s/setkey.html"><span class="keyword cmdname">setkey</span></a>.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">direction</var> [<var class="keyword varname">priority_specification</var>] <samp class="ph codeph">bypass</samp></dt>
+
+<dd class="dd">Bypass the IPsec processing (i.e., transmit packets in clear). 
+  This is for privileged sockets.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">direction</var>  [<var class="keyword varname">priority_specification</var>] <samp class="ph codeph">ipsec</samp> <var class="keyword varname">request</var> ...</dt>
+
+<dd class="dd">The matching packets are subject to IPsec processing.
+  The <span class="ph filepath">ipsec</span> string is followed by one or 
+  more request strings, which are formatted as below:
+
+  <p class="p">
+  <var class="keyword varname">protocol</var> / <var class="keyword varname">mode</var> / <var class="keyword varname">src</var> - <var class="keyword varname">dst</var> [/<var class="keyword varname">level</var>]
+  </p>
+
+
+  <p class="p">
+  The elements of the string are as follows:
+  </p>
+
+
+  <dl class="dl">
+  
+  <dt class="dt dlterm"><var class="keyword varname">protocol</var></dt>
+
+  <dd class="dd">Either <samp class="ph codeph">ah</samp>, <samp class="ph codeph">esp</samp>, or <samp class="ph codeph">ipcomp</samp>.</dd>
+
+  
+
+  
+  <dt class="dt dlterm"><var class="keyword varname">mode</var></dt>
+
+  <dd class="dd">Either <samp class="ph codeph">transport</samp> or <samp class="ph codeph">tunnel</samp>.</dd>
+
+  
+
+  
+  <dt class="dt dlterm"><var class="keyword varname">src</var> and <var class="keyword varname">dst</var></dt>
+
+  <dd class="dd">The IPsec endpoints; <var class="keyword varname">src</var> is the sending node and
+    <var class="keyword varname">dst</var> is the receiving node.
+    Therefore, when the direction is <samp class="ph codeph">in</samp>, <var class="keyword varname">dst</var> is this
+    node and <var class="keyword varname">src</var> is the other node (peer). If the <var class="keyword varname">mode</var> is
+    <samp class="ph codeph">transport</samp>, you can omit both <var class="keyword varname">src</var> and <var class="keyword varname">dst</var>.
+  </dd>
+
+  
+
+  
+  <dt class="dt dlterm"><var class="keyword varname">level</var></dt>
+
+  <dd class="dd">Either <samp class="ph codeph">default</samp>, <samp class="ph codeph">use</samp>, <samp class="ph codeph">require</samp> or 
+    <samp class="ph codeph">unique</samp>.
+
+    <ul class="ul">
+    <li class="li"><samp class="ph codeph">default</samp> â <span class="keyword cmdname">io-pkt</span>
+      should consult the system default policy defined by
+      <a class="xref" href="../s/sysctl.html" title="Get or set information about the socket manager"><span class="keyword apiname">sysctl()</span></a>.
+    </li>
+
+
+    <li class="li"><samp class="ph codeph">use</samp> â  a relevant SA (security association) is  used
+      when available, since <span class="keyword cmdname">io-pkt</span> may perform IPsec
+      operation against packets when possible.
+      In this case, packets are transmitted in clear
+      (when SA isn't available), or encrypted
+      (when SA is available).
+    </li>
+
+
+    <li class="li"><samp class="ph codeph">require</samp> â a relevant
+      SA is required, since <span class="keyword cmdname">io-pkt</span> must perform IPsec operation against packets.
+    </li>
+
+
+    <li class="li"><samp class="ph codeph">unique</samp> is similar to <samp class="ph codeph">require</samp>, but it adds the
+      restriction that the SA for outbound traffic be used only for this policy.
+      You may need the identifier in order to relate the policy and
+      the SA when you define the SA by manual keying.  
+      You put the decimal number as the identifier like:
+
+      <p class="p">
+      <samp class="ph codeph">unique:</samp> <var class="keyword varname">number</var>
+      </p>
+
+
+      <p class="p">
+      where <var class="keyword varname">number</var> must be between 1 and 32767. 
+      </p>
+
+    </li>
+
+
+    </ul>
+
+  </dd>
+
+  
+
+  </dl>
+
+
+  <p class="p">
+  If the request string is nonambiguous, you can omit the <var class="keyword varname">level</var>
+  and the slash (<samp class="ph codeph">/</samp>) before it.
+  However, it's best specify the level explicitly, in order to
+  avoid unintended behavior.
+  </p>
+
+
+  <p class="p">
+  If you omit the <var class="keyword varname">level</var>, the default (which you can use
+  <a class="xref" href="../s/sysctl.html" title="Get or set information about the socket manager"><span class="keyword cmdname">sysctl</span></a>
+  to get or set) is used.
+  For example:
+  </p>
+
+
+  <ul class="ul">
+  <li class="li">If <span class="keyword cmdname">sysctl</span> shows <samp class="ph codeph">net.inet.ipsec.esp_net_deflev = 1</samp>,
+    then by default, the IPsec policy is required for tunnelling mode.
+    That is, if you define a rule specifying IPSec tunnelling from A to B,
+    then the level is <samp class="ph codeph">require</samp>.
+  </li>
+
+
+  <li class="li">If you use <span class="keyword cmdname">sysctl</span> to disable
+    <samp class="ph codeph">net.inet.ipsec.esp_net_deflev</samp>,
+    then if you define a rule specifying IPSec tunnelling from A to B, the
+    IPSec rule isn't applied from A to B.
+  </li>
+
+
+  </ul>
+
+</dd>
+
+
+
+</dl>
+
+
+<p class="p">
+Here's an example of policy information:
+</p>
+
+
+<pre class="pre codeblock">
+in discard
+out ipsec esp/transport//require
+in ipsec ah/transport//require
+out ipsec esp/tunnel/10.1.1.2-10.1.1.1/use
+in ipsec ipcom/transport//use esp/transport//use
+</pre>
+
+
+<div class="note note"><span class="notetitle">Note:</span> 
+This differs from the specification of
+<a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/s/setkey.html"><span class="keyword cmdname">setkey</span></a>,
+which doesn't use <samp class="ph codeph">entrust</samp> or <samp class="ph codeph">bypass</samp>.
+</div>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Returns:</h2>
+
+
+<p class="p">
+A pointer to the allocated buffer for policy specification, or
+<span class="keyword const">NULL</span> if an error occurred.
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Examples:</h2>
+
+
+<pre class="pre codeblock">
+#include &lt;netinet6/ipsec.h&gt;
+#include &lt;sys/socket.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;malloc.h&gt;
+#include &lt;string.h&gt;
+
+int   
+main(void)
+{
+   char *sadb;
+   char *policy = "in discard";
+   int len;
+   
+   sadb = ipsec_set_policy(policy, strlen(policy));
+
+   if (sadb == NULL) {
+      fprintf(stderr, "ipsec_set_policy: %s\n", ipsec_strerror());
+      return 1;
+   }
+   
+   len = ipsec_get_policylen(sadb);
+   printf("len: %d\n", len);
+
+   policy = NULL;
+   policy = ipsec_dump_policy(sadb, NULL);
+
+   if (policy == NULL) {
+      fprintf(stderr, "ipsec_dump_policy: %s\n", ipsec_strerror());
+      return 1;
+   }
+
+   printf("policy: %s\n", policy);
+
+   free(policy);
+   free(sadb);
+
+   return 0;
+}
+</pre>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Classification:</h2>
+
+<p class="p"><a class="xref" href="../summary.html#summary__CLASSIFICATION">Unix</a></p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+<thead class="thead" align="left">
+<tr><th class="entry" valign="top" id="d2075747e554">Safety:</th>
+<th class="entry" valign="top" id="d2075747e556">Â </th>
+</tr>
+
+</thead>
+
+<tbody class="tbody">
+<tr><td class="entry" valign="top" headers="d2075747e554 d2075747e556 ">Cancellation point</td>
+<td class="entry" valign="top" headers="d2075747e554 d2075747e556 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2075747e554 d2075747e556 ">Interrupt handler</td>
+<td class="entry" valign="top" headers="d2075747e554 d2075747e556 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2075747e554 d2075747e556 ">Signal handler</td>
+<td class="entry" valign="top" headers="d2075747e554 d2075747e556 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2075747e554 d2075747e556 ">Thread</td>
+<td class="entry" valign="top" headers="d2075747e554 d2075747e556 ">Yes</td>
+</tr>
+
+</tbody>
+
+</table>
+</div>
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="related-links"><div class="relinfo relref"><strong>Related reference</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/i/ipsec_proto.html" title="Internet security protocol">IPsec</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/i/ipsec_strerror.html" title="Error messages for IPsec policy manipulation library">ipsec_strerror()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.utilities/topic/s/setkey.html" title="setkey (Utilities Reference)">setkey (Utilities Reference)</a></div>
+</div>
+</div><div class="navfooter"><!---->
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-i.html" title="I"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">I</span></a></span>  </div>
+</body>
+</html>

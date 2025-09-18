@@ -1,0 +1,21 @@
+{
+  "function_name": "alarm",
+  "url": "https://www.qnx.com/developers/docs/7.1/com.qnx.doc.neutrino.lib_ref/topic/a/alarm.html",
+  "synopsis": "unsigned int alarm( unsigned int seconds );",
+  "description": "",
+  "headers": [
+    "#include <unistd.h>"
+  ],
+  "parameters": [
+    {
+      "name": "seconds",
+      "description": "The number of seconds of realtime to let elapse before raising the\n  alarm, or zero to cancel any previous alarm() requests."
+    }
+  ],
+  "return_values": [],
+  "examples": [
+    "#include <unistd.h>\n\nunsigned int alarm( unsigned int seconds );",
+    "#include <stdio.h>\n#include <stdlib.h>\n#include <unistd.h>\n\nint main()\n  {\n    unsigned int  timeleft;\n\n    printf( \"Set the alarm and sleep\\n\" );\n    alarm( 10 );\n    sleep( 5 );   /* go to sleep for 5 seconds */\n\n    /*\n     * To get the time left before the SIGALRM is \n     * to arrive, one must cancel the initial timer, \n     * which returns the amount of time it had \n     * remaining.\n     */\n    timeleft = alarm( 0 );\n    printf( \"Time left before cancel, and rearm: %d\\n\",\n        timeleft );\n\n    /*\n     * Start a new timer that kicks us when timeleft\n     * seconds have passed.\n     */\n\n    alarm( timeleft );\n\n    /*\n     * Wait until we receive the SIGALRM signal; any\n     * signal kills us, though, since we don't have\n     * a signal handler.\n     */\n    printf( \"Hanging around, waiting to die\\n\" );\n    pause();\n    return EXIT_SUCCESS;\n  }"
+  ],
+  "full_content": "Function: alarm\nURL: https://www.qnx.com/developers/docs/7.1/com.qnx.doc.neutrino.lib_ref/topic/a/alarm.html\nSynopsis: unsigned int alarm( unsigned int seconds );\nHeaders: #include <unistd.h>\nParameters:\n  - seconds: The number of seconds of realtime to let elapse before raising the\n  alarm, or zero to cancel any previous alarm() requests.\nExamples:\nExample 1:\n#include <unistd.h>\n\nunsigned int alarm( unsigned int seconds );\nExample 2:\n#include <stdio.h>\n#include <stdlib.h>\n#include <unistd.h>\n\nint main()\n  {\n    unsigned int  timeleft;\n\n    printf( \"Set the alarm and sleep\\n\" );\n    alarm( 10 );\n    sleep( 5 );   /* go to sleep for 5 seconds */\n\n    /*\n     * To get the time left before the SIGALRM is \n     * to arrive, one must cancel the initial timer, \n     * which returns the amount of time it had \n     * remaining.\n     */\n    timeleft = alarm( 0 );\n    printf( \"Time left before cancel, and rearm: %d\\n\",\n        timeleft );\n\n    /*\n     * Start a new timer that kicks us when timeleft\n     * seconds have passed.\n     */\n\n    alarm( timeleft );\n\n    /*\n     * Wait until we receive the SIGALRM signal; any\n     * signal kills us, though, since we don't have\n     * a signal handler.\n     */\n    printf( \"Hanging around, waiting to die\\n\" );\n    pause();\n    return EXIT_SUCCESS;\n  }"
+}

@@ -1,0 +1,28 @@
+{
+  "function_name": "aio_suspend",
+  "url": "https://www.qnx.com/developers/docs/7.1/com.qnx.doc.neutrino.lib_ref/topic/a/aio_suspend.html",
+  "synopsis": "int aio_suspend( const struct aiocb * const list[],",
+  "description": "",
+  "headers": [
+    "#include <aio.h>"
+  ],
+  "parameters": [
+    {
+      "name": "list",
+      "description": "A list of \n  aiocb\n  structures describing the asynchronous operations you want to wait for.\n  Each aiocb structure must have been used in initiating\n  an asynchronous I/O request via\n  aio_read(),\n  aio_write(),\n  or\n  lio_listio().\n  The list may contain NULL pointers, which\n  aio_suspend() ignores."
+    },
+    {
+      "name": "nent",
+      "description": "The number of entries in the list."
+    },
+    {
+      "name": "timeout",
+      "description": "NULL, or a pointer to a\n  timespec\n  structure that specifies the maximum length of time you want to wait for."
+    }
+  ],
+  "return_values": [],
+  "examples": [
+    "#include <aio.h>\n\nint aio_suspend( const struct aiocb * const list[],\n                 int nent,\n                 const struct timespec * timeout );"
+  ],
+  "full_content": "Function: aio_suspend\nURL: https://www.qnx.com/developers/docs/7.1/com.qnx.doc.neutrino.lib_ref/topic/a/aio_suspend.html\nSynopsis: int aio_suspend( const struct aiocb * const list[],\nHeaders: #include <aio.h>\nParameters:\n  - list: A list of \n  aiocb\n  structures describing the asynchronous operations you want to wait for.\n  Each aiocb structure must have been used in initiating\n  an asynchronous I/O request via\n  aio_read(),\n  aio_write(),\n  or\n  lio_listio().\n  The list may contain NULL pointers, which\n  aio_suspend() ignores.\n  - nent: The number of entries in the list.\n  - timeout: NULL, or a pointer to a\n  timespec\n  structure that specifies the maximum length of time you want to wait for.\nExamples:\nExample 1:\n#include <aio.h>\n\nint aio_suspend( const struct aiocb * const list[],\n                 int nent,\n                 const struct timespec * timeout );"
+}

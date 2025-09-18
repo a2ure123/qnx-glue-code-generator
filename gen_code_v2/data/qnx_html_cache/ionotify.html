@@ -1,0 +1,555 @@
+
+<!DOCTYPE html
+  PUBLIC "" "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />        
+      <meta name="copyright" content="(C) Copyright 2005" /><meta name="DC.rights.owner" content="(C) Copyright 2005" /><meta name="DC.Type" content="reference" /><meta name="DC.Title" content="ionotify()" /><meta name="abstract" content="Arm a resource manager" /><meta name="description" content="Arm a resource manager" /><meta name="indexterms" content="ionotify()" /><meta name="DC.subject" content=", ionotify(), ,, MsgRegisterEvent(), MsgRegisterEvent_r()" /><meta name="keywords" content=", ionotify(), ,, MsgRegisterEvent(), MsgRegisterEvent_r()" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-i.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.resmgr/topic/messages_HANDLING_ionotify.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/m/mq_notify.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/m/msgregisterevent.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/p/poll.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/s/select.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/s/sigevent.html" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="ionotify" /><meta name="DC.Language" content="en-us" /><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/commonltr.css"><!----></link><title>ionotify()</title><link rel="canonical" type="html" href="https://www.qnx.com/developers/docs/7.1/#com.qnx.doc.neutrino.lib_ref/" /><!--  Generated with Oxygen version 18.1, build number 2017020917.  --><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/webhelp_topic.css"><!----></link><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/skins/skin.css" /><script type="text/javascript"><!--
+            
+            var prefix = "../../../index.html";
+            
+            --></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-1.11.3.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.cookie.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-ui.custom.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.highlight-3.js"><!----></script><script type="text/javascript" charset="utf-8" src="../../../oxygen-webhelp/resources/js/webhelp_topic.js"><!----></script><script type="text/javascript"> var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-27400275-1']); _gaq.push(['_setDomainName', 'www.qnx.com']);_gaq.push(['_setAllowLinker', true]);_gaq.push(['_trackPageview']);(function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script></head>
+<body onload="highlightSearchTerm()" class="frmBody" id="ionotify">
+<table class="nav"><tbody><tr><td colspan="2"><div id="printlink"><button onClick="window.print()" title="Print this page" aria-label="Print this page"></button></div><div id="permalink"><a href="#" title="Link to this page"></a></div></td></tr><tr><td style="width:75%;"><span class="topic_breadcrumb_links"><span class="topic_breadcrumb_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-i.html" title="I">I</a></span></span></td><td><span id="topic_navigation_links" class="navheader">
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-i.html" title="I"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">I</span></a></span>  </span></td></tr></tbody></table>
+
+
+<h1 class="title topictitle1"><span class="keyword apiname">ionotify()</span></h1>
+<table width="100%"><tbody><tr><td align="left"><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">QNX SDP</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">7.1</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">C Library Reference</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">API</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">Developer</button></td><td align="right"><span style="margin:0px 5px; font-size:0.9em;">Updated: October 28, 2024</span></td></tr></tbody></table>
+
+
+
+
+<div class="body refbody"><p class="shortdesc"><em class="ph i">Arm a resource manager</em></p>
+
+
+<div class="section refsyn"><h2 class="title sectiontitle">Synopsis:</h2>
+
+<pre class="pre codeblock">
+#include &lt;unistd.h&gt;
+#include &lt;sys/iomsg.h&gt;
+
+int ionotify ( int                    <var class="keyword varname">fd</var>,
+               int                    <var class="keyword varname">action</var>, 
+               int                    <var class="keyword varname">flags</var>, 
+               const struct sigevent *<var class="keyword varname">event</var> );
+</pre>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Arguments:</h2>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><var class="keyword varname">fd</var></dt>
+
+<dd class="dd">The file descriptor associated with the resource manager that you want
+  to get notifications from.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">action</var></dt>
+
+<dd class="dd">The type of arming action to take; see
+  <span class="q">&#147;<a class="xref" href="#ionotify__Actions">Actions</a>,&#148;</span>
+  below.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">flags</var></dt>
+
+<dd class="dd">The types of conditions that can be checked for notification; see
+  <span class="q">&#147;<a class="xref" href="#ionotify__Flags">Flags</a>,&#148;</span>
+  below.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">event</var></dt>
+
+<dd class="dd">A pointer to a
+  <a class="xref" href="../s/sigevent.html" title="Structure that describes an event"><span class="keyword dtype">sigevent</span></a>
+  structure that defines the event that you want the resource manager to
+  send as a notification, or <span class="keyword const">NULL</span> to disarm a notification.
+</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Library:</h2>
+
+
+<p class="p"><span class="ph filepath">libc</span></p>
+
+
+<p class="p">Use the <span class="keyword option">-l c</span> option to
+<a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/q/qcc.html"><span class="keyword cmdname">qcc</span></a>
+to link against this library.
+This library is usually included automatically.
+</p>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Description:</h2>
+
+
+<p class="p">
+
+
+
+
+The <span class="keyword apiname">ionotify()</span> function arms the resource manager associated
+with <var class="keyword varname">fd</var> to send the event notification <var class="keyword varname">event</var>.
+The event is sent when a condition specified by a combination of
+<var class="keyword varname">action</var> and <var class="keyword varname">flags</var> occurs.
+The application must register the event by
+calling <span class="keyword apiname">MsgRegisterEvent()</span> with the <var class="keyword varname">fd</var> passed to <span class="keyword apiname">ionotify()</span>.
+This function corresponds to the Linux <span class="keyword apiname">epoll()</span> function and BSD's <span class="keyword apiname">kqueue()</span>.
+</p>
+
+
+<p class="p">
+The <span class="keyword">QNX Neutrino</span> implementations of
+<a class="xref" href="../s/select.html" title="Check for files that are ready for reading or writing or have an exceptional condition pending"><span class="keyword apiname">select()</span></a>
+and
+<a class="xref" href="../p/poll.html" title="Multiplex input/output over a set of file descriptors"><span class="keyword apiname">poll()</span></a>
+are built on top of <span class="keyword apiname">ionotify()</span>.
+Generally, you use <span class="keyword apiname">ionotify()</span> if you want to combine input from file descriptors with
+<span class="keyword">QNX Neutrino</span> messaging in the same process.
+Use <span class="keyword apiname">poll()</span> when you're handling multiple file descriptors from sockets, pipes,
+serial ports, and so on.
+</p>
+
+
+<p class="p" id="ionotify__Flags"><strong class="ph b">Flags</strong></p>
+
+
+<p class="p">
+The <var class="keyword varname">flags</var> argument specifies the types of conditions that can
+be checked for
+notification. Each resource manager maintains a different context for
+each notification condition. Only those notification bits specified are
+affected. In the following example, the second call to <span class="keyword apiname">ionotify()</span>
+doesn't affect the first, since it specifies a different notification:
+</p>
+
+
+<pre class="pre codeblock">
+ionotify( fd, _NOTIFY_ACTION_POLLARM, 
+          _NOTIFY_COND_INPUT, &amp;event );
+ionotify( fd, _NOTIFY_ACTION_POLLARM, 
+          _NOTIFY_COND_OUTPUT, &amp;event );
+</pre>
+
+
+<p class="p">
+The conditions specified by <var class="keyword varname">flags</var> are:
+</p>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><span class="keyword const">_NOTIFY_COND_OBAND</span></dt>
+
+<dd class="dd">Out-of-band data is available, an exceptional condition has occurred, or an error has occurred,
+  all as defined by the resource manager.
+  
+  
+  
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">_NOTIFY_COND_OUTPUT</span></dt>
+
+<dd class="dd">This usually means there's room in the output buffer for more data.
+  More generally, it means that a <span class="keyword apiname">write()</span> call will return without blocking
+  (but may return an error).  
+  The amount of
+  room available needed to satisfy this condition depends on the resource manager.
+  Some resource managers may default to an
+  empty output buffer, while others may choose some percentage
+  of the buffer empty. 
+  
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">_NOTIFY_COND_INPUT</span></dt>
+
+<dd class="dd">This usually means there's input data available.
+  More generally, it means that a <span class="keyword apiname">read()</span> call will return without blocking
+  (but may return an error).
+  May be further overloaded (e.g., a <span class="keyword apiname">listen()</span> socket has a connection available to
+  <span class="keyword apiname">accept()</span>.
+  The amount of data available defaults
+  to 1. For a character device such as a serial port, this
+  would be a character. For a POSIX message queue, it would be a
+  message. Each resource manager selects an appropriate object.
+  
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">_NOTIFY_COND_EXTEN</span></dt>
+
+<dd class="dd">The conditions are defined with some extended flags; used internally.
+
+
+</dd>
+
+
+
+</dl>
+
+
+<p class="p">
+The method for changing the default number for 
+<span class="keyword const">_NOTIFY_COND_OUTPUT</span> and <span class="keyword const">_NOTIFY_COND_INPUT</span>
+depends on the device.
+For example, character special devices can call
+<a class="xref" href="../r/readcond.html" title="Read data from a terminal device"><span class="keyword apiname">readcond()</span></a>.
+</p>
+
+
+<p class="p">
+For resource managers that support both an edited and raw mode, the raw mode
+should be enabled to ensure proper operation of <span class="keyword apiname">ionotify()</span>.
+</p>
+
+
+<p class="p" id="ionotify__Actions"><strong class="ph b">Actions</strong></p>
+
+
+<p class="p">
+The <var class="keyword varname">action</var> argument specifies the type of arming action to take.
+When a condition is armed, the resource manager monitors it and,
+when met, delivers <var class="keyword varname">event</var> using
+<a class="xref" href="../m/msgdeliverevent.html" title="Deliver an event through a channel"><span class="keyword apiname">MsgDeliverEvent()</span></a>. 
+When an event is delivered, it's always
+disarmed except where noted below.
+
+</p>
+
+
+<p class="p">
+Note that for transition arming (as specified by an <var class="keyword varname">action</var> of
+<span class="keyword const">_NOTIFY_ACTION_TRANARM</span>,
+only <em class="ph i">one</em> notification of that type can be outstanding <em class="ph i">per device</em>.
+When the transition arm fires, it's removed.
+</p>
+
+
+<p class="p">
+Each action is designed to support a specific notification type as follows:
+</p>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><span class="keyword const">_NOTIFY_ACTION_CONDARM</span></dt>
+
+<dd class="dd">If the conditions aren't met, arm the event and give an error of <span class="keyword const">EAGAIN</span>;
+  if the conditions are met, indicate which of them are available.
+  
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">_NOTIFY_ACTION_EDGEARM</span></dt>
+
+<dd class="dd">Conditions are considered as met only if a change occurs since the last call to
+  <samp class="ph codeph">ionotify(..., _NOTIFY_ACTION_EDGEARM, ...)</samp>.
+  Met conditions are returned; a notification is armed for unmet conditions.
+  
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">_NOTIFY_ACTION_POLL</span></dt>
+
+<dd class="dd">This action does a poll of the notification conditions specified
+  by <var class="keyword varname">flags</var>. It never arms an event, and it cancels
+  all other asynchronous event notifications
+  set up by a previous call to <span class="keyword apiname">ionotify()</span>. This also allows it
+  to be used as a simple <span class="q">&#147;disarm&#148;</span> call.
+  
+
+  <p class="p">
+  Returns active conditions as requested by <var class="keyword varname">flags</var>.
+  </p>
+
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">_NOTIFY_ACTION_POLLARM</span></dt>
+
+<dd class="dd">This action does a poll in the same way as
+  <span class="keyword const">_NOTIFY_ACTION_POLL</span>.  However, if none of the
+  conditions specified in <var class="keyword varname">flags</var> are present then each
+  condition specified in <var class="keyword varname">flags</var> is armed. If any
+  condition is met, none of the conditions are
+  armed. The POSIX <span class="keyword apiname">select()</span> function uses
+  <span class="keyword apiname">ionotify()</span> with this action.
+  
+
+  <p class="p">
+  Returns active conditions as requested by <var class="keyword varname">flags</var>.
+  </p>
+
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">_NOTIFY_ACTION_TRANARM</span></dt>
+
+<dd class="dd">This action arms for transitions of the notification conditions specified
+  by <var class="keyword varname">flags</var>. A transition is defined as a
+  data transition from empty to nonempty on input.
+  Its use on output isn't defined.
+  Note that if there is data available when this call is used, a data transition <em class="ph i">won't</em> occur.
+  To generate an event using this type of notification, you
+  must arm the event and then drain the input using a nonblocking read.
+  After this point, new input data causes the event to be delivered.
+  The <span class="keyword apiname">mq_notify()</span> function uses <span class="keyword apiname">ionotify()</span> with
+  this action.
+  
+
+  <p class="p">
+  Since this arms for a transition, the return value is always zero.
+  </p>
+
+
+  <div class="note note"><span class="notetitle">Note:</span> 
+  There's a limit of one notification per message queue or resource manager object.
+  If a notification was already armed for the specified resource,
+  <span class="keyword apiname">ionotify()</span> indicates an error of <span class="keyword const">EBUSY</span>.
+  </div>
+
+</dd>
+
+
+
+</dl>
+
+
+<p class="p">
+You can use the <span class="keyword const">_NOTIFY_ACTION_POLLARM</span> or
+<span class="keyword const">_NOTIFY_ACTION_POLL</span> action to
+generate events that are level- as opposed to transition-oriented.
+
+
+</p>
+
+
+<p class="p">
+When an action is armed in a resource manager, it remains armed until
+one of the following occurs:
+</p>
+
+
+<ul class="ul">
+<li class="li">a thread sets a new action (this disarms any current action
+    and possibly arms a new action)</li>
+
+<li class="li">the event is delivered</li>
+
+<li class="li">a thread closes the file descriptor (fd), in which case all pending notifications for that fd
+  are delivered and then disarmed
+</li>
+
+</ul>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Returns:</h2>
+
+
+<p class="p">
+Active conditions as requested by <var class="keyword varname">flags</var>.
+In the case of a transition action, a zero is returned.
+If an error occurs, -1 is returned 
+(<a class="xref" href="../e/errno.html" title="Thread-local error variable"><var class="keyword varname">errno</var></a> is set).
+</p>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Errors:</h2>
+
+
+<dl class="dl" compact="compact">
+
+<dt class="dt dlterm"><span class="keyword const">EAGAIN</span></dt>
+
+<dd class="dd">The action was <span class="keyword const">_NOTIFY_ACTION_CONDARM</span>, and the conditions weren't met.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EBADF</span></dt>
+
+<dd class="dd">The connection indicated by <var class="keyword varname">fd</var> doesn't
+        exist, or <var class="keyword varname">fd</var> is no longer connected to
+        a channel.
+
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EBUSY</span></dt>
+
+
+<dd class="dd">A notification was already armed for this resource; this function
+  enforces a restriction of one per message queue or resource manager.
+
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EFAULT</span></dt>
+
+<dd class="dd">A fault occurred when the kernel tried to access the buffers
+        provided. This may have occurred on the receive or the reply.
+
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EINTR</span></dt>
+
+<dd class="dd">The call was interrupted by a signal.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">ENOMEM</span></dt>
+
+<dd class="dd">The resource manager couldn't allocate a notify entry to save the request.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">ENOSYS</span></dt>
+
+<dd class="dd">The requested action isn't supported by this resource manager.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">ESRVRFAULT</span></dt>
+
+<dd class="dd">A fault occurred in a server's address space while
+  accessing the server's message buffers.
+  This may have occurred on the receive or the reply.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">ETIMEDOUT</span></dt>
+
+<dd class="dd">A kernel timeout unblocked the call; see 
+  <a class="xref" href="../t/timertimeout.html" title="Set a timeout on a blocking state"><span class="keyword apiname">TimerTimeout()</span></a>.
+</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Classification:</h2>
+
+<p class="p"><a class="xref" href="../summary.html#summary__CLASSIFICATION">QNX Neutrino</a></p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+<thead class="thead" align="left">
+<tr><th class="entry" valign="top" id="d2069016e744">Safety:</th>
+<th class="entry" valign="top" id="d2069016e746">Â </th>
+</tr>
+
+</thead>
+
+<tbody class="tbody">
+<tr><td class="entry" valign="top" headers="d2069016e744 d2069016e746 ">Cancellation point</td>
+<td class="entry" valign="top" headers="d2069016e744 d2069016e746 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2069016e744 d2069016e746 ">Interrupt handler</td>
+<td class="entry" valign="top" headers="d2069016e744 d2069016e746 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2069016e744 d2069016e746 ">Signal handler</td>
+<td class="entry" valign="top" headers="d2069016e744 d2069016e746 ">Yes</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2069016e744 d2069016e746 ">Thread</td>
+<td class="entry" valign="top" headers="d2069016e744 d2069016e746 ">Yes</td>
+</tr>
+
+</tbody>
+
+</table>
+</div>
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="related-links"><div class="relinfo relconcepts"><strong>Related concepts</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.resmgr/topic/messages_HANDLING_ionotify.html" title="Handling ionotify(), poll(), and select() (Writing a Resource Manager)">Handling ionotify(), poll(), and select() (Writing a Resource Manager)</a></div>
+</div>
+<div class="relinfo relref"><strong>Related reference</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/m/mq_notify.html" title="Ask to be notified when there's a message in the queue">mq_notify()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/m/msgregisterevent.html" title="Register a secure event">MsgRegisterEvent(), MsgRegisterEvent_r()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/p/poll.html" title="Multiplex input/output over a set of file descriptors">poll()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/s/select.html" title="Check for files that are ready for reading or writing or have an exceptional condition pending">select(), pselect()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/s/sigevent.html" title="Structure that describes an event">sigevent</a></div>
+</div>
+</div><div class="navfooter"><!---->
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-i.html" title="I"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">I</span></a></span>  </div>
+</body>
+</html>

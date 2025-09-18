@@ -1,0 +1,848 @@
+
+<!DOCTYPE html
+  PUBLIC "" "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />        
+      <meta name="copyright" content="(C) Copyright 2005" /><meta name="DC.rights.owner" content="(C) Copyright 2005" /><meta name="DC.Type" content="reference" /><meta name="DC.Title" content="iofunc_notify()" /><meta name="abstract" content="Add, poll, or remove a notification handler" /><meta name="description" content="Add, poll, or remove a notification handler" /><meta name="indexterms" content="iofunc_notify()" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-i.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.resmgr/topic/messages_HANDLING_ionotify.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.getting_started/topic/s1_resmgr.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/i/iofunc_notify_remove.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/i/iofunc_notify_trigger.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/i/ionotify.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/p/poll.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/r/_resmgr_nparts.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/s/select.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/s/sigevent.html" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="iofunc_notify" /><meta name="DC.Language" content="en-us" /><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/commonltr.css"><!----></link><title>iofunc_notify()</title><link rel="canonical" type="html" href="https://www.qnx.com/developers/docs/7.1/#com.qnx.doc.neutrino.lib_ref/" /><!--  Generated with Oxygen version 18.1, build number 2017020917.  --><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/webhelp_topic.css"><!----></link><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/skins/skin.css" /><script type="text/javascript"><!--
+            
+            var prefix = "../../../index.html";
+            
+            --></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-1.11.3.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.cookie.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-ui.custom.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.highlight-3.js"><!----></script><script type="text/javascript" charset="utf-8" src="../../../oxygen-webhelp/resources/js/webhelp_topic.js"><!----></script><script type="text/javascript"> var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-27400275-1']); _gaq.push(['_setDomainName', 'www.qnx.com']);_gaq.push(['_setAllowLinker', true]);_gaq.push(['_trackPageview']);(function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script></head>
+<body onload="highlightSearchTerm()" class="frmBody" id="iofunc_notify">
+<table class="nav"><tbody><tr><td colspan="2"><div id="printlink"><button onClick="window.print()" title="Print this page" aria-label="Print this page"></button></div><div id="permalink"><a href="#" title="Link to this page"></a></div></td></tr><tr><td style="width:75%;"><span class="topic_breadcrumb_links"><span class="topic_breadcrumb_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-i.html" title="I">I</a></span></span></td><td><span id="topic_navigation_links" class="navheader">
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-i.html" title="I"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">I</span></a></span>  </span></td></tr></tbody></table>
+
+
+<h1 class="title topictitle1"><span class="keyword apiname">iofunc_notify()</span></h1>
+<table width="100%"><tbody><tr><td align="left"><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">QNX SDP</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">7.1</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">C Library Reference</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">API</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">Developer</button></td><td align="right"><span style="margin:0px 5px; font-size:0.9em;">Updated: October 28, 2024</span></td></tr></tbody></table>
+
+
+<div class="body refbody"><p class="shortdesc"><em class="ph i">Add, poll, or remove a notification handler</em></p>
+
+
+<div class="section refsyn"><h2 class="title sectiontitle">Synopsis:</h2>
+
+
+<pre class="pre codeblock">
+#include &lt;sys/iofunc.h&gt;
+
+int iofunc_notify( resmgr_context_t *<var class="keyword varname">ctp</var>,
+                   io_notify_t *<var class="keyword varname">msg</var>,
+                   iofunc_notify_t *<var class="keyword varname">nop</var>,
+                   int <var class="keyword varname">trig</var>,
+                   const int *<var class="keyword varname">notifycounts</var>,
+                   int *<var class="keyword varname">armed</var> );
+</pre>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Arguments:</h2>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><var class="keyword varname">ctp</var></dt>
+
+<dd class="dd">A pointer to a
+  <a class="xref" href="../r/resmgr_context_t.html" title="Context information that's passed between resource-manager functions"><span class="keyword dtype">resmgr_context_t</span></a>
+  structure that the resource-manager library uses to pass context information
+  between functions.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">msg</var></dt>
+
+<dd class="dd">A pointer to the
+  <a class="xref" href="#iofunc_notify__io_notify_t"><span class="keyword dtype">io_notify_t</span></a>
+  structure that contains
+  the message that the resource manager received; see below.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">nop</var></dt>
+
+<dd class="dd">An array of three
+  <a class="xref" href="#iofunc_notify__iofunc_notify_t"><span class="keyword dtype">iofunc_notify_t</span></a> 
+  structures that represent, in order, the input, output, and out-of-band notification 
+  lists; see below.
+
+
+  <p class="p">
+  Generally, this structure is maintained by the resource manager
+  within an extended attributes structure.
+  </p>
+
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">trig</var></dt>
+
+<dd class="dd">A bitmask indicating which sources are currently satisfied and could
+  cause a trigger to occur. This bitmask is any combination of
+  <span class="keyword const">_NOTIFY_COND_INPUT</span>, <span class="keyword const">_NOTIFY_COND_OUTPUT</span>, and 
+  <span class="keyword const">_NOTIFY_COND_OBAND</span>.
+
+
+
+  <p class="p">
+  You typically set this value, based on the conditions in effect at
+  the time of the call.
+  </p>
+
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">notifycounts</var></dt>
+
+<dd class="dd"><span class="keyword const">NULL</span>, or an array of three integers representing, in order,
+  the number of elements that must be present in the input, output, and out-of-band queues
+  in order for the event to be triggered.
+  Note that if any condition is met, nothing is armed.
+  Only if none of the conditions is met does the
+  event get armed in accordance with the <var class="keyword varname">notifycounts</var> parameter. If this
+  parameter is <span class="keyword const">NULL</span>, a value of 1 is assumed for all counts.
+
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">armed</var></dt>
+
+<dd class="dd"><span class="keyword const">NULL</span>, or a pointer to a location where the function can 
+  store a 1 to indicate that a notification entry is armed, or a 0 otherwise.
+
+
+</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Library:</h2>
+
+
+<p class="p"><span class="ph filepath">libc</span></p>
+
+
+<p class="p">Use the <span class="keyword option">-l c</span> option to
+<a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/q/qcc.html"><span class="keyword cmdname">qcc</span></a>
+to link against this library.
+This library is usually included automatically.
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Description:</h2>
+
+
+<p class="p">
+
+
+The POSIX layer helper function <span class="keyword apiname">iofunc_notify()</span> is used by a
+resource manager to implement notification.
+</p>
+
+
+<p class="p">
+This routine examines the message that the resource manager received (passed
+in the <var class="keyword varname">msg</var> argument) and performs one of the following actions
+requested by the client code:
+</p>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><span class="keyword const">_NOTIFY_ACTION_EDGEARM</span></dt>
+
+<dd class="dd">Conditions are considered as met only if a change occurs since the last call to
+  <samp class="ph codeph">ionotify(..., _NOTIFY_ACTION_EDGEARM, ...)</samp>.
+  Met conditions are returned; a notification is armed for unmet conditions.
+  
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">_NOTIFY_ACTION_CONDARM</span></dt>
+
+<dd class="dd">If the conditions aren't met, arm the event and return <span class="keyword const">EAGAIN</span>;
+  if the conditions are met, return a one-part IOV with the <var class="keyword varname">flags</var>
+  field set to indicate which conditions are available.
+  
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">_NOTIFY_ACTION_POLL</span></dt>
+
+<dd class="dd">Return a one-part IOV with the <var class="keyword varname">flags</var> field set to indicate
+  which conditions are available.
+  The caller should return 
+  (<a class="xref" href="../r/_resmgr_nparts.html" title="Indicate how many parts from the ctp-&gt;iov structure to return to the client"><span class="keyword apiname">_RESMGR_NPARTS</span></a>(1))
+  to the resource manager library, which returns a one-part
+  message to the client.
+  
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">_NOTIFY_ACTION_POLLARM</span></dt>
+
+<dd class="dd">Similar to <span class="keyword const">_NOTIFY_ACTION_POLL</span>, with the
+  additional characteristic of arming the event if none of the
+  conditions is met.
+  
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">_NOTIFY_ACTION_TRANARM</span></dt>
+
+<dd class="dd">For each of the sources specified, create a notification entry
+  and store the client's <span class="keyword dtype">sigevent</span> structure in it.
+  Note that only one transition can be armed at a time <em class="ph i">per device</em>.
+  If the client specifies an event of <span class="keyword const">SIGEV_NONE</span>, the
+  action is to disarm.
+  When the event is triggered, the notification is automatically disarmed.
+  
+</dd>
+
+
+
+</dl>
+
+
+<p class="p" id="iofunc_notify__io_notify_t"><strong class="ph b"><span class="keyword dtype">io_notify_t</span> structure</strong></p>
+
+
+<p class="p">
+
+
+
+The <span class="keyword dtype">io_notify_t</span> structure holds the <span class="keyword const">_IO_NOTIFY</span> or <span class="keyword const">_IO_NOTIFY64</span>
+message received by the resource manager:
+</p>
+
+
+<pre class="pre codeblock">
+struct _io_notify {
+    uint16_t                    type;
+    uint16_t                    combine_len;
+    int32_t                     action;
+    int32_t                     flags;
+    struct __sigevent32         event;
+
+    /* The fields `mgr` to `timo` are only valid if (flags &amp; _NOTIFY_COND_EXTEN)
+     * The full header must be present regardless of the flags. */
+    int32_t                     mgr[2];    /* For use by manager */
+    int32_t                     flags_extra_mask;
+    int32_t                     flags_exten;
+    int32_t                     nfds;
+    int32_t                     fd_first;
+    int32_t                     nfds_ready;
+    int64_t                     timo;
+    /* struct pollfd            fds[nfds]; */
+};
+
+struct _io_notify64 {
+    uint16_t                    type;
+    uint16_t                    combine_len;
+    int32_t                     action;
+    int32_t                     flags;
+    struct __sigevent32         old_event;
+
+    /* The fields `mgr` to `timo` are only valid if (flags &amp; _NOTIFY_COND_EXTEN)
+     * The full header must be present regardless of the flags. */
+    int32_t                     mgr[2];    /* For use by manager */
+    int32_t                     flags_extra_mask;
+    int32_t                     flags_exten;
+    int32_t                     nfds;
+    int32_t                     fd_first;
+    int32_t                     nfds_ready;
+    int64_t                     timo;
+    union {
+        struct __sigevent32     event32;
+        struct __sigevent64     event64;
+    };
+    /* struct pollfd            fds[nfds]; */
+};
+
+struct _io_notify_reply {
+    uint32_t                    zero;
+    uint32_t                    flags;   /* actions above */
+    int32_t                     flags2;  /* flags above */
+    struct __sigevent32         event;
+
+    /* Following fields only updated by new managers (if valid) */
+    int32_t                     mgr[2];    /* For use by manager */
+    int32_t                     flags_extra_mask;
+    int32_t                     flags_exten;
+    int32_t                     nfds;
+    int32_t                     fd_first;
+    int32_t                     nfds_ready;
+    int64_t                     timo;
+    /* struct pollfd            fds[nfds]; */
+};
+
+struct _io_notify_reply64 {
+    uint32_t                    zero;
+    uint32_t                    flags;  /* actions */
+    int32_t                     flags2; /* flags above */
+    struct __sigevent32         old_event;
+
+    /* Following fields only updated by new managers (if valid) */
+    int32_t                     mgr[2];    /* For use by manager */
+    int32_t                     flags_extra_mask;
+    int32_t                     flags_exten;
+    int32_t                     nfds;
+    int32_t                     fd_first;
+    int32_t                     nfds_ready;
+    int64_t                     timo;
+    union {
+        struct __sigevent32     event32;
+        struct __sigevent64     event64;
+    };
+    /* struct pollfd            fds[nfds]; */
+};
+
+typedef union {
+    struct _io_notify           i;
+    struct _io_notify64         i64;
+    struct _io_notify_reply     o;
+    struct _io_notify_reply64   o64;
+} io_notify_t;
+</pre>
+
+
+<p class="p">
+The I/O message structures are unions of an input message (coming to the
+resource manager) and an output or reply message (going back to the client).
+</p>
+
+
+<p class="p">
+The <var class="keyword varname">i</var> member (of type <span class="keyword dtype">_io_notify</span>) and
+the <var class="keyword varname">i64</var> member (of type <span class="keyword dtype">_io_notify64</span>)
+contain the following members:
+</p>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><var class="keyword varname">type</var></dt>
+
+<dd class="dd"><span class="keyword const">_IO_NOTIFY</span> or <span class="keyword const">_IO_NOTIFY64</span>.</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">combine_len</var></dt>
+
+<dd class="dd">If the message is a combine message, <span class="keyword const">_IO_COMBINE_FLAG</span>
+  is set in this member. For more information, see the
+  <a class="xref" href="../../../com.qnx.doc.neutrino.resmgr/topic/combine.html">Combine Messages</a> chapter of <cite class="cite">Writing a Resource Manager</cite>.
+  
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">action</var></dt>
+
+<dd class="dd">One of the following values that were described above:
+<ul class="ul">
+  <li class="li"><span class="keyword const">_NOTIFY_ACTION_CONDARM</span></li>
+
+  <li class="li"><span class="keyword const">_NOTIFY_ACTION_EDGEARM</span></li>
+
+  <li class="li"><span class="keyword const">_NOTIFY_ACTION_POLL</span></li>
+
+  <li class="li"><span class="keyword const">_NOTIFY_ACTION_POLLARM</span></li>
+
+  <li class="li"><span class="keyword const">_NOTIFY_ACTION_TRANARM</span></li>
+
+</ul>
+
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">flags</var></dt>
+
+<dd class="dd">One of the following settings:
+
+  <ul class="ul">
+  <li class="li"><span class="keyword const">_NOTIFY_COND_INPUT</span> â this condition is met when
+    there are one or more units of input data available 
+    (i.e., clients can now issue reads). 
+    
+  </li>
+
+
+  <li class="li"><span class="keyword const">_NOTIFY_COND_OUTPUT</span> â
+    this condition is met when there's room in the output buffer 
+    for one or more units of data (i.e., clients can now issue writes).
+    
+  </li>
+
+
+  <li class="li"><span class="keyword const">_NOTIFY_COND_OBAND</span> â
+    the condition is met when one or more units of out-of-band data are available.
+    
+  </li>
+
+
+  <li class="li"><span class="keyword const">_NOTIFY_COND_EXTEN</span> â the conditions are defined with the extended flags
+    in the <var class="keyword varname">flags_exten</var> member; this is used internally.
+  </li>
+
+
+  </ul>
+
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">mgr</var>[2]</dt>
+
+<dd class="dd">For use by the resource manager.
+  <div class="note note"><span class="notetitle">Note:</span> This field and the ones onwards are valid only if the <span class="keyword const">_NOTIFY_COND_EXTEN</span>
+    flag is set in <var class="keyword varname">flags</var>.</div>
+
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">flags_extra_mask</var></dt>
+
+<dd class="dd">A mask for removing the extra flags from the <var class="keyword varname">flags</var> member.</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">flags_exten</var></dt>
+
+<dd class="dd">A bitset of the extended <span class="keyword const">_NOTIFY_CONDE_*</span> flags; used internally.
+
+
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">nfds</var></dt>
+
+<dd class="dd">The number of entries in the array of <span class="keyword dtype">pollfd</span> structures that follows the
+  message.</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">fd_first</var></dt>
+
+<dd class="dd">The index of the first entry in the array of <span class="keyword dtype">pollfd</span> structures that has
+  a non-negative file descriptor.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">nfds_ready</var></dt>
+
+<dd class="dd">The number of file descriptors that are ready.</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">timo</var></dt>
+
+<dd class="dd">The time-out, in nanoseconds.</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">event32</var> or <var class="keyword varname">event64</var></dt>
+
+<dd class="dd">A pointer to a
+  <a class="xref" href="../s/sigevent.html" title="Structure that describes an event"><span class="keyword dtype">sigevent</span></a>
+  structure that defines the event that the resource manager is to deliver
+  once a condition is met.
+</dd>
+
+
+
+</dl>
+
+
+<p class="p">
+As indicated by the comment, if <span class="keyword const"> _NOTIFY_COND_EXTEN</span> is set in
+<var class="keyword varname">flags</var>, the message is followed by an array of <span class="keyword dtype">pollfd</span> structures.
+For more information about this structure, see
+<a class="xref" href="../p/poll.html" title="Multiplex input/output over a set of file descriptors"><span class="keyword apiname">poll()</span></a>.
+</p>
+
+
+<p class="p">
+The <var class="keyword varname">o</var> member (of type <span class="keyword dtype">_io_notify_reply</span>) and
+the <var class="keyword varname">o64</var> member (of type <span class="keyword dtype">_io_notify_reply64</span>)
+contain the following members:
+</p>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><var class="keyword varname">flags</var></dt>
+
+<dd class="dd">Which of the conditions were met; see the <var class="keyword varname">flags</var> field for
+  <span class="keyword dtype">_io_notify</span> or <span class="keyword dtype">_io_notify64</span>, above.
+</dd>
+
+
+
+</dl>
+
+
+<p class="p">
+This structure contains other fields that aren't updated by this function.
+It also includes updated copies of the extended fields, that is,
+<var class="keyword varname">mgr</var>[2] to <var class="keyword varname">timo</var>. 
+If <span class="keyword const"> _NOTIFY_COND_EXTEN</span> is set in <var class="keyword varname">flags</var>,
+the message is followed by an array of <span class="keyword dtype">pollfd</span> structures.
+</p>
+
+
+<p class="p" id="iofunc_notify__iofunc_notify_t"><strong class="ph b"><span class="keyword dtype">iofunc_notify_t</span> structure</strong></p>
+
+
+<p class="p">
+
+The <span class="keyword dtype">iofunc_notify_t</span> structure is defined in
+<span class="ph filepath">&lt;sys/iofunc.h&gt;</span> as follows:
+</p>
+
+
+<pre class="pre codeblock">
+typedef struct _iofunc_notify {
+    int                         cnt;
+    struct _iofunc_notify_event *list;
+} iofunc_notify_t;
+</pre>
+
+
+<p class="p">
+Its members include:
+</p>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><var class="keyword varname">cnt</var></dt>
+
+<dd class="dd">The smallest <var class="keyword varname">cnt</var> member in the list; see below.</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">list</var></dt>
+
+<dd class="dd">A pointer to a linked list of <span class="keyword dtype">iofunc_notify_event_t</span> structures that represent one
+  of the input, output, and out-of-band notification lists.</dd>
+
+
+
+</dl>
+
+
+<div class="cautiontitle">CAUTION:</div><div class="note caution">
+To avoid race conditions in multi-threaded server processes, you must serialize access to each
+<span class="keyword dtype">iofunc_notify_t</span> structure. For more information, see the note about
+<a class="xref" href="../../../com.qnx.doc.neutrino.resmgr/topic/messages_HANDLING_ionotify.html#HANDLING_ionotify__iofunc_notify_t">locking <span class="keyword dtype">iofunc_notify_t</span> structures</a> 
+in <span class="q">&#147;Handling <span class="keyword apiname">ionotify()</span>, <span class="keyword apiname">poll()</span>, and <span class="keyword apiname">select()</span>&#148;</span>
+in <cite class="cite">Writing a Resource Manager</cite>.
+</div>
+
+
+<p class="p">
+The <span class="keyword dtype">iofunc_notify_event_t</span> structure is defined as:
+</p>
+
+
+<pre class="pre codeblock">
+typedef struct _iofunc_notify_event {
+    struct _iofunc_notify_event *next;
+    int                         rcvid;
+    int                         scoid;
+    int                         cnt;
+    struct __sigevent32         old_event;
+    unsigned                    flags;
+    int                         coid;
+    union {
+       struct sigevent          event;
+       struct __sigevent32      event32;
+       struct __sigevent64      event64;
+    };
+} iofunc_notify_event_t;
+</pre>
+
+
+<p class="p">
+Its members include:
+</p>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><var class="keyword varname">next</var></dt>
+
+<dd class="dd">A pointer to the next element in the list.</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">rcvid</var></dt>
+
+<dd class="dd">The receive ID of the client to notify.</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">scoid</var></dt>
+
+<dd class="dd">The server connection ID.</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">cnt</var></dt>
+
+<dd class="dd">The number of bytes available.
+  Some clients, such as <span class="keyword cmdname">io-char</span>, may want a sufficiently large
+  amount of data to be available before they access it.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">old_event</var></dt>
+
+<dd class="dd">Maintained for backwards compatibility.</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">flags</var></dt>
+
+<dd class="dd">A bitwise OR of zero or more of the following:
+
+  <ul class="ul">
+  <li class="li"><span class="keyword const">_NOTIFY_COND_EXTEN</span>, plus any extended (<span class="keyword const">_NOTIFY_CONDE_*</span>) bits; used internally</li>
+
+  <li class="li"><span class="keyword const">_NOTIFY_EDGEEVENT</span> â an edge condition is being masked for
+    <span class="keyword const">_NOTIFY_ACTION_EDGEARM</span>
+    
+  </li>
+
+  </ul>
+
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">coid</var></dt>
+
+<dd class="dd">The connection ID.</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">event</var></dt>
+
+<dd class="dd">A pointer to a
+  <a class="xref" href="../s/sigevent.html" title="Structure that describes an event"><span class="keyword dtype">sigevent</span></a>
+  structure that defines the event that the resource manager is to deliver
+  once a condition is met.
+</dd>
+
+
+
+</dl>
+
+
+<p class="p">
+The <span class="ph filepath">sys/iofunc.h</span> file also defines the following macros
+that work with the arrays of <span class="keyword dtype">iofunc_notify_t</span> structures:
+</p>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><samp class="ph codeph">#define IOFUNC_NOTIFY_DISARM(__nop, __index) ...</samp></dt>
+
+<dd class="dd">Disarm the list specified by <var class="keyword varname">__index</var> in <var class="keyword varname">__nop</var>.
+  
+</dd>
+
+
+
+
+<dt class="dt dlterm"><samp class="ph codeph">#define IOFUNC_NOTIFY_INIT(__nop) ...</samp></dt>
+
+<dd class="dd">Initialize the three lists in <var class="keyword varname">__nop</var>.
+  
+</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Returns:</h2>
+
+
+<dl class="dl" compact="compact">
+
+<dt class="dt dlterm">-1</dt>
+
+<dd class="dd">Success; the resource manager library should return a one-part IOV to
+  the client.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EAGAIN</span></dt>
+
+<dd class="dd">The action was <span class="keyword const">_NOTIFY_ACTION_CONDARM</span> and the conditions weren't met.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EBUSY</span></dt>
+
+<dd class="dd">A notification was already armed for this resource; this library function
+  enforces a restriction of one per resource.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EINVAL</span></dt>
+
+<dd class="dd">An invalid action was specified in <var class="keyword varname">msg</var>.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">ENOMEM</span></dt>
+
+<dd class="dd">There wasn't enough memory available to create an <span class="keyword dtype">iofunc_notify_event_t</span> structure.</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Examples:</h2>
+
+
+<p class="p">
+See
+<a class="xref" href="../../../com.qnx.doc.neutrino.resmgr/topic/about.html"><em class="ph i">Writing a Resource Manager</em></a>.
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Classification:</h2>
+
+<p class="p"><a class="xref" href="../summary.html#summary__CLASSIFICATION">QNX Neutrino</a></p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+<thead class="thead" align="left">
+<tr><th class="entry" valign="top" id="d2042234e1048">Safety:</th>
+<th class="entry" valign="top" id="d2042234e1050">Â </th>
+</tr>
+
+</thead>
+
+<tbody class="tbody">
+<tr><td class="entry" valign="top" headers="d2042234e1048 d2042234e1050 ">Cancellation point</td>
+<td class="entry" valign="top" headers="d2042234e1048 d2042234e1050 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2042234e1048 d2042234e1050 ">Interrupt handler</td>
+<td class="entry" valign="top" headers="d2042234e1048 d2042234e1050 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2042234e1048 d2042234e1050 ">Signal handler</td>
+<td class="entry" valign="top" headers="d2042234e1048 d2042234e1050 ">Yes</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2042234e1048 d2042234e1050 ">Thread</td>
+<td class="entry" valign="top" headers="d2042234e1048 d2042234e1050 ">Yes</td>
+</tr>
+
+</tbody>
+
+</table>
+</div>
+
+</div>
+
+
+</div>
+
+
+<div class="related-links"><div class="relinfo relconcepts"><strong>Related concepts</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.resmgr/topic/messages_HANDLING_ionotify.html" title="Handling ionotify(), poll(), and select() (Writing a Resource Manager)">Handling ionotify(), poll(), and select() (Writing a Resource Manager)</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.getting_started/topic/s1_resmgr.html" title="Resource Managers (Getting Started with QNX Neutrino)">Resource Managers (Getting Started with <span class="keyword">QNX Neutrino</span>)</a></div>
+</div>
+<div class="relinfo relref"><strong>Related reference</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/i/iofunc_notify_remove.html" title="Remove notification entries from a list">iofunc_notify_remove(), iofunc_notify_remove_strict()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/i/iofunc_notify_trigger.html" title="Send notifications to queued clients">iofunc_notify_trigger(), iofunc_notify_trigger_strict()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/i/ionotify.html" title="Arm a resource manager">ionotify()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/p/poll.html" title="Multiplex input/output over a set of file descriptors">poll()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/r/_resmgr_nparts.html" title="Indicate how many parts from the ctp-&gt;iov structure to return to the client">_RESMGR_NPARTS()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/s/select.html" title="Check for files that are ready for reading or writing or have an exceptional condition pending">select(), pselect()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/s/sigevent.html" title="Structure that describes an event">sigevent</a></div>
+</div>
+</div><div class="navfooter"><!---->
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-i.html" title="I"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">I</span></a></span>  </div>
+</body>
+</html>

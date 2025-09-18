@@ -1,0 +1,699 @@
+
+<!DOCTYPE html
+  PUBLIC "" "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />        
+      <meta name="copyright" content="(C) Copyright 2005" /><meta name="DC.rights.owner" content="(C) Copyright 2005" /><meta name="DC.Type" content="reference" /><meta name="DC.Title" content="InterruptAttach(), InterruptAttach_r()" /><meta name="abstract" content="Attach an Interrupt Service Routine (ISR) to an interrupt source" /><meta name="description" content="Attach an Interrupt Service Routine (ISR) to an interrupt source" /><meta name="indexterms" content="InterruptAttach(), InterruptAttach_r()" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-i.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.prog/topic/inthandler.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.getting_started/topic/s1_inter.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/i/interruptattacharray.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/i/interruptattachevent.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/i/interruptdetach.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/i/interruptdisable.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/i/interruptenable.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/i/interruptlock.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/i/interruptmask.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/i/interruptunlock.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/i/interruptunmask.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/i/interruptwait.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/m/mlock.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/p/procmgr_ability.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/s/sigevent.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/t/traceevent.html" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="interruptattach" /><meta name="DC.Language" content="en-us" /><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/commonltr.css"><!----></link><title>InterruptAttach(), InterruptAttach_r()</title><link rel="canonical" type="html" href="https://www.qnx.com/developers/docs/7.1/#com.qnx.doc.neutrino.lib_ref/" /><!--  Generated with Oxygen version 18.1, build number 2017020917.  --><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/webhelp_topic.css"><!----></link><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/skins/skin.css" /><script type="text/javascript"><!--
+            
+            var prefix = "../../../index.html";
+            
+            --></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-1.11.3.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.cookie.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-ui.custom.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.highlight-3.js"><!----></script><script type="text/javascript" charset="utf-8" src="../../../oxygen-webhelp/resources/js/webhelp_topic.js"><!----></script><script type="text/javascript"> var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-27400275-1']); _gaq.push(['_setDomainName', 'www.qnx.com']);_gaq.push(['_setAllowLinker', true]);_gaq.push(['_trackPageview']);(function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script></head>
+<body onload="highlightSearchTerm()" class="frmBody" id="interruptattach">
+<table class="nav"><tbody><tr><td colspan="2"><div id="printlink"><button onClick="window.print()" title="Print this page" aria-label="Print this page"></button></div><div id="permalink"><a href="#" title="Link to this page"></a></div></td></tr><tr><td style="width:75%;"><span class="topic_breadcrumb_links"><span class="topic_breadcrumb_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-i.html" title="I">I</a></span></span></td><td><span id="topic_navigation_links" class="navheader">
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-i.html" title="I"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">I</span></a></span>  </span></td></tr></tbody></table>
+
+
+<h1 class="title topictitle1"><span class="keyword apiname">InterruptAttach()</span>, <span class="keyword apiname">InterruptAttach_r()</span></h1>
+<table width="100%"><tbody><tr><td align="left"><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">QNX SDP</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">7.1</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">C Library Reference</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">API</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">Developer</button></td><td align="right"><span style="margin:0px 5px; font-size:0.9em;">Updated: October 28, 2024</span></td></tr></tbody></table>
+
+
+
+<div class="body refbody"><p class="shortdesc"><em class="ph i">Attach an Interrupt Service Routine (ISR) to an interrupt source</em></p>
+
+
+<div class="section refsyn"><h2 class="title sectiontitle">Synopsis:</h2>
+
+<pre class="pre codeblock">
+#include &lt;sys/neutrino.h&gt;
+
+int InterruptAttach( int <var class="keyword varname">intr</var>,
+       const struct sigevent * (* <var class="keyword varname">handler</var>)(void *, int),
+       const void * <var class="keyword varname">area</var>,
+       int <var class="keyword varname">size</var>,
+       unsigned <var class="keyword varname">flags</var> );
+
+int InterruptAttach_r( int <var class="keyword varname">intr</var>,
+       const struct sigevent * (* <var class="keyword varname">handler</var>)(void *, int),
+       const void * <var class="keyword varname">area</var>,
+       int <var class="keyword varname">size</var>,
+       unsigned <var class="keyword varname">flags</var> );
+</pre>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Arguments:</h2>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><var class="keyword varname">intr</var></dt>
+
+<dd class="dd">The interrupt that you want to attach a handler to; see
+  <span class="q">&#147;<a class="xref" href="#interruptattach__ivn">Interrupt vector numbers</a>,&#148;</span>
+  below.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">handler</var></dt>
+
+<dd class="dd">A pointer to the handler function; see
+  <span class="q">&#147;<a class="xref" href="#interruptattach__HandlerFunction">Interrupt handler function</a>,&#148;</span>
+  below.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">area</var></dt>
+
+<dd class="dd">A pointer to a communications area in your process, or <span class="keyword const">NULL</span>
+  if you don't want a communications area.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">size</var></dt>
+
+<dd class="dd">The size of the communications area;
+  this should be 0 if <var class="keyword varname">area</var> is <span class="keyword const">NULL</span>.
+  <span class="keyword apiname">InterruptAttach()</span> currently ignores this argument.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">flags</var></dt>
+
+<dd class="dd">Flags that specify how you want to attach the interrupt handler;
+  a bitwise OR of zero or more of the following:
+
+  <ul class="ul">
+  
+  <li class="li"><span class="keyword const">_NTO_INTR_FLAGS_END</span></li>
+
+  <li class="li"><span class="keyword const">_NTO_INTR_FLAGS_NO_UNMASK</span> (QNX Neutrino 6.6 or later)</li>
+
+  <li class="li"><span class="keyword const">_NTO_INTR_FLAGS_PROCESS</span></li>
+
+  <li class="li"><span class="keyword const">_NTO_INTR_FLAGS_TRK_MSK</span></li>
+
+  <li class="li"><span class="keyword const">_NTO_INTR_FLAGS_EXCLUSIVE</span> (QNX Neutrino 7.0.4 or later)</li>
+
+  </ul>
+
+
+  <p class="p">
+  For more information, see
+  <span class="q">&#147;<a class="xref" href="#interruptattach__Flags">Flags</a>,&#148;</span>
+  below.
+  </p>
+
+</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Library:</h2>
+
+
+<p class="p"><span class="ph filepath">libc</span></p>
+
+<p class="p">Use the <span class="keyword option">-l c</span> option to
+<a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/q/qcc.html"><span class="keyword cmdname">qcc</span></a>
+to link against this library.
+This library is usually included automatically.</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Description:</h2>
+
+
+<p class="p">
+
+
+
+
+
+
+The <span class="keyword apiname">InterruptAttach()</span> and <span class="keyword apiname">InterruptAttach_r()</span>
+kernel calls attach the Interrupt Service Routine (ISR) identified by <var class="keyword varname">handler</var> 
+to the hardware interrupt specified by <var class="keyword varname">intr</var>.
+They automatically enable (i.e., unmask) the interrupt level.
+These functions are identical 
+except in the way they indicate errors; see the <a class="xref" href="#interruptattach__Returns">Returns</a> section for details.
+Attaching an ISR superlocks the process's memory (see
+<span class="q">&#147;<a class="xref" href="../../../com.qnx.doc.neutrino.sys_arch/topic/proc_Locking_memory.html">Locking memory</a>&#148;</span>
+in the <span class="q">&#147;Process Manager&#148;</span> chapter of the <cite class="cite">System Architecture</cite> guide).
+</p>
+
+
+<p class="p">
+
+Before calling either of these functions, the process must have the <span class="keyword const">PROCMGR_AID_INTERRUPT</span> 
+ability enabled.
+Otherwise the attachment fails with an error code of <span class="keyword const">EPERM</span>.
+For more information, see
+<a class="xref" href="../p/procmgr_ability.html" title="Control a process's ability to perform certain operations"><span class="keyword apiname">procmgr_ability()</span></a>.
+</p>
+
+
+<p class="p">
+On a multicore system, the interrupt handler runs on the CPU that takes
+the interrupt.
+</p>
+
+
+<p class="p">
+If the thread that attached the interrupt handler terminates without detaching the handler,
+the kernel removes it automatically.
+</p>
+
+
+
+<p class="p" id="interruptattach__ivn"><strong class="ph b">Interrupt vector numbers</strong></p>
+
+
+<p class="p">
+
+
+The interrupt values for <var class="keyword varname">intr</var> are <em class="ph i">logical interrupt vector
+numbers</em> grouped into related <span class="q">&#147;interrupt classes&#148;</span> that
+generally correspond to a particular interrupt controller on the CPU. </p>
+
+
+
+<p class="p">
+There can be additional interrupt classes defined for specific CPUs or embedded systems. 
+For the interrupt assignments for specific boards, see:
+</p>
+
+
+<ul class="ul">
+<li class="li">some <span class="ph filepath">*intr.h</span> files in the platform-specific directories under
+  <span class="ph filepath">${<span class="keyword envar">QNX_TARGET</span>}/usr/include</span></li>
+
+  
+  <li class="li">
+    the <a class="xref" href="../../../com.qnx.doc.neutrino.building/topic/startup_lib/init_intrinfo.html">
+    <span class="keyword apiname">init_intrinfo()</span></a>
+    function in the startup code of your BSP
+  </li>
+
+<li class="li">the buildfiles in the Board Support Package for your board</li>
+
+
+</ul>
+
+
+<p class="p">
+The mapping of logical interrupt vector numbers is completely dependent on
+the implementer of the startup code.
+Device drivers should generally allow runtime configuration of interrupt numbers.
+</p>
+
+
+<p class="p" id="interruptattach__HandlerFunction"><strong class="ph b">Interrupt handler function</strong></p>
+
+
+<p class="p">
+The function to call is specified by the <var class="keyword varname">handler</var> argument. 
+Its prototype is:
+</p>
+
+
+<pre class="pre codeblock">
+const struct sigevent* handler( void* <var class="keyword varname">area</var>, int <var class="keyword varname">id</var> );
+</pre>
+
+
+<p class="p">
+The arguments are:
+</p>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><var class="keyword varname">area</var></dt>
+
+<dd class="dd">The same as the <var class="keyword varname">area</var> passed to <span class="keyword apiname">InterruptAttach()</span>.
+  This pointerâwhich could be <span class="keyword const">NULL</span>âand the <var class="keyword varname">size</var> argument
+   to <span class="keyword apiname">InterruptAttach()</span> define a communications area in your process.
+  This typically is a structure containing buffers and information that the
+  handler and the process need to share. 
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">id</var></dt>
+
+<dd class="dd">The ID returned by <span class="keyword apiname">InterruptAttach()</span>.</dd>
+
+
+
+</dl>
+
+
+<p class="p">
+The handler function runs in the environment of your process.
+</p>
+
+
+<p class="p">
+Follow the following guidelines when writing your handler:
+
+</p>
+
+
+<ul class="ul">
+<li class="li">A temporary interrupt stack of limited depth is provided at interrupt time, 
+      so avoid placing large arrays or structures on the stack frame of the handler, and avoid recursion.
+      It's safe to assume that about 200 bytes of stack are available.
+      
+</li>
+
+
+<li class="li">The interrupt handler runs asynchronously with the threads in the process. 
+      Any variables modified by the handler should be declared
+      with the <samp class="ph codeph">volatile</samp> keyword and modified with interrupts
+      disabled or using atomic operations in any thread and ISR.
+</li>
+
+
+<li class="li">The interrupt handler should be kept as short as possible. 
+      If a significant amount of work needs to be done, the handler should
+      deliver an event to awaken a thread to do the work.
+</li>
+
+
+<li class="li">The handler can't call library routines that contain kernel calls <em class="ph i">except</em> for
+      <a class="xref" href="interruptdisable.html" title="Disable hardware interrupts"><span class="keyword apiname">InterruptDisable()</span></a>,
+      <a class="xref" href="interruptenable.html" title="Enable hardware interrupts"><span class="keyword apiname">InterruptEnable()</span></a>,
+      <a class="xref" href="interruptlock.html" title="Guard a critical section in an interrupt handler"><span class="keyword apiname">InterruptLock()</span></a>,
+      <a class="xref" href="interruptmask.html" title="Disable a hardware interrupt"><span class="keyword apiname">InterruptMask()</span></a>,
+      <a class="xref" href="interruptunlock.html" title="Release a critical section in an interrupt handler"><span class="keyword apiname">InterruptUnlock()</span></a>, and
+      <a class="xref" href="interruptunmask.html" title="Enable a hardware interrupt"><span class="keyword apiname">InterruptUnmask()</span></a>.
+  For a list of the functions that you can call from the interrupt handler, see the
+  <a class="xref" href="../full_safety.html">Full Safety Information</a>
+  
+  appendix.
+</li>
+
+
+<li class="li">The handler can call
+    <a class="xref" href="../t/traceevent.html" title="Control the tracing of kernel events"><span class="keyword apiname">TraceEvent()</span></a>,
+    but not all of its commands are valid; see the Caveats in its entry.
+</li>
+
+
+<li class="li">(QNX Neutrino 7.1 or later) The kernel saves and restores the FPU context on entering and leaving ISRs,
+   so it's safe to use floating-point operations in them.
+   
+</li>
+
+
+</ul>
+
+
+<p class="p">
+The handler function should return <span class="keyword const">NULL</span> or a pointer to a valid 
+<a class="xref" href="../s/sigevent.html" title="Structure that describes an event"><span class="keyword dtype">sigevent</span></a>
+  structure that the kernel delivers. The event doesn't need to be registered.
+These events are defined in <span class="ph filepath">&lt;signal.h&gt;</span>. 
+Consider the following when choosing the event type:
+</p>
+
+
+<ul class="ul">
+<li class="li">Message-driven processes that block in a receive loop using
+      <a class="xref" href="../m/msgreceivev.html" title="Wait for a message or pulse on a channel"><span class="keyword apiname">MsgReceivev()</span></a>
+      should consider using
+      <span class="keyword const">SIGEV_PULSE</span> to trigger a pulse.
+      
+</li>
+
+
+<li class="li">Threads that block at a particular point in their code and don't go
+      back to a common receive point should consider using
+      <span class="keyword const">SIGEV_INTR</span> as the event notification type and
+      <a class="xref" href="interruptwait.html" title="Wait for a hardware interrupt"><span class="keyword apiname">InterruptWait()</span></a> 
+      as the blocking call.
+      
+
+      <div class="note note"><span class="notetitle">Note:</span> 
+      The thread that calls <span class="keyword apiname">InterruptWait()</span> <em class="ph i">must</em>
+      be the one that called <span class="keyword apiname">InterruptAttach()</span>.
+      </div>
+
+
+</li>
+
+
+<li class="li">Using <span class="keyword const">SIGEV_THREAD</span> is very inefficient, because that would create a new thread
+  for every interrupt.
+  
+
+  <p class="p">
+  (QNX Neutrino 7.0.4 or later) In order to use an event of type <span class="keyword const">SIGEV_THREAD</span>,
+  your process must have the <span class="keyword const">PROCMGR_AID_SIGEV_THREAD</span> ability enabled.
+  
+  
+  </p>
+
+</li>
+
+
+<li class="li">For <span class="keyword const">SIGEV_SIGNAL</span>, <span class="keyword const">SIGEV_SIGNAL_CODE</span>, and
+  <span class="keyword const">SIGEV_SIGNAL_THREAD</span>, handling a signal using a signal handler is noticeably inefficient as compared
+  to using pulses.
+  But, delivering a signal to a thread that's blocked on <span class="keyword apiname">sigwaitinfo()</span> is actually
+  more efficient than the pulse choice, though less efficient than the <span class="keyword apiname">InterruptWait()</span> choice.
+  The advantage is in flexibility, allowing the thread to be woken up both by interrupts and by
+  other threads in the process as needed.
+  Architecturally, this lets you create a thread that's dedicated to handling hardware.
+      
+      
+      
+</li>
+
+
+<li class="li">On a multicore system, the thread that receives the event returned by the interrupt handler runs on any CPU,
+  limited only by the scheduler and the runmask.
+  If you know which CPU the handler will run on and which thread will be handling the interrupt,
+  you may wish to consider using the runmask to make sure they're the same CPU,
+  in order to reduce cache-coherency operations on data shared between the interrupt handler and the thread.
+</li>
+
+
+</ul>
+
+
+<p class="p" id="interruptattach__Flags"><strong class="ph b">Flags</strong></p>
+
+
+<p class="p">
+The <var class="keyword varname">flags</var> argument is a bitwise OR zero or more of the following values:
+</p>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><span class="keyword const">_NTO_INTR_FLAGS_END</span></dt>
+
+<dd class="dd">Put the new handler at the end of the list of existing handlers
+  (for shared interrupts) instead of the start.
+  
+
+  <p class="p">
+  The interrupt structure allows hardware interrupts to be shared. 
+  For example, if two processes take over the same physical interrupt, 
+  both handlers are invoked consecutively. 
+  When a handler attaches, it's placed in front of any existing handlers for that 
+  interrupt and is called first. 
+  You can change this behavior by setting <span class="keyword const">_NTO_INTR_FLAGS_END</span>.
+  Although the <span class="keyword">microkernel</span> allows full interrupt sharing, your hardware
+  might not.
+  
+  </p>
+
+
+  <p class="p">
+  Processor interrupts are enabled during the execution of the handler.
+  <em class="ph i">Don't</em> attempt to talk to the interrupt controller chip.
+  The operating system issues the end-of-interrupt command to the chip 
+  after processing all handlers at a given level.
+  </p>
+
+
+  <p class="p">
+  The first process to attach to an interrupt unmasks the interrupt.
+  When the last process detaches from an interrupt, the system masks it.
+  </p>
+
+
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">_NTO_INTR_FLAGS_NO_UNMASK</span></dt>
+
+<dd class="dd">(QNX Neutrino 6.6 or later) Leave the interrupt masked.
+  
+
+  <p class="p">
+  Normally, <span class="keyword apiname">InterruptAttach()</span> and <span class="keyword apiname">InterruptAttachEvent()</span> automatically
+  unmask an interrupt the first time something is attached to it.
+  If you specify <span class="keyword const">_NTO_INTR_FLAGS_NO_UNMASK</span>, the kernel leaves the interrupt masked, and you
+  must specifically call
+  <a class="xref" href="interruptunmask.html" title="Enable a hardware interrupt"><span class="keyword apiname">InterruptUnmask()</span></a>
+  to enable it.
+  </p>
+
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">_NTO_INTR_FLAGS_PROCESS</span></dt>
+
+<dd class="dd">Associate the handler with the process instead of the attaching thread.
+  The interrupt handler is removed when the process
+  exits, instead of when the attaching thread exits.
+  
+</dd>
+
+
+
+
+<dt class="dt dlterm" id="interruptattach__flags_trk_msk"><span class="keyword const">_NTO_INTR_FLAGS_TRK_MSK</span></dt>
+
+<dd class="dd">Track calls to
+  <a class="xref" href="interruptmask.html" title="Disable a hardware interrupt"><span class="keyword apiname">InterruptMask()</span></a> 
+  and
+  <a class="xref" href="interruptunmask.html" title="Enable a hardware interrupt"><span class="keyword apiname">InterruptUnmask()</span></a> 
+  to make detaching the interrupt handler safer.
+  
+
+  <p class="p">
+  The <span class="keyword const">_NTO_INTR_FLAGS_TRK_MSK</span> flag and the <var class="keyword varname">id</var>
+  argument to <span class="keyword apiname">InterruptMask()</span> and <span class="keyword apiname">InterruptUnmask()</span> let
+  the kernel track the number of times a particular interrupt handler or event
+  has been masked.
+  Then, when an application detaches from the interrupt, the
+  kernel can perform the proper number of unmasks to ensure that the interrupt
+  functions normally.
+  This is important for shared interrupt levels.
+  </p>
+
+
+  <div class="note note"><span class="notetitle">Note:</span> 
+  You should always set <span class="keyword const">_NTO_INTR_FLAGS_TRK_MSK</span>.
+  </div>
+
+</dd>
+
+
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">_NTO_INTR_FLAGS_EXCLUSIVE</span></dt>
+
+<dd class="dd">(QNX Neutrino 7.0.4 or later) Request exclusive access to the interrupt vector.
+    If another thread already called an <span class="keyword apiname">InterruptAttach*()</span> function with the same vector,
+    this kernel call fails with an <span class="keyword const">EBUSY</span> error. Similarly, if this call succeeds but another thread later 
+    calls an <span class="keyword apiname">InterruptAttach*()</span> function with the same vector, that call fails with the same error.
+</dd>
+
+
+</dl>
+
+
+
+<p class="p"><strong class="ph b">Blocking states</strong></p>
+
+
+
+
+<p class="p">
+These calls don't block.
+</p>
+
+</div>
+
+
+
+<div class="section" id="interruptattach__Returns"><h2 class="title sectiontitle">Returns:</h2>
+
+
+<p class="p">
+An interrupt function ID.
+If an error occurs:
+</p>
+
+
+<ul class="ul">
+<li class="li"><span class="keyword apiname">InterruptAttach()</span> returns -1 and sets
+    <a class="xref" href="../e/errno.html" title="Thread-local error variable"><var class="keyword varname">errno</var></a>.
+</li>
+
+
+<li class="li"><span class="keyword apiname">InterruptAttach_r()</span> returns the negative of a value from the Errors section and
+  <strong class="ph b">doesn't</strong> set <var class="keyword varname">errno</var>.
+</li>
+
+
+</ul>
+
+
+<p class="p">
+Use the function ID with the
+<a class="xref" href="interruptdetach.html" title="Detach an interrupt handler by ID"><span class="keyword apiname">InterruptDetach()</span></a>
+function to detach this interrupt handler.
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Errors:</h2>
+
+
+<dl class="dl" compact="compact">
+
+
+<dt class="dt dlterm"><span class="keyword const">EAGAIN</span></dt>
+
+<dd class="dd">All kernel interrupt entries are in use.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EFAULT</span></dt>
+
+<dd class="dd">A fault occurred when the kernel tried to access the buffers provided.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EINVAL</span></dt>
+
+<dd class="dd">The value of <var class="keyword varname">intr</var> isn't a valid interrupt number.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EPERM</span></dt>
+
+<dd class="dd">The process doesn't have the required permission; see
+  <a class="xref" href="../p/procmgr_ability.html" title="Control a process's ability to perform certain operations"><span class="keyword apiname">procmgr_ability()</span></a>.
+</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Classification:</h2>
+
+<p class="p"><a class="xref" href="../summary.html#summary__CLASSIFICATION">QNX Neutrino</a></p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+<thead class="thead" align="left">
+<tr><th class="entry" valign="top" id="d1984954e981">Safety:</th>
+<th class="entry" valign="top" id="d1984954e983">Â </th>
+</tr>
+
+</thead>
+
+<tbody class="tbody">
+<tr><td class="entry" valign="top" headers="d1984954e981 d1984954e983 ">Cancellation point</td>
+<td class="entry" valign="top" headers="d1984954e981 d1984954e983 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d1984954e981 d1984954e983 ">Interrupt handler</td>
+<td class="entry" valign="top" headers="d1984954e981 d1984954e983 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d1984954e981 d1984954e983 ">Signal handler</td>
+<td class="entry" valign="top" headers="d1984954e981 d1984954e983 ">Yes</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d1984954e981 d1984954e983 ">Thread</td>
+<td class="entry" valign="top" headers="d1984954e981 d1984954e983 ">Yes</td>
+</tr>
+
+</tbody>
+
+</table>
+</div>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Caveats:</h2>
+
+
+<p class="p">
+If you're writing a multithreaded resource manager using the <span class="keyword apiname">thread_pool_*()</span> functions,
+and the thread that has called <span class="keyword apiname">InterruptAttach()</span> is also joining the thread pool by calling
+<a class="xref" href="../t/thread_pool_create.html" title="Create a thread pool handle"><span class="keyword apiname">thread_pool_start()</span></a>
+with <span class="keyword const">POOL_FLAG_USE_SELF</span> set, then that thread must also set
+<a class="xref" href="#interruptattach__Flags"><span class="keyword const">_NTO_INTR_FLAGS_PROCESS</span></a>
+in the <var class="keyword varname">flags</var> argument when calling <span class="keyword apiname">InterruptAttach()</span>.
+If it doesn't, the thread may exit as part of the thread pool's dynamic threading behavior, and the
+interrupt handling will then be lost.
+</p>
+
+
+</div>
+
+
+</div>
+
+
+<div class="related-links"><div class="relinfo relconcepts"><strong>Related concepts</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.prog/topic/inthandler.html" title="Writing an Interrupt Handler (QNX Neutrino Programmer's Guide)">Writing an Interrupt Handler (<span class="keyword">QNX Neutrino</span> Programmer's Guide)</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.getting_started/topic/s1_inter.html" title="Interrupts (Getting Started with QNX Neutrino)">Interrupts (Getting Started with <span class="keyword">QNX Neutrino</span>)</a></div>
+</div>
+<div class="relinfo relref"><strong>Related reference</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/i/interruptattacharray.html" title="Attach an Interrupt Service Routine (ISR) that returns an array of sigevents to an interrupt source">InterruptAttachArray(), InterruptAttachArray_r()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/i/interruptattachevent.html" title="Attach an event to an interrupt source">InterruptAttachEvent(), InterruptAttachEvent_r()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/i/interruptdetach.html" title="Detach an interrupt handler by ID">InterruptDetach(), InterruptDetach_r()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/i/interruptdisable.html" title="Disable hardware interrupts">InterruptDisable()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/i/interruptenable.html" title="Enable hardware interrupts">InterruptEnable()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/i/interruptlock.html" title="Guard a critical section in an interrupt handler">InterruptLock()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/i/interruptmask.html" title="Disable a hardware interrupt">InterruptMask()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/i/interruptunlock.html" title="Release a critical section in an interrupt handler">InterruptUnlock()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/i/interruptunmask.html" title="Enable a hardware interrupt">InterruptUnmask()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/i/interruptwait.html" title="Wait for a hardware interrupt">InterruptWait(), InterruptWait_r()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/m/mlock.html" title="Lock a range of process address space in physical memory">mlock()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/p/procmgr_ability.html" title="Control a process's ability to perform certain operations">procmgr_ability()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/s/sigevent.html" title="Structure that describes an event">sigevent</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/t/traceevent.html" title="Control the tracing of kernel events">TraceEvent()</a></div>
+</div>
+</div><div class="navfooter"><!---->
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-i.html" title="I"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">I</span></a></span>  </div>
+</body>
+</html>

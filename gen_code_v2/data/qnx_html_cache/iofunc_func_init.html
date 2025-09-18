@@ -1,0 +1,258 @@
+
+<!DOCTYPE html
+  PUBLIC "" "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />        
+      <meta name="copyright" content="(C) Copyright 2005" /><meta name="DC.rights.owner" content="(C) Copyright 2005" /><meta name="DC.Type" content="reference" /><meta name="DC.Title" content="iofunc_func_init()" /><meta name="abstract" content="Initialize the default POSIX-layer function tables" /><meta name="description" content="Initialize the default POSIX-layer function tables" /><meta name="indexterms" content="iofunc_func_init()" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-i.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.resmgr/topic/about.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.getting_started/topic/s1_resmgr.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/i/iofunc_attr_init.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/r/resmgr_attach.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/r/resmgr_connect_funcs_t.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/r/resmgr_io_funcs_t.html" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="iofunc_func_init" /><meta name="DC.Language" content="en-us" /><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/commonltr.css"><!----></link><title>iofunc_func_init()</title><link rel="canonical" type="html" href="https://www.qnx.com/developers/docs/7.1/#com.qnx.doc.neutrino.lib_ref/" /><!--  Generated with Oxygen version 18.1, build number 2017020917.  --><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/webhelp_topic.css"><!----></link><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/skins/skin.css" /><script type="text/javascript"><!--
+            
+            var prefix = "../../../index.html";
+            
+            --></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-1.11.3.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.cookie.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-ui.custom.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.highlight-3.js"><!----></script><script type="text/javascript" charset="utf-8" src="../../../oxygen-webhelp/resources/js/webhelp_topic.js"><!----></script><script type="text/javascript"> var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-27400275-1']); _gaq.push(['_setDomainName', 'www.qnx.com']);_gaq.push(['_setAllowLinker', true]);_gaq.push(['_trackPageview']);(function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script></head>
+<body onload="highlightSearchTerm()" class="frmBody" id="iofunc_func_init">
+<table class="nav"><tbody><tr><td colspan="2"><div id="printlink"><button onClick="window.print()" title="Print this page" aria-label="Print this page"></button></div><div id="permalink"><a href="#" title="Link to this page"></a></div></td></tr><tr><td style="width:75%;"><span class="topic_breadcrumb_links"><span class="topic_breadcrumb_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-i.html" title="I">I</a></span></span></td><td><span id="topic_navigation_links" class="navheader">
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-i.html" title="I"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">I</span></a></span>  </span></td></tr></tbody></table>
+
+
+<h1 class="title topictitle1"><span class="keyword apiname">iofunc_func_init()</span></h1>
+<table width="100%"><tbody><tr><td align="left"><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">QNX SDP</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">7.1</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">C Library Reference</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">API</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">Developer</button></td><td align="right"><span style="margin:0px 5px; font-size:0.9em;">Updated: October 28, 2024</span></td></tr></tbody></table>
+
+
+<div class="body refbody"><p class="shortdesc"><em class="ph i">Initialize the default POSIX-layer function tables</em></p>
+
+
+<div class="section refsyn"><h2 class="title sectiontitle">Synopsis:</h2>
+
+<pre class="pre codeblock">
+#include &lt;sys/iofunc.h&gt;
+
+void iofunc_func_init(
+         unsigned <var class="keyword varname">nconnect</var>,
+         resmgr_connect_funcs_t *<var class="keyword varname">connect</var>,
+         unsigned <var class="keyword varname">nio</var>,
+         resmgr_io_funcs_t *<var class="keyword varname">io</var> );
+</pre>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Arguments:</h2>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><var class="keyword varname">nconnect</var></dt>
+
+<dd class="dd">The number of entries in the <var class="keyword varname">connect</var> table that you want to fill.
+  Typically, you pass <span class="keyword const">_RESMGR_CONNECT_NFUNCS</span> for this argument.
+  
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">connect</var></dt>
+
+<dd class="dd"><span class="keyword const">NULL</span>, or a pointer to a
+  <a class="xref" href="../r/resmgr_connect_funcs_t.html" title="Table of POSIX-level connect functions"><span class="keyword dtype">resmgr_connect_funcs_t</span></a>
+  structure that you want to fill with the default connect functions.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">nio</var></dt>
+
+<dd class="dd">The number of entries in the <var class="keyword varname">io</var> table that you want to fill.
+  Typically, you pass <span class="keyword const">_RESMGR_IO_NFUNCS</span> for this argument.
+  
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">io</var></dt>
+
+<dd class="dd"><span class="keyword const">NULL</span>, or a pointer to a
+  <a class="xref" href="../r/resmgr_io_funcs_t.html" title="Table of POSIX-level I/O functions"><span class="keyword dtype">resmgr_io_funcs_t</span></a>
+  structure that you want to fill with the default I/O functions.
+</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Library:</h2>
+
+
+<p class="p"><span class="ph filepath">libc</span></p>
+
+
+<p class="p">
+Use the <span class="keyword option">-l c</span> option to
+<a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/q/qcc.html"><span class="keyword cmdname">qcc</span></a>
+to link against this library.
+This library is usually included automatically.
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Description:</h2>
+
+
+<p class="p">
+
+
+
+
+
+
+The <span class="keyword apiname">iofunc_func_init()</span> function initializes the passed
+<var class="keyword varname">connect</var> and <var class="keyword varname">io</var> structures with the POSIX-layer
+default functions.
+For information about the default functions, see
+<a class="xref" href="../r/resmgr_connect_funcs_t.html" title="Table of POSIX-level connect functions"><span class="keyword dtype">resmgr_connect_funcs_t</span></a>
+and
+<a class="xref" href="../r/resmgr_io_funcs_t.html" title="Table of POSIX-level I/O functions"><span class="keyword dtype">resmgr_io_funcs_t</span></a>.
+</p>
+
+
+<p class="p">
+The <var class="keyword varname">nconnect</var> and <var class="keyword varname">nio</var> arguments indicate how many
+entries this function should fill.
+This is in place to support forward compatibility.
+</p>
+
+
+<p class="p">
+If  <var class="keyword varname">nconnect</var> is zero, or <var class="keyword varname">connect</var> is <span class="keyword const">NULL</span>, then
+<span class="keyword apiname">iofunc_func_init()</span> doesn't initialize the structure of connect functions;
+if <var class="keyword varname">nio</var> is zero, or <var class="keyword varname">io</var>  is <span class="keyword const">NULL</span>, then
+<span class="keyword apiname">iofunc_func_init()</span> doesn't initialize the structure of I/O functions.
+</p>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Examples:</h2>
+
+
+<p class="p">
+Fill a connect and I/O function table with the POSIX-layer defaults:
+</p>
+
+
+<pre class="pre codeblock">
+#include &lt;sys/iofunc.h&gt;
+
+static resmgr_connect_funcs_t my_connect_functions;
+static resmgr_io_funcs_t my_io_functions;
+
+int main (int argc, char **argv)
+{
+â¦
+    iofunc_func_init (_RESMGR_CONNECT_NFUNCS, &amp;my_connect_functions,
+                      _RESMGR_IO_NFUNCS, &amp;my_io_functions);
+
+/*
+ * At this point, the defaults have been filled in.
+ * You may now override some of the default functions with
+ * functions that you have written:
+*/
+
+    my_io_functions.io_read = my_io_read;
+â¦
+}
+</pre>
+
+
+<p class="p">
+The above example initializes your connect and I/O function structures
+(<var class="keyword varname">my_connect_functions</var> and <var class="keyword varname">my_io_functions</var>) with the
+POSIX-layer defaults.
+If you didn't override any of the functions, your resource manager would
+behave like <span class="ph filepath">/dev/null</span>: any data written to it would
+be discarded, and an attempt to read data from it would immediately return
+an <span class="keyword const">EOF</span>.
+</p>
+
+
+<p class="p">
+Since this isn't desirable in most cases, you'll often provide
+functionality for some functions, such as reading, writing, and device control to your device.
+In the example above, we've explicitly supplied our own handler for
+reading from the device, via a function called <span class="keyword apiname">my_io_read()</span>.
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Classification:</h2>
+
+<p class="p"><a class="xref" href="../summary.html#summary__CLASSIFICATION">QNX Neutrino</a></p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+<thead class="thead" align="left">
+<tr><th class="entry" valign="top" id="d2027997e304">Safety:</th>
+<th class="entry" valign="top" id="d2027997e306">Â </th>
+</tr>
+
+</thead>
+
+<tbody class="tbody">
+<tr><td class="entry" valign="top" headers="d2027997e304 d2027997e306 ">Cancellation point</td>
+<td class="entry" valign="top" headers="d2027997e304 d2027997e306 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2027997e304 d2027997e306 ">Interrupt handler</td>
+<td class="entry" valign="top" headers="d2027997e304 d2027997e306 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2027997e304 d2027997e306 ">Signal handler</td>
+<td class="entry" valign="top" headers="d2027997e304 d2027997e306 ">Yes</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2027997e304 d2027997e306 ">Thread</td>
+<td class="entry" valign="top" headers="d2027997e304 d2027997e306 ">Yes</td>
+</tr>
+
+</tbody>
+
+</table>
+</div>
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="related-links"><div class="relinfo relconcepts"><strong>Related concepts</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.resmgr/topic/about.html" title="Writing a Resource Manager">Writing a Resource Manager</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.getting_started/topic/s1_resmgr.html" title="Resource Managers (Getting Started with QNX Neutrino)">Resource Managers (Getting Started with <span class="keyword">QNX Neutrino</span>)</a></div>
+</div>
+<div class="relinfo relref"><strong>Related reference</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/i/iofunc_attr_init.html" title="Initialize the per-name attribute structure associated with a device">iofunc_attr_init(), iofunc_attr_init_sized()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/r/resmgr_attach.html" title="Attach a path to the pathname space">resmgr_attach()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/r/resmgr_connect_funcs_t.html" title="Table of POSIX-level connect functions">resmgr_connect_funcs_t</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/r/resmgr_io_funcs_t.html" title="Table of POSIX-level I/O functions">resmgr_io_funcs_t</a></div>
+</div>
+</div><div class="navfooter"><!---->
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-i.html" title="I"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">I</span></a></span>  </div>
+</body>
+</html>

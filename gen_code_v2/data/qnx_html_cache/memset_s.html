@@ -1,0 +1,222 @@
+
+<!DOCTYPE html
+  PUBLIC "" "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />        
+      <meta name="copyright" content="(C) Copyright 2005" /><meta name="DC.rights.owner" content="(C) Copyright 2005" /><meta name="DC.Type" content="reference" /><meta name="DC.Title" content="memset_s()" /><meta name="abstract" content="Securely set memory to a given value" /><meta name="description" content="Securely set memory to a given value" /><meta name="indexterms" content="memset_s()" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-m.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/m/memccpy.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/m/memchr.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/m/memcmp.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/m/memcpy.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/m/memicmp.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/m/memmove.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/m/memset.html" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="memset_s" /><meta name="DC.Language" content="en-us" /><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/commonltr.css"><!----></link><title>memset_s()</title><link rel="canonical" type="html" href="https://www.qnx.com/developers/docs/7.1/#com.qnx.doc.neutrino.lib_ref/" /><!--  Generated with Oxygen version 18.1, build number 2017020917.  --><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/webhelp_topic.css"><!----></link><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/skins/skin.css" /><script type="text/javascript"><!--
+            
+            var prefix = "../../../index.html";
+            
+            --></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-1.11.3.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.cookie.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-ui.custom.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.highlight-3.js"><!----></script><script type="text/javascript" charset="utf-8" src="../../../oxygen-webhelp/resources/js/webhelp_topic.js"><!----></script><script type="text/javascript"> var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-27400275-1']); _gaq.push(['_setDomainName', 'www.qnx.com']);_gaq.push(['_setAllowLinker', true]);_gaq.push(['_trackPageview']);(function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script></head>
+<body onload="highlightSearchTerm()" class="frmBody" id="memset_s">
+<table class="nav"><tbody><tr><td colspan="2"><div id="printlink"><button onClick="window.print()" title="Print this page" aria-label="Print this page"></button></div><div id="permalink"><a href="#" title="Link to this page"></a></div></td></tr><tr><td style="width:75%;"><span class="topic_breadcrumb_links"><span class="topic_breadcrumb_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-m.html" title="M">M</a></span></span></td><td><span id="topic_navigation_links" class="navheader">
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-m.html" title="M"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">M</span></a></span>  </span></td></tr></tbody></table>
+
+
+<h1 class="title topictitle1"><span class="keyword apiname">memset_s()</span></h1>
+<table width="100%"><tbody><tr><td align="left"><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">QNX SDP</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">7.1</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">C Library Reference</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">API</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">Developer</button></td><td align="right"><span style="margin:0px 5px; font-size:0.9em;">Updated: October 28, 2024</span></td></tr></tbody></table>
+
+
+<div class="body refbody"><p class="shortdesc"><em class="ph i">Securely set memory to a given value</em></p>
+
+
+<div class="section refsyn"><h2 class="title sectiontitle">Synopsis:</h2>
+
+<pre class="pre codeblock">
+#include &lt;string.h&gt;
+
+errno_t memset_s( void *<var class="keyword varname">s</var>,
+                  rsize_t <var class="keyword varname">smax</var>,
+                  int <var class="keyword varname">c</var>,
+                  rsize_t <var class="keyword varname">n</var> );
+</pre>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Arguments:</h2>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><var class="keyword varname">s</var></dt>
+
+<dd class="dd">A pointer to the memory that you want to set.
+  This must not be <span class="keyword const">NULL</span>.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">smax</var></dt>
+
+<dd class="dd">The maximum size of the block of memory.
+  
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">c</var></dt>
+
+<dd class="dd">The value that you want to store in each byte.</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">n</var></dt>
+
+<dd class="dd">The number of bytes to set.
+  This value must not be greater than the value of <var class="keyword varname">smax</var>.
+  
+</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+<div class="section"><h2 class="title sectiontitle">Library:</h2>
+
+
+<p class="p"><span class="ph filepath">libc</span></p>
+
+<p class="p">Use the <span class="keyword option">-l c</span> option to
+<a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/q/qcc.html"><span class="keyword cmdname">qcc</span></a>
+to link against this library.
+This library is usually included automatically.</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Description:</h2>
+
+
+<p class="p">
+
+
+
+The <span class="keyword apiname">memset_s()</span> function is a secure version of
+<a class="xref" href="memset.html" title="Set memory to a given value"><span class="keyword apiname">memset()</span></a>:
+</p>
+
+
+<ul class="ul">
+<li class="li">If the arguments are all valid, <span class="keyword apiname">memset_s()</span> copies the value of <var class="keyword varname">c</var>
+  (converted to an <span class="keyword dtype">unsigned char</span>) into each of the first <var class="keyword varname">n</var>
+  characters of the object pointed to by <var class="keyword varname">s</var>.
+</li>
+
+
+<li class="li">If there's a runtime-constraint violation, then if <var class="keyword varname">s</var> isn't <span class="keyword const">NULL</span>,
+  
+  <span class="keyword apiname">memset_s()</span> stores the value of <var class="keyword varname">c</var> (converted to an
+  <span class="keyword dtype">unsigned char</span>) into each of the first <var class="keyword varname">smax</var> characters of the
+  object pointed to by <var class="keyword varname">s</var>.
+</li>
+
+
+<li class="li">Unlike <span class="keyword apiname">memset()</span>, any call to <span class="keyword apiname">memset_s()</span>
+  assumes that the memory indicated by <var class="keyword varname">s</var> may be
+  accessible in the future and thus must contain the values indicated by <var class="keyword varname">c</var>.
+</li>
+
+
+</ul>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Returns:</h2>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><span class="keyword const">EOK</span></dt>
+
+<dd class="dd">Success.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EINVAL</span></dt>
+
+<dd class="dd">The <var class="keyword varname">s</var> argument is <span class="keyword const">NULL</span>,
+  
+  or <var class="keyword varname">n</var> is greater than <var class="keyword varname">smax</var>.
+</dd>
+
+
+
+</dl>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Classification:</h2>
+
+<p class="p">
+<a class="xref" href="../summary.html#summary__CLASSIFICATION">C11</a>
+</p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+<thead class="thead" align="left">
+<tr><th class="entry" valign="top" id="d2189531e267">Safety:</th>
+<th class="entry" valign="top" id="d2189531e269">Â </th>
+</tr>
+
+</thead>
+
+<tbody class="tbody">
+<tr><td class="entry" valign="top" headers="d2189531e267 d2189531e269 ">Cancellation point</td>
+<td class="entry" valign="top" headers="d2189531e267 d2189531e269 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2189531e267 d2189531e269 ">Interrupt handler</td>
+<td class="entry" valign="top" headers="d2189531e267 d2189531e269 ">Yes</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2189531e267 d2189531e269 ">Signal handler</td>
+<td class="entry" valign="top" headers="d2189531e267 d2189531e269 ">Yes</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2189531e267 d2189531e269 ">Thread</td>
+<td class="entry" valign="top" headers="d2189531e267 d2189531e269 ">Yes</td>
+</tr>
+
+</tbody>
+
+</table>
+</div>
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="related-links"><div class="relinfo relref"><strong>Related reference</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/m/memccpy.html" title="Copy bytes between buffers until a given byte is found">memccpy()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/m/memchr.html" title="Find the first occurrence of a character in a buffer">memchr(), memchr_isr()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/m/memcmp.html" title="Compare the bytes in two buffers">memcmp(), memcmp_isr()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/m/memcpy.html" title="Copy bytes from one buffer to another">memcpy(), memcpy_isr()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/m/memicmp.html" title="Compare two buffers, ignoring case">memicmp()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/m/memmove.html" title="Copy bytes from one buffer to another, handling overlapping memory correctly">memmove()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/m/memset.html" title="Set memory to a given value">memset(), memset_isr()</a></div>
+</div>
+</div><div class="navfooter"><!---->
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-m.html" title="M"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">M</span></a></span>  </div>
+</body>
+</html>

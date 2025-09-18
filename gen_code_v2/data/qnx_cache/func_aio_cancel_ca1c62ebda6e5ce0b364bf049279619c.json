@@ -1,0 +1,41 @@
+{
+  "function_name": "aio_cancel",
+  "url": "https://www.qnx.com/developers/docs/7.1/com.qnx.doc.neutrino.lib_ref/topic/a/aio_cancel.html",
+  "synopsis": "int aio_cancel( int fd,",
+  "description": "",
+  "headers": [
+    "#include <aio.h>"
+  ],
+  "parameters": [
+    {
+      "name": "fd",
+      "description": "The file descriptor for which you want to cancel asynchronous I/O requests."
+    },
+    {
+      "name": "aiocbptr",
+      "description": "A pointer to an asynchronous I/O control block of type\n  aiocb\n  for the request you\n  want to cancel, or NULL if you want to cancel all requests\n  against the file descriptor."
+    }
+  ],
+  "return_values": [
+    {
+      "value": "AIO_CANCELED",
+      "description": "The requested operation(s) were canceled."
+    },
+    {
+      "value": "AIO_NOTCANCELED",
+      "description": "At least one of the requested operations couldn't be canceled because it\n  was in progress.\n  \n\n  Note: \n  A return value of AIO_NOTCANCELED doesn't indicate\n  the state of any other operations referenced in the call to aio_cancel().\n  To determine their status, use\n  aio_error()."
+    },
+    {
+      "value": "AIO_ALLDONE",
+      "description": "All of the operations have already been completed."
+    },
+    {
+      "value": "-1",
+      "description": "An error occurred;\n  errno\n  is set."
+    }
+  ],
+  "examples": [
+    "#include <aio.h>\n\nint aio_cancel( int fd, \n                struct aiocb * aiocbptr );"
+  ],
+  "full_content": "Function: aio_cancel\nURL: https://www.qnx.com/developers/docs/7.1/com.qnx.doc.neutrino.lib_ref/topic/a/aio_cancel.html\nSynopsis: int aio_cancel( int fd,\nHeaders: #include <aio.h>\nParameters:\n  - fd: The file descriptor for which you want to cancel asynchronous I/O requests.\n  - aiocbptr: A pointer to an asynchronous I/O control block of type\n  aiocb\n  for the request you\n  want to cancel, or NULL if you want to cancel all requests\n  against the file descriptor.\nReturn Values:\n  - AIO_CANCELED: The requested operation(s) were canceled.\n  - AIO_NOTCANCELED: At least one of the requested operations couldn't be canceled because it\n  was in progress.\n  \n\n  Note: \n  A return value of AIO_NOTCANCELED doesn't indicate\n  the state of any other operations referenced in the call to aio_cancel().\n  To determine their status, use\n  aio_error().\n  - AIO_ALLDONE: All of the operations have already been completed.\n  - -1: An error occurred;\n  errno\n  is set.\nExamples:\nExample 1:\n#include <aio.h>\n\nint aio_cancel( int fd, \n                struct aiocb * aiocbptr );"
+}

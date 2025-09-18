@@ -1,0 +1,349 @@
+
+<!DOCTYPE html
+  PUBLIC "" "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />        
+      <meta name="copyright" content="(C) Copyright 2005" /><meta name="DC.rights.owner" content="(C) Copyright 2005" /><meta name="DC.Type" content="reference" /><meta name="DC.Title" content="mq_clocksend()" /><meta name="abstract" content="Send a message to a message queue with a timeout measured against a specific clock" /><meta name="description" content="Send a message to a message queue with a timeout measured against a specific clock" /><meta name="indexterms" content="mq_clocksend()" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-m.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.sys_arch/topic/ipc_Message_queues.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.technotes/topic/managing_mq_mqueue.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/m/mq_clockreceive.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/m/mq_close.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/m/mq_open.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/m/mq_receive.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/m/mq_send.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/m/mq_timedreceive.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/m/mq_timedsend.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/p/pthread_cond_clockwait.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/p/pthread_mutex_clocklock.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/p/pthread_rwlock_clockrdlock.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/p/pthread_rwlock_clockwrlock.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/s/sem_clockwait.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/t/timespec.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.utilities/topic/m/mq.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.utilities/topic/m/mqueue.html" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="mq_clocksend" /><meta name="DC.Language" content="en-us" /><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/commonltr.css"><!----></link><title>mq_clocksend()</title><link rel="canonical" type="html" href="https://www.qnx.com/developers/docs/7.1/#com.qnx.doc.neutrino.lib_ref/" /><!--  Generated with Oxygen version 18.1, build number 2017020917.  --><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/webhelp_topic.css"><!----></link><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/skins/skin.css" /><script type="text/javascript"><!--
+            
+            var prefix = "../../../index.html";
+            
+            --></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-1.11.3.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.cookie.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-ui.custom.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.highlight-3.js"><!----></script><script type="text/javascript" charset="utf-8" src="../../../oxygen-webhelp/resources/js/webhelp_topic.js"><!----></script><script type="text/javascript"> var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-27400275-1']); _gaq.push(['_setDomainName', 'www.qnx.com']);_gaq.push(['_setAllowLinker', true]);_gaq.push(['_trackPageview']);(function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script></head>
+<body onload="highlightSearchTerm()" class="frmBody" id="mq_clocksend">
+<table class="nav"><tbody><tr><td colspan="2"><div id="printlink"><button onClick="window.print()" title="Print this page" aria-label="Print this page"></button></div><div id="permalink"><a href="#" title="Link to this page"></a></div></td></tr><tr><td style="width:75%;"><span class="topic_breadcrumb_links"><span class="topic_breadcrumb_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-m.html" title="M">M</a></span></span></td><td><span id="topic_navigation_links" class="navheader">
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-m.html" title="M"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">M</span></a></span>  </span></td></tr></tbody></table>
+
+
+<h1 class="title topictitle1"><span class="keyword apiname">mq_clocksend()</span></h1>
+<table width="100%"><tbody><tr><td align="left"><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">QNX SDP</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">7.1</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">C Library Reference</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">API</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">Developer</button></td><td align="right"><span style="margin:0px 5px; font-size:0.9em;">Updated: October 28, 2024</span></td></tr></tbody></table>
+
+
+<div class="body refbody"><p class="shortdesc"><em class="ph i">Send a message to a message queue with a timeout measured against a specific clock</em></p>
+
+
+<div class="section">
+
+<p class="p">
+
+
+</p>
+
+</div>
+
+
+<div class="section refsyn"><h2 class="title sectiontitle">Synopsis:</h2>
+
+<pre class="pre codeblock">
+#include &lt;mqueue.h&gt;
+#include &lt;time.h&gt;
+
+int mq_clocksend(
+                mqd_t <var class="keyword varname">mqdes</var>, 
+                const char *<var class="keyword varname">msg_ptr</var>, 
+                size_t <var class="keyword varname">msg_len</var>,
+                unsigned <var class="keyword varname">msg_prio</var>,
+                clockid_t <var class="keyword varname">clk</var>,
+                const struct timespec *<var class="keyword varname">abs_timeout</var> );
+</pre>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Arguments:</h2>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><var class="keyword varname">mqdes</var></dt>
+
+<dd class="dd">The descriptor of the message queue you want to put the message into, returned by
+  <a class="xref" href="mq_open.html" title="Open a message queue"><span class="keyword apiname">mq_open()</span></a>.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">msg_ptr</var></dt>
+
+<dd class="dd">A pointer to the message data.</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">msg_len</var></dt>
+
+<dd class="dd">The size of the buffer, in bytes.</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">msg_prio</var></dt>
+
+<dd class="dd">The priority of the message, in the range from 0 through <span class="keyword const">(MQ_PRIO_MAX - 1)</span>.
+  
+</dd>
+
+
+  
+
+<dt class="dt dlterm"><var class="keyword varname">clk</var></dt>
+
+<dd class="dd">The clock against which the time limit is measured. The clock source is specified using the <var class="keyword varname">clk</var> variable. 
+The <var class="keyword varname">clk</var> variable must be set to either <span class="keyword const">CLOCK_REALTIME</span>, <span class="keyword const">CLOCK_ SOFTTIME</span> or 
+<span class="keyword const">CLOCK_MONOTONIC</span>.</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">abs_timeout</var></dt>
+
+<dd class="dd">A pointer to a
+  <a class="xref" href="../t/timespec.html" title="Time-specification structure"><span class="keyword dtype">timespec</span></a>
+  structure that specifies the <em class="ph i">absolute</em> time (not the relative time
+  to the current time) to wait before the function stops trying to send messages.
+</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Library:</h2>
+
+
+<ul class="ul">
+<li class="li">For the traditional implementation, <span class="ph filepath">libc</span>:
+
+  <p class="p">
+  Use the <span class="keyword option">-l c</span> option to
+  <a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/q/qcc.html"><span class="keyword cmdname">qcc</span></a>
+  to link against this library.
+  This library is usually included automatically.
+  </p>
+
+</li>
+
+
+<li class="li">For the alternate implementation that uses the <a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/m/mq.html"><span class="keyword cmdname">mq</span></a>
+          server and a queue in kernel space, <span class="ph filepath">libmq</span>: <p class="p"> Use the <span class="keyword option">-l
+              mq</span> option to <span class="keyword cmdname">qcc</span> to link against this library. </p>
+
+        </li>
+
+
+</ul>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Description:</h2>
+
+
+<p class="p">
+The <span class="keyword apiname">mq_clocksend()</span> function puts a message of size
+<var class="keyword varname">msg_len</var> and pointed to by <var class="keyword varname">msg_ptr</var> into the queue
+indicated by <var class="keyword varname">mqdes</var>.
+The new message has a priority of <var class="keyword varname">msg_prio</var>.
+</p>
+
+
+<div class="note note"><span class="notetitle">Note:</span>  The message queue manager needs to be running. <span class="keyword">QNX Neutrino</span> supports two
+        implementations of message queues: a traditional implementation, and an alternate one that
+        uses the <span class="keyword cmdname">mq</span> server and a queue in kernel space. For more information, see
+        the entries for <a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/m/mq.html"><span class="keyword cmdname">mq</span></a> and <a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/m/mqueue.html"><span class="keyword cmdname">mqueue</span></a> in the <cite class="cite">Utilities Reference</cite>, as well as
+        the
+<a class="xref" href="../../../com.qnx.doc.neutrino.technotes/topic/managing_mq_mqueue.html">POSIX Message Queues: Two Implementations</a>
+technote. </div>
+
+
+<p class="p">
+The queue maintained is in priority order, and in FIFO order within the same priority.
+</p>
+
+
+<p class="p">
+If the number of elements on the specified queue is equal to its
+<var class="keyword varname">mq_maxmsg</var>, and <span class="keyword const">O_NONBLOCK</span> wasn't set
+(in the <var class="keyword varname">oflag</var> argument to <span class="keyword apiname">mq_open()</span>), 
+the call to <span class="keyword apiname">mq_clocksend()</span> blocks.
+It becomes unblocked when there's room on the queue to send the given message.
+If more than one <span class="keyword apiname">mq_clocksend()</span> is
+blocked on a given queue, and space becomes available in that queue to
+send, then the <span class="keyword apiname">mq_clocksend()</span> with the highest priority message is unblocked.
+</p>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Returns:</h2>
+
+
+<p class="p">
+-1 if an error occurred
+(<a class="xref" href="../e/errno.html" title="Thread-local error variable"><var class="keyword varname">errno</var></a>
+is set).
+Any other value indicates success.
+</p>
+
+</div>
+
+  
+<div class="section"><h2 class="title sectiontitle">Errors:</h2>
+
+    
+<dl class="dl" compact="compact">
+
+<dt class="dt dlterm"><span class="keyword const">EAGAIN</span></dt>
+
+<dd class="dd">The <span class="keyword const">O_NONBLOCK</span> flag was set when opening the queue, and the specified queue is full.</dd>
+
+
+      
+
+<dt class="dt dlterm"><span class="keyword const">EBADF</span></dt>
+
+<dd class="dd">The <var class="keyword varname">mqdes</var> argument doesn't represent a valid message queue
+descriptor, or <var class="keyword varname">mqdes</var> isn't opened for writing.
+</dd>
+
+
+      
+
+<dt class="dt dlterm"><span class="keyword const">EINTR</span></dt>
+
+<dd class="dd">The call was interrupted by a signal.</dd>
+
+
+      
+
+<dt class="dt dlterm"><span class="keyword const">EINVAL</span></dt>
+
+<dd class="dd">One of the following is true:
+          
+<ul class="ul">
+<li class="li">
+The clock is used in a context which does not make sense for a timeout; for example, when using <span class="keyword const">CLOCK_THREAD_CPUTIME_ID</span>.
+</li>
+
+  
+<li class="li">
+The use of the clock as a timeout is not supported; for example, when using another thread's <span class="keyword const">CPUTIME</span> clock.
+</li>
+
+  
+<li class="li">
+The clock does not exist.
+</li>
+  
+
+<li class="li">The value of <var class="keyword varname">msg_prio</var> is greater than <span class="keyword const">(MQ_PRIO_MAX - 1)</span>.</li>
+
+            
+<li class="li">The process or thread would have blocked, and the
+<var class="keyword varname">abs_timeout</var> parameter specified a nanoseconds field value 
+less than zero or greater than or equal to 1000 million.
+</li>
+
+            
+</ul>
+
+</dd>
+
+
+      
+
+<dt class="dt dlterm"><span class="keyword const">EMSGSIZE</span></dt>
+
+<dd class="dd">The <var class="keyword varname">msg_len</var> argument is greater than the <var class="keyword varname">msgsize</var>
+associated with the specified queue.
+</dd>
+
+
+      
+
+<dt class="dt dlterm"><span class="keyword const">ETIMEDOUT</span></dt>
+
+<dd class="dd">The timeout value was exceeded.</dd>
+
+
+      
+</dl>
+
+    
+</div>
+
+
+<div class="section"><h2 class="title sectiontitle">Classification:</h2>
+
+<p class="p"><a class="xref" href="../summary.html#summary__CLASSIFICATION">POSIX 1003.1</a></p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+<thead class="thead" align="left">
+<tr><th class="entry" valign="top" id="d2220579e450">Safety:</th>
+<th class="entry" valign="top" id="d2220579e452">Â </th>
+</tr>
+
+</thead>
+
+<tbody class="tbody">
+<tr><td class="entry" valign="top" headers="d2220579e450 d2220579e452 ">Cancellation point</td>
+<td class="entry" valign="top" headers="d2220579e450 d2220579e452 ">Yes</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2220579e450 d2220579e452 ">Interrupt handler</td>
+<td class="entry" valign="top" headers="d2220579e450 d2220579e452 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2220579e450 d2220579e452 ">Signal handler</td>
+<td class="entry" valign="top" headers="d2220579e450 d2220579e452 ">Yes</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2220579e450 d2220579e452 ">Thread</td>
+<td class="entry" valign="top" headers="d2220579e450 d2220579e452 ">Yes</td>
+</tr>
+
+</tbody>
+
+</table>
+</div>
+
+</div>
+
+
+</div>
+
+
+<div class="related-links"><div class="relinfo relconcepts"><strong>Related concepts</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.sys_arch/topic/ipc_Message_queues.html" title="POSIX message queues (System Architecture)">POSIX message queues (System Architecture)</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.technotes/topic/managing_mq_mqueue.html" title="POSIX Message Queues: Two Implementations (Technotes)">POSIX Message Queues: Two Implementations (Technotes)</a></div>
+</div>
+<div class="relinfo relref"><strong>Related reference</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/m/mq_clockreceive.html" title="Receive a message from a message queue with a timeout measured against a specific clock">mq_clockreceive()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/m/mq_close.html" title="Close a message queue">mq_close()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/m/mq_open.html" title="Open a message queue">mq_open()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/m/mq_receive.html" title="Receive a message from a queue">mq_receive()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/m/mq_send.html" title="Send a message to a queue">mq_send()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/m/mq_timedreceive.html" title="Receive a message from a message queue">mq_timedreceive(), mq_timedreceive_monotonic()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/m/mq_timedsend.html" title="Send a message to a message queue">mq_timedsend(), mq_timedsend_monotonic()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/p/pthread_cond_clockwait.html" title="Wait on a condition variable, with a time limit measured against a specific clock">pthread_cond_clockwait()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/p/pthread_mutex_clocklock.html" title="Lock a mutex with a time limit measured against a specific clock">pthread_mutex_clocklock()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/p/pthread_rwlock_clockrdlock.html" title="Lock a read-write lock for reading with a time limit measured against a clock">pthread_rwlock_clockrdlock()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/p/pthread_rwlock_clockwrlock.html" title="Lock a read-write lock for writing with a time limit measured against a specific clock">pthread_rwlock_clockwrlock()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/s/sem_clockwait.html" title="Wait on a semaphore with a timeout measured against a specific clock">sem_clockwait()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/t/timespec.html" title="Time-specification structure">timespec</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.utilities/topic/m/mq.html" title="mq (Utilities Reference)">mq (Utilities Reference)</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.utilities/topic/m/mqueue.html" title="mqueue (Utilities Reference)">mqueue (Utilities Reference)</a></div>
+</div>
+</div><div class="navfooter"><!---->
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-m.html" title="M"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">M</span></a></span>  </div>
+</body>
+</html>

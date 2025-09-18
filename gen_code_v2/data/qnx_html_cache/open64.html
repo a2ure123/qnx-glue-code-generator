@@ -1,0 +1,887 @@
+
+<!DOCTYPE html
+  PUBLIC "" "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />        
+      <meta name="copyright" content="(C) Copyright 2005" /><meta name="DC.rights.owner" content="(C) Copyright 2005" /><meta name="DC.Type" content="reference" /><meta name="DC.Title" content="open(), open64()" /><meta name="abstract" content="Open a file" /><meta name="description" content="Open a file" /><meta name="indexterms" content="open(), open64()" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-o.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/c/chmod.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/c/close.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/c/creat.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/d/dup.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/d/dup2.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/e/errno.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/f/fcntl.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/f/fstat.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/l/lseek.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/o/open_ext.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/o/openat.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/p/posix_fallocate.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/r/read.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/w/write.html" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="open" /><meta name="DC.Language" content="en-us" /><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/commonltr.css"><!----></link><title>open(), open64()</title><link rel="canonical" type="html" href="https://www.qnx.com/developers/docs/7.1/#com.qnx.doc.neutrino.lib_ref/" /><!--  Generated with Oxygen version 18.1, build number 2017020917.  --><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/webhelp_topic.css"><!----></link><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/skins/skin.css" /><script type="text/javascript"><!--
+            
+            var prefix = "../../../index.html";
+            
+            --></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-1.11.3.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.cookie.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-ui.custom.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.highlight-3.js"><!----></script><script type="text/javascript" charset="utf-8" src="../../../oxygen-webhelp/resources/js/webhelp_topic.js"><!----></script><script type="text/javascript"> var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-27400275-1']); _gaq.push(['_setDomainName', 'www.qnx.com']);_gaq.push(['_setAllowLinker', true]);_gaq.push(['_trackPageview']);(function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script></head>
+<body onload="highlightSearchTerm()" class="frmBody" id="open">
+<table class="nav"><tbody><tr><td colspan="2"><div id="printlink"><button onClick="window.print()" title="Print this page" aria-label="Print this page"></button></div><div id="permalink"><a href="#" title="Link to this page"></a></div></td></tr><tr><td style="width:75%;"><span class="topic_breadcrumb_links"><span class="topic_breadcrumb_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-o.html" title="O">O</a></span></span></td><td><span id="topic_navigation_links" class="navheader">
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-o.html" title="O"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">O</span></a></span>  </span></td></tr></tbody></table>
+
+
+<h1 class="title topictitle1"><span class="keyword apiname">open()</span>, <span class="keyword apiname">open64()</span></h1>
+<table width="100%"><tbody><tr><td align="left"><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">QNX SDP</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">7.1</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">C Library Reference</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">API</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">Developer</button></td><td align="right"><span style="margin:0px 5px; font-size:0.9em;">Updated: October 28, 2024</span></td></tr></tbody></table>
+
+
+<div class="body refbody"><p class="shortdesc"><em class="ph i">Open a file</em></p>
+
+
+<div class="section refsyn"><h2 class="title sectiontitle">Synopsis:</h2>
+
+<pre class="pre codeblock">
+#include &lt;sys/types.h&gt;
+#include &lt;sys/stat.h&gt;
+#include &lt;fcntl.h&gt;
+
+int open( const char * <var class="keyword varname">path</var>,
+          int <var class="keyword varname">oflag</var>, 
+          ... );
+
+int open64( const char * <var class="keyword varname">path</var>, 
+            int <var class="keyword varname">oflag</var>, 
+            ... );
+</pre>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Arguments:</h2>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><var class="keyword varname">path</var></dt>
+
+<dd class="dd">The pathname of the file that you want to open.</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">oflag</var></dt>
+
+<dd class="dd">Flags that specify the status and access modes of the file; see below.</dd>
+
+
+
+</dl>
+
+
+<p class="p">
+If you set <span class="keyword const">O_CREAT</span> in <var class="keyword varname">oflag</var>, you must also
+specify the following argument:
+</p>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><span class="keyword dtype">mode_t</span> <var class="keyword varname">mode</var></dt>
+
+<dd class="dd">An object of type <span class="keyword dtype">mode_t</span> that specifies the access mode
+  that you want to use for a newly created file.
+  For more information, see the entry for
+  <a class="xref" href="../s/stat_struct.html" title="Data structure for information about a file or directory"><span class="keyword dtype">struct stat</span></a>,
+  and the description of
+  <a class="xref" href="#open__O_CREAT"><span class="keyword const">O_CREAT</span></a>,
+  below.
+</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Library:</h2>
+
+
+<p class="p"><span class="ph filepath">libc</span></p>
+
+
+<p class="p">
+Use the <span class="keyword option">-l c</span> option to
+<a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/q/qcc.html"><span class="keyword cmdname">qcc</span></a>
+to link against this library.
+This library is usually included automatically.
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Description:</h2>
+
+
+<p class="p">
+
+
+
+
+
+
+The <span class="keyword apiname">open()</span> and <span class="keyword apiname">open64()</span> functions open the file named by
+<var class="keyword varname">path</var>, creating an open file description that refers to the file, and a file
+descriptor that refers to the file description.
+If the size of the file is more than the maximum value that can be represented correctly in an
+<span class="keyword dtype">off_t</span>, which is 2 GB, define the <span class="keyword const">_FILE_OFFSET_BITS</span> macro with a value
+of 64.
+</p>
+
+
+<div class="note note"><span class="notetitle">Note:</span> 
+<ul class="ul">
+<li class="li">The <span class="keyword apiname">open64()</span> function is a large-file support version of
+  <span class="keyword apiname">open()</span> provided for backwards compatibility.
+  If you're using large-file support functions and data types, you should define
+  <span class="keyword const">_LARGEFILE64_SOURCE</span> with a value of 1 to ensure they appear in the name space.
+  For more information, see <span class="q">&#147;<a class="xref" href="../summary.html#summary__CLASSIFICATION">Classification</a>&#148;</span> in <span class="q">&#147;What's in a Function Description?&#148;</span>.
+</li>
+
+<li class="li">The <span class="keyword apiname">open()</span> and <span class="keyword apiname">open64()</span> functions
+  ignore any advisory locks that you set with
+  <a class="xref" href="../f/fcntl.html" title="Provide control over an open file"><span class="keyword apiname">fcntl()</span></a>.
+</li>
+
+</ul>
+
+</div>
+
+
+<p class="p">
+The open file descriptor created is new, and therefore isn't shared with
+any other process in the system.
+</p>
+
+
+<div class="p">
+The file status flags and the file access modes of the open file description are set
+according to the value of <var class="keyword varname">oflag</var>.
+Construct the value of <var class="keyword varname">oflag</var> by bitwise ORing values 
+from the following list, defined in the <span class="ph filepath">&lt;fcntl.h&gt;</span>
+header file.
+You must specify exactly one of the following file access modes in the value of <var class="keyword varname">oflag</var>:
+
+ 
+<dl class="dl">
+
+
+<dt class="dt dlterm" id="open__O_RDONLY"><span class="keyword const">O_RDONLY</span></dt>
+
+<dd class="dd">Open for reading only.
+  
+</dd>
+
+
+
+
+<dt class="dt dlterm" id="open__O_RDWR"><span class="keyword const">O_RDWR</span></dt>
+
+<dd class="dd">Open for reading and writing.
+  Opening a FIFO for read-write is unsupported.
+  
+</dd>
+
+
+
+
+<dt class="dt dlterm" id="open__O_WRONLY"><span class="keyword const">O_WRONLY</span></dt>
+
+<dd class="dd">Open for writing only.
+  
+</dd>
+
+
+
+</dl>
+
+</div>
+
+
+<div class="p">
+You can also specify any combination of the remaining flags in the value
+of <var class="keyword varname">oflag</var>:
+
+<dl class="dl">
+
+
+<dt class="dt dlterm" id="open__O_APPEND"><span class="keyword const">O_APPEND</span></dt>
+
+<dd class="dd">If set, the file offset is set to the end of the file prior to each write.
+  
+</dd>
+
+
+
+
+<dt class="dt dlterm" id="open__O_ASYNC"><span class="keyword const">O_ASYNC</span></dt>
+
+<dd class="dd">(<span class="keyword">QNX Neutrino</span> extension) Not currently supported.
+  
+</dd>
+
+
+
+
+<dt class="dt dlterm" id="open__O_CLOEXEC"><span class="keyword const">O_CLOEXEC</span></dt>
+
+<dd class="dd">Close the file descriptor if the program calls
+  one of the <span class="keyword apiname">exec*()</span>, <span class="keyword apiname">posix_spawn*()</span>, or <span class="keyword apiname">spawn*()</span> functions.
+  This flag is a shortcut that's equivalent to calling
+  <a class="xref" href="../f/fcntl.html" title="Provide control over an open file"><span class="keyword apiname">fcntl()</span></a>
+  with <a class="xref" href="../f/fcntl.html#fcntl__F_SETFD"><span class="keyword const">F_SETFD</span></a> and
+  <span class="keyword const">FD_CLOEXEC</span> after opening the file.
+  
+  
+  
+  
+  
+</dd>
+
+
+
+
+<dt class="dt dlterm" id="open__O_CREAT"><span class="keyword const">O_CREAT</span></dt>
+
+<dd class="dd">This option requires a third argument, <var class="keyword varname">mode</var>, which is of type <span class="keyword dtype">mode_t</span>.
+  If the file exists, this flag has no effect, except in combination with <span class="keyword const">O_EXCL</span> as noted below.
+  
+
+  <p class="p">
+  Otherwise, the file is created; the file's user ID is set to the
+  effective user ID of the process; the group ID is set to the effective 
+  group ID of the process or the group ID of the file's parent
+  directory (see <a class="xref" href="../c/chmod.html" title="Change the permissions for a file"><span class="keyword apiname">chmod()</span></a>).
+  </p>
+
+
+  <p class="p">
+  The permission bits, as defined in <span class="ph filepath">&lt;sys/stat.h&gt;</span>, 
+  are set to the value of <var class="keyword varname">mode</var>, except those bits set in 
+  the process's file mode creation mask (see 
+  <a class="xref" href="../u/umask.html" title="Set the file-mode creation mask for the process"><span class="keyword apiname">umask()</span></a> for details).
+  Bits set in <var class="keyword varname">mode</var> other than 
+  the file permission bits (i.e., the file type bits) are ignored.
+  The <var class="keyword varname">mode</var> argument doesn't affect whether the file is opened for reading, for writing, or for both.
+  </p>
+
+
+  <div class="cautiontitle">CAUTION:</div><div class="note caution">
+  The <span class="keyword apiname">open()</span> and <span class="keyword apiname">open64()</span> functions are varargs functions.
+  If you specify <span class="keyword const">O_CREAT</span> but you don't provide a <var class="keyword varname">mode</var> argument, they
+  use whatever is on the stack as the <var class="keyword varname">mode</var>.
+  </div>
+
+</dd>
+
+
+
+
+<dt class="dt dlterm" id="open__O_DIRECTORY"><span class="keyword const">O_DIRECTORY</span></dt>
+
+<dd class="dd">(QNX Neutrino 7.1 or later) Fail if the file identified by <var class="keyword varname">path</var> isn't a directory.
+  You can't currently use this flag with <span class="keyword const">O_CREAT</span>.
+  
+
+  <div class="note note"><span class="notetitle">Note:</span> 
+  You need to specify <span class="keyword const">O_DIRECTORY</span> if you want to use the file descriptor with one of the
+  <span class="keyword apiname">*at()</span> functions (e.g.,
+  <a class="xref" href="../f/faccessat.html" title="Check if a file or directory at a given location can be accessed"><span class="keyword apiname">faccessat()</span></a>,
+  <a class="xref" href="openat.html" title="Open a file at a given location"><span class="keyword apiname">openat()</span></a>)
+  or with <a class="xref" href="../f/fdopendir.html" title="Open the directory associated with a file descriptor"><span class="keyword apiname">fdopendir()</span></a>.
+  </div>
+
+</dd>
+
+
+
+
+<dt class="dt dlterm" id="open__O_DSYNC"><span class="keyword const">O_DSYNC</span></dt>
+
+<dd class="dd">If set, this flag affects subsequent I/O calls; each call to
+  <a class="xref" href="../w/write.html" title="Write bytes to a file"><span class="keyword apiname">write()</span></a>
+  waits until all data is successfully transferred
+  to the storage device such that it's readable on any subsequent open of
+  the file (even one that follows a system failure) in the absence of a
+  failure of the physical storage medium.
+  <p class="p">
+    If the storage device implements a volatile write-back cache, then
+    a system failure may be interpreted as a failure of the physical storage
+    medium, and data may not be readable even if this flag is set and the 
+    <span class="keyword apiname">write()</span> indicates that it succeeded. 
+    This is because this flag doesn't flush any disk caches and hence, doesn't
+    guarantee data integrity in the presence of a volatile write-back cache in
+    the storage device.
+    To guarantee data persistence on the physical storage medium of the device,
+    use <a class="xref" href="../f/fsync.html" title="Synchronize the file state"><span class="keyword apiname">fsync()</span></a> instead.
+  </p>
+
+  
+</dd>
+
+
+
+
+<dt class="dt dlterm" id="open__O_EXCL"><span class="keyword const">O_EXCL</span></dt>
+
+<dd class="dd">If you set both <span class="keyword const">O_EXCL</span> and <span class="keyword const">O_CREAT</span>, 
+  <span class="keyword apiname">open()</span> fails if the file exists. The check for the
+  existence of the file and the creation of the file if it doesn't
+  exist are atomic; no other process that's attempting the same
+  operation with the same filename at the same time will succeed.
+  Specifying <span class="keyword const">O_EXCL</span>
+  without <span class="keyword const">O_CREAT</span> has no effect.
+  
+</dd>
+
+
+
+
+<dt class="dt dlterm" id="open__O_LARGEFILE"><span class="keyword const">O_LARGEFILE</span></dt>
+
+<dd class="dd">(<span class="keyword">QNX Neutrino</span> extension) Allow the file offset to be 64 bits long.
+  
+</dd>
+
+
+
+
+<dt class="dt dlterm" id="open__O_NOCTTY"><span class="keyword const">O_NOCTTY</span></dt>
+
+<dd class="dd">If set, and <var class="keyword varname">path</var> identifies a terminal device, the 
+  <span class="keyword apiname">open()</span> function doesn't cause the terminal device to become 
+  the controlling terminal for the process.
+  
+</dd>
+
+
+
+
+<dt class="dt dlterm" id="open__O_NOFOLLOW"><span class="keyword const">O_NOFOLLOW</span></dt>
+
+<dd class="dd">(QNX Neutrino 6.6 or later) If the last component in the path is a symlink, make the open fail
+  with an error of <span class="keyword const">ELOOP</span>.
+  
+</dd>
+
+
+
+
+<dt class="dt dlterm" id="open__O_NONBLOCK"><span class="keyword const">O_NONBLOCK</span></dt>
+
+<dd class="dd">
+
+  <ul class="ul">
+  <li class="li"><div class="p">When you're opening a FIFO with <span class="keyword const">O_RDONLY</span> or <span class="keyword const">O_WRONLY</span> set:
+
+    <dl class="dl">
+    
+    <dt class="dt dlterm">If <span class="keyword const">O_NONBLOCK</span> is set:</dt>
+
+    <dd class="dd">Calling <span class="keyword apiname">open()</span> for reading-only returns without delay.
+      Calling <span class="keyword apiname">open()</span> for writing-only
+      returns an error if no process currently has the FIFO open for reading.
+    </dd>
+
+    
+
+    
+    <dt class="dt dlterm">If <span class="keyword const">O_NONBLOCK</span> is clear:</dt>
+
+    <dd class="dd">Calling <span class="keyword apiname">open()</span> for reading-only blocks until 
+      a process opens the file for writing.
+      Calling <span class="keyword apiname">open()</span> for writing-only blocks until a process opens the file for reading.
+    </dd>
+
+    
+
+    </dl>
+</div>
+
+  </li>
+
+
+  <li class="li"><div class="p">When you're opening a block special or character special file that supports nonblocking opens:
+
+    <dl class="dl">
+    
+    <dt class="dt dlterm">If <span class="keyword const">O_NONBLOCK</span> is set:</dt>
+
+    <dd class="dd">The <span class="keyword apiname">open()</span> function returns without waiting for the device to be ready or available.
+      Subsequent behavior of the device is device-specific.
+    </dd>
+
+    
+
+    
+    <dt class="dt dlterm">If <span class="keyword const">O_NONBLOCK</span> is clear:</dt>
+
+    <dd class="dd">The <span class="keyword apiname">open()</span> function waits until the device is ready or available before returning.
+      The definition of when a device is ready is device-specific.
+    </dd>
+
+    
+
+    </dl>
+</div>
+
+  </li>
+
+
+  <li class="li">Otherwise, the <span class="keyword const">O_NONBLOCK</span> flag doesn't cause an error, but it is unspecified whether the file status flags 
+      will include <span class="keyword const">O_NONBLOCK</span>.</li>
+
+
+  </ul>
+
+</dd>
+
+
+
+
+<dt class="dt dlterm" id="open__O_NOSYMLINK"><span class="keyword const">O_NOSYMLINK</span></dt>
+
+<dd class="dd">(<span class="keyword">QNX Neutrino</span> extension) If any component in the path is a symlink, make the open fail
+  with an error of <span class="keyword const">ELOOP</span>.
+  
+</dd>
+
+
+
+
+<dt class="dt dlterm" id="open__O_REALIDS"><span class="keyword const">O_REALIDS</span></dt>
+
+<dd class="dd">(<span class="keyword">QNX Neutrino</span> extension) Use the real <span class="keyword cmdname">uid</span>/<span class="keyword cmdname">gid</span>
+  for permissions checking.
+  
+</dd>
+
+
+
+
+<dt class="dt dlterm" id="open__O_RSYNC"><span class="keyword const">O_RSYNC</span></dt>
+
+<dd class="dd">Read I/O operations on the file descriptor complete at the same level of integrity as
+  specified by the <span class="keyword const">O_DSYNC</span> and <span class="keyword const">O_SYNC</span> flags. 
+  
+</dd>
+
+
+
+
+<dt class="dt dlterm" id="open__O_SYNC"><span class="keyword const">O_SYNC</span></dt>
+
+<dd class="dd">If set, this flag affects subsequent I/O calls; each call to
+  <a class="xref" href="../r/read.html" title="Read bytes from a file"><span class="keyword apiname">read()</span></a>
+  or
+  <a class="xref" href="../w/write.html" title="Write bytes to a file"><span class="keyword apiname">write()</span></a>
+  is complete only when both the data has been successfully transferred
+  (either read or written) and all filesystem information relevant to
+  that I/O operation (including that required to retrieve said data) is
+  successfully transferred, including file update and/or access times,
+  and so on. See the discussion of a successful data transfer in <span class="keyword const">O_DSYNC</span>, above.
+  
+</dd>
+
+
+
+
+<dt class="dt dlterm" id="open__O_TRUNC"><span class="keyword const">O_TRUNC</span></dt>
+
+<dd class="dd">If the file exists and is a regular file, and the file is successfully
+  opened <span class="keyword const">O_WRONLY</span> or <span class="keyword const">O_RDWR</span>,
+  the file length is truncated to zero and the mode and owner are left
+  unchanged. <span class="keyword const">O_TRUNC</span> has no effect on FIFO or block or 
+  character special files or directories. Using <span class="keyword const">O_TRUNC</span>
+  with <span class="keyword const">O_RDONLY</span> has no effect.
+  
+</dd>
+
+
+
+</dl>
+
+</div>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Returns:</h2>
+
+
+<p class="p">
+A nonnegative integer representing the lowest numbered unused file descriptor. On a file
+capable of seeking, the file offset is set to the beginning of the file.
+Otherwise, -1 is returned 
+(<a class="xref" href="../e/errno.html" title="Thread-local error variable"><var class="keyword varname">errno</var></a> is set).
+</p>
+
+
+<div class="note note"><span class="notetitle">Note:</span> 
+In <span class="keyword">QNX Neutrino</span>, the returned file descriptor is a connection ID
+(or <em class="ph i">coid</em>) as used by the <span class="keyword">QNX Neutrino</span>-specific functions (e.g.,
+<a class="xref" href="../m/msgsend.html" title="Send a message to a channel"><span class="keyword apiname">MsgSend()</span></a>).
+</div>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Errors:</h2>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><span class="keyword const">EACCES</span></dt>
+
+<dd class="dd">Search permission is denied on a component of the <var class="keyword varname">path</var> prefix, or the
+  file exists and the permissions specified by <var class="keyword varname">oflag</var>
+  are denied, or the file doesn't exist and write permission is denied
+  for the parent directory of the file to be created.
+</dd>
+
+<dd class="dd">This error will not be returned if you open an existing directory with
+  <span class="keyword const">O_RDONLY | O_DIRECTORY</span> set in <span class="keyword const">oflag</span>, even
+  if you don't have read permissions.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EBADFSYS</span></dt>
+
+<dd class="dd">While attempting to open the named file, either the file itself or a
+  component of the path prefix was found to be corrupted.
+  A system failureâfrom which no automatic recovery is possibleâoccurred while
+  the file was being written to, or while the directory was 
+  being updated. You'll need to invoke appropriate 
+  systems-administration procedures to correct this situation before proceeding.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EBUSY</span></dt>
+
+<dd class="dd">File access was denied due to a conflicting open (see
+  <a class="xref" href="../s/sopen.html" title="Open a file for shared access"><span class="keyword apiname">sopen()</span></a>).
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EEXIST</span></dt>
+
+<dd class="dd">The <span class="keyword const">O_CREAT</span> and <span class="keyword const">O_EXCL</span> flags are set, and the named file exists.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EINTR</span></dt>
+
+<dd class="dd">The <span class="keyword apiname">open()</span> operation was interrupted by a signal.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EINVAL</span></dt>
+
+<dd class="dd">The requested synchronized modes (<span class="keyword const">O_SYNC</span>, <span class="keyword const">O_DSYNC</span>, <span class="keyword const">O_RSYNC</span>)
+  aren't supported (i.e, <span class="keyword const">IOFUNC_PC_SYNC_IO</span> isn't set
+  in the device's mount configuration).
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EISDIR</span></dt>
+
+<dd class="dd">The named file is a directory and the <var class="keyword varname">oflag</var>
+  argument specifies write-only or read/write access, or includes <span class="keyword const">O_CREAT</span> without
+  <span class="keyword const">O_DIRECTORY</span>.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">ELOOP</span></dt>
+
+<dd class="dd">There are too many levels of symbolic links or prefixes, including these cases:
+
+  <ul class="ul">
+  <li class="li">The flags include <span class="keyword const">O_NOFOLLOW</span>, and the last component of the path is a symbolic link.</li>
+
+
+  <li class="li">The flags include <span class="keyword const">O_NOSYMLINK</span>, and any component of the path is a symbolic link.</li>
+
+
+  </ul>
+
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EMFILE</span></dt>
+
+<dd class="dd">All file descriptors available to the process are currently open.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">ENAMETOOLONG</span></dt>
+
+<dd class="dd">The length of the <var class="keyword varname">path</var> string exceeds <span class="keyword const">PATH_MAX</span>.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">ENFILE</span></dt>
+
+<dd class="dd">Too many files are currently open in the system.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">ENOENT</span></dt>
+
+<dd class="dd">The <span class="keyword const">O_CREAT</span> flag isn't set, and the named file doesn't exist; 
+  or <span class="keyword const">O_CREAT</span> is set and either the path prefix doesn't exist
+  or the <var class="keyword varname">path</var> argument points to an empty string.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">ENOSPC</span></dt>
+
+<dd class="dd">In the directory or filesystem that would contain the new file, there's not enough space
+  available to create a new file or the maximum limit of files has been reached.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">ENOSYS</span></dt>
+
+<dd class="dd">The <span class="keyword apiname">open()</span> function isn't implemented for the filesystem underlying 
+  the specified path.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">ENOTDIR</span></dt>
+
+<dd class="dd">One of the following occurred:
+
+  <ul class="ul">
+  <li class="li">A component of the path prefix names an existing file that is neither a directory nor a symbolic link
+    to a directory.
+  </li>
+
+
+  <li class="li"><span class="keyword const">O_CREAT</span> and <span class="keyword const">O_EXCL</span> aren't specified, the <var class="keyword varname">path</var> argument
+    contains at least one non-slash character and ends with one or more trailing slash characters,
+    and the last pathname component names an existing file that is neither a directory nor a symbolic link
+    to a directory
+  </li>
+
+
+  <li class="li"><span class="keyword const">O_DIRECTORY</span> was specified and the <var class="keyword varname">path</var> argument resolves to a
+    non-directory file.
+  </li>
+
+
+  </ul>
+
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">ENOTSUP</span></dt>
+
+<dd class="dd">The <var class="keyword varname">oflag</var> argument includes <span class="keyword const">O_CREAT</span> and <span class="keyword const">O_DIRECTORY</span>.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">ENXIO</span></dt>
+
+<dd class="dd">One of the following is true:
+
+  <ul class="ul">
+  <li class="li">The <span class="keyword const">O_NONBLOCK</span> flag is set, the named file is a FIFO,
+    <span class="keyword const">O_WRONLY</span> is set, and no process has the file open for reading.
+  </li>
+
+
+  <li class="li">The media associated with the file (e.g., a CD) has been removed.</li>
+
+
+  </ul>
+
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EOVERFLOW</span></dt>
+
+<dd class="dd">The named file is a regular file and its size can't be
+  represented correctly in an object of type <span class="keyword dtype">off_t</span>.
+</dd>
+
+
+  
+
+<dt class="dt dlterm"><span class="keyword const">EPERM</span></dt>
+
+<dd class="dd">The process doesn't have the necessary ability to connect
+  (<span class="keyword const">PROCMGR_AID_CHANNEL_CONNECT</span>). </dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EROFS</span></dt>
+
+<dd class="dd">The named file resides on a read-only filesystem and either
+  <span class="keyword const">O_WRONLY</span>, <span class="keyword const">O_RDWR</span>, <span class="keyword const">O_CREAT</span>
+  (if the file doesn't exist), or <span class="keyword const">O_TRUNC</span> is set in the
+  <var class="keyword varname">oflag</var> argument.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">ETXTBSY</span></dt>
+
+<dd class="dd">The file is a pure procedure (shared text) file that's currently being executed
+  and <var class="keyword varname">oflag</var> is <span class="keyword const">O_WRONLY</span> or <span class="keyword const">O_RDWR</span>.
+</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Examples:</h2>
+
+
+<pre class="pre codeblock">
+#include &lt;sys/types.h&gt;
+#include &lt;sys/stat.h&gt;
+#include &lt;fcntl.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main( void )
+  {
+    int fd;
+
+    /* open a file for output              */
+    /* replace existing file if it exists  */
+    /* with read/write perms for owner     */
+
+    fd = open( "myfile.dat",
+        O_WRONLY | O_CREAT | O_TRUNC,
+        S_IRUSR | S_IWUSR );
+
+    /* read a file that is assumed to exist */
+
+    fd = open( "myfile.dat", O_RDONLY );
+
+    /* append to the end of an existing file  */
+    /* write a new file if file doesn't exist */
+    /* with full read/write permissions       */
+
+    fd = open( "myfile.dat",
+        O_WRONLY | O_CREAT | O_APPEND,
+        S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP
+        | S_IROTH | S_IWOTH );
+    return EXIT_SUCCESS;
+  }
+</pre>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Classification:</h2>
+
+<p class="p"><span class="keyword apiname">open()</span> is
+<a class="xref" href="../summary.html#summary__CLASSIFICATION">POSIX 1003.1</a>;
+<span class="keyword apiname">open64()</span> is
+<a class="xref" href="../summary.html#summary__CLASSIFICATION">Large-file support</a></p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+<thead class="thead" align="left">
+<tr><th class="entry" valign="top" id="d2297323e1354">Safety:</th>
+<th class="entry" valign="top" id="d2297323e1356">Â </th>
+</tr>
+
+</thead>
+
+<tbody class="tbody">
+<tr><td class="entry" valign="top" headers="d2297323e1354 d2297323e1356 ">Cancellation point</td>
+<td class="entry" valign="top" headers="d2297323e1354 d2297323e1356 ">Yes</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2297323e1354 d2297323e1356 ">Interrupt handler</td>
+<td class="entry" valign="top" headers="d2297323e1354 d2297323e1356 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2297323e1354 d2297323e1356 ">Signal handler</td>
+<td class="entry" valign="top" headers="d2297323e1354 d2297323e1356 ">Yes</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2297323e1354 d2297323e1356 ">Thread</td>
+<td class="entry" valign="top" headers="d2297323e1354 d2297323e1356 ">Yes</td>
+</tr>
+
+</tbody>
+
+</table>
+</div>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Caveats:</h2>
+
+
+<p class="p">
+The <span class="keyword apiname">open()</span> function includes POSIX 1003.1-1996 and <span class="keyword">QNX Neutrino</span> extensions.
+</p>
+
+</div>
+
+
+</div>
+
+
+<div class="related-links"><div class="relinfo relref"><strong>Related reference</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/c/chmod.html" title="Change the permissions for a file">chmod()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/c/close.html" title="Close a file">close()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/c/creat.html" title="Create and open a file (low-level)">creat(), creat64()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/d/dup.html" title="Duplicate a file descriptor">dup()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/d/dup2.html" title="Duplicate a file descriptor, specifying the new descriptor">dup2()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/e/errno.html" title="Thread-local error variable">errno</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/f/fcntl.html" title="Provide control over an open file">fcntl()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/f/fstat.html" title="Get file information, given a file description">fstat(), fstat64()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/l/lseek.html" title="Set the current read/write file offset">lseek(), lseek64()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/o/open_ext.html" title="Open a path and set connection flags">open_ext()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/o/openat.html" title="Open a file at a given location">openat()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/p/posix_fallocate.html" title="Allocate space for a file on the filesystem">posix_fallocate(), posix_fallocate64()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/r/read.html" title="Read bytes from a file">read()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/w/write.html" title="Write bytes to a file">write()</a></div>
+</div>
+</div><div class="navfooter"><!---->
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-o.html" title="O"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">O</span></a></span>  </div>
+</body>
+</html>

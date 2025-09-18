@@ -1,0 +1,20 @@
+{
+  "function_name": "asinhf",
+  "url": "https://www.qnx.com/developers/docs/7.1/com.qnx.doc.neutrino.lib_ref/topic/a/asinh.html",
+  "synopsis": "float asinhf( float x );",
+  "description": "",
+  "headers": [
+    "#include <math.h>"
+  ],
+  "parameters": [
+    {
+      "name": "x",
+      "description": "The value for which you want to compute the inverse hyperbolic sine."
+    }
+  ],
+  "return_values": [],
+  "examples": [
+    "#include <math.h>\n\ndouble asinh( double x );\n\nfloat asinhf( float x );\n\nlong double asinhl( long double x );"
+  ],
+  "full_content": "Function: asinhf\nURL: https://www.qnx.com/developers/docs/7.1/com.qnx.doc.neutrino.lib_ref/topic/a/asinh.html\nSynopsis: float asinhf( float x );\nHeaders: #include <math.h>\nParameters:\n  - x: The value for which you want to compute the inverse hyperbolic sine.\nExamples:\nExample 1:\n#include <math.h>\n\ndouble asinh( double x );\n\nfloat asinhf( float x );\n\nlong double asinhl( long double x );"
+}

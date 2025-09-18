@@ -1,0 +1,229 @@
+
+<!DOCTYPE html
+  PUBLIC "" "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />        
+      <meta name="copyright" content="(C) Copyright 2005" /><meta name="DC.rights.owner" content="(C) Copyright 2005" /><meta name="DC.Type" content="reference" /><meta name="DC.Title" content="pthread_rwlock_rdlock()" /><meta name="abstract" content="Acquire a shared read lock on a read-write lock" /><meta name="description" content="Acquire a shared read lock on a read-write lock" /><meta name="indexterms" content="pthread_rwlock_rdlock()" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-p.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.getting_started/topic/s1_procs.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/p/pthread_rwlock_destroy.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/p/pthread_rwlock_init.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/p/pthread_rwlock_tryrdlock.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/p/pthread_rwlock_trywrlock.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/p/pthread_rwlock_unlock.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/p/pthread_rwlock_wrlock.html" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="pthread_rwlock_rdlock" /><meta name="DC.Language" content="en-us" /><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/commonltr.css"><!----></link><title>pthread_rwlock_rdlock()</title><link rel="canonical" type="html" href="https://www.qnx.com/developers/docs/7.1/#com.qnx.doc.neutrino.lib_ref/" /><!--  Generated with Oxygen version 18.1, build number 2017020917.  --><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/webhelp_topic.css"><!----></link><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/skins/skin.css" /><script type="text/javascript"><!--
+            
+            var prefix = "../../../index.html";
+            
+            --></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-1.11.3.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.cookie.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-ui.custom.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.highlight-3.js"><!----></script><script type="text/javascript" charset="utf-8" src="../../../oxygen-webhelp/resources/js/webhelp_topic.js"><!----></script><script type="text/javascript"> var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-27400275-1']); _gaq.push(['_setDomainName', 'www.qnx.com']);_gaq.push(['_setAllowLinker', true]);_gaq.push(['_trackPageview']);(function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script></head>
+<body onload="highlightSearchTerm()" class="frmBody" id="pthread_rwlock_rdlock">
+<table class="nav"><tbody><tr><td colspan="2"><div id="printlink"><button onClick="window.print()" title="Print this page" aria-label="Print this page"></button></div><div id="permalink"><a href="#" title="Link to this page"></a></div></td></tr><tr><td style="width:75%;"><span class="topic_breadcrumb_links"><span class="topic_breadcrumb_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-p.html" title="P">P</a></span></span></td><td><span id="topic_navigation_links" class="navheader">
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-p.html" title="P"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">P</span></a></span>  </span></td></tr></tbody></table>
+
+
+<h1 class="title topictitle1"><span class="keyword apiname">pthread_rwlock_rdlock()</span></h1>
+<table width="100%"><tbody><tr><td align="left"><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">QNX SDP</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">7.1</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">C Library Reference</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">API</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">Developer</button></td><td align="right"><span style="margin:0px 5px; font-size:0.9em;">Updated: October 28, 2024</span></td></tr></tbody></table>
+
+
+<div class="body refbody"><p class="shortdesc"><em class="ph i">Acquire a shared read lock on a read-write lock</em></p>
+
+
+<div class="section refsyn"><h2 class="title sectiontitle">Synopsis:</h2>
+
+<pre class="pre codeblock">
+#include &lt;pthread.h&gt;
+
+int pthread_rwlock_rdlock( pthread_rwlock_t* <var class="keyword varname">rwl</var> );
+</pre>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Arguments:</h2>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><var class="keyword varname">rwl</var></dt>
+
+<dd class="dd">A pointer to a <span class="keyword dtype">pthread_rwlock_t</span> object that you want to
+  lock for reading.
+</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Library:</h2>
+
+
+<p class="p"><span class="ph filepath">libc</span></p>
+
+
+<p class="p">
+Use the <span class="keyword option">-l c</span> option to
+<a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/q/qcc.html"><span class="keyword cmdname">qcc</span></a>
+to link against this library.
+This library is usually included automatically.
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Description:</h2>
+
+
+<p class="p">
+
+
+
+
+The <span class="keyword apiname">pthread_rwlock_rdlock()</span> function acquires a shared lock on the
+read-write lock referenced by <var class="keyword varname">rwl</var>.  If the read-write lock
+is already exclusively locked, the calling thread blocks until the
+exclusive lock is released.
+</p>
+
+
+<div class="note note"><span class="notetitle">Note:</span> 
+If another thread is currently waiting to acquire the read-write lock for
+writing, <span class="keyword apiname">pthread_rwlock_rdlock()</span> blocks.
+This can cause a deadlock if a thread attempts to recursively acquire the
+lock for reading, while another thread is trying to acquire the lock for
+writing.
+</div>
+
+
+<p class="p">
+If a signal is delivered to a thread waiting to lock a read-write lock, it
+will resume waiting for the lock after returning from the signal handler.
+</p>
+
+
+<p class="p">
+A thread may hold several read locks on the same read-write lock; it must call 
+<a class="xref" href="pthread_rwlock_unlock.html" title="Unlock a read-write lock"><span class="keyword apiname">pthread_rwlock_unlock()</span></a> 
+multiple times to release its read lock.
+</p>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Returns:</h2>
+
+
+<dl class="dl" compact="compact">
+
+<dt class="dt dlterm"><span class="keyword const">EOK</span></dt>
+
+<dd class="dd">Success.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EAGAIN</span></dt>
+
+<dd class="dd">On the first use of statically initialized read-write lock,
+  insufficient system resources existed to initialize the read-write lock.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EDEADLK</span></dt>
+
+<dd class="dd">The calling thread already has an exclusive lock for <var class="keyword varname">rwl</var>.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EFAULT</span></dt>
+
+<dd class="dd">A fault occurred when the kernel tried to access <var class="keyword varname">rwl</var>.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EINVAL</span></dt>
+
+<dd class="dd">The read-write lock <var class="keyword varname">rwl</var> is invalid.</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+<div class="section"><h2 class="title sectiontitle">Examples:</h2>
+
+
+<p class="p">
+See
+<span class="q">&#147;<a class="xref" href="../../../com.qnx.doc.neutrino.getting_started/topic/s1_procs_Sync_example.html">An example of synchronization</a>&#148;</span>
+in the <span class="q">&#147;Processes and Threads&#148;</span> chapter of <cite class="cite">Getting Started with <span class="keyword">QNX Neutrino</span></cite>.
+</p>
+
+
+</div>
+
+
+<div class="section"><h2 class="title sectiontitle">Classification:</h2>
+
+<p class="p"><a class="xref" href="../summary.html#summary__CLASSIFICATION">POSIX 1003.1</a></p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+<thead class="thead" align="left">
+<tr><th class="entry" valign="top" id="d2438586e238">Safety:</th>
+<th class="entry" valign="top" id="d2438586e240">Â </th>
+</tr>
+
+</thead>
+
+<tbody class="tbody">
+<tr><td class="entry" valign="top" headers="d2438586e238 d2438586e240 ">Cancellation point</td>
+<td class="entry" valign="top" headers="d2438586e238 d2438586e240 ">Yes</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2438586e238 d2438586e240 ">Interrupt handler</td>
+<td class="entry" valign="top" headers="d2438586e238 d2438586e240 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2438586e238 d2438586e240 ">Signal handler</td>
+<td class="entry" valign="top" headers="d2438586e238 d2438586e240 ">Yes</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2438586e238 d2438586e240 ">Thread</td>
+<td class="entry" valign="top" headers="d2438586e238 d2438586e240 ">Yes</td>
+</tr>
+
+</tbody>
+
+</table>
+</div>
+
+</div>
+
+
+</div>
+
+
+<div class="related-links"><div class="relinfo relconcepts"><strong>Related concepts</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.getting_started/topic/s1_procs.html" title="Processes and Threads (Getting Started with QNX Neutrino)">Processes and Threads (Getting Started with <span class="keyword">QNX Neutrino</span>)</a></div>
+</div>
+<div class="relinfo relref"><strong>Related reference</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/p/pthread_rwlock_destroy.html" title="Destroy a read-write lock">pthread_rwlock_destroy()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/p/pthread_rwlock_init.html" title="Initialize a read-write lock">pthread_rwlock_init()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/p/pthread_rwlock_tryrdlock.html" title="Attempt to acquire a shared lock on a read-write lock">pthread_rwlock_tryrdlock()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/p/pthread_rwlock_trywrlock.html" title="Attempt to acquire an exclusive lock on a read-write lock">pthread_rwlock_trywrlock()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/p/pthread_rwlock_unlock.html" title="Unlock a read-write lock">pthread_rwlock_unlock()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/p/pthread_rwlock_wrlock.html" title="Acquire an exclusive write lock on a read-write lock">pthread_rwlock_wrlock()</a></div>
+</div>
+</div><div class="navfooter"><!---->
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-p.html" title="P"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">P</span></a></span>  </div>
+</body>
+</html>

@@ -1,0 +1,526 @@
+
+<!DOCTYPE html
+  PUBLIC "" "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />        
+      <meta name="copyright" content="(C) Copyright 2005" /><meta name="DC.rights.owner" content="(C) Copyright 2005" /><meta name="DC.Type" content="reference" /><meta name="DC.Title" content="dhcpctl*()" /><meta name="abstract" content="Functions for controlling DHCP" /><meta name="description" content="Functions for controlling DHCP" /><meta name="indexterms" content="dhcpctl*()" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-d.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/o/omapi.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.utilities/topic/d/dhcpd.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.utilities/topic/d/dhcpd.conf.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.utilities/topic/d/dhclient.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.utilities/topic/d/dhclient.conf.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.utilities/topic/o/omshell.html" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="dhcpctl" /><meta name="DC.Language" content="en-us" /><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/commonltr.css"><!----></link><title>dhcpctl*()</title><link rel="canonical" type="html" href="https://www.qnx.com/developers/docs/7.1/#com.qnx.doc.neutrino.lib_ref/" /><!--  Generated with Oxygen version 18.1, build number 2017020917.  --><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/webhelp_topic.css"><!----></link><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/skins/skin.css" /><script type="text/javascript"><!--
+            
+            var prefix = "../../../index.html";
+            
+            --></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-1.11.3.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.cookie.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-ui.custom.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.highlight-3.js"><!----></script><script type="text/javascript" charset="utf-8" src="../../../oxygen-webhelp/resources/js/webhelp_topic.js"><!----></script><script type="text/javascript"> var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-27400275-1']); _gaq.push(['_setDomainName', 'www.qnx.com']);_gaq.push(['_setAllowLinker', true]);_gaq.push(['_trackPageview']);(function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script></head>
+<body onload="highlightSearchTerm()" class="frmBody" id="dhcpctl">
+<table class="nav"><tbody><tr><td colspan="2"><div id="printlink"><button onClick="window.print()" title="Print this page" aria-label="Print this page"></button></div><div id="permalink"><a href="#" title="Link to this page"></a></div></td></tr><tr><td style="width:75%;"><span class="topic_breadcrumb_links"><span class="topic_breadcrumb_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-d.html" title="D">D</a></span></span></td><td><span id="topic_navigation_links" class="navheader">
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-d.html" title="D"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">D</span></a></span>  </span></td></tr></tbody></table>
+
+
+<h1 class="title topictitle1"><span class="keyword apiname">dhcpctl*()</span></h1>
+<table width="100%"><tbody><tr><td align="left"><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">QNX SDP</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">7.1</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">C Library Reference</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">API</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">Developer</button></td><td align="right"><span style="margin:0px 5px; font-size:0.9em;">Updated: October 28, 2024</span></td></tr></tbody></table>
+
+
+<div class="body refbody"><p class="shortdesc"><em class="ph i">Functions for controlling DHCP</em></p>
+
+
+<div class="section refsyn"><h2 class="title sectiontitle">Synopsis:</h2>
+
+<pre class="pre codeblock">
+#include &lt;dhcp/dhcpctl.h&gt;
+
+dhcpctl_status dhcpctl_initialize( void );
+
+dhcpctl_status dhcpctl_connect( dhcpctl_handle *<var class="keyword varname">cxn</var>,
+                                const char *<var class="keyword varname">host</var>,
+                                int <var class="keyword varname">port</var>,
+                                dhcpctl_handle <var class="keyword varname">auth</var>);
+
+dhcpctl_status dhcpctl_wait_for_completion( dhcpctl_handle <var class="keyword varname">object</var>,
+                                            dhcpctl_status *<var class="keyword varname">status</var> );
+
+dhcpctl_status dhcpctl_get_value( dhcpctl_data_string *<var class="keyword varname">value</var>,
+                                  dhcpctl_handle <var class="keyword varname">object</var>,
+                                  const char *<var class="keyword varname">name</var> );
+
+dhcpctl_status dhcpctl_get_boolean( int *<var class="keyword varname">value</var>,
+                                    dhcpctl_handle <var class="keyword varname">object</var>,
+                                    const char *<var class="keyword varname">name</var> );
+
+dhcpctl_status dhcpctl_set_value( dhcpctl_handle <var class="keyword varname">object</var>,
+                                  dhcpctl_data_string <var class="keyword varname">value</var>,
+                                  const char *<var class="keyword varname">name</var> );
+
+dhcpctl_status dhcpctl_set_string_value( dhcpctl_handle <var class="keyword varname">object</var>,
+                                         const char *<var class="keyword varname">value</var>,
+                                         const char *<var class="keyword varname">name</var> );
+
+dhcpctl_status dhcpctl_set_boolean_value( dhcpctl_handle <var class="keyword varname">object</var>,
+                                          int <var class="keyword varname">value</var>,
+                                          const char *<var class="keyword varname">name</var> );
+
+dhcpctl_status dhcpctl_set_int_value( dhcpctl_handle <var class="keyword varname">object</var>,
+                                      int <var class="keyword varname">value</var>,
+                                      const char *<var class="keyword varname">name</var> );
+
+dhcpctl_status dhcpctl_object_update( dhcpctl_handle <var class="keyword varname">connection</var>,
+                                      dhcpctl_handle <var class="keyword varname">object</var> );
+
+dhcpctl_status dhcpctl_object_refresh( dhcpctl_handle <var class="keyword varname">connection</var>,
+                                       dhcpctl_handle <var class="keyword varname">object</var> );
+
+dhcpctl_status dhcpctl_object_remove( dhcpctl_handle <var class="keyword varname">connection</var>,
+                                      dhcpctl_handle <var class="keyword varname">object</var> );
+
+dhcpctl_status dhcpctl_set_callback( dhcpctl_handle <var class="keyword varname">object</var>,
+                                     void *<var class="keyword varname">data</var>,
+                                     void (*<var class="keyword varname">function</var>) (dhcpctl_handle,
+                                                       dhcpctl_status,
+                                                       void *));
+
+dhcpctl_status dhcpctl_new_authenticator( dhcpctl_handle *<var class="keyword varname">object</var>,
+                                          const char *<var class="keyword varname">name</var>,
+                                          const char *<var class="keyword varname">algorithm</var>,
+                                          const char *<var class="keyword varname">secret</var>,
+                                          unsigned <var class="keyword varname">secret_len</var> );
+
+dhcpctl_status dhcpctl_new_object( dhcpctl_handle *<var class="keyword varname">object</var>,
+                                   dhcpctl_handle <var class="keyword varname">connection</var>,
+                                   const char *<var class="keyword varname">object_type</var> );
+
+dhcpctl_status dhcpctl_open_object( dhcpctl_handle <var class="keyword varname">object</var>,
+                                    dhcpctl_handle <var class="keyword varname">connection</var>,
+                                    int <var class="keyword varname">flags</var> );
+
+isc_result_t omapi_data_string_new( dhcpctl_data_string *<var class="keyword varname">data</var>,
+                                    unsigned int <var class="keyword varname">length</var>,
+                                    const char *<var class="keyword varname">filename</var>,
+                                    int <var class="keyword varname">lineno</var> );
+
+isc_result_t dhcpctl_data_string_dereference( dhcpctl_data_string *<var class="keyword varname">vp</var>,
+                                              const char *<var class="keyword varname">filename</var>,
+                                              int <var class="keyword varname">lineno</var> );
+</pre>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Description:</h2>
+
+
+<p class="p">
+The <span class="keyword apiname">dhcpctl*()</span> set of functions provides an API that you can use
+to communicate with and manipulate a running ISC DHCP server.
+All functions return a value of type <span class="keyword dtype">isc_result_t</span> or <span class="keyword dtype">dhcpctl_status</span>;
+these types are equivalent.
+The return values reflects the result of operations to local data structures.
+If an operation fails on the server for
+any reason, then the error result is returned through the second
+parameter of the <span class="keyword apiname">dhcpctl_wait_for_completion()</span> call.
+</p>
+
+
+<div class="note note"><span class="notetitle">Note:</span> 
+On success, these functions return <span class="keyword const">ISC_R_SUCCESS</span>, which is defined as 0, but not in a public header;
+you can define it in your code if you wish.
+</div>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><span class="keyword apiname">dhcpctl_initialize()</span></dt>
+
+<dd class="dd">Sets up the data structures the library needs to do its work.
+  You must call this function once before calling any of the others.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword apiname">dhcpctl_connect()</span></dt>
+
+<dd class="dd">Opens a connection to the DHCP server at the given host and port.
+  If an authenticator has been created for the connection, then
+  it's given as the fourth argument.
+  On a successful return, the address pointed at by the first argument
+  has a new connection object assigned to it.
+  For example:
+
+<pre class="pre codeblock">
+s = dhcpctl_connect(&amp;cxn, "127.0.0.1", 7911, NULL);
+</pre>
+
+
+  <p class="p">
+  connects to the DHCP server on the localhost via port 7911 (the standard
+  OMAPI port). No authentication is used for the connection.
+  </p>
+
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword apiname">dhcpctl_wait_for_completion()</span></dt>
+
+<dd class="dd">Flushes a pending message to the server and waits for the response.
+  The result of the request as processed on the
+  server is returned via the second parameter:
+
+<pre class="pre codeblock">
+s = dhcpctl_wait_for_completion(cxn, &amp;wv);
+if (s != ISC_R_SUCCESS)
+   local_failure(s);
+else if (wv != ISC_R_SUCCESS)
+   server_failure(wc);
+</pre>
+
+
+  <p class="p">
+  
+  The call to <span class="keyword apiname">dhcpctl_wait_for_completion()</span> doesn't return until
+  the remote message processing completes or the connection to the server
+  is lost.
+  </p>
+
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword apiname">dhcpctl_get_value()</span></dt>
+
+<dd class="dd">Extracts a value of an attribute from the handle.
+  The value can be of any length and is treated as a sequence of bytes.
+  The handle must have been created first with <span class="keyword apiname">dhcpctl_new_object()</span>
+  and opened with <span class="keyword apiname">dhcpctl_open_object()</span>.
+  The value is returned via the <var class="keyword varname">value</var> parameter.
+  The last parameter is the name of attribute to retrieve:
+
+<pre class="pre codeblock">
+dhcpctl_data_string value = NULL;
+dhcpctl_handle lease;
+time_t thetime;
+
+s = dhcpctl_get_value (&amp;value, lease, "ends");
+assert(s == ISC_R_SUCCESS &amp;&amp; value-&gt;len == sizeof(thetime));
+memcpy(&amp;thetime, value-&gt;value, value-&gt;len);
+</pre>
+
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword apiname">dhcpctl_get_boolean()</span></dt>
+
+<dd class="dd">Extracts a boolean-valued attribute from the object handle.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword apiname">dhcpctl_set_value()</span>, <span class="keyword apiname">dhcpctl_set_string_value()</span>,
+  <span class="keyword apiname">dhcpctl_set_boolean_value()</span>, <span class="keyword apiname">dhcpctl_set_int_value()</span>
+</dt>
+
+<dd class="dd">Set a value on the object handle.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword apiname">dhcpctl_object_update()</span></dt>
+
+<dd class="dd">Queues a request for all the changes
+  made to the object handle be be sent to the remote for processing. The
+  changes made to the attributes on the handle are applied to remote
+  object if permitted.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword apiname">dhcpctl_object_refresh()</span></dt>
+
+<dd class="dd">Queues up a request for a fresh
+  copy of all the attribute values to be sent from the remote to refresh
+  the values in the local object handle.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword apiname">dhcpctl_object_remove()</span></dt>
+
+<dd class="dd">Queues a request for the removal on
+  the server of the object referenced by the handle.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword apiname">dhcpctl_set_callback()</span></dt>
+
+<dd class="dd">Sets up a user-defined
+  function to be called when an event completes on the given object handle.
+  This is needed for asynchronous handling of events, versus the
+  synchronous handling given by <span class="keyword apiname">dhcpctl_wait_for_completion()</span>.
+  When the function is called, the
+  first parameter is the object the event arrived for, the second is the
+  status of the message that was processed, the third is the same value as
+  the second parameter given to <span class="keyword apiname">dhcpctl_set_callback()</span>.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword apiname">dhcpctl_new_authenticator()</span></dt>
+
+<dd class="dd">Creates a new authenticator
+  object to be used for signing the messages that cross over the network.
+  The <var class="keyword varname">name</var>, <var class="keyword varname">algorithm</var>, and <var class="keyword varname">secret</var> values
+  must all match what the server uses
+  and are defined in its configuration file. The created object is returned
+  through the first parameter and must be used as the fourth parameter to
+  <span class="keyword apiname">dhcpctl_connect()</span>.
+  Note that the <var class="keyword varname">secret</var> value must not be base64
+  encoded, which is different from how the value appears in the
+  <a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/d/dhcpd.conf.html"><span class="ph filepath">dhcpd.conf</span></a>
+  file.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword apiname">dhcpctl_new_object()</span></dt>
+
+<dd class="dd">Creates a local handle for an object on the server.
+  The <var class="keyword varname">object_type</var> parameter is the ASCII name of the type of
+  object being accessed. e.g.,  <samp class="ph codeph">lease</samp>.
+  This function only sets up local data structures; it doesn't queue
+  any messages to be sent to the remote sideâ<span class="keyword apiname">dhcpctl_open_object()</span> does that.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword apiname">dhcpctl_open_object()</span></dt>
+
+<dd class="dd">Builds and queues the request to the remote side.
+  This function is used with handle created via
+  <span class="keyword apiname">dhcpctl_new_object()</span>.
+  The <var class="keyword varname">flags</var> argument is a bitmask with the following values
+  available for setting:
+
+  <dl class="dl">
+
+  
+  <dt class="dt dlterm"><span class="keyword const">DHCPCTL_CREATE</span></dt>
+
+  <dd class="dd">If the object doesn't exist, then the remote creates it.
+    
+  </dd>
+
+  
+
+  
+  <dt class="dt dlterm"><span class="keyword const">DHCPCTL_UPDATE</span></dt>
+
+  <dd class="dd">Update the object on the remote side using the attributes already set in the handle.
+    
+  </dd>
+
+  
+
+  
+  <dt class="dt dlterm"><span class="keyword const">DHCPCTL_EXCL</span></dt>
+
+  <dd class="dd">Return an error if the object exists and <span class="keyword const">DHCPCTL_CREATE</span> was also specified.
+    
+  </dd>
+
+  
+
+  </dl>
+
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword apiname">omapi_data_string_new()</span></dt>
+
+<dd class="dd">Allocates a new <span class="keyword dtype">dhcpctl_data_string</span> object.
+  The data string is large enough to hold <var class="keyword varname">length</var> bytes of data.
+  The <var class="keyword varname">file</var> and <var class="keyword varname">lineno</var> arguments are the source file
+  location the call is made from, typically by using the
+  <span class="keyword const">__FILE__</span> and <span class="keyword const">__LINE__</span> macros.
+  
+  Some of the OMAPI code uses an <span class="keyword const">MDL</span> macro, but it isn't defined in a public header.
+  If you want to use <span class="keyword const">MDL</span>, you can define it as:
+
+<pre class="pre codeblock">
+#define MDL __FILE__, __LINE__
+</pre>
+
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword apiname">dhcpctl_data_string_dereference()</span></dt>
+
+<dd class="dd">Deallocates a data string created by <span class="keyword apiname">omapi_data_string_new()</span>.
+  The memory for the object isn't be freed until the last reference is released.
+</dd>
+
+
+
+</dl>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Examples:</h2>
+
+
+<p class="p">
+The following program connects to the DHCP server running on the
+local host and gets the details of the existing lease for IP address 10.0.0.101.
+It then prints the time the lease is due to expire.
+Note that most error checking has been omitted for brevity.
+</p>
+
+
+<pre class="pre codeblock">
+#include &lt;stdarg.h&gt;
+#include &lt;sys/time.h&gt;
+#include &lt;sys/socket.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;netinet/in.h&gt;
+
+#include &lt;isc-dhcp/result.h&gt;
+#include &lt;dhcp/dhcpctl.h&gt;
+
+int main (int argc, char **argv) {
+        dhcpctl_data_string ipaddrstring = NULL;
+        dhcpctl_data_string value = NULL;
+        dhcpctl_handle connection = NULL;
+        dhcpctl_handle lease = NULL;
+        isc_result_t waitstatus;
+        struct in_addr convaddr;
+        time_t thetime;
+
+        dhcpctl_initialize ();
+
+        dhcpctl_connect (&amp;connection, "127.0.0.1",
+                         7911, 0);
+
+        dhcpctl_new_object (&amp;lease, connection,
+                            "lease");
+
+        memset (&amp;ipaddrstring, 0, sizeof
+                ipaddrstring);
+
+        inet_pton(AF_INET, "10.0.0.101",
+                  &amp;convaddr);
+
+        omapi_data_string_new (&amp;ipaddrstring,
+                               4, MDL);
+        memcpy(ipaddrstring-&gt;value, &amp;convaddr.s_addr, 4);
+
+        dhcpctl_set_value (lease, ipaddrstring,
+                           "ip-address");
+
+        dhcpctl_open_object (lease, connection, 0);
+
+        dhcpctl_wait_for_completion (lease,
+                                     &amp;waitstatus);
+        if (waitstatus != ISC_R_SUCCESS) {
+                /* server not authoritative */
+                exit (0);
+        }
+
+        dhcpctl_data_string_dereference(&amp;ipaddrstring,
+                                        MDL);
+
+        dhcpctl_get_value (&amp;value, lease, "ends");
+
+        memcpy(&amp;thetime, value-&gt;value, value-&gt;len);
+
+        dhcpctl_data_string_dereference(&amp;value, MDL);
+
+        fprintf (stdout, "ending time is %s",
+                 ctime(&amp;thetime));
+}
+</pre>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Classification:</h2>
+
+<p class="p"><a class="xref" href="../summary.html#summary__CLASSIFICATION">NetBSD</a></p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+<thead class="thead" align="left">
+<tr><th class="entry" valign="top" id="d1339666e556">Safety:</th>
+<th class="entry" valign="top" id="d1339666e558">Â </th>
+</tr>
+
+</thead>
+
+<tbody class="tbody">
+<tr><td class="entry" valign="top" headers="d1339666e556 d1339666e558 ">Interrupt handler</td>
+<td class="entry" valign="top" headers="d1339666e556 d1339666e558 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d1339666e556 d1339666e558 ">Signal handler</td>
+<td class="entry" valign="top" headers="d1339666e556 d1339666e558 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d1339666e556 d1339666e558 ">Thread</td>
+<td class="entry" valign="top" headers="d1339666e556 d1339666e558 ">No</td>
+</tr>
+
+</tbody>
+
+</table>
+</div>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Contributing author:</h2>
+
+
+<p class="p">
+<span class="keyword apiname">dhcpctl*()</span> was written by Ted Lemon of Nominum, Inc (now Akamai Technologies, Inc).
+Information about Nominum can be found at
+<a class="xref" href="http://www.akamai.com" target="_blank"><span class="ph filepath">http://www.akamai.com</span></a>.
+The preliminary documentation was written by James Brister of Nominum, Inc.
+</p>
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="related-links"><div class="relinfo relref"><strong>Related reference</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/o/omapi.html" title="Object Management Application Programming Interface">OMAPI</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.utilities/topic/d/dhcpd.html" title="dhcpd (Utilities Reference)">dhcpd (Utilities Reference)</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.utilities/topic/d/dhcpd.conf.html" title="dhcpd.conf (Utilities Reference)">dhcpd.conf (Utilities Reference)</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.utilities/topic/d/dhclient.html" title="dhclient (Utilities Reference)">dhclient (Utilities Reference)</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.utilities/topic/d/dhclient.conf.html" title="dhclient.conf (Utilities Reference)">dhclient.conf (Utilities Reference)</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.utilities/topic/o/omshell.html" title="omshell (Utilities Reference)">omshell (Utilities Reference)</a></div>
+</div>
+</div><div class="navfooter"><!---->
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-d.html" title="D"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">D</span></a></span>  </div>
+</body>
+</html>

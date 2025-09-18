@@ -1,0 +1,289 @@
+
+<!DOCTYPE html
+  PUBLIC "" "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />        
+      <meta name="copyright" content="(C) Copyright 2005" /><meta name="DC.rights.owner" content="(C) Copyright 2005" /><meta name="DC.Type" content="reference" /><meta name="DC.Title" content="dl_iterate_phdr()" /><meta name="abstract" content="Iterate over the shared objects that are loaded into a process's address space" /><meta name="description" content="Iterate over the shared objects that are loaded into a process's address space" /><meta name="indexterms" content="dl_iterate_phdr()" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-d.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/d/dladdr.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/d/dlclose.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/d/dlerror.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/d/dlopen.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/d/dlsym.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.sys_arch/topic/dll.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.prog/topic/devel_Lazy_loading.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/p/procmgr_ability.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.utilities/topic/l/ld.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.utilities/topic/q/qcc.html" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="dl_iterate_phdr" /><meta name="DC.Language" content="en-us" /><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/commonltr.css"><!----></link><title>dl_iterate_phdr()</title><link rel="canonical" type="html" href="https://www.qnx.com/developers/docs/7.1/#com.qnx.doc.neutrino.lib_ref/" /><!--  Generated with Oxygen version 18.1, build number 2017020917.  --><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/webhelp_topic.css"><!----></link><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/skins/skin.css" /><script type="text/javascript"><!--
+            
+            var prefix = "../../../index.html";
+            
+            --></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-1.11.3.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.cookie.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-ui.custom.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.highlight-3.js"><!----></script><script type="text/javascript" charset="utf-8" src="../../../oxygen-webhelp/resources/js/webhelp_topic.js"><!----></script><script type="text/javascript"> var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-27400275-1']); _gaq.push(['_setDomainName', 'www.qnx.com']);_gaq.push(['_setAllowLinker', true]);_gaq.push(['_trackPageview']);(function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script></head>
+<body onload="highlightSearchTerm()" class="frmBody" id="dl_iterate_phdr">
+<table class="nav"><tbody><tr><td colspan="2"><div id="printlink"><button onClick="window.print()" title="Print this page" aria-label="Print this page"></button></div><div id="permalink"><a href="#" title="Link to this page"></a></div></td></tr><tr><td style="width:75%;"><span class="topic_breadcrumb_links"><span class="topic_breadcrumb_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-d.html" title="D">D</a></span></span></td><td><span id="topic_navigation_links" class="navheader">
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-d.html" title="D"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">D</span></a></span>  </span></td></tr></tbody></table>
+
+
+<h1 class="title topictitle1"><span class="keyword apiname">dl_iterate_phdr()</span></h1>
+<table width="100%"><tbody><tr><td align="left"><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">QNX SDP</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">7.1</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">C Library Reference</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">API</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">Developer</button></td><td align="right"><span style="margin:0px 5px; font-size:0.9em;">Updated: October 28, 2024</span></td></tr></tbody></table>
+
+
+<div class="body refbody"><p class="shortdesc"><em class="ph i">Iterate over the shared objects that are loaded into a process's address space</em></p>
+
+
+<div class="section">
+<p class="p">
+
+
+
+
+
+</p>
+
+</div>
+
+
+<div class="section refsyn"><h2 class="title sectiontitle">Synopsis:</h2>
+
+<pre class="pre codeblock">
+#include &lt;sys/link.h&gt;
+
+int dl_iterate_phdr( Dl_Iterate_Phdr_t <var class="keyword varname">callback</var>,
+                     void *<var class="keyword varname">data</var> );
+</pre>
+
+</div>
+
+
+<div class="section"><h2 class="title sectiontitle">Arguments:</h2>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><var class="keyword varname">callback</var></dt>
+
+<dd class="dd">A pointer to a function that you want to be called for each loaded shared object.</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">data</var></dt>
+
+<dd class="dd">A pointer to some arbitrary data that you want to pass to the callback.</dd>
+
+
+
+</dl>
+
+</div>
+
+
+<div class="section"><h2 class="title sectiontitle">Library:</h2>
+
+
+<p class="p"><span class="ph filepath">libc</span></p>
+
+<p class="p">Use the <span class="keyword option">-l c</span> option to
+<a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/q/qcc.html"><span class="keyword cmdname">qcc</span></a>
+to link against this library.
+This library is usually included automatically.
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Description:</h2>
+
+
+<p class="p">
+The <span class="keyword apiname">dl_iterate_phdr()</span> function iterates over all the shared objects that are loaded into
+the calling process's address space and calls the given callback once for each object,
+until it has processed all the shared objects, or the callback returns a nonzero value.
+</p>
+
+
+<p class="p">
+The prototype for the callback routine is as follows:
+</p>
+
+
+<pre class="pre codeblock">
+int <var class="keyword varname">callback</var> ( const struct dl_phdr_info *<var class="keyword varname">info</var>, size_t <var class="keyword varname">size</var>, void *<var class="keyword varname">data</var>);
+</pre>
+
+
+<p class="p">
+Its arguments are:
+</p>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><var class="keyword varname">info</var></dt>
+
+<dd class="dd">A pointer to a <span class="keyword dtype">dl_phdr_info</span> structure that includes information about the shared object:
+  
+
+  <pre class="pre codeblock">
+struct dl_phdr_info {
+#if __PTR_BITS__ == 32
+	Elf32_Addr			dlpi_addr;
+	const char			*dlpi_name;
+	const Elf32_Phdr	*dlpi_phdr;
+	Elf32_Half			dlpi_phnum;
+#elif __PTR_BITS__ == 64
+	Elf64_Addr			dlpi_addr;
+	const char			*dlpi_name;
+	const Elf64_Phdr	*dlpi_phdr;
+	Elf64_Half			dlpi_phnum;
+#else
+#error __PTR_BITS__ not set properly
+#endif
+};
+  </pre>
+
+
+  <p class="p">
+  The entries are as follows:
+  </p>
+
+
+  <ul class="ul">
+  <li class="li"><var class="keyword varname">dlpi_addr</var> â the base address at which the shared object is mapped into
+    the address space of the calling process.
+  </li>
+
+
+  <li class="li"><var class="keyword varname">dlpi_name</var> â the name of the shared object.</li>
+
+  <li class="li"><var class="keyword varname">dlpi_phdr</var> â a pointer to the shared object's program headers.</li>
+
+  <li class="li"><var class="keyword varname">dlpi_phnum</var> â the number of program headers in the shared object.</li>
+
+  </ul>
+
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">size</var></dt>
+
+<dd class="dd">The size of the <span class="keyword dtype">dl_phdr_info</span> structure.</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">data</var></dt>
+
+<dd class="dd">The <var class="keyword varname">data</var> argument that you passed to <span class="keyword apiname">dl_iterate_phdr()</span>.</dd>
+
+
+
+</dl>
+
+
+<p class="p">
+The callback must not call <span class="keyword apiname">dlclose()</span>, but it can call <span class="keyword apiname">dl_iterate_phdr()</span>.
+It should return 0 on success, or a nonzero value if an error occurred.
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Returns:</h2>
+
+
+<p class="p">
+The value that the last invocation of the callback returned.
+</p>
+
+</div>
+
+
+<div class="section"><h2 class="title sectiontitle">Examples:</h2>
+
+
+<pre class="pre codeblock">
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;sys/link.h&gt;
+
+int my_callback ( const struct dl_phdr_info *info, size_t size, void *data)
+{
+   int hdr_num;
+
+   printf ("\n%s: base addr: %ld; %d program headers:\n", info-&gt;dlpi_name,
+      info-&gt;dlpi_addr, info-&gt;dlpi_phnum);
+
+   for (hdr_num = 0; hdr_num &lt; info-&gt;dlpi_phnum; hdr_num++)
+         printf("      %2d: address=%10p\n", hdr_num,
+             (void *) (info-&gt;dlpi_addr + info-&gt;dlpi_phdr[hdr_num].p_vaddr));
+
+   return 0;
+}
+
+int main(int argc, char** argv)
+{
+   printf ("My shared objects are as follows:\n");
+
+   dl_iterate_phdr( my_callback, NULL);
+
+   return EXIT_SUCCESS;
+}
+</pre>
+
+</div>
+
+
+<div class="section"><h2 class="title sectiontitle">Classification:</h2>
+
+<p class="p"><a class="xref" href="../summary.html#summary__CLASSIFICATION">QNX Neutrino</a></p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+<thead class="thead" align="left">
+<tr><th class="entry" valign="top" id="d1351736e265">Safety:</th>
+<th class="entry" valign="top" id="d1351736e267">Â </th>
+</tr>
+
+</thead>
+
+<tbody class="tbody">
+<tr><td class="entry" valign="top" headers="d1351736e265 d1351736e267 ">Cancellation point</td>
+<td class="entry" valign="top" headers="d1351736e265 d1351736e267 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d1351736e265 d1351736e267 ">Interrupt handler</td>
+<td class="entry" valign="top" headers="d1351736e265 d1351736e267 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d1351736e265 d1351736e267 ">Signal handler</td>
+<td class="entry" valign="top" headers="d1351736e265 d1351736e267 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d1351736e265 d1351736e267 ">Thread</td>
+<td class="entry" valign="top" headers="d1351736e265 d1351736e267 ">Yes</td>
+</tr>
+
+</tbody>
+
+</table>
+</div>
+
+</div>
+
+
+</div>
+
+
+<div class="related-links"><div class="relinfo relconcepts"><strong>Related concepts</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.sys_arch/topic/dll.html" title="Dynamic Linking (System Architecture)">Dynamic Linking (System Architecture)</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.prog/topic/devel_Lazy_loading.html" title="Lazy loading (QNX Neutrino Programmer's Guide)">Lazy loading (<span class="keyword">QNX Neutrino</span> Programmer's Guide)</a></div>
+</div>
+<div class="relinfo relref"><strong>Related reference</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/d/dladdr.html" title="Translate an address to symbolic information">dladdr()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/d/dlclose.html" title="Close a shared object">dlclose()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/d/dlerror.html" title="Get dynamic loading diagnostic information">dlerror()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/d/dlopen.html" title="Open a shared library">dlopen()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/d/dlsym.html" title="Get the address of a symbol in a shared object">dlsym()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/p/procmgr_ability.html" title="Control a process's ability to perform certain operations">procmgr_ability()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.utilities/topic/l/ld.html" title="ld (Utilities Reference)">ld (Utilities Reference)</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.utilities/topic/q/qcc.html" title="qcc (Utilities Reference)">qcc (Utilities Reference)</a></div>
+</div>
+</div><div class="navfooter"><!---->
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-d.html" title="D"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">D</span></a></span>  </div>
+</body>
+</html>

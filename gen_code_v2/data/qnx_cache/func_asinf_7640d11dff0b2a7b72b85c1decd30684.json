@@ -1,0 +1,20 @@
+{
+  "function_name": "asinf",
+  "url": "https://www.qnx.com/developers/docs/7.1/com.qnx.doc.neutrino.lib_ref/topic/a/asin.html",
+  "synopsis": "float asinf( float x );",
+  "description": "",
+  "headers": [
+    "#include <math.h>"
+  ],
+  "parameters": [
+    {
+      "name": "x",
+      "description": "The sine for which you want to find the angle."
+    }
+  ],
+  "return_values": [],
+  "examples": [
+    "#include <math.h>\n\ndouble asin( double x );\n\nfloat asinf( float x );\n\nlong double asinl( long double x );"
+  ],
+  "full_content": "Function: asinf\nURL: https://www.qnx.com/developers/docs/7.1/com.qnx.doc.neutrino.lib_ref/topic/a/asin.html\nSynopsis: float asinf( float x );\nHeaders: #include <math.h>\nParameters:\n  - x: The sine for which you want to find the angle.\nExamples:\nExample 1:\n#include <math.h>\n\ndouble asin( double x );\n\nfloat asinf( float x );\n\nlong double asinl( long double x );"
+}

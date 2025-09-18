@@ -1,0 +1,335 @@
+
+<!DOCTYPE html
+  PUBLIC "" "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />        
+      <meta name="copyright" content="(C) Copyright 2005" /><meta name="DC.rights.owner" content="(C) Copyright 2005" /><meta name="DC.Type" content="reference" /><meta name="DC.Title" content="openlog()" /><meta name="abstract" content="Open the syslogd system log" /><meta name="description" content="Open the syslogd system log" /><meta name="indexterms" content="openlog()" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-o.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/c/closelog.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/s/setlogmask.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/s/syslog.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/v/vsyslog.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.utilities/topic/l/logger.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.utilities/topic/s/syslog.conf.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.utilities/topic/s/syslogd.html" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="openlog" /><meta name="DC.Language" content="en-us" /><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/commonltr.css"><!----></link><title>openlog()</title><link rel="canonical" type="html" href="https://www.qnx.com/developers/docs/7.1/#com.qnx.doc.neutrino.lib_ref/" /><!--  Generated with Oxygen version 18.1, build number 2017020917.  --><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/webhelp_topic.css"><!----></link><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/skins/skin.css" /><script type="text/javascript"><!--
+            
+            var prefix = "../../../index.html";
+            
+            --></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-1.11.3.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.cookie.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-ui.custom.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.highlight-3.js"><!----></script><script type="text/javascript" charset="utf-8" src="../../../oxygen-webhelp/resources/js/webhelp_topic.js"><!----></script><script type="text/javascript"> var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-27400275-1']); _gaq.push(['_setDomainName', 'www.qnx.com']);_gaq.push(['_setAllowLinker', true]);_gaq.push(['_trackPageview']);(function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script></head>
+<body onload="highlightSearchTerm()" class="frmBody" id="openlog">
+<table class="nav"><tbody><tr><td colspan="2"><div id="printlink"><button onClick="window.print()" title="Print this page" aria-label="Print this page"></button></div><div id="permalink"><a href="#" title="Link to this page"></a></div></td></tr><tr><td style="width:75%;"><span class="topic_breadcrumb_links"><span class="topic_breadcrumb_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-o.html" title="O">O</a></span></span></td><td><span id="topic_navigation_links" class="navheader">
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-o.html" title="O"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">O</span></a></span>  </span></td></tr></tbody></table>
+
+
+<h1 class="title topictitle1"><span class="keyword apiname">openlog()</span></h1>
+<table width="100%"><tbody><tr><td align="left"><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">QNX SDP</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">7.1</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">C Library Reference</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">API</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">Developer</button></td><td align="right"><span style="margin:0px 5px; font-size:0.9em;">Updated: October 28, 2024</span></td></tr></tbody></table>
+
+
+<div class="body refbody"><p class="shortdesc"><em class="ph i">Open the <span class="keyword cmdname">syslogd</span> system log</em></p>
+
+
+<div class="section refsyn"><h2 class="title sectiontitle">Synopsis:</h2>
+
+<pre class="pre codeblock">
+#include &lt;syslog.h&gt;
+
+void openlog( const char * <var class="keyword varname">ident</var>, 
+              int <var class="keyword varname">logopt</var>, 
+              int <var class="keyword varname">facility</var> );
+</pre>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Arguments:</h2>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><var class="keyword varname">ident</var></dt>
+
+<dd class="dd">A string that you want to prepend to every message.</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">logopt</var> </dt>
+
+<dd class="dd">A bit field specifying logging options;
+  a combination of one or more of the following values with an OR operation:
+
+  <dl class="dl">
+  
+  <dt class="dt dlterm"><span class="keyword const">LOG_CONS</span></dt>
+
+  <dd class="dd">If <span class="keyword apiname">syslog()</span> can't pass the message to
+    <a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/s/syslogd.html"><span class="keyword cmdname">syslogd</span></a>, 
+    it attempts to write the message to the <span class="ph filepath">/dev/console</span> device. 
+    The <span class="ph filepath">/dev/console</span> device is usually a symlink (see the
+    <a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/l/ln.html"><span class="keyword cmdname">ln</span></a>
+    command) to a real device (e.g., <span class="ph filepath">/dev/text</span>, <span class="ph filepath">/dev/con1</span>,
+    or <span class="ph filepath">/dev/ser1</span>).
+
+    <p class="p">
+    
+    
+    (QNX Neutrino 7.0 or later) You can also use this flag to redirect <span class="keyword cmdname">syslogd</span> output to
+    <a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/s/slogger2.html"><span class="keyword cmdname">slogger2</span></a>.
+    </p>
+
+  </dd>
+
+  
+
+  
+  <dt class="dt dlterm"><span class="keyword const">LOG_NDELAY</span></dt>
+
+  <dd class="dd">Open the connection to <span class="keyword cmdname">syslogd</span> immediately.
+    Normally the opening is delayed until the first message is logged.
+  </dd>
+
+  
+
+  
+  <dt class="dt dlterm"><span class="keyword const">LOG_PERROR</span></dt>
+
+  <dd class="dd">Write the message to standard error output as well to the system log.</dd>
+
+  
+
+  
+  <dt class="dt dlterm"><span class="keyword const">LOG_PID</span></dt>
+
+  <dd class="dd">Log the process ID with each message. 
+    This is useful for identifying instantiations of daemons.
+  </dd>
+
+  
+
+  </dl>
+
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">facility</var></dt>
+
+<dd class="dd">Encode a default facility to be assigned to all messages that don't have an explicit facility encoded. 
+  In the following list, parameter values marked with an
+  asterisk (*) aren't used by any of the <span class="keyword">QNX Neutrino</span> standard utilities.
+
+  <dl class="dl">
+  
+  <dt class="dt dlterm"><span class="keyword const">LOG_AUTH</span> *</dt>
+
+  <dd class="dd">Authorization system.
+    
+  </dd>
+
+  
+
+  
+  <dt class="dt dlterm"><span class="keyword const">LOG_AUTHPRIV</span> *</dt>
+
+  <dd class="dd">Same as <span class="keyword const">LOG_AUTH</span>, but logged to a file readable only by selected individuals.</dd>
+
+  
+
+  
+  <dt class="dt dlterm"><span class="keyword const">LOG_CRON</span> *</dt>
+
+  <dd class="dd">Clock daemon.</dd>
+
+  
+
+  
+  <dt class="dt dlterm"><span class="keyword const">LOG_DAEMON</span></dt>
+
+  <dd class="dd">System daemons
+    (such as
+    <a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/r/routed.html"><span class="keyword cmdname">routed</span></a>)
+     that aren't explicitly provided for by other facilities.
+  </dd>
+
+  
+
+  
+  <dt class="dt dlterm"><span class="keyword const">LOG_FTP</span></dt>
+
+  <dd class="dd">File transfer protocol daemon.</dd>
+
+  
+
+  
+  <dt class="dt dlterm"><span class="keyword const">LOG_KERN</span> *</dt>
+
+  <dd class="dd">Messages generated by the kernel. 
+    These can't be generated by any user processes.
+  </dd>
+
+  
+
+  
+  <dt class="dt dlterm"><span class="keyword const">LOG_LPR</span></dt>
+
+  <dd class="dd">Line printer spooling system.</dd>
+
+  
+
+  
+  <dt class="dt dlterm"><span class="keyword const">LOG_MAIL</span></dt>
+
+  <dd class="dd">Mail system.</dd>
+
+  
+
+  
+  <dt class="dt dlterm"><span class="keyword const">LOG_NEWS</span> *</dt>
+
+  <dd class="dd">Network news system.</dd>
+
+  
+
+  
+  <dt class="dt dlterm"><span class="keyword const">LOG_SYSLOG</span></dt>
+
+  <dd class="dd">Messages generated internally by 
+    <a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/s/syslogd.html"><span class="keyword cmdname">syslogd</span></a>.
+  </dd>
+
+  
+
+  
+  <dt class="dt dlterm"><span class="keyword const">LOG_USER</span>*</dt>
+
+  <dd class="dd">Messages generated by random user processes. 
+    This is the default facility identifier if none is specified.
+  </dd>
+
+  
+
+  
+  <dt class="dt dlterm"><span class="keyword const">LOG_UUCP</span> *</dt>
+
+  <dd class="dd">The UUCP system.</dd>
+
+  
+
+  
+  <dt class="dt dlterm"><span class="keyword const">LOG_LOCAL0</span> through <span class="keyword const">LOG_LOCAL7</span> *</dt>
+
+  <dd class="dd">Reserved for local use.</dd>
+
+  
+
+  </dl>
+
+</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Library:</h2>
+
+
+<p class="p"><span class="ph filepath">libc</span></p>
+
+
+<p class="p">
+Use the <span class="keyword option">-l c</span> option to
+<a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/q/qcc.html"><span class="keyword cmdname">qcc</span></a>
+to link against this library.
+This library is usually included automatically.
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Description:</h2>
+
+
+<p class="p">
+
+
+
+The <span class="keyword apiname">openlog()</span> function opens the
+<a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/s/syslogd.html"><span class="keyword cmdname">syslogd</span></a> 
+system log and provides for more
+specialized processing of the messages sent by
+<a class="xref" href="../s/syslog.html" title="Write a message to the syslogd system log"><span class="keyword apiname">syslog()</span></a>
+and
+<a class="xref" href="../v/vsyslog.html" title="Control the syslogd system log (varargs)"><span class="keyword apiname">vsyslog()</span></a>. 
+</p>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Examples:</h2>
+
+
+<p class="p">
+See <a class="xref" href="../s/syslog.html" title="Write a message to the syslogd system log"><span class="keyword apiname">syslog()</span></a>.
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Classification:</h2>
+
+<p class="p"><a class="xref" href="../summary.html#summary__CLASSIFICATION">POSIX 1003.1</a></p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+<thead class="thead" align="left">
+<tr><th class="entry" valign="top" id="d2304220e458">Safety:</th>
+<th class="entry" valign="top" id="d2304220e460">Â </th>
+</tr>
+
+</thead>
+
+<tbody class="tbody">
+<tr><td class="entry" valign="top" headers="d2304220e458 d2304220e460 ">Cancellation point</td>
+<td class="entry" valign="top" headers="d2304220e458 d2304220e460 ">Yes</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2304220e458 d2304220e460 ">Interrupt handler</td>
+<td class="entry" valign="top" headers="d2304220e458 d2304220e460 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2304220e458 d2304220e460 ">Signal handler</td>
+<td class="entry" valign="top" headers="d2304220e458 d2304220e460 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2304220e458 d2304220e460 ">Thread</td>
+<td class="entry" valign="top" headers="d2304220e458 d2304220e460 ">Yes</td>
+</tr>
+
+</tbody>
+
+</table>
+</div>
+
+</div>
+
+
+</div>
+
+
+<div class="related-links"><div class="relinfo relref"><strong>Related reference</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/c/closelog.html" title="Close the syslogd system log">closelog()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/s/setlogmask.html" title="Set the syslogd system log priority mask">setlogmask()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/s/syslog.html" title="Write a message to the syslogd system log">syslog()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/v/vsyslog.html" title="Control the syslogd system log (varargs)">vsyslog()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.utilities/topic/l/logger.html" title="logger (Utilities Reference)">logger (Utilities Reference)</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.utilities/topic/s/syslog.conf.html" title="/etc/syslog.conf (Utilities Reference)">/etc/syslog.conf (Utilities Reference)</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.utilities/topic/s/syslogd.html" title="syslogd (Utilities Reference)">syslogd (Utilities Reference)</a></div>
+</div>
+</div><div class="navfooter"><!---->
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-o.html" title="O"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">O</span></a></span>  </div>
+</body>
+</html>

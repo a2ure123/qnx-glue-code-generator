@@ -1,0 +1,655 @@
+
+<!DOCTYPE html
+  PUBLIC "" "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />        
+      <meta name="copyright" content="(C) Copyright 2005" /><meta name="DC.rights.owner" content="(C) Copyright 2005" /><meta name="DC.Type" content="reference" /><meta name="DC.Title" content="execv()" /><meta name="abstract" content="Execute a file" /><meta name="description" content="Execute a file" /><meta name="indexterms" content="execv()" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-e.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/e/execl.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/e/execle.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/e/execlp.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/e/execlpe.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/e/execve.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/e/execvp.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/e/execvpe.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.getting_started/topic/s1_procs.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/a/abort.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/a/atexit.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/e/errno.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/e/_exit.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/e/exit.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/g/getenv.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/m/main.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/p/posix_spawn.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/p/procmgr_ability.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/p/putenv.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/s/spawn.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/s/spawnl.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/s/spawnle.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/s/spawnlp.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/s/spawnlpe.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/s/spawnp.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/s/spawnv.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/s/spawnve.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/s/spawnvp.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/s/spawnvpe.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/s/system.html" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="execv" /><meta name="DC.Language" content="en-us" /><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/commonltr.css"><!----></link><title>execv()</title><link rel="canonical" type="html" href="https://www.qnx.com/developers/docs/7.1/#com.qnx.doc.neutrino.lib_ref/" /><!--  Generated with Oxygen version 18.1, build number 2017020917.  --><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/webhelp_topic.css"><!----></link><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/skins/skin.css" /><script type="text/javascript"><!--
+            
+            var prefix = "../../../index.html";
+            
+            --></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-1.11.3.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.cookie.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-ui.custom.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.highlight-3.js"><!----></script><script type="text/javascript" charset="utf-8" src="../../../oxygen-webhelp/resources/js/webhelp_topic.js"><!----></script><script type="text/javascript"> var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-27400275-1']); _gaq.push(['_setDomainName', 'www.qnx.com']);_gaq.push(['_setAllowLinker', true]);_gaq.push(['_trackPageview']);(function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script></head>
+<body onload="highlightSearchTerm()" class="frmBody" id="execv">
+<table class="nav"><tbody><tr><td colspan="2"><div id="printlink"><button onClick="window.print()" title="Print this page" aria-label="Print this page"></button></div><div id="permalink"><a href="#" title="Link to this page"></a></div></td></tr><tr><td style="width:75%;"><span class="topic_breadcrumb_links"><span class="topic_breadcrumb_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-e.html" title="E">E</a></span></span></td><td><span id="topic_navigation_links" class="navheader">
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-e.html" title="E"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">E</span></a></span>  </span></td></tr></tbody></table>
+
+
+<h1 class="title topictitle1"><span class="keyword apiname">execv()</span></h1>
+<table width="100%"><tbody><tr><td align="left"><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">QNX SDP</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">7.1</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">C Library Reference</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">API</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">Developer</button></td><td align="right"><span style="margin:0px 5px; font-size:0.9em;">Updated: October 28, 2024</span></td></tr></tbody></table>
+
+
+<div class="body refbody"><p class="shortdesc"><em class="ph i">Execute a file</em></p>
+
+
+<div class="section refsyn"><h2 class="title sectiontitle">Synopsis:</h2>
+
+<pre class="pre codeblock">
+#include &lt;unistd.h&gt;
+
+int execv( const char * <var class="keyword varname">path</var>,
+           char * const <var class="keyword varname">argv</var>[] );
+</pre>
+
+
+<p class="p">
+This function is declared in <span class="ph filepath">&lt;process.h&gt;</span>, which <span class="ph filepath">&lt;unistd.h&gt;</span>
+includes.
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Arguments:</h2>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><var class="keyword varname">path</var></dt>
+
+<dd class="dd">A path name that identifies the new process image file.</dd>
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">argv</var></dt>
+
+<dd class="dd">An array of character pointers to <span class="keyword const">NULL</span>-terminated strings. Your application must
+ensure that the last member of this array is a <span class="keyword const">NULL</span> pointer. These strings constitute
+the argument list available to the new process image. The value in <var class="keyword varname">argv[0]</var> must
+point to a filename that's associated with the process being started. Neither
+<var class="keyword varname">argv</var> nor the value in <var class="keyword varname">argv[0]</var> can be NULL.</dd>
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Library:</h2>
+
+
+<p class="p"><span class="ph filepath">libc</span></p>
+
+
+<p class="p">
+Use the <span class="keyword option">-l c</span> option to
+<a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/q/qcc.html"><span class="keyword cmdname">qcc</span></a>
+to link against this library.
+This library is usually included automatically.
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Description:</h2>
+
+
+<p class="p">
+The <span class="keyword apiname">execv()</span> function replaces the current process image
+with a new process image specified by <var class="keyword varname">path</var>.
+The new image is constructed from a regular, executable file called the new process image file.
+No return is made because the calling process image is replaced by the new process image.
+
+
+
+</p>
+
+
+<div class="note note"><span class="notetitle">Note:</span> 
+In order to start the new process image, your process must have the
+<span class="keyword const">PROCMGR_AID_SPAWN</span> ability enabled.
+For more information, see
+<a class="xref" href="../p/procmgr_ability.html" title="Control a process's ability to perform certain operations"><span class="keyword apiname">procmgr_ability()</span></a>.
+
+</div>
+
+
+<p class="p">
+When a C-language program is executed as a result of this call, it's entered as
+a C-language function call as follows:
+</p>
+
+
+<pre class="pre codeblock">
+int main (int <var class="keyword varname">argc</var>, char *<var class="keyword varname">argv</var>[]);
+</pre>
+
+
+<p class="p">
+where <var class="keyword varname">argc</var> is the argument count and <var class="keyword varname">argv</var> is an array of character pointers
+to the arguments themselves.
+In addition, the following variable:
+</p>
+
+
+<pre class="pre codeblock">
+extern char **<var class="keyword varname">environ</var>;
+</pre>
+
+
+<p class="p">
+is initialized as a pointer to an array of character pointers to the environment strings.
+The <var class="keyword varname">argv</var> and <var class="keyword varname">environ</var> arrays are each terminated by a null pointer.
+The null pointer terminating the <var class="keyword varname">argv</var> array isn't counted in <var class="keyword varname">argc</var>.
+</p>
+
+
+<p class="p">
+Multithreaded applications shouldn't use the <var class="keyword varname">environ</var> variable to
+access or modify any environment variable
+while any other thread is concurrently modifying any environment variable.
+A call to any function dependent on any environment variable is considered a use of the
+<var class="keyword varname">environ</var> variable to access that environment variable.
+</p>
+
+
+<p class="p">
+The arguments specified by a program with one of the exec functions are passed on to the new process image in the
+corresponding <span class="keyword apiname">main()</span> arguments.
+</p>
+
+
+<p class="p">
+The environment for the new process image is taken from the external variable <var class="keyword varname">environ</var>
+in the calling process.
+</p>
+
+
+<p class="p">
+The number of bytes available for the new process image's combined argument and environment lists is <span class="keyword const">ARG_MAX</span>.
+</p>
+
+
+<p class="p">
+File descriptors open in the calling process image remain open in the new process image,
+except for when <span class="keyword apiname">fcntl()</span>'s
+<a class="xref" href="../f/fcntl.html#fcntl__F_SETFD"><span class="keyword const">FD_CLOEXEC</span></a>
+flag is set.
+For those file descriptors that remain open, all attributes of the open file description,
+including file locks remain unchanged.
+If a file descriptor is closed for this reason, file locks are removed as described by
+<a class="xref" href="../c/close.html" title="Close a file"><span class="keyword apiname">close()</span></a> while locks not affected by
+<a class="xref" href="../c/close.html" title="Close a file"><span class="keyword apiname">close()</span></a> aren't changed.
+</p>
+
+
+<p class="p">
+Directory streams open in the calling process image are closed in the new process image.
+</p>
+
+
+<p class="p">
+Signals set to <span class="keyword const">SIG_DFL</span> in the calling process are set to the
+default action in the new process image.
+Signals set to <span class="keyword const">SIG_IGN</span> by the calling process images are
+ignored by the new process image.
+Signals set to be caught by the calling process image are set to the default action in the new process image.
+
+</p>
+
+
+<p class="p">
+After a successful call, any functions previously registered by
+<a class="xref" href="../a/atexit.html" title="Register functions to be called during normal program termination"><span class="keyword apiname">atexit()</span></a>
+are no longer registered.
+</p>
+
+
+<p class="p">
+If the <var class="keyword varname">path</var> is on a filesystem mounted with the <span class="keyword const">ST_NOSUID</span> flag set,
+the effective user ID, effective group ID, saved set-user ID and saved set-group ID are unchanged
+for the new process image.
+Otherwise, if the set-user ID mode bit is set, the
+effective user ID of the new process image is set to the user ID of <var class="keyword varname">path</var>.
+Similarly, if the set-group ID mode bit is set, the effective group ID of the new process image is set
+to the group ID of <var class="keyword varname">path</var>.
+The real user ID, real group ID, and supplementary group IDs of the new process image remain the same as those of
+the calling process.
+The effective user ID and effective group ID of the new process image are saved (as the saved
+set-user ID and the saved set-group ID used by <a class="xref" href="../s/setuid.html" title="Set the real, effective and saved user IDs"><span class="keyword apiname">setuid()</span></a>).
+</p>
+
+
+<p class="p">
+Any shared memory segments attached to the calling process image aren't
+attached to the new process image.
+If the calling process had locked any memory, the locks are released.
+</p>
+
+
+<p class="p">
+The new process image doesn't inherit the calling process's default timer tolerance (set by a call to
+<a class="xref" href="../p/procmgr_timer_tolerance.html" title="Get or set the default timer tolerance for a process"><span class="keyword apiname">procmgr_timer_tolerance()</span></a>).
+</p>
+
+
+<p class="p">
+The new process image also inherits at least the following attributes from the calling process image:
+</p>
+
+
+<ul class="ul">
+<li class="li">process ID</li>
+
+<li class="li">parent process ID</li>
+
+<li class="li">process group ID
+    
+</li>
+
+<li class="li">session membership
+    
+</li>
+
+<li class="li">real user ID</li>
+
+<li class="li">real group ID</li>
+
+<li class="li">supplementary group IDs</li>
+
+<li class="li">time left until an alarm clock signal (see <a class="xref" href="../a/alarm.html" title="Schedule an alarm"><span class="keyword apiname">alarm()</span></a>)</li>
+
+<li class="li">current working directory</li>
+
+<li class="li">root directory</li>
+
+<li class="li">file mode creation mask (see <a class="xref" href="../u/umask.html" title="Set the file-mode creation mask for the process"><span class="keyword apiname">umask()</span></a>)</li>
+
+<li class="li">process signal mask (see <a class="xref" href="../s/sigprocmask.html" title="Modify or examine a thread's signal-blocked mask"><span class="keyword apiname">sigprocmask()</span></a>)</li>
+
+<li class="li">pending signal (see  <a class="xref" href="../s/sigpending.html" title="Examine the set of pending, masked signals for a process"><span class="keyword apiname">sigpending()</span></a>)</li>
+
+<li class="li"><var class="keyword varname">tms_utime</var>, <var class="keyword varname">tms_stime</var>, <var class="keyword varname">tms_cutime</var>,
+  and <var class="keyword varname">tms_cstime</var>
+  (see <a class="xref" href="../t/times.html" title="Get time-accounting information"><span class="keyword apiname">times()</span></a>)
+</li>
+
+<li class="li">resource limits</li>
+
+<li class="li">controlling terminal</li>
+
+<li class="li">interval timers.</li>
+
+</ul>
+
+
+<p class="p">
+A call to this function from a process with more than one thread
+results in all threads being terminated and the new executable image being loaded and executed.
+No destructor functions are called.
+</p>
+
+
+<p class="p">
+Upon successful completion, the <var class="keyword varname">st_atime</var> field of the file is marked for update.
+If the <span class="keyword apiname">exec*</span> failed but was able to locate the process image file,
+whether the <var class="keyword varname">st_atime</var> field is marked for update is undefined.
+On success, the process image file is considered to be opened with
+<a class="xref" href="../o/open.html" title="Open a file"><span class="keyword apiname">open()</span></a>.
+The corresponding
+<a class="xref" href="../c/close.html" title="Close a file"><span class="keyword apiname">close()</span></a>
+is considered to occur at a time after this open, but before process termination or successful completion of a
+subsequent call to one of the <span class="keyword apiname">exec*</span> functions.
+</p>
+
+
+</div>
+
+
+<div class="section"><h2 class="title sectiontitle"><span class="keyword apiname">exec*()</span> summary</h2>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+
+<thead class="thead" align="left">
+<tr>
+  <th class="entry" valign="top" id="d1398658e491">Function</th>
+
+  <th class="entry" valign="top" id="d1398658e494">Description</th>
+
+  <th class="entry" valign="top" id="d1398658e497">POSIX?</th>
+
+</tr>
+
+</thead>
+
+
+<tbody class="tbody">
+
+<tr>
+  <td class="entry" valign="top" headers="d1398658e491 d1398658e494 d1398658e497 "><a class="xref" href="execl.html" title="Execute a file"><span class="keyword apiname">execl()</span></a></td>
+
+  <td class="entry" valign="top" headers="d1398658e491 d1398658e494 d1398658e497 "><span class="keyword const">NULL</span>-terminated argument list</td>
+
+  <td class="entry" valign="top" headers="d1398658e491 d1398658e494 d1398658e497 ">Yes</td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1398658e491 d1398658e494 d1398658e497 "><a class="xref" href="execle.html" title="Execute a file"><span class="keyword apiname">execle()</span></a></td>
+
+  <td class="entry" valign="top" headers="d1398658e491 d1398658e494 d1398658e497 "><span class="keyword const">NULL</span>-terminated argument list,
+        specify the new process image's environment
+  </td>
+
+  <td class="entry" valign="top" headers="d1398658e491 d1398658e494 d1398658e497 ">Yes</td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1398658e491 d1398658e494 d1398658e497 "><a class="xref" href="execlp.html" title="Execute a file"><span class="keyword apiname">execlp()</span></a></td>
+
+  <td class="entry" valign="top" headers="d1398658e491 d1398658e494 d1398658e497 "><span class="keyword const">NULL</span>-terminated argument list,
+        search for the new process image file in <span class="keyword envar">PATH</span>
+  </td>
+
+  <td class="entry" valign="top" headers="d1398658e491 d1398658e494 d1398658e497 ">Yes</td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1398658e491 d1398658e494 d1398658e497 "><a class="xref" href="execlpe.html" title="Execute a file"><span class="keyword apiname">execlpe()</span></a></td>
+
+  <td class="entry" valign="top" headers="d1398658e491 d1398658e494 d1398658e497 "><span class="keyword const">NULL</span>-terminated argument list,
+        search for the new process image file in <span class="keyword envar">PATH</span>,
+        specify the new process image's environment
+  </td>
+
+  <td class="entry" valign="top" headers="d1398658e491 d1398658e494 d1398658e497 ">No</td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1398658e491 d1398658e494 d1398658e497 "><a class="xref" href="execv.html" title="Execute a file"><span class="keyword apiname">execv()</span></a></td>
+
+  <td class="entry" valign="top" headers="d1398658e491 d1398658e494 d1398658e497 "><span class="keyword const">NULL</span>-terminated array of arguments</td>
+
+  <td class="entry" valign="top" headers="d1398658e491 d1398658e494 d1398658e497 ">Yes</td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1398658e491 d1398658e494 d1398658e497 "><a class="xref" href="execve.html" title="Execute a file"><span class="keyword apiname">execve()</span></a></td>
+
+  <td class="entry" valign="top" headers="d1398658e491 d1398658e494 d1398658e497 "><span class="keyword const">NULL</span>-terminated array of arguments,
+        specify the new process image's environment
+  </td>
+
+  <td class="entry" valign="top" headers="d1398658e491 d1398658e494 d1398658e497 ">Yes</td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1398658e491 d1398658e494 d1398658e497 "><a class="xref" href="execvp.html" title="Execute a file"><span class="keyword apiname">execvp()</span></a></td>
+
+  <td class="entry" valign="top" headers="d1398658e491 d1398658e494 d1398658e497 "><span class="keyword const">NULL</span>-terminated array of arguments,
+        search for the new process image file in <span class="keyword envar">PATH</span>
+  </td>
+
+  <td class="entry" valign="top" headers="d1398658e491 d1398658e494 d1398658e497 ">Yes</td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1398658e491 d1398658e494 d1398658e497 "><a class="xref" href="execvpe.html" title="Execute a file"><span class="keyword apiname">execvpe()</span></a></td>
+
+  <td class="entry" valign="top" headers="d1398658e491 d1398658e494 d1398658e497 "><span class="keyword const">NULL</span>-terminated array of arguments,
+        search for the new process image file in <span class="keyword envar">PATH</span>,
+        specify the new process image's environment
+  </td>
+
+  <td class="entry" valign="top" headers="d1398658e491 d1398658e494 d1398658e497 ">No</td>
+
+</tr>
+
+
+</tbody>
+
+</table>
+</div>
+
+
+</div>
+
+
+<div class="section"><h2 class="title sectiontitle">Returns:</h2>
+
+
+<p class="p">
+When <span class="keyword apiname">execv()</span> is successful, it doesn't return; otherwise, it
+returns -1 and sets
+<a class="xref" href="errno.html" title="Thread-local error variable"><var class="keyword varname">errno</var></a>.
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Errors:</h2>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><span class="keyword const">E2BIG</span></dt>
+
+<dd class="dd">The argument list and the environment is larger than the system limit of <span class="keyword const">ARG_MAX</span> bytes.</dd>
+
+
+
+
+  <dt class="dt dlterm"><span class="keyword const">EACCES</span></dt>
+
+  <dd class="dd">The calling process doesn't have permission to search a directory listed in <span class="ph filepath">path</span>,
+    or it doesn't have permission to execute <span class="ph filepath">path</span>, or <span class="ph filepath">path</span>'s filesystem was mounted with the <span class="keyword const">ST_NOEXEC</span> flag.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EINVAL</span></dt>
+
+<dd class="dd">Either <var class="keyword varname">argv</var> or the value in <var class="keyword varname">argv[0]</var> is NULL.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">ELOOP</span></dt>
+
+<dd class="dd">Too many levels of symbolic links or prefixes.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EMFILE</span></dt>
+
+<dd class="dd">Insufficient resources available to load the new executable image or to remap file descriptors.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">ENAMETOOLONG</span></dt>
+
+<dd class="dd">The length of <var class="keyword varname">path</var> or an element of the <span class="keyword envar">PATH</span> environment variable exceeds
+  <span class="keyword const">PATH_MAX</span>.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">ENOENT</span></dt>
+
+<dd class="dd">One or more components of the pathname don't exist, or the
+  <var class="keyword varname">path</var> argument points to an empty string.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">ENOEXEC</span></dt>
+
+<dd class="dd">The new process image file has the correct access permissions, but isn't in the proper format.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">ENOMEM</span></dt>
+
+<dd class="dd">The new process image requires more memory than is allowed by the hardware or system-imposed memory management constraints.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">ENOTDIR</span></dt>
+
+<dd class="dd">A component of <var class="keyword varname">path</var> isn't a directory.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EPERM</span></dt>
+
+<dd class="dd">The calling process doesn't have the required permission (see
+  <a class="xref" href="../p/procmgr_ability.html" title="Control a process's ability to perform certain operations"><span class="keyword apiname">procmgr_ability()</span></a>),
+  or an underlying call to
+  <a class="xref" href="../m/mmap.html" title="Map a memory region into a process's address space"><span class="keyword apiname">mmap()</span></a>
+  failed because it attempted to set <span class="keyword const">PROT_EXEC</span> for a region of memory covered by
+  an untrusted memory-mapped file.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">ETXTBSY</span></dt>
+
+<dd class="dd">The text file that you're trying to execute is busy (e.g., it might be open for writing).</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Examples:</h2>
+
+
+<pre class="pre codeblock">
+#include &lt;stddef.h&gt;
+#include &lt;unistd.h&gt;
+
+char* arg_list[] = { "myprog", "ARG1", "ARG2", NULL };
+
+execv( "myprog", arg_list );
+</pre>
+
+
+<p class="p">
+The preceding invokes <span class="keyword cmdname">myprog</span> as if the user entered:
+</p>
+
+
+<pre class="pre codeblock">
+myprog ARG1 ARG2
+</pre>
+
+
+<p class="p">
+as a command at the shell.
+The program will be found if <span class="keyword cmdname">myprog</span>
+exists in the current working directory.
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Classification:</h2>
+
+<p class="p"><a class="xref" href="../summary.html#summary__CLASSIFICATION">POSIX 1003.1</a></p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+<thead class="thead" align="left">
+<tr><th class="entry" valign="top" id="d1398658e940">Safety:</th>
+<th class="entry" valign="top" id="d1398658e942">Â </th>
+</tr>
+
+</thead>
+
+<tbody class="tbody">
+<tr><td class="entry" valign="top" headers="d1398658e940 d1398658e942 ">Cancellation point</td>
+<td class="entry" valign="top" headers="d1398658e940 d1398658e942 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d1398658e940 d1398658e942 ">Interrupt handler</td>
+<td class="entry" valign="top" headers="d1398658e940 d1398658e942 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d1398658e940 d1398658e942 ">Signal handler</td>
+<td class="entry" valign="top" headers="d1398658e940 d1398658e942 ">Yes</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d1398658e940 d1398658e942 ">Thread</td>
+<td class="entry" valign="top" headers="d1398658e940 d1398658e942 ">Yes</td>
+</tr>
+
+</tbody>
+
+</table>
+</div>
+
+</div>
+
+
+</div>
+
+
+<div class="related-links"><div class="relinfo relconcepts"><strong>Related concepts</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.getting_started/topic/s1_procs.html" title="Processes and Threads (Getting Started with QNX Neutrino)">Processes and Threads (Getting Started with <span class="keyword">QNX Neutrino</span>)</a></div>
+</div>
+<div class="relinfo relref"><strong>Related reference</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/e/execl.html" title="Execute a file">execl()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/e/execle.html" title="Execute a file">execle()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/e/execlp.html" title="Execute a file">execlp()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/e/execlpe.html" title="Execute a file">execlpe()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/e/execve.html" title="Execute a file">execve()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/e/execvp.html" title="Execute a file">execvp()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/e/execvpe.html" title="Execute a file">execvpe()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/a/abort.html" title="Raise the SIGABRT signal to terminate program execution">abort()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/a/atexit.html" title="Register functions to be called during normal program termination">atexit()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/e/errno.html" title="Thread-local error variable">errno</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/e/_exit.html" title="Terminate the program">_exit()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/e/exit.html" title="Exit the calling program">exit()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/g/getenv.html" title="Get the value of an environment variable">getenv()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/m/main.html" title="Program entry function">main()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/p/posix_spawn.html" title="Spawn a process">posix_spawn(), posix_spawnp()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/p/procmgr_ability.html" title="Control a process's ability to perform certain operations">procmgr_ability()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/p/putenv.html" title="Add, change or delete an environment variable">putenv()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/s/spawn.html" title="Create and execute a new child process">spawn()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/s/spawnl.html" title="Spawn a child process, given a list of arguments">spawnl()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/s/spawnle.html" title="Spawn a child process, given a list of arguments and an environment">spawnle()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/s/spawnlp.html" title="Spawn a child process, given a list of arguments and a relative path">spawnlp()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/s/spawnlpe.html" title="Spawn a child process, given a list of arguments, an environment, and a relative path">spawnlpe()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/s/spawnp.html" title="Create and execute a new child process, given a relative path">spawnp()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/s/spawnv.html" title="Spawn a child process, given a vector of arguments">spawnv()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/s/spawnve.html" title="Spawn a child process, given a vector of arguments and an environment">spawnve()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/s/spawnvp.html" title="Spawn a child process, given a vector of arguments and a relative path">spawnvp()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/s/spawnvpe.html" title="Spawn a child process, given a vector of arguments, an environment, and a relative path">spawnvpe()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/s/system.html" title="Execute a system command">system()</a></div>
+</div>
+</div><div class="navfooter"><!---->
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-e.html" title="E"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">E</span></a></span>  </div>
+</body>
+</html>

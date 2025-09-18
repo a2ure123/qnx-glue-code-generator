@@ -1,0 +1,245 @@
+
+<!DOCTYPE html
+  PUBLIC "" "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />        
+      <meta name="copyright" content="(C) Copyright 2005" /><meta name="DC.rights.owner" content="(C) Copyright 2005" /><meta name="DC.Type" content="reference" /><meta name="DC.Title" content="assert()" /><meta name="abstract" content="Display a diagnostic message and optionally terminate the program" /><meta name="description" content="Display a diagnostic message and optionally terminate the program" /><meta name="indexterms" content="assert()" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-a.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/a/abort.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/s/stderr.html" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="assert" /><meta name="DC.Language" content="en-us" /><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/commonltr.css"><!----></link><title>assert()</title><link rel="canonical" type="html" href="https://www.qnx.com/developers/docs/7.1/#com.qnx.doc.neutrino.lib_ref/" /><!--  Generated with Oxygen version 18.1, build number 2017020917.  --><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/webhelp_topic.css"><!----></link><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/skins/skin.css" /><script type="text/javascript"><!--
+            
+            var prefix = "../../../index.html";
+            
+            --></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-1.11.3.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.cookie.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-ui.custom.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.highlight-3.js"><!----></script><script type="text/javascript" charset="utf-8" src="../../../oxygen-webhelp/resources/js/webhelp_topic.js"><!----></script><script type="text/javascript"> var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-27400275-1']); _gaq.push(['_setDomainName', 'www.qnx.com']);_gaq.push(['_setAllowLinker', true]);_gaq.push(['_trackPageview']);(function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script></head>
+<body onload="highlightSearchTerm()" class="frmBody" id="assert">
+<table class="nav"><tbody><tr><td colspan="2"><div id="printlink"><button onClick="window.print()" title="Print this page" aria-label="Print this page"></button></div><div id="permalink"><a href="#" title="Link to this page"></a></div></td></tr><tr><td style="width:75%;"><span class="topic_breadcrumb_links"><span class="topic_breadcrumb_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-a.html" title="A">A</a></span></span></td><td><span id="topic_navigation_links" class="navheader">
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-a.html" title="A"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">A</span></a></span>  </span></td></tr></tbody></table>
+
+
+<h1 class="title topictitle1"><span class="keyword apiname">assert()</span></h1>
+<table width="100%"><tbody><tr><td align="left"><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">QNX SDP</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">7.1</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">C Library Reference</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">API</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">Developer</button></td><td align="right"><span style="margin:0px 5px; font-size:0.9em;">Updated: October 28, 2024</span></td></tr></tbody></table>
+
+
+<div class="body refbody"><p class="shortdesc"><em class="ph i">Display a diagnostic message and optionally terminate the program</em></p>
+
+
+<div class="section refsyn"><h2 class="title sectiontitle">Synopsis:</h2>
+
+<pre class="pre codeblock">
+#include &lt;assert.h&gt;
+
+void assert( int <var class="keyword varname">expression</var> );
+</pre>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Arguments:</h2>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><var class="keyword varname">expression</var></dt>
+
+<dd class="dd">Zero if you want to terminate the program; a nonzero value if you don't.</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Library:</h2>
+
+
+<p class="p"><span class="ph filepath">libc</span></p>
+
+
+<p class="p">
+Use the <span class="keyword option">-l c</span> option to
+<a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/q/qcc.html"><span class="keyword cmdname">qcc</span></a>
+to link against this library.
+This library is usually included automatically.
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Description:</h2>
+
+
+<p class="p">
+
+
+
+The <span class="keyword apiname">assert()</span> macro displays a diagnostic message on the
+<a class="xref" href="../s/stderr.html" title="The standard error stream"><var class="keyword varname">stderr</var></a>
+stream, and terminates the program, using
+<a class="xref" href="abort.html" title="Raise the SIGABRT signal to terminate program execution"><span class="keyword apiname">abort()</span></a>,
+if <var class="keyword varname">expression</var> is false (0).
+</p>
+
+
+<p class="p">
+The diagnostic message includes the <var class="keyword varname">expression</var>, the name of
+the source file (the value of <span class="keyword const">__FILE__</span>) and the line
+number of the failed assertion (the value of <span class="keyword const">__LINE__</span>).
+
+
+</p>
+
+
+<p class="p">
+No action is taken if <var class="keyword varname">expression</var> is true (nonzero).
+</p>
+
+
+<p class="p">
+You typically use the <span class="keyword apiname">assert()</span> macro while developing a program,
+to identify program logic errors.
+You should choose the <var class="keyword varname">expression</var> so that it's true when the
+program is functioning as intended.
+</p>
+
+
+<p class="p">
+
+After the program has been debugged, you can use the special
+<span class="q">&#147;no debug&#148;</span> identifier, <span class="keyword const">NDEBUG</span>, to remove
+calls to <span class="keyword apiname">assert()</span> from the program when it's recompiled.
+If you use the <span class="keyword option">-D</span> option to 
+<a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/q/qcc.html"><span class="keyword cmdname">qcc</span></a>
+or a <samp class="ph codeph">#define</samp> directive to define <span class="keyword const">NDEBUG</span>
+(with any value), 
+the C preprocessor ignores all <span class="keyword apiname">assert()</span> calls in the program source.
+</p>
+
+
+<div class="note note"><span class="notetitle">Note:</span> 
+To remove the calls to <span class="keyword apiname">assert()</span>, you must define
+<span class="keyword const">NDEBUG</span> in the code <em class="ph i">before</em> including the 
+<span class="ph filepath">&lt;assert.h&gt;</span> header file (i.e.,
+<samp class="ph codeph">#include &lt;assert.h&gt;</samp>).
+
+<p class="p">
+If you define <span class="keyword const">NDEBUG</span>, the preprocessor also ignores
+the expression you pass to <span class="keyword apiname">assert()</span>.
+For example, if your code includes:
+</p>
+
+
+<pre class="pre codeblock">
+assert((fd = open("filename", O_RDWR)) != -1);
+</pre>
+
+
+<p class="p">
+and you define <span class="keyword const">NDEBUG</span>, the preprocessor ignores the
+entire call to <span class="keyword apiname">assert()</span>, including the call to
+<span class="keyword apiname">open()</span>.
+</p>
+
+</div>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Examples:</h2>
+
+
+<pre class="pre codeblock">
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;assert.h&gt;
+
+void process_string( char *string )
+{
+    /* use assert to check argument */
+    assert( string != NULL );
+    assert( *string != '\0' );
+    /* rest of code follows here */
+}
+
+int main( void )
+{
+    process_string( "hello" );
+    process_string( "" );
+
+    return EXIT_SUCCESS;
+}
+</pre>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Classification:</h2>
+
+<p class="p"><a class="xref" href="../summary.html#summary__CLASSIFICATION">ANSI</a>,
+<a class="xref" href="../summary.html#summary__CLASSIFICATION">POSIX 1003.1</a></p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+<thead class="thead" align="left">
+<tr><th class="entry" valign="top" id="d1223839e262">Safety:</th>
+<th class="entry" valign="top" id="d1223839e264">Â </th>
+</tr>
+
+</thead>
+
+<tbody class="tbody">
+<tr><td class="entry" valign="top" headers="d1223839e262 d1223839e264 ">Cancellation point</td>
+<td class="entry" valign="top" headers="d1223839e262 d1223839e264 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d1223839e262 d1223839e264 ">Interrupt handler</td>
+<td class="entry" valign="top" headers="d1223839e262 d1223839e264 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d1223839e262 d1223839e264 ">Signal handler</td>
+<td class="entry" valign="top" headers="d1223839e262 d1223839e264 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d1223839e262 d1223839e264 ">Thread</td>
+<td class="entry" valign="top" headers="d1223839e262 d1223839e264 ">Yes</td>
+</tr>
+
+</tbody>
+
+</table>
+</div>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Caveats:</h2>
+
+
+<p class="p">
+<span class="keyword apiname">assert()</span> is a macro.
+</p>
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="related-links"><div class="relinfo relref"><strong>Related reference</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/a/abort.html" title="Raise the SIGABRT signal to terminate program execution">abort()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/s/stderr.html" title="The standard error stream">stderr</a></div>
+</div>
+</div><div class="navfooter"><!---->
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-a.html" title="A"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">A</span></a></span>  </div>
+</body>
+</html>

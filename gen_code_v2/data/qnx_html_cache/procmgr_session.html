@@ -1,0 +1,331 @@
+
+<!DOCTYPE html
+  PUBLIC "" "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />        
+      <meta name="copyright" content="(C) Copyright 2005" /><meta name="DC.rights.owner" content="(C) Copyright 2005" /><meta name="DC.Type" content="reference" /><meta name="DC.Title" content="procmgr_session(), procmgr_session_ext()" /><meta name="abstract" content="Provide process manager session support" /><meta name="description" content="Provide process manager session support" /><meta name="indexterms" content="procmgr_session(), procmgr_session_ext()" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-p.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/p/procmgr_ability.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/s/setsid.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/t/tcsetpgrp.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/t/tcsetsid.html" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="procmgr_session" /><meta name="DC.Language" content="en-us" /><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/commonltr.css"><!----></link><title>procmgr_session(), procmgr_session_ext()</title><link rel="canonical" type="html" href="https://www.qnx.com/developers/docs/7.1/#com.qnx.doc.neutrino.lib_ref/" /><!--  Generated with Oxygen version 18.1, build number 2017020917.  --><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/webhelp_topic.css"><!----></link><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/skins/skin.css" /><script type="text/javascript"><!--
+            
+            var prefix = "../../../index.html";
+            
+            --></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-1.11.3.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.cookie.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-ui.custom.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.highlight-3.js"><!----></script><script type="text/javascript" charset="utf-8" src="../../../oxygen-webhelp/resources/js/webhelp_topic.js"><!----></script><script type="text/javascript"> var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-27400275-1']); _gaq.push(['_setDomainName', 'www.qnx.com']);_gaq.push(['_setAllowLinker', true]);_gaq.push(['_trackPageview']);(function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script></head>
+<body onload="highlightSearchTerm()" class="frmBody" id="procmgr_session">
+<table class="nav"><tbody><tr><td colspan="2"><div id="printlink"><button onClick="window.print()" title="Print this page" aria-label="Print this page"></button></div><div id="permalink"><a href="#" title="Link to this page"></a></div></td></tr><tr><td style="width:75%;"><span class="topic_breadcrumb_links"><span class="topic_breadcrumb_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-p.html" title="P">P</a></span></span></td><td><span id="topic_navigation_links" class="navheader">
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-p.html" title="P"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">P</span></a></span>  </span></td></tr></tbody></table>
+
+
+<h1 class="title topictitle1"><span class="keyword apiname">procmgr_session()</span>, <span class="keyword apiname">procmgr_session_ext()</span></h1>
+<table width="100%"><tbody><tr><td align="left"><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">QNX SDP</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">7.1</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">C Library Reference</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">API</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">Developer</button></td><td align="right"><span style="margin:0px 5px; font-size:0.9em;">Updated: October 28, 2024</span></td></tr></tbody></table>
+
+
+<div class="body refbody"><p class="shortdesc"><em class="ph i">Provide process manager session support</em></p>
+
+
+<div class="section refsyn"><h2 class="title sectiontitle">Synopsis:</h2>
+
+<pre class="pre codeblock">
+#include &lt;sys/procmgr.h&gt;
+
+int procmgr_session( uint32_t <var class="keyword varname">nd</var>,
+                     pid_t <var class="keyword varname">sid</var>,
+                     int <var class="keyword varname">id</var>,
+                     unsigned <var class="keyword varname">event</var>);
+
+int procmgr_session_ext( uint32_t <var class="keyword varname">nd</var>,
+                         pid_t <var class="keyword varname">sid</var>,
+                         int <var class="keyword varname">xid</var>,
+                         int <var class="keyword varname">id</var>,
+                         unsigned <var class="keyword varname">event</var>);
+</pre>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Arguments:</h2>
+
+
+<p class="p">
+The interpretation of the arguments depends on the <var class="keyword varname">event</var>.
+</p>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><var class="keyword varname">nd</var></dt>
+
+<dd class="dd">A node descriptor.
+  This must currently be <span class="keyword const">ND_LOCAL_NODE</span>, or you'll get an error of <span class="keyword const">ENOREMOTE</span>.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">sid</var></dt>
+
+<dd class="dd">A session ID or process ID, depending on the event.</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">xid</var></dt>
+
+<dd class="dd">(<span class="keyword apiname">procmgr_session_ext()</span> only) Extra information about the target session,
+  depending on the event.
+  If <var class="keyword varname">xid</var> is 0, the argument is ignored.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">id</var></dt>
+
+<dd class="dd">A file descriptor, process group, or signal, depending on the event.</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">event</var></dt>
+
+<dd class="dd">The event; one of:
+
+  <ul class="ul">
+  <li class="li"><span class="keyword const">PROCMGR_SESSION_TCSETSID</span></li>
+
+  <li class="li"><span class="keyword const">PROCMGR_SESSION_SETSID</span></li>
+
+  <li class="li"><span class="keyword const">PROCMGR_SESSION_SETPGRP</span></li>
+
+  <li class="li"><span class="keyword const">PROCMGR_SESSION_SIGNAL_PID</span></li>
+
+  <li class="li"><span class="keyword const">PROCMGR_SESSION_SIGNAL_PGRP</span></li>
+
+  <li class="li"><span class="keyword const">PROCMGR_SESSION_SIGNAL_LEADER</span></li>
+
+  </ul>
+
+
+  <p class="p">
+  For more information, see below.
+  </p>
+
+
+</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Library:</h2>
+
+
+<p class="p"><span class="ph filepath">libc</span></p>
+
+
+<p class="p">
+Use the <span class="keyword option">-l c</span> option to
+<a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/q/qcc.html"><span class="keyword cmdname">qcc</span></a>
+to link against this library.
+This library is usually included automatically.
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Description:</h2>
+
+
+<p class="p">
+
+
+
+The <span class="keyword apiname">procmgr_session()</span> function provides session support to
+character device terminal drivers in their resource managers, C library
+functions, and session management applications.
+The <span class="keyword apiname">procmgr_session_ext()</span> function is an extended version that lets you
+pass extra information for the target session, as described above.
+Calling <span class="keyword apiname">procmgr_session()</span> is the same as calling <span class="keyword apiname">procmgr_session_ext()</span>
+with an <var class="keyword varname">xid</var> of 0.
+</p>
+
+
+<p class="p">
+The arguments that you provide need to match the event;
+some of these events require certain abilities (see
+<a class="xref" href="procmgr_ability.html" title="Control a process's ability to perform certain operations"><span class="keyword apiname">procmgr_ability()</span></a>)
+be enabled:
+</p>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><span class="keyword const">PROCMGR_SESSION_TCSETSID</span></dt>
+
+<dd class="dd">Used by the 
+  <a class="xref" href="../t/tcsetsid.html" title="Make a terminal device a controlling device"><span class="keyword apiname">tcsetsid()</span></a>
+  function to set the file descriptor, <var class="keyword varname">id</var>, to be the controlling terminal 
+  for the session headed by the session leader, <var class="keyword varname">sid</var>.
+  
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">PROCMGR_SESSION_SETSID</span></dt>
+
+<dd class="dd">Used by the 
+  <a class="xref" href="../s/setsid.html" title="Create a new session"><span class="keyword apiname">setsid()</span></a>
+  function to create a new session with the calling process becoming the session leader.
+  Pass zero for both <var class="keyword varname">sid</var> and <var class="keyword varname">id</var> arguments.
+  
+
+  <p class="p">
+  Required ability: <span class="keyword const">PROCMGR_AID_PGRP</span>
+  
+  </p>
+
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">PROCMGR_SESSION_SETPGRP</span></dt>
+
+<dd class="dd">Used by a character device resource manager to change the 
+  process group upon the request of a client calling the 
+  <a class="xref" href="../t/tcsetpgrp.html" title="Set the process group ID for a device"><span class="keyword apiname">tcsetpgrp()</span></a> function.
+  Set the <var class="keyword varname">sid</var> argument to the client's current
+  session and the <var class="keyword varname">id</var> argument to the new target process group for the client.
+  
+  
+
+  <p class="p">
+  Required ability: <span class="keyword const">PROCMGR_AID_SESSION</span>
+  
+  </p>
+
+
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">PROCMGR_SESSION_SIGNAL_PID</span>, 
+  <span class="keyword const">PROCMGR_SESSION_SIGNAL_PGRP</span>, 
+  <span class="keyword const">PROCMGR_SESSION_SIGNAL_LEADER</span>
+</dt>
+
+<dd class="dd">Used by a character device resource manager to drop a
+  signal of the type specified as the <var class="keyword varname">id</var> argument (generally a 
+  terminal/job control signal) on the appropriate member of the 
+  session specified by the <var class="keyword varname">sid</var> argument.
+  
+  
+  
+
+  <p class="p">
+  Required ability: <span class="keyword const">PROCMGR_AID_SESSION</span>
+  
+  </p>
+
+
+  <p class="p">
+  If you call <span class="keyword apiname">procmgr_session_ext()</span> with an <var class="keyword varname">event</var> of
+  <span class="keyword const">PROCMGR_SESSION_SIGNAL_PID</span>, you can pass a thread ID for <var class="keyword varname">xid</var>.
+  If <var class="keyword varname">xid</var> is greater than 0, and the thread with that ID
+  is blocking the given signal, the function sets <var class="keyword varname">errno</var> to <span class="keyword const">EIO</span>.
+  </p>
+
+</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Returns:</h2>
+
+
+<dl class="dl" compact="compact">
+
+<dt class="dt dlterm">0</dt>
+
+<dd class="dd">Success.</dd>
+
+
+
+
+<dt class="dt dlterm">-1</dt>
+
+<dd class="dd">Failure (<a class="xref" href="../e/errno.html" title="Thread-local error variable"><var class="keyword varname">errno</var></a> is set).</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Classification:</h2>
+
+<p class="p"><a class="xref" href="../summary.html#summary__CLASSIFICATION">QNX Neutrino</a></p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+<thead class="thead" align="left">
+<tr><th class="entry" valign="top" id="d2376967e475">Safety:</th>
+<th class="entry" valign="top" id="d2376967e477">Â </th>
+</tr>
+
+</thead>
+
+<tbody class="tbody">
+<tr><td class="entry" valign="top" headers="d2376967e475 d2376967e477 ">Cancellation point</td>
+<td class="entry" valign="top" headers="d2376967e475 d2376967e477 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2376967e475 d2376967e477 ">Interrupt handler</td>
+<td class="entry" valign="top" headers="d2376967e475 d2376967e477 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2376967e475 d2376967e477 ">Signal handler</td>
+<td class="entry" valign="top" headers="d2376967e475 d2376967e477 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2376967e475 d2376967e477 ">Thread</td>
+<td class="entry" valign="top" headers="d2376967e475 d2376967e477 ">Yes</td>
+</tr>
+
+</tbody>
+
+</table>
+</div>
+
+</div>
+
+
+</div>
+
+
+<div class="related-links"><div class="relinfo relref"><strong>Related reference</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/p/procmgr_ability.html" title="Control a process's ability to perform certain operations">procmgr_ability()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/s/setsid.html" title="Create a new session">setsid()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/t/tcsetpgrp.html" title="Set the process group ID for a device">tcsetpgrp()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/t/tcsetsid.html" title="Make a terminal device a controlling device">tcsetsid()</a></div>
+</div>
+</div><div class="navfooter"><!---->
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-p.html" title="P"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">P</span></a></span>  </div>
+</body>
+</html>

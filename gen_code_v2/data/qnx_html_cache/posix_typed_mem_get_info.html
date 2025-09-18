@@ -1,0 +1,258 @@
+
+<!DOCTYPE html
+  PUBLIC "" "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />        
+      <meta name="copyright" content="(C) Copyright 2005" /><meta name="DC.rights.owner" content="(C) Copyright 2005" /><meta name="DC.Type" content="reference" /><meta name="DC.Title" content="posix_typed_mem_get_info()" /><meta name="abstract" content="Get information about a typed memory object" /><meta name="description" content="Get information about a typed memory object" /><meta name="indexterms" content="posix_typed_mem_get_info()" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-p.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.sys_arch/topic/ipc_Typed_memory.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.prog/topic/memory.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/p/posix_mem_offset.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/p/posix_typed_mem_open.html" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="posix_typed_mem_get_info" /><meta name="DC.Language" content="en-us" /><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/commonltr.css"><!----></link><title>posix_typed_mem_get_info()</title><link rel="canonical" type="html" href="https://www.qnx.com/developers/docs/7.1/#com.qnx.doc.neutrino.lib_ref/" /><!--  Generated with Oxygen version 18.1, build number 2017020917.  --><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/webhelp_topic.css"><!----></link><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/skins/skin.css" /><script type="text/javascript"><!--
+            
+            var prefix = "../../../index.html";
+            
+            --></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-1.11.3.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.cookie.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-ui.custom.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.highlight-3.js"><!----></script><script type="text/javascript" charset="utf-8" src="../../../oxygen-webhelp/resources/js/webhelp_topic.js"><!----></script><script type="text/javascript"> var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-27400275-1']); _gaq.push(['_setDomainName', 'www.qnx.com']);_gaq.push(['_setAllowLinker', true]);_gaq.push(['_trackPageview']);(function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script></head>
+<body onload="highlightSearchTerm()" class="frmBody" id="posix_typed_mem_get_info">
+<table class="nav"><tbody><tr><td colspan="2"><div id="printlink"><button onClick="window.print()" title="Print this page" aria-label="Print this page"></button></div><div id="permalink"><a href="#" title="Link to this page"></a></div></td></tr><tr><td style="width:75%;"><span class="topic_breadcrumb_links"><span class="topic_breadcrumb_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-p.html" title="P">P</a></span></span></td><td><span id="topic_navigation_links" class="navheader">
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-p.html" title="P"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">P</span></a></span>  </span></td></tr></tbody></table>
+
+
+<h1 class="title topictitle1"><span class="keyword apiname">posix_typed_mem_get_info()</span></h1>
+<table width="100%"><tbody><tr><td align="left"><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">QNX SDP</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">7.1</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">C Library Reference</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">API</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">Developer</button></td><td align="right"><span style="margin:0px 5px; font-size:0.9em;">Updated: October 28, 2024</span></td></tr></tbody></table>
+
+
+<div class="body refbody"><p class="shortdesc"><em class="ph i">Get information about a typed memory object</em></p>
+
+
+<div class="section">
+
+<p class="p">
+
+
+
+</p>
+
+</div>
+
+
+<div class="section refsyn"><h2 class="title sectiontitle">Synopsis:</h2>
+
+<pre class="pre codeblock">
+#include &lt;sys/mman.h&gt;
+
+int posix_typed_mem_get_info(
+        int <var class="keyword varname">filedes</var>,
+        struct posix_typed_mem_info <var class="keyword varname">*info</var>);
+</pre>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Arguments:</h2>
+
+
+<dl class="dl" compact="compact">
+
+<dt class="dt dlterm"><var class="keyword varname">filedes</var></dt>
+
+<dd class="dd">The file descriptor for the typed memory object that you want to query,
+  returned by a call to
+  <a class="xref" href="posix_typed_mem_open.html" title="Open a typed memory object"><span class="keyword apiname">posix_typed_mem_open()</span></a>.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">info</var></dt>
+
+<dd class="dd">A pointer to a <span class="keyword dtype">posix_typed_mem_info</span> structure where the function can store the
+            information.</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Library:</h2>
+
+
+<p class="p"><span class="ph filepath">libc</span></p>
+
+
+<p class="p"> Use the <span class="keyword option">-l c</span> option to <a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/q/qcc.html"><span class="keyword cmdname">qcc</span></a> to link against this library. This library is usually
+        included automatically.</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Description:</h2>
+
+
+<p class="p"> The <span class="keyword apiname">posix_typed_mem_get_info()</span> function queries the specified typed memory
+object to obtain the size of the largest possible allocation. This is particularly important for
+typed memory objects that may in some cases be scarce resources. </p>
+
+
+<p class="p">
+If you opened the object with <span class="keyword const">POSIX_TYPED_MEM_ALLOCATE</span>, this function reports the
+amount of free space available, because you're requesting the largest possible allocation
+in non-contiguous memory, which is one that consumes all available memory. If you opened the object
+with <span class="keyword const">POSIX_TYPED_MEM_ALLOCATE_CONTIG</span>, this function reports the largest contiguous
+allocation available.
+Note, though, that we don't search physical memory for the largest contiguous chunk within a single
+16MB zone. As a result, when there is less than 16MB contiguous memory available, the function
+reports 4KB (a page size) when in fact there may be a larger chunk available.
+</p>
+
+
+<p class="p">
+If you specified any other flag when opening the object, the reported maximum allocation length is
+0. As a <span class="keyword">QNX Neutrino</span> extension, if you opened the object with neither
+<span class="keyword const">POSIX_TYPED_MEM_ALLOCATE</span> nor <span class="keyword const">POSIX_TYPED_MEM_ALLOCATE_CONTIG</span>,
+the function sets <var class="keyword varname">info</var>-&gt;<var class="keyword varname">posix_tmi_length</var> to 0.
+</p>
+
+
+<div class="note note"><span class="notetitle">Note:</span> 
+If the typed memory pool is a shared
+resource, some form of mutual-exclusion or synchronization may be
+required while querying and allocating it, to prevent race conditions.
+</div>
+
+
+<p class="p">
+
+
+The maximum length is dynamic; it's valid only while the current mapping of
+the corresponding typed memory pool remains unchanged.
+Because the mapping can change at any time, the result of this function is statistical
+and can't be relied upon for any other purpose.
+</p>
+
+
+
+
+  <p class="p" id="posix_typed_mem_get_info__posix_typed_mem_info"><strong class="ph b"><span class="keyword dtype">posix_typed_mem_info</span></strong></p>
+
+  <p class="p">Structure that describes a typed memory object in terms of
+        total size and amount of memory available:</p>
+
+  <pre class="pre codeblock">struct __posix_typed_mem_info64 {
+  _Uint64t            posix_tmi_length;
+  _Uint64t            __posix_tmi_total;
+  _Uint32t            __reserved[2];
+};</pre>
+
+  <p class="p">It contains the following fields:</p>
+
+  <dl class="dl">
+    
+      <dt class="dt dlterm"><var class="keyword varname">posix_tmi_length</var></dt>
+
+      <dd class="dd">Field that stores the maximum amount of memory that can be allocated by the typed memory object (POSIX-mandated).</dd>
+
+    
+    
+      <dt class="dt dlterm"><var class="keyword varname">_posix_tmi_total</var></dt>
+
+      <dd class="dd">QNX extension to provide the size of an object (i.e., the total amount of memory it
+            holds).</dd>
+
+    
+  </dl>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Returns:</h2>
+
+
+<dl class="dl" compact="compact">
+
+<dt class="dt dlterm">0 </dt>
+
+<dd class="dd">Success.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EBADF</span></dt>
+
+<dd class="dd">The <var class="keyword varname">filedes</var> argument isn't a valid open file descriptor.  </dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">ENODEV</span></dt>
+
+<dd class="dd">The <var class="keyword varname">filedes</var> isn't connected to a memory object supported by this function. </dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Classification:</h2>
+
+<p class="p"><a class="xref" href="../summary.html#summary__CLASSIFICATION">POSIX 1003.1 TYM</a></p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+<thead class="thead" align="left">
+<tr><th class="entry" valign="top" id="d2356760e265">Safety:</th>
+<th class="entry" valign="top" id="d2356760e267">Â </th>
+</tr>
+
+</thead>
+
+<tbody class="tbody">
+<tr><td class="entry" valign="top" headers="d2356760e265 d2356760e267 ">Cancellation point</td>
+<td class="entry" valign="top" headers="d2356760e265 d2356760e267 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2356760e265 d2356760e267 ">Interrupt handler</td>
+<td class="entry" valign="top" headers="d2356760e265 d2356760e267 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2356760e265 d2356760e267 ">Signal handler</td>
+<td class="entry" valign="top" headers="d2356760e265 d2356760e267 ">Yes</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2356760e265 d2356760e267 ">Thread</td>
+<td class="entry" valign="top" headers="d2356760e265 d2356760e267 ">Yes</td>
+</tr>
+
+</tbody>
+
+</table>
+</div>
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="related-links"><div class="relinfo relconcepts"><strong>Related concepts</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.sys_arch/topic/ipc_Typed_memory.html" title="Typed memory (System Architecture)">Typed memory (System Architecture)</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.prog/topic/memory.html" title="Working with Memory (QNX Neutrino Programmer's Guide)">Working with Memory (<span class="keyword">QNX Neutrino</span> Programmer's Guide)</a></div>
+</div>
+<div class="relinfo relref"><strong>Related reference</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/p/posix_mem_offset.html" title="Get the physical address and length of a mapped memory block">posix_mem_offset(), posix_mem_offset64()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/p/posix_typed_mem_open.html" title="Open a typed memory object">posix_typed_mem_open()</a></div>
+</div>
+</div><div class="navfooter"><!---->
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-p.html" title="P"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">P</span></a></span>  </div>
+</body>
+</html>

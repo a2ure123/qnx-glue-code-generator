@@ -1,0 +1,21 @@
+{
+  "function_name": "at_quick_exit",
+  "url": "https://www.qnx.com/developers/docs/7.1/com.qnx.doc.neutrino.lib_ref/topic/a/at_quick_exit.html",
+  "synopsis": "int at_quick_exit( void (*func)(void) );",
+  "description": "",
+  "headers": [
+    "#include <stdlib.h>"
+  ],
+  "parameters": [
+    {
+      "name": "func",
+      "description": "A pointer to the function you want to be called when the program\n  terminates via a call to\n  quick_exit().\n  This function has no arguments and doesn't return a value; its prototype should be:\n\n\nvoid func( void );"
+    }
+  ],
+  "return_values": [],
+  "examples": [
+    "#include <stdlib.h>\n\nint at_quick_exit( void (*func)(void) );",
+    "#include <stdio.h>\n#include <stdlib.h>\n\nvoid func1( void )\n{\n    printf( \"last.\\n\" );\n}\n\nvoid func2( void )\n{\n    printf( \"this \" );\n}\n\nvoid func3( void )\n{\n    printf( \"Do \" );\n}\n\nint main( void )\n{\n    at_quick_exit( func1 );\n    at_quick_exit( func2 );\n    at_quick_exit( func3 );\n\n    printf( \"Do this first.\\n\" );\n\n    quick_exit( EXIT_SUCCESS );\n}"
+  ],
+  "full_content": "Function: at_quick_exit\nURL: https://www.qnx.com/developers/docs/7.1/com.qnx.doc.neutrino.lib_ref/topic/a/at_quick_exit.html\nSynopsis: int at_quick_exit( void (*func)(void) );\nHeaders: #include <stdlib.h>\nParameters:\n  - func: A pointer to the function you want to be called when the program\n  terminates via a call to\n  quick_exit().\n  This function has no arguments and doesn't return a value; its prototype should be:\n\n\nvoid func( void );\nExamples:\nExample 1:\n#include <stdlib.h>\n\nint at_quick_exit( void (*func)(void) );\nExample 2:\n#include <stdio.h>\n#include <stdlib.h>\n\nvoid func1( void )\n{\n    printf( \"last.\\n\" );\n}\n\nvoid func2( void )\n{\n    printf( \"this \" );\n}\n\nvoid func3( void )\n{\n    printf( \"Do \" );\n}\n\nint main( void )\n{\n    at_quick_exit( func1 );\n    at_quick_exit( func2 );\n    at_quick_exit( func3 );\n\n    printf( \"Do this first.\\n\" );\n\n    quick_exit( EXIT_SUCCESS );\n}"
+}

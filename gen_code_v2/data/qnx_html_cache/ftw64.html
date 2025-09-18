@@ -1,0 +1,340 @@
+
+<!DOCTYPE html
+  PUBLIC "" "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />        
+      <meta name="copyright" content="(C) Copyright 2005" /><meta name="DC.rights.owner" content="(C) Copyright 2005" /><meta name="DC.Type" content="reference" /><meta name="DC.Title" content="ftw(), ftw64()" /><meta name="abstract" content="Walk a file tree" /><meta name="description" content="Walk a file tree" /><meta name="indexterms" content="ftw(), ftw64()" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-f.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/l/longjmp.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/m/malloc.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/n/nftw.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/r/readdir.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/s/stat.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/s/stat_struct.html" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="ftw" /><meta name="DC.Language" content="en-us" /><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/commonltr.css"><!----></link><title>ftw(), ftw64()</title><link rel="canonical" type="html" href="https://www.qnx.com/developers/docs/7.1/#com.qnx.doc.neutrino.lib_ref/" /><!--  Generated with Oxygen version 18.1, build number 2017020917.  --><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/webhelp_topic.css"><!----></link><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/skins/skin.css" /><script type="text/javascript"><!--
+            
+            var prefix = "../../../index.html";
+            
+            --></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-1.11.3.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.cookie.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-ui.custom.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.highlight-3.js"><!----></script><script type="text/javascript" charset="utf-8" src="../../../oxygen-webhelp/resources/js/webhelp_topic.js"><!----></script><script type="text/javascript"> var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-27400275-1']); _gaq.push(['_setDomainName', 'www.qnx.com']);_gaq.push(['_setAllowLinker', true]);_gaq.push(['_trackPageview']);(function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script></head>
+<body onload="highlightSearchTerm()" class="frmBody" id="ftw">
+<table class="nav"><tbody><tr><td colspan="2"><div id="printlink"><button onClick="window.print()" title="Print this page" aria-label="Print this page"></button></div><div id="permalink"><a href="#" title="Link to this page"></a></div></td></tr><tr><td style="width:75%;"><span class="topic_breadcrumb_links"><span class="topic_breadcrumb_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-f.html" title="F">F</a></span></span></td><td><span id="topic_navigation_links" class="navheader">
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-f.html" title="F"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">F</span></a></span>  </span></td></tr></tbody></table>
+
+
+<h1 class="title topictitle1"><span class="keyword apiname">ftw()</span>, <span class="keyword apiname">ftw64()</span></h1>
+<table width="100%"><tbody><tr><td align="left"><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">QNX SDP</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">7.1</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">C Library Reference</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">API</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">Developer</button></td><td align="right"><span style="margin:0px 5px; font-size:0.9em;">Updated: October 28, 2024</span></td></tr></tbody></table>
+
+
+<div class="body refbody"><p class="shortdesc"><em class="ph i">Walk a file tree</em></p>
+
+
+<div class="section refsyn"><h2 class="title sectiontitle">Synopsis:</h2>
+
+<pre class="pre codeblock">
+#include &lt;ftw.h&gt;
+
+int ftw( const char *<var class="keyword varname">path</var>, 
+         int (*<span class="keyword apiname">fn</span>)( const char *<var class="keyword varname">fname</var>,
+                    const struct stat *<var class="keyword varname">sbuf</var>,
+                    int <var class="keyword varname">flags</var>),
+         int <var class="keyword varname">depth</var> );
+
+int ftw64 ( const char *<var class="keyword varname">path</var>, 
+            int (*<span class="keyword apiname">fn</span>)( const char *<var class="keyword varname">fname</var>,
+                      const struct stat64 *<var class="keyword varname">sbuf</var>,
+                      int <var class="keyword varname">flags</var>),
+            int <var class="keyword varname">depth</var> );
+</pre>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Arguments:</h2>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><var class="keyword varname">path</var></dt>
+
+<dd class="dd">The path of the directory whose file tree you want to walk.</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">fn</var></dt>
+
+<dd class="dd">A pointer to a function that you want to call for each file; see below.</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">depth</var></dt>
+
+<dd class="dd">The maximum number of file descriptors that <span class="keyword apiname">ftw()</span> can use.
+  The <span class="keyword apiname">ftw()</span> function uses one file descriptor for each level
+  in  the  tree.
+
+  <p class="p">
+  If <var class="keyword varname">depth</var> is  zero or negative, the effect is the same as if it
+  were 1.
+  The <var class="keyword varname">depth</var> must not be greater than the number of file descriptors
+  currently available for use.  
+  The <span class="keyword apiname">ftw()</span> function is faster if <var class="keyword varname">depth</var> is at least as
+  large as the number of levels in the tree.
+  </p>
+
+</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Library:</h2>
+
+
+<p class="p"><span class="ph filepath">libc</span></p>
+
+<p class="p">Use the <span class="keyword option">-l c</span> option to
+<a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/q/qcc.html"><span class="keyword cmdname">qcc</span></a>
+to link against this library.
+This library is usually included automatically.
+</p>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Description:</h2>
+
+
+<p class="p">
+
+
+
+
+The <span class="keyword apiname">ftw()</span> and <span class="keyword apiname">ftw64()</span> functions recursively descend the directory
+hierarchy identified by <var class="keyword varname">path</var>.
+The <span class="keyword apiname">ftw64()</span> function is a large-file support version of <span class="keyword apiname">ftw()</span>.
+</p>
+
+
+<div class="note note"><span class="notetitle">Note:</span> 
+In QNX Neutrino 6.6 or later, the large-file support functions and data types
+appear in the name space only if you define <span class="keyword const">_LARGEFILE64_SOURCE</span> when you compile your code.
+For more information, see
+<span class="q">&#147;<a class="xref" href="../summary.html#summary__CLASSIFICATION">Classification</a>&#148;</span>
+in What's in a Function Description?
+</div>
+
+
+<p class="p">
+For each object in the hierarchy,
+<span class="keyword apiname">ftw()</span> calls the  user-defined  function  <span class="keyword apiname">fn()</span>,  
+passing to it:
+</p>
+
+
+<ul class="ul">
+<li class="li">a pointer to a <span class="keyword const">NULL</span>-terminated character string containing
+  the name of the object
+</li>
+
+
+<li class="li">a  pointer  to  a  <span class="keyword dtype">stat</span>  structure  (see
+  <a class="xref" href="../s/stat.html" title="Get information about a file or directory, given a path"><span class="keyword apiname">stat()</span></a>)
+  containing information  about  the object
+</li>
+
+
+<li class="li">an integer.  Possible values of the  integer,  defined  in  the
+  <span class="ph filepath">&lt;ftw.h&gt;</span> header, are:
+
+  <dl class="dl" compact="compact">
+  
+  <dt class="dt dlterm"><span class="keyword const">FTW_F</span></dt>
+
+  <dd class="dd">The object is a file.
+    
+  </dd>
+
+  
+
+  
+  <dt class="dt dlterm"><span class="keyword const">FTW_D</span></dt>
+
+  <dd class="dd">The object is a directory.
+    
+  </dd>
+
+  
+
+  
+  <dt class="dt dlterm"><span class="keyword const">FTW_DNR</span></dt>
+
+  <dd class="dd">The object is a directory that can't be read.   
+    Descendants of the directory aren't processed.
+    
+  </dd>
+
+  
+
+  
+  <dt class="dt dlterm"><span class="keyword const">FTW_NS</span></dt>
+
+  <dd class="dd">The <span class="keyword apiname">stat()</span> failed on the object because the
+    permissions weren't  appropriate,  or  the  object is a
+    symbolic link that points to  a  nonexistent file.
+    Don't assume that the <span class="keyword dtype">stat</span> buffer contains valid data.
+    
+  </dd>
+
+  
+
+  </dl>
+
+</li>
+
+
+</ul>
+
+
+<p class="p">
+The <span class="keyword apiname">ftw()</span> function visits a directory before visiting any of 
+its  descendants.
+</p>
+
+
+<p class="p">
+The tree traversal continues until the tree is exhausted, an
+invocation  of  <span class="keyword apiname">fn()</span> returns a nonzero value, or some error is
+detected within <span class="keyword apiname">ftw()</span> (such as an I/O error).  If  the  tree
+is  exhausted,  <span class="keyword apiname">ftw()</span> returns zero.  If <span class="keyword apiname">fn()</span>
+returns a nonzero
+value, <span class="keyword apiname">ftw()</span> stops its tree traversal and  returns  whatever
+value was returned by <span class="keyword apiname">fn()</span>.
+</p>
+
+
+<p class="p">
+When  <span class="keyword apiname">ftw()</span> returns, it closes any file descriptors it
+opened; it doesn't close any file descriptors that may have
+been opened by <span class="keyword apiname">fn()</span>.
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Returns:</h2>
+
+
+<dl class="dl" compact="compact">
+
+<dt class="dt dlterm">0</dt>
+
+<dd class="dd">Success.</dd>
+
+
+
+
+<dt class="dt dlterm">-1</dt>
+
+<dd class="dd">An error (other than <span class="keyword const">EACCES</span>) occurred
+  (<a class="xref" href="../e/errno.html" title="Thread-local error variable"><var class="keyword varname">errno</var></a> is set).
+</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Classification:</h2>
+
+<p class="p"><span class="keyword apiname">ftw()</span> is
+<a class="xref" href="../summary.html#summary__CLASSIFICATION">POSIX 1003.1 OB XSI</a>;
+<span class="keyword apiname">ftw64()</span> is
+<a class="xref" href="../summary.html#summary__CLASSIFICATION">Large-file support</a>.
+The <span class="keyword apiname">ftw()</span> function is marked as obsolescent, and may be removed from a future version of the standard.
+</p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+<thead class="thead" align="left">
+<tr><th class="entry" valign="top" id="d1503364e415">Safety:</th>
+<th class="entry" valign="top" id="d1503364e417">Â </th>
+</tr>
+
+</thead>
+
+<tbody class="tbody">
+<tr><td class="entry" valign="top" headers="d1503364e415 d1503364e417 ">Cancellation point</td>
+<td class="entry" valign="top" headers="d1503364e415 d1503364e417 ">Yes</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d1503364e415 d1503364e417 ">Interrupt handler</td>
+<td class="entry" valign="top" headers="d1503364e415 d1503364e417 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d1503364e415 d1503364e417 ">Signal handler</td>
+<td class="entry" valign="top" headers="d1503364e415 d1503364e417 ">Yes</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d1503364e415 d1503364e417 ">Thread</td>
+<td class="entry" valign="top" headers="d1503364e415 d1503364e417 ">Yes</td>
+</tr>
+
+</tbody>
+
+</table>
+</div>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Caveats:</h2>
+
+
+<p class="p">
+Because <span class="keyword apiname">ftw()</span> is recursive, it might
+terminate  with  a  memory fault when applied to very deep file
+structures.
+</p>
+
+
+<p class="p">
+This function uses <span class="keyword apiname">malloc()</span> to allocate dynamic storage during its operation.
+If  <span class="keyword apiname">ftw()</span> is forcibly  terminated, for example
+if <span class="keyword apiname">longjmp()</span> is executed by <span class="keyword apiname">fn()</span> or an interrupt routine,
+<span class="keyword apiname">ftw()</span> doesn't  have a chance to free that storage, so it
+remains permanently allocated.
+A safe way to handle interrupts is to store the fact that  an interrupt has
+occurred, and arrange to have <span class="keyword apiname">fn()</span> return a nonzero value at
+its next invocation.
+</p>
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="related-links"><div class="relinfo relref"><strong>Related reference</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/l/longjmp.html" title="Restore the environment saved by setjmp()">longjmp()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/m/malloc.html" title="Allocate memory">malloc()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/n/nftw.html" title="Walk a file tree">nftw(), nftw64()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/r/readdir.html" title="Read a directory entry">readdir(), readdir64()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/s/stat.html" title="Get information about a file or directory, given a path">stat(), stat64()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/s/stat_struct.html" title="Data structure for information about a file or directory">struct stat</a></div>
+</div>
+</div><div class="navfooter"><!---->
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-f.html" title="F"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">F</span></a></span>  </div>
+</body>
+</html>

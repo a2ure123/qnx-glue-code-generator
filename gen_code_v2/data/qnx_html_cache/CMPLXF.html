@@ -1,0 +1,208 @@
+
+<!DOCTYPE html
+  PUBLIC "" "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />        
+      <meta name="copyright" content="(C) Copyright 2005" /><meta name="DC.rights.owner" content="(C) Copyright 2005" /><meta name="DC.Type" content="reference" /><meta name="DC.Title" content="CMPLX(), CMPLXF(), CMPLXL()" /><meta name="abstract" content="Create a complex number from its real and imaginary parts" /><meta name="description" content="Create a complex number from its real and imaginary parts" /><meta name="indexterms" content="CMPLX(), CMPLXF(), CMPLXL()" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-c.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/c/cabs.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/c/carg.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/c/cexp.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/c/cimag.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/c/clog.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/c/conj.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/c/cpow.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/c/cproj.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/c/creal.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/c/csqrt.html" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="cmplx" /><meta name="DC.Language" content="en-us" /><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/commonltr.css"><!----></link><title>CMPLX(), CMPLXF(), CMPLXL()</title><link rel="canonical" type="html" href="https://www.qnx.com/developers/docs/7.1/#com.qnx.doc.neutrino.lib_ref/" /><!--  Generated with Oxygen version 18.1, build number 2017020917.  --><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/webhelp_topic.css"><!----></link><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/skins/skin.css" /><script type="text/javascript"><!--
+            
+            var prefix = "../../../index.html";
+            
+            --></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-1.11.3.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.cookie.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-ui.custom.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.highlight-3.js"><!----></script><script type="text/javascript" charset="utf-8" src="../../../oxygen-webhelp/resources/js/webhelp_topic.js"><!----></script><script type="text/javascript"> var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-27400275-1']); _gaq.push(['_setDomainName', 'www.qnx.com']);_gaq.push(['_setAllowLinker', true]);_gaq.push(['_trackPageview']);(function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script></head>
+<body onload="highlightSearchTerm()" class="frmBody" id="cmplx">
+<table class="nav"><tbody><tr><td colspan="2"><div id="printlink"><button onClick="window.print()" title="Print this page" aria-label="Print this page"></button></div><div id="permalink"><a href="#" title="Link to this page"></a></div></td></tr><tr><td style="width:75%;"><span class="topic_breadcrumb_links"><span class="topic_breadcrumb_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-c.html" title="C">C</a></span></span></td><td><span id="topic_navigation_links" class="navheader">
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-c.html" title="C"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">C</span></a></span>  </span></td></tr></tbody></table>
+
+
+<h1 class="title topictitle1"><span class="keyword apiname">CMPLX()</span>, <span class="keyword apiname">CMPLXF()</span>, <span class="keyword apiname">CMPLXL()</span></h1>
+<table width="100%"><tbody><tr><td align="left"><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">QNX SDP</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">7.1</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">C Library Reference</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">API</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">Developer</button></td><td align="right"><span style="margin:0px 5px; font-size:0.9em;">Updated: October 28, 2024</span></td></tr></tbody></table>
+
+
+
+<div class="body refbody"><p class="shortdesc"><em class="ph i">Create a complex number from its real and imaginary parts</em></p>
+
+
+<div class="section">
+<p class="p">
+
+
+
+
+
+
+</p>
+
+</div>
+
+
+<div class="section refsyn"><h2 class="title sectiontitle">Synopsis:</h2>
+
+<pre class="pre codeblock">
+#include &lt;complex.h&gt;
+
+#define CMPLX(<var class="keyword varname">r</var>, <var class="keyword varname">i</var>) ...
+#define CMPLXF(<var class="keyword varname">r</var>, <var class="keyword varname">i</var>) ...
+#define CMPLXL(<var class="keyword varname">r</var>, <var class="keyword varname">i</var>) ...
+</pre>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Arguments:</h2>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><var class="keyword varname">r</var></dt>
+
+<dd class="dd">The real part of the complex number.</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">i</var></dt>
+
+<dd class="dd">The imaginary part of the complex number.</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Description:</h2>
+
+
+<p class="p">
+The <span class="keyword apiname">CMPLX()</span>, <span class="keyword apiname">CMPLXF()</span>, and <span class="keyword apiname">CMPLXL()</span>
+macros create a the complex number from the given real and imaginary parts.
+The type of the resulting number depends on the macro:
+</p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+
+<thead class="thead" align="left">
+<tr>
+  <th class="entry" valign="top" id="d1306476e143">Macro</th>
+
+  <th class="entry" valign="top" id="d1306476e146">Type</th>
+
+</tr>
+
+</thead>
+
+
+<tbody class="tbody">
+
+<tr>
+  <td class="entry" valign="top" headers="d1306476e143 d1306476e146 "><span class="keyword apiname">CMPLX()</span></td>
+
+  <td class="entry" valign="top" headers="d1306476e143 d1306476e146 "><span class="keyword dtype">double complex</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1306476e143 d1306476e146 "><span class="keyword apiname">CMPLXF()</span></td>
+
+  <td class="entry" valign="top" headers="d1306476e143 d1306476e146 "><span class="keyword dtype">float complex</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1306476e143 d1306476e146 "><span class="keyword apiname">CMPLXL()</span></td>
+
+  <td class="entry" valign="top" headers="d1306476e143 d1306476e146 "><span class="keyword dtype">long double complex</span></td>
+
+</tr>
+
+
+</tbody>
+
+</table>
+</div>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Returns:</h2>
+
+
+<p class="p">
+The complex number.
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Classification:</h2>
+
+<p class="p"><a class="xref" href="../summary.html#summary__CLASSIFICATION">C11</a></p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+<thead class="thead" align="left">
+<tr><th class="entry" valign="top" id="d1306476e217">Safety:</th>
+<th class="entry" valign="top" id="d1306476e219">Â </th>
+</tr>
+
+</thead>
+
+<tbody class="tbody">
+<tr><td class="entry" valign="top" headers="d1306476e217 d1306476e219 ">Cancellation point</td>
+<td class="entry" valign="top" headers="d1306476e217 d1306476e219 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d1306476e217 d1306476e219 ">Interrupt handler</td>
+<td class="entry" valign="top" headers="d1306476e217 d1306476e219 ">Yes</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d1306476e217 d1306476e219 ">Signal handler</td>
+<td class="entry" valign="top" headers="d1306476e217 d1306476e219 ">Yes</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d1306476e217 d1306476e219 ">Thread</td>
+<td class="entry" valign="top" headers="d1306476e217 d1306476e219 ">Yes</td>
+</tr>
+
+</tbody>
+
+</table>
+</div>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="related-links"><div class="relinfo relref"><strong>Related reference</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/c/cabs.html" title="Compute the absolute value of a complex number">cabs(), cabsf(), cabsl()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/c/carg.html" title="Compute the argument of a complex number">carg(), cargf(), cargl()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/c/cexp.html" title="Compute the complex base-e exponential of a complex number">cexp(), cexpf(), cexpl()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/c/cimag.html" title="Compute the imaginary part of a complex number">cimag(), cimagf(), cimagl()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/c/clog.html" title="Compute the complex natural (base-e) logarithm of a complex number">clog(), clogf(), clogl()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/c/conj.html" title="Compute the complex conjugate of a complex number">conj(), conjf(), conjl()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/c/cpow.html" title="Raise a complex number to the power of another complex number">cpow(), cpowf(), cpowl()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/c/cproj.html" title="Compute the projection of a complex number on the Riemann sphere">cproj(), cprojf(), cprojl()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/c/creal.html" title="Compute the real part of a complex number">creal(), crealf(), creall()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/c/csqrt.html" title="Compute the square root of a complex number">csqrt(), csqrtf(), csqrtl()</a></div>
+</div>
+</div><div class="navfooter"><!---->
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-c.html" title="C"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">C</span></a></span>  </div>
+</body>
+</html>

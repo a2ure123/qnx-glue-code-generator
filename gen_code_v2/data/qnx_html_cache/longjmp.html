@@ -1,0 +1,246 @@
+
+<!DOCTYPE html
+  PUBLIC "" "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />        
+      <meta name="copyright" content="(C) Copyright 2005" /><meta name="DC.rights.owner" content="(C) Copyright 2005" /><meta name="DC.Type" content="reference" /><meta name="DC.Title" content="longjmp()" /><meta name="abstract" content="Restore the environment saved by setjmp()" /><meta name="description" content="Restore the environment saved by setjmp()" /><meta name="indexterms" content="longjmp()" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-l.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/s/setjmp.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/s/siglongjmp.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/s/sigsetjmp.html" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="longjmp" /><meta name="DC.Language" content="en-us" /><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/commonltr.css"><!----></link><title>longjmp()</title><link rel="canonical" type="html" href="https://www.qnx.com/developers/docs/7.1/#com.qnx.doc.neutrino.lib_ref/" /><!--  Generated with Oxygen version 18.1, build number 2017020917.  --><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/webhelp_topic.css"><!----></link><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/skins/skin.css" /><script type="text/javascript"><!--
+            
+            var prefix = "../../../index.html";
+            
+            --></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-1.11.3.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.cookie.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-ui.custom.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.highlight-3.js"><!----></script><script type="text/javascript" charset="utf-8" src="../../../oxygen-webhelp/resources/js/webhelp_topic.js"><!----></script><script type="text/javascript"> var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-27400275-1']); _gaq.push(['_setDomainName', 'www.qnx.com']);_gaq.push(['_setAllowLinker', true]);_gaq.push(['_trackPageview']);(function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script></head>
+<body onload="highlightSearchTerm()" class="frmBody" id="longjmp">
+<table class="nav"><tbody><tr><td colspan="2"><div id="printlink"><button onClick="window.print()" title="Print this page" aria-label="Print this page"></button></div><div id="permalink"><a href="#" title="Link to this page"></a></div></td></tr><tr><td style="width:75%;"><span class="topic_breadcrumb_links"><span class="topic_breadcrumb_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-l.html" title="L">L</a></span></span></td><td><span id="topic_navigation_links" class="navheader">
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-l.html" title="L"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">L</span></a></span>  </span></td></tr></tbody></table>
+
+
+<h1 class="title topictitle1"><span class="keyword apiname">longjmp()</span></h1>
+<table width="100%"><tbody><tr><td align="left"><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">QNX SDP</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">7.1</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">C Library Reference</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">API</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">Developer</button></td><td align="right"><span style="margin:0px 5px; font-size:0.9em;">Updated: October 28, 2024</span></td></tr></tbody></table>
+
+
+<div class="body refbody"><p class="shortdesc"><em class="ph i">Restore the environment saved by <span class="keyword apiname">setjmp()</span></em></p>
+
+
+<div class="section refsyn"><h2 class="title sectiontitle">Synopsis:</h2>
+
+<pre class="pre codeblock">
+#include &lt;setjmp.h&gt;
+
+void longjmp( jmp_buf <var class="keyword varname">env</var>, 
+              int <var class="keyword varname">return_value</var> );
+</pre>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Arguments:</h2>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><var class="keyword varname">env</var></dt>
+
+<dd class="dd">The environment saved by the most recent call to 
+  <a class="xref" href="../s/setjmp.html" title="Save the calling environment for longjmp()"><span class="keyword apiname">setjmp()</span></a>.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">return_value</var></dt>
+
+<dd class="dd">The value that you want <span class="keyword apiname">setjmp()</span> to return.</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Library:</h2>
+
+
+<p class="p"><span class="ph filepath">libc</span></p>
+
+
+<p class="p">
+Use the <span class="keyword option">-l c</span> option to
+<a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/q/qcc.html"><span class="keyword cmdname">qcc</span></a>
+to link against this library.
+This library is usually included automatically.
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Description:</h2>
+
+
+<p class="p">
+
+
+
+
+
+The <span class="keyword apiname">longjmp()</span> function restores the environment saved in
+<var class="keyword varname">env</var> by the most recent call to the
+<a class="xref" href="../s/setjmp.html" title="Save the calling environment for longjmp()"><span class="keyword apiname">setjmp()</span></a> function.
+</p>
+
+
+<div class="note note"><span class="notetitle">Note:</span> 
+
+Using <span class="keyword apiname">longjmp()</span> to jump out of a signal handler can cause 
+unpredictable behavior, unless the signal was generated by
+the <a class="xref" href="../r/raise.html" title="Generate a signal"><span class="keyword apiname">raise()</span></a> function.
+</div>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Returns:</h2>
+
+
+<p class="p">
+After the <span class="keyword apiname">longjmp()</span> function restores the environment, program
+execution continues as if the corresponding call to <span class="keyword apiname">setjmp()</span>
+had just returned the value specified by <var class="keyword varname">return_value</var>.
+If the value of <var class="keyword varname">return_value</var> is 0, the value returned is 1.
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Examples:</h2>
+
+
+<pre class="pre codeblock">
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;setjmp.h&gt;
+
+jmp_buf env;
+
+void rtn( void )
+{
+    printf( "about to longjmp\n" );
+    longjmp( env, 14 );
+}
+
+int main( void )
+{
+    int ret_val = 293;
+
+    if( 0 == ( ret_val = setjmp( env ) ) ) {
+        printf( "after setjmp %d\n", ret_val );
+        rtn();
+        printf( "back from rtn %d\n", ret_val );
+    } else {
+        printf( "back from longjmp %d\n", ret_val );
+    }
+    
+    return EXIT_SUCCESS;
+}
+</pre>
+
+
+<p class="p">
+produces the following output:
+</p>
+
+
+<pre class="pre codeblock">
+after setjmp 0
+about to longjmp
+back from longjmp 14
+</pre>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Classification:</h2>
+
+<p class="p"><a class="xref" href="../summary.html#summary__CLASSIFICATION">ANSI, POSIX 1003.1</a></p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+<thead class="thead" align="left">
+<tr><th class="entry" valign="top" id="d2125815e216">Safety:</th>
+<th class="entry" valign="top" id="d2125815e218">Â </th>
+</tr>
+
+</thead>
+
+<tbody class="tbody">
+<tr><td class="entry" valign="top" headers="d2125815e216 d2125815e218 ">Cancellation point</td>
+<td class="entry" valign="top" headers="d2125815e216 d2125815e218 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2125815e216 d2125815e218 ">Interrupt handler</td>
+<td class="entry" valign="top" headers="d2125815e216 d2125815e218 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2125815e216 d2125815e218 ">Signal handler</td>
+<td class="entry" valign="top" headers="d2125815e216 d2125815e218 ">Yes</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2125815e216 d2125815e218 ">Thread</td>
+<td class="entry" valign="top" headers="d2125815e216 d2125815e218 ">Yes</td>
+</tr>
+
+</tbody>
+
+</table>
+</div>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Caveats:</h2>
+
+
+<p class="p">
+A strictly-conforming POSIX application can't assume that
+the <span class="keyword apiname">longjmp()</span> function is signal-safe on other platforms.
+</p>
+
+
+<div class="dangertitle">DANGER</div><div class="note danger">
+<em class="ph i">Don't</em> use 
+<span class="keyword apiname">longjmp()</span> or
+<a class="xref" href="../s/siglongjmp.html" title="Restore the environment saved by sigsetjmp(), including the signal mask"><span class="keyword apiname">siglongjmp()</span></a>
+to restore an environment saved by a call to
+<a class="xref" href="../s/setjmp.html" title="Save the calling environment for longjmp()"><span class="keyword apiname">setjmp()</span></a> or
+<a class="xref" href="../s/sigsetjmp.html" title="Save the environment, including the signal mask"><span class="keyword apiname">sigsetjmp()</span></a> in another
+thread.  If you're lucky, your application will crash; if not, it'll look as
+if it works for a while, until random scribbling on the stack causes it to
+crash.
+</div>
+
+
+</div>
+
+
+</div>
+
+
+<div class="related-links"><div class="relinfo relref"><strong>Related reference</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/s/setjmp.html" title="Save the calling environment for longjmp()">setjmp()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/s/siglongjmp.html" title="Restore the environment saved by sigsetjmp(), including the signal mask">siglongjmp()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/s/sigsetjmp.html" title="Save the environment, including the signal mask">sigsetjmp()</a></div>
+</div>
+</div><div class="navfooter"><!---->
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-l.html" title="L"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">L</span></a></span>  </div>
+</body>
+</html>

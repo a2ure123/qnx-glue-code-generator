@@ -1,0 +1,993 @@
+
+<!DOCTYPE html
+  PUBLIC "" "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />        
+      <meta name="copyright" content="(C) Copyright 2005" /><meta name="DC.rights.owner" content="(C) Copyright 2005" /><meta name="DC.Type" content="reference" /><meta name="DC.Title" content="fsev_t, FSE*()" /><meta name="abstract" content="Structure and macros for filesystem events" /><meta name="description" content="Structure and macros for filesystem events" /><meta name="indexterms" content="fsev_t, FSE*()" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-f.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.sys_arch/topic/fsys_events.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.utilities/topic/f/fsevmgr.html" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="FSE" /><meta name="DC.Language" content="en-us" /><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/commonltr.css"><!----></link><title>fsev_t, FSE*()</title><link rel="canonical" type="html" href="https://www.qnx.com/developers/docs/7.1/#com.qnx.doc.neutrino.lib_ref/" /><!--  Generated with Oxygen version 18.1, build number 2017020917.  --><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/webhelp_topic.css"><!----></link><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/skins/skin.css" /><script type="text/javascript"><!--
+            
+            var prefix = "../../../index.html";
+            
+            --></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-1.11.3.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.cookie.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-ui.custom.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.highlight-3.js"><!----></script><script type="text/javascript" charset="utf-8" src="../../../oxygen-webhelp/resources/js/webhelp_topic.js"><!----></script><script type="text/javascript"> var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-27400275-1']); _gaq.push(['_setDomainName', 'www.qnx.com']);_gaq.push(['_setAllowLinker', true]);_gaq.push(['_trackPageview']);(function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script></head>
+<body onload="highlightSearchTerm()" class="frmBody" id="FSE">
+<table class="nav"><tbody><tr><td colspan="2"><div id="printlink"><button onClick="window.print()" title="Print this page" aria-label="Print this page"></button></div><div id="permalink"><a href="#" title="Link to this page"></a></div></td></tr><tr><td style="width:75%;"><span class="topic_breadcrumb_links"><span class="topic_breadcrumb_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-f.html" title="F">F</a></span></span></td><td><span id="topic_navigation_links" class="navheader">
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-f.html" title="F"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">F</span></a></span>  </span></td></tr></tbody></table>
+
+
+<h1 class="title topictitle1"><span class="keyword dtype">fsev_t</span>, <span class="keyword apiname">FSE*()</span></h1>
+<table width="100%"><tbody><tr><td align="left"><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">QNX SDP</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">7.1</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">C Library Reference</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">API</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">Developer</button></td><td align="right"><span style="margin:0px 5px; font-size:0.9em;">Updated: October 28, 2024</span></td></tr></tbody></table>
+
+
+<div class="body refbody"><p class="shortdesc"><em class="ph i">Structure and macros for filesystem events</em></p>
+
+
+<div class="section refsyn"><h2 class="title sectiontitle">Synopsis:</h2>
+
+<pre class="pre codeblock">
+#include &lt;sys/fs_events.h&gt;
+
+typedef struct fse_event_s {
+    uint32_t        signature;          /* Version and fixed identifier      */
+    uint16_t        length;             /* Type and length of the event data */
+    uint16_t        command;            /* Command / request information     */
+    uint32_t        properties;         /* Classification of the event       */
+    uint32_t        reserved;           /* Reserved for future use (zero)    */
+    uint32_t        identity;           /* Locale and ID of the event        */
+} fsev_t;
+</pre>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Description:</h2>
+
+
+<p class="p">
+
+
+The <span class="ph filepath">&lt;sys/fs_events.h&gt;</span> header file includes everything necessary to read and process
+events from the filesystem event manager, 
+<a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/f/fsevmgr.html"><span class="keyword cmdname">fsevmgr</span></a>.
+</p>
+
+
+<p class="p">
+The <span class="keyword dtype">fsev_t</span> structure is a header that describes a filesystem event, including its origin, locale,
+and identity.
+It's followed by any data associated with the event.
+Generally the data is a path string, but depends on the type of event.
+</p>
+
+
+<p class="p">
+Events are organized into tuples that have a common header, a description of the event,
+and length of that event.
+The <var class="keyword varname">length</var> field represents the entire length from the starting address of the tuple.
+</p>
+
+
+<div class="note note"><span class="notetitle">Note:</span> 
+Don't use <span class="keyword apiname">sizeof()</span> to determine the size of an event, because this
+header structure might be followed by a flexarray or be part of another structure.
+</div>
+
+
+<p class="p">
+You read an event from the event manager into an array of bytes, but there's no guarantee of alignment, so
+you should use the <span class="keyword apiname">FSE_READ_EVENT_S()</span> macroâwhich is a cover for the
+<a class="xref" href="../m/memcpy.html" title="Copy bytes from one buffer to another"><span class="keyword apiname">memcpy()</span></a>
+functionâto copy the data into an <span class="keyword dtype">fsev_t</span> structure:
+</p>
+
+
+<pre class="pre codeblock">
+#define FSE_READ_EVENT_S(pev, pdata)
+</pre>
+
+
+<p class="p">
+where <var class="keyword varname">pev</var> is a pointer to a <span class="keyword dtype">fsev_t</span> structure, and
+<var class="keyword varname">pdata</var> is a pointer to the array of bytes.
+</p>
+
+
+<p class="p">
+To access a tuple, use the following <span class="keyword apiname">FSE_*()</span> macros, which take as an argument
+a pointer to an <span class="keyword dtype">fsev_t</span> structure:
+</p>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><span class="keyword apiname">FSE_CMD_VAL</span>(<var class="keyword varname">p</var>)</dt>
+
+<dd class="dd">Get the command or request.
+  The possible values include:
+
+  <ul class="ul">
+  <li class="li"><span class="keyword const">FSE_CMD_FILTER</span> â used by clients when they want to set a filter
+    against a file descriptor.</li>
+
+  <li class="li"><span class="keyword const">FSE_CMD_POST</span> â used by the filesystem for sending data to the event manager.</li>
+
+  <li class="li"><span class="keyword const">FSE_CMD_REPORT</span> â not currently used.</li>
+
+  </ul>
+
+
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword apiname">FSE_DATA_LEN</span>(<var class="keyword varname">p</var>)</dt>
+
+<dd class="dd">Return the length of data that's attached to the tuple.
+  The maximum length is given by <span class="keyword const">FSE_MAX_EVENT_LENGTH</span>.
+  It accommodates at least two paths of 1024 bytes;
+  some name-based operations may have three paths, consisting of a mountpoint and the two relative paths.
+
+  <div class="note note"><span class="notetitle">Note:</span> 
+  Events with longer data might be lost.
+  </div>
+
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword apiname">FSE_DATA_PTR</span>(<var class="keyword varname">p</var>)</dt>
+
+<dd class="dd">Get a pointer to the event data.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword apiname">FSE_IDENTITY_VAL</span>(<var class="keyword varname">p</var>)</dt>
+
+<dd class="dd">Get the locale and ID of the event.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword apiname">FSE_ID_ISDIR_VAL</span>(<var class="keyword varname">p</var>)</dt>
+
+<dd class="dd">Return a nonzero value if the event concerns a directory.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword apiname">FSE_ID_VAL</span>(<var class="keyword varname">p</var>)</dt>
+
+<dd class="dd">Return the event ID.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword apiname">FSE_IS_V1_EVENT</span>(<var class="keyword varname">p</var>)</dt>
+
+<dd class="dd">Return a nonzero value if the event has a valid signature and is version 1.
+  You should use this macro first, to make sure that the event is valid.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword apiname">FSE_LEN_VAL</span>(<var class="keyword varname">p</var>)</dt>
+
+<dd class="dd">Get the length of the event data.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword apiname">FSE_LOCALE_VAL</span>(<var class="keyword varname">p</var>)</dt>
+
+<dd class="dd">Return the locale of the event.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword apiname">FSE_PROP_VAL</span>(<var class="keyword varname">p</var>)</dt>
+
+<dd class="dd">Return the event properties.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword apiname">FSE_SIG_VAL</span>(<var class="keyword varname">p</var>)</dt>
+
+<dd class="dd">Get the event's signature.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword apiname">FSE_TUPLE_LEN</span>(<var class="keyword varname">p</var>)</dt>
+
+<dd class="dd">Return the total size of the event tuple, which includes the <span class="keyword dtype">fsev_t</span> structure and its data.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword apiname">FSE_VERSION_OF</span>(<var class="keyword varname">p</var>)</dt>
+
+<dd class="dd">Get the version of the filesystem event software.</dd>
+
+
+
+</dl>
+
+
+<p class="p"><strong class="ph b">Properties</strong></p>
+
+
+<p class="p">
+<em class="ph i">Properties</em> are boolean attributes of an event that help to describe its
+purpose, data, and/or impact to the system.
+An event can have multiple properties ORed together.
+</p>
+
+
+<p class="p">
+To assist in the filtering of events, properties are organized into a few
+groups: types, class, and data. 
+<span class="keyword const">FSE_TYPE_*</span> properties indicate the purpose
+of an event;  <span class="keyword const">FSE_CLASS_*</span> properties indicate the impact an event might have on a
+system; <span class="keyword const">FSE_DATA_*</span> properties describe attributes of the data attached to the event.
+</p>
+
+
+<p class="p">
+Properties of events aren't exclusive; some events may have two class properties.
+</p>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><span class="keyword const">FSE_TYPE_DEBUG</span></dt>
+
+<dd class="dd">Not currently used.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">FSE_TYPE_GENERAL</span></dt>
+
+<dd class="dd">General purpose events are those that an event handler may be interested in.
+  Most events have this property.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">FSE_TYPE_TRACE</span></dt>
+
+<dd class="dd">Reserved for tracking code execution.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">FSE_TYPE_INTERNAL</span></dt>
+
+<dd class="dd">Internal events are reserved for future use.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">FSE_DATA_ZSTRING</span></dt>
+
+<dd class="dd">The event's data is a number of zero-byte terminated strings.
+  Lack of this property suggests the event data is binary, but that depends on the specific event.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">FSE_CLASS_UPDATE</span></dt>
+
+<dd class="dd">A change has resulted or may result from the event.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">FSE_CLASS_UPDATE2</span></dt>
+
+<dd class="dd">A change has resulted or may result from the event.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">FSE_CLASS_ACCESS</span></dt>
+
+<dd class="dd">The event doesn't result in a change.
+  For instance, a read from a file, or an open as read-only is an access class.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">FSE_CLASS_INFO</span></dt>
+
+<dd class="dd">Events that are informational only (e.g., a <span class="keyword apiname">stat()</span> of a file).</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">FSE_CLASS_PRIVATE</span></dt>
+
+<dd class="dd">Reserved for internal use only.</dd>
+
+
+
+</dl>
+
+
+<p class="p"><strong class="ph b">Locales</strong></p>
+
+
+<p class="p">
+Locales indicate the source of the event.
+An event can have only a single locale.
+In general, event client handlers filter out those events that don't match the locale that they're monitoring.
+
+</p>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><span class="keyword const">FSE_LOCALE_BLOCK</span></dt>
+
+<dd class="dd">Reserved for use by the block-level operations, cache, and partition level operations.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">FSE_LOCALE_EVMGR</span></dt>
+
+<dd class="dd">The source of the event was the event manager.
+  This may be used for debugging purposes or for events that are injected directly through
+  use of the <span class="keyword cmdname">fsevmgr</span> itself.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">FSE_LOCALE_EXT</span></dt>
+
+<dd class="dd">The event came from somewhere outside the <span class="ph filepath">io-blk.so</span> filesystem.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">FSE_LOCALE_FSYS</span></dt>
+
+<dd class="dd">Not currently used.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">FSE_LOCALE_SYSCALL</span></dt>
+
+<dd class="dd">Most notable public entry points to the filesystems will have this locale.
+  Events with this locale are often generic and apply to any filesystem.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">FSE_LOCALE_VFS</span></dt>
+
+<dd class="dd">Not currently used.
+  The VFS locale describes events generated by <span class="ph filepath">io-blk.so</span> and which are
+  specific to its implementation.
+  These might include specific <span class="keyword apiname">ioctl()</span> commands or specific mount operations.
+</dd>
+
+
+
+
+
+</dl>
+
+
+<p class="p"><strong class="ph b">Event IDs</strong></p>
+
+
+<p class="p">
+Event IDs indicate the cause of the event and the data associated with it.
+If the event data includes any strings, they're null-terminated.
+</p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" width="100%" frame="border" border="1" rules="all"> 
+
+<thead class="thead" align="left">
+<tr>
+  <th class="entry" valign="top" id="d1491775e557">ID</th>
+
+  
+  <th class="entry" valign="top" id="d1491775e560">Properties</th>
+
+  <th class="entry" valign="top" id="d1491775e563">Description</th>
+
+</tr>
+
+</thead>
+
+
+<tbody class="tbody">
+<tr>
+  <td class="entry" valign="top" headers="d1491775e557 d1491775e560 d1491775e563 "><span class="keyword const">FSE_ID_CHECK</span></td>
+
+  
+  <td class="entry" valign="top" headers="d1491775e557 d1491775e560 d1491775e563 ">Â </td>
+
+  <td class="entry" valign="top" headers="d1491775e557 d1491775e560 d1491775e563 ">Used internally for testing. </td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1491775e557 d1491775e560 d1491775e563 "><span class="keyword const">FSE_ID_CHMOD</span></td>
+
+  
+  <td class="entry" valign="top" headers="d1491775e557 d1491775e560 d1491775e563 "><span class="keyword const">FSE_TYPE_GENERAL</span>, <span class="keyword const">FSE_CLASS_UPDATE</span>,
+    <span class="keyword const">FSE_DATA_ZSTRING</span></td>
+
+  <td class="entry" valign="top" headers="d1491775e557 d1491775e560 d1491775e563 ">Sent upon successful recording of a file's read, write, and execute modes.
+    This event indicates only that a file mode bits <em class="ph i">might</em> have changed.
+    Mode information isn't available.
+    The data consists of:
+
+    <ul class="ul">
+    <li class="li">the mountpoint</li>
+
+    <li class="li">the name of the file that changed</li>
+
+    </ul>
+
+  </td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1491775e557 d1491775e560 d1491775e563 "><span class="keyword const">FSE_ID_CHOWN</span></td>
+
+  
+  <td class="entry" valign="top" headers="d1491775e557 d1491775e560 d1491775e563 "><span class="keyword const">FSE_TYPE_GENERAL</span>, <span class="keyword const">FSE_CLASS_UPDATE</span>,
+    <span class="keyword const">FSE_DATA_ZSTRING</span></td>
+
+  <td class="entry" valign="top" headers="d1491775e557 d1491775e560 d1491775e563 ">Sent on the successful recording of a file's ownership.
+    Note this event indicates that the ownership information <em class="ph i">might</em> have changed.
+    Ownership information isn't available.
+    The data consists of:
+
+    <ul class="ul">
+    <li class="li">the mountpoint</li>
+
+    <li class="li">the name of the file that changed</li>
+
+    </ul>
+
+  </td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1491775e557 d1491775e560 d1491775e563 "><span class="keyword const">FSE_ID_CLOSE_OTHER</span></td>
+
+  
+  <td class="entry" valign="top" headers="d1491775e557 d1491775e560 d1491775e563 ">Â </td>
+
+  <td class="entry" valign="top" headers="d1491775e557 d1491775e560 d1491775e563 ">Reserved for future use. </td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1491775e557 d1491775e560 d1491775e563 "><span class="keyword const">FSE_ID_CLOSE_UPDATE</span></td>
+
+  
+  <td class="entry" valign="top" headers="d1491775e557 d1491775e560 d1491775e563 "><span class="keyword const">FSE_TYPE_GENERAL</span>, <span class="keyword const">FSE_CLASS_UPDATE</span>,
+    <span class="keyword const">FSE_DATA_ZSTRING</span></td>
+
+  <td class="entry" valign="top" headers="d1491775e557 d1491775e560 d1491775e563 ">The last close of a file handle that has write access to the inode generates this event.
+    Note that this may not be the same file name that was reported in an earlier
+    <span class="keyword const">FSE_OPEN_UPDATE</span> event.
+    The data consists of:
+
+    <ul class="ul">
+    <li class="li">the mountpoint</li>
+
+    <li class="li">the name of the file</li>
+
+    </ul>
+
+  </td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1491775e557 d1491775e560 d1491775e563 "><span class="keyword const">FSE_ID_CREATE</span></td>
+
+  
+  <td class="entry" valign="top" headers="d1491775e557 d1491775e560 d1491775e563 ">Â </td>
+
+  <td class="entry" valign="top" headers="d1491775e557 d1491775e560 d1491775e563 ">Reserved for future use. </td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1491775e557 d1491775e560 d1491775e563 "><span class="keyword const">FSE_ID_DEVCTL</span></td>
+
+  
+  <td class="entry" valign="top" headers="d1491775e557 d1491775e560 d1491775e563 ">Â </td>
+
+  <td class="entry" valign="top" headers="d1491775e557 d1491775e560 d1491775e563 ">Reserved for future use. </td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1491775e557 d1491775e560 d1491775e563 "><span class="keyword const">FSE_ID_FDINFO</span></td>
+
+  
+  <td class="entry" valign="top" headers="d1491775e557 d1491775e560 d1491775e563 ">Â </td>
+
+  <td class="entry" valign="top" headers="d1491775e557 d1491775e560 d1491775e563 ">Reserved for future use. </td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1491775e557 d1491775e560 d1491775e563 "><span class="keyword const">FSE_ID_FREE_SPACE</span></td>
+
+  
+  <td class="entry" valign="top" headers="d1491775e557 d1491775e560 d1491775e563 "><span class="keyword const">FSE_TYPE_GENERAL</span>, <span class="keyword const">FSE_CLASS_UPDATE</span>,
+    <span class="keyword const">FSE_DATA_ZSTRING</span></td>
+
+  <td class="entry" valign="top" headers="d1491775e557 d1491775e560 d1491775e563 ">The block I/O system attempts to estimate disk space usage based on <span class="keyword const">IO_WRITE</span> and
+    <span class="keyword const">IO_SPACE</span> messages; when it estimates that a certain threshold has been crossed,
+    it queries the filesystem for the real change.
+    Once the real change is confirmed to be above a certain threshold, a <span class="keyword const">FSE_ID_FREE_SPACE</span>
+    event is emitted.
+    The data consists of:
+
+    <ul class="ul">
+    <li class="li">the mountpoint</li>
+
+    <li class="li">the amount of free space, in bytes (as a string converted from an unsigned 64-bit integer)</li>
+
+    </ul>
+
+  </td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1491775e557 d1491775e560 d1491775e563 "><span class="keyword const">FSE_ID_LINK</span></td>
+
+  
+  <td class="entry" valign="top" headers="d1491775e557 d1491775e560 d1491775e563 "><span class="keyword const">FSE_TYPE_GENERAL</span>, <span class="keyword const">FSE_CLASS_UPDATE</span>,
+    <span class="keyword const">FSE_DATA_ZSTRING</span></td>
+
+  <td class="entry" valign="top" headers="d1491775e557 d1491775e560 d1491775e563 ">The link field indicates a filename has successfully been created and associated with an inode.
+    The target file name is unknown.
+    The data consists of:
+
+    <ul class="ul">
+    <li class="li">the mountpoint</li>
+
+    <li class="li">the name of the file that was created</li>
+
+    </ul>
+
+  </td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1491775e557 d1491775e560 d1491775e563 "><span class="keyword const">FSE_ID_MKDIR</span></td>
+
+  
+  <td class="entry" valign="top" headers="d1491775e557 d1491775e560 d1491775e563 "><span class="keyword const">FSE_TYPE_GENERAL</span>, <span class="keyword const">FSE_CLASS_UPDATE</span>,
+    <span class="keyword const">FSE_DATA_ZSTRING</span></td>
+
+  <td class="entry" valign="top" headers="d1491775e557 d1491775e560 d1491775e563 ">A directory (or node) has been successfully created within the filesystem.
+    The data consists of:
+
+    <ul class="ul">
+    <li class="li">the mountpoint</li>
+
+    <li class="li">the name of the new directory</li>
+
+    </ul>
+
+  </td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1491775e557 d1491775e560 d1491775e563 "><span class="keyword const">FSE_ID_MOUNT</span></td>
+
+  
+  <td class="entry" valign="top" headers="d1491775e557 d1491775e560 d1491775e563 "><span class="keyword const">FSE_TYPE_GENERAL</span>, <span class="keyword const">FSE_CLASS_INFO</span>,
+    <span class="keyword const">FSE_DATA_ZSTRING</span></td>
+
+  <td class="entry" valign="top" headers="d1491775e557 d1491775e560 d1491775e563 ">A volume has been successfully mounted (e.g., <span class="keyword cmdname">mount /dev/umass0 /fs/usb0</span>).
+    The data consists of:
+
+    <ul class="ul">
+    <li class="li">the block special device (e.g., <span class="ph filepath">/dev/hd0</span>)</li>
+
+    <li class="li">the mountpoint (e.g., <span class="ph filepath">/fs/dos</span>)</li>
+
+    </ul>
+
+  </td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1491775e557 d1491775e560 d1491775e563 "><span class="keyword const">FSE_ID_OPENFD</span></td>
+
+  
+  <td class="entry" valign="top" headers="d1491775e557 d1491775e560 d1491775e563 ">Â </td>
+
+  <td class="entry" valign="top" headers="d1491775e557 d1491775e560 d1491775e563 ">Reserved for future use. </td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1491775e557 d1491775e560 d1491775e563 "><span class="keyword const">FSE_ID_OPEN_OTHER</span></td>
+
+  
+  <td class="entry" valign="top" headers="d1491775e557 d1491775e560 d1491775e563 ">Â </td>
+
+  <td class="entry" valign="top" headers="d1491775e557 d1491775e560 d1491775e563 ">Reserved for future use. </td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1491775e557 d1491775e560 d1491775e563 "><span class="keyword const">FSE_ID_OPEN_UPDATE</span></td>
+
+  
+  <td class="entry" valign="top" headers="d1491775e557 d1491775e560 d1491775e563 "><span class="keyword const">FSE_TYPE_GENERAL</span>, <span class="keyword const">FSE_CLASS_UPDATE</span>,
+    <span class="keyword const">FSE_DATA_ZSTRING</span></td>
+
+  <td class="entry" valign="top" headers="d1491775e557 d1491775e560 d1491775e563 ">The open update event is a result of the first open of an inode which includes write access.
+    Subsequent opens with write access of the inode (regardless of the source file name) aren't reported.
+    Note that if the inode is opened again, but through a different link, there will be no additional event.
+    The data consists of:
+
+    <ul class="ul">
+    <li class="li">the mountpoint</li>
+
+    <li class="li">the source file name</li>
+
+    </ul>
+
+  </td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1491775e557 d1491775e560 d1491775e563 "><span class="keyword const">FSE_ID_READ</span></td>
+
+  
+  <td class="entry" valign="top" headers="d1491775e557 d1491775e560 d1491775e563 ">Â </td>
+
+  <td class="entry" valign="top" headers="d1491775e557 d1491775e560 d1491775e563 ">Reserved for future use. </td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1491775e557 d1491775e560 d1491775e563 "><span class="keyword const">FSE_ID_READLINK</span></td>
+
+  
+  <td class="entry" valign="top" headers="d1491775e557 d1491775e560 d1491775e563 ">Â </td>
+
+  <td class="entry" valign="top" headers="d1491775e557 d1491775e560 d1491775e563 ">Reserved for future use. </td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1491775e557 d1491775e560 d1491775e563 "><span class="keyword const">FSE_ID_RENAME</span></td>
+
+  
+  <td class="entry" valign="top" headers="d1491775e557 d1491775e560 d1491775e563 "><span class="keyword const">FSE_TYPE_GENERAL</span>, <span class="keyword const">FSE_CLASS_UPDATE</span>,
+    <span class="keyword const">FSE_DATA_ZSTRING</span></td>
+
+  <td class="entry" valign="top" headers="d1491775e557 d1491775e560 d1491775e563 ">Sent as a result of a successful renaming operation within a single filesystem.
+    Renaming operations across filesystems are generally implemented as a copy and delete sequence.
+    The data consists of:
+
+    <ul class="ul">
+    <li class="li">the mountpoint</li>
+
+    <li class="li">the original file name</li>
+
+    <li class="li">the new file name</li>
+
+    </ul>
+
+  </td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1491775e557 d1491775e560 d1491775e563 "><span class="keyword const">FSE_ID_SEEK</span></td>
+
+  
+  <td class="entry" valign="top" headers="d1491775e557 d1491775e560 d1491775e563 ">Â </td>
+
+  <td class="entry" valign="top" headers="d1491775e557 d1491775e560 d1491775e563 ">Reserved for future use. </td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1491775e557 d1491775e560 d1491775e563 "><span class="keyword const">FSE_ID_STAT</span></td>
+
+  
+  <td class="entry" valign="top" headers="d1491775e557 d1491775e560 d1491775e563 ">Â </td>
+
+  <td class="entry" valign="top" headers="d1491775e557 d1491775e560 d1491775e563 ">Reserved for future use. </td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1491775e557 d1491775e560 d1491775e563 "><span class="keyword const">FSE_ID_TRUNCATE</span></td>
+
+  
+  <td class="entry" valign="top" headers="d1491775e557 d1491775e560 d1491775e563 "><span class="keyword const">FSE_TYPE_GENERAL</span>, <span class="keyword const">FSE_CLASS_UPDATE</span>,
+    <span class="keyword const">FSE_DATA_ZSTRING</span></td>
+
+  <td class="entry" valign="top" headers="d1491775e557 d1491775e560 d1491775e563 ">Sent upon a truncate operation that results in a change to a file size.
+    The data consists of:
+
+    <ul class="ul">
+    <li class="li">the mountpoint</li>
+
+    <li class="li">the name of the file whose size has changed</li>
+
+    </ul>
+
+  </td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1491775e557 d1491775e560 d1491775e563 "><span class="keyword const">FSE_ID_UNLINK</span></td>
+
+  
+  <td class="entry" valign="top" headers="d1491775e557 d1491775e560 d1491775e563 "><span class="keyword const">FSE_TYPE_GENERAL</span>, <span class="keyword const">FSE_CLASS_UPDATE</span>,
+    <span class="keyword const">FSE_DATA_ZSTRING</span></td>
+
+  <td class="entry" valign="top" headers="d1491775e557 d1491775e560 d1491775e563 ">Sent as a result of a successful unlink operation.
+    The data consists of:
+
+    <ul class="ul">
+    <li class="li">the mountpoint</li>
+
+    <li class="li">the file name that's been deleted</li>
+
+    </ul>
+
+  </td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1491775e557 d1491775e560 d1491775e563 "><span class="keyword const">FSE_ID_UNMOUNT</span></td>
+
+  
+  <td class="entry" valign="top" headers="d1491775e557 d1491775e560 d1491775e563 "><span class="keyword const">FSE_TYPE_GENERAL</span>, <span class="keyword const">FSE_CLASS_ACCESS</span>,
+    <span class="keyword const">FSE_DATA_ZSTRING</span></td>
+
+  <td class="entry" valign="top" headers="d1491775e557 d1491775e560 d1491775e563 ">A volume has been successfully unmounted.
+    The data consists of:
+
+    <ul class="ul">
+    <li class="li">the block special device (e.g., <span class="ph filepath">/dev/hd0</span>)</li>
+
+    <li class="li">the mountpoint (e.g., <span class="ph filepath">/fs/dos</span>)</li>
+
+    </ul>
+
+  </td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1491775e557 d1491775e560 d1491775e563 "><span class="keyword const">FSE_ID_WRITE</span></td>
+
+  
+  <td class="entry" valign="top" headers="d1491775e557 d1491775e560 d1491775e563 ">Â </td>
+
+  <td class="entry" valign="top" headers="d1491775e557 d1491775e560 d1491775e563 ">Reserved for future use. </td>
+
+</tr>
+
+
+</tbody>
+
+</table>
+</div>
+
+
+<p class="p">
+Here's an example of extracting the information associated with an event:
+</p>
+
+
+<pre class="pre codeblock">
+char *data, *mntpath, *spacestr;
+size_t len;
+uint64_t freespace;
+
+if (FSE_ID_VAL(event) == FSE_ID_FREE_SPACE)
+{
+    data = FSE_DATA_PTR(event);
+    len  = FSE_DATA_LEN(event);
+
+    /*  Determine the starting buffer offsets for the mount path and freespace
+        integer value.
+    */
+    mntpath  = data;
+    spacestr = data + strlen(mntpath) + 1;
+
+    /*  If the path exceeds the data buffer, then there's no freespace value
+        present.
+    */
+    if (spacestr &gt;= (data + len)) {
+        LOG(LOG_ERROR, "freespace data exceeds event buffer length (%p &gt;= %p)",
+            spacestr, data+len);
+        return;
+    }
+    /*  Convert the freespace string to a 64-bit unsigned integer value.
+    */
+    else if (sscanf(spacestr, "%" PRIu64, &amp;freespace) != 1) {
+        LOG(LOG_ERROR, "freespace data conversion failed");
+        return;
+    }
+}
+</pre>
+
+
+<p class="p"><strong class="ph b">Notes</strong></p>
+
+
+<p class="p">
+There are several unique situations that clients of the event manager should be aware of:
+</p>
+
+
+<ul class="ul">
+<li class="li">It's possible and explicitly allowed to have a handle open to a file that's been deleted.
+  For instance, an application can open a file and begin writing to it and during the write, unlink the file.
+  Further reads and writes are allowed to the file, but when the last handle to the file is closed, the file will
+  be freed from the filesystem.
+  This means that it's possible to receive an <span class="keyword const">FSE_EVENT_CLOSE_UPDATE</span> on a file that
+  no longer exists within the filesystem.
+</li>
+
+
+<li class="li">During updates to a file, it's possible to rename the file, resulting in an
+  <span class="keyword const">FSE_EVENT_CLOSE_UPDATE</span> for a file name that <em class="ph i">appears</em> to have been removed
+  since the file was opened.
+</li>
+
+
+</ul>
+
+
+<p class="p"><strong class="ph b">Initializing events</strong></p>
+
+
+<p class="p">
+If your client application has opened the event manager's device for writing, you can inject events.
+You can initialize an event structure by using the <span class="keyword apiname">FSE_INIT_EVENT()</span> macro:
+</p>
+
+
+<pre class="pre codeblock">
+#define FSE_INIT_EVENT(p, cmd, loc, id, prop, len)...
+</pre>
+
+
+<p class="p">
+The arguments are:
+</p>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><var class="keyword varname">p</var></dt>
+
+<dd class="dd">A pointer to the <span class="keyword dtype">fsev_t</span> structure that you want to initialize.</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">cmd</var></dt>
+
+<dd class="dd">The command indicating the operation to complete (<span class="keyword const">FSE_CMD_*</span>).</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">loc</var></dt>
+
+<dd class="dd">An indicator of the source of the event (<span class="keyword const">FSE_LOCALE_*</span>).</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">id</var></dt>
+
+<dd class="dd">A specific event identifier (<span class="keyword const">FSE_ID_*</span>).</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">prop</var></dt>
+
+<dd class="dd">Properties of this event (a bitwise OR of the appropriate <span class="keyword const">FSE_TYPE_*</span>, <span class="keyword const">FSE_CLASS_*</span>,
+  and <span class="keyword const">FSE_DATA_*</span> bits).</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">len</var></dt>
+
+<dd class="dd">The length, in bytes, of the data that's associated with this event.</dd>
+
+
+
+</dl>
+
+
+<p class="p">
+The event manager checks the event data to ensure it's well-formed; if it isn't, the event manager aborts the
+writing of all events that were sent in the write operation.
+</p>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+<div class="related-links"><div class="relinfo relconcepts"><strong>Related concepts</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.sys_arch/topic/fsys_events.html" title="Filesystem events (System Architecture)">Filesystem events (System Architecture)</a></div>
+</div>
+<div class="relinfo relref"><strong>Related reference</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.utilities/topic/f/fsevmgr.html" title="fsevmgr (Utilities Reference)">fsevmgr (Utilities Reference)</a></div>
+</div>
+</div><div class="navfooter"><!---->
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-f.html" title="F"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">F</span></a></span>  </div>
+</body>
+</html>

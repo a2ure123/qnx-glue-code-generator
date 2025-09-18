@@ -1,0 +1,563 @@
+
+<!DOCTYPE html
+  PUBLIC "" "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />        
+      <meta name="copyright" content="(C) Copyright 2005" /><meta name="DC.rights.owner" content="(C) Copyright 2005" /><meta name="DC.Type" content="reference" /><meta name="DC.Title" content="MsgRegisterEvent(), MsgRegisterEvent_r()" /><meta name="abstract" content="Register a secure event" /><meta name="description" content="Register a secure event" /><meta name="indexterms" content="MsgRegisterEvent(), MsgRegisterEvent_r()" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-m.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.sys_arch/topic/ipc_Events.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/c/connectattach.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/m/msgdeliverevent.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/m/msgunregisterevent.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/s/setrlimit.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/s/sigevent.html" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="msgregisterevent" /><meta name="DC.Language" content="en-us" /><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/commonltr.css"><!----></link><title>MsgRegisterEvent(), MsgRegisterEvent_r()</title><link rel="canonical" type="html" href="https://www.qnx.com/developers/docs/7.1/#com.qnx.doc.neutrino.lib_ref/" /><!--  Generated with Oxygen version 18.1, build number 2017020917.  --><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/webhelp_topic.css"><!----></link><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/skins/skin.css" /><script type="text/javascript"><!--
+            
+            var prefix = "../../../index.html";
+            
+            --></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-1.11.3.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.cookie.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-ui.custom.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.highlight-3.js"><!----></script><script type="text/javascript" charset="utf-8" src="../../../oxygen-webhelp/resources/js/webhelp_topic.js"><!----></script><script type="text/javascript"> var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-27400275-1']); _gaq.push(['_setDomainName', 'www.qnx.com']);_gaq.push(['_setAllowLinker', true]);_gaq.push(['_trackPageview']);(function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script></head>
+<body onload="highlightSearchTerm()" class="frmBody" id="msgregisterevent">
+<table class="nav"><tbody><tr><td colspan="2"><div id="printlink"><button onClick="window.print()" title="Print this page" aria-label="Print this page"></button></div><div id="permalink"><a href="#" title="Link to this page"></a></div></td></tr><tr><td style="width:75%;"><span class="topic_breadcrumb_links"><span class="topic_breadcrumb_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-m.html" title="M">M</a></span></span></td><td><span id="topic_navigation_links" class="navheader">
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-m.html" title="M"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">M</span></a></span>  </span></td></tr></tbody></table>
+
+
+<h1 class="title topictitle1"><span class="keyword apiname">MsgRegisterEvent()</span>, <span class="keyword apiname">MsgRegisterEvent_r()</span></h1>
+<table width="100%"><tbody><tr><td align="left"><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">QNX SDP</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">7.1</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">C Library Reference</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">API</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">Developer</button></td><td align="right"><span style="margin:0px 5px; font-size:0.9em;">Updated: October 28, 2024</span></td></tr></tbody></table>
+
+
+
+
+<div class="body refbody"><p class="shortdesc"><em class="ph i">Register a secure event</em></p>
+
+
+<div class="section">
+
+<p class="p">
+
+
+
+
+
+
+</p>
+
+</div>
+
+
+<div class="section refsyn"><h2 class="title sectiontitle">Synopsis:</h2>
+
+<pre class="pre codeblock">
+#include &lt;sys/neutrino.h&gt;
+
+int MsgRegisterEvent( struct sigevent *<var class="keyword varname">event</var>,
+                      int <var class="keyword varname">coid</var> );
+
+int MsgRegisterEvent_r( struct sigevent *<var class="keyword varname">event</var>,
+                        int <var class="keyword varname">coid</var> );
+</pre>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Arguments:</h2>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><var class="keyword varname">event</var></dt>
+
+<dd class="dd">A pointer to the
+  <a class="xref" href="../s/sigevent.html" title="Structure that describes an event"><span class="keyword dtype">sigevent</span></a>
+  that you want to register as a secure event.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">coid</var></dt>
+
+<dd class="dd">The connection ID to the only server permitted to send the event, or -1 to allow all servers to send it.
+    Using a value of -1 is more convenient because you don't need to learn the server's connection ID,
+    but makes the event and registration mechanism far less secure, so this setting is not recommended.
+
+  <p class="p">The <var class="keyword varname">coid</var> argument can contain any type of connection ID, including a side channel ID,
+    message queue descriptor, socket descriptor, or file descriptor.</p>
+
+  <p class="p">If you want to receive events from the process manager, 
+    you can pass in <span class="keyword const">SYSMGR_COID</span> for this argument.</p>
+
+
+  <div class="note note"><span class="notetitle">Note:</span> 
+  If you're registering a <span class="keyword const">SIGEV_PULSE</span> event, make sure you pass the correct connection ID to
+  <span class="keyword apiname">MsgRegisterEvent()</span>.
+  When you initialize the pulse event, you give it the connection ID on which to deliver the pulse,
+  but the connection ID argument to <span class="keyword apiname">MsgRegisterEvent()</span> must be for the server that's permitted
+  to deliver the event.
+  </div>
+
+</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Library:</h2>
+
+
+<p class="p"><span class="ph filepath">libc</span></p>
+
+
+<p class="p">
+Use the <span class="keyword option">-l c</span> option to
+<a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/q/qcc.html"><span class="keyword cmdname">qcc</span></a>
+to link against this library. This library is usually included automatically.
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Description:</h2>
+
+
+<p class="p">
+The <span class="keyword apiname">MsgRegisterEvent()</span> and <span class="keyword apiname">MsgRegisterEvent_r()</span> kernel calls
+register the given <span class="keyword dtype">sigevent</span> as a secure event.
+These functions are identical
+except in the way they indicate errors. See the <a class="xref" href="#msgregisterevent__Returns">Returns</a> section for details.
+</p>
+
+
+<p class="p">
+<span class="keyword apiname">MsgRegisterEvent()</span> registers the given <span class="keyword dtype">sigevent</span> with the kernel and converts it
+into a handle that you can use in any API that passes an event.
+When the server calls
+<a class="xref" href="msgdeliverevent.html" title="Deliver an event through a channel"><span class="keyword apiname">MsgDeliverEvent()</span></a>
+with a handle event, the kernel looks up the handle.
+If the handle exists and the server is allowed to deliver it, the kernel delivers the registered event.
+For more information about secure events, see
+<span class="q">&#147;<a class="xref" href="../../../com.qnx.doc.neutrino.sys_arch/topic/ipc_Events.html">Events</a>&#148;</span>
+in the <span class="q">&#147;Interprocess Communication (IPC)&#148;</span> chapter of the <cite class="cite">System Architecture</cite> guide.
+</p>
+
+
+<div class="note note"><span class="notetitle">Note:</span> 
+<ul class="ul">
+<li class="li">Calling <span class="keyword apiname">MsgRegisterEvent()</span> replaces the given event with a handle.
+  If you want to use the same event later (e.g., you want to unregister it and register it again),
+  save a copy of the original event before you call <span class="keyword apiname">MsgRegisterEvent()</span>.
+</li>
+
+
+<li class="li">(QNX Neutrino 7.1 or later) By default, you can use only registered events, but you can use the
+                            <span class="keyword option">-U</span> option to <a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/p/procnto.html"><span class="keyword cmdname">procnto</span></a> to allow unregistered events to
+                        be used temporarily while you're converting your programs to use registered
+                        events.</li>
+
+<li class="li">(QNX Neutrino 7.1 or later) You can detect when processes use unregistered events using <a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/s/secpolgenerate.html"><span class="keyword cmdname">secpolgenerate</span></a> (via the file
+                            <span class="ph filepath">/dev/ secpolgenerate/errors</span>) or <a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/s/secpolmonitor.html"><span class="keyword cmdname">secpolmonitor</span></a> (when <span class="keyword option">-u</span>
+                        is specified).</li>
+
+
+<li class="li">(QNX Neutrino 7.0.4 or later) In order to register an event of type <span class="keyword const">SIGEV_THREAD</span>,
+  your process must have the <span class="keyword const">PROCMGR_AID_SIGEV_THREAD</span> ability enabled.
+  For more information, see
+  <a class="xref" href="../p/procmgr_ability.html" title="Control a process's ability to perform certain operations"><span class="keyword apiname">procmgr_ability()</span></a>.
+  
+  
+</li>
+
+
+<li class="li">
+A server is allowed to provide its own value to the registered event if and only if the
+<span class="keyword const">SIGEV_FLAG_UPDATEABLE</span> flag is set on the event.
+  
+</li>
+
+
+<li class="li">(QNX Neutrino 7.0.4 or later) A server is allowed to update the code for the registered event if and only if the
+  <span class="keyword const">SIGEV_FLAG_CODE_UPDATEABLE</span> flag is set on the event.
+  
+</li>
+
+    
+<li class="li"> If a server modifies the code or a value of a registered event before delivering it, and the
+                        client has not marked the <span class="keyword const">UPDATEABLE</span> field, then the event is
+                        successfully delivered with the original value that the client
+                        registered.</li>
+
+
+</ul>
+
+</div>
+
+
+<p class="p">
+You can use 
+<a class="xref" href="msgunregisterevent.html" title="Unregister a secure event"><span class="keyword apiname">MsgUnregisterEvent()</span></a>
+to unregister the secure event.
+</p>
+
+
+<p class="p"><strong class="ph b">Blocking states</strong></p>
+
+
+
+
+<p class="p">
+None.
+</p>
+
+</div>
+
+
+
+<div class="section" id="msgregisterevent__Returns"><h2 class="title sectiontitle">Returns:</h2>
+
+        
+<p class="p">
+The only difference between these functions is the way they indicate errors:
+</p>
+
+        
+<dl class="dl" compact="compact">
+
+<dt class="dt dlterm"><span class="keyword apiname">MsgRegisterEvent()</span></dt>
+
+    <dd class="dd">If successful, this function returns <span class="keyword const">EOK</span>. If an error occurs,
+    it returns -1 and sets
+<a class="xref" href="../e/errno.html" title="Thread-local error variable"><var class="keyword varname">errno</var></a>.
+</dd>
+
+
+            
+
+<dt class="dt dlterm"><span class="keyword apiname">MsgRegisterEvent_r()</span></dt>
+
+    <dd class="dd">If successful, this function returns <span class="keyword const">EOK</span>.
+    This function does <strong class="ph b">NOT</strong> set <var class="keyword varname">errno</var>, even on success.
+    If an error occurs, it may return any value from the Errors section.
+</dd>
+
+
+            
+</dl>
+
+        
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Errors:</h2>
+
+
+<dl class="dl" compact="compact">
+
+<dt class="dt dlterm"><span class="keyword const">EAGAIN</span></dt>
+
+<dd class="dd">No more events can be registered for the process.
+  See the <span class="keyword const">RLIMIT_SIGEVENT_NP</span> resource for
+  <a class="xref" href="../s/setrlimit.html" title="Set the limit on a system resource"><span class="keyword apiname">setrlimit()</span></a>.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EINVAL</span></dt>
+
+<dd class="dd">One of the following occurred:
+
+  <ul class="ul">
+  <li class="li">The connection ID is invalid.</li>
+
+  <li class="li">The event is already registered as a secure event.</li>
+
+  </ul>
+
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">ENOMEM</span></dt>
+
+<dd class="dd">There wasn't enough memory available to register the event.</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+<div class="section"><h2 class="title sectiontitle">Examples:</h2>
+
+
+<p class="p">
+In this example, the parent process acts as the server, and the child acts as the client.
+</p>
+
+
+<pre class="pre codeblock">
+#include &lt;stdio.h&gt;
+#include &lt;stdint.h&gt;
+#include &lt;unistd.h&gt;
+#include &lt;signal.h&gt;
+#include &lt;errno.h&gt;
+#include &lt;sys/neutrino.h&gt;
+#include &lt;sys/wait.h&gt;
+
+struct message_s
+{
+    uint16_t        type;
+    uint16_t        subtype;
+    struct sigevent event;
+    struct sigevent updateable;
+    struct sigevent forbidden;
+};
+
+static int
+child(int chid)
+{
+    // Mask SIGUSR1 and SIGUSR2.
+    sigset_t    sigset;
+    siginfo_t   siginfo;
+    sigemptyset(&amp;sigset);
+    sigaddset(&amp;sigset, SIGUSR1);
+    sigaddset(&amp;sigset, SIGUSR2);
+
+    if (sigprocmask(SIG_BLOCK, &amp;sigset, NULL) &lt; 0) {
+        perror("sigprocmask");
+        return 1;
+    }
+
+    // Attach to the server, indicating that we don't want unregistered events.
+    int coid = ConnectAttach(0, getppid(), chid, _NTO_SIDE_CHANNEL,
+                             _NTO_COF_REG_EVENTS);
+    if (coid &lt; 0) {
+        perror("ConnectAttach");
+        return 1;
+    }
+
+    // Register three events:
+    // 1. Non-updateable, on a connection to the parent server
+    // 2. Updateable, on a connection to the parent server
+    // 3. On a connection to procnto
+    struct message_s    msg = { .type = 1 };
+
+    // First event.
+    SIGEV_SIGNAL_VALUE_INIT(&amp;msg.event, SIGUSR1, 13);
+
+    if (MsgRegisterEvent(&amp;msg.event, coid) &lt; 0) {
+        perror("MsgRegisterEvent(&amp;msg.event)");
+        return 1;
+    }
+
+    // Second event.
+    SIGEV_SIGNAL_VALUE_INIT(&amp;msg.updateable, SIGUSR2, 34);
+    SIGEV_MAKE_UPDATEABLE(&amp;msg.updateable);
+
+    if (MsgRegisterEvent(&amp;msg.updateable, coid) &lt; 0) {
+        perror("MsgRegisterEvent(&amp;msg.updateable)");
+        return 1;
+    }
+
+    // Third event.
+    SIGEV_SIGNAL_VALUE_INIT(&amp;msg.forbidden, SIGUSR2, 34);
+
+    if (MsgRegisterEvent(&amp;msg.forbidden, SYSMGR_COID) &lt; 0) {
+        perror("MsgRegisterEvent(&amp;msg.forbidden)");
+        return 1;
+    }
+
+    // Send the server a message that includes the sigevents.
+    if (MsgSend(coid, &amp;msg, sizeof(msg), NULL, 0) &lt; 0) {
+        perror("MsgSend");
+        return 1;
+    }
+
+    // Wait for event delivery.
+    int i = 0;
+    for (i = 0; i &lt; 2; i++) {
+        printf("Waiting for SIGUSR1/SIGUSR2\n");
+        if (sigwaitinfo(&amp;sigset, &amp;siginfo) &lt; 0) {
+            perror("sigwaitinfo");
+            return 1;
+        }
+
+        switch (siginfo.si_signo) {
+        case SIGUSR1:
+            printf("Received SIGUSR1 with value %d\n", siginfo.si_value.sival_int);
+            if (siginfo.si_value.sival_int != 13) {
+                fprintf(stderr, "SIGUSR1: Expected value 13, got %d\n",
+                        siginfo.si_value.sival_int);
+                return 1;
+            }
+            break;
+
+        case SIGUSR2:
+            printf("Received SIGUSR2 with value %d\n", siginfo.si_value.sival_int);
+            if (siginfo.si_value.sival_int != 57) {
+                fprintf(stderr, "SIGUSR1: Expected value 57, got %d\n",
+                        siginfo.si_value.sival_int);
+                return 1;
+            }
+            break;
+
+        default:
+            fprintf(stderr, "Unexpected signal %d\n", siginfo.si_signo);
+            return 1;
+        }
+    }
+
+    return 0;
+}
+
+int
+main(int argc, char **argv)
+{
+    // Create a channel.
+    int chid = ChannelCreate(0);
+    if (chid &lt; 0) {
+        perror("ChannelCreate");
+        return 1;
+    }
+
+    // Create a child process.
+    pid_t   pid = fork();
+    if (pid &lt; 0) {
+        perror("fork");
+        return 1;
+    }
+
+    if (pid == 0) {
+        return child(chid);
+    }
+
+    // Handle messages from the child.
+    int kill_child = 1;
+    for (;;) {
+        struct message_s    msg;
+        int                 rcvid;
+
+        rcvid = MsgReceive(chid, &amp;msg, sizeof(msg), NULL);
+        if (rcvid &lt; 0) {
+            perror("MsgReceive");
+            break;
+        }
+
+        if (rcvid == 0) {
+            continue;
+        }
+
+        printf("Received message type %d\n", msg.type);
+        MsgReply(rcvid, 0, NULL, 0);
+        kill_child = 0;
+
+        // Try a handle for an event that this server isn't allowed to send.
+        if ((MsgDeliverEvent(rcvid, &amp;msg.forbidden) != -1) || (errno != EACCES)) {
+            perror("MsgDeliverEvent(forbidden)");
+            break;
+        }
+
+        // Try an unregistered event. It shouldn't be delivered.
+        struct sigevent ev;
+        SIGEV_SIGNAL_INIT(&amp;ev, SIGUSR1);
+        if ((MsgDeliverEvent(rcvid, &amp;ev) != -1) || (errno != EACCES)) {
+            perror("MsgDeliverEvent(unregistered)");
+            break;
+        }
+
+        // Try a legitimate handle that doesn't have an updateable value.
+        // The client should get the original value that it registered.
+        msg.event.sigev_value.sival_int = 57;
+        if (MsgDeliverEvent(rcvid, &amp;msg.event) &lt; 0) {
+            perror("MsgDeliverEvent");
+            break;
+        }
+
+        // Try a legitimate handle that has an updateable value.
+        msg.updateable.sigev_value.sival_int = 57;
+        if (MsgDeliverEvent(rcvid, &amp;msg.updateable) &lt; 0) {
+            perror("MsgDeliverEvent");
+            break;
+        }
+
+        break;
+    }
+
+    if (kill_child) {
+        kill(pid, SIGKILL);
+    }
+
+    int     status;
+    pid_t   wpid = waitpid(pid, &amp;status, 0);
+    if (wpid != pid) {
+        perror("waitpid");
+        return 1;
+    }
+
+    printf("Child exited with status %d\n", WEXITSTATUS(status));
+    return 0;
+}
+</pre>
+
+
+</div>
+
+
+<div class="section"><h2 class="title sectiontitle">Classification:</h2>
+
+<p class="p"><a class="xref" href="../summary.html#summary__CLASSIFICATION">QNX Neutrino</a></p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+<thead class="thead" align="left">
+<tr><th class="entry" valign="top" id="d2244349e480">Safety:</th>
+<th class="entry" valign="top" id="d2244349e482">Â </th>
+</tr>
+
+</thead>
+
+<tbody class="tbody">
+<tr><td class="entry" valign="top" headers="d2244349e480 d2244349e482 ">Cancellation point</td>
+<td class="entry" valign="top" headers="d2244349e480 d2244349e482 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2244349e480 d2244349e482 ">Interrupt handler</td>
+<td class="entry" valign="top" headers="d2244349e480 d2244349e482 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2244349e480 d2244349e482 ">Signal handler</td>
+<td class="entry" valign="top" headers="d2244349e480 d2244349e482 ">Yes</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2244349e480 d2244349e482 ">Thread</td>
+<td class="entry" valign="top" headers="d2244349e480 d2244349e482 ">Yes</td>
+</tr>
+
+</tbody>
+
+</table>
+</div>
+
+</div>
+
+
+</div>
+
+
+<div class="related-links"><div class="relinfo relconcepts"><strong>Related concepts</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.sys_arch/topic/ipc_Events.html" title="Events (System Architecture)">Events (System Architecture)</a></div>
+</div>
+<div class="relinfo relref"><strong>Related reference</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/c/connectattach.html" title="Establish a connection between a process and a channel">ConnectAttach(), ConnectAttach_r()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/m/msgdeliverevent.html" title="Deliver an event through a channel">MsgDeliverEvent(), MsgDeliverEvent_r()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/m/msgunregisterevent.html" title="Unregister a secure event">MsgUnregisterEvent(), MsgUnregisterEvent_r()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/s/setrlimit.html" title="Set the limit on a system resource">setrlimit(), setrlimit64()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/s/sigevent.html" title="Structure that describes an event">sigevent</a></div>
+</div>
+</div><div class="navfooter"><!---->
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-m.html" title="M"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">M</span></a></span>  </div>
+</body>
+</html>

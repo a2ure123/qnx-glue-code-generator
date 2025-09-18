@@ -1,0 +1,284 @@
+
+<!DOCTYPE html
+  PUBLIC "" "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />        
+      <meta name="copyright" content="(C) Copyright 2005" /><meta name="DC.rights.owner" content="(C) Copyright 2005" /><meta name="DC.Type" content="reference" /><meta name="DC.Title" content="iofunc_pathconf()" /><meta name="abstract" content="Support pathconf() requests" /><meta name="description" content="Support pathconf() requests" /><meta name="indexterms" content="iofunc_pathconf()" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-i.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.resmgr/topic/about.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.getting_started/topic/s1_resmgr.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/f/fpathconf.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/i/iofunc_attr_t.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/i/iofunc_ocb_t.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/i/iofunc_pathconf_default.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/p/pathconf.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/r/resmgr_context_t.html" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="iofunc_pathconf" /><meta name="DC.Language" content="en-us" /><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/commonltr.css"><!----></link><title>iofunc_pathconf()</title><link rel="canonical" type="html" href="https://www.qnx.com/developers/docs/7.1/#com.qnx.doc.neutrino.lib_ref/" /><!--  Generated with Oxygen version 18.1, build number 2017020917.  --><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/webhelp_topic.css"><!----></link><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/skins/skin.css" /><script type="text/javascript"><!--
+            
+            var prefix = "../../../index.html";
+            
+            --></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-1.11.3.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.cookie.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-ui.custom.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.highlight-3.js"><!----></script><script type="text/javascript" charset="utf-8" src="../../../oxygen-webhelp/resources/js/webhelp_topic.js"><!----></script><script type="text/javascript"> var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-27400275-1']); _gaq.push(['_setDomainName', 'www.qnx.com']);_gaq.push(['_setAllowLinker', true]);_gaq.push(['_trackPageview']);(function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script></head>
+<body onload="highlightSearchTerm()" class="frmBody" id="iofunc_pathconf">
+<table class="nav"><tbody><tr><td colspan="2"><div id="printlink"><button onClick="window.print()" title="Print this page" aria-label="Print this page"></button></div><div id="permalink"><a href="#" title="Link to this page"></a></div></td></tr><tr><td style="width:75%;"><span class="topic_breadcrumb_links"><span class="topic_breadcrumb_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-i.html" title="I">I</a></span></span></td><td><span id="topic_navigation_links" class="navheader">
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-i.html" title="I"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">I</span></a></span>  </span></td></tr></tbody></table>
+
+
+<h1 class="title topictitle1"><span class="keyword apiname">iofunc_pathconf()</span></h1>
+<table width="100%"><tbody><tr><td align="left"><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">QNX SDP</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">7.1</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">C Library Reference</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">API</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">Developer</button></td><td align="right"><span style="margin:0px 5px; font-size:0.9em;">Updated: October 28, 2024</span></td></tr></tbody></table>
+
+
+<div class="body refbody"><p class="shortdesc"><em class="ph i">Support <span class="keyword apiname">pathconf()</span> requests</em></p>
+
+
+<div class="section refsyn"><h2 class="title sectiontitle">Synopsis:</h2>
+
+<pre class="pre codeblock">
+#include &lt;sys/iofunc.h&gt;
+
+int iofunc_pathconf( resmgr_context_t *<var class="keyword varname">ctp</var>,
+                     io_pathconf_t *<var class="keyword varname">msg</var>,
+                     iofunc_ocb_t *<var class="keyword varname">ocb</var>,
+                     iofunc_attr_t *<var class="keyword varname">attr</var> );
+</pre>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Arguments:</h2>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><var class="keyword varname">ctp</var></dt>
+
+<dd class="dd">A pointer to a
+  <a class="xref" href="../r/resmgr_context_t.html" title="Context information that's passed between resource-manager functions"><span class="keyword dtype">resmgr_context_t</span></a>
+  structure that the resource-manager library uses to pass context information
+  between functions.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">msg</var></dt>
+
+<dd class="dd">A pointer to the
+  <a class="xref" href="#iofunc_pathconf__io_pathconf_t"><span class="keyword dtype">io_pathconf_t</span></a>
+  structure that contains the message that the resource manager received; see below.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">ocb</var></dt>
+
+<dd class="dd">A pointer to the
+  <a class="xref" href="iofunc_ocb_t.html" title="Open Control Block structure"><span class="keyword dtype">iofunc_ocb_t</span></a>
+  structure for the Open Control Block that was created when the
+  client opened the resource.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">attr</var></dt>
+
+<dd class="dd">A pointer to the
+  <a class="xref" href="iofunc_attr_t.html" title="I/O attribute structure"><span class="keyword dtype">iofunc_attr_t</span></a>
+  structure that describes the characteristics of the device that's
+  associated with your resource manager.
+</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Library:</h2>
+
+
+<p class="p"><span class="ph filepath">libc</span></p>
+
+
+<p class="p">
+Use the <span class="keyword option">-l c</span> option to
+<a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/q/qcc.html"><span class="keyword cmdname">qcc</span></a>
+to link against this library.
+This library is usually included automatically.
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Description:</h2>
+
+
+<p class="p">
+
+
+
+
+
+
+
+The <span class="keyword apiname">iofunc_pathconf()</span> helper function does what's needed to support 
+<a class="xref" href="../p/pathconf.html" title="Return the value of a configurable limit"><span class="keyword apiname">pathconf()</span></a>
+with the <var class="keyword varname">mount</var> and <var class="keyword varname">attr</var> passed to it.
+Other fsys <span class="keyword apiname">pathconf()</span> requests need to be handled by the caller.
+</p>
+
+
+<p class="p">
+If you write your own <var class="keyword varname">pathconf</var> callout for your resource manager,
+use the following macro to pass the requested value back to the caller:
+
+</p>
+
+
+<pre class="pre codeblock">
+_IO_SET_PATHCONF_VALUE( resmgr_context_t *<var class="keyword varname">ctp</var>,
+                        int <var class="keyword varname">value</var> )
+</pre>
+
+
+<p class="p" id="iofunc_pathconf__io_pathconf_t"><strong class="ph b"><span class="keyword dtype">io_pathconf_t</span> structure</strong></p>
+
+
+<p class="p">
+
+The <span class="keyword dtype">io_pathconf_t</span> structure holds the <span class="keyword const">_IO_PATHCONF</span>
+message received by the resource manager:
+</p>
+
+
+<pre class="pre codeblock">
+struct _io_pathconf {
+    uint16_t                    type;
+    uint16x_t                    combine_len;
+    short                       name;
+    uint16_t                    zero;
+};
+
+typedef union {
+    struct _io_pathconf         i;
+/*  value is returned with MsgReply */
+} io_pathconf_t;
+</pre>
+
+
+<p class="p">
+The I/O message structures are unions of an input message (coming to the
+resource manager) and an output or reply message (going back to the client).
+In this case, there's only an input message, <var class="keyword varname">i</var>.
+</p>
+
+
+<p class="p">
+The <var class="keyword varname">i</var> member is a structure of type <span class="keyword dtype">_io_pathconf</span> that
+contains the following members:
+</p>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><var class="keyword varname">type</var></dt>
+
+<dd class="dd"><span class="keyword const">_IO_PATHCONF</span>.</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">combine_len</var></dt>
+
+<dd class="dd">If the message is a combine message, <span class="keyword const">_IO_COMBINE_FLAG</span>
+  is set in this member.
+  For more information, see
+  <a class="xref" href="../../../com.qnx.doc.neutrino.resmgr/topic/combine.html">Combine Messages</a>
+  chapter of <cite class="cite">Writing a Resource Manager</cite>.
+  
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">name</var></dt>
+
+<dd class="dd">The name of the configurable limit; see
+  <a class="xref" href="../p/pathconf.html" title="Return the value of a configurable limit"><span class="keyword apiname">pathconf()</span></a>.
+</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Returns:</h2>
+
+
+<p class="p">
+<span class="keyword const">EOK</span>, or <span class="keyword const">_RESMGR_DEFAULT</span> if the function didn't handle the 
+<span class="keyword apiname">pathconf()</span> request.
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Classification:</h2>
+
+<p class="p"><a class="xref" href="../summary.html#summary__CLASSIFICATION">QNX Neutrino</a></p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+<thead class="thead" align="left">
+<tr><th class="entry" valign="top" id="d2052591e358">Safety:</th>
+<th class="entry" valign="top" id="d2052591e360">Â </th>
+</tr>
+
+</thead>
+
+<tbody class="tbody">
+<tr><td class="entry" valign="top" headers="d2052591e358 d2052591e360 ">Cancellation point</td>
+<td class="entry" valign="top" headers="d2052591e358 d2052591e360 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2052591e358 d2052591e360 ">Interrupt handler</td>
+<td class="entry" valign="top" headers="d2052591e358 d2052591e360 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2052591e358 d2052591e360 ">Signal handler</td>
+<td class="entry" valign="top" headers="d2052591e358 d2052591e360 ">Yes</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2052591e358 d2052591e360 ">Thread</td>
+<td class="entry" valign="top" headers="d2052591e358 d2052591e360 ">Yes</td>
+</tr>
+
+</tbody>
+
+</table>
+</div>
+
+</div>
+
+
+</div>
+
+
+<div class="related-links"><div class="relinfo relconcepts"><strong>Related concepts</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.resmgr/topic/about.html" title="Writing a Resource Manager">Writing a Resource Manager</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.getting_started/topic/s1_resmgr.html" title="Resource Managers (Getting Started with QNX Neutrino)">Resource Managers (Getting Started with <span class="keyword">QNX Neutrino</span>)</a></div>
+</div>
+<div class="relinfo relref"><strong>Related reference</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/f/fpathconf.html" title="Return the value of a configurable limit associated with a file">fpathconf()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/i/iofunc_attr_t.html" title="I/O attribute structure">iofunc_attr_t</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/i/iofunc_ocb_t.html" title="Open Control Block structure">iofunc_ocb_t</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/i/iofunc_pathconf_default.html" title="Default handler for _IO_PATHCONF messages">iofunc_pathconf_default()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/p/pathconf.html" title="Return the value of a configurable limit">pathconf()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/r/resmgr_context_t.html" title="Context information that's passed between resource-manager functions">resmgr_context_t</a></div>
+</div>
+</div><div class="navfooter"><!---->
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-i.html" title="I"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">I</span></a></span>  </div>
+</body>
+</html>

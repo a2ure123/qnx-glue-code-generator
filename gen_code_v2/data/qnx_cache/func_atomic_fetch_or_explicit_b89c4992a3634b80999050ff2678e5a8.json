@@ -1,0 +1,28 @@
+{
+  "function_name": "atomic_fetch_or_explicit",
+  "url": "https://www.qnx.com/developers/docs/7.1/com.qnx.doc.neutrino.lib_ref/topic/a/atomic_fetch_or.html",
+  "synopsis": "C atomic_fetch_or_explicit( volatile A *obj,",
+  "description": "",
+  "headers": [
+    "#include <stdatomic.h>"
+  ],
+  "parameters": [
+    {
+      "name": "obj",
+      "description": "A pointer to the atomic object (see the\n  atomic_* types)\n  whose value you want to OR something with."
+    },
+    {
+      "name": "arg",
+      "description": "The value you want to OR in to the object.\n  “M” is either the non-atomic type corresponding to A if A is an atomic integer type, or\n  ptrdiff_t if A is an atomic pointer type."
+    },
+    {
+      "name": "order",
+      "description": "(atomic_fetch_or_explicit() only) The\n  memory_order\n  to use for the operation."
+    }
+  ],
+  "return_values": [],
+  "examples": [
+    "#include <stdatomic.h>\n\nC atomic_fetch_or( volatile A *obj,\n                   M arg );\n\nC atomic_fetch_or_explicit( volatile A *obj,\n                            M arg,\n                            memory_order order );"
+  ],
+  "full_content": "Function: atomic_fetch_or_explicit\nURL: https://www.qnx.com/developers/docs/7.1/com.qnx.doc.neutrino.lib_ref/topic/a/atomic_fetch_or.html\nSynopsis: C atomic_fetch_or_explicit( volatile A *obj,\nHeaders: #include <stdatomic.h>\nParameters:\n  - obj: A pointer to the atomic object (see the\n  atomic_* types)\n  whose value you want to OR something with.\n  - arg: The value you want to OR in to the object.\n  “M” is either the non-atomic type corresponding to A if A is an atomic integer type, or\n  ptrdiff_t if A is an atomic pointer type.\n  - order: (atomic_fetch_or_explicit() only) The\n  memory_order\n  to use for the operation.\nExamples:\nExample 1:\n#include <stdatomic.h>\n\nC atomic_fetch_or( volatile A *obj,\n                   M arg );\n\nC atomic_fetch_or_explicit( volatile A *obj,\n                            M arg,\n                            memory_order order );"
+}

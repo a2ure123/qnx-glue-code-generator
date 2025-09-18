@@ -1,0 +1,25 @@
+{
+  "function_name": "atomic_clr",
+  "url": "https://www.qnx.com/developers/docs/7.1/com.qnx.doc.neutrino.lib_ref/topic/a/atomic_clr.html",
+  "synopsis": "void atomic_clr( volatile unsigned * loc,",
+  "description": "",
+  "headers": [
+    "#include <atomic.h>"
+  ],
+  "parameters": [
+    {
+      "name": "loc",
+      "description": "A pointer to the location that you want to clear bits in."
+    },
+    {
+      "name": "bits",
+      "description": "The bits that you want to clear."
+    }
+  ],
+  "return_values": [],
+  "examples": [
+    "#include <atomic.h>\n\nvoid atomic_clr( volatile unsigned * loc,\n                 unsigned bits );",
+    "#include <atomic.h>\nâ¦\n\nvolatile unsigned flags;\nâ¦\n\natomic_clr( &flags, 0x10101010 );"
+  ],
+  "full_content": "Function: atomic_clr\nURL: https://www.qnx.com/developers/docs/7.1/com.qnx.doc.neutrino.lib_ref/topic/a/atomic_clr.html\nSynopsis: void atomic_clr( volatile unsigned * loc,\nHeaders: #include <atomic.h>\nParameters:\n  - loc: A pointer to the location that you want to clear bits in.\n  - bits: The bits that you want to clear.\nExamples:\nExample 1:\n#include <atomic.h>\n\nvoid atomic_clr( volatile unsigned * loc,\n                 unsigned bits );\nExample 2:\n#include <atomic.h>\nâ¦\n\nvolatile unsigned flags;\nâ¦\n\natomic_clr( &flags, 0x10101010 );"
+}

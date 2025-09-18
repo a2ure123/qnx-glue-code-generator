@@ -1,0 +1,503 @@
+
+<!DOCTYPE html
+  PUBLIC "" "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />        
+      <meta name="copyright" content="(C) Copyright 2005" /><meta name="DC.rights.owner" content="(C) Copyright 2005" /><meta name="DC.Type" content="reference" /><meta name="DC.Title" content="getopt()" /><meta name="abstract" content="Parse options from a command line" /><meta name="description" content="Parse options from a command line" /><meta name="indexterms" content="getopt()" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-g.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/g/getopt_long.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/g/getsubopt.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/s/stderr.html" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="getopt" /><meta name="DC.Language" content="en-us" /><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/commonltr.css"><!----></link><title>getopt()</title><link rel="canonical" type="html" href="https://www.qnx.com/developers/docs/7.1/#com.qnx.doc.neutrino.lib_ref/" /><!--  Generated with Oxygen version 18.1, build number 2017020917.  --><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/webhelp_topic.css"><!----></link><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/skins/skin.css" /><script type="text/javascript"><!--
+            
+            var prefix = "../../../index.html";
+            
+            --></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-1.11.3.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.cookie.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-ui.custom.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.highlight-3.js"><!----></script><script type="text/javascript" charset="utf-8" src="../../../oxygen-webhelp/resources/js/webhelp_topic.js"><!----></script><script type="text/javascript"> var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-27400275-1']); _gaq.push(['_setDomainName', 'www.qnx.com']);_gaq.push(['_setAllowLinker', true]);_gaq.push(['_trackPageview']);(function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script></head>
+<body onload="highlightSearchTerm()" class="frmBody" id="getopt">
+<table class="nav"><tbody><tr><td colspan="2"><div id="printlink"><button onClick="window.print()" title="Print this page" aria-label="Print this page"></button></div><div id="permalink"><a href="#" title="Link to this page"></a></div></td></tr><tr><td style="width:75%;"><span class="topic_breadcrumb_links"><span class="topic_breadcrumb_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-g.html" title="G">G</a></span></span></td><td><span id="topic_navigation_links" class="navheader">
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-g.html" title="G"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">G</span></a></span>  </span></td></tr></tbody></table>
+
+
+<h1 class="title topictitle1"><span class="keyword apiname">getopt()</span></h1>
+<table width="100%"><tbody><tr><td align="left"><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">QNX SDP</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">7.1</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">C Library Reference</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">API</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">Developer</button></td><td align="right"><span style="margin:0px 5px; font-size:0.9em;">Updated: October 28, 2024</span></td></tr></tbody></table>
+
+
+
+<div class="body refbody"><p class="shortdesc"><em class="ph i">Parse options from a command line</em></p>
+
+
+<div class="section refsyn"><h2 class="title sectiontitle">Synopsis:</h2>
+
+<pre class="pre codeblock">
+#include &lt;unistd.h&gt;
+
+int getopt( int <var class="keyword varname">argc</var>,
+            char * const <var class="keyword varname">argv</var>[],
+            const char * <var class="keyword varname">optstring</var> );
+
+extern char * <var class="keyword varname">optarg</var>;
+extern int <var class="keyword varname">optind</var>, <var class="keyword varname">opterr</var>, <var class="keyword varname">optopt</var>;
+</pre>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Arguments:</h2>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><var class="keyword varname">argc</var></dt>
+
+<dd class="dd">The argument count.</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">argv</var></dt>
+
+<dd class="dd">The argument array that you want to parse.</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">optstring</var></dt>
+
+<dd class="dd">A string of recognized option characters, each of which must be alphanumeric (i.e., a letter or a digit).
+  If a character is followed by a colon (<tt class="ph tt">:</tt>), the option takes an argument. 
+  The <var class="keyword varname">optstring</var> can begin with a colon, which affects error handling as described below. 
+</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Library:</h2>
+
+
+<p class="p"><span class="ph filepath">libc</span></p>
+
+
+<p class="p">
+Use the <span class="keyword option">-l c</span> option to
+<a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/q/qcc.html"><span class="keyword cmdname">qcc</span></a>
+to link against this library.
+This library is usually included automatically.
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Description:</h2>
+
+
+<p class="p">
+The <span class="keyword apiname">getopt()</span> function is a command-line parser that can be used by applications that follow the 
+<a class="xref" href="#getopt__Guidelines">Utility Syntax Guidelines</a> described below.
+
+
+
+
+
+
+</p>
+
+
+
+
+<p class="p">
+
+
+
+The <var class="keyword varname">optind</var> global variable is the index of the next element of the
+<var class="keyword varname">argv</var>[] vector to be processed. 
+The system initializes <var class="keyword varname">optind</var> to 1 when the program is loaded, 
+and <span class="keyword apiname">getopt()</span> updates it when it finishes with each element of <var class="keyword varname">argv</var>[].
+Reset <var class="keyword varname">optind</var> to 1 if you want to use <span class="keyword apiname">getopt()</span> to
+process additional argument sets.
+
+</p>
+
+
+<p class="p">
+
+
+
+The <span class="keyword apiname">getopt()</span> function returns the next option character from
+<var class="keyword varname">argv</var> that matches a character in <var class="keyword varname">optstring</var>, if there's one that matches. 
+If the option takes an argument, <span class="keyword apiname">getopt()</span> sets the global variable
+<var class="keyword varname">optarg</var> to point to the option argument as follows:
+</p>
+
+
+<ol class="ol">
+<li class="li">If the option is the last character in the string pointed to by an
+  element of <var class="keyword varname">argv</var>, then <var class="keyword varname">optarg</var> contains the next
+  element of <var class="keyword varname">argv</var>, and <var class="keyword varname">optind</var> is incremented by 2.
+</li>
+
+
+<li class="li">Otherwise, <var class="keyword varname">optarg</var> points to the string following the option
+  character in that element of <var class="keyword varname">argv</var>, and <var class="keyword varname">optind</var> is incremented by 1.
+</li>
+
+
+</ol>
+
+
+<p class="p">
+The <span class="keyword apiname">getopt()</span> function returns -1 and doesn't change
+<var class="keyword varname">optind</var> if:
+</p>
+
+
+<ul class="ul">
+<li class="li"><var class="keyword varname">argv</var>[<var class="keyword varname">optind</var>] is <span class="keyword const">NULL</span></li>
+
+
+<li class="li">*<var class="keyword varname">argv</var>[<var class="keyword varname">optind</var>] isn't the character <samp class="ph codeph">'-'</samp></li>
+
+
+<li class="li"><var class="keyword varname">argv</var>[<var class="keyword varname">optind</var>] points to the string <samp class="ph codeph">"-"</samp></li>
+
+
+</ul>
+
+
+<p class="p">
+This function returns -1 after incrementing <var class="keyword varname">optind</var>, if:
+</p>
+
+
+<ul class="ul">
+<li class="li"><var class="keyword varname">argv</var>[<var class="keyword varname">optind</var>] points to the string <samp class="ph codeph">"--"</samp></li>
+
+</ul>
+
+
+<p class="p">
+
+
+
+If <span class="keyword apiname">getopt()</span> encounters an option character that isn't contained
+in <var class="keyword varname">optstring</var>, it returns the <samp class="ph codeph">?</samp> character.
+If it detects a missing option argument, <span class="keyword apiname">getopt()</span> returns:
+</p>
+
+
+<ul class="ul">
+<li class="li">a colon (<samp class="ph codeph">:</samp>) if the first character of <var class="keyword varname">optstring</var> is a colon
+
+<p class="p">
+or:
+</p>
+
+</li>
+
+
+<li class="li">a question mark (<samp class="ph codeph">?</samp>) otherwise</li>
+
+
+</ul>
+
+
+<p class="p">
+and sets <var class="keyword varname">optopt</var> to the option character that caused the error.
+</p>
+
+
+<p class="p">
+
+
+
+
+
+The <span class="keyword apiname">getopt()</span> function always prints a diagnostic message to
+<a class="xref" href="../s/stderr.html" title="The standard error stream"><var class="keyword varname">stderr</var></a>
+unless <var class="keyword varname">opterr</var> is set to 0, or the first character
+of <var class="keyword varname">optstring</var> is a <samp class="ph codeph">:</samp> character. 
+</p>
+
+
+<p class="p" id="getopt__Guidelines"><strong class="ph b">Utility Syntax Guidelines</strong></p>
+
+
+<p class="p">
+The <span class="keyword apiname">getopt()</span> function may be used by applications that follow these guidelines:
+</p>
+
+
+<ul class="ul">
+<li class="li">When describing the syntax of a utility, the options are listed in alphabetical order.
+  There's no implied relationship between the options based upon the order in which they appear,
+  unless otherwise stated in the Options section, or:
+
+  <ul class="ul">
+  <li class="li">the options are documented as mutually-exclusive and such an option is 
+    documented to override any incompatible options preceding it
+  </li>
+
+
+  <li class="li">when an option has option arguments repeated, the option and option argument combinations 
+    are interpreted in the order specified on the command line.
+  </li>
+
+
+  </ul>
+
+
+  <p class="p">
+  If an option that doesn't have option arguments is repeated, the results depend on the application.
+  </p>
+
+</li>
+
+
+<li class="li">Names of parameters that require substitution by actual values may be shown with embedded underscores
+  or as  &lt;<var class="keyword varname">parameter name</var>&gt;.
+  Angle brackets are used for the symbolic grouping of a phrase representing a single parameter
+ and portable applications shouldn't include them in data submitted to the utility.
+</li>
+
+
+<li class="li">Options may be documented individually, or grouped (if they don't take option arguments):
+
+<pre class="pre codeblock">
+utility_name [<span class="keyword option">-a</span>] [<span class="keyword option">-b</span>] [<span class="keyword option">-c</span> <var class="keyword varname">option_argument</var>]
+             [<span class="keyword option">-d</span>|<span class="keyword option">-e</span>] [<span class="keyword option">-f</span><var class="keyword varname">option_argument</var>] [<var class="keyword varname">operand</var>â¦]
+</pre>
+
+
+  <p class="p">
+  Or:
+  </p>
+
+
+<pre class="pre codeblock">
+utility_name [<span class="keyword option">-ab</span>] [<span class="keyword option">-c</span> <var class="keyword varname">option_argument</var>]
+             [<span class="keyword option">-d</span>|<span class="keyword option">-e</span>] [<span class="keyword option">-f</span><var class="keyword varname">option_argument</var>] [<var class="keyword varname">operand</var>â¦]
+</pre>
+
+
+  <p class="p">
+  Utilities with very complex arguments may be shown as:
+  </p>
+
+
+<pre class="pre codeblock">
+utility_name [<var class="keyword varname">options</var>] [<var class="keyword varname">operand</var>]
+</pre>
+
+</li>
+
+
+<li class="li">Unless specified, whenever an operand or option argument is, or contains, a numeric value:
+
+  <ul class="ul">
+  <li class="li">the number is interpreted as a decimal integer</li>
+
+
+  <li class="li">numerals in the range 0 to 2,147,483,647 are syntactically recognized as numeric values</li>
+
+
+  <li class="li">when the utility description states that it accepts negative numbers as operands or option arguments,
+    numerals in the range -2,147,483,647 to 2,147,483,647 are syntactically recognized as numeric values
+  </li>
+
+
+  <li class="li">ranges greater than those listed here are allowed.</li>
+
+
+  </ul>
+
+  
+  <p class="p">
+  All numbers within the allowable range aren't necessarily semantically correct.
+  A standard utility that accepts an option argument or operand that's to be interpreted as a number,
+  and for which a range of values smaller than that shown above is permitted, 
+  describes that smaller range along with the description of the option argument or operand.
+  If an error is generated, the utility's diagnostic message indicates that the value is out
+  of the supported range, not that it's syntactically incorrect.
+  </p>
+
+</li>
+
+
+<li class="li">Arguments or option arguments enclosed in the <span class="q">&#147;[&#148;</span> and <span class="q">&#147;]&#148;</span> notation
+  are optional and can be omitted. Portable applications shouldn't include the
+  <span class="q">&#147;[&#148;</span> and <span class="q">&#147;]&#148;</span> symbols in data submitted to the utility.
+</li>
+
+
+<li class="li">Ellipses (â¦) are used to denote that one or more occurrences of an option or operand are allowed.
+  When an option or an operand followed by ellipses is enclosed in brackets, zero or more options
+  or operands may be specified. The forms:
+
+<pre class="pre codeblock">
+utility_name <span class="keyword option">-f</span> <var class="keyword varname">option_argument</var>â¦[<var class="keyword varname">operand</var>â¦]
+utility_name [<span class="keyword option">-g</span> <var class="keyword varname">option_argument</var>]â¦[<var class="keyword varname">operand</var>â¦]
+</pre>
+
+
+  <p class="p">
+  indicate that multiple occurrences of the option and its option argument preceding the ellipses are valid,
+  with semantics as indicated in the Options section of the utility.
+  In the first example, each option argument requires a preceding <span class="keyword option">-f</span> and at least one
+  <span class="keyword option">-f</span><var class="keyword varname">option_argument</var> must be given.
+  </p>
+
+</li>
+
+
+<li class="li">When the synopsis is too long to be printed on a single line in the documentation,
+  the indented lines following the initial line are continuation lines.
+  An actual use of the command appears on a single logical line.
+</li>
+
+
+</ul>
+
+
+<p class="p">
+See also Guidelines 3,4,5,6,7,9 and 10 in the <cite class="cite">Base Definitions</cite>
+volume of the 
+IEEE Std.1003.1-2001 Section 12.2, <cite class="cite">Utility Syntax Guidelines</cite>.
+</p>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Returns:</h2>
+
+
+<p class="p">
+One of the following:
+</p>
+
+
+<ul class="ul">
+<li class="li">the next option character specified on the command line</li>
+
+
+<li class="li">a colon if a missing argument is detected and the first character
+ of <var class="keyword varname">optstring</var> is a colon
+</li>
+
+
+<li class="li">a question mark if a missing argument is detected and the first character
+ of <var class="keyword varname">optstring</var> isn't a colon
+</li>
+
+
+<li class="li">a question mark if an option character is encountered that's not in <var class="keyword varname">optstring</var></li>
+
+
+<li class="li">-1 when all command-line options have been parsed</li>
+
+</ul>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Examples:</h2>
+
+
+<pre class="pre codeblock">
+#include &lt;unistd.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;stdio.h&gt;
+
+int main( int argc, char* argv[] )
+  {
+    int c, errflag = 0;
+
+    while( ( c = getopt( argc, argv, "abt:" ) )
+      != -1 ) {
+      switch( c ) {
+        case 'a': printf( "apples\n" );
+                  break;
+        case 'b': printf( "bananas\n" );
+                  break;
+        case 't': printf( "tree = %s\n", optarg );
+                  break;
+        case '?': ++errflag;
+                  break;
+      }
+    }
+    return EXIT_SUCCESS;
+  }
+</pre>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Classification:</h2>
+
+<p class="p"><a class="xref" href="../summary.html#summary__CLASSIFICATION">POSIX 1003.1</a></p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+<thead class="thead" align="left">
+<tr><th class="entry" valign="top" id="d1893931e702">Safety:</th>
+<th class="entry" valign="top" id="d1893931e704">Â </th>
+</tr>
+
+</thead>
+
+<tbody class="tbody">
+<tr><td class="entry" valign="top" headers="d1893931e702 d1893931e704 ">Cancellation point</td>
+<td class="entry" valign="top" headers="d1893931e702 d1893931e704 ">Read the <em class="ph i">Caveats</em></td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d1893931e702 d1893931e704 ">Interrupt handler</td>
+<td class="entry" valign="top" headers="d1893931e702 d1893931e704 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d1893931e702 d1893931e704 ">Signal handler</td>
+<td class="entry" valign="top" headers="d1893931e702 d1893931e704 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d1893931e702 d1893931e704 ">Thread</td>
+<td class="entry" valign="top" headers="d1893931e702 d1893931e704 ">No</td>
+</tr>
+
+</tbody>
+
+</table>
+</div>
+
+</div>
+
+
+<div class="section"><h2 class="title sectiontitle">Caveats:</h2>
+
+
+<p class="p">
+A cancellation point may occur when a thread is executing <span class="keyword apiname">getopt()</span> if the
+<var class="keyword varname">opterr</var> argument is nonzero.
+</p>
+
+</div>
+
+
+</div>
+
+
+<div class="related-links"><div class="relinfo relref"><strong>Related reference</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/g/getopt_long.html" title="Get long and short options from a command-line argument list">getopt_long(), getopt_long_only()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/g/getsubopt.html" title="Parse suboptions from a string">getsubopt()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/s/stderr.html" title="The standard error stream">stderr</a></div>
+</div>
+</div><div class="navfooter"><!---->
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-g.html" title="G"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">G</span></a></span>  </div>
+</body>
+</html>

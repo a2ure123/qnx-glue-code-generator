@@ -1,0 +1,24 @@
+{
+  "function_name": "acl_get_permset",
+  "url": "https://www.qnx.com/developers/docs/7.1/com.qnx.doc.neutrino.lib_ref/topic/a/acl_get_permset.html",
+  "synopsis": "int acl_get_permset( acl_entry_t entry_d,",
+  "description": "",
+  "headers": [
+    "#include <sys/acl.h>"
+  ],
+  "parameters": [
+    {
+      "name": "entry_d",
+      "description": "A descriptor of the entry that you want to get the permissions from."
+    },
+    {
+      "name": "permset_p",
+      "description": "A pointer to a location where the function can store the permissions set."
+    }
+  ],
+  "return_values": [],
+  "examples": [
+    "#include <sys/acl.h>\n\nint acl_get_permset( acl_entry_t entry_d,\n                     acl_permset_t *permset_p );"
+  ],
+  "full_content": "Function: acl_get_permset\nURL: https://www.qnx.com/developers/docs/7.1/com.qnx.doc.neutrino.lib_ref/topic/a/acl_get_permset.html\nSynopsis: int acl_get_permset( acl_entry_t entry_d,\nHeaders: #include <sys/acl.h>\nParameters:\n  - entry_d: A descriptor of the entry that you want to get the permissions from.\n  - permset_p: A pointer to a location where the function can store the permissions set.\nExamples:\nExample 1:\n#include <sys/acl.h>\n\nint acl_get_permset( acl_entry_t entry_d,\n                     acl_permset_t *permset_p );"
+}

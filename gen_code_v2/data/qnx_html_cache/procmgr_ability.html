@@ -1,0 +1,524 @@
+
+<!DOCTYPE html
+  PUBLIC "" "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />        
+      <meta name="copyright" content="(C) Copyright 2005" /><meta name="DC.rights.owner" content="(C) Copyright 2005" /><meta name="DC.Type" content="reference" /><meta name="DC.Title" content="procmgr_ability()" /><meta name="abstract" content="Control a process's ability to perform certain operations" /><meta name="description" content="Control a process's ability to perform certain operations" /><meta name="indexterms" content="procmgr_ability()" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-p.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.prog/topic/process_Privileges.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.prog/topic/process_proc_filesystem.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/c/connectclientinfoable.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/i/iofunc_ability_check.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/p/procmgr_ability_create.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/p/procmgr_ability_lookup.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/p/procmgr_ability_name.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.utilities/topic/a/ability.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.utilities/topic/o/on.html" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="procmgr_ability" /><meta name="DC.Language" content="en-us" /><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/commonltr.css"><!----></link><title>procmgr_ability()</title><link rel="canonical" type="html" href="https://www.qnx.com/developers/docs/7.1/#com.qnx.doc.neutrino.lib_ref/" /><!--  Generated with Oxygen version 18.1, build number 2017020917.  --><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/webhelp_topic.css"><!----></link><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/skins/skin.css" /><script type="text/javascript"><!--
+            
+            var prefix = "../../../index.html";
+            
+            --></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-1.11.3.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.cookie.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-ui.custom.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.highlight-3.js"><!----></script><script type="text/javascript" charset="utf-8" src="../../../oxygen-webhelp/resources/js/webhelp_topic.js"><!----></script><script type="text/javascript"> var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-27400275-1']); _gaq.push(['_setDomainName', 'www.qnx.com']);_gaq.push(['_setAllowLinker', true]);_gaq.push(['_trackPageview']);(function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script></head>
+<body onload="highlightSearchTerm()" class="frmBody" id="procmgr_ability">
+<table class="nav"><tbody><tr><td colspan="2"><div id="printlink"><button onClick="window.print()" title="Print this page" aria-label="Print this page"></button></div><div id="permalink"><a href="#" title="Link to this page"></a></div></td></tr><tr><td style="width:75%;"><span class="topic_breadcrumb_links"><span class="topic_breadcrumb_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-p.html" title="P">P</a></span></span></td><td><span id="topic_navigation_links" class="navheader">
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-p.html" title="P"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">P</span></a></span>  </span></td></tr></tbody></table>
+
+
+<h1 class="title topictitle1"><span class="keyword apiname">procmgr_ability()</span></h1>
+<table width="100%"><tbody><tr><td align="left"><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">QNX SDP</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">7.1</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">C Library Reference</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">API</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">Developer</button></td><td align="right"><span style="margin:0px 5px; font-size:0.9em;">Updated: October 28, 2024</span></td></tr></tbody></table>
+
+
+
+<div class="body refbody"><p class="shortdesc"><em class="ph i">Control a process's ability to perform certain operations</em></p>
+
+
+<div class="section">
+<p class="p">
+
+
+</p>
+
+</div>
+
+
+<div class="section refsyn"><h2 class="title sectiontitle">Synopsis:</h2>
+
+<pre class="pre codeblock">
+#include &lt;sys/procmgr.h&gt;
+
+int procmgr_ability( pid_t <var class="keyword varname">pid</var>,
+                     unsigned <var class="keyword varname">ability</var>, ... );
+</pre>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Arguments:</h2>
+
+
+<dl class="dl">
+
+
+<dt class="dt dlterm"><var class="keyword varname">pid</var></dt>
+
+<dd class="dd">The process ID of the process whose abilities you want to control,
+  or 0 to control those of the calling process.
+
+  <div class="note note"><span class="notetitle">Note:</span> 
+  In order to change a different process's abilities, your process needs the
+  <span class="keyword const">PROCMGR_AID_XPROCESS_ABLE</span> ability enabled.
+  </div>
+
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">ability</var></dt>
+
+<dd class="dd">A list of the abilities. Each ability in the list is composed of three separate components that
+are ORed together: <ul class="ul">
+<li class="li">An identifier (<span class="keyword const">PROCMGR_AID_*</span>, or a custom ability found with <a class="xref" href="procmgr_ability_lookup.html" title="Look up a process-manager ability"><span class="keyword apiname">procmgr_ability_lookup()</span></a>) that
+tells <span class="keyword cmdname">procnto</span> which particular ability you're modifying. See <span class="q">&#147;<a class="xref" href="../../../com.qnx.doc.security.system/topic/manual/abilities.html">Abilities</a>&#148;</span> in the <cite class="cite">Security Policy Guide</cite> for the table detailing the abilities
+and their names.</li>
+
+<li class="li">One or more operations (<span class="keyword const">PROCMGR_AOP_*</span>) that identify the operation you're
+performing on the ability. </li>
+
+<li class="li">One or more domains (<span class="keyword const">PROCMGR_ADN_*</span>) that indicate whether you're modifying what
+you can do with the ability while running as <span class="ph filepath">root</span> or
+non-<span class="ph filepath">root</span>. </li>
+
+</ul>
+
+<div class="note note"><span class="notetitle">Note:</span> 
+ Terminate the list with the special ability
+identifier <span class="keyword const">PROCMGR_AID_EOL</span>. <p class="p"> You can OR the domain flags and any of
+<span class="keyword const">PROCMGR_AOP_DENY</span>, <span class="keyword const">PROCMGR_AOP_ALLOW</span>, and
+<span class="keyword const">PROCMGR_AOP_LOCK</span> into the <span class="keyword const">PROCMGR_AID_EOL</span> macro that ends the list. If
+you do this, the operations are performed on all the unlocked abilities that you <em class="ph i">didn't</em>
+specify in the list. </p>
+</div>
+
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword dtype">uint64_t</span> <var class="keyword varname">lower</var>, <span class="keyword dtype">uint64_t</span> <var class="keyword varname">upper</var></dt>
+
+<dd class="dd">If the ability is for a subrange (see below), follow it by two
+  <span class="keyword dtype">uint64_t</span> arguments that specify the lower and upper limits
+  on the range.
+</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Library:</h2>
+
+
+<p class="p"><span class="ph filepath">libc</span></p>
+
+<p class="p">Use the <span class="keyword option">-l c</span> option to
+<a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/q/qcc.html"><span class="keyword cmdname">qcc</span></a>
+to link against this library.
+This library is usually included automatically.</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Description:</h2>
+
+  <p class="p">The <span class="keyword apiname">procmgr_ability()</span> function takes a list of ability operations to control
+what the identified process is allowed to do. This function lets a process start running as
+<span class="ph filepath">root</span>, set the abilities it needs, and then change its group and user IDs. This
+can make your system more secure by reducing the number of potentially vulnerable processes running
+as <span class="ph filepath">root</span>.</p>
+
+<div class="note note"><span class="notetitle">Note:</span> 
+<ul class="ul">
+<li class="li">Using a security policy is more secure and less error-prone
+than calling <span class="keyword apiname">procmgr_ability()</span>.</li>
+
+<li class="li">If you want to set more than one ability, you must specify a separate
+identifier-operation-domain argument (with any subranges) for each. The identifiers are an
+enumeration; don't try to OR them together.</li>
+
+</ul>
+
+</div>
+
+
+  
+  <p class="p" id="procmgr_ability__operations">You must OR in at least one of the following operations: </p>
+
+  
+  <dl class="dl">
+    
+      <dt class="dt dlterm"><span class="keyword const">PROCMGR_AOP_DENY</span></dt>
+
+      <dd class="dd">Disallow the performance of the operation in the specified domain(s). 
+        
+      </dd>
+
+    
+    
+    
+      <dt class="dt dlterm"><span class="keyword const">PROCMGR_AOP_ALLOW</span></dt>
+
+      <dd class="dd">Allow the performance of the operation in the specified domain(s).
+        You must have the <span class="keyword const">PROCMGR_AID_ABLE_PRIV</span> ability enabled to do this for privileged abilities.
+        
+      </dd>
+
+    
+    
+    
+    
+      <dt class="dt dlterm"><span class="keyword const">PROCMGR_AOP_SUBRANGE</span></dt>
+
+      <dd class="dd">Restrict the feature to set its parameter to a certain subrange
+        in the specified domain(s).
+        The meaning of the parameter depends on on the ability, as described above.
+        Follow the ability entry in the function's parameter list 
+        with two <span class="keyword dtype">uint64_t</span> arguments that give the lower and upper
+        bounds of the subrange.
+        You must have the <span class="keyword const">PROCMGR_AID_ABLE_PRIV</span> ability enabled to do this for privileged abilities.
+        
+        
+        <p class="p">
+          Note the following:
+        </p>
+
+        
+        <ul class="ul">
+          <li class="li">  You must still have the <span class="keyword const">PROCMGR_AOP_ALLOW</span> flag
+            set for the ability in the domain in order to successfully use the feature.
+          </li>
+
+          
+          <li class="li">If you don't specify a subrange on an ability, and the ability is allowed, then it's allowed for
+            the entire range.
+          </li>
+
+          
+          <li class="li">If you specify a subrange on an ability, and the ability is allowed, it's allowed for just
+            the subranges specified.
+          </li>
+
+          
+          <li class="li">If you specify a subrange on an ability, and the ability is denied, the set subranges are ignored;
+            the ability is denied regardless of the requested range.
+          </li>
+
+          
+          <li class="li">If you specify the <span class="keyword const">PROCMGR_AOP_SUBRANGE</span> and <span class="keyword const">PROCMGR_AOP_DENY</span> flags together,
+            the ability is denied, but the allowed subranges list (should the ability be enabled in the future)
+            is modified to add the new range listed.
+          </li>
+
+          
+          <li class="li">  You can have multiple subrange entries in the list; they <span class="q">&#147;OR&#148;</span>
+            together to let you form a discontiguous set.
+            To do this, specify the identifier-operation-domain argument again,
+            followed by another pair of range arguments.
+            For access checks that span a range, the entire range must be covered by a single subrange.
+            For example, the <span class="keyword const">PROCMGR_AID_MEM_PHYS</span> ability with the enabled subranges 100â200
+            and 190â300 would not allow a request for the subrange 150â250.
+          </li>
+
+          
+          <li class="li">Subranges can never be deleted once added to an ability.
+            A <span class="keyword const">PROCMGR_AOP_DENY</span> doesn't delete any subranges associated with the ability being dropped.
+            Any request to set a subrange adds to the list of allowed subranges. 
+          </li>
+
+          
+        </ul>
+
+        
+      </dd>
+
+    
+    
+    
+    
+      <dt class="dt dlterm"><span class="keyword const">PROCMGR_AOP_LOCK</span></dt>
+
+      <dd class="dd">Lock the current ability so that no further changes to it can be made.
+        
+      </dd>
+
+    
+    
+    
+    
+      <dt class="dt dlterm"><span class="keyword const">PROCMGR_AOP_INHERIT_YES</span></dt>
+
+      <dd class="dd">The changes to the ability are inherited across a <span class="keyword apiname">spawn</span>
+        or <span class="keyword apiname">exec</span>.
+        
+      </dd>
+
+    
+    
+    
+      <dt class="dt dlterm"><span class="keyword const">PROCMGR_AOP_INHERIT_NO</span></dt>
+
+      <dd class="dd">The changes to the ability aren't inherited across a
+        <span class="keyword apiname">spawn</span> or <span class="keyword apiname">exec</span>.
+        This is the default.
+        
+        
+      </dd>
+
+    
+    
+  </dl>
+
+  
+  <div class="note note"><span class="notetitle">Note:</span> 
+    For a
+    <a class="xref" href="../f/fork.html" title="Create a new process"><span class="keyword apiname">fork()</span></a>,
+    the parent's ability configuration is copied to the child verbatim,
+    regardless of the INHERIT status of each of the abilities.
+  </div>
+
+  
+  <p class="p">
+    You must OR in at least one of the following for the domain portion:
+  </p>
+
+  
+  <dl class="dl">
+    
+      <dt class="dt dlterm"><span class="keyword const">PROCMGR_ADN_ROOT</span></dt>
+
+      <dd class="dd">Modify the ability of the process when it has an effective user ID of 0.
+        
+      </dd>
+
+    
+    
+    
+      <dt class="dt dlterm"><span class="keyword const">PROCMGR_ADN_NONROOT</span></dt>
+
+      <dd class="dd">Modify the ability of the process when it has an effective user ID other than 0.
+        
+      </dd>
+
+    
+    
+  </dl>
+
+</div>
+
+  
+      
+     
+<div class="section"><h2 class="title sectiontitle">Returns:</h2>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><span class="keyword const">EOK</span></dt>
+
+<dd class="dd">The abilities were successfully modified.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">E2BIG</span></dt>
+
+<dd class="dd">The list of abilities is too large.
+  You might not have terminated the list with <span class="keyword const">PROCMGR_AID_EOL</span>.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EINVAL</span></dt>
+
+<dd class="dd">There's something wrong with the parameters to the function.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">ENXIO</span></dt>
+
+<dd class="dd">(QNX Neutrino 7.0 or later) The process indicated by <var class="keyword varname">pid</var> is no longer valid.
+  It's going away, has core dumped, or become a zombie.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EPERM</span></dt>
+
+<dd class="dd">One of the following:
+
+  <ul class="ul">
+  <li class="li">A process that does not have <span class="keyword const">PROCMGR_AID_ABLE_PRIV</span> tried to give itself a
+                privileged ability.</li>
+
+              <li class="li">A process that does not have <span class="keyword const">PROCMGR_AID_XPROCESS_ABLE</span> tried to
+                change the abilities of another process.</li>
+
+              <li class="li">A process tried to change a locked ability and <span class="keyword cmdname">procnto</span> was not
+                run with the <span class="keyword option">-bl</span> option.</li>
+
+
+  <li class="li">One of the specified abilities has a temporary ID (i.e., has <span class="keyword const">PROCMGR_AID_UNCREATED</span>
+    ORed into it).
+    
+  </li>
+
+
+  </ul>
+
+</dd>
+
+
+  
+</dl>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Examples:</h2>
+
+
+<p class="p">
+Remove the ability for a <span class="ph filepath">root</span> process to set the
+user ID when spawning a process:
+</p>
+
+
+<pre class="pre codeblock">
+procmgr_ability(0,
+        PROCMGR_ADN_ROOT|PROCMGR_AOP_DENY|PROCMGR_AID_SPAWN_SETUID,
+        PROCMGR_AID_EOL);
+</pre>
+
+
+<p class="p">
+Regain the ability for a <span class="ph filepath">root</span> process to set the
+user ID:
+</p>
+
+
+<pre class="pre codeblock">
+procmgr_ability(0,
+        PROCMGR_ADN_ROOT|PROCMGR_AOP_ALLOW|PROCMGR_AID_SPAWN_SETUID,
+        PROCMGR_AID_EOL);
+</pre>
+
+
+<p class="p">
+Drop all abilities while running as <span class="ph filepath">root</span> and lock
+out any further changes:
+</p>
+
+
+<pre class="pre codeblock">
+procmgr_ability(0,
+        PROCMGR_ADN_ROOT|PROCMGR_AOP_DENY|PROCMGR_AOP_LOCK|PROCMGR_AID_EOL);
+</pre>
+
+
+
+<p class="p">
+Allow a non-<span class="ph filepath">root</span> process to set the user ID while
+spawning, but restrict the number to 10000 or higher and lock out any further changes.
+Remove all other abilities while running as <span class="ph filepath">root</span>,
+and lock any further changes to them as well:
+</p>
+
+
+<pre class="pre codeblock">
+procmgr_ability(0,
+        PROCMGR_ADN_NONROOT|PROCMGR_AOP_ALLOW|PROCMGR_AID_SPAWN_SETUID,
+        PROCMGR_ADN_NONROOT|PROCMGR_AOP_SUBRANGE|PROCMGR_AOP_LOCK|PROCMGR_AID_SPAWN_SETUID,
+        (uint64_t)10000, ~(uint64_t)0,
+        PROCMGR_ADN_ROOT|PROCMGR_AOP_DENY|PROCMGR_AOP_LOCK|PROCMGR_AID_EOL);
+</pre>
+
+
+<p class="p">
+Do the same as the above, but specify a discontiguous set of user IDs by using
+a second <span class="keyword const">PROCMGR_AID_SPAWN_SETUID</span> ability:
+</p>
+
+
+<pre class="pre codeblock">
+procmgr_ability(0,
+        PROCMGR_ADN_NONROOT|PROCMGR_AOP_ALLOW|PROCMGR_AID_SPAWN_SETUID,
+        PROCMGR_ADN_NONROOT|PROCMGR_AOP_SUBRANGE|PROCMGR_AID_SPAWN_SETUID,
+        (uint64_t)1000, (uint64_t)1050,
+        PROCMGR_ADN_NONROOT|PROCMGR_AOP_SUBRANGE|PROCMGR_AOP_LOCK|PROCMGR_AID_SPAWN_SETUID,
+        (uint64_t)2000, (uint64_t)2013,
+        PROCMGR_ADN_ROOT|PROCMGR_AOP_DENY|PROCMGR_AOP_LOCK|PROCMGR_AID_EOL);
+</pre>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Classification:</h2>
+
+<p class="p"><a class="xref" href="../summary.html#summary__CLASSIFICATION">QNX Neutrino</a></p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+<thead class="thead" align="left">
+<tr><th class="entry" valign="top" id="d2369165e607">Safety:</th>
+<th class="entry" valign="top" id="d2369165e609">Â </th>
+</tr>
+
+</thead>
+
+<tbody class="tbody">
+<tr><td class="entry" valign="top" headers="d2369165e607 d2369165e609 ">Cancellation point</td>
+<td class="entry" valign="top" headers="d2369165e607 d2369165e609 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2369165e607 d2369165e609 ">Interrupt handler</td>
+<td class="entry" valign="top" headers="d2369165e607 d2369165e609 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2369165e607 d2369165e609 ">Signal handler</td>
+<td class="entry" valign="top" headers="d2369165e607 d2369165e609 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2369165e607 d2369165e609 ">Thread</td>
+<td class="entry" valign="top" headers="d2369165e607 d2369165e609 ">Yes</td>
+</tr>
+
+</tbody>
+
+</table>
+</div>
+
+</div>
+
+
+</div>
+
+
+<div class="related-links"><div class="relinfo relconcepts"><strong>Related concepts</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.prog/topic/process_Privileges.html" title="Process privileges (QNX Neutrino Programmer's Guide)">Process privileges (<span class="keyword">QNX Neutrino</span> Programmer's Guide)</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.prog/topic/process_proc_filesystem.html" title="Controlling processes via the /proc filesystem (QNX Neutrino Programmer's Guide)">Controlling processes via the /proc filesystem (<span class="keyword">QNX Neutrino</span> Programmer's Guide)</a></div>
+</div>
+<div class="relinfo relref"><strong>Related reference</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/c/connectclientinfoable.html" title="Get extended information about a client connection, including abilities">ConnectClientInfoAble()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/i/iofunc_ability_check.html" title="Verify that the client has a given resource manager ability">iofunc_ability_check()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/p/procmgr_ability_create.html" title="Create a process-manager ability">procmgr_ability_create()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/p/procmgr_ability_lookup.html" title="Look up a process-manager ability">procmgr_ability_lookup()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/p/procmgr_ability_name.html" title="Get the name of a custom ability">procmgr_ability_name()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.utilities/topic/a/ability.html" title="ability (Utilities Reference)">ability (Utilities Reference)</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.utilities/topic/o/on.html" title="on (Utilities Reference)">on (Utilities Reference)</a></div>
+</div>
+</div><div class="navfooter"><!---->
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-p.html" title="P"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">P</span></a></span>  </div>
+</body>
+</html>

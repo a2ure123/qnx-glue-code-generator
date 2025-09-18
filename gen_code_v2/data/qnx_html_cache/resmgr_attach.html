@@ -1,0 +1,1133 @@
+
+<!DOCTYPE html
+  PUBLIC "" "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />        
+      <meta name="copyright" content="(C) Copyright 2005" /><meta name="DC.rights.owner" content="(C) Copyright 2005" /><meta name="DC.Type" content="reference" /><meta name="DC.Title" content="resmgr_attach()" /><meta name="abstract" content="Attach a path to the pathname space" /><meta name="description" content="Attach a path to the pathname space" /><meta name="indexterms" content="resmgr_attach()" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-r.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.resmgr/topic/about.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.getting_started/topic/s1_resmgr.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/d/dispatch_create.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/d/dispatch_create_channel.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/i/iofunc_attr_init.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/i/iofunc_attr_t.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/i/iofunc_func_init.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/i/iofunc_ocb_t.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/p/procmgr_ability.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/r/resmgr_block.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/r/resmgr_connect_funcs_t.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/r/resmgr_context_alloc.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/r/resmgr_context_free.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/r/resmgr_detach.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/r/resmgr_handler.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/r/resmgr_io_funcs_t.html" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="resmgr_attach" /><meta name="DC.Language" content="en-us" /><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/commonltr.css"><!----></link><title>resmgr_attach()</title><link rel="canonical" type="html" href="https://www.qnx.com/developers/docs/7.1/#com.qnx.doc.neutrino.lib_ref/" /><!--  Generated with Oxygen version 18.1, build number 2017020917.  --><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/webhelp_topic.css"><!----></link><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/skins/skin.css" /><script type="text/javascript"><!--
+            
+            var prefix = "../../../index.html";
+            
+            --></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-1.11.3.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.cookie.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-ui.custom.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.highlight-3.js"><!----></script><script type="text/javascript" charset="utf-8" src="../../../oxygen-webhelp/resources/js/webhelp_topic.js"><!----></script><script type="text/javascript"> var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-27400275-1']); _gaq.push(['_setDomainName', 'www.qnx.com']);_gaq.push(['_setAllowLinker', true]);_gaq.push(['_trackPageview']);(function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script></head>
+<body onload="highlightSearchTerm()" class="frmBody" id="resmgr_attach">
+<table class="nav"><tbody><tr><td colspan="2"><div id="printlink"><button onClick="window.print()" title="Print this page" aria-label="Print this page"></button></div><div id="permalink"><a href="#" title="Link to this page"></a></div></td></tr><tr><td style="width:75%;"><span class="topic_breadcrumb_links"><span class="topic_breadcrumb_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-r.html" title="R">R</a></span></span></td><td><span id="topic_navigation_links" class="navheader">
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-r.html" title="R"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">R</span></a></span>  </span></td></tr></tbody></table>
+
+
+<h1 class="title topictitle1"><span class="keyword apiname">resmgr_attach()</span></h1>
+<table width="100%"><tbody><tr><td align="left"><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">QNX SDP</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">7.1</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">C Library Reference</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">API</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">Developer</button></td><td align="right"><span style="margin:0px 5px; font-size:0.9em;">Updated: October 28, 2024</span></td></tr></tbody></table>
+
+
+
+<div class="body refbody"><p class="shortdesc"><em class="ph i">Attach a path to the pathname space</em></p>
+
+
+<div class="section refsyn"><h2 class="title sectiontitle">Synopsis:</h2>
+
+<pre class="pre codeblock">
+#include &lt;sys/iofunc.h&gt;
+#include &lt;sys/resmgr.h&gt;
+#include &lt;sys/dispatch.h&gt;
+
+int resmgr_attach (
+       dispatch_t *<var class="keyword varname">dpp</var>,
+       resmgr_attr_t *<var class="keyword varname">attr</var>,
+       const char *<var class="keyword varname">path</var>, 
+       enum _file_type <var class="keyword varname">file_type</var>,
+       unsigned <var class="keyword varname">flags</var>, 
+       const resmgr_connect_funcs_t *<var class="keyword varname">connect_funcs</var>,
+       const resmgr_io_funcs_t *<var class="keyword varname">io_funcs</var>,
+       RESMGR_HANDLE_T *<var class="keyword varname">handle</var> );
+</pre>
+
+
+<div class="note note"><span class="notetitle">Note:</span> 
+In order to correctly define <span class="keyword dtype">RESMGR_HANDLE_T</span>,
+<samp class="ph codeph">#include</samp> <span class="ph filepath">&lt;sys/iofunc.h&gt;</span> before
+<span class="ph filepath">&lt;sys/resmgr.h&gt;</span>.
+</div>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Arguments:</h2>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><var class="keyword varname">dpp</var></dt>
+
+<dd class="dd">A dispatch handle created by a successful call to
+  <a class="xref" href="../d/dispatch_create.html" title="Allocate a dispatch structure and create the channel associated with it"><span class="keyword apiname">dispatch_create()</span></a>.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">attr</var></dt>
+
+<dd class="dd">A pointer to a
+  <a class="xref" href="#resmgr_attach__resmgr_attr_t"><span class="keyword dtype">resmgr_attr_t</span></a>
+  structure (see below) that defines attributes for the resource manager, or
+  <span class="keyword const">NULL</span> to use the default attributes.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">path</var></dt>
+
+<dd class="dd"><span class="keyword const">NULL</span>, or the path that you want to attach the resource manager to; see below.</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">file_type</var></dt>
+
+<dd class="dd">The file type; usually, <span class="keyword const">_FTYPE_ANY</span>. 
+  For more information, see <span class="q">&#147;<a class="xref" href="#resmgr_attach__file_types">File types</a>&#148;</span> below.
+
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">flags</var></dt>
+
+<dd class="dd">Flags that control the pathname resolution:
+
+  <ul class="ul">
+  <li class="li"><span class="keyword const">_RESMGR_FLAG_AFTER</span></li>
+
+  <li class="li"><span class="keyword const">_RESMGR_FLAG_BEFORE</span></li>
+
+  <li class="li"><span class="keyword const">_RESMGR_FLAG_DETACH_CTP</span></li>
+
+  <li class="li"><span class="keyword const">_RESMGR_FLAG_DIR</span></li>
+
+  <li class="li"><span class="keyword const">_RESMGR_FLAG_FTYPEALL</span></li>
+
+  <li class="li"><span class="keyword const">_RESMGR_FLAG_FTYPEONLY</span></li>
+
+  
+  <li class="li"><span class="keyword const">_RESMGR_FLAG_OPAQUE</span></li>
+
+  <li class="li"><span class="keyword const">_RESMGR_FLAG_SELF</span></li>
+
+  </ul>
+
+
+  <p class="p">
+  For more information, see
+  <span class="q">&#147;<a class="xref" href="#resmgr_attach__flags">The <var class="keyword varname">flags</var> argument</a>,&#148;</span>
+  below.
+  </p>
+
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">connect_funcs</var></dt>
+
+<dd class="dd">A pointer to the
+  <a class="xref" href="resmgr_connect_funcs_t.html" title="Table of POSIX-level connect functions"><span class="keyword dtype">resmgr_connect_funcs_t</span></a>
+  structure that defines the POSIX-level connect functions. The library stores this pointer for future use.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">io_funcs</var></dt>
+
+<dd class="dd">A pointer to the 
+  <a class="xref" href="resmgr_io_funcs_t.html" title="Table of POSIX-level I/O functions"><span class="keyword dtype">resmgr_io_funcs_t</span></a>
+  structure that defines the POSIX-level I/O functions. The library stores this pointer for future use.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">handle</var></dt>
+
+  <dd class="dd">A pointer to a data structure that you want to associate with the pathname you're attaching.
+    This must be either an
+    <a class="xref" href="../i/iofunc_attr_t.html" title="I/O attribute structure"><span class="keyword dtype">iofunc_attr_t</span></a> structure,
+    or an extended attribute structure that starts with an <a class="xref" href="../i/iofunc_attr_t.html" title="I/O attribute structure"><span class="keyword dtype">iofunc_attr_t</span></a>.
+    The library stores this pointer for future use.
+  </dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Library:</h2>
+
+
+<p class="p"><span class="ph filepath">libc</span></p>
+
+
+<p class="p">
+Use the <span class="keyword option">-l c</span> option to
+<a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/q/qcc.html"><span class="keyword cmdname">qcc</span></a>
+to link against this library.
+This library is usually included automatically.
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Description:</h2>
+
+
+<p class="p">
+
+
+
+
+
+The <span class="keyword apiname">resmgr_attach()</span> function puts the <var class="keyword varname">path</var> into the general
+pathname space and binds requests on this path to the dispatch handle <var class="keyword varname">dpp</var>.
+You usually provide an absolute path;
+if you provide a path that doesn't start with a slash, it's considered to be relative to the current working directory.
+</p>
+
+
+<div class="p">
+The function does three main things:
+<ol class="ol">
+<li class="li">On the first <span class="keyword apiname">resmgr_attach()</span> call for any dispatch framework, it sets up the framework to handle
+  resource manager operations.</li>
+
+<li class="li">It allocates a unique link ID and associates the <var class="keyword varname">connect_funcs</var>, <var class="keyword varname">io_funcs</var>, and
+  <var class="keyword varname">handle</var> pointers with this link ID.</li>
+
+<li class="li">It registers the pathname and link ID with the process manager.</li>
+
+</ol>
+
+If <var class="keyword varname">path</var> is NULL, only the first step will be done, unless <span class="keyword const">RESMGR_FLAG_ATTACH_LOCAL</span> is set in
+<var class="keyword varname">attr.flags</var> or <span class="keyword const">_RESMGR_FLAG_FTYPEONLY</span> is set in <var class="keyword varname">flags</var> (see below).
+This could, for example, be used to prepare for a later name registration when a removable device is plugged in.
+</div>
+
+
+<div class="note note"><span class="notetitle">Note:</span> 
+<ul class="ul">
+<li class="li">
+Your process needs certain abilities enabled:
+
+<ul class="ul">
+<li class="li"><span class="keyword const">PROCMGR_AID_PATHSPACE</span>, to add a name to the pathname space
+  
+</li>
+
+
+</ul>
+
+
+<p class="p">
+For more information, see
+<a class="xref" href="../p/procmgr_ability.html" title="Control a process's ability to perform certain operations"><span class="keyword apiname">procmgr_ability()</span></a>.
+</p>
+
+</li>
+
+
+<li class="li">Once you've called <span class="keyword apiname">dispatch_context_alloc()</span>, don't call
+  <span class="keyword apiname">message_attach()</span> or <span class="keyword apiname">resmgr_attach()</span>
+  specifying a larger maximum message size or a larger number of message parts for the same dispatch handle.
+  In QNX Neutrino 7.0 or later, these functions indicate an error of <span class="keyword const">EINVAL</span> if this happens.
+</li>
+
+
+<li class="li">After calling <span class="keyword apiname">resmgr_attach()</span>,
+    any child process created with <span class="keyword apiname">fork()</span> that does not <span class="keyword apiname">exec()</span> can't be a resource manager.
+</li>
+
+
+</ul>
+
+</div>
+
+
+<h2 class="sectiontitle" id="resmgr_attach__file_types">File types</h2>
+
+<p class="p">
+File types are used with the <span class="keyword const">_RESMGR_FLAG_FTYPEONLY</span> flag for special services
+that have their own associated open function to ensure they receive only those open requests
+targeted for them.
+For example, the <span class="keyword cmdname">mqueue</span> manager sets <var class="keyword varname">file_type</var> to 
+<span class="keyword const">_FTYPE_MQUEUE</span>, and <span class="keyword apiname">mq_open()</span> requests a pathname match of the
+same type.
+</p>
+
+
+<p class="p">
+When matching an open request to a registered path's file type, an exact match will always reach
+the server. If the server sets <span class="keyword const">_RESMGR_FLAG_FTYPEONLY</span>, then only an exact match will
+reach it. Otherwise, a request of <span class="keyword const">_FTYPE_ANY</span> will reach the server if it has
+registered any file type.
+If the server registers a file type of <span class="keyword const">_FTYPE_ALL</span>, which is done by setting the
+<span class="keyword const">_RESMGR_FLAG_FTYPEALL</span> flag, then requests of all file types will reach the server.
+</p>
+
+
+<div class="note note"><span class="notetitle">Note:</span> 
+If a server specifies <span class="keyword const">_RESMGR_FLAG_FTYPEONLY</span> and 
+<span class="keyword const">_RESMGR_FLAG_FTYPEALL</span>, no requests will reach it because the first flag
+allows for exact matches only and no client request is ever issued with a file type of
+<span class="keyword const">_FTYPE_ALL</span>.
+</div>
+
+
+<p class="p">
+The following table shows some of the different client-request function types and the types of 
+pathnames they will match if the server has not set <span class="keyword const">_RESMGR_FLAG_FTYPEALL</span>:
+</p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+
+<thead class="thead" align="left">
+<tr>
+  <th class="entry" valign="top" id="d2503216e498">Function:</th>
+
+  <th class="entry" valign="top" id="d2503216e501"><var class="keyword varname">file_type</var>:</th>
+
+  <th class="entry" valign="top" id="d2503216e506">Matches pathname of type:</th>
+
+</tr>
+
+</thead>
+
+
+<tbody class="tbody">
+<tr>
+  <td class="entry" valign="top" headers="d2503216e498 d2503216e501 d2503216e506 "><a class="xref" href="../m/mq_open.html" title="Open a message queue"><span class="keyword apiname">mq_open()</span></a></td>
+
+  <td class="entry" valign="top" headers="d2503216e498 d2503216e501 d2503216e506 "><span class="keyword const">_FTYPE_MQ</span></td>
+
+  <td class="entry" valign="top" headers="d2503216e498 d2503216e501 d2503216e506 "><span class="keyword const">_FTYPE_ALL</span> or <span class="keyword const">_FTYPE_MQ</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d2503216e498 d2503216e501 d2503216e506 "><a class="xref" href="../m/mq_open.html" title="Open a message queue"><span class="keyword apiname">mq_open()</span></a></td>
+
+  <td class="entry" valign="top" headers="d2503216e498 d2503216e501 d2503216e506 "><span class="keyword const">_FTYPE_MQUEUE</span></td>
+
+  <td class="entry" valign="top" headers="d2503216e498 d2503216e501 d2503216e506 "><span class="keyword const">_FTYPE_ALL</span> or <span class="keyword const">_FTYPE_MQUEUE</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d2503216e498 d2503216e501 d2503216e506 "><a class="xref" href="../m/mount.html" title="Mount a filesystem"><span class="keyword apiname">mount()</span></a></td>
+
+  <td class="entry" valign="top" headers="d2503216e498 d2503216e501 d2503216e506 "><span class="keyword const">_FTYPE_MOUNT</span></td>
+
+  <td class="entry" valign="top" headers="d2503216e498 d2503216e501 d2503216e506 "><span class="keyword const">_FTYPE_ALL</span> or <span class="keyword const">_FTYPE_MOUNT</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d2503216e498 d2503216e501 d2503216e506 "><a class="xref" href="../o/open.html" title="Open a file"><span class="keyword apiname">open()</span></a></td>
+
+  <td class="entry" valign="top" headers="d2503216e498 d2503216e501 d2503216e506 "><span class="keyword const">_FTYPE_ANY</span></td>
+
+  <td class="entry" valign="top" headers="d2503216e498 d2503216e501 d2503216e506 ">All types</td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d2503216e498 d2503216e501 d2503216e506 "><a class="xref" href="../p/pipe.html" title="Create a pipe"><span class="keyword apiname">pipe()</span></a></td>
+
+  <td class="entry" valign="top" headers="d2503216e498 d2503216e501 d2503216e506 "><span class="keyword const">_FTYPE_PIPE</span></td>
+
+  <td class="entry" valign="top" headers="d2503216e498 d2503216e501 d2503216e506 "><span class="keyword const">_FTYPE_ALL</span> or <span class="keyword const">_FTYPE_PIPE</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d2503216e498 d2503216e501 d2503216e506 "><a class="xref" href="../s/sem_open.html" title="Create or access a named semaphore"><span class="keyword apiname">sem_open()</span></a></td>
+
+  <td class="entry" valign="top" headers="d2503216e498 d2503216e501 d2503216e506 "><span class="keyword const">_FTYPE_SEM</span></td>
+
+  <td class="entry" valign="top" headers="d2503216e498 d2503216e501 d2503216e506 "><span class="keyword const">_FTYPE_ALL</span> or <span class="keyword const">_FTYPE_SEM</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d2503216e498 d2503216e501 d2503216e506 "><a class="xref" href="../s/shm_open.html" title="Open a shared memory object based on a pathname"><span class="keyword apiname">shm_open()</span></a></td>
+
+  <td class="entry" valign="top" headers="d2503216e498 d2503216e501 d2503216e506 "><span class="keyword const">_FTYPE_SHMEM</span></td>
+
+  <td class="entry" valign="top" headers="d2503216e498 d2503216e501 d2503216e506 "><span class="keyword const">_FTYPE_ALL</span> or <span class="keyword const">_FTYPE_SHMEM</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d2503216e498 d2503216e501 d2503216e506 "><a class="xref" href="../s/socket.html" title="Create an endpoint for communication"><span class="keyword apiname">socket()</span></a></td>
+
+  <td class="entry" valign="top" headers="d2503216e498 d2503216e501 d2503216e506 "><span class="keyword const">_FTYPE_SOCKET</span></td>
+
+  <td class="entry" valign="top" headers="d2503216e498 d2503216e501 d2503216e506 "><span class="keyword const">_FTYPE_ALL</span> or <span class="keyword const">_FTYPE_SOCKET</span></td>
+
+</tr>
+
+
+</tbody>
+
+</table>
+</div>
+
+
+<h2 class="sectiontitle">Using POSIX functions</h2>
+
+<p class="p">
+If you want to use the POSIX functions, we've provided you with the POSIX layer;
+to fill your connect and I/O functions tables with the
+default handler functions supplied by the POSIX layer library, call
+<a class="xref" href="../i/iofunc_func_init.html" title="Initialize the default POSIX-layer function tables"><span class="keyword apiname">iofunc_func_init()</span></a>.
+You can then override the defaults placed in the structures with your own handlers.
+</p>
+
+
+<div class="note note"><span class="notetitle">Note:</span> 
+The <span class="keyword apiname">resmgr_attach()</span> function copies the <em class="ph i">pointers</em> to the
+<span class="keyword dtype">resmgr_connect_funcs_t</span> and <span class="keyword dtype">resmgr_io_funcs_t</span>
+structures, not the structures themselves.
+You should allocate the structures, declare them to be static, or make them
+global variables.
+If your resource manager is for more than one device with different
+handlers, create separate structures that define the handlers.
+</div>
+
+
+<p class="p">
+In the most general case, the last argument, <var class="keyword varname">handle</var> is an
+arbitrary structure that you wish to have associated with the pathname you're attaching.
+Practically, however, we recommend that it contain the POSIX layer's
+well defined attributes structure,
+<a class="xref" href="../i/iofunc_attr_t.html" title="I/O attribute structure"><span class="keyword dtype">iofunc_attr_t</span></a>,
+because this lets you use the POSIX-layer default library.  
+You can extend the data that's contained in the attributes structure 
+to contain any device-specific data that you may require. 
+This is commonly done, and is described in the
+<span class="q">&#147;<a class="xref" href="../../../com.qnx.doc.neutrino.resmgr/topic/structures.html">POSIX-Layer Data Structures</a>&#148;</span>
+chapter of <cite class="cite">Writing a Resource Manager</cite>.
+</p>
+
+<div class="note note"><span class="notetitle">Note:</span> 
+    The <span class="keyword apiname">resmgr_attach()</span> function copies the pointers to the
+    <var class="keyword varname">handle</var> structure, not the structure itself.
+    You should allocate the structure, declare it to be static, or make it a
+    global variable.
+    If your resource manager is for more than one device with different
+    handles, create separate structures for each handle.
+</div>
+
+<p class="p">
+In order to use the POSIX layer default library, the attributes structure must
+be bound into the Open Control Block, and you must use the POSIX layer's
+<a class="xref" href="../i/iofunc_ocb_t.html" title="Open Control Block structure"><span class="keyword dtype">iofunc_ocb_t</span></a>
+OCB.  
+This is described in the documentation for
+<a class="xref" href="resmgr_open_bind.html" title="Associate an OCB with an open request"><span class="keyword apiname">resmgr_open_bind()</span></a>,
+as well as in the above reference.
+</p>
+
+
+<h2 class="sectiontitle" id="resmgr_attach__resmgr_attr_t"><span class="keyword dtype">resmgr_attr_t</span> structure</h2>
+
+<p class="p">
+
+You can specify attributes such as the maximum message size, 
+number of parts (number of IOVs in context), 
+and flags in the <var class="keyword varname">attr</var> structure.
+The <span class="keyword dtype">resmgr_attr_t</span> structure looks like this:
+</p>
+
+
+<pre class="pre codeblock">
+typedef struct _resmgr_attr {
+   unsigned      flags;
+   unsigned      nparts_max;
+   size_t        msg_max_size;
+   int           (*other_func) ( resmgr_context_t *, void *msg );
+   unsigned      reserved[4];
+} resmgr_attr_t;
+</pre>
+
+
+<p class="p">
+The members include:
+</p>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><var class="keyword varname">flags</var></dt>
+
+<dd class="dd">Flags that affect the behavior of the resource manager interface;
+  0, or a combination of the following bits (defined in <span class="ph filepath">&lt;sys/dispatch.h&gt;</span>):
+
+  <ul class="ul">
+  <li class="li"><span class="keyword const">RESMGR_FLAG_ATTACH_LOCAL</span> â set up the
+    resource manager, but don't register its path with <span class="keyword cmdname">procnto</span>.
+    That is, perform the first two of the three steps listed above. In this case the
+    <var class="keyword varname">path</var> parameter is ignored and, hence, may be NULL.
+    
+  </li>
+
+
+  <li class="li"><span class="keyword const">RESMGR_FLAG_CROSS_ENDIAN</span> â the server handles cross-endian support.
+    The framework handles all necessary conversions on the server's side;
+    the client doesn't have to do anything.
+    
+    
+    
+  </li>
+
+
+  <li class="li"><span class="keyword const">RESMGR_FLAG_NO_DEFAULT_FUNC</span> â not implemented.
+    
+  </li>
+
+
+  <li class="li"><span class="keyword const">RESMGR_FLAG_RCM</span> (QNX Neutrino 6.6 or later)
+    â automatically adopt the client's resource constraint mode when handling a request.
+    For more information, see
+    <span class="q">&#147;<a class="xref" href="../../../com.qnx.doc.neutrino.prog/topic/process_resource_constraint.html">Resource constraint thresholds</a>&#148;</span>
+    in the Processes chapter of the <span class="keyword">QNX Neutrino</span> <cite class="cite">Programmer's Guide</cite>.
+    
+    
+  </li>
+
+
+  </ul>
+
+
+  <div class="note note"><span class="notetitle">Note:</span> 
+  Don't confuse these flags with the ones you pass in the <var class="keyword varname">flags</var>
+  argument to <span class="keyword apiname">resmgr_attach()</span>.
+  The names of these flags don't start with an underscore (<samp class="ph codeph">_</samp>).
+  </div>
+
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">nparts_max</var></dt>
+
+<dd class="dd">The number of components to allocate for the IOV array.  
+  If you specify 0, the resource manager library bumps the value to the minimum usable by the library itself.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">msg_max_size</var></dt>
+
+<dd class="dd">The minimum amount of room to reserve for receiving a message that's allocated in 
+  <a class="xref" href="resmgr_context_alloc.html" title="Allocate a resource-manager context"><span class="keyword apiname">resmgr_context_alloc()</span></a>.
+  If the value is too low, or you specify it as 0, 
+  <span class="keyword apiname">resmgr_attach()</span> picks a value that's usable.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">other_func</var></dt>
+
+<dd class="dd">A pointer to a function that's called if the resource manager receives
+  an I/O message that it didn't successfully handle.
+  Only the first <var class="keyword varname">other_func</var> registered for any particular <var class="keyword varname">dpp</var> is used;
+  any later attempts to register an <var class="keyword varname">other_func</var> are silently ignored.
+</dd>
+
+
+
+</dl>
+
+
+<h2 class="sectiontitle" id="resmgr_attach__flags">The <var class="keyword varname">flags</var> argument</h2>
+
+<p class="p">
+The <var class="keyword varname">flags</var> argument to <span class="keyword apiname">resmgr_attach()</span>
+specifies additional information to control the pathname resolution.
+</p>
+
+
+<div class="note note"><span class="notetitle">Note:</span> 
+Don't confuse these flags with the ones you set in the <var class="keyword varname">flags</var>
+member of the <span class="keyword dtype">resmgr_attr_t</span> structure.
+The names of these flags start with an underscore (<samp class="ph codeph">_</samp>).
+</div>
+
+
+<p class="p">
+The flags (defined in <span class="ph filepath">&lt;sys/resmgr.h&gt;</span>) include at least the following bits:
+</p>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><span class="keyword const">_RESMGR_FLAG_AFTER</span></dt>
+
+<dd class="dd">Force the path to be resolved after others with the same pathname at the same mountpoint.
+  
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">_RESMGR_FLAG_BEFORE</span></dt>
+
+<dd class="dd">Force the path to be resolved before others with the same pathname at the same mountpoint.
+  
+
+  <div class="note note"><span class="notetitle">Note:</span> 
+  If multiple registrations are made with <span class="keyword const">_RESMGR_FLAG_BEFORE</span> or
+  <span class="keyword const">_RESMGR_FLAG_AFTER</span>, then all BEFORE registrations are resolved first in FIFO order,
+  followed by the non-flagged registrations in LIFO order, and then all AFTER registrations in LIFO order
+  (i.e., the first BEFORE registered is resolved first, and the first AFTER registered is resolved last).
+  </div>
+
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">_RESMGR_FLAG_DETACH_CTP</span></dt>
+
+<dd class="dd">The manager will use
+  <a class="xref" href="resmgr_detach.html" title="Remove a pathname from the pathname space"><span class="keyword apiname">resmgr_detach_ctp()</span></a>
+  on the path.
+  
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">_RESMGR_FLAG_DIR</span></dt>
+
+<dd class="dd">Treat the pathname as a directory and allow the resolving of longer pathnames.
+  The <span class="keyword const">_IO_CONNECT</span> message contains the pathname passed to the client
+  <span class="keyword apiname">open()</span> with the matching prefix stripped off.
+  Without this flag, the pathname is treated as a simple file requiring an exact match.
+  
+
+  
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+
+  <thead class="thead" align="left">
+  <tr>
+    <th class="entry" valign="top" id="d2503216e1083">Attached path</th>
+
+    <th class="entry" valign="top" id="d2503216e1086">Opened path</th>
+
+    <th class="entry" valign="top" id="d2503216e1089"><span class="keyword const">_RESMGR_FLAG_DIR</span> set</th>
+
+    <th class="entry" valign="top" id="d2503216e1094"><span class="keyword const">_RESMGR_FLAG_DIR</span> clear</th>
+
+  </tr>
+
+  </thead>
+
+
+  <tbody class="tbody">
+  <tr>
+    <td class="entry" valign="top" headers="d2503216e1083 d2503216e1086 d2503216e1089 d2503216e1094 "><span class="ph filepath">/a/b</span></td>
+
+    <td class="entry" valign="top" headers="d2503216e1083 d2503216e1086 d2503216e1089 d2503216e1094 "><span class="ph filepath">/a/b</span></td>
+
+    <td class="entry" valign="top" headers="d2503216e1083 d2503216e1086 d2503216e1089 d2503216e1094 ">Match ""</td>
+
+    <td class="entry" valign="top" headers="d2503216e1083 d2503216e1086 d2503216e1089 d2503216e1094 ">Match ""</td>
+
+  </tr>
+
+
+  <tr>
+    <td class="entry" valign="top" headers="d2503216e1083 d2503216e1086 d2503216e1089 d2503216e1094 "><span class="ph filepath">/a/b</span></td>
+
+    <td class="entry" valign="top" headers="d2503216e1083 d2503216e1086 d2503216e1089 d2503216e1094 "><span class="ph filepath">/a/b/c</span></td>
+
+    <td class="entry" valign="top" headers="d2503216e1083 d2503216e1086 d2503216e1089 d2503216e1094 ">Match <span class="ph filepath">c</span></td>
+
+    <td class="entry" valign="top" headers="d2503216e1083 d2503216e1086 d2503216e1089 d2503216e1094 ">No match</td>
+
+  </tr>
+
+
+  <tr>
+    <td class="entry" valign="top" headers="d2503216e1083 d2503216e1086 d2503216e1089 d2503216e1094 "><span class="ph filepath">/a/b</span></td>
+
+    <td class="entry" valign="top" headers="d2503216e1083 d2503216e1086 d2503216e1089 d2503216e1094 "><span class="ph filepath">/a/b/c/d</span></td>
+
+    <td class="entry" valign="top" headers="d2503216e1083 d2503216e1086 d2503216e1089 d2503216e1094 ">Match <span class="ph filepath">c/d</span></td>
+
+    <td class="entry" valign="top" headers="d2503216e1083 d2503216e1086 d2503216e1089 d2503216e1094 ">No match</td>
+
+  </tr>
+
+
+  <tr>
+    <td class="entry" valign="top" headers="d2503216e1083 d2503216e1086 d2503216e1089 d2503216e1094 "><span class="ph filepath">/a/b</span></td>
+
+    <td class="entry" valign="top" headers="d2503216e1083 d2503216e1086 d2503216e1089 d2503216e1094 "><span class="ph filepath">/a/bc</span></td>
+
+    <td class="entry" valign="top" headers="d2503216e1083 d2503216e1086 d2503216e1089 d2503216e1094 ">No match</td>
+
+    <td class="entry" valign="top" headers="d2503216e1083 d2503216e1086 d2503216e1089 d2503216e1094 ">No match</td>
+
+  </tr>
+
+
+  </tbody>
+
+  </table>
+</div>
+
+
+  <p class="p">
+  You can't attach a directory pathname that contains, as a subset, an existing file pathname.
+  Likewise, you can't attach a file pathname that's a subset of an existing directory pathname.
+  </p>
+
+
+  
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+
+  <thead class="thead" align="left">
+  <tr>
+    <th class="entry" valign="top" id="d2503216e1190">Existing path</th>
+
+    <th class="entry" valign="top" id="d2503216e1193">New path</th>
+
+    <th class="entry" valign="top" id="d2503216e1196">New path allowed?</th>
+
+  </tr>
+
+  </thead>
+
+
+  <tbody class="tbody">
+  <tr>
+    <td class="entry" valign="top" headers="d2503216e1190 d2503216e1193 d2503216e1196 ">Directory  <span class="ph filepath">/a/b</span></td>
+
+    <td class="entry" valign="top" headers="d2503216e1190 d2503216e1193 d2503216e1196 ">Directory  <span class="ph filepath">/a</span></td>
+
+    <td class="entry" valign="top" headers="d2503216e1190 d2503216e1193 d2503216e1196 ">Yes</td>
+
+  </tr>
+
+
+  <tr>
+    <td class="entry" valign="top" headers="d2503216e1190 d2503216e1193 d2503216e1196 ">Directory  <span class="ph filepath">/a/b</span></td>
+
+    <td class="entry" valign="top" headers="d2503216e1190 d2503216e1193 d2503216e1196 ">Directory  <span class="ph filepath">/a/b/c</span></td>
+
+    <td class="entry" valign="top" headers="d2503216e1190 d2503216e1193 d2503216e1196 ">Yes</td>
+
+  </tr>
+
+
+  <tr>
+    <td class="entry" valign="top" headers="d2503216e1190 d2503216e1193 d2503216e1196 ">File <span class="ph filepath">/a/b</span></td>
+
+    <td class="entry" valign="top" headers="d2503216e1190 d2503216e1193 d2503216e1196 ">Directory  <span class="ph filepath">/a</span></td>
+
+    <td class="entry" valign="top" headers="d2503216e1190 d2503216e1193 d2503216e1196 ">Yes</td>
+
+  </tr>
+
+
+  <tr>
+    <td class="entry" valign="top" headers="d2503216e1190 d2503216e1193 d2503216e1196 ">File <span class="ph filepath">/a/b</span></td>
+
+    <td class="entry" valign="top" headers="d2503216e1190 d2503216e1193 d2503216e1196 ">Directory  <span class="ph filepath">/a/b/c</span></td>
+
+    <td class="entry" valign="top" headers="d2503216e1190 d2503216e1193 d2503216e1196 ">No; the directory is beneath a file</td>
+
+  </tr>
+
+
+  <tr>
+    <td class="entry" valign="top" headers="d2503216e1190 d2503216e1193 d2503216e1196 ">Directory  <span class="ph filepath">/a/b</span></td>
+
+    <td class="entry" valign="top" headers="d2503216e1190 d2503216e1193 d2503216e1196 ">File <span class="ph filepath">/a</span></td>
+
+    <td class="entry" valign="top" headers="d2503216e1190 d2503216e1193 d2503216e1196 ">No; the directory is beneath a file</td>
+
+  </tr>
+
+
+  <tr>
+    <td class="entry" valign="top" headers="d2503216e1190 d2503216e1193 d2503216e1196 ">Directory  <span class="ph filepath">/a/b</span></td>
+
+    <td class="entry" valign="top" headers="d2503216e1190 d2503216e1193 d2503216e1196 ">File <span class="ph filepath">/a/b/c</span></td>
+
+    <td class="entry" valign="top" headers="d2503216e1190 d2503216e1193 d2503216e1196 ">Yes</td>
+
+  </tr>
+
+
+  <tr>
+    <td class="entry" valign="top" headers="d2503216e1190 d2503216e1193 d2503216e1196 ">File <span class="ph filepath">/a/b</span></td>
+
+    <td class="entry" valign="top" headers="d2503216e1190 d2503216e1193 d2503216e1196 ">File <span class="ph filepath">/a</span></td>
+
+    <td class="entry" valign="top" headers="d2503216e1190 d2503216e1193 d2503216e1196 ">Yes</td>
+
+  </tr>
+
+
+  <tr>
+    <td class="entry" valign="top" headers="d2503216e1190 d2503216e1193 d2503216e1196 ">File <span class="ph filepath">/a/b</span></td>
+
+    <td class="entry" valign="top" headers="d2503216e1190 d2503216e1193 d2503216e1196 ">File <span class="ph filepath">/a/b/c</span></td>
+
+    <td class="entry" valign="top" headers="d2503216e1190 d2503216e1193 d2503216e1196 ">Yes</td>
+
+  </tr>
+
+
+  </tbody>
+
+  </table>
+</div>
+
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">_RESMGR_FLAG_FTYPEALL</span></dt>
+
+<dd class="dd">Handle requests for all file types.
+  Ignores the specified file type, instead registering for a file type of <span class="keyword const">_FTYPE_ALL</span>.
+  
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">_RESMGR_FLAG_FTYPEONLY</span></dt>
+
+<dd class="dd">Handle only requests for the specific file type indicated. 
+  The pathname must be <span class="keyword const">NULL</span> but
+  the resulting registration is at "<span class="ph filepath">/</span>" in the pathname space.
+  
+</dd>
+
+
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">_RESMGR_FLAG_OPAQUE</span></dt>
+
+<dd class="dd">Don't resolve paths to mountpoints on a path shorter than this 
+  (i.e., find the longest match against all pathnames attached).
+  
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">_RESMGR_FLAG_SELF</span></dt>
+
+<dd class="dd">Allow requests to resolve back to this server; in other words, allow the resource manager
+  to open a path to itself.
+  
+
+  <div class="cautiontitle">CAUTION:</div><div class="note caution">
+  Be very careful if you set <span class="keyword const">_RESMGR_FLAG_SELF</span> because it's possible for a deadlock to occur.
+  For more information, see
+  <span class="q">&#147;<a class="xref" href="../../../com.qnx.doc.neutrino.sys_arch/topic/ipc_Robust.html">Robust implementations with Send/Receive/Reply</a>&#148;</span>
+  in the Interprocess Communication (IPC) chapter of the <cite class="cite">System Architecture</cite> guide.
+  </div>
+
+</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Returns:</h2>
+
+
+<p class="p">
+A unique link ID associated with this attach, or -1 on failure
+(<a class="xref" href="../e/errno.html" title="Thread-local error variable"><var class="keyword varname">errno</var></a> is set).
+</p>
+
+
+<p class="p">
+The returned ID is needed to detach the pathname at a later time using
+<a class="xref" href="resmgr_detach.html" title="Remove a pathname from the pathname space"><span class="keyword apiname">resmgr_detach()</span></a>.
+The ID is also passed to all connect and I/O message handlers in the
+resource-manager context structure (ctp) created by
+<a class="xref" href="resmgr_context_alloc.html" title="Allocate a resource-manager context"><span class="keyword apiname">resmgr_context_alloc()</span></a>.
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Errors:</h2>
+
+
+<dl class="dl">
+  
+
+<dt class="dt dlterm"><span class="keyword const">EACCES</span></dt>
+
+
+<dd class="dd">(QNX Neutrino 7.0 or later) One of the following occurred:
+<ul class="ul">
+<li class="li">Security policies are in use and there is no rule to permit the use of that path.</li>
+
+<li class="li">The process is sandboxed and the path is denied.</li>
+
+</ul>
+
+</dd>
+
+
+  
+
+<dt class="dt dlterm"><span class="keyword const">EBUSY</span></dt>
+
+<dd class="dd">An internal resource wasn't available.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EINVAL</span></dt>
+
+<dd class="dd">One of the following occurred:
+<ul class="ul">
+<li class="li">(QNX Neutrino 7.0 or later) You've already called <span class="keyword apiname">dispatch_context_alloc()</span>,
+    and you've now tried to increase the maximum message size or the number of message parts.</li>
+
+<li class="li">(QNX Neutrino 7.1 or later)
+    You've already called <span class="keyword apiname">pulse_attach()</span> for <span class="keyword const">_PULSE_CODE_UNBLOCK</span> or 
+    <span class="keyword const">_PULSE_CODE_DISCONNECT</span> on this dispatch handle (dpp).</li>
+
+
+  <li class="li">(QNX Neutrino 7.1 or later) You've already called
+    <a class="xref" href="../d/dispatch_context_alloc.html" title="Return a dispatch context"><span class="keyword apiname">dispatch_context_alloc()</span></a>
+    for a dpp with <span class="keyword const">DISPATCH_FLAG_NOLOCK</span> set, and you've now tried to do a first
+    <span class="keyword apiname">resmgr_attach()</span>.
+  </li>
+
+
+</ul>
+
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">ENOMEM</span></dt>
+
+<dd class="dd">There isn't enough free memory to complete the operation.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">ENOTDIR</span></dt>
+
+<dd class="dd">A component of the pathname wasn't a directory entry.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EPERM</span></dt>
+
+<dd class="dd">The calling process doesn't have the required permission; see
+  <a class="xref" href="../p/procmgr_ability.html" title="Control a process's ability to perform certain operations"><span class="keyword apiname">procmgr_ability()</span></a>.
+</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Examples:</h2>
+
+
+<p class="p">
+Here's an example of a simple single-threaded resource manager:
+</p>
+
+
+<pre class="pre codeblock">
+#include &lt;stdio.h&gt;
+#include &lt;stddef.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;sys/iofunc.h&gt;
+#include &lt;sys/dispatch.h&gt;
+
+static resmgr_connect_funcs_t    connect_funcs;
+static resmgr_io_funcs_t         io_funcs;
+static iofunc_attr_t             attr;
+
+int main(int argc, char **argv)
+{
+    dispatch_t           *dpp;
+    resmgr_attr_t        resmgr_attr;
+    resmgr_context_t     *ctp;
+    int                  id;
+
+    /* initialize dispatch interface */
+    if ( (dpp = dispatch_create()) == NULL ) {
+       fprintf( stderr, "%s: Unable to allocate \
+                dispatch handle.\n", argv[0] );
+       return EXIT_FAILURE;
+    }
+
+    /* initialize resource manager attributes */
+    memset( &amp;resmgr_attr, 0, sizeof resmgr_attr );
+    resmgr_attr.nparts_max = 1;
+    resmgr_attr.msg_max_size = 2048;
+
+    /* initialize functions for handling messages */
+    iofunc_func_init( _RESMGR_CONNECT_NFUNCS, &amp;connect_funcs,
+                      _RESMGR_IO_NFUNCS, &amp;io_funcs );
+
+    /* initialize attribute structure */
+    iofunc_attr_init( &amp;attr, S_IFNAM | 0666, 0, 0 );
+
+    /* attach our device name (passing in the POSIX defaults 
+       from the iofunc_func_init and iofunc_attr_init functions) 
+     */
+    if ( (id = resmgr_attach
+          ( dpp, &amp;resmgr_attr, "/dev/mynull", _FTYPE_ANY, 0,
+          &amp;connect_funcs, &amp;io_funcs, &amp;attr)) == -1 ) {
+        fprintf( stderr, "%s: Unable to attach name.\n", \
+                 argv[0] );
+        return EXIT_FAILURE;
+    }
+
+    /* allocate a context structure */
+    ctp = resmgr_context_alloc( dpp );
+
+    /* start the resource manager message loop */
+    while (1) {
+        if ( (ctp = resmgr_block( ctp )) == NULL ) {
+           fprintf(stderr, "block error\n");
+           return EXIT_FAILURE;
+        }
+        resmgr_handler(ctp);
+    }
+}
+</pre>
+
+
+<p class="p">
+For more examples using the dispatch interface, see
+<a class="xref" href="../d/dispatch_create.html" title="Allocate a dispatch structure and create the channel associated with it"><span class="keyword apiname">dispatch_create()</span></a>,
+<a class="xref" href="../m/message_attach.html" title="Attach a message range"><span class="keyword apiname">message_attach()</span></a>, and
+<a class="xref" href="../t/thread_pool_create.html" title="Create a thread pool handle"><span class="keyword apiname">thread_pool_create()</span></a>.
+For more information on writing a resource manager, see
+<a class="xref" href="../../../com.qnx.doc.neutrino.resmgr/topic/about.html"><em class="ph i">Writing a Resource Manager</em></a>
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Classification:</h2>
+
+<p class="p"><a class="xref" href="../summary.html#summary__CLASSIFICATION">QNX Neutrino</a></p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+<thead class="thead" align="left">
+<tr><th class="entry" valign="top" id="d2503216e1649">Safety:</th>
+<th class="entry" valign="top" id="d2503216e1651">Â </th>
+</tr>
+
+</thead>
+
+<tbody class="tbody">
+<tr><td class="entry" valign="top" headers="d2503216e1649 d2503216e1651 ">Cancellation point</td>
+<td class="entry" valign="top" headers="d2503216e1649 d2503216e1651 ">Yes</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2503216e1649 d2503216e1651 ">Interrupt handler</td>
+<td class="entry" valign="top" headers="d2503216e1649 d2503216e1651 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2503216e1649 d2503216e1651 ">Signal handler</td>
+<td class="entry" valign="top" headers="d2503216e1649 d2503216e1651 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2503216e1649 d2503216e1651 ">Thread</td>
+<td class="entry" valign="top" headers="d2503216e1649 d2503216e1651 ">Yes</td>
+</tr>
+
+</tbody>
+
+</table>
+</div>
+
+</div>
+
+
+</div>
+
+
+<div class="related-links"><div class="relinfo relconcepts"><strong>Related concepts</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.resmgr/topic/about.html" title="Writing a Resource Manager">Writing a Resource Manager</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.getting_started/topic/s1_resmgr.html" title="Resource Managers (Getting Started with QNX Neutrino)">Resource Managers (Getting Started with <span class="keyword">QNX Neutrino</span>)</a></div>
+</div>
+<div class="relinfo relref"><strong>Related reference</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/d/dispatch_create.html" title="Allocate a dispatch structure and create the channel associated with it">dispatch_create()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/d/dispatch_create_channel.html" title="Allocate a dispatch structure, specifying a channel ID">dispatch_create_channel()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/i/iofunc_attr_init.html" title="Initialize the per-name attribute structure associated with a device">iofunc_attr_init(), iofunc_attr_init_sized()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/i/iofunc_attr_t.html" title="I/O attribute structure">iofunc_attr_t</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/i/iofunc_func_init.html" title="Initialize the default POSIX-layer function tables">iofunc_func_init()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/i/iofunc_ocb_t.html" title="Open Control Block structure">iofunc_ocb_t</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/p/procmgr_ability.html" title="Control a process's ability to perform certain operations">procmgr_ability()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/r/resmgr_block.html" title="Block while waiting for a message">resmgr_block()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/r/resmgr_connect_funcs_t.html" title="Table of POSIX-level connect functions">resmgr_connect_funcs_t</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/r/resmgr_context_alloc.html" title="Allocate a resource-manager context">resmgr_context_alloc()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/r/resmgr_context_free.html" title="Free a resource-manager context">resmgr_context_free()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/r/resmgr_detach.html" title="Remove a pathname from the pathname space">resmgr_detach(), resmgr_detach_ctp()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/r/resmgr_handler.html" title="Handle resource manager messages">resmgr_handler()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/r/resmgr_io_funcs_t.html" title="Table of POSIX-level I/O functions">resmgr_io_funcs_t</a></div>
+</div>
+</div><div class="navfooter"><!---->
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-r.html" title="R"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">R</span></a></span>  </div>
+</body>
+</html>

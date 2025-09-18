@@ -1,0 +1,511 @@
+
+<!DOCTYPE html
+  PUBLIC "" "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />        
+      <meta name="copyright" content="(C) Copyright 2005" /><meta name="DC.rights.owner" content="(C) Copyright 2005" /><meta name="DC.Type" content="reference" /><meta name="DC.Title" content="sendmsg()" /><meta name="abstract" content="Send a message and its header to a socket" /><meta name="description" content="Send a message and its header to a socket" /><meta name="indexterms" content="sendmsg()" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-s.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/g/getsockopt.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/i/ioctl.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/p/poll.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/r/recv.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/s/send.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/s/sendmmsg.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/s/sendto.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/s/socket.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/w/write.html" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="sendmsg" /><meta name="DC.Language" content="en-us" /><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/commonltr.css"><!----></link><title>sendmsg()</title><link rel="canonical" type="html" href="https://www.qnx.com/developers/docs/7.1/#com.qnx.doc.neutrino.lib_ref/" /><!--  Generated with Oxygen version 18.1, build number 2017020917.  --><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/webhelp_topic.css"><!----></link><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/skins/skin.css" /><script type="text/javascript"><!--
+            
+            var prefix = "../../../index.html";
+            
+            --></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-1.11.3.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.cookie.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-ui.custom.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.highlight-3.js"><!----></script><script type="text/javascript" charset="utf-8" src="../../../oxygen-webhelp/resources/js/webhelp_topic.js"><!----></script><script type="text/javascript"> var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-27400275-1']); _gaq.push(['_setDomainName', 'www.qnx.com']);_gaq.push(['_setAllowLinker', true]);_gaq.push(['_trackPageview']);(function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script></head>
+<body onload="highlightSearchTerm()" class="frmBody" id="sendmsg">
+<table class="nav"><tbody><tr><td colspan="2"><div id="printlink"><button onClick="window.print()" title="Print this page" aria-label="Print this page"></button></div><div id="permalink"><a href="#" title="Link to this page"></a></div></td></tr><tr><td style="width:75%;"><span class="topic_breadcrumb_links"><span class="topic_breadcrumb_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-s.html" title="S">S</a></span></span></td><td><span id="topic_navigation_links" class="navheader">
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-s.html" title="S"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">S</span></a></span>  </span></td></tr></tbody></table>
+
+
+<h1 class="title topictitle1"><span class="keyword apiname">sendmsg()</span></h1>
+<table width="100%"><tbody><tr><td align="left"><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">QNX SDP</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">7.1</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">C Library Reference</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">API</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">Developer</button></td><td align="right"><span style="margin:0px 5px; font-size:0.9em;">Updated: October 28, 2024</span></td></tr></tbody></table>
+
+
+<div class="body refbody"><p class="shortdesc"><em class="ph i">Send a message and its header to a socket</em></p>
+
+
+<div class="section refsyn"><h2 class="title sectiontitle">Synopsis:</h2>
+
+<pre class="pre codeblock">
+#include &lt;sys/types.h&gt;
+#include &lt;sys/socket.h&gt;
+
+ssize_t sendmsg( int <var class="keyword varname">s</var>,
+                 const struct msghdr * <var class="keyword varname">msg</var>,
+                 int <var class="keyword varname">flags</var> );
+</pre>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Arguments:</h2>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><var class="keyword varname">s</var></dt>
+
+<dd class="dd">The descriptor for the socket; see
+  <a class="xref" href="socket.html" title="Create an endpoint for communication"><span class="keyword apiname">socket()</span></a>.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">msg</var></dt>
+
+<dd class="dd">A pointer to the message that you want to send.
+  For a description of the <span class="keyword dtype">msghdr</span> structure, see
+  <a class="xref" href="../r/recvmsg.html" title="Receive a message and its header from a socket"><span class="keyword apiname">recvmsg()</span></a>.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">flags</var></dt>
+
+<dd class="dd">A bitwise OR of zero or more of the following:
+
+  <ul class="ul">
+  <li class="li"><span class="keyword const">MSG_DONTWAIT</span> â if no data is available, then instead of blocking,
+    return immediately with the error EAGAIN.
+    
+  </li>
+
+
+  <li class="li"><span class="keyword const">MSG_NOTIFICATION</span> â if the flag is not set, then the function returns data.
+    If a notification has arrived, then the flag is set and it returns a notification in the <var class="keyword varname">msg_iov</var> field.
+    
+  </li>
+
+
+  <li class="li"><span class="keyword const">MSG_OOB</span> â process out-of-band data.
+    Use this bit when you send <span class="q">&#147;out-of-band&#148;</span> data on sockets
+    that support this notion (e.g. <span class="keyword const">SOCK_STREAM</span>).
+    The underlying protocol must also support out-of-band data.
+    
+  </li>
+
+
+  <li class="li"><span class="keyword const">MSG_DONTROUTE</span> â bypass routing; create a direct interface.
+    You normally use this bit only in diagnostic or routing programs.
+    
+  </li>
+
+
+  <li class="li"><span class="keyword const">MSG_NOSIGNAL</span> â don't raise a <span class="keyword const">SIGPIPE</span>
+    signal when the other end breaks the connection.
+    
+  </li>
+
+
+  <li class="li"><span class="keyword const">MSG_WAITFORONE</span> â wait for one packet or an error. This flag causes the
+    operation to block until at least one packet is available. With this setting, you can receive
+    as many as <var class="keyword varname">vlen</var> packets, but if only one is available, then the function
+    returns one. However, the call may return less data than available under the following scenarios:
+    <ul class="ul">
+      <li class="li">a signal is caught</li>
+
+      <li class="li">an error or disconnect occurs</li>
+
+      <li class="li">the incoming packet is a different data type from the one previously received</li>
+
+    </ul>
+
+    This flag turns on <span class="keyword const">MSG_DONTWAIT</span> after the first message has been received.
+    
+  </li>
+
+  </ul>
+
+</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Library:</h2>
+
+
+<p class="p"><span class="ph filepath">libsocket</span></p>
+
+
+<p class="p">
+Use the <span class="keyword option">-l socket</span> option to
+<a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/q/qcc.html"><span class="keyword cmdname">qcc</span></a>
+to link against this library.
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Description:</h2>
+
+
+<p class="p">
+The <span class="keyword apiname">sendmsg()</span> function is used to transmit a message to another socket.
+You can use
+<a class="xref" href="send.html" title="Send a message to a connected socket"><span class="keyword apiname">send()</span></a>
+only when the socket is in a <em class="ph i">connected</em>
+state; you can use <span class="keyword apiname">sendmsg()</span> at any time.
+
+
+
+
+</p>
+
+
+<p class="p">
+No indication of failure to deliver is implicit in a
+<span class="keyword apiname">sendmsg()</span>. Locally detected errors are indicated by
+a return value of -1.
+</p>
+
+
+<p class="p">
+
+If no message space is available at the socket to hold the
+message to be transmitted, then <span class="keyword apiname">sendmsg()</span> normally
+blocks, unless the socket has been placed in nonblocking I/O mode.
+You can use
+<a class="xref" href="../p/poll.html" title="Multiplex input/output over a set of file descriptors"><span class="keyword apiname">poll()</span></a>
+to determine when it's possible to send more data.
+This behavior applies if the socket was opened as <span class="keyword const">SOCK_STREAM</span>.
+</p>
+
+
+<p class="p">
+
+You typically use this function on datagram (<span class="keyword const">SOCK_DGRAM</span>) 
+sockets, which use the send buffer only as a length check and place the message
+in the interface transmit queue. If the interface transmit queue is full,
+this fails, causing <span class="keyword apiname">sendmsg()</span> to return -1 
+and set <var class="keyword varname">errno</var> to <span class="keyword const">ENOBUFS</span>.
+</p>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Returns:</h2>
+
+
+<p class="p">
+The number of bytes sent, or -1 if an error occurs
+(<a class="xref" href="../e/errno.html" title="Thread-local error variable"><var class="keyword varname">errno</var></a> is set).
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Errors:</h2>
+
+
+<dl class="dl" compact="compact">
+
+<dt class="dt dlterm"><span class="keyword const">EACCES</span></dt>
+
+<dd class="dd">Search permission is denied for a component of the path prefix,
+  or write access to the named socket is denied.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EAGAIN</span></dt>
+
+<dd class="dd">The socket's file descriptor is marked <span class="keyword const">O_NONBLOCK</span>,
+  and the requested operation would block.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EAFNOSUPPORT</span></dt>
+
+<dd class="dd">Addresses in the specified address family cannot be used with this socket.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EBADF</span></dt>
+
+<dd class="dd">An invalid descriptor was specified.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">ECONNRESET</span></dt>
+
+<dd class="dd">A connection was forcibly closed by a peer.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EDESTADDRREQ</span></dt>
+
+<dd class="dd">The socket isn't connection-mode and doesn't have its peer address set,
+  and no destination address was specified.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EFAULT</span></dt>
+
+<dd class="dd">An invalid user space address was specified for a parameter.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EHOSTUNREACH</span></dt>
+
+<dd class="dd">The destination host can't be reached (probably because the host is
+  down, or a remote router can't reach it).
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EINTR</span></dt>
+
+<dd class="dd">A signal interrupted <span class="keyword apiname">sendmsg()</span> before any data was transmitted.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EINVAL</span></dt>
+
+<dd class="dd">The sum of the <var class="keyword varname">iov_len</var> values overflows an <span class="keyword dtype">ssize_t</span>.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EIO</span></dt>
+
+<dd class="dd">An I/O error occurred while reading from or writing to the filesystem.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EISCONN</span></dt>
+
+<dd class="dd">A destination address was specified and the socket is already connected.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EMSGSIZE</span></dt>
+
+<dd class="dd">The message is too large to be sent all at once (as the socket requires),
+  or the <var class="keyword varname">msg_iovlen</var> member of the <span class="keyword dtype">msghdr</span> structure
+  pointed to by <var class="keyword varname">message</var> is less than or equal to 0 or is
+  greater than <span class="keyword const">IOV_MAX</span>.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">ENETDOWN</span></dt>
+
+<dd class="dd">The local network interface used to reach the destination is down.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">ENETUNREACH</span></dt>
+
+<dd class="dd">No route to the network is present.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">ENOBUFS</span></dt>
+
+<dd class="dd">The system couldn't allocate an internal buffer.
+   The operation may succeed when buffers become available.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">ENOMEM</span></dt>
+
+<dd class="dd">Insufficient memory was available to fulfill the request.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">ENOTCONN</span></dt>
+
+<dd class="dd">The socket is connection-mode but isn't connected.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">ENOTSOCK</span></dt>
+
+<dd class="dd">The argument <em class="ph i">s</em> isn't a socket.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EOPNOTSUPP</span></dt>
+
+<dd class="dd">The <var class="keyword varname">s</var> argument is associated with a socket that doesn't
+  support one or more of the values set in <var class="keyword varname">flags</var>.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EOVERFLOW</span></dt>
+
+<dd class="dd">An attempt was made to send an amount of data that when added to the sizes of the socket send
+  message and socket address length structures exceeds the allowable limit.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EPIPE</span></dt>
+
+<dd class="dd">The socket is shut down for writing, or the socket is connection-mode
+  and is no longer connected.
+  In the latter case, and if the socket is of type <span class="keyword const">SOCK_STREAM</span>,
+  a <span class="keyword const">SIGPIPE</span> signal is generated to the calling thread.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EWOULDBLOCK</span></dt>
+
+<dd class="dd">The socket is marked nonblocking and the requested operation would block.</dd>
+
+
+
+</dl>
+
+
+<div class="p">
+If the address family of the socket is <span class="keyword const">AF_UNIX</span>,
+<span class="keyword apiname">sendmsg()</span> fails if:
+
+<dl class="dl">
+
+<dt class="dt dlterm"><span class="keyword const">EIO</span></dt>
+
+<dd class="dd">An I/O error occurred while reading from or writing to the filesystem.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">ELOOP</span></dt>
+
+<dd class="dd">A loop exists in symbolic links encountered during resolution of the
+  pathname in the socket address, or
+  more than <span class="keyword const">SYMLOOP_MAX</span> symbolic links were encountered
+  during the resolution of the pathname in the socket address.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">ENAMETOOLONG</span></dt>
+
+<dd class="dd">An entire pathname exceeded <span class="keyword const">PATH_MAX</span> characters, or the
+  pathname resolution of a symbolic link produced an intermediate result
+  whose length exceeds <span class="keyword const">PATH_MAX</span>.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">ENOENT</span></dt>
+
+<dd class="dd">A component of the pathname doesn't name an existing file, or the
+  path name is an empty string.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">ENOTDIR</span></dt>
+
+<dd class="dd">A component of the path prefix of the pathname in the socket address
+  isn't a directory.
+</dd>
+
+
+
+</dl>
+
+</div>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Classification:</h2>
+
+<p class="p"><a class="xref" href="../summary.html#summary__CLASSIFICATION">POSIX 1003.1</a></p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+<thead class="thead" align="left">
+<tr><th class="entry" valign="top" id="d2584184e688">Safety:</th>
+<th class="entry" valign="top" id="d2584184e690">Â </th>
+</tr>
+
+</thead>
+
+<tbody class="tbody">
+<tr><td class="entry" valign="top" headers="d2584184e688 d2584184e690 ">Cancellation point</td>
+<td class="entry" valign="top" headers="d2584184e688 d2584184e690 ">Yes</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2584184e688 d2584184e690 ">Interrupt handler</td>
+<td class="entry" valign="top" headers="d2584184e688 d2584184e690 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2584184e688 d2584184e690 ">Signal handler</td>
+<td class="entry" valign="top" headers="d2584184e688 d2584184e690 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2584184e688 d2584184e690 ">Thread</td>
+<td class="entry" valign="top" headers="d2584184e688 d2584184e690 ">Yes</td>
+</tr>
+
+</tbody>
+
+</table>
+</div>
+
+</div>
+
+
+</div>
+
+
+<div class="related-links"><div class="relinfo relref"><strong>Related reference</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/g/getsockopt.html" title="Get options associated with a socket">getsockopt()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/i/ioctl.html" title="Control a device">ioctl(), vioctl()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/p/poll.html" title="Multiplex input/output over a set of file descriptors">poll()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/r/recv.html" title="Receive a message from a socket">recv()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/s/send.html" title="Send a message to a connected socket">send()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/s/sendmmsg.html" title="Send multiple messages to a socket">sendmmsg()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/s/sendto.html" title="Send a message to a socket at a specific address">sendto()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/s/socket.html" title="Create an endpoint for communication">socket()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/w/write.html" title="Write bytes to a file">write()</a></div>
+</div>
+</div><div class="navfooter"><!---->
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-s.html" title="S"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">S</span></a></span>  </div>
+</body>
+</html>

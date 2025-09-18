@@ -1,0 +1,338 @@
+
+<!DOCTYPE html
+  PUBLIC "" "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />        
+      <meta name="copyright" content="(C) Copyright 2005" /><meta name="DC.rights.owner" content="(C) Copyright 2005" /><meta name="DC.Type" content="reference" /><meta name="DC.Title" content="res_query()" /><meta name="abstract" content="Query the local Internet domain name server" /><meta name="description" content="Query the local Internet domain name server" /><meta name="indexterms" content="res_query()" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-r.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/d/dn_comp.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/d/dn_expand.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/g/gethostbyname.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/h/herror.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/r/res_init.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/r/res_mkquery.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/r/res_querydomain.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/r/res_search.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/r/res_send.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.utilities/topic/h/hostname.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.utilities/topic/r/resolv.conf.html" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="res_query" /><meta name="DC.Language" content="en-us" /><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/commonltr.css"><!----></link><title>res_query()</title><link rel="canonical" type="html" href="https://www.qnx.com/developers/docs/7.1/#com.qnx.doc.neutrino.lib_ref/" /><!--  Generated with Oxygen version 18.1, build number 2017020917.  --><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/webhelp_topic.css"><!----></link><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/skins/skin.css" /><script type="text/javascript"><!--
+            
+            var prefix = "../../../index.html";
+            
+            --></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-1.11.3.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.cookie.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-ui.custom.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.highlight-3.js"><!----></script><script type="text/javascript" charset="utf-8" src="../../../oxygen-webhelp/resources/js/webhelp_topic.js"><!----></script><script type="text/javascript"> var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-27400275-1']); _gaq.push(['_setDomainName', 'www.qnx.com']);_gaq.push(['_setAllowLinker', true]);_gaq.push(['_trackPageview']);(function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script></head>
+<body onload="highlightSearchTerm()" class="frmBody" id="res_query">
+<table class="nav"><tbody><tr><td colspan="2"><div id="printlink"><button onClick="window.print()" title="Print this page" aria-label="Print this page"></button></div><div id="permalink"><a href="#" title="Link to this page"></a></div></td></tr><tr><td style="width:75%;"><span class="topic_breadcrumb_links"><span class="topic_breadcrumb_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-r.html" title="R">R</a></span></span></td><td><span id="topic_navigation_links" class="navheader">
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-r.html" title="R"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">R</span></a></span>  </span></td></tr></tbody></table>
+
+
+<h1 class="title topictitle1"><span class="keyword apiname">res_query()</span></h1>
+<table width="100%"><tbody><tr><td align="left"><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">QNX SDP</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">7.1</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">C Library Reference</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">API</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">Developer</button></td><td align="right"><span style="margin:0px 5px; font-size:0.9em;">Updated: October 28, 2024</span></td></tr></tbody></table>
+
+
+<div class="body refbody"><p class="shortdesc"><em class="ph i">Query the local Internet domain name server</em></p>
+
+
+<div class="section refsyn"><h2 class="title sectiontitle">Synopsis:</h2>
+
+<pre class="pre codeblock">
+#include &lt;sys/types.h&gt;
+#include &lt;netinet/in.h&gt;
+#include &lt;arpa/nameser.h&gt;
+#include &lt;resolv.h&gt;
+
+int res_query( const char  * <var class="keyword varname">dname</var>, 
+               int <var class="keyword varname">class</var>, 
+               int <var class="keyword varname">type</var>,
+               u_char  * <var class="keyword varname">answer</var>, 
+               int <var class="keyword varname">anslen</var> );
+</pre>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Arguments:</h2>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><var class="keyword varname">dname</var></dt>
+
+<dd class="dd">The fully qualified domain name that you want to query.</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">class</var></dt>
+
+<dd class="dd">The class of information that you want; one of:
+
+  <ul class="ul">
+  <li class="li"><span class="keyword const">C_IN</span> â ARPA Internet.
+    
+  </li>
+
+
+  <li class="li"><span class="keyword const">C_CHAOS</span> â Chaos net (MIT).
+    
+  </li>
+
+
+  <li class="li"><span class="keyword const">C_HS</span> â Hesiod name server (MIT).
+    
+  </li>
+
+
+  <li class="li"><span class="keyword const">C_ANY</span> â any class.
+    
+  </li>
+
+
+  </ul>
+
+
+  <p class="p">
+  You typically use <span class="keyword const">C_IN</span>.
+  </p>
+
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">type</var></dt>
+
+<dd class="dd">The type of information that you want.
+  You typically use <span class="keyword const">T_PTR</span>, but you can use any of the
+  <span class="keyword const">T_*</span> constants defined in <span class="ph filepath">&lt;arpa/nameser.h&gt;</span>.
+  
+
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">answer</var></dt>
+
+<dd class="dd">A pointer to a buffer where the function can store the answer to the query.</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">anslen</var></dt>
+
+<dd class="dd">The length of the buffer.</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Library:</h2>
+
+
+<p class="p"><span class="ph filepath">libsocket</span></p>
+
+
+<p class="p">
+Use the <span class="keyword option">-l socket</span> option to
+<a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/q/qcc.html"><span class="keyword cmdname">qcc</span></a>
+to link against this library.
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Description:</h2>
+
+
+<p class="p">
+The <span class="keyword apiname">res_query()</span> function provides an interface to
+the server query mechanism. It constructs a query, sends it
+to the local server, waits for a response, and makes
+preliminary checks on the reply. The query requests
+information of the specified <var class="keyword varname">type</var> and
+<var class="keyword varname">class</var> for the specified fully qualified domain
+name <var class="keyword varname">dname</var>. The reply message is left in the
+<var class="keyword varname">answer</var> buffer with length <var class="keyword varname">anslen</var> supplied by the caller.
+
+
+
+
+
+
+</p>
+
+
+<p class="p">
+The resolver routines are used for making, sending, and
+interpreting query and reply messages with Internet domain name servers.
+Global configuration and state information used by the resolver
+routines is kept in the structure <var class="keyword varname">_res</var>. 
+For more information on the options, see 
+<a class="xref" href="res_init.html" title="Initialize the Internet domain name resolver routines"><span class="keyword apiname">res_init()</span></a>.
+</p>
+
+
+<p class="p">
+The <span class="keyword apiname">res_query()</span> function uses the following lower-level routines:
+</p>
+
+
+<ul class="ul">
+<li class="li"><a class="xref" href="res_mkquery.html" title="Construct an Internet domain name query"><span class="keyword apiname">res_mkquery()</span></a>
+  constructs a standard query message
+</li>
+
+
+<li class="li"><a class="xref" href="res_send.html" title="Send a preformatted Internet domain name query"><span class="keyword apiname">res_send()</span></a>
+  sends the preformatted query and returns an answer
+</li>
+
+
+<li class="li"><a class="xref" href="../d/dn_comp.html" title="Compress an Internet domain name"><span class="keyword apiname">dn_comp()</span></a>
+  compresses a domain name
+</li>
+
+
+<li class="li"><a class="xref" href="../d/dn_expand.html" title="Expand a compressed Internet domain name"><span class="keyword apiname">dn_expand()</span></a>
+  expands the compressed domain name to a full domain name
+</li>
+
+
+</ul>
+
+
+<p class="p"><strong class="ph b">Based on:</strong></p>
+
+
+<p class="p">
+<em class="ph i">RFC 974</em>, <em class="ph i">RFC 1032</em>, <em class="ph i">RFC 1033</em>, <em class="ph i">RFC 1034</em>,
+<em class="ph i">RFC 1035</em>
+</p>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Returns:</h2>
+
+
+<p class="p">
+The length of a reply message, in bytes, or -1 if an error occurs
+(<a class="xref" href="../h/h_errno.html" title="Host error variable"><var class="keyword varname">h_errno</var></a> is set).
+
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Errors:</h2>
+
+
+<p class="p">
+See <a class="xref" href="../h/herror.html" title="Print the message associated with the value of h_errno to standard error"><span class="keyword apiname">herror()</span></a>.
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Files:</h2>
+
+
+<dl class="dl" compact="compact">
+
+<dt class="dt dlterm"><span class="ph filepath">/etc/resolv.conf</span></dt>
+
+<dd class="dd">Resolver configuration file.
+  
+</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Environment variables:</h2>
+
+
+<dl class="dl" compact="compact">
+
+<dt class="dt dlterm"><span class="keyword envar">LOCALDOMAIN</span></dt>
+
+<dd class="dd">When set, <span class="keyword envar">LOCALDOMAIN</span> contains a domain name that overrides the current domain name.
+  
+  
+</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Classification:</h2>
+
+<p class="p"><a class="xref" href="../summary.html#summary__CLASSIFICATION">Unix</a></p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+<thead class="thead" align="left">
+<tr><th class="entry" valign="top" id="d2500137e446">Safety:</th>
+<th class="entry" valign="top" id="d2500137e448">Â </th>
+</tr>
+
+</thead>
+
+<tbody class="tbody">
+<tr><td class="entry" valign="top" headers="d2500137e446 d2500137e448 ">Cancellation point</td>
+<td class="entry" valign="top" headers="d2500137e446 d2500137e448 ">Yes</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2500137e446 d2500137e448 ">Interrupt handler</td>
+<td class="entry" valign="top" headers="d2500137e446 d2500137e448 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2500137e446 d2500137e448 ">Signal handler</td>
+<td class="entry" valign="top" headers="d2500137e446 d2500137e448 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2500137e446 d2500137e448 ">Thread</td>
+<td class="entry" valign="top" headers="d2500137e446 d2500137e448 ">No</td>
+</tr>
+
+</tbody>
+
+</table>
+</div>
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="related-links"><div class="relinfo relref"><strong>Related reference</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/d/dn_comp.html" title="Compress an Internet domain name">dn_comp()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/d/dn_expand.html" title="Expand a compressed Internet domain name">dn_expand()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/g/gethostbyname.html" title="Get a network host entry, given a name">gethostbyname(), gethostbyname2()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/h/herror.html" title="Print the message associated with the value of h_errno to standard error">herror()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/r/res_init.html" title="Initialize the Internet domain name resolver routines">res_init()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/r/res_mkquery.html" title="Construct an Internet domain name query">res_mkquery()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/r/res_querydomain.html" title="Query the local Internet domain name server">res_querydomain()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/r/res_search.html" title="Query a local server, using search options">res_search()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/r/res_send.html" title="Send a preformatted Internet domain name query">res_send()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.utilities/topic/h/hostname.html" title="hostname (Utilities Reference)">hostname (Utilities Reference)</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.utilities/topic/r/resolv.conf.html" title="/etc/resolv.conf (Utilities Reference)">/etc/resolv.conf (Utilities Reference)</a></div>
+</div>
+</div><div class="navfooter"><!---->
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-r.html" title="R"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">R</span></a></span>  </div>
+</body>
+</html>

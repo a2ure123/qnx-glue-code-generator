@@ -1,0 +1,261 @@
+
+<!DOCTYPE html
+  PUBLIC "" "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />        
+      <meta name="copyright" content="(C) Copyright 2005" /><meta name="DC.rights.owner" content="(C) Copyright 2005" /><meta name="DC.Type" content="reference" /><meta name="DC.Title" content="openfd()" /><meta name="abstract" content="Open for private access a file associated with a given descriptor" /><meta name="description" content="Open for private access a file associated with a given descriptor" /><meta name="indexterms" content="openfd()" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-o.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/d/dup.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/o/open.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/s/sopenfd.html" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="openfd" /><meta name="DC.Language" content="en-us" /><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/commonltr.css"><!----></link><title>openfd()</title><link rel="canonical" type="html" href="https://www.qnx.com/developers/docs/7.1/#com.qnx.doc.neutrino.lib_ref/" /><!--  Generated with Oxygen version 18.1, build number 2017020917.  --><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/webhelp_topic.css"><!----></link><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/skins/skin.css" /><script type="text/javascript"><!--
+            
+            var prefix = "../../../index.html";
+            
+            --></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-1.11.3.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.cookie.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-ui.custom.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.highlight-3.js"><!----></script><script type="text/javascript" charset="utf-8" src="../../../oxygen-webhelp/resources/js/webhelp_topic.js"><!----></script><script type="text/javascript"> var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-27400275-1']); _gaq.push(['_setDomainName', 'www.qnx.com']);_gaq.push(['_setAllowLinker', true]);_gaq.push(['_trackPageview']);(function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script></head>
+<body onload="highlightSearchTerm()" class="frmBody" id="openfd">
+<table class="nav"><tbody><tr><td colspan="2"><div id="printlink"><button onClick="window.print()" title="Print this page" aria-label="Print this page"></button></div><div id="permalink"><a href="#" title="Link to this page"></a></div></td></tr><tr><td style="width:75%;"><span class="topic_breadcrumb_links"><span class="topic_breadcrumb_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-o.html" title="O">O</a></span></span></td><td><span id="topic_navigation_links" class="navheader">
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-o.html" title="O"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">O</span></a></span>  </span></td></tr></tbody></table>
+
+
+<h1 class="title topictitle1"><span class="keyword apiname">openfd()</span></h1>
+<table width="100%"><tbody><tr><td align="left"><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">QNX SDP</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">7.1</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">C Library Reference</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">API</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">Developer</button></td><td align="right"><span style="margin:0px 5px; font-size:0.9em;">Updated: October 28, 2024</span></td></tr></tbody></table>
+
+
+<div class="body refbody"><p class="shortdesc"><em class="ph i">Open for private access a file associated with a given descriptor</em></p>
+
+
+<div class="section refsyn"><h2 class="title sectiontitle">Synopsis:</h2>
+
+<pre class="pre codeblock">
+#include &lt;unistd.h&gt;
+
+int openfd( int <var class="keyword varname">fd</var>,
+            int <var class="keyword varname">oflag</var> );
+</pre>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Arguments:</h2>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><var class="keyword varname">fd</var></dt>
+
+<dd class="dd">A file descriptor associated with the file that you want to open.</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">oflag</var></dt>
+
+<dd class="dd">How you want to open the file; a combination of the following bits:
+
+  <ul class="ul">
+  <li class="li"><span class="keyword const">O_RDONLY</span> â permit the file to be only read.
+    
+  </li>
+
+
+  <li class="li"><span class="keyword const">O_WRONLY</span> â permit the file to be only written.
+    
+  </li>
+
+
+  <li class="li"><span class="keyword const">O_RDWR</span> â permit the file to be both read and written.
+    
+  </li>
+
+
+  <li class="li"><span class="keyword const">O_APPEND</span> â cause each record that's written to
+    be written at the end of the file.
+    
+  </li>
+
+
+  <li class="li"><span class="keyword const">O_CLOEXEC</span> â close the file descriptor if the program calls
+    one of the <span class="keyword apiname">exec*()</span>, <span class="keyword apiname">posix_spawn*()</span>, or <span class="keyword apiname">spawn*()</span> functions.
+    
+    
+  </li>
+
+
+  <li class="li"><span class="keyword const">O_LARGEFILE</span> â allow the file offset to be 64 bits long.
+    
+  </li>
+
+
+  <li class="li"><span class="keyword const">O_TRUNC</span> â truncate the file to contain no data.
+    
+  </li>
+
+
+  </ul>
+
+</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Library:</h2>
+
+
+<p class="p"><span class="ph filepath">libc</span></p>
+
+
+<p class="p">
+Use the <span class="keyword option">-l c</span> option to
+<a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/q/qcc.html"><span class="keyword cmdname">qcc</span></a>
+to link against this library.
+This library is usually included automatically.
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Description:</h2>
+
+
+<p class="p">
+
+
+
+
+The <span class="keyword apiname">openfd()</span> function opens the file associated with the file descriptor, <var class="keyword varname">fd</var>.
+This is similar to <a class="xref" href="../d/dup.html" title="Duplicate a file descriptor"><span class="keyword apiname">dup()</span></a>,
+except the new <var class="keyword varname">fd</var> has private access modes and offset.
+The access mode specified in <var class="keyword varname">oflag</var> must be equal to or more restrictive than the
+access mode of the source <var class="keyword varname">fd</var>.
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Returns:</h2>
+
+
+<p class="p">
+A file descriptor, or -1 if an error occurred
+(<a class="xref" href="../e/errno.html" title="Thread-local error variable"><var class="keyword varname">errno</var></a> is set).
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Errors:</h2>
+
+
+<dl class="dl" compact="compact">
+
+<dt class="dt dlterm"><span class="keyword const">EBADF</span></dt>
+
+<dd class="dd">Invalid file descriptor <var class="keyword varname">fd</var>.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EACCES</span></dt>
+
+<dd class="dd">The access mode specified in <var class="keyword varname">oflag</var> isn't equal to or more restrictive 
+  than the access mode of the source <var class="keyword varname">fd</var>.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EBUSY</span></dt>
+
+<dd class="dd">Sharing mode (<var class="keyword varname">sflag</var>) was denied due to a conflicting open (see
+  <a class="xref" href="../s/sopenfd.html" title="Open for shared access a file associated with a given descriptor"><span class="keyword apiname">sopenfd()</span></a>).
+</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Examples:</h2>
+
+
+<pre class="pre codeblock">
+#include &lt;unistd.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;fcntl.h&gt;
+
+int main ( void )
+{
+    int fd, fd2, oflag;
+
+    fd = open ("/etc/passwd", O_RDONLY);
+    fd2 = openfd ( fd, O_RDONLY );
+    return EXIT_SUCCESS;
+}
+</pre>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Classification:</h2>
+
+<p class="p"><a class="xref" href="../summary.html#summary__CLASSIFICATION">QNX Neutrino</a></p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+<thead class="thead" align="left">
+<tr><th class="entry" valign="top" id="d2303567e317">Safety:</th>
+<th class="entry" valign="top" id="d2303567e319">Â </th>
+</tr>
+
+</thead>
+
+<tbody class="tbody">
+<tr><td class="entry" valign="top" headers="d2303567e317 d2303567e319 ">Cancellation point</td>
+<td class="entry" valign="top" headers="d2303567e317 d2303567e319 ">Yes</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2303567e317 d2303567e319 ">Interrupt handler</td>
+<td class="entry" valign="top" headers="d2303567e317 d2303567e319 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2303567e317 d2303567e319 ">Signal handler</td>
+<td class="entry" valign="top" headers="d2303567e317 d2303567e319 ">Yes</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2303567e317 d2303567e319 ">Thread</td>
+<td class="entry" valign="top" headers="d2303567e317 d2303567e319 ">Yes</td>
+</tr>
+
+</tbody>
+
+</table>
+</div>
+
+</div>
+
+
+</div>
+
+
+<div class="related-links"><div class="relinfo relref"><strong>Related reference</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/d/dup.html" title="Duplicate a file descriptor">dup()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/o/open.html" title="Open a file">open(), open64()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/s/sopenfd.html" title="Open for shared access a file associated with a given descriptor">sopenfd()</a></div>
+</div>
+</div><div class="navfooter"><!---->
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-o.html" title="O"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">O</span></a></span>  </div>
+</body>
+</html>

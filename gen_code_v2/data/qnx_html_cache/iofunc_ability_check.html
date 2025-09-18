@@ -1,0 +1,267 @@
+
+<!DOCTYPE html
+  PUBLIC "" "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />        
+      <meta name="copyright" content="(C) Copyright 2005" /><meta name="DC.rights.owner" content="(C) Copyright 2005" /><meta name="DC.Type" content="reference" /><meta name="DC.Title" content="iofunc_ability_check()" /><meta name="abstract" content="Verify that the client has a given resource manager ability" /><meta name="description" content="Verify that the client has a given resource manager ability" /><meta name="indexterms" content="iofunc_ability_check()" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-i.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.resmgr/topic/about.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.getting_started/topic/s1_resmgr.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/c/connectclientinfoable.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/i/iofunc_check_access.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/i/iofunc_chmod.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/i/iofunc_chown.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/i/iofunc_client_info_able.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/i/iofunc_open.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/i/iofunc_openfd.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/p/procmgr_ability.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/r/resmgr_context_t.html" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="iofunc_ability_check" /><meta name="DC.Language" content="en-us" /><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/commonltr.css"><!----></link><title>iofunc_ability_check()</title><link rel="canonical" type="html" href="https://www.qnx.com/developers/docs/7.1/#com.qnx.doc.neutrino.lib_ref/" /><!--  Generated with Oxygen version 18.1, build number 2017020917.  --><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/webhelp_topic.css"><!----></link><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/skins/skin.css" /><script type="text/javascript"><!--
+            
+            var prefix = "../../../index.html";
+            
+            --></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-1.11.3.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.cookie.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-ui.custom.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.highlight-3.js"><!----></script><script type="text/javascript" charset="utf-8" src="../../../oxygen-webhelp/resources/js/webhelp_topic.js"><!----></script><script type="text/javascript"> var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-27400275-1']); _gaq.push(['_setDomainName', 'www.qnx.com']);_gaq.push(['_setAllowLinker', true]);_gaq.push(['_trackPageview']);(function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script></head>
+<body onload="highlightSearchTerm()" class="frmBody" id="iofunc_ability_check">
+<table class="nav"><tbody><tr><td colspan="2"><div id="printlink"><button onClick="window.print()" title="Print this page" aria-label="Print this page"></button></div><div id="permalink"><a href="#" title="Link to this page"></a></div></td></tr><tr><td style="width:75%;"><span class="topic_breadcrumb_links"><span class="topic_breadcrumb_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-i.html" title="I">I</a></span></span></td><td><span id="topic_navigation_links" class="navheader">
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-i.html" title="I"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">I</span></a></span>  </span></td></tr></tbody></table>
+
+
+<h1 class="title topictitle1"><span class="keyword apiname">iofunc_ability_check()</span></h1>
+<table width="100%"><tbody><tr><td align="left"><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">QNX SDP</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">7.1</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">C Library Reference</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">API</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">Developer</button></td><td align="right"><span style="margin:0px 5px; font-size:0.9em;">Updated: October 28, 2024</span></td></tr></tbody></table>
+
+
+<div class="body refbody"><p class="shortdesc"><em class="ph i">Verify that the client has a given resource manager ability</em></p>
+
+
+<div class="section refsyn"><h2 class="title sectiontitle">Synopsis:</h2>
+
+<pre class="pre codeblock">
+#include &lt;sys/iofunc.h&gt;
+
+int iofunc_ability_check(
+       const resmgr_context_t * const <var class="keyword varname">ctp</var>,
+       const iofunc_ability_e <var class="keyword varname">iofuncability</var> );
+</pre>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Arguments:</h2>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><var class="keyword varname">ctp</var></dt>
+
+<dd class="dd">A pointer to a
+  <a class="xref" href="../r/resmgr_context_t.html" title="Context information that's passed between resource-manager functions"><span class="keyword dtype">resmgr_context_t</span></a>
+  structure that the resource-manager library uses to pass context information
+  between functions.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">iofuncability</var></dt>
+
+<dd class="dd">The ID of the resource manager ability that you want to check for; one of the following:
+
+  <ul class="ul">
+  <li class="li"><span class="keyword const">IOFUNC_ABILITYID_CHOWN</span></li>
+
+  <li class="li"><span class="keyword const">IOFUNC_ABILITYID_DUP</span></li>
+
+  <li class="li"><span class="keyword const">IOFUNC_ABILITYID_EXEC</span></li>
+
+  <li class="li"><span class="keyword const">IOFUNC_ABILITYID_READ</span></li>
+
+  </ul>
+
+
+</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Library:</h2>
+
+
+<p class="p"><span class="ph filepath">libc</span></p>
+
+<p class="p">Use the <span class="keyword option">-l c</span> option to
+<a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/q/qcc.html"><span class="keyword cmdname">qcc</span></a>
+to link against this library.
+This library is usually included automatically.</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Description:</h2>
+
+
+<p class="p">
+
+
+
+The <span class="keyword apiname">iofunc_ability_check()</span> function verifies that the client has the given
+resource manager ability.
+The resource manager library creates the following IDs
+(shown with the ability name and the corresponding constant):
+
+
+
+
+
+
+
+
+</p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" width="100%" frame="border" border="1" rules="all">
+
+<thead class="thead" align="left">
+<tr>
+  <th class="entry" valign="top" id="d2007968e171">Ability ID</th>
+
+  <th class="entry" valign="top" id="d2007968e174">Ability name</th>
+
+  <th class="entry" valign="top" id="d2007968e177">Description</th>
+
+</tr>
+
+</thead>
+
+
+<tbody class="tbody">
+<tr>
+  <td class="entry" valign="top" headers="d2007968e171 d2007968e174 d2007968e177 "><span class="keyword const">IOFUNC_ABILITYID_CHOWN</span></td>
+
+  <td class="entry" valign="top" headers="d2007968e171 d2007968e174 d2007968e177 "><tt class="ph tt">iofunc/chown</tt> (<span class="keyword const">IOFUNC_ABILITY_CHOWN</span>)</td>
+
+  <td class="entry" valign="top" headers="d2007968e171 d2007968e174 d2007968e177 ">Allow the client to set the ownership of files, even if not <span class="ph filepath">root</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d2007968e171 d2007968e174 d2007968e177 "><span class="keyword const">IOFUNC_ABILITYID_DUP</span></td>
+
+  <td class="entry" valign="top" headers="d2007968e171 d2007968e174 d2007968e177 "><tt class="ph tt">iofunc/dup</tt> (<span class="keyword const">IOFUNC_ABILITY_DUP</span>)</td>
+
+  <td class="entry" valign="top" headers="d2007968e171 d2007968e174 d2007968e177 ">Allow the client to duplicate another process's handle</td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d2007968e171 d2007968e174 d2007968e177 "><span class="keyword const">IOFUNC_ABILITYID_EXEC</span></td>
+
+  <td class="entry" valign="top" headers="d2007968e171 d2007968e174 d2007968e177 "><tt class="ph tt">iofunc/exec</tt> (<span class="keyword const">IOFUNC_ABILITY_EXEC</span>)</td>
+
+  <td class="entry" valign="top" headers="d2007968e171 d2007968e174 d2007968e177 ">Grant execute access to files and directories that the client wouldn't normally have access to</td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d2007968e171 d2007968e174 d2007968e177 "><span class="keyword const">IOFUNC_ABILITYID_READ</span></td>
+
+  <td class="entry" valign="top" headers="d2007968e171 d2007968e174 d2007968e177 "><tt class="ph tt">iofunc/read</tt> (<span class="keyword const">IOFUNC_ABILITY_READ</span>)</td>
+
+  <td class="entry" valign="top" headers="d2007968e171 d2007968e174 d2007968e177 ">Allow the client to access files for reading, even if it doesn't have the required permissions</td>
+
+</tr>
+
+
+</tbody>
+
+</table>
+</div>
+
+
+<p class="p">
+You typically use this function to check for special abilities after a call to
+<a class="xref" href="iofunc_check_access.html" title="Check access permissions"><span class="keyword apiname">iofunc_check_access()</span></a>
+indicates that the client doesn't have the appropriate permissions to do an operation.
+These abilities can reduce the number of process manager abilities (see
+<a class="xref" href="../p/procmgr_ability.html" title="Control a process's ability to perform certain operations"><span class="keyword apiname">procmgr_ability()</span></a>)
+that a client needs to keep.
+</p>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Returns:</h2>
+
+
+<p class="p">
+<span class="keyword const">true</span> if the client has the given ability; <span class="keyword const">false</span> if it doesn't.
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Classification:</h2>
+
+<p class="p"><a class="xref" href="../summary.html#summary__CLASSIFICATION">QNX Neutrino</a></p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+<thead class="thead" align="left">
+<tr><th class="entry" valign="top" id="d2007968e316">Safety:</th>
+<th class="entry" valign="top" id="d2007968e318">Â </th>
+</tr>
+
+</thead>
+
+<tbody class="tbody">
+<tr><td class="entry" valign="top" headers="d2007968e316 d2007968e318 ">Cancellation point</td>
+<td class="entry" valign="top" headers="d2007968e316 d2007968e318 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2007968e316 d2007968e318 ">Interrupt handler</td>
+<td class="entry" valign="top" headers="d2007968e316 d2007968e318 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2007968e316 d2007968e318 ">Signal handler</td>
+<td class="entry" valign="top" headers="d2007968e316 d2007968e318 ">Yes</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2007968e316 d2007968e318 ">Thread</td>
+<td class="entry" valign="top" headers="d2007968e316 d2007968e318 ">Yes</td>
+</tr>
+
+</tbody>
+
+</table>
+</div>
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="related-links"><div class="relinfo relconcepts"><strong>Related concepts</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.resmgr/topic/about.html" title="Writing a Resource Manager">Writing a Resource Manager</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.getting_started/topic/s1_resmgr.html" title="Resource Managers (Getting Started with QNX Neutrino)">Resource Managers (Getting Started with <span class="keyword">QNX Neutrino</span>)</a></div>
+</div>
+<div class="relinfo relref"><strong>Related reference</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/c/connectclientinfoable.html" title="Get extended information about a client connection, including abilities">ConnectClientInfoAble()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/i/iofunc_check_access.html" title="Check access permissions">iofunc_check_access()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/i/iofunc_chmod.html" title="Handle an _IO_CHMOD message">iofunc_chmod()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/i/iofunc_chown.html" title="Handle an _IO_CHOWN message">iofunc_chown()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/i/iofunc_client_info_able.html" title="Return information about a client connection, including abilities">iofunc_client_info_able()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/i/iofunc_open.html" title="Verify a client's ability to open or to create a resource">iofunc_open()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/i/iofunc_openfd.html" title="Increment count and locking flags">iofunc_openfd()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/p/procmgr_ability.html" title="Control a process's ability to perform certain operations">procmgr_ability()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/r/resmgr_context_t.html" title="Context information that's passed between resource-manager functions">resmgr_context_t</a></div>
+</div>
+</div><div class="navfooter"><!---->
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-i.html" title="I"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">I</span></a></span>  </div>
+</body>
+</html>

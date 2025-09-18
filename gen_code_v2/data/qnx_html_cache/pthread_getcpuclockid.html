@@ -1,0 +1,237 @@
+
+<!DOCTYPE html
+  PUBLIC "" "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />        
+      <meta name="copyright" content="(C) Copyright 2005" /><meta name="DC.rights.owner" content="(C) Copyright 2005" /><meta name="DC.Type" content="reference" /><meta name="DC.Title" content="pthread_getcpuclockid()" /><meta name="abstract" content="Return the clock ID of the CPU-time clock from a specified thread" /><meta name="description" content="Return the clock ID of the CPU-time clock from a specified thread" /><meta name="indexterms" content="pthread_getcpuclockid()" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-p.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.getting_started/topic/s1_timer.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.prog/topic/timing_execution_times.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/c/clock_getcpuclockid.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/c/clock_getres.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/c/clock_gettime.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/c/clockid.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/c/clock_settime.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/t/timer_create.html" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="pthread_getcpuclockid" /><meta name="DC.Language" content="en-us" /><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/commonltr.css"><!----></link><title>pthread_getcpuclockid()</title><link rel="canonical" type="html" href="https://www.qnx.com/developers/docs/7.1/#com.qnx.doc.neutrino.lib_ref/" /><!--  Generated with Oxygen version 18.1, build number 2017020917.  --><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/webhelp_topic.css"><!----></link><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/skins/skin.css" /><script type="text/javascript"><!--
+            
+            var prefix = "../../../index.html";
+            
+            --></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-1.11.3.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.cookie.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-ui.custom.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.highlight-3.js"><!----></script><script type="text/javascript" charset="utf-8" src="../../../oxygen-webhelp/resources/js/webhelp_topic.js"><!----></script><script type="text/javascript"> var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-27400275-1']); _gaq.push(['_setDomainName', 'www.qnx.com']);_gaq.push(['_setAllowLinker', true]);_gaq.push(['_trackPageview']);(function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script></head>
+<body onload="highlightSearchTerm()" class="frmBody" id="pthread_getcpuclockid">
+<table class="nav"><tbody><tr><td colspan="2"><div id="printlink"><button onClick="window.print()" title="Print this page" aria-label="Print this page"></button></div><div id="permalink"><a href="#" title="Link to this page"></a></div></td></tr><tr><td style="width:75%;"><span class="topic_breadcrumb_links"><span class="topic_breadcrumb_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-p.html" title="P">P</a></span></span></td><td><span id="topic_navigation_links" class="navheader">
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-p.html" title="P"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">P</span></a></span>  </span></td></tr></tbody></table>
+
+
+<h1 class="title topictitle1"><span class="keyword apiname">pthread_getcpuclockid()</span></h1>
+<table width="100%"><tbody><tr><td align="left"><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">QNX SDP</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">7.1</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">C Library Reference</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">API</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">Developer</button></td><td align="right"><span style="margin:0px 5px; font-size:0.9em;">Updated: October 28, 2024</span></td></tr></tbody></table>
+
+
+<div class="body refbody"><p class="shortdesc"><em class="ph i">Return the clock ID of the CPU-time clock from a specified thread</em></p>
+
+
+<div class="section refsyn"><h2 class="title sectiontitle">Synopsis:</h2>
+
+<pre class="pre codeblock">
+#include &lt;sys/types.h&gt;
+#include &lt;time.h&gt;
+#include &lt;pthread.h&gt;
+
+int pthread_getcpuclockid( pthread_t <var class="keyword varname">id</var>,
+                           clockid_t* <var class="keyword varname">clock_id</var>);
+</pre>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Arguments:</h2>
+
+
+<dl class="dl">
+
+
+<dt class="dt dlterm"><var class="keyword varname">thread</var></dt>
+
+
+<dd class="dd">The ID of the thread that you want to get the clock ID for, which you
+  can get when you call
+  <a class="xref" href="pthread_create.html" title="Create a thread"><span class="keyword apiname">pthread_create()</span></a>
+  or
+  <a class="xref" href="pthread_self.html" title="Get the calling thread's ID"><span class="keyword apiname">pthread_self()</span></a>.
+
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">clock_id</var></dt>
+
+
+<dd class="dd">A pointer to a <span class="keyword dtype">clockid_t</span> object where the function can
+  store the clock ID.
+
+</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Library:</h2>
+
+
+<p class="p"><span class="ph filepath">libc</span></p>
+
+<p class="p">Use the <span class="keyword option">-l c</span> option to
+<a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/q/qcc.html"><span class="keyword cmdname">qcc</span></a>
+to link against this library.
+This library is usually included automatically.</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Description:</h2>
+
+
+<p class="p">
+
+
+
+
+The <span class="keyword apiname">pthread_getcpuclockid()</span> function gets the clock ID of
+the CPU-time clock of the thread specified by <var class="keyword varname">id</var> (if the thread
+exists) and stores the clock ID in the object that
+<var class="keyword varname">clock_id</var> points to.
+The CPU-time clock represents the amount of time the thread has spent
+running.
+For more information, see
+<span class="q">&#147;<a class="xref" href="../../../com.qnx.doc.neutrino.prog/topic/timing_execution_times.html">Monitoring execution times</a>&#148;</span>
+in the <span class="q">&#147;Understanding the Microkernel's Concept of Time&#148;</span> chapter of the
+<span class="keyword">QNX Neutrino RTOS</span> <cite class="cite">Programmer's Guide</cite>.
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Returns:</h2>
+
+
+<dl class="dl">
+
+
+<dt class="dt dlterm">0</dt>
+
+<dd class="dd">Success.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">ESRCH</span></dt>
+
+<dd class="dd">The value specified by <var class="keyword varname">id</var> doesn't refer to an existing thread.</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+<div class="section"><h2 class="title sectiontitle">Examples:</h2>
+
+
+<pre class="pre codeblock">
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;time.h&gt;
+#include &lt;errno.h&gt;
+#include &lt;pthread.h&gt;
+
+int main( int argc, const char *argv[] )
+{
+    clockid_t clk_id;
+    struct timespec tspec;
+    pthread_t tid;
+
+    tid = pthread_self();
+
+    if (pthread_getcpuclockid( tid, &amp;clk_id) == 0)
+    {
+        if (clock_gettime( clk_id, &amp;tspec ) != 0)
+        {
+            perror ("clock_gettime():");
+        }
+        else
+        {
+            printf ("CPU time for tid %d is %d seconds, %ld nanoseconds.\n",
+                    tid, tspec.tv_sec, tspec.tv_nsec);
+        }
+    }
+    else
+    {
+        printf ("pthread_getcpuclockid(): no thread with ID %d.\n", tid);
+    }
+
+    return EXIT_SUCCESS;
+}
+</pre>
+
+</div>
+
+
+<div class="section"><h2 class="title sectiontitle">Classification:</h2>
+
+<p class="p"><a class="xref" href="../summary.html#summary__CLASSIFICATION">POSIX 1003.1 TCT</a></p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+<thead class="thead" align="left">
+<tr><th class="entry" valign="top" id="d2412604e209">Safety:</th>
+<th class="entry" valign="top" id="d2412604e211">Â </th>
+</tr>
+
+</thead>
+
+<tbody class="tbody">
+<tr><td class="entry" valign="top" headers="d2412604e209 d2412604e211 ">Cancellation point</td>
+<td class="entry" valign="top" headers="d2412604e209 d2412604e211 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2412604e209 d2412604e211 ">Interrupt handler</td>
+<td class="entry" valign="top" headers="d2412604e209 d2412604e211 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2412604e209 d2412604e211 ">Signal handler</td>
+<td class="entry" valign="top" headers="d2412604e209 d2412604e211 ">Yes</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2412604e209 d2412604e211 ">Thread</td>
+<td class="entry" valign="top" headers="d2412604e209 d2412604e211 ">Yes</td>
+</tr>
+
+</tbody>
+
+</table>
+</div>
+
+</div>
+
+
+</div>
+
+
+<div class="related-links"><div class="relinfo relconcepts"><strong>Related concepts</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.getting_started/topic/s1_timer.html" title="Clocks, Timers, and Getting a Kick Every So Often (Getting Started with QNX Neutrino)">Clocks, Timers, and Getting a Kick Every So Often (Getting Started with <span class="keyword">QNX Neutrino</span>)</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.prog/topic/timing_execution_times.html" title="Monitoring execution times (Getting Started with QNX Neutrino)">Monitoring execution times (Getting Started with <span class="keyword">QNX Neutrino</span>)</a></div>
+</div>
+<div class="relinfo relref"><strong>Related reference</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/c/clock_getcpuclockid.html" title="Return the clock ID of the CPU-time clock from a specified process">clock_getcpuclockid()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/c/clock_getres.html" title="Get the resolution of the clock">clock_getres()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/c/clock_gettime.html" title="Get the current time of a clock">clock_gettime()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/c/clockid.html" title="Get the CPU-time clock ID for a given process and thread">ClockId(), ClockId_r()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/c/clock_settime.html" title="Set a clock">clock_settime()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/t/timer_create.html" title="Create a timer">timer_create()</a></div>
+</div>
+</div><div class="navfooter"><!---->
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-p.html" title="P"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">P</span></a></span>  </div>
+</body>
+</html>

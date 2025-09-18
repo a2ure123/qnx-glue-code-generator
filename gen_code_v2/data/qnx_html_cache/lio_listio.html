@@ -1,0 +1,512 @@
+
+<!DOCTYPE html
+  PUBLIC "" "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />        
+      <meta name="copyright" content="(C) Copyright 2005" /><meta name="DC.rights.owner" content="(C) Copyright 2005" /><meta name="DC.Type" content="reference" /><meta name="DC.Title" content="lio_listio(), lio_listio64()" /><meta name="abstract" content="Initiate a list of I/O requests" /><meta name="description" content="Initiate a list of I/O requests" /><meta name="indexterms" content="lio_listio(), lio_listio64()" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-l.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/a/aio_cancel.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/a/aio_error.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/a/aio_fsync.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/a/aio_read.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/a/aio_return.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/a/aio_write.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/a/aiocb.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/c/close.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/e/execl.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/e/execle.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/e/execlp.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/e/execlpe.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/e/execv.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/e/execve.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/e/execvp.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/e/execvpe.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/e/exit.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/f/fcntl.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/f/fork.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/l/lseek.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/r/read.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/s/sigevent.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/w/write.html" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="lio_listio" /><meta name="DC.Language" content="en-us" /><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/commonltr.css"><!----></link><title>lio_listio(), lio_listio64()</title><link rel="canonical" type="html" href="https://www.qnx.com/developers/docs/7.1/#com.qnx.doc.neutrino.lib_ref/" /><!--  Generated with Oxygen version 18.1, build number 2017020917.  --><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/webhelp_topic.css"><!----></link><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/skins/skin.css" /><script type="text/javascript"><!--
+            
+            var prefix = "../../../index.html";
+            
+            --></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-1.11.3.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.cookie.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-ui.custom.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.highlight-3.js"><!----></script><script type="text/javascript" charset="utf-8" src="../../../oxygen-webhelp/resources/js/webhelp_topic.js"><!----></script><script type="text/javascript"> var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-27400275-1']); _gaq.push(['_setDomainName', 'www.qnx.com']);_gaq.push(['_setAllowLinker', true]);_gaq.push(['_trackPageview']);(function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script></head>
+<body onload="highlightSearchTerm()" class="frmBody" id="lio_listio">
+<table class="nav"><tbody><tr><td colspan="2"><div id="printlink"><button onClick="window.print()" title="Print this page" aria-label="Print this page"></button></div><div id="permalink"><a href="#" title="Link to this page"></a></div></td></tr><tr><td style="width:75%;"><span class="topic_breadcrumb_links"><span class="topic_breadcrumb_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-l.html" title="L">L</a></span></span></td><td><span id="topic_navigation_links" class="navheader">
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-l.html" title="L"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">L</span></a></span>  </span></td></tr></tbody></table>
+
+
+<h1 class="title topictitle1"><span class="keyword apiname">lio_listio()</span>, <span class="keyword apiname">lio_listio64()</span></h1>
+<table width="100%"><tbody><tr><td align="left"><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">QNX SDP</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">7.1</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">C Library Reference</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">API</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">Developer</button></td><td align="right"><span style="margin:0px 5px; font-size:0.9em;">Updated: October 28, 2024</span></td></tr></tbody></table>
+
+
+<div class="body refbody"><p class="shortdesc"><em class="ph i">Initiate a list of I/O requests</em></p>
+
+
+<div class="section">
+
+<p class="p">
+
+
+</p>
+
+</div>
+
+
+<div class="section refsyn"><h2 class="title sectiontitle">Synopsis:</h2>
+
+<pre class="pre codeblock">
+#include &lt;aio.h&gt;
+
+int lio_listio( int <var class="keyword varname">mode</var>,
+                struct aiocb* const <var class="keyword varname">list</var>[],
+                int <var class="keyword varname">nent</var>,
+                struct sigevent* <var class="keyword varname">sig</var> );
+
+int lio_listio64( int <var class="keyword varname">mode</var>,
+                  struct aiocb64* const <var class="keyword varname">list</var>[],
+                  int <var class="keyword varname">nent</var>,
+                  struct sigevent* <var class="keyword varname">sig</var> );
+</pre>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Arguments:</h2>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><var class="keyword varname">mode</var></dt>
+
+<dd class="dd">The mode of operation; one of:
+
+  <ul class="ul">
+  <li class="li"><span class="keyword const">LIO_WAIT</span> â behave
+    synchronously, waiting until all I/O is completed, and ignore the
+    <var class="keyword varname">sig</var> argument. 
+    
+  </li>
+
+
+  <li class="li"><span class="keyword const">LIO_NOWAIT</span> â behave
+    asynchronously, returning immediately; the signal specified by
+    the <var class="keyword varname">sig</var> argument is delivered to the calling process when  
+    all the I/O operations from this function are completed.  
+    
+  </li>
+
+
+  </ul>
+
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">list</var></dt>
+
+<dd class="dd">An array of pointers to
+  <a class="xref" href="../a/aiocb.html" title="Asynchronous I/O control block"><span class="keyword dtype">aiocb</span> or <span class="keyword dtype">aiocb64</span></a>
+  structures that specify the I/O operations that you want to initiate.
+  The array may contain <span class="keyword const">NULL</span> pointers, which the function ignores.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">nent</var></dt>
+
+<dd class="dd">The number of entries in the <var class="keyword varname">list</var> array.</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">sig</var></dt>
+
+<dd class="dd"><span class="keyword const">NULL</span>, or a pointer to a
+  <a class="xref" href="../s/sigevent.html" title="Structure that describes an event"><span class="keyword dtype">sigevent</span></a>
+  structure that specifies the notification that you want to deliver to the
+  calling process when all of the I/O operations are completed. The event doesn't need to be registered.
+  The function ignores this argument if <var class="keyword varname">mode</var> is
+  <span class="keyword const">LIO_WAIT</span>.
+</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Library:</h2>
+
+
+<p class="p"><span class="ph filepath">libc</span></p>
+
+
+<p class="p">
+Use the <span class="keyword option">-l c</span> option to
+<a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/q/qcc.html"><span class="keyword cmdname">qcc</span></a>
+to link against this library.
+This library is usually included automatically.
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Description:</h2>
+
+
+<p class="p">
+The <span class="keyword apiname">lio_listio()</span> and <span class="keyword apiname">lio_listio64()</span> functions let the calling process
+or thread initiate a list of I/O requests within a single function call.
+The <span class="keyword apiname">lio_listio64()</span> function is a large-file support version of
+<span class="keyword apiname">lio_listio()</span>.
+</p>
+
+
+<div class="note note"><span class="notetitle">Note:</span> 
+In QNX Neutrino 6.6 or later, the large-file support functions and data types
+appear in the name space only if you define <span class="keyword const">_LARGEFILE64_SOURCE</span> when you compile your code.
+For more information, see
+<span class="q">&#147;<a class="xref" href="../summary.html#summary__CLASSIFICATION">Classification</a>&#148;</span>
+in What's in a Function Description?
+</div>
+
+
+<p class="p">
+
+The <var class="keyword varname">aio_lio_opcode</var> field of each <span class="keyword dtype">aiocb</span> structure
+in <var class="keyword varname">list</var> specifies the operation to be performed (see
+<span class="ph filepath">&lt;aio.h&gt;</span>):
+</p>
+
+
+<ul class="ul">
+<li class="li"><span class="keyword const">LIO_READ</span> requests 
+  <a class="xref" href="../a/aio_read.html" title="Asynchronously read from a file"><span class="keyword apiname">aio_read()</span></a>.
+  
+</li>
+
+
+<li class="li"><span class="keyword const">LIO_WRITE</span> requests 
+  <a class="xref" href="../a/aio_write.html" title="Asynchronously write to a file"><span class="keyword apiname">aio_write()</span></a>.
+  
+</li>
+
+
+<li class="li"><span class="keyword const">LIO_NOP</span> causes the list entry to be ignored.
+  
+</li>
+
+
+</ul>
+
+
+<p class="p">
+If <var class="keyword varname">mode</var> is <span class="keyword const">LIO_NOWAIT</span>, <span class="keyword apiname">lio_listio()</span>
+and <span class="keyword apiname">lio_listio64()</span> use the 
+<a class="xref" href="../s/sigevent.html" title="Structure that describes an event"><span class="keyword dtype">sigevent</span></a>
+structure pointed to by <var class="keyword varname">sig</var> to define the signal to
+be generated when all the I/O operations are complete:
+</p>
+
+
+<ul class="ul">
+<li class="li">If <var class="keyword varname">sig</var> is <span class="keyword const">NULL</span> or
+  <var class="keyword varname">sig</var>-&gt;<var class="keyword varname">sigev_notify</var> is <span class="keyword const">SIGEV_NONE</span>,
+  then no signal delivery occurs.
+  
+</li>
+
+
+<li class="li">If <var class="keyword varname">sig</var>-&gt;<var class="keyword varname">sigev_notify</var> is 
+  <span class="keyword const">SIGEV_SIGNAL</span>:
+
+  <ul class="ul">
+  <li class="li">If nonzero, the signal specified in <var class="keyword varname">sig</var>-&gt;<var class="keyword varname">sigev_signo</var> is delivered
+  to the process when all the requests in the list have been completed.
+  If the <span class="keyword const">SA_SIGINFO</span> flag is set for that 
+  signal number, the signal is queued to the process,
+  and the value specified in <var class="keyword varname">sig</var>-&gt;<var class="keyword varname">sigev_value</var>
+  is the <var class="keyword varname">si_value</var> component of the generated signal; see
+  <a class="xref" href="../s/siginfo_t.html" title="Information about a signal"><span class="keyword dtype">siginfo_t</span></a>.
+  
+  
+  </li>
+
+
+  <li class="li">If <var class="keyword varname">sigev_signo</var> is zero, then no signal delivery occurs.</li>
+
+
+  </ul>
+
+</li>
+
+
+<li class="li">You can use other <span class="keyword const">SIGEV_*</span> types, including
+  
+  those that are QNX Neutrino extensions.
+</li>
+
+
+</ul>
+
+
+<p class="p">
+For regular files, no data transfer occurs past the
+offset maximum established in the open file description
+associated with <var class="keyword varname">aiocbp</var>-&gt;<var class="keyword varname">aio_filedes</var>.
+</p>
+
+
+<p class="p">
+The behavior of this function is altered according to the
+definitions of synchronized I/O data integrity completion
+and synchronized I/O file integrity completion if synchronized
+I/O is enabled on the file associated with <var class="keyword varname">aio_filedes</var>.
+(see the definitions of <span class="keyword const">O_DSYNC</span> and <span class="keyword const">O_SYNC</span>
+in the description of
+<a class="xref" href="../f/fcntl.html" title="Provide control over an open file"><span class="keyword apiname">fcntl()</span></a>.)
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Returns:</h2>
+
+
+<p class="p">
+If the <var class="keyword varname">mode</var> argument is <span class="keyword const">LIO_NOWAIT</span>, 
+and the I/O operations are successfully queued, these functions return 0;
+otherwise they return -1 and set
+<a class="xref" href="../e/errno.html" title="Thread-local error variable"><var class="keyword varname">errno</var></a>.
+</p>
+
+
+<p class="p">
+If the <var class="keyword varname">mode</var> argument is <span class="keyword const">LIO_WAIT</span>, and all the
+indicated I/O has been completed successfully, these functions
+return 0; otherwise, they return -1 and set <var class="keyword varname">errno</var>.
+</p>
+
+
+<p class="p">
+In either case, the return value indicates only the success
+or failure of the <span class="keyword apiname">lio_listio()</span> call itself, not the status
+of the individual I/O requests. In some cases, one or more
+of the I/O requests contained in the list may fail. Failure
+of an individual request doesn't prevent completion of any
+other individual request. To determine the outcome of each
+I/O request, examine the error status
+associated with each <span class="keyword dtype">aiocb</span> control block. Each error status
+so returned is identical to that returned as a result of calling
+<span class="keyword apiname">aio_read()</span> or <span class="keyword apiname">aio_write()</span>.
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Errors:</h2>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><span class="keyword const">EAGAIN</span></dt>
+
+<dd class="dd">The resources necessary to queue all the I/O
+  requests weren't available. The error status for each request is 
+  recorded in the <var class="keyword varname">aio_error</var> member of the corresponding 
+  <span class="keyword dtype">aiocb</span> structure, and can be retrieved using
+  <a class="xref" href="../a/aio_error.html" title="Get the error status for an asynchronous I/O operation"><span class="keyword apiname">aio_error()</span></a>.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EINVAL</span></dt>
+
+<dd class="dd">The <var class="keyword varname">mode</var> argument is invalid.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EINTR</span></dt>
+
+<dd class="dd">A signal was delivered while waiting for all
+  I/O requests to be completed during an <span class="keyword const">LIO_WAIT</span>
+  operation. However, the outstanding I/O requests aren't canceled. 
+  Use <a class="xref" href="../a/aio_fsync.html" title="Asynchronously synchronize a file"><span class="keyword apiname">aio_fsync()</span></a>
+  to determine if any request was initiated;
+  <a class="xref" href="../a/aio_return.html" title="Get the return status for an asynchronous I/O operation"><span class="keyword apiname">aio_return()</span></a> to
+  determine if any request has been completed; or <span class="keyword apiname">aio_error()</span>
+  to determine if any request was canceled.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EIO</span></dt>
+
+<dd class="dd">One or more of the individual I/O operations failed.
+  Use <span class="keyword apiname">aio_error()</span> with each <span class="keyword dtype">aiocb</span>
+  structure to determine which request(s) failed.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">ENOSYS</span></dt>
+
+<dd class="dd">The <span class="keyword apiname">lio_listio()</span> function isn't supported by this implementation.</dd>
+
+
+
+</dl>
+
+
+<p class="p">
+If either <span class="keyword apiname">lio_listio()</span> succeeds in queuing all of its
+requests, or <var class="keyword varname">errno</var> is set to <span class="keyword const">EAGAIN</span>, 
+<span class="keyword const">EINTR</span>, or <span class="keyword const">EIO</span>, then
+some of the I/O specified from the list may have been initiated. 
+In this event, each <span class="keyword dtype">aiocb</span> structure contains errors
+specific to the 
+<a class="xref" href="../r/read.html" title="Read bytes from a file"><span class="keyword apiname">read()</span></a>
+or
+<a class="xref" href="../w/write.html" title="Write bytes to a file"><span class="keyword apiname">write()</span></a>
+function being performed:
+</p>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><span class="keyword const">EAGAIN</span></dt>
+
+<dd class="dd">The requested I/O operation wasn't queued due to resource limitations.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">ECANCELED</span></dt>
+
+<dd class="dd">The requested I/O was canceled before the I/O was completed due to an 
+  explicit 
+  <a class="xref" href="../a/aio_cancel.html" title="Cancel an asynchronous I/O operation"><span class="keyword apiname">aio_cancel()</span></a>
+  request.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EINPROGRESS</span></dt>
+
+<dd class="dd">The requested I/O is in progress.</dd>
+
+
+
+</dl>
+
+
+<p class="p">
+The following additional error codes may be set
+for each <span class="keyword dtype">aiocb</span> control block:
+</p>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><span class="keyword const">EOVERFLOW</span></dt>
+
+<dd class="dd">The <var class="keyword varname">aiocbp</var>-&gt;<var class="keyword varname">aio_lio_opcode</var> is 
+  <span class="keyword const">LIO_READ</span>, the file is a regular file, 
+  <var class="keyword varname">aiocbp</var>-&gt;<var class="keyword varname">aio_nbytes</var> is greater than 0, and the 
+  <var class="keyword varname">aiocbp</var>-&gt;<var class="keyword varname">aio_offset</var> is before the end-of-file 
+  and is greater than or equal to the offset maximum in the open file
+  description associated with <var class="keyword varname">aiocbp</var>-&gt;<var class="keyword varname">aio_filedes</var>.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EFBIG</span></dt>
+
+<dd class="dd">The <var class="keyword varname">aiocbp</var>-&gt;<var class="keyword varname">aio_lio_opcode</var> is
+  <span class="keyword const">LIO_WRITE</span>, the file is a regular file, 
+  <var class="keyword varname">aiocbp</var>-&gt;<var class="keyword varname">aio_nbytes</var> is greater than 0, and the 
+  <var class="keyword varname">aiocbp</var>-&gt;<var class="keyword varname">aio_offset</var> is greater than or equal 
+  to the offset maximum in the open file description associated with
+  <var class="keyword varname">aiocbp</var>-&gt;<var class="keyword varname">aio_filedes</var>.
+</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Classification:</h2>
+
+<p class="p"><span class="keyword apiname">lio_listio()</span> is
+<a class="xref" href="../summary.html#summary__CLASSIFICATION">POSIX 1003.1</a>;
+<span class="keyword apiname">lio_listio64()</span> is
+<a class="xref" href="../summary.html#summary__CLASSIFICATION">Large-file support</a>
+</p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+<thead class="thead" align="left">
+<tr><th class="entry" valign="top" id="d2112160e808">Safety:</th>
+<th class="entry" valign="top" id="d2112160e810">Â </th>
+</tr>
+
+</thead>
+
+<tbody class="tbody">
+<tr><td class="entry" valign="top" headers="d2112160e808 d2112160e810 ">Cancellation point</td>
+<td class="entry" valign="top" headers="d2112160e808 d2112160e810 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2112160e808 d2112160e810 ">Interrupt handler</td>
+<td class="entry" valign="top" headers="d2112160e808 d2112160e810 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2112160e808 d2112160e810 ">Signal handler</td>
+<td class="entry" valign="top" headers="d2112160e808 d2112160e810 ">Yes</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2112160e808 d2112160e810 ">Thread</td>
+<td class="entry" valign="top" headers="d2112160e808 d2112160e810 ">Yes</td>
+</tr>
+
+</tbody>
+
+</table>
+</div>
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="related-links"><div class="relinfo relref"><strong>Related reference</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/a/aio_cancel.html" title="Cancel an asynchronous I/O operation">aio_cancel()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/a/aio_error.html" title="Get the error status for an asynchronous I/O operation">aio_error()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/a/aio_fsync.html" title="Asynchronously synchronize a file">aio_fsync()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/a/aio_read.html" title="Asynchronously read from a file">aio_read(), aio_read64()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/a/aio_return.html" title="Get the return status for an asynchronous I/O operation">aio_return()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/a/aio_write.html" title="Asynchronously write to a file">aio_write(), aio_write64()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/a/aiocb.html" title="Asynchronous I/O control block">aiocb, aiocb64</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/c/close.html" title="Close a file">close()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/e/execl.html" title="Execute a file">execl()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/e/execle.html" title="Execute a file">execle()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/e/execlp.html" title="Execute a file">execlp()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/e/execlpe.html" title="Execute a file">execlpe()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/e/execv.html" title="Execute a file">execv()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/e/execve.html" title="Execute a file">execve()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/e/execvp.html" title="Execute a file">execvp()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/e/execvpe.html" title="Execute a file">execvpe()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/e/exit.html" title="Exit the calling program">exit()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/f/fcntl.html" title="Provide control over an open file">fcntl()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/f/fork.html" title="Create a new process">fork()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/l/lseek.html" title="Set the current read/write file offset">lseek(), lseek64()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/r/read.html" title="Read bytes from a file">read()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/s/sigevent.html" title="Structure that describes an event">sigevent</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/w/write.html" title="Write bytes to a file">write()</a></div>
+</div>
+</div><div class="navfooter"><!---->
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-l.html" title="L"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">L</span></a></span>  </div>
+</body>
+</html>

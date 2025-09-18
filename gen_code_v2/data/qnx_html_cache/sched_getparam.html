@@ -1,0 +1,305 @@
+
+<!DOCTYPE html
+  PUBLIC "" "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />        
+      <meta name="copyright" content="(C) Copyright 2005" /><meta name="DC.rights.owner" content="(C) Copyright 2005" /><meta name="DC.Type" content="reference" /><meta name="DC.Title" content="sched_getparam()" /><meta name="abstract" content="Get the current scheduling parameters of a process" /><meta name="description" content="Get the current scheduling parameters of a process" /><meta name="indexterms" content="sched_getparam()" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-s.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.sys_arch/topic/kernel_SCHEDULING.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.prog/topic/overview_SCHEDS.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/e/errno.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/s/sched_get_priority_max.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/s/sched_get_priority_min.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/s/sched_getscheduler.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/s/sched_param.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/s/sched_setparam.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/s/sched_setscheduler.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/s/sched_yield.html" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="sched_getparam" /><meta name="DC.Language" content="en-us" /><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/commonltr.css"><!----></link><title>sched_getparam()</title><link rel="canonical" type="html" href="https://www.qnx.com/developers/docs/7.1/#com.qnx.doc.neutrino.lib_ref/" /><!--  Generated with Oxygen version 18.1, build number 2017020917.  --><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/webhelp_topic.css"><!----></link><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/skins/skin.css" /><script type="text/javascript"><!--
+            
+            var prefix = "../../../index.html";
+            
+            --></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-1.11.3.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.cookie.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-ui.custom.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.highlight-3.js"><!----></script><script type="text/javascript" charset="utf-8" src="../../../oxygen-webhelp/resources/js/webhelp_topic.js"><!----></script><script type="text/javascript"> var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-27400275-1']); _gaq.push(['_setDomainName', 'www.qnx.com']);_gaq.push(['_setAllowLinker', true]);_gaq.push(['_trackPageview']);(function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script></head>
+<body onload="highlightSearchTerm()" class="frmBody" id="sched_getparam">
+<table class="nav"><tbody><tr><td colspan="2"><div id="printlink"><button onClick="window.print()" title="Print this page" aria-label="Print this page"></button></div><div id="permalink"><a href="#" title="Link to this page"></a></div></td></tr><tr><td style="width:75%;"><span class="topic_breadcrumb_links"><span class="topic_breadcrumb_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-s.html" title="S">S</a></span></span></td><td><span id="topic_navigation_links" class="navheader">
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-s.html" title="S"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">S</span></a></span>  </span></td></tr></tbody></table>
+
+
+<h1 class="title topictitle1"><span class="keyword apiname">sched_getparam()</span></h1>
+<table width="100%"><tbody><tr><td align="left"><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">QNX SDP</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">7.1</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">C Library Reference</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">API</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">Developer</button></td><td align="right"><span style="margin:0px 5px; font-size:0.9em;">Updated: October 28, 2024</span></td></tr></tbody></table>
+
+
+<div class="body refbody"><p class="shortdesc"><em class="ph i">Get the current scheduling parameters of a process</em></p>
+
+
+<div class="section">
+
+<p class="p">
+
+
+
+
+</p>
+
+</div>
+
+
+<div class="section refsyn"><h2 class="title sectiontitle">Synopsis:</h2>
+
+<pre class="pre codeblock">
+#include &lt;sched.h&gt;
+
+int sched_getparam( pid_t <var class="keyword varname">pid</var>,
+                    struct sched_param *<var class="keyword varname">param</var> );
+</pre>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Arguments:</h2>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><var class="keyword varname">pid</var></dt>
+
+<dd class="dd">The ID of the process whose scheduling parameters you want to get,
+  or 0 to get them for the current process.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">param</var></dt>
+
+<dd class="dd">A pointer to a
+  <a class="xref" href="sched_param.html" title="Structure that describes scheduling parameters"><span class="keyword dtype">sched_param</span></a>
+  that the function fills with the scheduling parameters.
+</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Library:</h2>
+
+
+<p class="p"><span class="ph filepath">libc</span></p>
+
+
+<p class="p">
+Use the <span class="keyword option">-l c</span> option to
+<a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/q/qcc.html"><span class="keyword cmdname">qcc</span></a>
+to link against this library.
+This library is usually included automatically.
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Description:</h2>
+
+
+<p class="p">
+The <span class="keyword apiname">sched_getparam()</span> function gets the current scheduling
+parameters (including the original and current priorities)
+of the process specified by <var class="keyword varname">pid</var>, 
+and puts them in the <span class="keyword dtype">sched_param</span> structure 
+pointed to by <var class="keyword varname">param</var>.
+</p>
+
+
+<p class="p">
+If <var class="keyword varname">pid</var> is zero, function gets the parameters for the calling process.
+</p>
+
+
+<div class="note note"><span class="notetitle">Note:</span> 
+<ul class="ul">
+<li class="li">In <span class="keyword">QNX Neutrino</span>, scheduling is associated with threads, not processes, so
+  <span class="keyword apiname">sched_getparam()</span> gets the scheduling parameters for thread 1 in the process
+  <var class="keyword varname">pid</var>, or for the calling thread if <var class="keyword varname">pid</var> is 0.
+</li>
+
+
+<li class="li">
+In order to get the scheduling parameters for a process whose user ID is different from
+the calling process's real or effective user ID, your process must have the
+<span class="keyword const">PROCMGR_AID_SCHEDULE</span> ability enabled.
+For more information, see
+<a class="xref" href="../p/procmgr_ability.html" title="Control a process's ability to perform certain operations"><span class="keyword apiname">procmgr_ability()</span></a>.
+
+</li>
+
+
+</ul>
+
+</div>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Returns:</h2>
+
+
+<dl class="dl" compact="compact">
+
+<dt class="dt dlterm">0</dt>
+
+<dd class="dd">Success.</dd>
+
+
+
+
+<dt class="dt dlterm">-1</dt>
+
+<dd class="dd">An error occurred (<a class="xref" href="../e/errno.html" title="Thread-local error variable"><var class="keyword varname">errno</var></a> is set).</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Errors:</h2>
+
+
+<dl class="dl" compact="compact">
+
+<dt class="dt dlterm"><span class="keyword const">EPERM</span></dt>
+
+<dd class="dd">The calling process doesn't have sufficient privileges to get the
+  scheduling parameters; see
+  <a class="xref" href="../p/procmgr_ability.html" title="Control a process's ability to perform certain operations"><span class="keyword apiname">procmgr_ability()</span></a>.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">ESRCH</span></dt>
+
+<dd class="dd">The process <var class="keyword varname">pid</var> doesn't exist.</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Examples:</h2>
+
+
+<pre class="pre codeblock">
+#include &lt;sched.h&gt;
+#include &lt;stdio.h&gt;
+
+#define PRIORITY_ADJUSTMENT 5
+
+int main (void)
+{
+   int max_priority;
+   struct sched_param param;
+
+   /* Find out the MAX priority for the FIFO Scheduler */
+   max_priority = sched_get_priority_max(SCHED_FIFO);
+
+   /* Find out what the current priority is. */
+   sched_getparam(0, &amp;param);
+
+   printf("The assigned priority is %d.\n", param.sched_priority);
+   printf("The current priority is %d.\n", param.sched_curpriority);
+
+   param.sched_priority = ((param.sched_curpriority +
+   PRIORITY_ADJUSTMENT) &lt;= max_priority) ?
+      (param.sched_curpriority + PRIORITY_ADJUSTMENT) : -1;
+
+   if (param.sched_priority == -1)
+   {
+      printf(
+        "Cannot increase the priority by %d. Try a smaller value\n",
+        PRIORITY_ADJUSTMENT);
+      return(0);
+   }
+
+   sched_setscheduler (0, SCHED_FIFO, &amp;param);
+
+   sched_getparam(0, &amp;qparam);
+   printf("The newly assigned priority is %d.\n",
+          param.sched_priority);
+   printf("The current priority is %d.\n",
+          param.sched_curpriority);
+   return(0);
+}
+</pre>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Classification:</h2>
+
+<p class="p"><a class="xref" href="../summary.html#summary__CLASSIFICATION">POSIX 1003.1 PS</a></p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+<thead class="thead" align="left">
+<tr><th class="entry" valign="top" id="d2554192e287">Safety:</th>
+<th class="entry" valign="top" id="d2554192e289">Â </th>
+</tr>
+
+</thead>
+
+<tbody class="tbody">
+<tr><td class="entry" valign="top" headers="d2554192e287 d2554192e289 ">Cancellation point</td>
+<td class="entry" valign="top" headers="d2554192e287 d2554192e289 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2554192e287 d2554192e289 ">Interrupt handler</td>
+<td class="entry" valign="top" headers="d2554192e287 d2554192e289 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2554192e287 d2554192e289 ">Signal handler</td>
+<td class="entry" valign="top" headers="d2554192e287 d2554192e289 ">Yes</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2554192e287 d2554192e289 ">Thread</td>
+<td class="entry" valign="top" headers="d2554192e287 d2554192e289 ">Yes</td>
+</tr>
+
+</tbody>
+
+</table>
+</div>
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="related-links"><div class="relinfo relconcepts"><strong>Related concepts</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.sys_arch/topic/kernel_SCHEDULING.html" title="Thread scheduling (System Architecture)">Thread scheduling (System Architecture)</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.prog/topic/overview_SCHEDS.html" title="Scheduling policies (QNX Neutrino Programmer's Guide)">Scheduling policies (<span class="keyword">QNX Neutrino</span> Programmer's Guide)</a></div>
+</div>
+<div class="relinfo relref"><strong>Related reference</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/e/errno.html" title="Thread-local error variable">errno</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/s/sched_get_priority_max.html" title="Get the maximum priority for the scheduling policy">sched_get_priority_max()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/s/sched_get_priority_min.html" title="Get the minimum priority for the scheduling policy">sched_get_priority_min()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/s/sched_getscheduler.html" title="Get the current scheduling policy for a process">sched_getscheduler()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/s/sched_param.html" title="Structure that describes scheduling parameters">sched_param</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/s/sched_setparam.html" title="Change the priority of a process">sched_setparam()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/s/sched_setscheduler.html" title="Change the priority and scheduling policy of a process">sched_setscheduler()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/s/sched_yield.html" title="Yield to other ready threads at the same priority">sched_yield()</a></div>
+</div>
+</div><div class="navfooter"><!---->
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-s.html" title="S"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">S</span></a></span>  </div>
+</body>
+</html>

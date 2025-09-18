@@ -1,0 +1,314 @@
+
+<!DOCTYPE html
+  PUBLIC "" "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />        
+      <meta name="copyright" content="(C) Copyright 2005" /><meta name="DC.rights.owner" content="(C) Copyright 2005" /><meta name="DC.Type" content="reference" /><meta name="DC.Title" content="mlockall()" /><meta name="abstract" content="Lock all of a process's address space" /><meta name="description" content="Lock all of a process's address space" /><meta name="indexterms" content="mlockall()" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-m.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.sys_arch/topic/proc_Locking_memory.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/m/mlock.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/m/mmap.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/m/munlock.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/m/munlockall.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/p/procmgr_ability.html" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="mlockall" /><meta name="DC.Language" content="en-us" /><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/commonltr.css"><!----></link><title>mlockall()</title><link rel="canonical" type="html" href="https://www.qnx.com/developers/docs/7.1/#com.qnx.doc.neutrino.lib_ref/" /><!--  Generated with Oxygen version 18.1, build number 2017020917.  --><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/webhelp_topic.css"><!----></link><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/skins/skin.css" /><script type="text/javascript"><!--
+            
+            var prefix = "../../../index.html";
+            
+            --></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-1.11.3.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.cookie.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-ui.custom.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.highlight-3.js"><!----></script><script type="text/javascript" charset="utf-8" src="../../../oxygen-webhelp/resources/js/webhelp_topic.js"><!----></script><script type="text/javascript"> var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-27400275-1']); _gaq.push(['_setDomainName', 'www.qnx.com']);_gaq.push(['_setAllowLinker', true]);_gaq.push(['_trackPageview']);(function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script></head>
+<body onload="highlightSearchTerm()" class="frmBody" id="mlockall">
+<table class="nav"><tbody><tr><td colspan="2"><div id="printlink"><button onClick="window.print()" title="Print this page" aria-label="Print this page"></button></div><div id="permalink"><a href="#" title="Link to this page"></a></div></td></tr><tr><td style="width:75%;"><span class="topic_breadcrumb_links"><span class="topic_breadcrumb_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-m.html" title="M">M</a></span></span></td><td><span id="topic_navigation_links" class="navheader">
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-m.html" title="M"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">M</span></a></span>  </span></td></tr></tbody></table>
+
+
+<h1 class="title topictitle1"><span class="keyword apiname">mlockall()</span></h1>
+<table width="100%"><tbody><tr><td align="left"><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">QNX SDP</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">7.1</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">C Library Reference</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">API</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">Developer</button></td><td align="right"><span style="margin:0px 5px; font-size:0.9em;">Updated: October 28, 2024</span></td></tr></tbody></table>
+
+
+<div class="body refbody"><p class="shortdesc"><em class="ph i">Lock all of a process's address space</em></p>
+
+
+<div class="section">
+
+<p class="p">
+
+
+
+
+</p>
+
+</div>
+
+
+<div class="section refsyn"><h2 class="title sectiontitle">Synopsis:</h2>
+
+<pre class="pre codeblock">
+#include &lt;sys/mman.h&gt;
+
+int mlockall(int <var class="keyword varname">flags</var>);
+</pre>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Arguments:</h2>
+
+
+<dl class="dl" compact="compact">
+
+
+<dt class="dt dlterm"><var class="keyword varname">flags</var></dt>
+
+<dd class="dd">Flags that indicate which pages to lock; one or more of the following bits: 
+
+  <dl class="dl">
+  
+  <dt class="dt dlterm"><span class="keyword const">MCL_CURRENT</span></dt>
+
+  <dd class="dd">Lock the pages currently mapped into the address space of the process.</dd>
+
+  
+
+  
+  <dt class="dt dlterm"><span class="keyword const">MCL_FUTURE</span></dt>
+
+  <dd class="dd">Lock the pages that become mapped into the address
+    space of the process in the future, when the mappings are established.
+  </dd>
+
+  
+
+  </dl>
+
+</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Library:</h2>
+
+
+<p class="p"><span class="ph filepath">libc</span></p>
+
+
+<p class="p">
+Use the <span class="keyword option">-l c</span> option to
+<a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/q/qcc.html"><span class="keyword cmdname">qcc</span></a>
+to link against this library.
+This library is usually included automatically.
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Description:</h2>
+
+
+<p class="p">
+The <span class="keyword apiname">mlockall()</span> function causes all of the pages mapped by the
+address space of a process to be locked and made memory-resident until
+unlocked, or the process exits or executes another process.
+The pages that are locked depend on the <var class="keyword varname">flags</var> argument. 
+</p>
+
+
+<p class="p">
+The exception is any page with a <span class="keyword const">PROT_NONE</span> access setting; 
+<span class="keyword apiname">mlockall()</span> skips those pages because there is no need to lock a page that can't be accessed.
+</p>
+
+
+<p class="p">
+<em class="ph i">Memory-resident</em> is a term used to indicate that the addresses always reside in physical memory.
+For more information, see
+<span class="q">&#147;<a class="xref" href="../../../com.qnx.doc.neutrino.sys_arch/topic/proc_Locking_memory.html">Locking memory</a>&#148;</span>
+in the Process Manager chapter of the <cite class="cite">System Architecture</cite> guide.
+</p>
+
+
+<p class="p">
+In order to lock pages, your process must have the
+<span class="keyword const">PROCMGR_AID_MEM_LOCK</span> ability enabled.
+For more information, see
+<a class="xref" href="../p/procmgr_ability.html" title="Control a process's ability to perform certain operations"><span class="keyword apiname">procmgr_ability()</span></a>.
+
+</p>
+
+
+<p class="p">
+Follow either of the following approaches when attempting to lock pages:
+</p>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm">Tightly controlled approach</dt>
+
+<dd class="dd">Lock the pages one by one, by calling <span class="keyword apiname">mmap()</span> and then <span class="keyword apiname">mlock()</span>.</dd>
+
+
+
+
+<dt class="dt dlterm">Global approach</dt>
+
+<dd class="dd">Lock all pages at the same time, by doing one of the following: 
+
+  <ul class="ul">
+  <li class="li">Call <samp class="ph codeph">mlockall(MCL_FUTURE)</samp>, followed by one or more calls
+    to <span class="keyword apiname">mmap()</span>.
+  </li>
+
+
+  <li class="li">Optionally call <span class="keyword apiname">mmap()</span>, and then call <samp class="ph codeph">mlockall(MCL_CURRENT)</samp>.</li>
+
+
+  </ul>
+
+</dd>
+
+
+
+</dl>
+
+
+<p class="p">
+Memory that's mapped from a typed-memory file descriptor is implicitly locked.
+Shared memory objects that are populated with
+<a class="xref" href="../s/shm_ctl.html" title="Give special attributes to a shared memory object"><span class="keyword apiname">shm_ctl()</span></a>
+are implicitly locked, unless you use the <span class="keyword const">SHMCTL_LAZY</span> flag.
+</p>
+
+<p class="p">If you use <span class="keyword const">MAP_LAZY</span>, there may not be an immediate effect on the mappings.</p>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Returns:</h2>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm">0</dt>
+
+<dd class="dd">Success.</dd>
+
+
+
+
+<dt class="dt dlterm">-1 </dt>
+
+<dd class="dd">An error occurred (<a class="xref" href="../e/errno.html" title="Thread-local error variable"><var class="keyword varname">errno</var></a> is set).</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Errors:</h2>
+
+
+<dl class="dl" compact="compact">
+
+<dt class="dt dlterm"><span class="keyword const">EAGAIN</span></dt>
+
+<dd class="dd">Some or all of the memory identified by the operation couldn't be locked when the call was made. </dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EINVAL</span></dt>
+
+<dd class="dd">The <var class="keyword varname">flags</var> argument is zero.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">ENOMEM</span></dt>
+
+<dd class="dd">Not enough memory was available.
+  
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EPERM</span></dt>
+
+<dd class="dd">The calling process doesn't have the required permission; see
+  <a class="xref" href="../p/procmgr_ability.html" title="Control a process's ability to perform certain operations"><span class="keyword apiname">procmgr_ability()</span></a>.
+</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Classification:</h2>
+
+<p class="p"><a class="xref" href="../summary.html#summary__CLASSIFICATION">POSIX 1003.1 ML</a></p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+<thead class="thead" align="left">
+<tr><th class="entry" valign="top" id="d2202523e362">Safety:</th>
+<th class="entry" valign="top" id="d2202523e364">Â </th>
+</tr>
+
+</thead>
+
+<tbody class="tbody">
+<tr><td class="entry" valign="top" headers="d2202523e362 d2202523e364 ">Cancellation point</td>
+<td class="entry" valign="top" headers="d2202523e362 d2202523e364 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2202523e362 d2202523e364 ">Interrupt handler</td>
+<td class="entry" valign="top" headers="d2202523e362 d2202523e364 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2202523e362 d2202523e364 ">Signal handler</td>
+<td class="entry" valign="top" headers="d2202523e362 d2202523e364 ">Yes</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2202523e362 d2202523e364 ">Thread</td>
+<td class="entry" valign="top" headers="d2202523e362 d2202523e364 ">Yes</td>
+</tr>
+
+</tbody>
+
+</table>
+</div>
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="related-links"><div class="relinfo relconcepts"><strong>Related concepts</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.sys_arch/topic/proc_Locking_memory.html" title="Locking memory (System Architecture)">Locking memory (System Architecture)</a></div>
+</div>
+<div class="relinfo relref"><strong>Related reference</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/m/mlock.html" title="Lock a range of process address space in physical memory">mlock()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/m/mmap.html" title="Map a memory region into a process's address space">mmap(), mmap64(), mmap_handle()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/m/munlock.html" title="Unlock the address space of a process">munlock()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/m/munlockall.html" title="Unlock a process's address space">munlockall()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/p/procmgr_ability.html" title="Control a process's ability to perform certain operations">procmgr_ability()</a></div>
+</div>
+</div><div class="navfooter"><!---->
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-m.html" title="M"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">M</span></a></span>  </div>
+</body>
+</html>

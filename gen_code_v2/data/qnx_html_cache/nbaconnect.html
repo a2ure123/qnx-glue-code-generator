@@ -1,0 +1,263 @@
+
+<!DOCTYPE html
+  PUBLIC "" "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />        
+      <meta name="copyright" content="(C) Copyright 2005" /><meta name="DC.rights.owner" content="(C) Copyright 2005" /><meta name="DC.Type" content="reference" /><meta name="DC.Title" content="nbaconnect()" /><meta name="abstract" content="Initiate a connection on a socket (nonblocking)" /><meta name="description" content="Initiate a connection on a socket (nonblocking)" /><meta name="indexterms" content="nbaconnect()" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-n.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/a/accept.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/b/bind.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/c/connect.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/e/errno.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/f/fcntl.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/g/getsockname.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/n/nbaconnect_result.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/o/open.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/p/pipe.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/p/poll.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/r/read.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/s/socket.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/w/write.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.utilities/topic/a/autoconnect.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.utilities/topic/p/pipe.html" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="nbaconnect" /><meta name="DC.Language" content="en-us" /><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/commonltr.css"><!----></link><title>nbaconnect()</title><link rel="canonical" type="html" href="https://www.qnx.com/developers/docs/7.1/#com.qnx.doc.neutrino.lib_ref/" /><!--  Generated with Oxygen version 18.1, build number 2017020917.  --><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/webhelp_topic.css"><!----></link><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/skins/skin.css" /><script type="text/javascript"><!--
+            
+            var prefix = "../../../index.html";
+            
+            --></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-1.11.3.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.cookie.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-ui.custom.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.highlight-3.js"><!----></script><script type="text/javascript" charset="utf-8" src="../../../oxygen-webhelp/resources/js/webhelp_topic.js"><!----></script><script type="text/javascript"> var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-27400275-1']); _gaq.push(['_setDomainName', 'www.qnx.com']);_gaq.push(['_setAllowLinker', true]);_gaq.push(['_trackPageview']);(function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script></head>
+<body onload="highlightSearchTerm()" class="frmBody" id="nbaconnect">
+<table class="nav"><tbody><tr><td colspan="2"><div id="printlink"><button onClick="window.print()" title="Print this page" aria-label="Print this page"></button></div><div id="permalink"><a href="#" title="Link to this page"></a></div></td></tr><tr><td style="width:75%;"><span class="topic_breadcrumb_links"><span class="topic_breadcrumb_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-n.html" title="N">N</a></span></span></td><td><span id="topic_navigation_links" class="navheader">
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-n.html" title="N"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">N</span></a></span>  </span></td></tr></tbody></table>
+
+
+<h1 class="title topictitle1"><span class="keyword apiname">nbaconnect()</span></h1>
+<table width="100%"><tbody><tr><td align="left"><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">QNX SDP</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">7.1</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">C Library Reference</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">API</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">Developer</button></td><td align="right"><span style="margin:0px 5px; font-size:0.9em;">Updated: October 28, 2024</span></td></tr></tbody></table>
+
+
+
+<div class="body refbody"><p class="shortdesc"><em class="ph i">Initiate a connection on a socket (nonblocking)</em></p>
+
+
+<div class="section refsyn"><h2 class="title sectiontitle">Synopsis:</h2>
+
+<pre class="pre codeblock">
+#include &lt;sys/socket.h&gt;
+
+int nbaconnect( int <var class="keyword varname">s</var>, 
+                const struct sockaddr * <var class="keyword varname">name</var>,
+                size_t <var class="keyword varname">namelen</var> );
+</pre>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Arguments:</h2>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><var class="keyword varname">s</var></dt>
+
+<dd class="dd">The descriptor of the socket on which to initiate the connection.</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">name</var></dt>
+
+<dd class="dd">The name of the socket to connect to for a <span class="keyword const">SOCK_STREAM</span> connection.</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">namelen</var></dt>
+
+<dd class="dd">The length of the <var class="keyword varname">name</var>, in bytes.</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Library:</h2>
+
+
+<p class="p"><span class="ph filepath">libsocket</span></p>
+
+
+<p class="p">
+Use the <span class="keyword option">-l socket</span> option to
+<a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/q/qcc.html"><span class="keyword cmdname">qcc</span></a>
+to link against this library.
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Description:</h2>
+
+
+<p class="p">
+
+
+
+The <span class="keyword apiname">nbaconnect()</span> function is called in place of 
+<a class="xref" href="../c/connect.html" title="Initiate a connection on a socket"><span class="keyword apiname">connect()</span></a>,
+to prevent a nonblocking <span class="keyword apiname">connect()</span>
+from blocking during an autoconnect (see 
+<a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/a/autoconnect.html"><span class="ph filepath">/etc/autoconnect</span></a>).
+</p>
+
+
+<p class="p">
+When the autoconnect behavior is used, <span class="keyword apiname">connect()</span> may block your
+application while waiting for the autoconnect to complete;
+<span class="keyword apiname">nbaconnect()</span> allows your application to continue
+executing during the autoconnect.
+
+</p>
+
+
+<p class="p">
+The <span class="keyword apiname">nbaconnect()</span> function takes the same arguments as
+<a class="xref" href="../c/connect.html" title="Initiate a connection on a socket"><span class="keyword apiname">connect()</span></a>, 
+but it differs in the return value when an autoconnect is required.
+If an autoconnect is required, a file descriptor (<var class="keyword varname">fd</var>) is returned.
+The <var class="keyword varname">fd</var> is used in the call to
+<a class="xref" href="nbaconnect_result.html" title="Get the status of the previous call to nbaconnect()"><span class="keyword apiname">nbaconnect_result()</span></a>
+to get the <var class="keyword varname">errno</var> related to the autoconnect and the connect attempt.
+</p>
+
+
+<div class="note note"><span class="notetitle">Note:</span> 
+Since <span class="keyword apiname">nbaconnect_result()</span> is a blocking call, 
+it's recommended that you call
+<a class="xref" href="../p/poll.html" title="Multiplex input/output over a set of file descriptors"><span class="keyword apiname">poll()</span></a>
+first to determine if there's data available on the pipe.
+</div>
+
+
+<p class="p">
+When the data's available, call 
+<a class="xref" href="nbaconnect_result.html" title="Get the status of the previous call to nbaconnect()"><span class="keyword apiname">nbaconnect_result()</span></a>
+to get the status of the <span class="keyword apiname">nbaconnect()</span> attempt. 
+</p>
+
+
+<p class="p">
+If an autoconnect isn't required, <span class="keyword apiname">nbaconnect()</span> returns -1
+and exhibits the same behavior as <span class="keyword apiname">connect()</span> on nonblocking sockets
+(e.g., if -1 is returned and <var class="keyword varname">errno</var> is set to <span class="keyword const">EINPROGRESS</span>,
+it's possible to do a <span class="keyword apiname">poll()</span> for completion by selecting
+the socket for writing).
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Returns:</h2>
+
+
+<p class="p">
+A file descriptor that you can pass to
+<span class="keyword apiname">nbaconnect_result()</span> to get the result of the
+<span class="keyword apiname">nbaconnect()</span> attempt, or -1 if an error occurred
+(<a class="xref" href="../e/errno.html" title="Thread-local error variable"><var class="keyword varname">errno</var></a> is set).
+</p>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Errors:</h2>
+
+
+<p class="p">
+Any value from the Errors section in
+<a class="xref" href="../c/connect.html#connect__Errors"><span class="keyword apiname">connect()</span></a>,
+as well as: 
+</p>
+
+
+<dl class="dl" compact="compact">
+
+<dt class="dt dlterm"><span class="keyword const">EINVAL</span></dt>
+
+<dd class="dd">The socket file descriptor being passed isn't nonblocking.</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Classification:</h2>
+
+<p class="p"><a class="xref" href="../summary.html#summary__CLASSIFICATION">QNX Neutrino</a></p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+<thead class="thead" align="left">
+<tr><th class="entry" valign="top" id="d2282263e314">Safety:</th>
+<th class="entry" valign="top" id="d2282263e316">Â </th>
+</tr>
+
+</thead>
+
+<tbody class="tbody">
+<tr><td class="entry" valign="top" headers="d2282263e314 d2282263e316 ">Cancellation point</td>
+<td class="entry" valign="top" headers="d2282263e314 d2282263e316 ">Yes</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2282263e314 d2282263e316 ">Interrupt handler</td>
+<td class="entry" valign="top" headers="d2282263e314 d2282263e316 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2282263e314 d2282263e316 ">Signal handler</td>
+<td class="entry" valign="top" headers="d2282263e314 d2282263e316 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2282263e314 d2282263e316 ">Thread</td>
+<td class="entry" valign="top" headers="d2282263e314 d2282263e316 ">Yes</td>
+</tr>
+
+</tbody>
+
+</table>
+</div>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Caveats:</h2>
+
+
+<p class="p">
+The 
+<a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/p/pipe.html"><span class="keyword cmdname">pipe</span></a>
+manager must be available.
+</p>
+
+</div>
+
+
+</div>
+
+
+<div class="related-links"><div class="relinfo relref"><strong>Related reference</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/a/accept.html" title="Accept a connection on a socket">accept()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/b/bind.html" title="Bind a name to a socket">bind()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/c/connect.html" title="Initiate a connection on a socket">connect()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/e/errno.html" title="Thread-local error variable">errno</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/f/fcntl.html" title="Provide control over an open file">fcntl()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/g/getsockname.html" title="Get the name of a socket">getsockname()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/n/nbaconnect_result.html" title="Get the status of the previous call to nbaconnect()">nbaconnect_result()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/o/open.html" title="Open a file">open(), open64()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/p/pipe.html" title="Create a pipe">pipe()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/p/poll.html" title="Multiplex input/output over a set of file descriptors">poll()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/r/read.html" title="Read bytes from a file">read()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/s/socket.html" title="Create an endpoint for communication">socket()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/w/write.html" title="Write bytes to a file">write()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.utilities/topic/a/autoconnect.html" title="/etc/autoconnect (Utilities Reference)">/etc/autoconnect (Utilities Reference)</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.utilities/topic/p/pipe.html" title="pipe (Utilities Reference)">pipe (Utilities Reference)</a></div>
+</div>
+</div><div class="navfooter"><!---->
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-n.html" title="N"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">N</span></a></span>  </div>
+</body>
+</html>

@@ -1,0 +1,1 @@
+sudo chroot ./dist bash

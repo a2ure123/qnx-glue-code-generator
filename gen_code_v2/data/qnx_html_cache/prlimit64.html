@@ -1,0 +1,735 @@
+
+<!DOCTYPE html
+  PUBLIC "" "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />        
+      <meta name="copyright" content="(C) Copyright 2005" /><meta name="DC.rights.owner" content="(C) Copyright 2005" /><meta name="DC.Type" content="reference" /><meta name="DC.Title" content="prlimit(), prlimit64()" /><meta name="abstract" content="Set and get the limit on a system resource" /><meta name="description" content="Set and get the limit on a system resource" /><meta name="indexterms" content="prlimit(), prlimit64()" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-p.html" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="prlimit" /><meta name="DC.Language" content="en-us" /><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/commonltr.css"><!----></link><title>prlimit(), prlimit64()</title><link rel="canonical" type="html" href="https://www.qnx.com/developers/docs/7.1/#com.qnx.doc.neutrino.lib_ref/" /><!--  Generated with Oxygen version 18.1, build number 2017020917.  --><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/webhelp_topic.css"><!----></link><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/skins/skin.css" /><script type="text/javascript"><!--
+            
+            var prefix = "../../../index.html";
+            
+            --></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-1.11.3.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.cookie.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-ui.custom.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.highlight-3.js"><!----></script><script type="text/javascript" charset="utf-8" src="../../../oxygen-webhelp/resources/js/webhelp_topic.js"><!----></script><script type="text/javascript"> var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-27400275-1']); _gaq.push(['_setDomainName', 'www.qnx.com']);_gaq.push(['_setAllowLinker', true]);_gaq.push(['_trackPageview']);(function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script></head>
+<body onload="highlightSearchTerm()" class="frmBody" id="prlimit">
+<table class="nav"><tbody><tr><td colspan="2"><div id="printlink"><button onClick="window.print()" title="Print this page" aria-label="Print this page"></button></div><div id="permalink"><a href="#" title="Link to this page"></a></div></td></tr><tr><td style="width:75%;"><span class="topic_breadcrumb_links"><span class="topic_breadcrumb_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-p.html" title="P">P</a></span></span></td><td><span id="topic_navigation_links" class="navheader">
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-p.html" title="P"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">P</span></a></span>  </span></td></tr></tbody></table>
+
+
+<h1 class="title topictitle1"><span class="keyword apiname">prlimit()</span>, <span class="keyword apiname">prlimit64()</span></h1>
+<table width="100%"><tbody><tr><td align="left"><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">QNX SDP</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">7.1</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">C Library Reference</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">API</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">Developer</button></td><td align="right"><span style="margin:0px 5px; font-size:0.9em;">Updated: October 28, 2024</span></td></tr></tbody></table>
+
+
+<div class="body refbody"><p class="shortdesc"><em class="ph i">Set and get the limit on a system resource</em></p>
+
+
+<div class="section refsyn"><h2 class="title sectiontitle">Synopsis:</h2>
+
+<pre class="pre codeblock">
+#include &lt;sys/resource.h&gt;
+
+int prlimit( pid_t <var class="keyword varname">pid</var>,
+             int <var class="keyword varname">resource</var>,
+             const struct rlimit * <var class="keyword varname">new_rlp</var>,
+             struct rlimit * <var class="keyword varname">old_rlp</var> );
+
+int prlimit64( pid_t <var class="keyword varname">pid</var>,
+               int <var class="keyword varname">resource</var>,
+               const struct rlimit64 * <var class="keyword varname">new_rlp</var>,
+               struct rlimit64 * <var class="keyword varname">old_rlp</var> );
+</pre>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Arguments:</h2>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><var class="keyword varname">pid</var></dt>
+
+<dd class="dd">The ID of the process to set or get the limit for. If <var class="keyword varname">pid</var> is 0, the call
+applies to the calling process. </dd>
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">resource</var></dt>
+
+<dd class="dd">The resource whose limit you want to get or set. For a list of the possible resources, their
+descriptions, and the actions taken when the current limit is exceeded, see below.</dd>
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">new_rlp</var></dt>
+
+<dd class="dd">If this argument is not NULL, the <span class="keyword dtype">rlimit</span> structure that it points to is used to
+set new values for the soft and hard limits for <var class="keyword varname">resource</var>. </dd>
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">old_rlp</var></dt>
+
+<dd class="dd">If this argument is not NULL, a successful call to <span class="keyword apiname">prlimit()</span> places the
+previous soft and hard limits for <var class="keyword varname">resource</var> in the <span class="keyword dtype">rlimit</span> structure
+that <var class="keyword varname">old_rlp</var> points to. </dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Library:</h2>
+
+
+<p class="p"><span class="ph filepath">libc</span></p>
+
+
+<p class="p">
+Use the <span class="keyword option">-l c</span> option to
+<a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/q/qcc.html"><span class="keyword cmdname">qcc</span></a>
+to link against this library.
+This library is usually included automatically.
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Description:</h2>
+
+
+<p class="p">
+
+
+
+
+
+
+
+ The
+<span class="keyword apiname">prlimit()</span> and <span class="keyword apiname">prlimit64()</span> functions can be used to set and get
+limits on the consumption of a variety of system resources by a process and each process it creates.
+They combine and extend the functionality of <span class="keyword apiname">setrlimit()</span> and
+<span class="keyword apiname">getrlimit()</span>. The <span class="keyword apiname">prlimit64()</span> function is a large-file support
+version of <span class="keyword apiname">prlimit()</span>.</p>
+
+
+<div class="note note"><span class="notetitle">Note:</span> 
+In QNX Neutrino 6.6 or later, the large-file support functions and data types
+appear in the name space only if you define <span class="keyword const">_LARGEFILE64_SOURCE</span> when you compile your code.
+For more information, see
+<span class="q">&#147;<a class="xref" href="../summary.html#summary__CLASSIFICATION">Classification</a>&#148;</span>
+in What's in a Function Description?
+</div>
+
+
+<p class="p">
+The possible resources, their descriptions, and the actions
+taken when the current limit is exceeded are summarized below
+(the <span class="q">&#147;_NP&#148;</span> in some names stands for <span class="q">&#147;non-POSIX&#148;</span>):
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" width="100%" frame="border" border="1" rules="all">
+
+
+
+
+
+
+<thead class="thead" align="left">
+<tr>
+  <th class="entry" valign="top" width="23.026315789473685%" id="d2366600e529">Resource</th>
+
+  <th class="entry" valign="top" width="14.802631578947366%" id="d2366600e532">Classification</th>
+
+  <th class="entry" valign="top" width="31.907894736842106%" id="d2366600e535">Description</th>
+
+  <th class="entry" valign="top" width="30.263157894736842%" id="d2366600e538">Action</th>
+
+</tr>
+
+</thead>
+
+
+<tbody class="tbody">
+
+<tr>
+  <td class="entry" valign="top" width="23.026315789473685%" headers="d2366600e529 "><span class="keyword const">RLIMIT_AS</span></td>
+
+  <td class="entry" valign="top" width="14.802631578947366%" headers="d2366600e532 ">POSIX</td>
+
+  <td class="entry" valign="top" width="31.907894736842106%" headers="d2366600e535 ">The maximum size, in bytes, of a process's mapped address space.</td>
+
+  <td class="entry" valign="top" width="30.263157894736842%" headers="d2366600e538 ">If the limit is exceeded, 
+    <a class="xref" href="../m/mmap.html" title="Map a memory region into a process's address space"><span class="keyword apiname">mmap()</span></a>
+    fails with
+    <a class="xref" href="../e/errno.html" title="Thread-local error variable"><var class="keyword varname">errno</var></a>
+    set to <span class="keyword const">ENOMEM</span>.
+    In addition, the automatic stack growth fails with the  effects  outlined above.
+  </td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" width="23.026315789473685%" headers="d2366600e529 "><span class="keyword const">RLIMIT_CORE</span></td>
+
+  <td class="entry" valign="top" width="14.802631578947366%" headers="d2366600e532 ">POSIX</td>
+
+  <td class="entry" valign="top" width="31.907894736842106%" headers="d2366600e535 ">The maximum size, in bytes, of a core file that a process may create. 
+    A limit of 0 prevents the creation of a core file.
+  </td>
+
+  <td class="entry" valign="top" width="30.263157894736842%" headers="d2366600e538 ">The writing of a core file terminates at this size.</td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" width="23.026315789473685%" headers="d2366600e529 "><span class="keyword const">RLIMIT_CPU</span></td>
+
+  <td class="entry" valign="top" width="14.802631578947366%" headers="d2366600e532 ">POSIX</td>
+
+  <td class="entry" valign="top" width="31.907894736842106%" headers="d2366600e535 ">The maximum amount of CPU time, in seconds, that a process may use.
+    This is a soft limit only. <span class="keyword const">RLIMIT_CPU</span> is an absolute value and is compared
+    against the process's CPU clock, <span class="keyword const">CLOCK_PROCESS_CPUTIME_ID</span>.
+  </td>
+
+  <td class="entry" valign="top" width="30.263157894736842%" headers="d2366600e538 ">If the limit is exceeded, only one <span class="keyword const">SIGXCPU</span> is sent to the process.
+    If the process is ignoring <span class="keyword const">SIGXCPU</span>, <span class="keyword const">SIGKILL</span> is sent to the
+    process.
+    <p class="p">If the current CPU time is greater than or equal to the <span class="keyword const">RLIMIT_CPU</span> set, then one
+      <span class="keyword const">SIGXCPU</span> is sent to the process soon thereafter.</p>
+
+  </td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" width="23.026315789473685%" headers="d2366600e529 "><span class="keyword const">RLIMIT_DATA</span></td>
+
+  <td class="entry" valign="top" width="14.802631578947366%" headers="d2366600e532 ">POSIX</td>
+
+  <td class="entry" valign="top" width="31.907894736842106%" headers="d2366600e535 ">The maximum size, in bytes, that a process's heap may be.
+    In <span class="keyword">QNX Neutrino</span>, <span class="keyword const">RLIMIT_DATA</span> covers all mappings
+    made by the process that are <samp class="ph codeph">MAP_ANON | MAP_PRIVATE</samp> that aren't
+    <samp class="ph codeph">MAP_STACK</samp>, which corresponds typically to heap allocations.
+  </td>
+
+  <td class="entry" valign="top" width="30.263157894736842%" headers="d2366600e538 ">If the limit is exceeded, 
+    <a class="xref" href="../m/mmap.html" title="Map a memory region into a process's address space"><span class="keyword apiname">mmap()</span></a>
+    fails with
+    <a class="xref" href="../e/errno.html" title="Thread-local error variable"><var class="keyword varname">errno</var></a>
+    set to <span class="keyword const">ENOMEM</span>.
+  </td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" width="23.026315789473685%" headers="d2366600e529 "><span class="keyword const">RLIMIT_FREEMEM</span></td>
+
+  <td class="entry" valign="top" width="14.802631578947366%" headers="d2366600e532 ">Unix</td>
+
+  <td class="entry" valign="top" width="31.907894736842106%" headers="d2366600e535 ">The limit on total memory usage, in tenths of a per cent of the total system memory.
+    For example, a limit of 500 on a system with 1000 MB of memory would be 500 MB.
+  </td>
+
+  <td class="entry" valign="top" width="30.263157894736842%" headers="d2366600e538 ">This limit is shared with all other processes;
+    a memory allocation by this process fails if it would cause the total system memory usage
+    of all processes to exceed this process's limit.
+
+    <p class="p">
+    The intention is to allow the memory pool to be crudely partitioned.
+    For example, important system processes could be given an
+    <span class="keyword const">RLIMIT_FREEMEM</span> value of <span class="keyword const">RLIM_INFINITY</span>,
+    and all others a value of 800.
+    That would partition memory into an 80% chunk that's shared by everybody
+    and a 20% chunk that's shared by important system processes.
+    </p>
+
+  </td>
+
+</tr>
+
+
+
+
+
+
+<tr>
+  <td class="entry" valign="top" width="23.026315789473685%" headers="d2366600e529 "><span class="keyword const">RLIMIT_NOCONN_NP</span></td>
+
+  <td class="entry" valign="top" width="14.802631578947366%" headers="d2366600e532 "><span class="keyword">QNX Neutrino</span></td>
+
+  <td class="entry" valign="top" width="31.907894736842106%" headers="d2366600e535 ">The maximum number of connections a process can create,
+    including file descriptors and side-channel connections.
+    Most processes are created with three fds (<var class="keyword varname">stdin</var>, <var class="keyword varname">stdout</var>,
+    and <var class="keyword varname">stderr</var>)
+    and a connection to the system process. 
+
+    <p class="p">
+    <span class="keyword const">RLIMIT_NOCONN_NP</span> should be greater than or equal to <span class="keyword const">RLIMIT_NOFILE</span>;
+    it's up to you to set these limits so that they don't conflict.
+    </p>
+
+  </td>
+
+  <td class="entry" valign="top" width="30.263157894736842%" headers="d2366600e538 "><a class="xref" href="../c/connectattach.html" title="Establish a connection between a process and a channel"><span class="keyword apiname">ConnectAttach()</span></a>
+    gives an error of <span class="keyword const">EMFILE</span>
+  </td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" width="23.026315789473685%" headers="d2366600e529 "><span class="keyword const">RLIMIT_NOFILE</span></td>
+
+  <td class="entry" valign="top" width="14.802631578947366%" headers="d2366600e532 ">POSIX</td>
+
+  <td class="entry" valign="top" width="31.907894736842106%" headers="d2366600e535 ">One more than the maximum value that the system may assign to a newly created descriptor.
+    This limit constrains the number of file descriptors that a process may create.
+  </td>
+
+  <td class="entry" valign="top" width="30.263157894736842%" headers="d2366600e538 ">Functions that allocate a file descriptor give an error of <span class="keyword const">EMFILE</span>
+  </td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" width="23.026315789473685%" headers="d2366600e529 "><span class="keyword const">RLIMIT_NPROC</span></td>
+
+  <td class="entry" valign="top" width="14.802631578947366%" headers="d2366600e532 ">Unix</td>
+
+  <td class="entry" valign="top" width="31.907894736842106%" headers="d2366600e535 ">The maximum number of processes.</td>
+
+  <td class="entry" valign="top" width="30.263157894736842%" headers="d2366600e538 ">Attempts to create new processes fail.</td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" width="23.026315789473685%" headers="d2366600e529 "><span class="keyword const">RLIMIT_NTHR</span></td>
+
+  <td class="entry" valign="top" width="14.802631578947366%" headers="d2366600e532 ">Unix</td>
+
+  <td class="entry" valign="top" width="31.907894736842106%" headers="d2366600e535 ">The maximum number of threads.</td>
+
+  <td class="entry" valign="top" width="30.263157894736842%" headers="d2366600e538 ">Attempts to create threads (e.g., by calling
+    <a class="xref" href="pthread_create.html" title="Create a thread"><span class="keyword apiname">pthread_create()</span></a>)
+    fail.
+  </td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" width="23.026315789473685%" headers="d2366600e529 "><span class="keyword const">RLIMIT_OFILE</span></td>
+
+  <td class="entry" valign="top" width="14.802631578947366%" headers="d2366600e532 ">Unix</td>
+
+  <td class="entry" valign="top" width="31.907894736842106%" headers="d2366600e535 ">Same as <span class="keyword const">RLIMIT_NOFILE</span>.</td>
+
+  <td class="entry" valign="top" width="30.263157894736842%" headers="d2366600e538 ">Â </td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" width="23.026315789473685%" headers="d2366600e529 "><span class="keyword const">RLIMIT_RSS</span></td>
+
+  <td class="entry" valign="top" width="14.802631578947366%" headers="d2366600e532 ">Unix</td>
+
+  <td class="entry" valign="top" width="31.907894736842106%" headers="d2366600e535 ">The maximum resident set size for a process; the same as <span class="keyword const">RLIMIT_AS</span>.</td>
+
+  <td class="entry" valign="top" width="30.263157894736842%" headers="d2366600e538 ">Same as <span class="keyword const">RLIMIT_AS</span>.</td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" width="23.026315789473685%" headers="d2366600e529 "><span class="keyword const">RLIMIT_SIGEVENT_NP</span></td>
+
+  <td class="entry" valign="top" width="14.802631578947366%" headers="d2366600e532 "><span class="keyword">QNX Neutrino</span></td>
+
+  <td class="entry" valign="top" width="31.907894736842106%" headers="d2366600e535 ">The maximum number of
+    <a class="xref" href="../s/sigevent.html" title="Structure that describes an event"><span class="keyword dtype">sigevent</span>s</a>
+    that a process can have registered at a given time.
+  </td>
+
+  <td class="entry" valign="top" width="30.263157894736842%" headers="d2366600e538 "><a class="xref" href="../m/msgregisterevent.html" title="Register a secure event"><span class="keyword apiname">MsgRegisterEvent()</span></a>
+    gives an error of <span class="keyword const">EAGAIN</span>.
+  </td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" width="23.026315789473685%" headers="d2366600e529 "><span class="keyword const">RLIMIT_STACK</span></td>
+
+  <td class="entry" valign="top" width="14.802631578947366%" headers="d2366600e532 ">POSIX</td>
+
+  <td class="entry" valign="top" width="31.907894736842106%" headers="d2366600e535 "><p class="p">The maximum size, in bytes, that a process's stack may be. The system will not
+    automatically grow the stack beyond this limit.</p>
+ <p class="p"> Within a process, <span class="keyword apiname">prlimit()</span>
+    increases the limit on the size of your stack, but doesn't move current memory segments to allow for
+    that growth. To guarantee that the process stack can grow to the limit, the limit must be altered
+    prior to the execution of the process in which the new stack size is to be used. </p>
+
+    <div class="note note"><span class="notetitle">Note:</span>  Within a multithreaded process, do not try to change <span class="keyword const">RLIMIT_STACK</span> from a thread
+      that's not the main thread. If you do try this, <span class="keyword apiname">prlimit()</span> fails with
+      <span class="keyword const">EINVAL</span>. </div>
+
+    
+    
+  </td>
+
+  <td class="entry" valign="top" width="30.263157894736842%" headers="d2366600e538 ">The <span class="keyword const">SIGSEGV</span> signal is sent to  the process.
+    If the process is holding or ignoring <span class="keyword const">SIGSEGV</span>, or is catching <span class="keyword const">SIGSEGV</span> and hasn't
+    made arrangements to use an alternate stack,  the disposition of
+    <span class="keyword const">SIGSEGV</span> is set to <span class="keyword const">SIG_DFL</span> before it's sent.
+  </td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" width="23.026315789473685%" headers="d2366600e529 "><span class="keyword const">RLIMIT_TIMERS_NP</span></td>
+
+  <td class="entry" valign="top" width="14.802631578947366%" headers="d2366600e532 "><span class="keyword">QNX Neutrino</span></td>
+
+  <td class="entry" valign="top" width="31.907894736842106%" headers="d2366600e535 ">The maximum number of timers that a process can create.</td>
+
+  <td class="entry" valign="top" width="30.263157894736842%" headers="d2366600e538 ">Attempts to create timers by calling
+    <a class="xref" href="../t/timer_create.html" title="Create a timer"><span class="keyword apiname">timer_create()</span></a>
+    or
+    <a class="xref" href="../t/timercreate.html" title="Create a timer for a process"><span class="keyword apiname">TimerCreate()</span></a>
+    fail with an error of <span class="keyword const">EAGAIN</span>.
+    Note that this limit doesn't apply to
+    <a class="xref" href="../t/timertimeout.html" title="Set a timeout on a blocking state"><span class="keyword apiname">TimerTimeout()</span></a>
+  </td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" width="23.026315789473685%" headers="d2366600e529 "><span class="keyword const">RLIMIT_VMEM</span></td>
+
+  <td class="entry" valign="top" width="14.802631578947366%" headers="d2366600e532 ">Unix</td>
+
+  <td class="entry" valign="top" width="31.907894736842106%" headers="d2366600e535 ">Same as <span class="keyword const">RLIMIT_AS</span>. </td>
+
+  <td class="entry" valign="top" width="30.263157894736842%" headers="d2366600e538 ">Same as <span class="keyword const">RLIMIT_AS</span>.</td>
+
+</tr>
+
+
+</tbody>
+
+</table>
+</div>
+
+
+<p class="p">
+Because limit  information  is  stored  in  the  per-process information,  the shell builtin
+<a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/k/ksh.html#ksh__ulimit"><span class="keyword cmdname">ulimit</span></a>
+command (see the entry for
+<a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/k/ksh.html"><span class="keyword cmdname">ksh</span></a>
+in the <cite class="cite">Utilities Reference</cite>) must directly execute this system call if it's to affect all future
+processes created by the shell.
+</p>
+
+
+<p class="p">
+The values of the current limit of  the  following  resources affect these parameters:
+
+
+
+
+</p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+
+<thead class="thead" align="left">
+<tr>
+<th class="entry" valign="top" id="d2366600e1068">Resource</th>
+
+<th class="entry" valign="top" id="d2366600e1071">Parameter</th>
+
+</tr>
+
+</thead>
+
+
+<tbody class="tbody">
+
+
+<tr>
+<td class="entry" valign="top" headers="d2366600e1068 d2366600e1071 "><span class="keyword const">RLIMIT_NOFILE</span></td>
+
+<td class="entry" valign="top" headers="d2366600e1068 d2366600e1071 "><span class="keyword const">OPEN_MAX</span></td>
+
+</tr>
+
+
+</tbody>
+
+</table>
+</div>
+
+
+<div class="p">When you get a resource limit:<ul class="ul" id="prlimit__ul_hqv_wlv_bhb">
+<li class="li">If the resource limit can be represented correctly in an object of type <span class="keyword dtype">rlim_t</span>,
+then its representation is returned.</li>
+
+<li class="li">If the value of the resource limit is equal to that of the corresponding saved hard limit, the
+value returned is <span class="keyword const">RLIM_SAVED_MAX</span>.</li>
+
+<li class="li">For all other resource limit values, the value returned is <span class="keyword const">RLIM_SAVED_CUR</span>.</li>
+
+</ul>
+</div>
+
+<div class="p">When you set a resource limit:<ul class="ul" id="prlimit__ul_fbk_3mv_bhb">
+<li class="li">If the new limit requested is <span class="keyword const">RLIM_INFINITY</span>, the new limit is "no limit".</li>
+
+<li class="li">If the requested new limit is <span class="keyword const">RLIM_SAVED_MAX</span> the limit is set to the
+corresponding saved hard limit.</li>
+
+<li class="li">If the requested new limit is <span class="keyword const">RLIM_SAVED_CUR</span>, the limit is set to the
+corresponding saved soft limit.</li>
+
+<li class="li">For all other resource limit values, the limit is set to the requested value.</li>
+
+</ul>
+</div>
+
+<p class="p">The result of setting a limit to <span class="keyword const">RLIM_SAVED_MAX</span> or <span class="keyword const">RLIM_SAVED_CUR</span>
+is unspecified unless a previous call to <span class="keyword apiname">prlimit()</span> returned that value as the
+soft or hard limit for the corresponding resource limit.</p>
+
+<p class="p">A limit whose value is greater than <span class="keyword const">RLIM_INFINITY</span> is permitted.</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Returns:</h2>
+
+
+<dl class="dl" compact="compact">
+
+<dt class="dt dlterm">0</dt>
+
+<dd class="dd">Success.</dd>
+
+
+
+
+<dt class="dt dlterm">-1</dt>
+
+<dd class="dd">An error occurred
+  (<a class="xref" href="../e/errno.html" title="Thread-local error variable"><var class="keyword varname">errno</var></a>
+  is set).
+</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Errors:</h2>
+
+
+<dl class="dl" compact="compact">
+
+<dt class="dt dlterm"><span class="keyword const">EFAULT</span></dt>
+
+<dd class="dd">Either <var class="keyword varname">new_rlp</var> or <var class="keyword varname">old_rlp</var> points to an illegal
+address.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EINVAL</span></dt>
+
+<dd class="dd">An invalid resource or an invalid value for the resource was specified.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EPERM</span></dt>
+
+<dd class="dd">The calling process does not have the required permissions to set resource limits on the process
+with PID <var class="keyword varname">pid</var>. (See <a class="xref" href="procmgr_ability.html" title="Control a process's ability to perform certain operations"><span class="keyword apiname">procmgr_ability()</span></a>.)</dd>
+
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">ESRCH</span></dt>
+
+<dd class="dd">The process specified by <var class="keyword varname">pid</var> does not exist.</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Examples:</h2>
+
+
+<pre class="pre codeblock">
+struct rlimit old;
+struct rlimit new;
+pid_t pid;
+int ret;
+
+pid = ...
+
+// Get the old limit for RLIMIT_CPU
+ret = prlimit(pid, RLIMIT_CPU, NULL, &amp;old);
+if (ret != 0) {
+    perror("prlimit");
+    return errno;
+}
+printf("old: cur=%lu, max=%lu \n", old.rlim_cur, old.rlim_max);
+
+new.rlim_cur = ...
+new.rlim_max = ...
+printf("new: cur=%lu, max=%lu \n", new.rlim_cur, new.rlim_max);
+
+// Get and set the limit for RLIMIT_CPU
+ret = prlimit(pid, RLIMIT_CPU, &amp;new, &amp;old);
+if (ret != 0) {
+    perror("prlimit");
+    return errno;
+}
+printf("old: cur=%lu, max=%lu \n", old.rlim_cur, old.rlim_max);
+</pre>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Classification:</h2>
+
+<p class="p"><span class="keyword apiname">prlimit()</span> is <a class="xref" href="../summary.html#summary__CLASSIFICATION">Linux</a>;
+  <span class="keyword apiname">prlimit64()</span> is <a class="xref" href="../summary.html#summary__CLASSIFICATION">Large-file support</a>.</p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+<thead class="thead" align="left">
+<tr><th class="entry" valign="top" id="d2366600e1305">Safety:</th>
+<th class="entry" valign="top" id="d2366600e1307">Â </th>
+</tr>
+
+</thead>
+
+<tbody class="tbody">
+<tr><td class="entry" valign="top" headers="d2366600e1305 d2366600e1307 ">Cancellation point</td>
+<td class="entry" valign="top" headers="d2366600e1305 d2366600e1307 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2366600e1305 d2366600e1307 ">Interrupt handler</td>
+<td class="entry" valign="top" headers="d2366600e1305 d2366600e1307 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2366600e1305 d2366600e1307 ">Signal handler</td>
+<td class="entry" valign="top" headers="d2366600e1305 d2366600e1307 ">Yes</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2366600e1305 d2366600e1307 ">Thread</td>
+<td class="entry" valign="top" headers="d2366600e1305 d2366600e1307 ">Yes</td>
+</tr>
+
+</tbody>
+
+</table>
+</div>
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="related-links"></div><div class="navfooter"><!---->
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-p.html" title="P"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">P</span></a></span>  </div>
+</body>
+</html>

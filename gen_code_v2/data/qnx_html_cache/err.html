@@ -1,0 +1,379 @@
+
+<!DOCTYPE html
+  PUBLIC "" "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />        
+      <meta name="copyright" content="(C) Copyright 2005" /><meta name="DC.rights.owner" content="(C) Copyright 2005" /><meta name="DC.Type" content="reference" /><meta name="DC.Title" content="err(), errx()" /><meta name="abstract" content="Display a formatted error message, and then exit" /><meta name="description" content="Display a formatted error message, and then exit" /><meta name="indexterms" content="err(), errx()" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-e.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/p/printf.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/s/stderr.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/s/strerror.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/v/verr.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/v/verr.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/v/vwarn.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/v/vwarn.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/w/warn.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/w/warn.html" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="err" /><meta name="DC.Language" content="en-us" /><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/commonltr.css"><!----></link><title>err(), errx()</title><link rel="canonical" type="html" href="https://www.qnx.com/developers/docs/7.1/#com.qnx.doc.neutrino.lib_ref/" /><!--  Generated with Oxygen version 18.1, build number 2017020917.  --><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/webhelp_topic.css"><!----></link><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/skins/skin.css" /><script type="text/javascript"><!--
+            
+            var prefix = "../../../index.html";
+            
+            --></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-1.11.3.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.cookie.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-ui.custom.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.highlight-3.js"><!----></script><script type="text/javascript" charset="utf-8" src="../../../oxygen-webhelp/resources/js/webhelp_topic.js"><!----></script><script type="text/javascript"> var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-27400275-1']); _gaq.push(['_setDomainName', 'www.qnx.com']);_gaq.push(['_setAllowLinker', true]);_gaq.push(['_trackPageview']);(function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script></head>
+<body onload="highlightSearchTerm()" class="frmBody" id="err">
+<table class="nav"><tbody><tr><td colspan="2"><div id="printlink"><button onClick="window.print()" title="Print this page" aria-label="Print this page"></button></div><div id="permalink"><a href="#" title="Link to this page"></a></div></td></tr><tr><td style="width:75%;"><span class="topic_breadcrumb_links"><span class="topic_breadcrumb_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-e.html" title="E">E</a></span></span></td><td><span id="topic_navigation_links" class="navheader">
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-e.html" title="E"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">E</span></a></span>  </span></td></tr></tbody></table>
+
+
+<h1 class="title topictitle1"><span class="keyword apiname">err()</span>, <span class="keyword apiname">errx()</span></h1>
+<table width="100%"><tbody><tr><td align="left"><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">QNX SDP</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">7.1</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">C Library Reference</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">API</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">Developer</button></td><td align="right"><span style="margin:0px 5px; font-size:0.9em;">Updated: October 28, 2024</span></td></tr></tbody></table>
+
+
+<div class="body refbody"><p class="shortdesc"><em class="ph i">Display a formatted error message, and then exit</em></p>
+
+
+<div class="section refsyn"><h2 class="title sectiontitle">Synopsis:</h2>
+
+<pre class="pre codeblock">
+#include &lt;err.h&gt;
+
+void err( int <var class="keyword varname">eval</var>, 
+          const char *<var class="keyword varname">fmt</var>, ...);
+
+void errx( int <var class="keyword varname">eval</var>,
+           const char *<var class="keyword varname">fmt</var>, ...);
+</pre>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Arguments:</h2>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><var class="keyword varname">eval</var></dt>
+
+<dd class="dd">The value to use as the exit code of the process.</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">fmt</var></dt>
+
+<dd class="dd"><span class="keyword const">NULL</span>, or a
+  <a class="xref" href="../p/printf.html" title="Write formatted output to stdout"><span class="keyword apiname">printf()</span></a>-style
+  string used to format the message.
+</dd>
+
+
+
+
+<dt class="dt dlterm">Additional arguments</dt>
+
+<dd class="dd">As required by the format string.</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Library:</h2>
+
+
+<p class="p"><span class="ph filepath">libc</span></p>
+
+<p class="p">Use the <span class="keyword option">-l c</span> option to
+<a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/q/qcc.html"><span class="keyword cmdname">qcc</span></a>
+to link against this library.
+This library is usually included automatically.</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Description:</h2>
+
+
+<p class="p">
+
+
+
+
+The <span class="keyword apiname">err()</span> and <span class="keyword apiname">warn()</span> family of functions display 
+a formatted error message on
+<a class="xref" href="../s/stderr.html" title="The standard error stream"><var class="keyword varname">stderr</var></a>:
+</p>
+
+
+<ul class="ul">
+<li class="li">The functions without an <samp class="ph codeph">x</samp> in their names display the string
+  associated with the current value of 
+  <a class="xref" href="errno.html" title="Thread-local error variable"><var class="keyword varname">errno</var></a>.
+</li>
+
+
+<li class="li">Those with a <samp class="ph codeph">v</samp> are <span class="q">&#147;varargs&#148;</span> functions.</li>
+
+
+<li class="li">Those with <samp class="ph codeph">err</samp> exit instead of returning.</li>
+
+
+</ul>
+
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+
+<thead class="thead" align="left">
+<tr>
+  <th class="entry" valign="top" id="d1377600e200">Function</th>
+
+  <th class="entry" valign="top" id="d1377600e203"><var class="keyword varname">errno</var> string?</th>
+
+  <th class="entry" valign="top" id="d1377600e208">Varargs?</th>
+
+  <th class="entry" valign="top" id="d1377600e211">Exits?</th>
+
+</tr>
+
+</thead>
+
+
+<tbody class="tbody">
+
+<tr>
+  <td class="entry" valign="top" headers="d1377600e200 d1377600e203 d1377600e208 d1377600e211 "><span class="keyword apiname">err()</span></td>
+
+  <td class="entry" valign="top" headers="d1377600e200 d1377600e203 d1377600e208 d1377600e211 ">Yes</td>
+
+  <td class="entry" valign="top" headers="d1377600e200 d1377600e203 d1377600e208 d1377600e211 ">No</td>
+
+  <td class="entry" valign="top" headers="d1377600e200 d1377600e203 d1377600e208 d1377600e211 ">Yes</td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1377600e200 d1377600e203 d1377600e208 d1377600e211 "><span class="keyword apiname">errx()</span></td>
+
+  <td class="entry" valign="top" headers="d1377600e200 d1377600e203 d1377600e208 d1377600e211 ">No</td>
+
+  <td class="entry" valign="top" headers="d1377600e200 d1377600e203 d1377600e208 d1377600e211 ">No</td>
+
+  <td class="entry" valign="top" headers="d1377600e200 d1377600e203 d1377600e208 d1377600e211 ">Yes</td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1377600e200 d1377600e203 d1377600e208 d1377600e211 "><a class="xref" href="../v/verr.html" title="Display a formatted error message, and then exit (varargs)"><span class="keyword apiname">verr()</span></a></td>
+
+  <td class="entry" valign="top" headers="d1377600e200 d1377600e203 d1377600e208 d1377600e211 ">Yes</td>
+
+  <td class="entry" valign="top" headers="d1377600e200 d1377600e203 d1377600e208 d1377600e211 ">Yes</td>
+
+  <td class="entry" valign="top" headers="d1377600e200 d1377600e203 d1377600e208 d1377600e211 ">Yes</td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1377600e200 d1377600e203 d1377600e208 d1377600e211 "><a class="xref" href="../v/verr.html" title="Display a formatted error message, and then exit (varargs)"><span class="keyword apiname">verrx()</span></a></td>
+
+  <td class="entry" valign="top" headers="d1377600e200 d1377600e203 d1377600e208 d1377600e211 ">No</td>
+
+  <td class="entry" valign="top" headers="d1377600e200 d1377600e203 d1377600e208 d1377600e211 ">Yes</td>
+
+  <td class="entry" valign="top" headers="d1377600e200 d1377600e203 d1377600e208 d1377600e211 ">Yes</td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1377600e200 d1377600e203 d1377600e208 d1377600e211 "><a class="xref" href="../v/vwarn.html" title="Formatted error message (varargs)"><span class="keyword apiname">vwarn()</span></a></td>
+
+  <td class="entry" valign="top" headers="d1377600e200 d1377600e203 d1377600e208 d1377600e211 ">Yes</td>
+
+  <td class="entry" valign="top" headers="d1377600e200 d1377600e203 d1377600e208 d1377600e211 ">Yes</td>
+
+  <td class="entry" valign="top" headers="d1377600e200 d1377600e203 d1377600e208 d1377600e211 ">No</td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1377600e200 d1377600e203 d1377600e208 d1377600e211 "><a class="xref" href="../v/vwarn.html" title="Formatted error message (varargs)"><span class="keyword apiname">vwarnx()</span></a></td>
+
+  <td class="entry" valign="top" headers="d1377600e200 d1377600e203 d1377600e208 d1377600e211 ">No</td>
+
+  <td class="entry" valign="top" headers="d1377600e200 d1377600e203 d1377600e208 d1377600e211 ">Yes</td>
+
+  <td class="entry" valign="top" headers="d1377600e200 d1377600e203 d1377600e208 d1377600e211 ">No</td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1377600e200 d1377600e203 d1377600e208 d1377600e211 "><a class="xref" href="../w/warn.html" title="Formatted error message"><span class="keyword apiname">warn()</span></a></td>
+
+  <td class="entry" valign="top" headers="d1377600e200 d1377600e203 d1377600e208 d1377600e211 ">Yes</td>
+
+  <td class="entry" valign="top" headers="d1377600e200 d1377600e203 d1377600e208 d1377600e211 ">No</td>
+
+  <td class="entry" valign="top" headers="d1377600e200 d1377600e203 d1377600e208 d1377600e211 ">No</td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1377600e200 d1377600e203 d1377600e208 d1377600e211 "><a class="xref" href="../w/warn.html" title="Formatted error message"><span class="keyword apiname">warnx()</span></a></td>
+
+  <td class="entry" valign="top" headers="d1377600e200 d1377600e203 d1377600e208 d1377600e211 ">No</td>
+
+  <td class="entry" valign="top" headers="d1377600e200 d1377600e203 d1377600e208 d1377600e211 ">No</td>
+
+  <td class="entry" valign="top" headers="d1377600e200 d1377600e203 d1377600e208 d1377600e211 ">No</td>
+
+</tr>
+
+
+</tbody>
+
+</table>
+</div>
+
+
+<p class="p">
+The <span class="keyword apiname">err()</span> function produces a message that consists of:
+</p>
+
+
+<ul class="ul">
+<li class="li">the last component of the program name, followed by a colon and a space</li>
+
+
+<li class="li">the formatted message, followed by a colon and a space, if the
+  <var class="keyword varname">fmt</var> argument isn't <span class="keyword const">NULL</span>
+</li>
+
+
+<li class="li">the string associated with the current value of <var class="keyword varname">errno</var></li>
+
+
+<li class="li">a newline character.</li>
+
+
+</ul>
+
+
+<p class="p">
+The <span class="keyword apiname">errx()</span> function produces a similar message, except that it
+doesn't include the string associated with <var class="keyword varname">errno</var>.
+The message consists of:
+</p>
+
+
+<ul class="ul">
+<li class="li">the last component of the program name, followed by a colon and a space</li>
+
+
+<li class="li">the formatted message, if the <var class="keyword varname">fmt</var> argument isn't
+  <span class="keyword const">NULL</span>
+</li>
+
+
+<li class="li">a newline character.</li>
+
+
+</ul>
+
+
+<p class="p">
+The <span class="keyword apiname">err()</span> and <span class="keyword apiname">errx()</span> functions don't return, but exit
+with the value of the argument <var class="keyword varname">eval</var>.
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Examples:</h2>
+
+
+<p class="p">
+Display the current <var class="keyword varname">errno</var> information string, and then exit:
+</p>
+
+<pre class="pre codeblock">
+if ((p = malloc(size)) == NULL)
+   err(1, NULL);
+if ((fd = open(file_name, O_RDONLY, 0)) == -1)
+   err(1, "%s", file_name);
+</pre>
+
+
+<p class="p">
+Display an error message, and then exit:
+</p>
+
+
+<pre class="pre codeblock">
+if (tm.tm_hour &lt; START_TIME)
+    errx(1, "too early, wait until %s", start_time_string);
+</pre>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Classification:</h2>
+
+<p class="p"><a class="xref" href="../summary.html#summary__CLASSIFICATION">Unix</a></p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+<thead class="thead" align="left">
+<tr><th class="entry" valign="top" id="d1377600e495">Safety:</th>
+<th class="entry" valign="top" id="d1377600e497">Â </th>
+</tr>
+
+</thead>
+
+<tbody class="tbody">
+<tr><td class="entry" valign="top" headers="d1377600e495 d1377600e497 ">Cancellation point</td>
+<td class="entry" valign="top" headers="d1377600e495 d1377600e497 ">Yes</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d1377600e495 d1377600e497 ">Interrupt handler</td>
+<td class="entry" valign="top" headers="d1377600e495 d1377600e497 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d1377600e495 d1377600e497 ">Signal handler</td>
+<td class="entry" valign="top" headers="d1377600e495 d1377600e497 ">Yes</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d1377600e495 d1377600e497 ">Thread</td>
+<td class="entry" valign="top" headers="d1377600e495 d1377600e497 ">Yes</td>
+</tr>
+
+</tbody>
+
+</table>
+</div>
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="related-links"><div class="relinfo relref"><strong>Related reference</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/p/printf.html" title="Write formatted output to stdout">printf()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/s/stderr.html" title="The standard error stream">stderr</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/s/strerror.html" title="Convert an error number into an error message">strerror()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/v/verr.html" title="Display a formatted error message, and then exit (varargs)">verr(), verrx()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/v/vwarn.html" title="Formatted error message (varargs)">vwarn(), vwarnx()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/w/warn.html" title="Formatted error message">warn(), warnx()</a></div>
+</div>
+</div><div class="navfooter"><!---->
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-e.html" title="E"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">E</span></a></span>  </div>
+</body>
+</html>

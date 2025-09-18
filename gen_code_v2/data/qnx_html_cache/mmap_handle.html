@@ -1,0 +1,1229 @@
+
+<!DOCTYPE html
+  PUBLIC "" "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />        
+      <meta name="copyright" content="(C) Copyright 2005" /><meta name="DC.rights.owner" content="(C) Copyright 2005" /><meta name="DC.Type" content="reference" /><meta name="DC.Title" content="mmap(), mmap64(), mmap_handle()" /><meta name="abstract" content="Map a memory region into a process's address space" /><meta name="description" content="Map a memory region into a process's address space" /><meta name="indexterms" content="mmap(), mmap64(), mmap_handle()" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-m.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.sys_arch/topic/ipc_Shared_memory.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.sys_arch/topic/ipc_Typed_memory.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.prog/topic/memory.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.prog/topic/shared_memory_handles.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/m/mmap_device_io.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/m/mmap_device_memory.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/m/mmap_peer.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/m/mprotect.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/m/msync.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/m/munmap.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/m/munmap_peer.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/p/posix_typed_mem_open.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/p/procmgr_ability.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/s/setrlimit.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/s/shm_open.html" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="mmap" /><meta name="DC.Language" content="en-us" /><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/commonltr.css"><!----></link><title>mmap(), mmap64(), mmap_handle()</title><link rel="canonical" type="html" href="https://www.qnx.com/developers/docs/7.1/#com.qnx.doc.neutrino.lib_ref/" /><!--  Generated with Oxygen version 18.1, build number 2017020917.  --><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/webhelp_topic.css"><!----></link><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/skins/skin.css" /><script type="text/javascript"><!--
+            
+            var prefix = "../../../index.html";
+            
+            --></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-1.11.3.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.cookie.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-ui.custom.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.highlight-3.js"><!----></script><script type="text/javascript" charset="utf-8" src="../../../oxygen-webhelp/resources/js/webhelp_topic.js"><!----></script><script type="text/javascript"> var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-27400275-1']); _gaq.push(['_setDomainName', 'www.qnx.com']);_gaq.push(['_setAllowLinker', true]);_gaq.push(['_trackPageview']);(function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script></head>
+<body onload="highlightSearchTerm()" class="frmBody" id="mmap">
+<table class="nav"><tbody><tr><td colspan="2"><div id="printlink"><button onClick="window.print()" title="Print this page" aria-label="Print this page"></button></div><div id="permalink"><a href="#" title="Link to this page"></a></div></td></tr><tr><td style="width:75%;"><span class="topic_breadcrumb_links"><span class="topic_breadcrumb_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-m.html" title="M">M</a></span></span></td><td><span id="topic_navigation_links" class="navheader">
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-m.html" title="M"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">M</span></a></span>  </span></td></tr></tbody></table>
+
+
+<h1 class="title topictitle1"><span class="keyword apiname">mmap()</span>, <span class="keyword apiname">mmap64()</span>, <span class="keyword apiname">mmap_handle()</span></h1>
+<table width="100%"><tbody><tr><td align="left"><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">QNX SDP</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">7.1</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">C Library Reference</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">API</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">Developer</button></td><td align="right"><span style="margin:0px 5px; font-size:0.9em;">Updated: October 28, 2024</span></td></tr></tbody></table>
+
+
+<div class="body refbody"><p class="shortdesc"><em class="ph i">Map a memory region into a process's address space</em></p>
+
+
+<div class="section">
+<p class="p">
+
+
+
+
+
+
+
+
+
+</p>
+
+</div>
+
+
+<div class="section refsyn"><h2 class="title sectiontitle">Synopsis:</h2>
+
+<pre class="pre codeblock">
+#include &lt;sys/mman.h&gt;
+
+void * mmap( void * <var class="keyword varname">addr</var>,
+             size_t <var class="keyword varname">len</var>,
+             int <var class="keyword varname">prot</var>,
+             int <var class="keyword varname">flags</var>,
+             int <var class="keyword varname">filedes</var>,
+             off_t <var class="keyword varname">off</var> );
+
+void * mmap64( void * <var class="keyword varname">addr</var>,
+               size_t <var class="keyword varname">len</var>,
+               int <var class="keyword varname">prot</var>,
+               int <var class="keyword varname">flags</var>,
+               int <var class="keyword varname">filedes</var>,
+               off64_t <var class="keyword varname">off</var> );
+
+void * mmap_handle( void * <var class="keyword varname">addr</var>,
+                    size_t <var class="keyword varname">len</var>,
+                    int <var class="keyword varname">prot</var>,
+                    int <var class="keyword varname">flags</var>,
+                    shm_handle_t <var class="keyword varname">handle</var>,
+                    off_t <var class="keyword varname">off</var> );
+</pre>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Arguments:</h2>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><var class="keyword varname">addr</var></dt>
+
+<dd class="dd"><span class="keyword const">NULL</span>, or a pointer to where you want the object to be mapped
+  into the calling process's address space.
+  <p class="p">This address doesn't have to be page-aligned (i.e., a multiple of <span class="keyword const">PAGESIZE</span>)
+    but if you specify <span class="keyword const">MAP_FIXED</span> in <var class="keyword varname">flags</var>,
+    the address must be aligned with <var class="keyword varname">off</var>, or the function fails.
+    For more information, refer to the <a class="xref" href="#mmap__MAP_FIXED"><span class="keyword const">MAP_FIXED</span></a>
+    description below.</p>
+
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">len</var></dt>
+
+<dd class="dd">The number of bytes to map into the caller's address space. It can't be 0, but
+  this value doesn't have to be page-aligned; that is, it doesn't have to be a multiple of
+  <span class="keyword const">PAGESIZE</span>.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">prot</var></dt>
+
+<dd class="dd">The access capabilities that you want to use for the memory region being
+  mapped. You can combine at least the following protection bits, as defined in
+  <span class="ph filepath">&lt;sys/mman.h&gt;</span>:
+
+  <ul class="ul">
+  <li class="li"><span class="keyword const">PROT_EXEC</span> â the region can be executed.
+    
+    <div class="note note"><span class="notetitle">Note:</span> To successfully use this flag,
+      your process must have the <span class="keyword const">PROCMGR_AID_PROT_EXEC</span> ability enabled.
+      For more information, see <a class="xref" href="../p/procmgr_ability.html" title="Control a process's ability to perform certain operations"><span class="keyword apiname">procmgr_ability()</span></a>.
+      
+    </div>
+
+  </li>
+
+
+  <li class="li"><span class="keyword const">PROT_NOCACHE</span> â disable caching of the region
+    (e.g., so it can be used to access dual-ported memory).
+    
+
+    <div class="note note"><span class="notetitle">Note:</span> 
+    On 32- and 64-bit ARM targets, <span class="keyword const">PROT_NOCACHE</span> causes RAM to be mapped as normal noncached, but
+    non-RAM to be mapped as strongly ordered device memory.
+    For finer control, see
+    <a class="xref" href="../s/shm_ctl.html" title="Give special attributes to a shared memory object"><span class="keyword apiname">shm_ctl_special()</span></a>.
+    </div>
+
+  </li>
+
+
+  <li class="li"><span class="keyword const">PROT_NONE</span> â the region can't be accessed.
+    
+  </li>
+
+
+  <li class="li"><span class="keyword const">PROT_READ</span> â the region can be read.
+    
+  </li>
+
+
+  <li class="li"><span class="keyword const">PROT_WRITE</span> â the region can be written 
+    (on both x86 and ARM architectures, <span class="keyword const">PROT_WRITE</span> also implies <span class="keyword const">PROT_READ</span>).
+    
+
+    <div class="note note"><span class="notetitle">Note:</span> 
+    In order to simultaneously set <span class="keyword const">PROT_EXEC</span> and <span class="keyword const">PROT_WRITE</span>,
+    your process must have the <span class="keyword const">PROCMGR_AID_PROT_WRITE_AND_EXEC</span> ability enabled
+    (in addition to <span class="keyword const">PROCMGR_AID_PROT_EXEC</span>).
+    For more information, see
+    <a class="xref" href="../p/procmgr_ability.html" title="Control a process's ability to perform certain operations"><span class="keyword apiname">procmgr_ability()</span></a>.
+    
+    </div>
+
+  </li>
+
+
+  </ul>
+
+
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">flags</var></dt>
+
+<dd class="dd">Flags that specify further information about handling the mapped region.
+  POSIX defines the following:
+
+  <ul class="ul">
+  <li class="li"><span class="keyword const">MAP_PRIVATE</span></li>
+
+  <li class="li"><span class="keyword const">MAP_SHARED</span></li>
+
+  <li class="li"><span class="keyword const">MAP_FIXED</span></li>
+
+  </ul>
+
+
+  <p class="p">
+  The following are Unix or <span class="keyword">QNX Neutrino</span> extensions:
+  </p>
+
+
+  <ul class="ul">
+  <li class="li"><span class="keyword const">MAP_ANON</span></li>
+
+  <li class="li"><span class="keyword const">MAP_BELOW</span></li>
+
+  
+  <li class="li"><span class="keyword const">MAP_ELF</span></li>
+
+  <li class="li"><span class="keyword const">MAP_FILE</span> â defined for compatibility; has no effect.</li>
+
+  <li class="li"><span class="keyword const">MAP_LAZY</span></li>
+
+  <li class="li"><span class="keyword const">MAP_NOINHERIT</span></li>
+
+  
+  <li class="li"><span class="keyword const">MAP_NORESERVE</span> â defined for compatibility; has no effect.</li>
+
+  <li class="li"><span class="keyword const">MAP_NOSYNCFILE</span></li>
+
+  
+  <li class="li"><span class="keyword const">MAP_PHYS</span></li>
+
+  <li class="li"><span class="keyword const">MAP_RENAME</span> â defined for compatibility; has no effect.</li>
+
+  <li class="li"><span class="keyword const">MAP_STACK</span></li>
+
+  </ul>
+
+
+  <p class="p">For more information, see below.</p>
+
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">filedes</var></dt>
+
+<dd class="dd">(<span class="keyword apiname">mmap()</span> and <span class="keyword apiname">mmap64()</span> only)
+  The file descriptor for a file, shared memory object, or typed memory object.
+  If you're mapping anonymous or physical memory, this argument must be
+  <span class="keyword const">NOFD</span>.
+  
+
+  <p class="p">
+  Memory that's mapped from a typed-memory file descriptor is implicitly locked.
+  Shared memory objects that are populated with <span class="keyword apiname">shm_ctl()</span> are implicitly locked, unless you
+  use the <span class="keyword const">SHMCTL_LAZY</span> flag.
+  </p>
+
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">handle</var></dt>
+
+<dd class="dd">(<span class="keyword apiname">mmap_handle()</span> only)
+  A shared memory object handle created by
+  <a class="xref" href="../s/shm_create_handle.html" title="Create a handle so a specific process can access a shared memory object"><span class="keyword apiname">shm_create_handle()</span></a>.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">off</var></dt>
+
+<dd class="dd">The offset into the file or memory object of the region that you want to start mapping,
+  or a physical address (e.g., for mapping a device's registers in a resource manager).
+
+  <p class="p">Both the <var class="keyword varname">addr</var> and <var class="keyword varname">off</var> values get page-aligned by the
+    function, so the returned pointer refers to the start of the corresponding memory page plus
+    this offset (i.e., the exact physical address of the memory block).
+    For instance, if <var class="keyword varname">off</var> is 8, then the mapped address that gets returned is
+    modulo <span class="keyword const">PAGESIZE</span> 8.</p>
+
+
+  <p class="p">If you specify <span class="keyword const">MAP_FIXED</span> in <var class="keyword varname">flags</var>,
+    <var class="keyword varname">off</var> must be aligned with <var class="keyword varname">addr</var>, or the function fails.
+    For more information, refer to the <a class="xref" href="#mmap__MAP_FIXED"><span class="keyword const">MAP_FIXED</span></a>
+    description below.</p>
+
+
+  <div class="note note"><span class="notetitle">Note:</span> 
+    On x86, if a device's registers are memory-mapped, you can use
+    <a class="xref" href="mmap_device_memory.html" title="Map a device's physical memory into a process's address space"><span class="keyword apiname">mmap_device_memory()</span></a>
+    to access them.
+    Otherwise you can use
+    <a class="xref" href="mmap_device_io.html" title="Gain access to a device's registers"><span class="keyword apiname">mmap_device_io()</span></a>
+    to gain access to the device, and routines such as
+    <a class="xref" href="../i/in8.html" title="Read an 8-bit value from a port"><span class="keyword apiname">in8()</span></a> and
+    <a class="xref" href="../o/out8.html" title="Write an 8-bit value to a port"><span class="keyword apiname">out8()</span></a> to access them.
+    On architectures other than x86, both methods are equivalent.
+  </div>
+
+
+</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Library:</h2>
+
+
+<p class="p"><span class="ph filepath">libc</span></p>
+
+<p class="p">Use the <span class="keyword option">-l c</span> option to
+<a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/q/qcc.html"><span class="keyword cmdname">qcc</span></a>
+to link against this library.
+This library is usually included automatically.</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Description:</h2>
+
+
+<p class="p">
+The <span class="keyword apiname">mmap()</span> and <span class="keyword apiname">mmap64()</span> functions map
+a region within the object specified by <var class="keyword varname">filedes</var>,
+beginning at <var class="keyword varname">off</var> and continuing for <var class="keyword varname">len</var>,
+into the caller's address space and return the location.
+</p>
+
+
+<div class="note note"><span class="notetitle">Note:</span> 
+The <span class="keyword apiname">mmap64()</span> function is a large-file support version of
+<span class="keyword apiname">mmap()</span>. The large-file support functions and data types appear
+in the namespace only if you define <span class="keyword const">_LARGEFILE64_SOURCE</span> when you compile
+your code.
+For more information, see <span class="q">&#147;<a class="xref" href="../summary.html#summary__CLASSIFICATION">Classification</a>&#148;</span> in <span class="q">&#147;What's in a Function Description?&#148;</span>.
+</div>
+
+
+<div class="cautiontitle">CAUTION:</div><div class="note caution">
+To avoid undesired behavior, don't use <span class="keyword apiname">mmap()</span> to map the same region of typed memory cached,
+<span class="keyword apiname">unmap()</span> it, then <span class="keyword apiname">mmap()</span> it uncached.
+You need to ensure that the cache is flushed between calls to <span class="keyword apiname">mmap()</span>.
+</div>
+
+
+<p class="p">
+The <span class="keyword apiname">mmap_handle()</span> function is similar to <span class="keyword apiname">mmap()</span>,
+but it uses the shared memory object handle created by
+<a class="xref" href="../s/shm_create_handle.html" title="Create a handle so a specific process can access a shared memory object"><span class="keyword apiname">shm_create_handle()</span></a>,
+instead of a file descriptor.
+</p>
+
+
+<p class="p">
+The object that you map from can be one of the following:
+</p>
+
+
+<ul class="ul">
+<li class="li">a file opened with
+  <a class="xref" href="../o/open.html" title="Open a file"><span class="keyword apiname">open()</span></a>
+</li>
+
+
+<li class="li">a shared memory object opened with
+  <a class="xref" href="../s/shm_open.html" title="Open a shared memory object based on a pathname"><span class="keyword apiname">shm_open()</span></a>
+</li>
+
+
+<li class="li">a typed memory object opened with
+  <a class="xref" href="../p/posix_typed_mem_open.html" title="Open a typed memory object"><span class="keyword apiname">posix_typed_mem_open()</span></a>
+</li>
+
+
+<li class="li">physical memory â specify <span class="keyword const">NOFD</span> for <var class="keyword varname">filedes</var></li>
+
+
+</ul>
+
+
+<p class="p">
+If <var class="keyword varname">filedes</var> isn't <span class="keyword const">NOFD</span>,
+you must have opened the file descriptor for reading, no matter what
+value you specify for <var class="keyword varname">prot</var>; write access is also required
+for <span class="keyword const">PROT_WRITE</span> if you haven't specified <span class="keyword const">MAP_PRIVATE</span>.
+</p>
+
+
+<div class="p">
+The mapping is as shown below:
+
+<div class="fig fignone">
+  
+  <br /><img class="image" src="../../images/memory_mapping.png" width="528" /><br />
+<span class="figcap">Figure 1. Mapping memory with <span class="keyword apiname">mmap()</span>.</span></div>
+
+</div>
+
+
+<p class="p">
+Typically, you don't need to use <var class="keyword varname">addr</var>; you can just pass
+<span class="keyword const">NULL</span> instead. Mappings, including the flags, are maintained
+across a <a class="xref" href="../f/fork.html" title="Create a new process"><span class="keyword apiname">fork()</span></a>.
+</p>
+
+
+<p class="p">
+The <var class="keyword varname">flags</var> argument includes a type (masked by the <span class="keyword const">MAP_TYPE</span> bits)
+and additional bits.
+You must specify one of the following types:
+
+</p>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><span class="keyword const">MAP_PRIVATE</span></dt>
+
+<dd class="dd">The mapping is private to the calling process;
+  changes aren't propagated back to the underlying object (if any).
+  For this type of mapping, <span class="keyword apiname">mmap()</span>
+  allocates system RAM and copies the current object.
+  
+</dd>
+
+
+
+
+<dt class="dt dlterm" id="mmap__MAP_SHARED"><span class="keyword const">MAP_SHARED</span></dt>
+
+<dd class="dd">The mapping may be shared by many processes;
+  changes <em class="ph i">are</em> propagated back to the underlying object.
+  
+</dd>
+
+
+
+</dl>
+
+
+<div class="cautiontitle">CAUTION:</div><div class="note caution">
+<ul class="ul">
+<li class="li">Don't have a shared, writable mapping to a file that you're simultaneously accessing via
+  <a class="xref" href="../w/write.html" title="Write bytes to a file"><span class="keyword apiname">write()</span></a>.
+  The interaction between the two methods isn't well defined and may give unexpected results.
+</li>
+
+
+<li class="li"> If you don't specify either <span class="keyword const">MAP_PRIVATE</span> or <span class="keyword const">MAP_SHARED</span>,
+  <span class="keyword apiname">mmap()</span> returns <span class="keyword const">MAP_FAILED</span> and sets
+  <var class="keyword varname">errno</var> to <span class="keyword const">EINVAL</span>. </li>
+
+</ul>
+
+</div>
+
+
+<p class="p">
+You can OR the following flags into the above type to further specify the mapping:
+</p>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><span class="keyword const">MAP_ANON</span></dt>
+
+<dd class="dd">Map anonymous memory that isn't associated with a specific file descriptor;
+  the <var class="keyword varname">filedes</var> parameter must be <span class="keyword const">NOFD</span>.
+  The <span class="keyword apiname">mmap()</span> function allocates the memory and fills it with zeros.
+  
+  This is equivalent to opening <span class="ph filepath">/dev/zero</span>.
+  
+  
+  
+  
+
+  <p class="p">
+  <span class="keyword const">MAP_ANON</span> is most commonly used with
+  <span class="keyword const">MAP_PRIVATE</span>, but you can use it with
+  <span class="keyword const">MAP_SHARED</span> to create a shared memory area for forked applications:
+  </p>
+
+
+  <ul class="ul">
+  <li class="li"><span class="keyword const">MAP_ANON</span> | <span class="keyword const">MAP_PRIVATE</span> â a new mapping is made for the child process,
+    and contents of the object are initially the same as for the parent.
+    Each process works with its own object, and changes made by one process aren't seen by the other.
+  </li>
+
+
+  <li class="li"><span class="keyword const">MAP_ANON</span> | <span class="keyword const">MAP_SHARED</span> â the parent and child processes share the
+    same object.
+    Changes made by one process are seen by the other.
+  </li>
+
+
+  </ul>
+
+  <div class="note note"><span class="notetitle">Note:</span> If the mapping of MAP_ANON is done with PROT_NONE, then the appropriate virtual address space
+    will be reserved in the process. No system RAM will be allocated for this mapping.
+    A later call to <a class="xref" href="mprotect.html" title="Change memory protection"><span class="keyword apiname">mprotect()</span></a> may trigger
+    the needed allocation. For more information, see the description section of
+    <a class="xref" href="mprotect.html" title="Change memory protection"><span class="keyword apiname">mprotect()</span></a>.</div>
+
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">MAP_BELOW</span></dt>
+
+<dd class="dd"><p class="p">Map below the given <var class="keyword varname">addr</var>, if possible.
+  The <var class="keyword varname">addr</var> argument to <span class="keyword apiname">mmap*()</span> is a hint as to
+  where to put the mapped region in the caller's address space (unless
+  combined with <span class="keyword const">MAP_FIXED</span>, which turns it into a strong requirement).
+  <span class="keyword const">MAP_BELOW</span> changes the meaning of the hint to be where the region should
+  <em class="ph i">end</em> instead of where it should begin. </p>
+
+  
+  <p class="p">If <span class="keyword const">MAP_BELOW</span> is set, the memory manager searches downwards, proceeding
+    to the bottom of the address space, and may wrap around if no hole of the required size
+    is available. Therefore, the mapping may be made at an address larger than <var class="keyword varname">addr</var>.</p>
+
+  <p class="p">If <span class="keyword const">MAP_BELOW</span> isn't set, the memory manager searches upwards, proceeding to the top, and may wrap around
+    if necessary. Therefore, the mapping may be made at an address smaller than <var class="keyword varname">addr</var>.
+    </p>
+
+</dd>
+
+
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">MAP_ELF</span></dt>
+
+<dd class="dd">The memory is an ELF object.
+  This flag is used by the program loader.
+  
+  
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">MAP_FILE</span></dt>
+
+<dd class="dd">Map a regular file.
+  This flag is required on some operating systems, but has no effect on
+  <span class="keyword">QNX Neutrino</span>.
+  
+</dd>
+
+
+
+
+<dt class="dt dlterm" id="mmap__MAP_FIXED"><span class="keyword const">MAP_FIXED</span></dt>
+
+<dd class="dd">Map the object to the address specified by <var class="keyword varname">addr</var>, or the function fails.
+  If this area is already mapped, the call changes the existing mapping of the area.
+  A memory area being mapped with <span class="keyword const">MAP_FIXED</span> is first unmapped
+  by the system using the same memory area.
+  See <a class="xref" href="munmap.html" title="Unmap previously mapped addresses"><span class="keyword apiname">munmap()</span></a> for details.
+  
+
+  <div class="cautiontitle">CAUTION:</div><div class="note caution">
+  <ul class="ul">
+  <li class="li">In order to use <span class="keyword const">MAP_FIXED</span>, your process must have the
+    <span class="keyword const">PROCMGR_AID_MAP_FIXED</span> ability enabled.
+    For more information, see
+    <a class="xref" href="../p/procmgr_ability.html" title="Control a process's ability to perform certain operations"><span class="keyword apiname">procmgr_ability()</span></a>.
+    
+  </li>
+
+
+  <li class="li">Use <span class="keyword const">MAP_FIXED</span> with caution because it removes any existing mappings,
+    making it easy for a process to corrupt its own address space.
+    In general, you should assume that you can use <span class="keyword const">MAP_FIXED</span>
+    only at an address (and size) that a call to
+    <span class="keyword apiname">mmap*()</span> without <span class="keyword const">MAP_FIXED</span> returned.
+  </li>
+
+
+  <li class="li">If you set <span class="keyword const">MAP_FIXED</span>, the addresses in the <var class="keyword varname">addr</var> and
+    the <var class="keyword varname">off</var> arguments must be aligned with respect to page boundaries;
+    that is, the two values must be equal modulo the page size, or the function fails.
+    For example, the following call generates an error:
+<pre class="pre codeblock">
+paddr = mmap(vaddr+7, 1, PROT_READ, MAP_SHARED|MAP_FIXED, fd, 1);
+</pre>
+
+    Here, we assume that <samp class="ph codeph">vaddr</samp> contains
+    a page-aligned address and we deliberately add 7 bytes to attain an address that's a bit
+    beyond the start of the memory page, and pass this into the <var class="keyword varname">addr</var> argument.
+    Because we set the <var class="keyword varname">off</var> argument to 1, these two values are misaligned.
+    If we specified <samp class="ph codeph">vaddr + 1</samp>, then the call would succeed.
+  </li>
+
+
+  </ul>
+
+  </div>
+
+
+  <p class="p">
+  If <var class="keyword varname">addr</var> isn't <span class="keyword const">NULL</span> and you don't set <span class="keyword const">MAP_FIXED</span>, then
+  the value of <var class="keyword varname">addr</var> is taken as a hint as to where to map the object
+  into the calling process's address space.
+  The mapped area won't overlay any current mapped areas. Refer to the <span class="keyword const">MAP_BELOW</span>
+  description above for information on what happens if the hint in <var class="keyword varname">addr</var> can't be followed.
+  </p>
+
+
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">MAP_LAZY</span></dt>
+
+<dd class="dd">Delay acquiring system memory, and copying or zero-filling the
+  <span class="keyword const">MAP_PRIVATE</span> or <span class="keyword const">MAP_ANON</span> pages,
+  until an access to the area has occurred. 
+  If you set this flag, and there's no system memory at the time of the access,
+  the thread gets a <span class="keyword const">SIGBUS</span> with a code of <span class="keyword const">BUS_OBJERR</span>.
+  This flag is a hint to the memory manager.
+  
+  
+  
+  
+
+  
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">MAP_NOINHERIT</span></dt>
+
+<dd class="dd">If the process calls <a class="xref" href="../f/fork.html" title="Create a new process"><span class="keyword apiname">fork()</span></a>, don't give the
+  child process a copy of the memory mapping.
+  
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">MAP_NORESERVE</span></dt>
+
+<dd class="dd">Defined for compatibility, but has no effect.
+  
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">MAP_NOSYNCFILE</span></dt>
+
+<dd class="dd">Don't update the underlying file.
+  
+
+  <div class="cautiontitle">CAUTION:</div><div class="note caution">
+  If the same region in a file is mapped twice,
+  once with <span class="keyword const">MAP_NOSYNCFILE</span> and once without, the
+  memory manager might not be able to tell whether a change was
+  made through the <span class="keyword const">MAP_NOSYNCFILE</span> mapping or not, and
+  thus write out changes that weren't intended.
+  </div>
+
+
+</dd>
+
+
+
+
+<dt class="dt dlterm" id="mmap__MAP_PHYS"><span class="keyword const">MAP_PHYS</span></dt>
+
+<dd class="dd">
+  Physical memory is required.
+  The <var class="keyword varname">filedes</var> parameter must be <span class="keyword const">NOFD</span>.
+  When you use this flag without <span class="keyword const">MAP_ANON</span>,
+  the offset specifies the exact physical address to map (e.g., for video frame buffers).
+  <div class="note warning"><span class="warningtitle">Warning:</span> 
+    <p class="p">Direct physical mappings are extremely dangerous, especially when
+      the mapped region overlaps RAM and is not used for mapping device memory.
+      The memory manager does not track such mappings as allocations and, thus, the physical
+      memory may be freed and then potentially reallocated while the mappings exist.
+      The implications both to safety and security are severe.</p>
+
+    <p class="p"><span class="keyword">QNX Neutrino</span> provides better mechanisms for scenarios traditionally
+      handled by such mappings, including typed memory and shared-memory handles.</p>
+
+    <p class="p">If you do have to use <span class="keyword const">MAP_PHYS</span> to map physical memory, your process must have
+      the <span class="keyword const">PROCMGR_AID_MEM_PHYS</span> ability enabled; you don't need this ability if you
+      also specify <span class="keyword const">MAP_ANON</span>. For more information, see
+      <a class="xref" href="../p/procmgr_ability.html" title="Control a process's ability to perform certain operations"><span class="keyword apiname">procmgr_ability()</span></a>.
+      
+    </p>
+
+  </div>
+
+
+  <p class="p">
+  If you use <span class="keyword const">MAP_PHYS</span> with <span class="keyword const">MAP_ANON</span>,
+  <span class="keyword apiname">mmap*()</span> allocates physically contiguous memory and ignores the offset.
+  You should almost always use these flags with <span class="keyword const">MAP_SHARED</span>;
+  if you use them with <span class="keyword const">MAP_PRIVATE</span>,
+  <span class="keyword">QNX Neutrino</span> creates a physically contiguous memory object
+  with zero-filled pages and then privatizes it, meaning the OS creates a copy
+  in which there's no guarantee of contiguity.
+  
+  </p>
+
+
+  <p class="p">
+  If you're mapping device memory or registers, you should use <span class="keyword const">MAP_PHYS</span> with <span class="keyword const">MAP_SHARED</span>.
+  If you use <span class="keyword const">MAP_PHYS</span> with <span class="keyword const">MAP_PRIVATE</span> but without <span class="keyword const">MAP_ANON</span> to map
+  device memory or registers, then everything works until you write to any of the pages.
+  At this point, the pages are copied and what you're pointing to is memory that isn't associated with the device
+  you're trying to control, and the device will seem not to respond.
+  </p>
+
+
+  <div class="note warning"><span class="warningtitle">Warning:</span> You may run into trouble if you specifiy MAP_LAZY with MAP_PHYS
+    because this combination requests lazy allocation of physically contiguous memory.</div>
+
+  
+  <p class="p">
+    The memory manager supports a backward-compatibility mode that you can control with the <span class="keyword option">b</span>
+    and <span class="keyword option">~b</span> settings for <span class="keyword cmdname">procnto</span> <a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/p/procnto.html#procnto__Memory_configuration">memory configuration options</a>.
+    If backward-compatibility is enabled (the default) and you specify
+    <span class="keyword const">MAP_PHYS</span> with <span class="keyword const">MAP_PRIVATE</span>, then the memory manager changes <span class="keyword const">MAP_PRIVATE</span>
+    to <span class="keyword const">MAP_SHARED</span>.
+    If backward-compatibility is disabled and you specify <span class="keyword const">MAP_PHYS</span> with <span class="keyword const">MAP_PRIVATE</span>,
+    then <span class="keyword apiname">mmap*()</span> creates a private mapping of the physical object, which means the contents of that memory
+    are copied into newly-allocated pages.
+  </p>
+
+
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">MAP_RENAME</span></dt>
+
+<dd class="dd">Defined for compatibility, but has no effect.
+  
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">MAP_STACK</span></dt>
+
+<dd class="dd">This flag tells the memory allocator what the <span class="keyword const">MAP_ANON</span> memory will be used for. 
+  It's only a hint.
+  
+</dd>
+
+
+
+</dl>
+
+
+<p class="p">
+The following flag is defined in <span class="ph filepath">&lt;sys/mman.h&gt;</span>, but
+you shouldn't use it:
+</p>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><span class="keyword const">MAP_SYSRAM</span></dt>
+
+<dd class="dd">An output-only status flag for the <span class="keyword const">DCMD_PROC_MAPINFO</span> and
+  <span class="keyword const">DCMD_PROC_PAGEDATA</span> <span class="keyword apiname">devctl()</span> commands.
+  For more information, see
+  <span class="q">&#147;<a class="xref" href="../../../com.qnx.doc.neutrino.prog/topic/process_proc_filesystem.html">Controlling processes via the <span class="ph filepath">/proc</span> filesystem</a>&#148;</span>
+  in the <span class="q">&#147;Processes&#148;</span> chapter of the <span class="keyword">QNX Neutrino</span> <cite class="cite">Programmer's Guide</cite>.
+  
+  
+  
+
+  <div class="note note"><span class="notetitle">Note:</span> 
+  Specifying the <span class="keyword const">MAP_SYSRAM</span> bit in a call to <span class="keyword apiname">mmap*()</span>
+  will result in an error of <span class="keyword const">EINVAL</span>.
+  </div>
+
+
+</dd>
+
+
+
+</dl>
+
+
+<p class="p">
+If <var class="keyword varname">filedes</var> represents a typed memory object opened with either
+the <span class="keyword const">POSIX_TYPED_MEM_ALLOCATE</span> or
+<span class="keyword const">POSIX_TYPED_MEM_ALLOCATE_CONTIG</span> flag
+(see <a class="xref" href="../p/posix_typed_mem_open.html" title="Open a typed memory object"><span class="keyword apiname">posix_typed_mem_open()</span></a>),
+and there are enough resources available, <span class="keyword apiname">mmap()</span>
+maps <var class="keyword varname">len</var> bytes allocated from the corresponding typed memory
+object that weren't previously allocated to any process in any processor
+that may access that typed memory object.
+If there aren't enough resources available, <span class="keyword apiname">mmap()</span> fails.
+</p>
+
+
+<p class="p">
+If <var class="keyword varname">filedes</var> represents a typed memory object opened with the
+<span class="keyword const">POSIX_TYPED_MEM_ALLOCATE_CONTIG</span> flag, the allocated bytes are
+contiguous within the typed memory object.
+If the typed memory object was opened with
+<span class="keyword const">POSIX_TYPED_MEM_ALLOCATE</span>, the allocated bytes may be
+composed of noncontiguous fragments within the typed memory object.
+If the typed memory object was opened with neither
+of these flags, <var class="keyword varname">len</var> bytes starting at the given offset within
+the typed memory object are mapped, exactly as when mapping a file or
+shared memory object.
+In this case, if two processes map an area of typed memory using the same
+offset and length and using file descriptors that refer to the same memory
+pool (either from the same port or from a different port), both processes
+map the same region of storage.
+</p>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Returns:</h2>
+
+
+<p class="p">
+
+The address of the mapped-in object, 
+or <span class="keyword const">MAP_FAILED</span> if an error occurred
+(<a class="xref" href="../e/errno.html" title="Thread-local error variable"><var class="keyword varname">errno</var></a> is set).
+</p>
+
+</div>
+
+
+<div class="section"><h2 class="title sectiontitle">Errors:</h2>
+
+
+<dl class="dl" compact="compact">
+
+<dt class="dt dlterm"><span class="keyword const">EACCES</span></dt>
+
+<dd class="dd">One of the following occurred:
+
+  <ul class="ul">
+  <li class="li">The file descriptor in <var class="keyword varname">filedes</var> isn't open for reading.</li>
+
+
+  <li class="li">You specified <span class="keyword const">PROT_WRITE</span> and <span class="keyword const">MAP_SHARED</span>,
+    and <var class="keyword varname">filedes</var> isn't open for writing.
+  </li>
+
+
+  <li class="li">You specified <span class="keyword const">PROT_EXEC</span> for a memory-mapped file mapping,
+    the file doesn't have execute permission for the client process, and
+    <span class="keyword cmdname">procnto</span> was started with the <span class="keyword option">-mX</span> option.
+  </li>
+
+  </ul>
+
+
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EAGAIN</span></dt>
+
+<dd class="dd">The mapping couldn't be locked in memory, if required by
+  <a class="xref" href="mlockall.html" title="Lock all of a process's address space"><span class="keyword apiname">mlockall()</span></a>,
+  because of a lack of resources.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EBADF</span></dt>
+
+<dd class="dd">The file descriptor in <var class="keyword varname">filedes</var> is invalid.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EBUSY</span></dt>
+
+<dd class="dd">The resource you're trying to map is busy.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EINVAL</span></dt>
+
+<dd class="dd">One of the following occurred:
+
+  <ul class="ul">
+  <li class="li">The <var class="keyword varname">len</var> argument is 0.</li>
+
+
+  <li class="li">The <var class="keyword varname">prot</var> argument is invalid.</li>
+
+
+  <li class="li">You didn't specify <span class="keyword const">MAP_PRIVATE</span> or <span class="keyword const">MAP_SHARED</span>.</li>
+
+
+  <li class="li">You included <span class="keyword const">MAP_SYSRAM</span> in the <var class="keyword varname">flags</var>.
+    This bit is an output-only status flag for the <span class="keyword const">DCMD_PROC_MAPINFO</span> and
+    <span class="keyword const">DCMD_PROC_PAGEDATA</span> <span class="keyword apiname">devctl()</span> commands.
+  </li>
+
+
+  <li class="li">You specified <span class="keyword const">MAP_PHYS</span> with <span class="keyword const">MAP_PRIVATE</span>, and you aren't using the
+    backward-compatibility memory-manager option (<span class="keyword cmdname">procnto -m~b</span>).
+    If you're using this option (<span class="keyword cmdname">procnto -mb</span>),
+    <span class="keyword apiname">mmap()</span> assumes you meant <span class="keyword const">MAP_SHARED</span>.
+    
+  </li>
+
+
+  <li class="li">You specified <span class="keyword const">MAP_ANON</span> or <span class="keyword const">MAP_PHYS</span>, and <var class="keyword varname">filedes</var>
+    isn't <span class="keyword const">NOFD</span>.
+  </li>
+
+    
+  <li class="li">You specified <span class="keyword const">MAP_PHYS</span>, and the object goes beyond the last physical address that
+    the architecture supports.
+  </li>
+
+
+  <li class="li">The sum of the offset and the length of the required memory object wraps around past 0.</li>
+
+
+  <li class="li">You specified <span class="keyword const">MAP_PHYS</span>, <span class="keyword const">MAP_LAZY</span>, and <span class="keyword const">MAP_ANON</span>.</li>
+
+
+  </ul>
+
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EMFILE</span></dt>
+
+<dd class="dd">The number of mapped regions has reached the maximum limit; see the
+  <span class="keyword const">RLIMIT_AS</span> and <span class="keyword const">RLIMIT_DATA</span> resources for
+  <a class="xref" href="../s/setrlimit.html" title="Set the limit on a system resource"><span class="keyword apiname">setrlimit()</span></a>.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">ENODEV</span></dt>
+
+<dd class="dd">The <var class="keyword varname">filedes</var> argument refers to an object for which <span class="keyword apiname">mmap()</span>
+  is meaningless (e.g., a terminal).
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">ENOMEM</span></dt>
+
+<dd class="dd">One of the following occurred:
+
+    <ul class="ul">
+    <li class="li">You specified <span class="keyword const">MAP_FIXED</span>, and the address range requested
+      is outside of the allowed process address range, or
+      there wasn't enough memory to satisfy the request.
+    </li>
+
+
+    <li class="li">The mapping couldn't be locked in memory, if required by
+      <a class="xref" href="mlockall.html" title="Lock all of a process's address space"><span class="keyword apiname">mlockall()</span></a>,
+      because there wasn't enough memory.
+    </li>
+
+
+    <li class="li">There aren't enough unallocated resources remaining in the
+      typed memory object associated with the file descriptor.
+    </li>
+
+    </ul>
+
+
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">ENXIO</span></dt>
+
+<dd class="dd">One of the following occurred:
+
+    <ul class="ul">
+    <li class="li">Addresses in the range [<var class="keyword varname">off</var>,
+      <var class="keyword varname">off</var>+<var class="keyword varname">len</var>) are invalid for the
+      object specified by <var class="keyword varname">filedes</var>.
+    </li>
+
+
+    <li class="li">You specified <span class="keyword const">MAP_FIXED</span>, and <var class="keyword varname">addr</var>,
+    <var class="keyword varname">len</var>, and <var class="keyword varname">off</var> 
+      are invalid for the requested object.
+    </li>
+
+
+    <li class="li">The file descriptor refers to a typed memory object that the calling
+      process can't access.
+    </li>
+
+
+    </ul>
+
+
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EOVERFLOW</span></dt>
+
+<dd class="dd">The file is a regular file, and the offset plus the length exceeds the
+    maximum offset.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EPERM</span></dt>
+
+<dd class="dd">The calling process doesn't have the required permission (see
+  <a class="xref" href="../p/procmgr_ability.html" title="Control a process's ability to perform certain operations"><span class="keyword apiname">procmgr_ability()</span></a>),
+  or it attempted to set <span class="keyword const">PROT_EXEC</span> for a region of memory covered by
+  an untrusted memory-mapped file.
+</dd>
+
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">ESRCH</span></dt>
+
+<dd class="dd">(<span class="keyword apiname">mmap_handle()</span> only)
+    The shared memory object handle was invalid.</dd>
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Examples:</h2>
+
+
+<p class="p">
+Open a shared memory object and share it with other processes:
+</p>
+
+
+<pre class="pre codeblock">
+fd = shm_open( "/datapoints", O_RDWR, 0777 );
+addr = mmap( 0, len, PROT_READ|PROT_WRITE, MAP_SHARED, fd, 0 );
+</pre>
+
+
+<p class="p">
+
+Allocate a physically contiguous DMA buffer for a bus-mastering PCI
+network card:
+</p>
+
+
+<pre class="pre codeblock">
+addr = mmap( 0,
+             262144,
+             PROT_READ | PROT_WRITE | PROT_NOCACHE,
+             MAP_SHARED | MAP_PHYS | MAP_ANON,
+             NOFD,
+             0 );
+</pre>
+
+
+<p class="p">
+Map a file into memory, change the memory, and then verify that the
+file's contents have been updated:
+</p>
+
+
+<pre class="pre codeblock">
+#include &lt;stdlib.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;sys/mman.h&gt;
+#include &lt;fcntl.h&gt;
+#include &lt;unistd.h&gt;
+#include &lt;string.h&gt;
+
+#define TESTSTRING "AAAAAAAAAA"
+
+int main(int argc, char *argv[]) {
+    char buffer[80], filename[200] = "/tmp/try_it";
+    int fd, file_size, ret, size_written, size_read;
+    void *addr;
+    
+    /* Write the test string into the file. */
+    unlink( filename);
+    fd = open( filename, O_CREAT|O_RDWR , 0777 );
+    if( fd == -1) {
+        perror("open");
+        exit(EXIT_FAILURE);
+    }
+    size_written = write( fd, TESTSTRING, sizeof (TESTSTRING) );
+    if ( size_written == -1 ){
+        perror("write");
+        exit(0);
+    }   
+    printf( "Wrote %d bytes into file %s\n", size_written, filename );
+    
+    lseek( fd, 0L, SEEK_SET );
+    file_size = lseek( fd, 0L, SEEK_END );
+    printf( "Size of file = %d bytes\n", file_size );
+
+    /* Map the file into memory. */
+    addr = mmap( 0, file_size, PROT_READ | PROT_WRITE, MAP_SHARED,
+                 fd, 0 );
+    if (addr == MAP_FAILED) {
+        perror("mmap");
+        exit(EXIT_FAILURE);
+    } 
+
+    /* Change the memory and synchronize it with the disk. */
+    memset( addr, 'B', 5 );
+    ret = msync( addr, file_size, MS_SYNC);
+    if( ret == -1) {
+        perror("msync");
+        exit(0);
+    }
+    
+    /* Close and reopen the file, and then read its contents. */
+    close(fd);
+    fd = open( filename, O_RDONLY );
+    if( fd == -1) {
+        perror("open");
+        exit(EXIT_FAILURE);
+    }
+    size_read = read( fd, buffer, sizeof( buffer ) );
+    printf( "File content = %s\n", buffer );
+    
+    close(fd);
+    return EXIT_SUCCESS;
+}
+</pre>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Classification:</h2>
+
+<p class="p">
+<span class="keyword apiname">mmap()</span> is
+<a class="xref" href="../summary.html#summary__CLASSIFICATION">POSIX 1003.1 SHM|TYM</a>;
+<span class="keyword apiname">mmap64()</span> is
+<a class="xref" href="../summary.html#summary__CLASSIFICATION">Large-file support</a>;
+<span class="keyword apiname">mmap_handle()</span> is
+<a class="xref" href="../summary.html#summary__CLASSIFICATION"><span class="keyword">QNX Neutrino</span></a>
+</p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+<thead class="thead" align="left">
+<tr><th class="entry" valign="top" id="d2203279e2020">Safety:</th>
+<th class="entry" valign="top" id="d2203279e2022">Â </th>
+</tr>
+
+</thead>
+
+<tbody class="tbody">
+<tr><td class="entry" valign="top" headers="d2203279e2020 d2203279e2022 ">Cancellation point</td>
+<td class="entry" valign="top" headers="d2203279e2020 d2203279e2022 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2203279e2020 d2203279e2022 ">Interrupt handler</td>
+<td class="entry" valign="top" headers="d2203279e2020 d2203279e2022 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2203279e2020 d2203279e2022 ">Signal handler</td>
+<td class="entry" valign="top" headers="d2203279e2020 d2203279e2022 ">Yes</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2203279e2020 d2203279e2022 ">Thread</td>
+<td class="entry" valign="top" headers="d2203279e2020 d2203279e2022 ">Yes</td>
+</tr>
+
+</tbody>
+
+</table>
+</div>
+
+</div>
+
+
+</div>
+
+
+<div class="related-links"><div class="relinfo relconcepts"><strong>Related concepts</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.sys_arch/topic/ipc_Shared_memory.html" title="Shared memory (System Architecture)">Shared memory (System Architecture)</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.sys_arch/topic/ipc_Typed_memory.html" title="Typed memory (System Architecture)">Typed memory (System Architecture)</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.prog/topic/memory.html" title="Working with Memory (QNX Neutrino Programmer's Guide)">Working with Memory (<span class="keyword">QNX Neutrino</span> Programmer's Guide)</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.prog/topic/shared_memory_handles.html" title="Shared memory handles (QNX Neutrino Programmer's Guide)">Shared memory handles (<span class="keyword">QNX Neutrino</span> Programmer's Guide)</a></div>
+</div>
+<div class="relinfo relref"><strong>Related reference</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/m/mmap_device_io.html" title="Gain access to a device's registers">mmap_device_io()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/m/mmap_device_memory.html" title="Map a device's physical memory into a process's address space">mmap_device_memory()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/m/mmap_peer.html" title="Create a virtual mapping in the address space of another process">mmap_peer(), mmap64_peer()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/m/mprotect.html" title="Change memory protection">mprotect()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/m/msync.html" title="Synchronize memory with physical storage">msync()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/m/munmap.html" title="Unmap previously mapped addresses">munmap()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/m/munmap_peer.html" title="Unmap a part of the virtual address space in another process">munmap_peer()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/p/posix_typed_mem_open.html" title="Open a typed memory object">posix_typed_mem_open()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/p/procmgr_ability.html" title="Control a process's ability to perform certain operations">procmgr_ability()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/s/setrlimit.html" title="Set the limit on a system resource">setrlimit(), setrlimit64()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/s/shm_open.html" title="Open a shared memory object based on a pathname">shm_open()</a></div>
+</div>
+</div><div class="navfooter"><!---->
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-m.html" title="M"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">M</span></a></span>  </div>
+</body>
+</html>

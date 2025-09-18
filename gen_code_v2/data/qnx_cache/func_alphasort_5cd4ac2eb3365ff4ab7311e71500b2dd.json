@@ -1,0 +1,33 @@
+{
+  "function_name": "alphasort",
+  "url": "https://www.qnx.com/developers/docs/7.1/com.qnx.doc.neutrino.lib_ref/topic/a/alphasort.html",
+  "synopsis": "int alphasort( const struct dirent **d1,",
+  "description": "",
+  "headers": [
+    "#include <dirent.h>"
+  ],
+  "parameters": [
+    {
+      "name": "d1, d2",
+      "description": "Pointers to the struct dirent directory entries that you want to compare."
+    }
+  ],
+  "return_values": [
+    {
+      "value": "< 0",
+      "description": "The d1 entry precedes the d2 entry alphabetically."
+    },
+    {
+      "value": "0",
+      "description": "The entries are equivalent."
+    },
+    {
+      "value": "> 0",
+      "description": "The d1 entry follows the d2 entry alphabetically."
+    }
+  ],
+  "examples": [
+    "#include <dirent.h>\n\nint alphasort( const struct dirent **d1,\n               const struct dirent **d2);"
+  ],
+  "full_content": "Function: alphasort\nURL: https://www.qnx.com/developers/docs/7.1/com.qnx.doc.neutrino.lib_ref/topic/a/alphasort.html\nSynopsis: int alphasort( const struct dirent **d1,\nHeaders: #include <dirent.h>\nParameters:\n  - d1, d2: Pointers to the struct dirent directory entries that you want to compare.\nReturn Values:\n  - < 0: The d1 entry precedes the d2 entry alphabetically.\n  - 0: The entries are equivalent.\n  - > 0: The d1 entry follows the d2 entry alphabetically.\nExamples:\nExample 1:\n#include <dirent.h>\n\nint alphasort( const struct dirent **d1,\n               const struct dirent **d2);"
+}

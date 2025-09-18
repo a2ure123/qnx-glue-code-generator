@@ -1,0 +1,24 @@
+{
+  "function_name": "asprintf",
+  "url": "https://www.qnx.com/developers/docs/7.1/com.qnx.doc.neutrino.lib_ref/topic/a/asprintf.html",
+  "synopsis": "int asprintf( char **strp,",
+  "description": "",
+  "headers": [
+    "#include <stdio.h>"
+  ],
+  "parameters": [
+    {
+      "name": "strp",
+      "description": "A pointer to a location where the function can store a pointer to the allocated string."
+    },
+    {
+      "name": "format",
+      "description": "A string that specifies the format of the output.\n  The formatting string determines what additional arguments you need to provide.\n  For more information, see\n  printf()."
+    }
+  ],
+  "return_values": [],
+  "examples": [
+    "#include <stdio.h>\n\nint asprintf( char **strp, \n              const char *format, \n              ... );"
+  ],
+  "full_content": "Function: asprintf\nURL: https://www.qnx.com/developers/docs/7.1/com.qnx.doc.neutrino.lib_ref/topic/a/asprintf.html\nSynopsis: int asprintf( char **strp,\nHeaders: #include <stdio.h>\nParameters:\n  - strp: A pointer to a location where the function can store a pointer to the allocated string.\n  - format: A string that specifies the format of the output.\n  The formatting string determines what additional arguments you need to provide.\n  For more information, see\n  printf().\nExamples:\nExample 1:\n#include <stdio.h>\n\nint asprintf( char **strp, \n              const char *format, \n              ... );"
+}

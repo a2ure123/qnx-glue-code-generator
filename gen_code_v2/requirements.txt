@@ -1,0 +1,11 @@
+# QNX MCP系统依赖
+openai>=1.0.0
+chromadb>=0.4.0
+requests>=2.31.0
+beautifulsoup4>=4.12.0
+python-dotenv>=1.0.0
+tqdm>=4.66.0
+httpx>=0.24.0
+
+# Gemini集成依赖
+google-generativeai>=0.3.0

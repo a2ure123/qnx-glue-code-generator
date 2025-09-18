@@ -1,0 +1,255 @@
+
+<!DOCTYPE html
+  PUBLIC "" "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />        
+      <meta name="copyright" content="(C) Copyright 2005" /><meta name="DC.rights.owner" content="(C) Copyright 2005" /><meta name="DC.Type" content="reference" /><meta name="DC.Title" content="resmgr_msgget()" /><meta name="abstract" content="Read a message from a client, from local data, or both" /><meta name="description" content="Read a message from a client, from local data, or both" /><meta name="indexterms" content="resmgr_msgget()" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-r.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.resmgr/topic/skeleton_RESMGR_layers.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.getting_started/topic/s1_resmgr.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/m/msgread.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/r/resmgr_context_t.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/r/resmgr_msggetsize.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/r/resmgr_msggetv.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/r/resmgr_msgread.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/r/resmgr_msgreadv.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/r/resmgr_msgreply.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/r/resmgr_msgreplyv.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/r/resmgr_msgwrite.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/r/resmgr_msgwritev.html" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="resmgr_msgget" /><meta name="DC.Language" content="en-us" /><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/commonltr.css"><!----></link><title>resmgr_msgget()</title><link rel="canonical" type="html" href="https://www.qnx.com/developers/docs/7.1/#com.qnx.doc.neutrino.lib_ref/" /><!--  Generated with Oxygen version 18.1, build number 2017020917.  --><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/webhelp_topic.css"><!----></link><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/skins/skin.css" /><script type="text/javascript"><!--
+            
+            var prefix = "../../../index.html";
+            
+            --></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-1.11.3.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.cookie.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-ui.custom.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.highlight-3.js"><!----></script><script type="text/javascript" charset="utf-8" src="../../../oxygen-webhelp/resources/js/webhelp_topic.js"><!----></script><script type="text/javascript"> var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-27400275-1']); _gaq.push(['_setDomainName', 'www.qnx.com']);_gaq.push(['_setAllowLinker', true]);_gaq.push(['_trackPageview']);(function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script></head>
+<body onload="highlightSearchTerm()" class="frmBody" id="resmgr_msgget">
+<table class="nav"><tbody><tr><td colspan="2"><div id="printlink"><button onClick="window.print()" title="Print this page" aria-label="Print this page"></button></div><div id="permalink"><a href="#" title="Link to this page"></a></div></td></tr><tr><td style="width:75%;"><span class="topic_breadcrumb_links"><span class="topic_breadcrumb_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-r.html" title="R">R</a></span></span></td><td><span id="topic_navigation_links" class="navheader">
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-r.html" title="R"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">R</span></a></span>  </span></td></tr></tbody></table>
+
+
+<h1 class="title topictitle1"><span class="keyword apiname">resmgr_msgget()</span></h1>
+<table width="100%"><tbody><tr><td align="left"><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">QNX SDP</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">7.1</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">C Library Reference</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">API</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">Developer</button></td><td align="right"><span style="margin:0px 5px; font-size:0.9em;">Updated: October 28, 2024</span></td></tr></tbody></table>
+
+
+<div class="body refbody"><p class="shortdesc"><em class="ph i">Read a message from a client, from local data, or both</em></p>
+
+
+<div class="section refsyn"><h2 class="title sectiontitle">Synopsis:</h2>
+
+<pre class="pre codeblock">
+#include &lt;sys/resmgr.h&gt;
+
+ssize_t resmgr_msgget( resmgr_context_t * const <var class="keyword varname">ctp</var>,
+                        void *<var class="keyword varname">msg</var>,
+                        size_t <var class="keyword varname">size</var>,
+                        size_t <var class="keyword varname">offset</var> );
+</pre>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Arguments:</h2>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><var class="keyword varname">ctp</var></dt>
+
+<dd class="dd">A pointer to a <a class="xref" href="resmgr_context_t.html" title="Context information that's passed between resource-manager functions"><span class="keyword dtype">resmgr_context_t</span></a>
+structure that the resource manager library uses to pass context information between functions. This
+function extracts the <span class="keyword parmname">rcvid</span> and other message-related parameters from this
+structure. </dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">msg</var></dt>
+
+<dd class="dd">A pointer to a buffer where the function can store the data.</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">size</var></dt>
+
+<dd class="dd">The number of bytes that you want to read. These functions don't let you read past the end of
+the thread's message; they return the number of bytes actually read. </dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">offset</var></dt>
+
+<dd class="dd">An offset into the current message that indicates where you want to start reading the data. The
+<span class="keyword parmname">offset</span> referenced by <span class="keyword parmname">ctp</span> cannot be included in this
+parameter.</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Library:</h2>
+
+
+<p class="p"><span class="ph filepath">libc</span></p>
+
+
+<p class="p">
+Use the <span class="keyword option">-l c</span> option to
+<a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/q/qcc.html"><span class="keyword cmdname">qcc</span></a>
+to link against this library.
+This library is usually included automatically.
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Description:</h2>
+
+<p class="p">
+
+
+ The
+<span class="keyword apiname">resmgr_msgget()</span> function is a convenience function that you can use in a resource
+manager instead of <a class="xref" href="resmgr_msgread.html" title="Read a message from a client">resmgr_msgread()</a> or <a class="xref" href="../m/msgread.html" title="Read data from a message"><span class="keyword apiname">MsgRead()</span></a>.</p>
+
+<p class="p">Based on the requested data offset, this function first copies data from the current local
+message buffer (if applicable) and then gets the rest of the data (if applicable) from the client by
+calling <span class="keyword apiname">MsgRead()</span>.</p>
+
+<p class="p">Because combine message offsets are automatically handled, the caller does not add the
+<span class="keyword parmname">offset</span> that <span class="keyword parmname">ctp</span> references to the passed in offset. The
+passed in offset is just the offset from the start of the current message being processed.</p>
+
+<p class="p">For combine messages (those with the <span class="keyword const">_IO_COMBINE_FLAG</span> set), the amount of data
+returned to the caller is limited to the size found in the <span class="keyword parmname">size</span> parameter
+referenced by <span class="keyword parmname">ctp</span>. This limit ensures that the caller does not get data from a
+subsequent message by mistake.</p>
+
+<p class="p">For more information, see <span class="q">&#147;<a class="xref" href="../../../com.qnx.doc.neutrino.resmgr/topic/skeleton_RESMGR_layers.html">Layers in a resource
+manager</a>&#148;</span> in the Bones of a Resource Manager chapter of <cite class="cite">Writing a Resource
+Manager</cite>. </p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Returns:</h2>
+
+
+<p class="p"> The number of bytes read, or -1 if an error occurs (<a class="xref" href="../e/errno.html" title="Thread-local error variable"><var class="keyword varname">errno</var></a> is set). </p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Errors:</h2>
+
+
+<dl class="dl" compact="compact">
+
+<dt class="dt dlterm"><span class="keyword const">EDEADLK</span></dt>
+
+<dd class="dd">A deadlock occurred.
+You can avoid a deadlock by setting the <span class="keyword const">_NTO_CHF_MSG_PAUSING</span> flag when you create 
+a channel; for more information, see
+<a class="xref" href="../c/channelcreate.html" title="Create a communications channel"><span class="keyword apiname">ChannelCreate()</span></a>
+and
+<a class="xref" href="../m/msgpause.html" title="Pause the processing of a message"><span class="keyword apiname">MsgPause()</span></a>.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EFAULT</span></dt>
+
+<dd class="dd">A fault occurred in a server's address space when the kernel tried to access the server's message buffers.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">ESRCH</span></dt>
+
+<dd class="dd">The thread indicated by <var class="keyword varname">ctp-&gt;rcvid</var> doesn't exist, is no longer
+REPLY-blocked on the channel, or the connection was detached. </dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">ESRVRFAULT</span></dt>
+
+<dd class="dd">A fault occurred when the kernel tried to access the buffers provided.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">ETIMEDOUT</span></dt>
+
+<dd class="dd">A kernel timeout unblocked the call. See
+<a class="xref" href="../t/timertimeout.html" title="Set a timeout on a blocking state"><span class="keyword apiname">TimerTimeout()</span></a>.
+</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Classification:</h2>
+
+<p class="p"><a class="xref" href="../summary.html#summary__CLASSIFICATION">QNX Neutrino</a></p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+<thead class="thead" align="left">
+<tr><th class="entry" valign="top" id="d2517410e335">Safety:</th>
+<th class="entry" valign="top" id="d2517410e337">Â </th>
+</tr>
+
+</thead>
+
+<tbody class="tbody">
+<tr><td class="entry" valign="top" headers="d2517410e335 d2517410e337 ">Cancellation point</td>
+<td class="entry" valign="top" headers="d2517410e335 d2517410e337 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2517410e335 d2517410e337 ">Interrupt handler</td>
+<td class="entry" valign="top" headers="d2517410e335 d2517410e337 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2517410e335 d2517410e337 ">Signal handler</td>
+<td class="entry" valign="top" headers="d2517410e335 d2517410e337 ">Yes</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2517410e335 d2517410e337 ">Thread</td>
+<td class="entry" valign="top" headers="d2517410e335 d2517410e337 ">Yes</td>
+</tr>
+
+</tbody>
+
+</table>
+</div>
+
+</div>
+
+
+</div>
+
+
+<div class="related-links"><div class="relinfo relconcepts"><strong>Related concepts</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.resmgr/topic/skeleton_RESMGR_layers.html" title="Layers in a resource manager (Writing a Resource Manager)">Layers in a resource manager (Writing a Resource Manager)</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.getting_started/topic/s1_resmgr.html" title="Resource Managers (Getting Started with QNX Neutrino)">Resource Managers (Getting Started with <span class="keyword">QNX Neutrino</span>)</a></div>
+</div>
+<div class="relinfo relref"><strong>Related reference</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/m/msgread.html" title="Read data from a message">MsgRead(), MsgRead_r()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/r/resmgr_context_t.html" title="Context information that's passed between resource-manager functions">resmgr_context_t</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/r/resmgr_msggetsize.html" title="Get the size of a message and its local and remote parts">resmgr_msggetsize()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/r/resmgr_msggetv.html" title="Read a message from a client, from local data, or both">resmgr_msggetv()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/r/resmgr_msgread.html" title="Read a message from a client">resmgr_msgread()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/r/resmgr_msgreadv.html" title="Read a message from a client">resmgr_msgreadv()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/r/resmgr_msgreply.html" title="Reply to a client with a message, endian-swapping if required">resmgr_msgreply()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/r/resmgr_msgreplyv.html" title="Reply to a client with a message, endian-swapping if required">resmgr_msgreplyv()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/r/resmgr_msgwrite.html" title="Write a message to a client">resmgr_msgwrite()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/r/resmgr_msgwritev.html" title="Write a message to a client">resmgr_msgwritev()</a></div>
+</div>
+</div><div class="navfooter"><!---->
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-r.html" title="R"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">R</span></a></span>  </div>
+</body>
+</html>

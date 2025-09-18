@@ -1,0 +1,15 @@
+{
+  "function_name": "alignof",
+  "url": "https://www.qnx.com/developers/docs/7.1/com.qnx.doc.neutrino.lib_ref/topic/a/alignof.html",
+  "synopsis": "#define alignof\t_Alignof;",
+  "description": "",
+  "headers": [
+    "#include <stdalign.h>"
+  ],
+  "parameters": [],
+  "return_values": [],
+  "examples": [
+    "#include <stdalign.h>\n\n#define __alignof_is_defined\t1\n\n#ifndef __cplusplus\n#define alignof\t_Alignof;\n#endif /* __cplusplus */"
+  ],
+  "full_content": "Function: alignof\nURL: https://www.qnx.com/developers/docs/7.1/com.qnx.doc.neutrino.lib_ref/topic/a/alignof.html\nSynopsis: #define alignof\t_Alignof;\nHeaders: #include <stdalign.h>\nExamples:\nExample 1:\n#include <stdalign.h>\n\n#define __alignof_is_defined\t1\n\n#ifndef __cplusplus\n#define alignof\t_Alignof;\n#endif /* __cplusplus */"
+}

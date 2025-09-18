@@ -1,0 +1,20 @@
+{
+  "function_name": "acl_clear_perms",
+  "url": "https://www.qnx.com/developers/docs/7.1/com.qnx.doc.neutrino.lib_ref/topic/a/acl_clear_perms.html",
+  "synopsis": "int acl_clear_perms( acl_permset_t permset_d );",
+  "description": "",
+  "headers": [
+    "#include <sys/acl.h>"
+  ],
+  "parameters": [
+    {
+      "name": "permset_d",
+      "description": "The permissions set that you want to clear."
+    }
+  ],
+  "return_values": [],
+  "examples": [
+    "#include <sys/acl.h>\n\nint acl_clear_perms( acl_permset_t permset_d );"
+  ],
+  "full_content": "Function: acl_clear_perms\nURL: https://www.qnx.com/developers/docs/7.1/com.qnx.doc.neutrino.lib_ref/topic/a/acl_clear_perms.html\nSynopsis: int acl_clear_perms( acl_permset_t permset_d );\nHeaders: #include <sys/acl.h>\nParameters:\n  - permset_d: The permissions set that you want to clear.\nExamples:\nExample 1:\n#include <sys/acl.h>\n\nint acl_clear_perms( acl_permset_t permset_d );"
+}

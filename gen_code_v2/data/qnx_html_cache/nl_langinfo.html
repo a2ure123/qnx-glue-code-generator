@@ -1,0 +1,389 @@
+
+<!DOCTYPE html
+  PUBLIC "" "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />        
+      <meta name="copyright" content="(C) Copyright 2005" /><meta name="DC.rights.owner" content="(C) Copyright 2005" /><meta name="DC.Type" content="reference" /><meta name="DC.Title" content="nl_langinfo()" /><meta name="abstract" content="Get information about the language or cultural area defined in the current locale" /><meta name="description" content="Get information about the language or cultural area defined in the current locale" /><meta name="indexterms" content="nl_langinfo()" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-n.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/l/localeconv.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/s/setlocale.html" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="nl_langinfo" /><meta name="DC.Language" content="en-us" /><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/commonltr.css"><!----></link><title>nl_langinfo()</title><link rel="canonical" type="html" href="https://www.qnx.com/developers/docs/7.1/#com.qnx.doc.neutrino.lib_ref/" /><!--  Generated with Oxygen version 18.1, build number 2017020917.  --><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/webhelp_topic.css"><!----></link><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/skins/skin.css" /><script type="text/javascript"><!--
+            
+            var prefix = "../../../index.html";
+            
+            --></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-1.11.3.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.cookie.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-ui.custom.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.highlight-3.js"><!----></script><script type="text/javascript" charset="utf-8" src="../../../oxygen-webhelp/resources/js/webhelp_topic.js"><!----></script><script type="text/javascript"> var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-27400275-1']); _gaq.push(['_setDomainName', 'www.qnx.com']);_gaq.push(['_setAllowLinker', true]);_gaq.push(['_trackPageview']);(function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script></head>
+<body onload="highlightSearchTerm()" class="frmBody" id="nl_langinfo">
+<table class="nav"><tbody><tr><td colspan="2"><div id="printlink"><button onClick="window.print()" title="Print this page" aria-label="Print this page"></button></div><div id="permalink"><a href="#" title="Link to this page"></a></div></td></tr><tr><td style="width:75%;"><span class="topic_breadcrumb_links"><span class="topic_breadcrumb_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-n.html" title="N">N</a></span></span></td><td><span id="topic_navigation_links" class="navheader">
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-n.html" title="N"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">N</span></a></span>  </span></td></tr></tbody></table>
+
+
+<h1 class="title topictitle1"><span class="keyword apiname">nl_langinfo()</span></h1>
+<table width="100%"><tbody><tr><td align="left"><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">QNX SDP</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">7.1</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">C Library Reference</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">API</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">Developer</button></td><td align="right"><span style="margin:0px 5px; font-size:0.9em;">Updated: October 28, 2024</span></td></tr></tbody></table>
+
+
+<div class="body refbody"><p class="shortdesc"><em class="ph i">Get information about the language or cultural area defined in the current locale</em></p>
+
+
+<div class="section refsyn"><h2 class="title sectiontitle">Synopsis:</h2>
+
+<pre class="pre codeblock">
+#include &lt;langinfo.h&gt;
+
+char *nl_langinfo( nl_item <var class="keyword varname">item</var> );
+</pre>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Arguments:</h2>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><var class="keyword varname">item</var></dt>
+
+<dd class="dd">The item that you want information about; one of the following:
+
+  
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+
+  <thead class="thead" align="left">
+  <tr>
+    <th class="entry" valign="top" id="d2291258e48">Item</th>
+
+    <th class="entry" valign="top" id="d2291258e51">Type</th>
+
+    <th class="entry" valign="top" id="d2291258e54">Description</th>
+
+  </tr>
+
+  </thead>
+
+
+  <tbody class="tbody">
+
+  <tr>
+    <td class="entry" valign="top" headers="d2291258e48 d2291258e51 d2291258e54 "><span class="keyword const">CODESET</span></td>
+
+    <td class="entry" valign="top" headers="d2291258e48 d2291258e51 d2291258e54 "><span class="keyword const">LC_CTYPE</span></td>
+
+    <td class="entry" valign="top" headers="d2291258e48 d2291258e51 d2291258e54 ">Codeset name</td>
+
+  </tr>
+
+  <tr>
+    <td class="entry" valign="top" headers="d2291258e48 d2291258e51 d2291258e54 "><span class="keyword const">D_T_FMT</span></td>
+
+    <td class="entry" valign="top" headers="d2291258e48 d2291258e51 d2291258e54 "><span class="keyword const">LC_TIME</span></td>
+
+    <td class="entry" valign="top" headers="d2291258e48 d2291258e51 d2291258e54 ">String for formatting the date and time</td>
+
+  </tr>
+
+  <tr>
+    <td class="entry" valign="top" headers="d2291258e48 d2291258e51 d2291258e54 "><span class="keyword const">D_FMT</span></td>
+
+    <td class="entry" valign="top" headers="d2291258e48 d2291258e51 d2291258e54 "><span class="keyword const">LC_TIME</span></td>
+
+    <td class="entry" valign="top" headers="d2291258e48 d2291258e51 d2291258e54 ">String for formatting the date</td>
+
+  </tr>
+
+  <tr>
+    <td class="entry" valign="top" headers="d2291258e48 d2291258e51 d2291258e54 "><span class="keyword const">T_FMT</span></td>
+
+    <td class="entry" valign="top" headers="d2291258e48 d2291258e51 d2291258e54 "><span class="keyword const">LC_TIME</span></td>
+
+    <td class="entry" valign="top" headers="d2291258e48 d2291258e51 d2291258e54 ">String for formatting the time</td>
+
+  </tr>
+
+  <tr>
+    <td class="entry" valign="top" headers="d2291258e48 d2291258e51 d2291258e54 "><span class="keyword const">T_FMT_AMPM</span></td>
+
+    <td class="entry" valign="top" headers="d2291258e48 d2291258e51 d2291258e54 "><span class="keyword const">LC_TIME</span></td>
+
+    <td class="entry" valign="top" headers="d2291258e48 d2291258e51 d2291258e54 "><tt class="ph tt">a.m.</tt> or <tt class="ph tt">p.m.</tt> formatting string</td>
+
+  </tr>
+
+  <tr>
+    <td class="entry" valign="top" headers="d2291258e48 d2291258e51 d2291258e54 "><span class="keyword const">AM_STR</span></td>
+
+    <td class="entry" valign="top" headers="d2291258e48 d2291258e51 d2291258e54 "><span class="keyword const">LC_TIME</span></td>
+
+    <td class="entry" valign="top" headers="d2291258e48 d2291258e51 d2291258e54 ">Ante meridiem affix</td>
+
+  </tr>
+
+  <tr>
+    <td class="entry" valign="top" headers="d2291258e48 d2291258e51 d2291258e54 "><span class="keyword const">PM_STR</span></td>
+
+    <td class="entry" valign="top" headers="d2291258e48 d2291258e51 d2291258e54 "><span class="keyword const">LC_TIME</span></td>
+
+    <td class="entry" valign="top" headers="d2291258e48 d2291258e51 d2291258e54 ">Post meridiem affix</td>
+
+  </tr>
+
+  <tr>
+    <td class="entry" valign="top" headers="d2291258e48 d2291258e51 d2291258e54 "><span class="keyword const">DAY_1</span> through <span class="keyword const">DAY_7</span></td>
+
+    <td class="entry" valign="top" headers="d2291258e48 d2291258e51 d2291258e54 "><span class="keyword const">LC_TIME</span></td>
+
+    <td class="entry" valign="top" headers="d2291258e48 d2291258e51 d2291258e54 ">Name of the first through seventh day of the week</td>
+
+  </tr>
+
+  <tr>
+    <td class="entry" valign="top" headers="d2291258e48 d2291258e51 d2291258e54 "><span class="keyword const">ABDAY_1</span> through <span class="keyword const">ABDAY_7</span></td>
+
+    <td class="entry" valign="top" headers="d2291258e48 d2291258e51 d2291258e54 "><span class="keyword const">LC_TIME</span></td>
+
+    <td class="entry" valign="top" headers="d2291258e48 d2291258e51 d2291258e54 ">Abbreviated name of the first through seventh day of the week</td>
+
+  </tr>
+
+  <tr>
+    <td class="entry" valign="top" headers="d2291258e48 d2291258e51 d2291258e54 "><span class="keyword const">MON_1</span> through <span class="keyword const">MON_12</span></td>
+
+    <td class="entry" valign="top" headers="d2291258e48 d2291258e51 d2291258e54 "><span class="keyword const">LC_TIME</span></td>
+
+    <td class="entry" valign="top" headers="d2291258e48 d2291258e51 d2291258e54 ">Name of the first through twelfth month of the year</td>
+
+  </tr>
+
+  <tr>
+    <td class="entry" valign="top" headers="d2291258e48 d2291258e51 d2291258e54 "><span class="keyword const">ABMON_1</span> through <span class="keyword const">ABMON_12</span></td>
+
+    <td class="entry" valign="top" headers="d2291258e48 d2291258e51 d2291258e54 "><span class="keyword const">LC_TIME</span></td>
+
+    <td class="entry" valign="top" headers="d2291258e48 d2291258e51 d2291258e54 ">Abbreviated name of the first through twelfth month of the year</td>
+
+  </tr>
+
+  <tr>
+    <td class="entry" valign="top" headers="d2291258e48 d2291258e51 d2291258e54 "><span class="keyword const">ERA</span></td>
+
+    <td class="entry" valign="top" headers="d2291258e48 d2291258e51 d2291258e54 "><span class="keyword const">LC_TIME</span></td>
+
+    <td class="entry" valign="top" headers="d2291258e48 d2291258e51 d2291258e54 ">Era description segments</td>
+
+  </tr>
+
+  <tr>
+    <td class="entry" valign="top" headers="d2291258e48 d2291258e51 d2291258e54 "><span class="keyword const">ERA_D_FMT</span></td>
+
+    <td class="entry" valign="top" headers="d2291258e48 d2291258e51 d2291258e54 "><span class="keyword const">LC_TIME</span></td>
+
+    <td class="entry" valign="top" headers="d2291258e48 d2291258e51 d2291258e54 ">Era date format string</td>
+
+  </tr>
+
+  <tr>
+    <td class="entry" valign="top" headers="d2291258e48 d2291258e51 d2291258e54 "><span class="keyword const">ERA_D_T_FMT</span></td>
+
+    <td class="entry" valign="top" headers="d2291258e48 d2291258e51 d2291258e54 "><span class="keyword const">LC_TIME</span></td>
+
+    <td class="entry" valign="top" headers="d2291258e48 d2291258e51 d2291258e54 ">Era date and time format string</td>
+
+  </tr>
+
+  <tr>
+    <td class="entry" valign="top" headers="d2291258e48 d2291258e51 d2291258e54 "><span class="keyword const">ERA_T_FMT</span></td>
+
+    <td class="entry" valign="top" headers="d2291258e48 d2291258e51 d2291258e54 "><span class="keyword const">LC_TIME</span></td>
+
+    <td class="entry" valign="top" headers="d2291258e48 d2291258e51 d2291258e54 ">Era time format string</td>
+
+  </tr>
+
+  <tr>
+    <td class="entry" valign="top" headers="d2291258e48 d2291258e51 d2291258e54 "><span class="keyword const">ALT_DIGITS</span></td>
+
+    <td class="entry" valign="top" headers="d2291258e48 d2291258e51 d2291258e54 "><span class="keyword const">LC_TIME</span></td>
+
+    <td class="entry" valign="top" headers="d2291258e48 d2291258e51 d2291258e54 ">Alternate symbols for digits</td>
+
+  </tr>
+
+  <tr>
+    <td class="entry" valign="top" headers="d2291258e48 d2291258e51 d2291258e54 "><span class="keyword const">RADIXCHAR</span></td>
+
+    <td class="entry" valign="top" headers="d2291258e48 d2291258e51 d2291258e54 "><span class="keyword const">LC_NUMERIC</span></td>
+
+    <td class="entry" valign="top" headers="d2291258e48 d2291258e51 d2291258e54 ">Radix character</td>
+
+  </tr>
+
+  <tr>
+    <td class="entry" valign="top" headers="d2291258e48 d2291258e51 d2291258e54 "><span class="keyword const">THOUSEP</span></td>
+
+    <td class="entry" valign="top" headers="d2291258e48 d2291258e51 d2291258e54 "><span class="keyword const">LC_NUMERIC</span></td>
+
+    <td class="entry" valign="top" headers="d2291258e48 d2291258e51 d2291258e54 ">Separator for thousands</td>
+
+  </tr>
+
+  <tr>
+    <td class="entry" valign="top" headers="d2291258e48 d2291258e51 d2291258e54 "><span class="keyword const">YESEXPR</span></td>
+
+    <td class="entry" valign="top" headers="d2291258e48 d2291258e51 d2291258e54 "><span class="keyword const">LC_MESSAGES</span></td>
+
+    <td class="entry" valign="top" headers="d2291258e48 d2291258e51 d2291258e54 ">Affirmative response expression</td>
+
+  </tr>
+
+  <tr>
+    <td class="entry" valign="top" headers="d2291258e48 d2291258e51 d2291258e54 "><span class="keyword const">NOEXPR</span></td>
+
+    <td class="entry" valign="top" headers="d2291258e48 d2291258e51 d2291258e54 "><span class="keyword const">LC_MESSAGES</span></td>
+
+    <td class="entry" valign="top" headers="d2291258e48 d2291258e51 d2291258e54 ">Negative response expression</td>
+
+  </tr>
+
+  <tr>
+    <td class="entry" valign="top" headers="d2291258e48 d2291258e51 d2291258e54 "><span class="keyword const">CRNCYSTR</span></td>
+
+    <td class="entry" valign="top" headers="d2291258e48 d2291258e51 d2291258e54 "><span class="keyword const">LC_MONETARY</span></td>
+
+    <td class="entry" valign="top" headers="d2291258e48 d2291258e51 d2291258e54 ">Local currency symbol, preceded by <tt class="ph tt">-</tt> if the symbol should appear before the value,
+      <tt class="ph tt">+</tt> if the symbol should appear after the value, or <tt class="ph tt">.</tt> if the symbol should replace
+      the radix character.
+      If the local currency symbol is the empty string, <span class="keyword apiname">nl_langinfo()</span> returns the empty string
+      ( <tt class="ph tt">""</tt> ).
+    </td>
+
+  </tr>
+
+
+  </tbody>
+
+  </table>
+</div>
+
+
+  <p class="p">
+  For information about the types, see
+  <a class="xref" href="../s/setlocale.html" title="Select a program's locale"><span class="keyword apiname">setlocale()</span></a>.
+  </p>
+
+</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Library:</h2>
+
+
+<p class="p"><span class="ph filepath">libc</span></p>
+
+
+<p class="p">
+Use the <span class="keyword option">-l c</span> option to
+<a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/q/qcc.html"><span class="keyword cmdname">qcc</span></a>
+to link against this library.
+This library is usually included automatically.
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Description:</h2>
+
+
+<p class="p">
+
+The <span class="keyword apiname">nl_langinfo()</span> function returns a pointer to a static string containing information relevant
+to the particular language or cultural area defined in the current locale.
+</p>
+
+
+<div class="note note"><span class="notetitle">Note:</span> 
+<ul class="ul">
+<li class="li">Don't modify the returned string.
+  The value of the string might be invalidated by subsequent calls to this function.
+</li>
+
+
+  <li class="li"><span class="keyword">QNX Neutrino</span> provides this function for POSIX compatibility, but it isn't adequate for internationalization.
+  <span class="keyword">QNX Neutrino</span> ships the International Components for Unicode (ICU) libraries (<span class="ph filepath">libicu*</span>) that
+  you can use instead. For more information about ICU, see <a class="xref" href="https://icu.unicode.org/home" target="_blank">https://icu.unicode.org/home</a>.
+</li>
+
+
+</ul>
+
+</div>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Returns:</h2>
+
+
+<p class="p">
+A pointer to the requested string, or an empty string if the item couldn't be found.
+</p>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Classification:</h2>
+
+<p class="p"><a class="xref" href="../summary.html#summary__CLASSIFICATION">POSIX</a></p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+<thead class="thead" align="left">
+<tr><th class="entry" valign="top" id="d2291258e497">Safety:</th>
+<th class="entry" valign="top" id="d2291258e499">Â </th>
+</tr>
+
+</thead>
+
+<tbody class="tbody">
+<tr><td class="entry" valign="top" headers="d2291258e497 d2291258e499 ">Cancellation point</td>
+<td class="entry" valign="top" headers="d2291258e497 d2291258e499 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2291258e497 d2291258e499 ">Interrupt handler</td>
+<td class="entry" valign="top" headers="d2291258e497 d2291258e499 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2291258e497 d2291258e499 ">Signal handler</td>
+<td class="entry" valign="top" headers="d2291258e497 d2291258e499 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2291258e497 d2291258e499 ">Thread</td>
+<td class="entry" valign="top" headers="d2291258e497 d2291258e499 ">No</td>
+</tr>
+
+</tbody>
+
+</table>
+</div>
+
+</div>
+
+
+</div>
+
+
+<div class="related-links"><div class="relinfo relref"><strong>Related reference</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/l/localeconv.html" title="Set numeric formatting according to the current locale">localeconv()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/s/setlocale.html" title="Select a program's locale">setlocale()</a></div>
+</div>
+</div><div class="navfooter"><!---->
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-n.html" title="N"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">N</span></a></span>  </div>
+</body>
+</html>

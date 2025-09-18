@@ -1,0 +1,284 @@
+
+<!DOCTYPE html
+  PUBLIC "" "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />        
+      <meta name="copyright" content="(C) Copyright 2005" /><meta name="DC.rights.owner" content="(C) Copyright 2005" /><meta name="DC.Type" content="reference" /><meta name="DC.Title" content="alarm()" /><meta name="abstract" content="Schedule an alarm" /><meta name="description" content="Schedule an alarm" /><meta name="indexterms" content="alarm()" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-a.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.prog/topic/timing.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/e/errno.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/p/pause.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/s/signal.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/s/signalaction.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/s/sleep.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/t/timeralarm.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/t/timer_create.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/t/timer_delete.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/t/timer_gettime.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/t/timer_settime.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/u/ualarm.html" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="alarm" /><meta name="DC.Language" content="en-us" /><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/commonltr.css"><!----></link><title>alarm()</title><link rel="canonical" type="html" href="https://www.qnx.com/developers/docs/7.1/#com.qnx.doc.neutrino.lib_ref/" /><!--  Generated with Oxygen version 18.1, build number 2017020917.  --><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/webhelp_topic.css"><!----></link><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/skins/skin.css" /><script type="text/javascript"><!--
+            
+            var prefix = "../../../index.html";
+            
+            --></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-1.11.3.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.cookie.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-ui.custom.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.highlight-3.js"><!----></script><script type="text/javascript" charset="utf-8" src="../../../oxygen-webhelp/resources/js/webhelp_topic.js"><!----></script><script type="text/javascript"> var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-27400275-1']); _gaq.push(['_setDomainName', 'www.qnx.com']);_gaq.push(['_setAllowLinker', true]);_gaq.push(['_trackPageview']);(function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script></head>
+<body onload="highlightSearchTerm()" class="frmBody" id="alarm">
+<table class="nav"><tbody><tr><td colspan="2"><div id="printlink"><button onClick="window.print()" title="Print this page" aria-label="Print this page"></button></div><div id="permalink"><a href="#" title="Link to this page"></a></div></td></tr><tr><td style="width:75%;"><span class="topic_breadcrumb_links"><span class="topic_breadcrumb_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-a.html" title="A">A</a></span></span></td><td><span id="topic_navigation_links" class="navheader">
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-a.html" title="A"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">A</span></a></span>  </span></td></tr></tbody></table>
+
+
+<h1 class="title topictitle1"><span class="keyword apiname">alarm()</span></h1>
+<table width="100%"><tbody><tr><td align="left"><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">QNX SDP</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">7.1</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">C Library Reference</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">API</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">Developer</button></td><td align="right"><span style="margin:0px 5px; font-size:0.9em;">Updated: October 28, 2024</span></td></tr></tbody></table>
+
+
+<div class="body refbody"><p class="shortdesc"><em class="ph i">Schedule an alarm</em></p>
+
+
+<div class="section refsyn"><h2 class="title sectiontitle">Synopsis:</h2>
+
+<pre class="pre codeblock">
+#include &lt;unistd.h&gt;
+
+unsigned int alarm( unsigned int <var class="keyword varname">seconds</var> );
+</pre>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Arguments:</h2>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><var class="keyword varname">seconds</var></dt>
+
+<dd class="dd">The number of seconds of realtime to let elapse before raising the
+  alarm, or zero to cancel any previous <span class="keyword apiname">alarm()</span> requests.
+</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Library:</h2>
+
+
+<p class="p"><span class="ph filepath">libc</span></p>
+
+
+<p class="p">
+Use the <span class="keyword option">-l c</span> option to
+<a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/q/qcc.html"><span class="keyword cmdname">qcc</span></a>
+to link against this library.
+This library is usually included automatically.
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Description:</h2>
+
+
+<p class="p">
+The <span class="keyword apiname">alarm()</span> function causes the system to send the calling
+process a <span class="keyword const">SIGALRM</span> signal after a specified number of realtime
+seconds have elapsed.
+To add a handler for the signal, call
+<a class="xref" href="../s/sigaction.html" title="Examine or specify the action associated with a signal"><span class="keyword apiname">sigaction()</span></a>
+or
+<a class="xref" href="../s/signalaction.html" title="Examine and/or specify actions for signals"><span class="keyword apiname">SignalAction()</span></a>.
+
+
+
+
+
+</p>
+
+
+<div class="note note"><span class="notetitle">Note:</span> 
+<ul class="ul">
+<li class="li">Because of the nature of time measurement,
+  the signal might actually get sent later than the specified time.
+  For more information, see the
+  <span class="q">&#147;<a class="xref" href="../../../com.qnx.doc.neutrino.prog/topic/timing.html">Understanding the Microkernel's Concept of Time</a>&#148;</span>
+  chapter of the <span class="keyword">QNX Neutrino</span> <cite class="cite">Programmer's Guide</cite>.
+</li>
+
+
+<li class="li">Processor scheduling delays may cause the process to handle the signal after the desired time.</li>
+
+
+</ul>
+
+</div>
+
+
+<p class="p">
+The <span class="keyword apiname">alarm()</span> requests aren't stacked; you can schedule only a single
+<span class="keyword const">SIGALRM</span> generation in this manner.
+If the <span class="keyword const">SIGALRM</span> hasn't yet been generated, <span class="keyword apiname">alarm()</span>
+reschedules the time at which the <span class="keyword const">SIGALRM</span> is generated.
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Returns:</h2>
+
+
+<p class="p">
+The number of seconds before the calling process is scheduled to 
+receive a <span class="keyword const">SIGALRM</span> from the system, or zero if 
+there was no previous <span class="keyword apiname">alarm()</span> request.
+</p>
+
+
+<p class="p">
+If an error occurs, an <samp class="ph codeph">(unsigned)-1</samp> is returned
+(<a class="xref" href="../e/errno.html" title="Thread-local error variable"><var class="keyword varname">errno</var></a> is set).
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Errors:</h2>
+
+
+<dl class="dl" compact="compact">
+
+<dt class="dt dlterm"><span class="keyword const">EAGAIN</span></dt>
+
+<dd class="dd">All timers are in use. You'll have to wait for a process to release one.</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Examples:</h2>
+
+
+<pre class="pre codeblock">
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;unistd.h&gt;
+
+int main()
+  {
+    unsigned int  timeleft;
+
+    printf( "Set the alarm and sleep\n" );
+    alarm( 10 );
+    sleep( 5 );   /* go to sleep for 5 seconds */
+
+    /*
+     * To get the time left before the SIGALRM is 
+     * to arrive, one must cancel the initial timer, 
+     * which returns the amount of time it had 
+     * remaining.
+     */
+    timeleft = alarm( 0 );
+    printf( "Time left before cancel, and rearm: %d\n",
+        timeleft );
+
+    /*
+     * Start a new timer that kicks us when timeleft
+     * seconds have passed.
+     */
+
+    alarm( timeleft );
+
+    /*
+     * Wait until we receive the SIGALRM signal; any
+     * signal kills us, though, since we don't have
+     * a signal handler.
+     */
+    printf( "Hanging around, waiting to die\n" );
+    pause();
+    return EXIT_SUCCESS;
+  }
+</pre>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Classification:</h2>
+
+<p class="p"><a class="xref" href="../summary.html#summary__CLASSIFICATION">POSIX 1003.1</a></p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+<thead class="thead" align="left">
+<tr><th class="entry" valign="top" id="d1217847e243">Safety:</th>
+<th class="entry" valign="top" id="d1217847e245">Â </th>
+</tr>
+
+</thead>
+
+<tbody class="tbody">
+<tr><td class="entry" valign="top" headers="d1217847e243 d1217847e245 ">Cancellation point</td>
+<td class="entry" valign="top" headers="d1217847e243 d1217847e245 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d1217847e243 d1217847e245 ">Interrupt handler</td>
+<td class="entry" valign="top" headers="d1217847e243 d1217847e245 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d1217847e243 d1217847e245 ">Signal handler</td>
+<td class="entry" valign="top" headers="d1217847e243 d1217847e245 ">Yes</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d1217847e243 d1217847e245 ">Thread</td>
+<td class="entry" valign="top" headers="d1217847e243 d1217847e245 ">Yes</td>
+</tr>
+
+</tbody>
+
+</table>
+</div>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Caveats:</h2>
+
+
+<p class="p">
+Requests from <span class="keyword apiname">alarm()</span>,
+<a class="xref" href="../t/timeralarm.html" title="Schedule a SIGALRM for delivery"><span class="keyword apiname">TimerAlarm()</span></a>, and
+<a class="xref" href="../u/ualarm.html" title="Schedule an alarm"><span class="keyword apiname">ualarm()</span></a> aren't
+<span class="q">&#147;stacked;&#148;</span> only a single <span class="keyword const">SIGALRM</span> generator
+can be scheduled with these functions.  If the <span class="keyword const">SIGALRM</span>
+signal hasn't been generated, the next call to <span class="keyword apiname">alarm()</span>,
+<span class="keyword apiname">TimerAlarm()</span>, or <span class="keyword apiname">ualarm()</span> reschedules it.
+</p>
+
+</div>
+
+
+</div>
+
+
+<div class="related-links"><div class="relinfo relconcepts"><strong>Related concepts</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.prog/topic/timing.html" title="Understanding the Microkernel's Concept of Time (QNX Neutrino Programmer's Guide)">Understanding the Microkernel's Concept of Time (<span class="keyword">QNX Neutrino</span> Programmer's Guide)</a></div>
+</div>
+<div class="relinfo relref"><strong>Related reference</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/e/errno.html" title="Thread-local error variable">errno</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/p/pause.html" title="Suspend the calling thread until it runs a signal handler">pause()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/s/signal.html" title="Set handling for exceptional conditions">signal()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/s/signalaction.html" title="Examine and/or specify actions for signals">SignalAction(), SignalAction_r()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/s/sleep.html" title="Suspend a thread for a given length of time">sleep()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/t/timeralarm.html" title="Schedule a SIGALRM for delivery">TimerAlarm(), TimerAlarm_r()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/t/timer_create.html" title="Create a timer">timer_create()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/t/timer_delete.html" title="Delete a timer">timer_delete()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/t/timer_gettime.html" title="Get the amount of time left on a timer">timer_gettime()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/t/timer_settime.html" title="Arm a timer with the given expiration time, disarm it, or set its tolerance">timer_settime()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/u/ualarm.html" title="Schedule an alarm">ualarm()</a></div>
+</div>
+</div><div class="navfooter"><!---->
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-a.html" title="A"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">A</span></a></span>  </div>
+</body>
+</html>

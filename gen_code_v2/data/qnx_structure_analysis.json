@@ -1,0 +1,214 @@
+{
+  "url_patterns": {
+    "a": [
+      {
+        "function_name": "SchedCtl",
+        "url": "https://www.qnx.com/developers/docs/7.1/com.qnx.doc.neutrino.lib_ref/topic/s/schedctl.html",
+        "href": "s/schedctl.html"
+      },
+      {
+        "function_name": "abort",
+        "url": "https://www.qnx.com/developers/docs/7.1/com.qnx.doc.neutrino.lib_ref/topic/a/abort.html",
+        "href": "../../com.qnx.doc.neutrino.lib_ref/topic/a/abort.html"
+      },
+      {
+        "function_name": "abs",
+        "url": "https://www.qnx.com/developers/docs/7.1/com.qnx.doc.neutrino.lib_ref/topic/a/abs.html",
+        "href": "../../com.qnx.doc.neutrino.lib_ref/topic/a/abs.html"
+      },
+      {
+        "function_name": "accept",
+        "url": "https://www.qnx.com/developers/docs/7.1/com.qnx.doc.neutrino.lib_ref/topic/a/accept.html",
+        "href": "../../com.qnx.doc.neutrino.lib_ref/topic/a/accept.html"
+      },
+      {
+        "function_name": "access",
+        "url": "https://www.qnx.com/developers/docs/7.1/com.qnx.doc.neutrino.lib_ref/topic/a/access.html",
+        "href": "../../com.qnx.doc.neutrino.lib_ref/topic/a/access.html"
+      }
+    ],
+    "b": [
+      {
+        "function_name": "shutdown_system",
+        "url": "https://www.qnx.com/developers/docs/7.1/com.qnx.doc.neutrino.lib_ref/topic/s/shutdown_system.html",
+        "href": "s/shutdown_system.html"
+      },
+      {
+        "function_name": "basename",
+        "url": "https://www.qnx.com/developers/docs/7.1/com.qnx.doc.neutrino.lib_ref/topic/b/basename.html",
+        "href": "../../com.qnx.doc.neutrino.lib_ref/topic/b/basename.html"
+      },
+      {
+        "function_name": "bcmp",
+        "url": "https://www.qnx.com/developers/docs/7.1/com.qnx.doc.neutrino.lib_ref/topic/b/bcmp.html",
+        "href": "../../com.qnx.doc.neutrino.lib_ref/topic/b/bcmp.html"
+      },
+      {
+        "function_name": "bcopy",
+        "url": "https://www.qnx.com/developers/docs/7.1/com.qnx.doc.neutrino.lib_ref/topic/b/bcopy.html",
+        "href": "../../com.qnx.doc.neutrino.lib_ref/topic/b/bcopy.html"
+      },
+      {
+        "function_name": "bind",
+        "url": "https://www.qnx.com/developers/docs/7.1/com.qnx.doc.neutrino.lib_ref/topic/b/bind.html",
+        "href": "../../com.qnx.doc.neutrino.lib_ref/topic/b/bind.html"
+      }
+    ],
+    "c": [
+      {
+        "function_name": "c16rtomb",
+        "url": "https://www.qnx.com/developers/docs/7.1/com.qnx.doc.neutrino.lib_ref/topic/c/c16rtomb.html",
+        "href": "../../com.qnx.doc.neutrino.lib_ref/topic/c/c16rtomb.html"
+      },
+      {
+        "function_name": "c32rtomb",
+        "url": "https://www.qnx.com/developers/docs/7.1/com.qnx.doc.neutrino.lib_ref/topic/c/c16rtomb.html",
+        "href": "../../com.qnx.doc.neutrino.lib_ref/topic/c/c16rtomb.html"
+      },
+      {
+        "function_name": "cabs",
+        "url": "https://www.qnx.com/developers/docs/7.1/com.qnx.doc.neutrino.lib_ref/topic/c/cabs.html",
+        "href": "../../com.qnx.doc.neutrino.lib_ref/topic/c/cabs.html"
+      },
+      {
+        "function_name": "cabsf",
+        "url": "https://www.qnx.com/developers/docs/7.1/com.qnx.doc.neutrino.lib_ref/topic/c/cabs.html",
+        "href": "../../com.qnx.doc.neutrino.lib_ref/topic/c/cabs.html"
+      },
+      {
+        "function_name": "cabsl",
+        "url": "https://www.qnx.com/developers/docs/7.1/com.qnx.doc.neutrino.lib_ref/topic/c/cabs.html",
+        "href": "../../com.qnx.doc.neutrino.lib_ref/topic/c/cabs.html"
+      }
+    ],
+    "p": [
+      {
+        "function_name": "pthread_barrier_init",
+        "url": "https://www.qnx.com/developers/docs/7.1/com.qnx.doc.neutrino.lib_ref/topic/p/pthread_barrier_init.html",
+        "href": "p/pthread_barrier_init.html"
+      },
+      {
+        "function_name": "select",
+        "url": "https://www.qnx.com/developers/docs/7.1/com.qnx.doc.neutrino.lib_ref/topic/s/select.html",
+        "href": "s/select.html"
+      },
+      {
+        "function_name": "pathconf",
+        "url": "https://www.qnx.com/developers/docs/7.1/com.qnx.doc.neutrino.lib_ref/topic/p/pathconf.html",
+        "href": "../../com.qnx.doc.neutrino.lib_ref/topic/p/pathconf.html"
+      },
+      {
+        "function_name": "pathfind",
+        "url": "https://www.qnx.com/developers/docs/7.1/com.qnx.doc.neutrino.lib_ref/topic/p/pathfind.html",
+        "href": "../../com.qnx.doc.neutrino.lib_ref/topic/p/pathfind.html"
+      },
+      {
+        "function_name": "pathfind_r",
+        "url": "https://www.qnx.com/developers/docs/7.1/com.qnx.doc.neutrino.lib_ref/topic/p/pathfind.html",
+        "href": "../../com.qnx.doc.neutrino.lib_ref/topic/p/pathfind.html"
+      }
+    ]
+  },
+  "structure_analysis": {
+    "malloc": {
+      "function_name": "malloc",
+      "url": "https://www.qnx.com/developers/docs/7.1/com.qnx.doc.neutrino.lib_ref/topic/m/malloc.html",
+      "title": "malloc()",
+      "synopsis": "void* malloc( size_t size );",
+      "description": "",
+      "parameters": [
+        {
+          "name": "size",
+          "description": "The number of bytes to allocate."
+        }
+      ],
+      "return_values": [],
+      "code_examples": [
+        "#include <stdlib.h>\n\nvoid* malloc( size_t size );",
+        "#include <stdlib.h>\n\nint main( void )\n{\n    char* buffer;\n\n    buffer = (char* )malloc( 80 );\n    if( buffer != NULL ) {\n        /* do something with the buffer */\n        â¦\n\n        free( buffer );\n    }\n    \n    return EXIT_SUCCESS;\n}"
+      ],
+      "headers": [
+        "#include <stdlib.h>"
+      ],
+      "html_structure": {
+        "has_refsyn_section": true,
+        "has_shortdesc": false,
+        "section_count": 11,
+        "has_dl_elements": true,
+        "code_block_count": 2
+      }
+    },
+    "printf": {
+      "function_name": "printf",
+      "url": "https://www.qnx.com/developers/docs/7.1/com.qnx.doc.neutrino.lib_ref/topic/m/printf.html",
+      "title": "QNX High-Performance Embedded Solutions",
+      "synopsis": "",
+      "description": "",
+      "parameters": [],
+      "return_values": [],
+      "code_examples": [],
+      "headers": [],
+      "html_structure": {
+        "has_refsyn_section": false,
+        "has_shortdesc": false,
+        "section_count": 0,
+        "has_dl_elements": false,
+        "code_block_count": 0
+      }
+    },
+    "pthread_create": {
+      "function_name": "pthread_create",
+      "url": "https://www.qnx.com/developers/docs/7.1/com.qnx.doc.neutrino.lib_ref/topic/m/pthread_create.html",
+      "title": "QNX High-Performance Embedded Solutions",
+      "synopsis": "",
+      "description": "",
+      "parameters": [],
+      "return_values": [],
+      "code_examples": [],
+      "headers": [],
+      "html_structure": {
+        "has_refsyn_section": false,
+        "has_shortdesc": false,
+        "section_count": 0,
+        "has_dl_elements": false,
+        "code_block_count": 0
+      }
+    },
+    "open": {
+      "function_name": "open",
+      "url": "https://www.qnx.com/developers/docs/7.1/com.qnx.doc.neutrino.lib_ref/topic/m/open.html",
+      "title": "QNX High-Performance Embedded Solutions",
+      "synopsis": "",
+      "description": "",
+      "parameters": [],
+      "return_values": [],
+      "code_examples": [],
+      "headers": [],
+      "html_structure": {
+        "has_refsyn_section": false,
+        "has_shortdesc": false,
+        "section_count": 0,
+        "has_dl_elements": false,
+        "code_block_count": 0
+      }
+    },
+    "close": {
+      "function_name": "close",
+      "url": "https://www.qnx.com/developers/docs/7.1/com.qnx.doc.neutrino.lib_ref/topic/m/close.html",
+      "title": "QNX High-Performance Embedded Solutions",
+      "synopsis": "",
+      "description": "",
+      "parameters": [],
+      "return_values": [],
+      "code_examples": [],
+      "headers": [],
+      "html_structure": {
+        "has_refsyn_section": false,
+        "has_shortdesc": false,
+        "section_count": 0,
+        "has_dl_elements": false,
+        "code_block_count": 0
+      }
+    }
+  }
+}

@@ -1,0 +1,589 @@
+
+<!DOCTYPE html
+  PUBLIC "" "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />        
+      <meta name="copyright" content="(C) Copyright 2005" /><meta name="DC.rights.owner" content="(C) Copyright 2005" /><meta name="DC.Type" content="reference" /><meta name="DC.Title" content="fstatvfs(), fstatvfs64()" /><meta name="abstract" content="Get filesystem information, given a file descriptor" /><meta name="description" content="Get filesystem information, given a file descriptor" /><meta name="indexterms" content="fstatvfs(), fstatvfs64()" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-f.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/c/chmod.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/c/chown.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/c/creat.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/d/dup.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/f/fcntl.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/l/link.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/m/mknod.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/o/open.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/p/pipe.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/r/read.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/s/statvfs.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/s/statvfs.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/t/time.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/u/unlink.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/u/utime.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/w/write.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.devctl/topic/fsys/dcmd_fsys_statvfs.html" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="fstatvfs" /><meta name="DC.Language" content="en-us" /><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/commonltr.css"><!----></link><title>fstatvfs(), fstatvfs64()</title><link rel="canonical" type="html" href="https://www.qnx.com/developers/docs/7.1/#com.qnx.doc.neutrino.lib_ref/" /><!--  Generated with Oxygen version 18.1, build number 2017020917.  --><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/webhelp_topic.css"><!----></link><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/skins/skin.css" /><script type="text/javascript"><!--
+            
+            var prefix = "../../../index.html";
+            
+            --></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-1.11.3.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.cookie.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-ui.custom.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.highlight-3.js"><!----></script><script type="text/javascript" charset="utf-8" src="../../../oxygen-webhelp/resources/js/webhelp_topic.js"><!----></script><script type="text/javascript"> var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-27400275-1']); _gaq.push(['_setDomainName', 'www.qnx.com']);_gaq.push(['_setAllowLinker', true]);_gaq.push(['_trackPageview']);(function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script></head>
+<body onload="highlightSearchTerm()" class="frmBody" id="fstatvfs">
+<table class="nav"><tbody><tr><td colspan="2"><div id="printlink"><button onClick="window.print()" title="Print this page" aria-label="Print this page"></button></div><div id="permalink"><a href="#" title="Link to this page"></a></div></td></tr><tr><td style="width:75%;"><span class="topic_breadcrumb_links"><span class="topic_breadcrumb_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-f.html" title="F">F</a></span></span></td><td><span id="topic_navigation_links" class="navheader">
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-f.html" title="F"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">F</span></a></span>  </span></td></tr></tbody></table>
+
+
+<h1 class="title topictitle1"><span class="keyword apiname">fstatvfs()</span>, <span class="keyword apiname">fstatvfs64()</span></h1>
+<table width="100%"><tbody><tr><td align="left"><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">QNX SDP</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">7.1</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">C Library Reference</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">API</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">Developer</button></td><td align="right"><span style="margin:0px 5px; font-size:0.9em;">Updated: October 28, 2024</span></td></tr></tbody></table>
+
+
+<div class="body refbody"><p class="shortdesc"><em class="ph i">Get filesystem information, given a file descriptor</em></p>
+
+
+<div class="section refsyn"><h2 class="title sectiontitle">Synopsis:</h2>
+
+<pre class="pre codeblock">
+#include &lt;sys/statvfs.h&gt;
+
+int fstatvfs( int <var class="keyword varname">filedes</var>, 
+              struct statvfs *<var class="keyword varname">buf</var> );
+
+int fstatvfs64( int <var class="keyword varname">filedes</var>,
+                struct statvfs64 *<var class="keyword varname">buf</var> );
+</pre>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Arguments:</h2>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><var class="keyword varname">filedes</var></dt>
+
+<dd class="dd">The descriptor for a file that resides on the filesystem that you
+  want to get information about.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">buf</var></dt>
+
+<dd class="dd">A pointer to a buffer where the function can store information about the filesystem; see below.</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Library:</h2>
+
+
+<p class="p"><span class="ph filepath">libc</span></p>
+
+
+<p class="p">
+Use the <span class="keyword option">-l c</span> option to
+<a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/q/qcc.html"><span class="keyword cmdname">qcc</span></a>
+to link against this library.
+This library is usually included automatically.
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Description:</h2>
+
+
+<p class="p">
+
+
+
+
+
+The <span class="keyword apiname">fstatvfs()</span> and <span class="keyword apiname">fstatvfs64()</span> functions return a <span class="q">&#147;generic superblock&#148;</span>
+describing a filesystem that you can use to get information about mounted filesystems.
+The <span class="keyword apiname">fstatvfs64()</span> function is a large-file support version of
+<span class="keyword apiname">fstatvfs()</span>.
+The
+<a class="xref" href="../s/statvfs.html" title="Get filesystem information, given a path"><span class="keyword apiname">statvfs()</span> and <span class="keyword apiname">statvfs64()</span></a>
+functions are similar, but they take a path name instead of a
+file descriptor.
+</p>
+
+
+<div class="note note"><span class="notetitle">Note:</span> 
+In QNX Neutrino 6.6 or later, the large-file support functions and data types
+appear in the name space only if you define <span class="keyword const">_LARGEFILE64_SOURCE</span> when you compile your code.
+For more information, see
+<span class="q">&#147;<a class="xref" href="../summary.html#summary__CLASSIFICATION">Classification</a>&#148;</span>
+in What's in a Function Description?
+</div>
+
+
+<p class="p">
+The <var class="keyword varname">filedes</var> argument is an open file descriptor,
+obtained  from  a  successful call to
+<a class="xref" href="../o/open.html" title="Open a file"><span class="keyword apiname">open()</span></a>,  
+<a class="xref" href="../c/creat.html" title="Create and open a file (low-level)"><span class="keyword apiname">creat()</span></a>,  
+<a class="xref" href="../d/dup.html" title="Duplicate a file descriptor"><span class="keyword apiname">dup()</span></a>,  
+<a class="xref" href="fcntl.html" title="Provide control over an open file"><span class="keyword apiname">fcntl()</span></a>,  
+or
+<a class="xref" href="../p/pipe.html" title="Create a pipe"><span class="keyword apiname">pipe()</span></a>,  
+for a file that resides on  that  filesystem.
+The filesystem type is known to the operating system.
+Read, write, or execute permission for the named file isn't required.
+</p>
+
+
+<p class="p">
+
+The <var class="keyword varname">buf</var> argument is a pointer to a <span class="keyword dtype">statvfs</span> or
+<span class="keyword dtype">statvfs64</span> 
+structure that's filled by the function. It contains at least:
+</p>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><span class="keyword dtype">unsigned long</span> <var class="keyword varname">f_bsize</var></dt>
+
+<dd class="dd">The preferred filesystem blocksize.
+  
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword dtype">unsigned long</span> <var class="keyword varname">f_frsize</var></dt>
+
+<dd class="dd">The fundamental filesystem blocksize (if supported).</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword dtype">fsblkcnt_t</span> <var class="keyword varname">f_blocks</var></dt>
+
+<dd class="dd">The total number of blocks on the filesystem, in units of
+  <var class="keyword varname">f_frsize</var>.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword dtype">fsblkcnt_t</span> <var class="keyword varname">f_bfree</var> </dt>
+
+<dd class="dd">The total number of free blocks.
+  
+  
+  
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword dtype">fsblkcnt_t</span> <var class="keyword varname">f_bavail</var></dt>
+
+<dd class="dd">The number of free blocks available to a non-privileged process.</dd>
+
+
+
+</dl>
+
+
+<div class="note note"><span class="notetitle">Note:</span> Many file systems do not have a concept of "privileged user". For those file systems,
+<var class="keyword varname">f_bavail</var> will equal <var class="keyword varname">f_bfree</var>, and <var class="keyword varname">f_favail</var>
+will equal <var class="keyword varname">f_ffree</var>.</div>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><span class="keyword dtype">fsfilcnt_t</span> <var class="keyword varname">f_files</var> </dt>
+
+<dd class="dd">The total number of file nodes (inodes).
+  
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword dtype">fsfilcnt_t</span> <var class="keyword varname">f_ffree</var> </dt>
+
+<dd class="dd">The total number of free file nodes.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword dtype">fsfilcnt_t</span> <var class="keyword varname">f_favail</var></dt>
+
+<dd class="dd">The number of inodes available to a non-privileged process.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword dtype">unsigned long</span> <var class="keyword varname">f_fsid</var></dt>
+
+<dd class="dd">The filesystem ID (currently the device ID).</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword dtype">char</span> <var class="keyword varname">f_basetype</var>[16]</dt>
+
+<dd class="dd">The type of the target filesystem, as a null-terminated string.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword dtype">unsigned long</span> <var class="keyword varname">f_flag</var>  </dt>
+
+<dd class="dd">A bitmask of flags; the function can set these flags (the
+  <span class="keyword const">_MOUNT_*</span> and <span class="keyword const">ST_*</span> bits are equivalent):
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+
+  <thead class="thead" align="left">
+  <tr>
+    <th class="entry" valign="top" id="d1498420e530"><span class="keyword const">_MOUNT_*</span></th>
+
+    <th class="entry" valign="top" id="d1498420e534"><span class="keyword const">ST_*</span></th>
+
+    <th class="entry" valign="top" id="d1498420e538">Meaning</th>
+
+  </tr>
+
+  </thead>
+
+
+  <tbody class="tbody">
+  <tr>
+    <td class="entry" valign="top" headers="d1498420e530 d1498420e534 d1498420e538 "><span class="keyword const">_MOUNT_READONLY</span></td>
+
+    <td class="entry" valign="top" headers="d1498420e530 d1498420e534 d1498420e538 "><span class="keyword const">ST_RDONLY</span></td>
+
+    <td class="entry" valign="top" headers="d1498420e530 d1498420e534 d1498420e538 ">The filesystem is read-only.</td>
+
+  </tr>
+
+
+  <tr>
+    <td class="entry" valign="top" headers="d1498420e530 d1498420e534 d1498420e538 "><span class="keyword const">_MOUNT_NOEXEC</span></td>
+
+    <td class="entry" valign="top" headers="d1498420e530 d1498420e534 d1498420e538 "><span class="keyword const">ST_NOEXEC</span></td>
+
+    <td class="entry" valign="top" headers="d1498420e530 d1498420e534 d1498420e538 ">The filesystem doesn't permit the loading of executables.</td>
+
+  </tr>
+
+
+  <tr>
+    <td class="entry" valign="top" headers="d1498420e530 d1498420e534 d1498420e538 "><span class="keyword const">_MOUNT_NOSUID</span></td>
+
+    <td class="entry" valign="top" headers="d1498420e530 d1498420e534 d1498420e538 "><span class="keyword const">ST_NOSUID</span></td>
+
+    <td class="entry" valign="top" headers="d1498420e530 d1498420e534 d1498420e538 ">The filesystem doesn't support
+      <a class="xref" href="../s/setuid.html" title="Set the real, effective and saved user IDs"><span class="keyword apiname">setuid()</span></a>
+      and
+      <a class="xref" href="../s/setgid.html" title="Set the real, effective and saved set-group IDs"><span class="keyword apiname">setgid()</span></a>
+      semantics.
+    </td>
+
+  </tr>
+
+
+  <tr>
+    <td class="entry" valign="top" headers="d1498420e530 d1498420e534 d1498420e538 "><span class="keyword const">_MOUNT_NOCREAT</span></td>
+
+    <td class="entry" valign="top" headers="d1498420e530 d1498420e534 d1498420e538 "><span class="keyword const">ST_NOCREAT</span></td>
+
+    <td class="entry" valign="top" headers="d1498420e530 d1498420e534 d1498420e538 ">You can't create files on the filesystem.</td>
+
+  </tr>
+
+
+  <tr>
+    <td class="entry" valign="top" headers="d1498420e530 d1498420e534 d1498420e538 "><span class="keyword const">_MOUNT_OFF32</span></td>
+
+    <td class="entry" valign="top" headers="d1498420e530 d1498420e534 d1498420e538 "><span class="keyword const">ST_OFF32</span></td>
+
+    <td class="entry" valign="top" headers="d1498420e530 d1498420e534 d1498420e538 ">The <span class="keyword dtype">off_t</span> type is limited to 32 bits.</td>
+
+  </tr>
+
+
+  <tr>
+    <td class="entry" valign="top" headers="d1498420e530 d1498420e534 d1498420e538 "><span class="keyword const">_MOUNT_NOATIME</span></td>
+
+    <td class="entry" valign="top" headers="d1498420e530 d1498420e534 d1498420e538 "><span class="keyword const">ST_NOATIME</span></td>
+
+    <td class="entry" valign="top" headers="d1498420e530 d1498420e534 d1498420e538 ">The filesystem doesn't support the logging of file access times.</td>
+
+  </tr>
+
+  <tr>
+    <td class="entry" valign="top" headers="d1498420e530 d1498420e534 d1498420e538 "><span class="keyword const">_MOUNT_TRUSTED</span></td>
+
+    <td class="entry" valign="top" headers="d1498420e530 d1498420e534 d1498420e538 "><span class="keyword const">ST_TRUSTED</span></td>
+
+    <td class="entry" valign="top" headers="d1498420e530 d1498420e534 d1498420e538 ">The filesystem is trusted.</td>
+
+  </tr>
+
+
+</tbody>
+
+</table>
+</div>
+
+
+
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword dtype">unsigned long</span> <var class="keyword varname">f_namemax</var></dt>
+
+<dd class="dd">The maximum filename length.</dd>
+
+
+
+</dl>
+
+
+<p class="p">
+The values returned for <var class="keyword varname">f_files</var>, <var class="keyword varname">f_ffree</var>, and 
+<var class="keyword varname">f_favail</var> depend on the filesystem:
+</p>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/f/fs-dos.so.html"><span class="keyword cmdname">fs-dos.so</span></a></dt>
+
+<dd class="dd">This filesystem embeds inodes in directories, so the number of files
+  is limited by the amount of disk space, so basically there's no limit.
+  It doesn't count the number of files created either, so it sets all these fields to 0.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/f/fs-qnx6.so.html"><span class="keyword cmdname">fs-qnx6.so</span></a>,
+  <a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/f/fs-etfs-ram.html"><span class="keyword cmdname">fs-etfs-ram</span></a>
+</dt>
+
+<dd class="dd">These filesystems have a fixed inodes table, so they fill in these fields.</dd>
+
+
+
+
+<dt class="dt dlterm"><a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/f/fs-mac.so.html"><span class="keyword cmdname">fs-mac.so</span></a>,
+  <a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/f/fs-nt.so.html"><span class="keyword cmdname">fs-nt.so</span></a>,
+  <a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/f/fs-udf.so.html"><span class="ph filepath">fs-udf.so</span></a></dt>
+
+
+<dd class="dd">Read-only fsystems always set <var class="keyword varname">f_ffree</var> and <var class="keyword varname">f_favail</var> to 0.
+  Where possible or known, they try to set <var class="keyword varname">f_files</var>:
+
+  <ul class="ul">
+  <li class="li"><span class="keyword cmdname">fs-mac.so</span> knows exactly</li>
+
+
+  <li class="li"><span class="keyword cmdname">fs-nt.so</span> provides an upper bound based on the current size
+    of the Master File Table (MFT)
+  </li>
+
+
+  <li class="li"><span class="ph filepath">fs-udf.so</span> knows when it's a UDF that's mounted;
+    ISO formats don't indicate that information, so <var class="keyword varname">f_files</var> is set to 0
+  </li>
+
+
+  </ul>
+
+</dd>
+
+
+
+
+<dt class="dt dlterm"><a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/f/fs-cifs.html"><span class="keyword cmdname">fs-cifs</span></a></dt>
+
+<dd class="dd">The CIFS filesystem sets these fields to 0.</dd>
+
+
+
+
+<dt class="dt dlterm"><a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/utils-d.html"><span class="keyword cmdname">devf-*</span></a></dt>
+
+<dd class="dd">Flash filesystem drivers estimate the values of these fields, based on the amount of free space.</dd>
+
+
+
+</dl>
+
+
+<p class="p">
+
+The underlying resource managers provide this information via the
+<a class="xref" href="../../../com.qnx.doc.neutrino.devctl/topic/fsys/dcmd_fsys_statvfs.html"><span class="keyword const">DCMD_FSYS_STATVFS</span></a>
+<span class="keyword apiname">devctl()</span> command.
+</p>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Returns:</h2>
+
+
+<dl class="dl" compact="compact">
+
+<dt class="dt dlterm">0</dt>
+
+<dd class="dd">Success.</dd>
+
+
+
+
+<dt class="dt dlterm">-1</dt>
+
+<dd class="dd">An error occurred
+  (<a class="xref" href="../e/errno.html" title="Thread-local error variable"><var class="keyword varname">errno</var></a>
+  is set).
+</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Errors:</h2>
+
+
+<dl class="dl" compact="compact">
+
+<dt class="dt dlterm"><span class="keyword const">EBADF</span></dt>
+
+<dd class="dd">The <var class="keyword varname">filedes</var> argument isn't an open file descriptor.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EFAULT</span></dt>
+
+<dd class="dd">The <var class="keyword varname">buf</var> argument points to an illegal address.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EINTR</span></dt>
+
+<dd class="dd">A signal was caught during execution.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EIO</span></dt>
+
+<dd class="dd">An I/O error occurred while reading the  filesystem.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EOVERFLOW</span></dt>
+
+<dd class="dd">One of the values to be  returned can't be represented correctly in the
+  structure pointed to by <var class="keyword varname">buf</var>.
+</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Classification:</h2>
+
+<p class="p"><span class="keyword apiname">fstatvfs()</span> is
+<a class="xref" href="../summary.html#summary__CLASSIFICATION">POSIX 1003.1</a>;
+<span class="keyword apiname">fstatvfs64()</span> is
+<a class="xref" href="../summary.html#summary__CLASSIFICATION">Large-file support</a></p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+<thead class="thead" align="left">
+<tr><th class="entry" valign="top" id="d1498420e953">Safety:</th>
+<th class="entry" valign="top" id="d1498420e955">Â </th>
+</tr>
+
+</thead>
+
+<tbody class="tbody">
+<tr><td class="entry" valign="top" headers="d1498420e953 d1498420e955 ">Cancellation point</td>
+<td class="entry" valign="top" headers="d1498420e953 d1498420e955 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d1498420e953 d1498420e955 ">Interrupt handler</td>
+<td class="entry" valign="top" headers="d1498420e953 d1498420e955 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d1498420e953 d1498420e955 ">Signal handler</td>
+<td class="entry" valign="top" headers="d1498420e953 d1498420e955 ">Yes</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d1498420e953 d1498420e955 ">Thread</td>
+<td class="entry" valign="top" headers="d1498420e953 d1498420e955 ">Yes</td>
+</tr>
+
+</tbody>
+
+</table>
+</div>
+
+</div>
+
+
+</div>
+
+
+<div class="related-links"><div class="relinfo relref"><strong>Related reference</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/c/chmod.html" title="Change the permissions for a file">chmod()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/c/chown.html" title="Change the user ID and group ID of a file">chown()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/c/creat.html" title="Create and open a file (low-level)">creat(), creat64()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/d/dup.html" title="Duplicate a file descriptor">dup()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/f/fcntl.html" title="Provide control over an open file">fcntl()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/l/link.html" title="Create a link to an existing file">link()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/m/mknod.html" title="Make a new filesystem entry">mknod()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/o/open.html" title="Open a file">open(), open64()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/p/pipe.html" title="Create a pipe">pipe()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/r/read.html" title="Read bytes from a file">read()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/s/statvfs.html" title="Get filesystem information, given a path">statvfs(), statvfs64()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/t/time.html" title="Determine the current calendar time">time()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/u/unlink.html" title="Remove a link to a file">unlink()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/u/utime.html" title="Set the modification time for a file or directory">utime()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/w/write.html" title="Write bytes to a file">write()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.devctl/topic/fsys/dcmd_fsys_statvfs.html" title="DCMD_FSYS_STATVFS (Devctl and Ioctl Commands)">DCMD_FSYS_STATVFS (Devctl and Ioctl Commands)</a></div>
+</div>
+</div><div class="navfooter"><!---->
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-f.html" title="F"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">F</span></a></span>  </div>
+</body>
+</html>

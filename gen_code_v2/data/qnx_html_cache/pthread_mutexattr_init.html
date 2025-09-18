@@ -1,0 +1,348 @@
+
+<!DOCTYPE html
+  PUBLIC "" "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />        
+      <meta name="copyright" content="(C) Copyright 2005" /><meta name="DC.rights.owner" content="(C) Copyright 2005" /><meta name="DC.Type" content="reference" /><meta name="DC.Title" content="pthread_mutexattr_init()" /><meta name="abstract" content="Initialize a mutex attribute object" /><meta name="description" content="Initialize a mutex attribute object" /><meta name="indexterms" content="pthread_mutexattr_init()" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-p.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.sys_arch/topic/kernel_Mutexes.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/p/pthread_mutex_init.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/p/pthread_mutexattr_destroy.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/p/pthread_mutexattr_getprioceiling.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/p/pthread_mutexattr_getprotocol.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/p/pthread_mutexattr_getpshared.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/p/pthread_mutexattr_getrecursive.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/p/pthread_mutexattr_getrobust.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/p/pthread_mutexattr_gettype.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/p/pthread_mutexattr_getwakeup_np.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/p/pthread_mutexattr_setprioceiling.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/p/pthread_mutexattr_setprotocol.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/p/pthread_mutexattr_setpshared.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/p/pthread_mutexattr_setrecursive.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/p/pthread_mutexattr_setrobust.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/p/pthread_mutexattr_settype.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/p/pthread_mutexattr_setwakeup_np.html" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="pthread_mutexattr_init" /><meta name="DC.Language" content="en-us" /><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/commonltr.css"><!----></link><title>pthread_mutexattr_init()</title><link rel="canonical" type="html" href="https://www.qnx.com/developers/docs/7.1/#com.qnx.doc.neutrino.lib_ref/" /><!--  Generated with Oxygen version 18.1, build number 2017020917.  --><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/webhelp_topic.css"><!----></link><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/skins/skin.css" /><script type="text/javascript"><!--
+            
+            var prefix = "../../../index.html";
+            
+            --></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-1.11.3.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.cookie.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-ui.custom.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.highlight-3.js"><!----></script><script type="text/javascript" charset="utf-8" src="../../../oxygen-webhelp/resources/js/webhelp_topic.js"><!----></script><script type="text/javascript"> var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-27400275-1']); _gaq.push(['_setDomainName', 'www.qnx.com']);_gaq.push(['_setAllowLinker', true]);_gaq.push(['_trackPageview']);(function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script></head>
+<body onload="highlightSearchTerm()" class="frmBody" id="pthread_mutexattr_init">
+<table class="nav"><tbody><tr><td colspan="2"><div id="printlink"><button onClick="window.print()" title="Print this page" aria-label="Print this page"></button></div><div id="permalink"><a href="#" title="Link to this page"></a></div></td></tr><tr><td style="width:75%;"><span class="topic_breadcrumb_links"><span class="topic_breadcrumb_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-p.html" title="P">P</a></span></span></td><td><span id="topic_navigation_links" class="navheader">
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-p.html" title="P"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">P</span></a></span>  </span></td></tr></tbody></table>
+
+
+<h1 class="title topictitle1"><span class="keyword apiname">pthread_mutexattr_init()</span></h1>
+<table width="100%"><tbody><tr><td align="left"><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">QNX SDP</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">7.1</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">C Library Reference</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">API</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">Developer</button></td><td align="right"><span style="margin:0px 5px; font-size:0.9em;">Updated: October 28, 2024</span></td></tr></tbody></table>
+
+
+<div class="body refbody"><p class="shortdesc"><em class="ph i">Initialize a mutex attribute object</em></p>
+
+
+<div class="section refsyn"><h2 class="title sectiontitle">Synopsis:</h2>
+
+<pre class="pre codeblock">
+#include &lt;pthread.h&gt;
+
+int pthread_mutexattr_init( pthread_mutexattr_t* <var class="keyword varname">attr</var> );
+</pre>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Arguments:</h2>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><var class="keyword varname">attr</var></dt>
+
+<dd class="dd">A pointer to the <span class="keyword dtype">pthread_mutexattr_t</span> object that you
+  want to initialize.
+</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Library:</h2>
+
+
+<p class="p"><span class="ph filepath">libc</span></p>
+
+
+<p class="p">
+Use the <span class="keyword option">-l c</span> option to
+<a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/q/qcc.html"><span class="keyword cmdname">qcc</span></a>
+to link against this library.
+This library is usually included automatically.
+</p>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Description:</h2>
+
+
+<p class="p">
+
+
+
+
+The <span class="keyword apiname">pthread_mutexattr_init()</span> function initializes the
+attributes in the mutex attribute object <var class="keyword varname">attr</var> to their
+default values.
+After calling this function, you can use the
+<span class="keyword apiname">pthread_mutexattr_*</span> family of functions to make any changes
+to the attributes:
+
+
+
+
+
+
+
+</p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" width="100%" frame="border" border="1" rules="all">
+
+<thead class="thead" align="left">
+<tr>
+  <th class="entry" valign="top" id="d2428822e148">Attribute</th>
+
+  <th class="entry" valign="top" id="d2428822e151">Default</th>
+
+  <th class="entry" valign="top" id="d2428822e154">Get</th>
+
+  <th class="entry" valign="top" id="d2428822e157">Set</th>
+
+</tr>
+
+</thead>
+
+
+<tbody class="tbody">
+
+<tr>
+  <td class="entry" valign="top" headers="d2428822e148 d2428822e151 d2428822e154 d2428822e157 ">Priority ceiling</td>
+
+  <td class="entry" valign="top" headers="d2428822e148 d2428822e151 d2428822e154 d2428822e157 ">None</td>
+
+  <td class="entry" valign="top" headers="d2428822e148 d2428822e151 d2428822e154 d2428822e157 "><a class="xref" href="pthread_mutexattr_getprioceiling.html" title="Get the priority ceiling of a mutex attribute object"><span class="keyword apiname">pthread_mutexattr_getprioceiling()</span></a></td>
+
+  <td class="entry" valign="top" headers="d2428822e148 d2428822e151 d2428822e154 d2428822e157 "><a class="xref" href="pthread_mutexattr_setprioceiling.html" title="Set the priority ceiling of a mutex attribute object"><span class="keyword apiname">pthread_mutexattr_setprioceiling()</span></a></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d2428822e148 d2428822e151 d2428822e154 d2428822e157 ">Protocol</td>
+
+  <td class="entry" valign="top" headers="d2428822e148 d2428822e151 d2428822e154 d2428822e157 "><span class="keyword const">PTHREAD_PRIO_INHERIT</span></td>
+
+  <td class="entry" valign="top" headers="d2428822e148 d2428822e151 d2428822e154 d2428822e157 "><a class="xref" href="pthread_mutexattr_getprotocol.html" title="Get a mutex's scheduling protocol"><span class="keyword apiname">pthread_mutexattr_getprotocol()</span></a></td>
+
+  <td class="entry" valign="top" headers="d2428822e148 d2428822e151 d2428822e154 d2428822e157 "><a class="xref" href="pthread_mutexattr_setprotocol.html" title="Set a mutex's scheduling protocol"><span class="keyword apiname">pthread_mutexattr_setprotocol()</span></a></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d2428822e148 d2428822e151 d2428822e154 d2428822e157 ">Process-shared</td>
+
+  <td class="entry" valign="top" headers="d2428822e148 d2428822e151 d2428822e154 d2428822e157 "><span class="keyword const">PTHREAD_PROCESS_PRIVATE</span></td>
+
+  <td class="entry" valign="top" headers="d2428822e148 d2428822e151 d2428822e154 d2428822e157 "><a class="xref" href="pthread_mutexattr_getpshared.html" title="Get the process-shared attribute from a mutex attribute object"><span class="keyword apiname">pthread_mutexattr_getpshared()</span></a></td>
+
+  <td class="entry" valign="top" headers="d2428822e148 d2428822e151 d2428822e154 d2428822e157 "><a class="xref" href="pthread_mutexattr_setpshared.html" title="Set the process-shared attribute in mutex attribute object"><span class="keyword apiname">pthread_mutexattr_setpshared()</span></a></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d2428822e148 d2428822e151 d2428822e154 d2428822e157 ">Recursiveness</td>
+
+  <td class="entry" valign="top" headers="d2428822e148 d2428822e151 d2428822e154 d2428822e157 "><span class="keyword const">PTHREAD_RECURSIVE_DISABLE</span></td>
+
+  <td class="entry" valign="top" headers="d2428822e148 d2428822e151 d2428822e154 d2428822e157 "><a class="xref" href="pthread_mutexattr_getrecursive.html" title="Get the recursive attribute from a mutex attribute object"><span class="keyword apiname">pthread_mutexattr_getrecursive()</span></a></td>
+
+  <td class="entry" valign="top" headers="d2428822e148 d2428822e151 d2428822e154 d2428822e157 "><a class="xref" href="pthread_mutexattr_setrecursive.html" title="Set the recursive attribute in mutex attribute object"><span class="keyword apiname">pthread_mutexattr_setrecursive()</span></a></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d2428822e148 d2428822e151 d2428822e154 d2428822e157 ">Robustness</td>
+
+  <td class="entry" valign="top" headers="d2428822e148 d2428822e151 d2428822e154 d2428822e157 "><span class="keyword const">PTHREAD_MUTEX_STALLED</span></td>
+
+  <td class="entry" valign="top" headers="d2428822e148 d2428822e151 d2428822e154 d2428822e157 "><a class="xref" href="pthread_mutexattr_getrobust.html" title="Get the robust attribute from a mutex attribute object"><span class="keyword apiname">pthread_mutexattr_getrobust()</span></a></td>
+
+  <td class="entry" valign="top" headers="d2428822e148 d2428822e151 d2428822e154 d2428822e157 "><a class="xref" href="pthread_mutexattr_setrobust.html" title="Set the robust attribute in a mutex attribute object"><span class="keyword apiname">pthread_mutexattr_setrobust()</span></a></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d2428822e148 d2428822e151 d2428822e154 d2428822e157 ">Type</td>
+
+  <td class="entry" valign="top" headers="d2428822e148 d2428822e151 d2428822e154 d2428822e157 "><span class="keyword const">PTHREAD_MUTEX_DEFAULT</span></td>
+
+  <td class="entry" valign="top" headers="d2428822e148 d2428822e151 d2428822e154 d2428822e157 "><a class="xref" href="pthread_mutexattr_gettype.html" title="Get a mutex type"><span class="keyword apiname">pthread_mutexattr_gettype()</span></a></td>
+
+  <td class="entry" valign="top" headers="d2428822e148 d2428822e151 d2428822e154 d2428822e157 "><a class="xref" href="pthread_mutexattr_settype.html" title="Set a mutex type"><span class="keyword apiname">pthread_mutexattr_settype()</span></a></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d2428822e148 d2428822e151 d2428822e154 d2428822e157 ">Wake-up</td>
+
+  <td class="entry" valign="top" headers="d2428822e148 d2428822e151 d2428822e154 d2428822e157 "><span class="keyword const">PTHREAD_WAKEUP_DISABLE</span></td>
+
+  <td class="entry" valign="top" headers="d2428822e148 d2428822e151 d2428822e154 d2428822e157 "><a class="xref" href="pthread_mutexattr_getwakeup_np.html" title="Get the wake-up attribute of a mutex"><span class="keyword apiname">pthread_mutexattr_getwakeup_np()</span></a></td>
+
+  <td class="entry" valign="top" headers="d2428822e148 d2428822e151 d2428822e154 d2428822e157 "><a class="xref" href="pthread_mutexattr_setwakeup_np.html" title="Set the wake-up attribute of a mutex"><span class="keyword apiname">pthread_mutexattr_setwakeup_np()</span></a></td>
+
+</tr>
+
+
+</tbody>
+
+</table>
+</div>
+
+
+<p class="p">
+The default values include:
+</p>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><span class="keyword const">PTHREAD_PRIO_INHERIT</span></dt>
+
+<dd class="dd">When a thread is blocking higher-priority threads by locking one 
+  or more mutexes with this attribute, the thread's priority is 
+  raised to that of the highest priority thread waiting on the
+  <span class="keyword const">PTHREAD_PRIO_INHERIT</span> mutex.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">PTHREAD_RECURSIVE_DISABLE</span></dt>
+
+<dd class="dd">Threads can't recursively lock a mutex;
+  any thread that tries to lock an already locked mutex becomes blocked.
+</dd>
+
+
+
+</dl>
+
+
+<div class="note note"><span class="notetitle">Note:</span> 
+Robust mutexes, mutexes with priority ceilings, and those using
+<a class="xref" href="../s/syncmutexevent.html" title="Attach an event to a mutex"><span class="keyword apiname">SyncMutexEvent()</span></a>
+use more system resources than other mutexes.
+</div>
+
+
+<p class="p">
+After initializing a mutex attribute object, you can use it
+to initialize one or more mutexes by calling
+<a class="xref" href="pthread_mutex_init.html" title="Initialize a mutex"><span class="keyword apiname">pthread_mutex_init()</span></a>.
+</p>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Returns:</h2>
+
+
+<dl class="dl" compact="compact">
+
+<dt class="dt dlterm"><span class="keyword const">EOK</span></dt>
+
+<dd class="dd">Success.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">ENOMEM</span></dt>
+
+<dd class="dd">Insufficient memory to initialize mutex attribute object <var class="keyword varname">attr</var>.</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Classification:</h2>
+
+<p class="p"><a class="xref" href="../summary.html#summary__CLASSIFICATION">POSIX 1003.1</a></p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+<thead class="thead" align="left">
+<tr><th class="entry" valign="top" id="d2428822e482">Safety:</th>
+<th class="entry" valign="top" id="d2428822e484">Â </th>
+</tr>
+
+</thead>
+
+<tbody class="tbody">
+<tr><td class="entry" valign="top" headers="d2428822e482 d2428822e484 ">Cancellation point</td>
+<td class="entry" valign="top" headers="d2428822e482 d2428822e484 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2428822e482 d2428822e484 ">Interrupt handler</td>
+<td class="entry" valign="top" headers="d2428822e482 d2428822e484 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2428822e482 d2428822e484 ">Signal handler</td>
+<td class="entry" valign="top" headers="d2428822e482 d2428822e484 ">Yes</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2428822e482 d2428822e484 ">Thread</td>
+<td class="entry" valign="top" headers="d2428822e482 d2428822e484 ">Yes</td>
+</tr>
+
+</tbody>
+
+</table>
+</div>
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="related-links"><div class="relinfo relconcepts"><strong>Related concepts</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.sys_arch/topic/kernel_Mutexes.html" title="Mutexes: mutual exclusion locks (System Architecture)">Mutexes: mutual exclusion locks (System Architecture)</a></div>
+</div>
+<div class="relinfo relref"><strong>Related reference</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/p/pthread_mutex_init.html" title="Initialize a mutex">pthread_mutex_init()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/p/pthread_mutexattr_destroy.html" title="Destroy mutex attribute object">pthread_mutexattr_destroy()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/p/pthread_mutexattr_getprioceiling.html" title="Get the priority ceiling of a mutex attribute object">pthread_mutexattr_getprioceiling()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/p/pthread_mutexattr_getprotocol.html" title="Get a mutex's scheduling protocol">pthread_mutexattr_getprotocol()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/p/pthread_mutexattr_getpshared.html" title="Get the process-shared attribute from a mutex attribute object">pthread_mutexattr_getpshared()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/p/pthread_mutexattr_getrecursive.html" title="Get the recursive attribute from a mutex attribute object">pthread_mutexattr_getrecursive()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/p/pthread_mutexattr_getrobust.html" title="Get the robust attribute from a mutex attribute object">pthread_mutexattr_getrobust()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/p/pthread_mutexattr_gettype.html" title="Get a mutex type">pthread_mutexattr_gettype()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/p/pthread_mutexattr_getwakeup_np.html" title="Get the wake-up attribute of a mutex">pthread_mutexattr_getwakeup_np()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/p/pthread_mutexattr_setprioceiling.html" title="Set the priority ceiling of a mutex attribute object">pthread_mutexattr_setprioceiling()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/p/pthread_mutexattr_setprotocol.html" title="Set a mutex's scheduling protocol">pthread_mutexattr_setprotocol()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/p/pthread_mutexattr_setpshared.html" title="Set the process-shared attribute in mutex attribute object">pthread_mutexattr_setpshared()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/p/pthread_mutexattr_setrecursive.html" title="Set the recursive attribute in mutex attribute object">pthread_mutexattr_setrecursive()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/p/pthread_mutexattr_setrobust.html" title="Set the robust attribute in a mutex attribute object">pthread_mutexattr_setrobust()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/p/pthread_mutexattr_settype.html" title="Set a mutex type">pthread_mutexattr_settype()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/p/pthread_mutexattr_setwakeup_np.html" title="Set the wake-up attribute of a mutex">pthread_mutexattr_setwakeup_np()</a></div>
+</div>
+</div><div class="navfooter"><!---->
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-p.html" title="P"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">P</span></a></span>  </div>
+</body>
+</html>

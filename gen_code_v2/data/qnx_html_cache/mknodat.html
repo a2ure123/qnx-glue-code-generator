@@ -1,0 +1,387 @@
+
+<!DOCTYPE html
+  PUBLIC "" "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />        
+      <meta name="copyright" content="(C) Copyright 2005" /><meta name="DC.rights.owner" content="(C) Copyright 2005" /><meta name="DC.Type" content="reference" /><meta name="DC.Title" content="mknodat()" /><meta name="abstract" content="Make a new filesystem entry at a given location" /><meta name="description" content="Make a new filesystem entry at a given location" /><meta name="indexterms" content="mknodat(), I/O, FIFOs, creating, FIFOs, creating, directories, creating" /><meta name="DC.subject" content=", mknodat(), I/O, FIFOs, creating, FIFOs, creating, directories" /><meta name="keywords" content=", mknodat(), I/O, FIFOs, creating, FIFOs, creating, directories" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-m.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/e/errno.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/m/mkdirat.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/m/mkfifoat.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/m/mknod.html" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="mknodat" /><meta name="DC.Language" content="en-us" /><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/commonltr.css"><!----></link><title>mknodat()</title><link rel="canonical" type="html" href="https://www.qnx.com/developers/docs/7.1/#com.qnx.doc.neutrino.lib_ref/" /><!--  Generated with Oxygen version 18.1, build number 2017020917.  --><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/webhelp_topic.css"><!----></link><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/skins/skin.css" /><script type="text/javascript"><!--
+            
+            var prefix = "../../../index.html";
+            
+            --></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-1.11.3.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.cookie.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-ui.custom.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.highlight-3.js"><!----></script><script type="text/javascript" charset="utf-8" src="../../../oxygen-webhelp/resources/js/webhelp_topic.js"><!----></script><script type="text/javascript"> var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-27400275-1']); _gaq.push(['_setDomainName', 'www.qnx.com']);_gaq.push(['_setAllowLinker', true]);_gaq.push(['_trackPageview']);(function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script></head>
+<body onload="highlightSearchTerm()" class="frmBody" id="mknodat">
+<table class="nav"><tbody><tr><td colspan="2"><div id="printlink"><button onClick="window.print()" title="Print this page" aria-label="Print this page"></button></div><div id="permalink"><a href="#" title="Link to this page"></a></div></td></tr><tr><td style="width:75%;"><span class="topic_breadcrumb_links"><span class="topic_breadcrumb_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-m.html" title="M">M</a></span></span></td><td><span id="topic_navigation_links" class="navheader">
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-m.html" title="M"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">M</span></a></span>  </span></td></tr></tbody></table>
+
+
+<h1 class="title topictitle1"><span class="keyword apiname">mknodat()</span></h1>
+<table width="100%"><tbody><tr><td align="left"><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">QNX SDP</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">7.1</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">C Library Reference</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">API</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">Developer</button></td><td align="right"><span style="margin:0px 5px; font-size:0.9em;">Updated: October 28, 2024</span></td></tr></tbody></table>
+
+
+
+
+
+<div class="body refbody"><p class="shortdesc"><em class="ph i">Make a new filesystem entry at a given location</em></p>
+
+
+<div class="section refsyn"><h2 class="title sectiontitle">Synopsis:</h2>
+
+<pre class="pre codeblock">
+#include &lt;sys/types.h&gt;
+#include &lt;sys/stat.h&gt;
+#include &lt;fcntl.h&gt;
+
+int mknodat( int <var class="keyword varname">fd</var>,
+             const char* <var class="keyword varname">path</var>,
+             mode_t <var class="keyword varname">mode</var>,
+             dev_t <var class="keyword varname">dev</var> );
+</pre>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Arguments:</h2>
+
+
+<dl class="dl">
+
+
+<dt class="dt dlterm"><var class="keyword varname">fd</var></dt>
+
+<dd class="dd">A file descriptor that indicates the base directory for relative file paths.
+    The pathname given in <var class="keyword varname">path</var> is resolved by appending it to the directory associated with <var class="keyword varname">fd</var>. 
+    You can set this argument to <span class="keyword const">AT_FDCWD</span> to use the current working directory as the base directory.
+  <div class="note note"><span class="notetitle">Note:</span> The QNX Neutrino implementation of the <span class="keyword apiname">*at()</span> functions differ from the POSIX standards.
+    You must use a file descriptor obtained from an <span class="keyword apiname">open()</span> or <span class="keyword apiname">openat()</span> call with the
+    <a class="xref" href="../o/open.html#open__O_DIRECTORY"><span class="keyword const">O_DIRECTORY</span></a> flag set, rather than the <span class="keyword const">O_SEARCH</span>
+    flag on POSIX. Otherwise, the function fails and sets <var class="keyword varname">errno</var> to <span class="keyword const">ENOTDIR</span>.</div>
+
+    <p class="p">If <var class="keyword varname">path</var> specifies an absolute path, <var class="keyword varname">fd</var> has no effect.</p>
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">path</var></dt>
+
+<dd class="dd">The pathname that you want to use for the file.</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">mode</var></dt>
+
+<dd class="dd">A set of bits that define the file type and access permissions that you want to use.
+  The valid file types are:
+
+  <ul class="ul">
+  <li class="li"><span class="keyword const">S_IFDIR</span> â create a directory.
+    
+  </li>
+
+
+  <li class="li"><span class="keyword const">S_IFIFO</span> â create a FIFO.
+    
+  </li>
+
+  </ul>
+
+
+  <p class="p">
+  For more information, see the entry for
+  <a class="xref" href="../s/stat_struct.html" title="Data structure for information about a file or directory"><span class="keyword dtype">struct stat</span></a>.
+  </p>
+
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">dev</var></dt>
+
+<dd class="dd">Ignored.</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Library:</h2>
+
+
+<p class="p"><span class="ph filepath">libc</span></p>
+
+<p class="p">Use the <span class="keyword option">-l c</span> option to
+<a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/q/qcc.html"><span class="keyword cmdname">qcc</span></a>
+to link against this library.
+This library is usually included automatically.</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Description:</h2>
+
+
+<p class="p">
+The <span class="keyword apiname">mknodat()</span> function makes a file, named <var class="keyword varname">path</var>, 
+using the file type encoded in the <var class="keyword varname">mode</var> argument. 
+Supported file types are directories and FIFOs.
+The <var class="keyword varname">path</var> argument can contain an absolute or relative path. In the latter case,
+the <var class="keyword varname">fd</var> argument is used to resolve the pathname, as explained in this argument's description (above).
+</p>
+
+
+<p class="p">
+The function checks if directory searches are permitted using the current permissions of the directory underlying the file descriptor.
+</p>
+
+
+<p class="p">
+<span class="keyword">QNX Neutrino</span> has no concept of a path operation (<span class="keyword apiname">open()</span>, <span class="keyword apiname">readlink()</span>, etc.)
+that references a path relative to an already open file descriptor (for a directory), as far as the filesystem resource manager is
+concerned. Therefore, it's not possible to eliminate the race inherent in looking up a pathname with multiple intervening directories
+or symbolic links. However, <span class="keyword apiname">mknodat()</span> can still be used for maintaining a per-thread current working directory, 
+using file descriptors maintained by the application.
+</p>
+
+
+<div class="note note"><span class="notetitle">Note:</span> 
+This function is included to enhance portability with software written for Unix-compatible operating systems. 
+For POSIX portability, use <a class="xref" href="mkdirat.html" title="Create a directory at a given location"><span class="keyword apiname">mkdirat()</span></a> or
+<a class="xref" href="mkfifoat.html" title="Create a FIFO special file at a given location"><span class="keyword apiname">mkfifoat()</span></a> instead.
+</div>
+
+
+<div class="p">
+To make a directory with read-write-execute permissions for everyone, you could use the following: 
+<pre class="pre codeblock">
+mknodat (AT_FDCWD, <var class="keyword varname">name</var>, S_IFDIR | 0777, 0);
+</pre>
+
+</div>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Returns:</h2>
+
+
+<dl class="dl" compact="compact">
+
+<dt class="dt dlterm">0</dt>
+
+<dd class="dd">Success.</dd>
+
+
+
+
+<dt class="dt dlterm">-1</dt>
+
+<dd class="dd">An error occurred (<a class="xref" href="../e/errno.html" title="Thread-local error variable"><var class="keyword varname">errno</var></a> is set).</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Errors:</h2>
+
+
+<dl class="dl" compact="compact">
+
+
+<dt class="dt dlterm"><span class="keyword const">EACCES</span></dt>
+
+<dd class="dd">Search permission is denied on a component of the path prefix, write permission is denied on the parent directory
+of the path, or you don't have permission to search the directory underlying <var class="keyword varname">fd</var>.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EBADF</span></dt>
+
+<dd class="dd">The <var class="keyword varname">path</var> argument does not specify an absolute path and the <var class="keyword varname">fd</var> argument is
+  neither <span class="keyword const">AT_FDCWD</span> nor a valid file descriptor open for reading.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EEXIST</span></dt>
+
+<dd class="dd">The named file already exists.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EINVAL</span></dt>
+
+<dd class="dd">There's an invalid argument.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EIO</span></dt>
+
+<dd class="dd">An I/O error occurred while accessing the filesystem.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">ELOOP</span></dt>
+
+<dd class="dd">During resolution of the <var class="keyword varname">path</var> argument,
+  a loop was found in the symbolic links or more than <span class="keyword const">SYMLOOP_MAX</span> symbolic links were encountered.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EMLINK</span></dt>
+
+<dd class="dd">The link count of the parent directory would exceed <span class="keyword const">LINK_MAX</span>.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">ENAMETOOLONG</span></dt>
+
+<dd class="dd">The length of the <var class="keyword varname">path</var> string exceeds <span class="keyword const">PATH_MAX</span>,
+  or the resolution of a symbolic link within <var class="keyword varname">path</var> produced a result longer than <span class="keyword const">PATH_MAX</span>.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">ENOENT</span></dt>
+
+<dd class="dd">A component of the <var class="keyword varname">path</var> prefix doesn't exist,
+  or the <var class="keyword varname">path</var> argument points to an empty string.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">ENOSPC</span></dt>
+
+<dd class="dd">The filesystem doesn't contain enough space to hold the contents of
+  the new directory or to extend the parent directory,
+  or the maximum limit of files and directories has been reached.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">ENOSYS</span></dt>
+
+<dd class="dd">The <span class="keyword apiname">mknodat()</span> function isn't implemented for the filesystem underlying
+  the specified path.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">ENOTDIR</span></dt>
+
+<dd class="dd">One of the following is true:
+  <ul class="ul">
+    <li class="li">A component of the path prefix names an existing file that is neither a directory nor a symbolic link to one.</li>
+
+    <li class="li">The <var class="keyword varname">path</var> argument contains at least one non-slash character and ends with at least one slash character
+      (<tt class="ph tt">/</tt>).</li>
+
+    <li class="li">The <var class="keyword varname">path</var> argument isn't an absolute path and the <var class="keyword varname">fd</var> file descriptor
+      is associated with a non-directory file.</li>
+
+    <li class="li">The file descriptor in <var class="keyword varname">fd</var> was created without <span class="keyword const">O_DIRECTORY</span> set.</li>
+
+  </ul>
+
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EPERM</span></dt>
+
+<dd class="dd">The calling process doesn't have appropriate privileges and the file type is not FIFO-special.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EROFS</span></dt>
+
+<dd class="dd">The directory in which the file is to be created resides on a read-only filesystem.</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+
+
+
+<div class="section"><h2 class="title sectiontitle">Classification:</h2>
+
+<p class="p"><a class="xref" href="../summary.html#summary__CLASSIFICATION">POSIX 2008</a></p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+<thead class="thead" align="left">
+<tr><th class="entry" valign="top" id="d2197976e558">Safety:</th>
+<th class="entry" valign="top" id="d2197976e560">Â </th>
+</tr>
+
+</thead>
+
+<tbody class="tbody">
+<tr><td class="entry" valign="top" headers="d2197976e558 d2197976e560 ">Cancellation point</td>
+<td class="entry" valign="top" headers="d2197976e558 d2197976e560 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2197976e558 d2197976e560 ">Interrupt handler</td>
+<td class="entry" valign="top" headers="d2197976e558 d2197976e560 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2197976e558 d2197976e560 ">Signal handler</td>
+<td class="entry" valign="top" headers="d2197976e558 d2197976e560 ">Yes</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2197976e558 d2197976e560 ">Thread</td>
+<td class="entry" valign="top" headers="d2197976e558 d2197976e560 ">Yes</td>
+</tr>
+
+</tbody>
+
+</table>
+</div>
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="related-links"><div class="relinfo relref"><strong>Related reference</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/e/errno.html" title="Thread-local error variable">errno</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/m/mkdirat.html" title="Create a directory at a given location">mkdirat()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/m/mkfifoat.html" title="Create a FIFO special file at a given location">mkfifoat()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/m/mknod.html" title="Make a new filesystem entry">mknod()</a></div>
+</div>
+</div><div class="navfooter"><!---->
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-m.html" title="M"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">M</span></a></span>  </div>
+</body>
+</html>

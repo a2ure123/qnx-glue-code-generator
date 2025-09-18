@@ -1,0 +1,24 @@
+{
+  "function_name": "acl_set_tag_type",
+  "url": "https://www.qnx.com/developers/docs/7.1/com.qnx.doc.neutrino.lib_ref/topic/a/acl_set_tag_type.html",
+  "synopsis": "int acl_set_tag_type( acl_entry_t entry_d,",
+  "description": "",
+  "headers": [
+    "#include <sys/acl.h>"
+  ],
+  "parameters": [
+    {
+      "name": "entry_d",
+      "description": "The descriptor of the ACL entry whose type you want to set."
+    },
+    {
+      "name": "tag_type",
+      "description": "The type that you want to assign to the entry; one of the following:\n\n  \nACL_GROUP â a named group.\n    \n  \nACL_GROUP_OBJ â the owning group.\n    \n  \nACL_MASK â the maximum permissions allowed for named users,\n    named groups, and the owning group.\n    \n  \nACL_OTHER â users whose process attributes don't match any other\n    ACL entry; the “world”.\n    \n  \nACL_USER â named users.\n    \n  \nACL_USER_OBJ â the owning user."
+    }
+  ],
+  "return_values": [],
+  "examples": [
+    "#include <sys/acl.h>\n\nint acl_set_tag_type( acl_entry_t entry_d,\n                      acl_tag_t tag_type );"
+  ],
+  "full_content": "Function: acl_set_tag_type\nURL: https://www.qnx.com/developers/docs/7.1/com.qnx.doc.neutrino.lib_ref/topic/a/acl_set_tag_type.html\nSynopsis: int acl_set_tag_type( acl_entry_t entry_d,\nHeaders: #include <sys/acl.h>\nParameters:\n  - entry_d: The descriptor of the ACL entry whose type you want to set.\n  - tag_type: The type that you want to assign to the entry; one of the following:\n\n  \nACL_GROUP â a named group.\n    \n  \nACL_GROUP_OBJ â the owning group.\n    \n  \nACL_MASK â the maximum permissions allowed for named users,\n    named groups, and the owning group.\n    \n  \nACL_OTHER â users whose process attributes don't match any other\n    ACL entry; the “world”.\n    \n  \nACL_USER â named users.\n    \n  \nACL_USER_OBJ â the owning user.\nExamples:\nExample 1:\n#include <sys/acl.h>\n\nint acl_set_tag_type( acl_entry_t entry_d,\n                      acl_tag_t tag_type );"
+}

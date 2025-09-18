@@ -1,0 +1,872 @@
+
+<!DOCTYPE html
+  PUBLIC "" "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />        
+      <meta name="copyright" content="(C) Copyright 2005" /><meta name="DC.rights.owner" content="(C) Copyright 2005" /><meta name="DC.Type" content="reference" /><meta name="DC.Title" content="dlopen()" /><meta name="abstract" content="Open a shared library" /><meta name="description" content="Open a shared library" /><meta name="indexterms" content="dlopen()" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-d.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/d/dl_iterate_phdr.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/d/dladdr.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/d/dlclose.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/d/dlerror.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/d/dlsym.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.sys_arch/topic/dll.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.prog/topic/devel_Lazy_loading.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/p/procmgr_ability.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.utilities/topic/l/ld.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.utilities/topic/q/qcc.html" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="dlopen" /><meta name="DC.Language" content="en-us" /><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/commonltr.css"><!----></link><title>dlopen()</title><link rel="canonical" type="html" href="https://www.qnx.com/developers/docs/7.1/#com.qnx.doc.neutrino.lib_ref/" /><!--  Generated with Oxygen version 18.1, build number 2017020917.  --><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/webhelp_topic.css"><!----></link><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/skins/skin.css" /><script type="text/javascript"><!--
+            
+            var prefix = "../../../index.html";
+            
+            --></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-1.11.3.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.cookie.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-ui.custom.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.highlight-3.js"><!----></script><script type="text/javascript" charset="utf-8" src="../../../oxygen-webhelp/resources/js/webhelp_topic.js"><!----></script><script type="text/javascript"> var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-27400275-1']); _gaq.push(['_setDomainName', 'www.qnx.com']);_gaq.push(['_setAllowLinker', true]);_gaq.push(['_trackPageview']);(function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script></head>
+<body onload="highlightSearchTerm()" class="frmBody" id="dlopen">
+<table class="nav"><tbody><tr><td colspan="2"><div id="printlink"><button onClick="window.print()" title="Print this page" aria-label="Print this page"></button></div><div id="permalink"><a href="#" title="Link to this page"></a></div></td></tr><tr><td style="width:75%;"><span class="topic_breadcrumb_links"><span class="topic_breadcrumb_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-d.html" title="D">D</a></span></span></td><td><span id="topic_navigation_links" class="navheader">
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-d.html" title="D"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">D</span></a></span>  </span></td></tr></tbody></table>
+
+
+<h1 class="title topictitle1"><span class="keyword apiname">dlopen()</span></h1>
+<table width="100%"><tbody><tr><td align="left"><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">QNX SDP</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">7.1</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">C Library Reference</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">API</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">Developer</button></td><td align="right"><span style="margin:0px 5px; font-size:0.9em;">Updated: October 28, 2024</span></td></tr></tbody></table>
+
+
+<div class="body refbody"><p class="shortdesc"><em class="ph i">Open a shared library</em></p>
+
+
+<div class="section refsyn"><h2 class="title sectiontitle">Synopsis:</h2>
+
+<pre class="pre codeblock">
+#include &lt;dlfcn.h&gt;
+
+void * dlopen( const char * <var class="keyword varname">pathname</var>, 
+               int <var class="keyword varname">mode</var> );
+</pre>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Arguments:</h2>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><var class="keyword varname">pathname</var></dt>
+
+<dd class="dd"><span class="keyword const">NULL</span>, or the path to the shared library that you
+  want to access.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">mode</var></dt>
+
+<dd class="dd">Flags that control how <span class="keyword apiname">dlopen()</span> operates.
+  POSIX defines these bits:
+
+  <ul class="ul">
+  <li class="li"><span class="keyword const">RTLD_LAZY</span></li>
+
+  <li class="li"><span class="keyword const">RTLD_NOW</span></li>
+
+  <li class="li"><span class="keyword const">RTLD_GLOBAL</span></li>
+
+  <li class="li"><span class="keyword const">RTLD_LOCAL</span></li>
+
+  </ul>
+
+
+  <p class="p">
+  The following bits are Unix extensions:
+  </p>
+
+
+  <ul class="ul">
+  <li class="li"><span class="keyword const">RTLD_NOLOAD</span></li>
+
+  <li class="li"><span class="keyword const">RTLD_GROUP</span></li>
+
+  <li class="li"><span class="keyword const">RTLD_WORLD</span></li>
+
+  <li class="li"><span class="keyword const">RTLD_NODELETE</span></li>
+
+  </ul>
+
+
+  <p class="p">
+  The following bits are <span class="keyword">QNX Neutrino</span> extensions:
+  </p>
+
+
+  <ul class="ul">
+  <li class="li"><span class="keyword const">RTLD_NOSHARE</span></li>
+
+  <li class="li"><span class="keyword const">RTLD_LAZYLOAD</span></li>
+
+  </ul>
+
+
+  <p class="p">
+  For more information, see
+  <span class="q">&#147;<a class="xref" href="#dlopen__Mode">The <var class="keyword varname">mode</var></a>,&#148;</span>
+  below.  
+  </p>
+
+</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Library:</h2>
+
+
+<p class="p"><span class="ph filepath">libc</span></p>
+
+
+<p class="p">
+Use the <span class="keyword option">-l c</span> option to
+<a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/q/qcc.html"><span class="keyword cmdname">qcc</span></a>
+to link against this library.
+This library is usually included automatically.
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Description:</h2>
+
+
+<p class="p">
+
+
+
+
+The <span class="keyword apiname">dlopen()</span> function gives you direct access to the dynamic
+linking facilities by making the shared library specified in
+<var class="keyword varname">pathname</var> available to the calling process.  
+It returns a handle that you can use in subsequent calls to
+<a class="xref" href="dlsym.html" title="Get the address of a symbol in a shared object"><span class="keyword apiname">dlsym()</span></a> and
+<a class="xref" href="dlclose.html" title="Close a shared object"><span class="keyword apiname">dlclose()</span></a>.
+</p>
+
+
+<div class="note note"><span class="notetitle">Note:</span> 
+<ul class="ul">
+<li class="li">To successfully call this function, your process must have the
+              <span class="keyword const">PROCMGR_AID_PROT_EXEC</span> and <span class="keyword const">PROCMGR_AID_MAP_FIXED</span>
+              abilities enabled. For more information, see <a class="xref" href="../p/procmgr_ability.html" title="Control a process's ability to perform certain operations"><span class="keyword apiname">procmgr_ability()</span></a>.
+                
+                
+          </li>
+
+
+<li class="li">Any child process that you created also must have the 
+              <span class="keyword const">PROCMGR_AID_PROT_EXEC</span> and <span class="keyword const">PROCMGR_AID_MAP_FIXED</span>
+              abilities enabled to use <span class="keyword apiname">dlopen()</span>. </li>
+
+
+<li class="li">The shared library that you're trying to open must be trusted or the process must have the
+              <span class="keyword const">PROCMGR_AID_UNTRUSTED_EXEC</span> ability. For more information, see <span class="q">&#147;<a class="xref" href="../../../com.qnx.doc.security.system/topic/manual/pathtrust.html">Pathtrust</a>&#148;</span> in the <cite class="cite">System Security Guide</cite>. </li>
+
+
+<li class="li">The <span class="keyword apiname">dlopen()</span> function is available only to a dynamically-linked process. 
+A statically-linked process (one where <span class="ph filepath">libc</span> is linked statically) can't
+call <span class="keyword apiname">dlopen()</span> because a statically-linked executable:
+
+  <ul class="ul">
+  <li class="li">doesn't export any of its symbols</li>
+
+  <li class="li">can't export the required structure for libraries to link against</li>
+
+  <li class="li">can't fill structures at startup needed to load subsequent shared objects</li>
+
+  </ul>
+
+
+</li>
+
+</ul>
+
+</div>
+
+
+<p class="p">
+Any dependencies recorded within <var class="keyword varname">pathname</var> are loaded as part of the
+<span class="keyword apiname">dlopen()</span> call.  
+These dependencies are searched in load-order to locate any additional dependencies.  
+This process continues until all of the dependencies for <var class="keyword varname">pathname</var> have been satisfied.  
+This dependency tree is called a <em class="ph i">group</em>.
+</p>
+
+
+<p class="p">
+If <var class="keyword varname">pathname</var> is <span class="keyword const">NULL</span>, 
+<span class="keyword apiname">dlopen()</span> provides a handle to the running process's global symbol object.  
+This provides access to the symbols from the original program image file, 
+the dependencies it loaded at startup, 
+plus any objects opened with <span class="keyword apiname">dlopen()</span> calls using the <span class="keyword const">RTLD_GLOBAL</span> flag. 
+This set of symbols can change dynamically if the application 
+subsequently calls <span class="keyword apiname">dlopen()</span> using <span class="keyword const">RTLD_GLOBAL</span>.
+</p>
+
+
+<p class="p">
+You can use <span class="keyword apiname">dlopen()</span> any number of times to open
+objects whose names resolve to the same absolute or relative path name;
+the object is loaded into the process's address space only once.
+</p>
+
+
+<p class="p">
+In order to find the shared objects, <span class="keyword apiname">dlopen()</span> searches the following, in this order:
+</p>
+
+
+<ul class="ul">
+<li class="li">the runtime library search path that was set using the <span class="keyword option">-rpath</span>
+  option to
+  <a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/l/ld.html"><span class="keyword cmdname">ld</span></a>
+  (see the <cite class="cite">Utilities Reference</cite>) when the binary was linked
+</li>
+
+
+<li class="li">directories specified by the <span class="keyword envar">LD_LIBRARY_PATH</span>
+  environment variable
+  
+  
+</li>
+
+
+<li class="li">directories specified by the <span class="keyword const">_CS_LIBPATH</span>
+  configuration string
+  
+  
+</li>
+
+
+</ul>
+
+
+<div class="note note"><span class="notetitle">Note:</span> 
+For security reasons, the runtime linker unsets  <span class="keyword envar">LD_LIBRARY_PATH</span> if the binary has
+the setuid bit set.
+</div>
+
+
+<p class="p">
+The above directories are set as follows:
+</p>
+
+
+<ul class="ul">
+<li class="li">The <span class="keyword envar">LD_LIBRARY_PATH</span> environment variable is generally set up by a startup
+  script, either in the boot image or in a secondary script.
+  It isn't part of any default environment.
+  Each <span class="keyword apiname">dlopen()</span> call reads back its process's <span class="keyword envar">LD_LIBRARY_PATH</span> and
+  honors any changes you make to this variable at runtime.
+</li>
+
+
+<li class="li"><span class="keyword const">_CS_LIBPATH</span> is populated by the kernel, and the default value
+  is based on the <span class="keyword envar">LD_LIBRARY_PATH</span> value of the <span class="keyword cmdname">procnto</span> command
+  line in the boot image. Note that you can use
+  <a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/s/setconf.html"><span class="keyword cmdname">setconf</span></a>
+  to set this configuration string. For example:
+
+<pre class="pre codeblock">
+setconf _CS_LIBPATH /usr/lib:/lib:/lib/dll
+</pre>
+
+
+  Unlike with <span class="keyword envar">LD_LIBRARY_PATH</span>, <span class="keyword apiname">dlopen()</span> doesn't reread <span class="keyword const">_CS_LIBPATH</span>,
+  so changes made to this string at runtime aren't recognized.
+</li>
+
+
+</ul>
+
+
+<p class="p">
+When loading shared objects, the application should open a specific version
+instead of relying on the version pointed to by a symbolic link.
+</p>
+
+
+<p class="p" id="dlopen__Mode"><strong class="ph b">The <var class="keyword varname">mode</var></strong></p>
+
+
+<p class="p">
+The <var class="keyword varname">mode</var> argument indicates how <span class="keyword apiname">dlopen()</span> 
+operates on <var class="keyword varname">pathname</var> when handling relocations, 
+and controls the visibility of symbols found in <var class="keyword varname">pathname</var> and its dependencies.
+</p>
+
+
+<p class="p">
+The <var class="keyword varname">mode</var> argument is a bitwise-OR of the constants described below.
+Note that the relocation and visibility constants are mutually exclusive.
+</p>
+
+
+<p class="p"><strong class="ph b">Relocation</strong></p>
+
+
+<p class="p">
+When you load an object by calling <span class="keyword apiname">dlopen()</span>, the object may contain references
+to symbols whose addresses aren't known until the object has been loaded;
+these references must be relocated before accessing the symbols.  
+The <var class="keyword varname">mode</var> controls when relocations take place, and can be one of:
+</p>
+
+
+<dl class="dl" compact="compact">
+
+<dt class="dt dlterm"><span class="keyword const">RTLD_LAZY</span></dt>
+
+<dd class="dd">(QNX Neutrino 6.5.0 and later)
+  References to data symbols are relocated when the object is loaded.
+  References to functions aren't relocated until that function is invoked. 
+  This improves performance by preventing unnecessary relocations.
+  
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">RTLD_NOW</span></dt>
+
+<dd class="dd">All references are relocated when the object is loaded.  
+  This may waste cycles if relocations are performed for functions that never
+  get called, but this behavior could be useful for applications that
+  need to know that all symbols referenced during execution are
+  available as soon as the object is loaded.
+  
+</dd>
+
+
+
+</dl>
+
+
+<p class="p"><strong class="ph b">Visibility</strong></p>
+
+
+<p class="p">
+The following <var class="keyword varname">mode</var> bits determine the scope of visibility for
+symbols loaded with <span class="keyword apiname">dlopen()</span>:
+</p>
+
+
+<dl class="dl" compact="compact">
+
+<dt class="dt dlterm" id="dlopen__RTLD_GLOBAL"><span class="keyword const">RTLD_GLOBAL</span></dt>
+
+<dd class="dd">Make the object's global symbols available to any other object
+  that's opened later with <span class="keyword const">RTLD_WORLD</span>.
+  Symbol lookup using 
+  <samp class="ph codeph">dlopen(Â 0,Â </samp><var class="keyword varname">mode</var><samp class="ph codeph">Â )</samp>
+  and an associated
+  <a class="xref" href="dlsym.html" title="Get the address of a symbol in a shared object"><span class="keyword apiname">dlsym()</span></a>
+  are also able to find the object's symbols.
+  
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">RTLD_LOCAL</span></dt>
+
+<dd class="dd">Make the object's global symbols available only to objects in the same group.
+  
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">RTLD_LAZYLOAD</span></dt>
+
+<dd class="dd">Open the shared object and form its resolution scope by appending its immediate dependencies.
+  This is different from the normal resolution scope, which is formed
+  by appending the whole dependency tree in breadth-first order.
+  For more information, see
+  <span class="q">&#147;<a class="xref" href="../../../com.qnx.doc.neutrino.prog/topic/devel_Lazy_loading.html">Lazy loading</a>&#148;</span>
+  in the Compiling and Debugging chapter of the
+  <span class="keyword">QNX Neutrino</span> <cite class="cite">Programmer's Guide</cite>.
+</dd>
+
+
+
+</dl>
+
+
+<p class="p">
+The program's image and any objects loaded at program startup have a
+<var class="keyword varname">mode</var> of <span class="keyword const">RTLD_GLOBAL</span>; the default <var class="keyword varname">mode</var>
+for objects acquired with <span class="keyword apiname">dlopen()</span> is <span class="keyword const">RTLD_LOCAL</span>.
+A local object may be part of the dependencies for more than one group; any
+object with a <span class="keyword const">RTLD_LOCAL</span> <var class="keyword varname">mode</var> referenced as a
+dependency of an object with a <span class="keyword const">RTLD_GLOBAL</span> <var class="keyword varname">mode</var> is
+promoted to <span class="keyword const">RTLD_GLOBAL</span>.
+</p>
+
+
+<p class="p">
+Objects loaded with <span class="keyword apiname">dlopen()</span> that require relocations against
+global symbols can reference the symbols in any <span class="keyword const">RTLD_GLOBAL</span>
+object.
+</p>
+
+
+<p class="p" id="dlopen__Scope"><strong class="ph b">Symbol scope</strong></p>
+
+
+<p class="p">
+You can OR the <var class="keyword varname">mode</var> with the following values to affect the symbol scope:
+</p>
+
+
+<dl class="dl" compact="compact">
+
+<dt class="dt dlterm"><span class="keyword const">RTLD_GROUP</span></dt>
+
+<dd class="dd">Only symbols from the associated group are available.  
+  All dependencies between group members must be satisfied by the objects in the group.
+  
+</dd>
+
+
+
+
+        
+
+<dt class="dt dlterm"><span class="keyword const">RTLD_WORLD</span></dt>
+
+<dd class="dd">Only symbols from <span class="keyword const">RTLD_GLOBAL</span> objects are available.
+  
+</dd>
+
+
+
+</dl>
+
+
+<p class="p">
+If you don't specify either of these values, <span class="keyword apiname">dlopen()</span> uses
+<span class="keyword const">RTLD_WORLD</span>Â |Â <span class="keyword const">RTLD_GROUP</span>.
+</p>
+
+
+<div class="note note"><span class="notetitle">Note:</span> 
+If you specify <span class="keyword const">RTLD_WORLD</span> without <span class="keyword const">RTLD_GROUP</span>,
+<span class="keyword apiname">dlopen()</span> doesn't load any of the DLL's dependencies.
+</div>
+
+
+<p class="p" id="dlopen__Other_flags"><strong class="ph b">Other flags</strong></p>
+
+
+<p class="p">
+The following flags provide additional capabilities:
+</p>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><span class="keyword const">RTLD_NODELETE</span></dt>
+
+<dd class="dd">Don't delete the specified object from the address space as part of a call to
+  <a class="xref" href="dlclose.html" title="Close a shared object"><span class="keyword apiname">dlclose()</span></a>.
+  
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">RTLD_NOLOAD</span></dt>
+
+<dd class="dd">Don't load the specified object, but return a valid handle if
+  if the object already exists as part of the process address space.
+  You can specify addition modes, which are ORed with the present mode of the object and its dependencies.
+  This flag gives you a means of querying the presence or promoting the modes of an existing dependency.
+  
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">RTLD_NOSHARE</span></dt>
+
+<dd class="dd">Don't share the specified object.
+  This flag forces the loading of multiple instances of libraries.
+  
+</dd>
+
+
+
+</dl>
+
+
+<p class="p" id="dlopen__SymbolResolution"><strong class="ph b">Symbol resolution</strong></p>
+
+
+<p class="p">
+When resolving the symbols in the shared object, the runtime linker
+searches for them in the dynamic symbol table using the following order:
+</p>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm">By default:</dt>
+
+<dd class="dd">
+
+  <ol class="ol">
+  <li class="li">main executable</li>
+
+  <li class="li">objects specified by the <span class="keyword envar">LD_PRELOAD</span> environment variable
+                    
+                </li>
+
+  <li class="li">the shared object being loaded</li>
+
+
+  <li class="li">all other loaded shared objects that were loaded with the <a class="xref" href="#dlopen__RTLD_GLOBAL"><span class="keyword const">RTLD_GLOBAL</span></a> flag</li>
+
+
+  </ol>
+
+</dd>
+
+
+
+
+<dt class="dt dlterm">When a shared object (.so) is loaded that was created with the <span class="keyword option">-Bsymbolic</span>
+            linker, <a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/l/ld.html"><span class="keyword cmdname">ld</span></a>, option:</dt>
+
+<dd class="dd">
+
+  <ol class="ol">
+  <li class="li">the shared object being loaded</li>
+
+  <li class="li">main executable</li>
+
+  <li class="li">objects specified by the <span class="keyword envar">LD_PRELOAD</span> environment variable</li>
+
+  <li class="li">all other loaded shared objects that were loaded with the <a class="xref" href="#dlopen__RTLD_GLOBAL"><span class="keyword const">RTLD_GLOBAL</span></a> flag</li>
+
+  </ol>
+
+</dd>
+
+
+
+</dl>
+
+
+<div class="note note"><span class="notetitle">Note:</span> For security reasons, the runtime linker unsets <span class="keyword envar">LD_PRELOAD</span> if the binary has
+        the setuid bit set. </div>
+
+
+<p class="p">
+For executables, the dynamic symbol table typically contains only
+those symbols that are known to be needed by any shared libraries.
+This is determined by the linker when the executable is linked against a shared library.
+</p>
+
+
+<p class="p">
+Since you don't link your executable against a shared object that you load with <span class="keyword apiname">dlopen()</span>, 
+the linker can't determine which executable symbols need to be made available to the shared object.
+</p>
+
+
+<p class="p">
+If your shared object needs to resolve symbols in the executable,
+then you may force the linker to make <em class="ph i">all</em> of the symbols in the executable
+available for dynamic linking by specifying the <span class="keyword option">-E</span> linker option. For example:
+</p>
+
+
+<pre class="pre codeblock">
+qcc -Vgcc_ntox86_64 -Wl,-E -o main main.o
+</pre>
+
+
+<p class="p">
+Shared objects always place all their symbols in dynamic symbol tables,
+so this option isn't needed when linking a shared object. 
+
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Returns:</h2>
+
+
+<p class="p">
+A handle to the object, or <span class="keyword const">NULL</span> if an error occurs.
+</p>
+
+
+<div class="note note"><span class="notetitle">Note:</span> 
+Don't interpret the value of this handle in any way.
+For example, if you open the same object repeatedly, don't assume that
+<span class="keyword apiname">dlopen()</span> returns the same handle.
+</div>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Errors:</h2>
+
+
+<p class="p">
+If an error occurs, more detailed diagnostic information is available from 
+<a class="xref" href="dlerror.html" title="Get dynamic loading diagnostic information"><span class="keyword apiname">dlerror()</span></a>.
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Environment variables:</h2>
+
+
+<div class="note note"><span class="notetitle">Note:</span> 
+<ul class="ul">
+<li class="li">The runtime linker gets the values of the following environment variables only when the process is loaded:
+
+  <ul class="ul">
+  <li class="li"><span class="keyword envar">DL_DEBUG</span></li>
+
+
+
+
+  <li class="li"><span class="keyword envar">LD_PRELOAD</span></li>
+
+
+  <li class="li"><span class="keyword envar">LD_TRAP_ON_ERROR</span></li>
+
+  </ul>
+
+
+  <p class="p">
+  The <span class="keyword apiname">dlopen()</span> function examines <span class="keyword envar">LD_LIBRARY_PATH</span> every time you call it.
+  </p>
+
+</li>
+
+
+<li class="li">
+For security reasons, the runtime linker unsets <span class="keyword envar">DL_DEBUG</span>, <span class="keyword envar">LD_DEBUG</span>,
+<span class="keyword envar">LD_DEBUG_OUTPUT</span>, <span class="keyword envar">LD_LIBRARY_PATH</span>, and  <span class="keyword envar">LD_PRELOAD</span>
+if the binary has the setuid bit set.
+</li>
+
+
+</ul>
+
+</div>
+
+
+<dl class="dl" compact="compact">
+
+<dt class="dt dlterm"><span class="keyword envar">DL_DEBUG</span></dt>
+
+<dd class="dd">If this environment variable is set, the shared library loader displays debugging information about the libraries
+  as they're opened.
+  The value can be a comma-separated list of the following:
+  
+  
+  
+  
+  
+  
+
+  <ul class="ul">
+  <li class="li"><samp class="ph codeph">all</samp> â display all debug messages.</li>
+
+  <li class="li"><samp class="ph codeph">help</samp> â display a help message, and then exit.</li>
+
+  <li class="li"><samp class="ph codeph">reloc</samp> â display relocation processing messages.</li>
+
+  <li class="li"><samp class="ph codeph">libs</samp> â display information about shared objects being opened.</li>
+
+  <li class="li"><samp class="ph codeph">statistics</samp> â display runtime linker statistics.</li>
+
+  <li class="li"><samp class="ph codeph">lazyload</samp> â print lazy-load debug messages.</li>
+
+  <li class="li"><samp class="ph codeph">debug</samp> â print various runtime linker debug messages.</li>
+
+  </ul>
+
+
+  <p class="p">
+  A value of 1 (one) is the same as <samp class="ph codeph">all</samp>.
+  </p>
+
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword envar">LD_BIND_NOW</span></dt>
+
+<dd class="dd">Affects lazy-load dependencies due to full symbol resolution.
+  Typically, it forces the loading of all lazy-load dependencies (until all symbols have been resolved).
+  
+  
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword envar">LD_DEBUG</span></dt>
+
+<dd class="dd">A synonym for <span class="keyword envar">DL_DEBUG</span>.
+  If you set both <span class="keyword envar">DL_DEBUG</span> and <span class="keyword envar">LD_DEBUG</span>,
+  then <span class="keyword envar">DL_DEBUG</span> takes precedence.
+  
+  
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword envar">LD_DEBUG_OUTPUT</span></dt>
+
+<dd class="dd">The name of a file in which the runtime linker writes its output.
+  By default, output is written to <var class="keyword varname">stderr</var>.
+  
+  
+</dd>
+
+
+
+
+
+
+<dt class="dt dlterm"><span class="keyword envar">LD_LIBRARY_PATH</span></dt>
+
+<dd class="dd">A colon-separated list of directories to search for shared libraries.
+  Blank entries in the list are treated as <span class="q">&#147;.&#148;</span>, meaning they refer to the current working directory.
+  This can include the following cases:
+  <ul class="ul">
+    <li class="li">The entire list is blank (i.e., <samp class="ph codeph">LD_LIBRARY_PATH=""</samp> was specified), which is different 
+      from the variable being unset.</li>
+
+    <li class="li">The list has a colon at the beginning (i.e., the first entry is blank),
+        or it has two consecutive colons (i.e., the entry in between is blank).</li>
+
+  </ul>
+
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword envar">LD_PRELOAD</span></dt>
+
+<dd class="dd">A list of full paths to the shared libraries on an ELF system that you
+  want to load before loading other libraries.
+  Use a colon (<samp class="ph codeph">:</samp>) to separate the libraries in this list.
+  You can use this environment variable to add or change functionality when you run a program.
+  
+  
+  
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword envar">LD_TRAP_ON_ERROR</span></dt>
+
+<dd class="dd">If this environment variable is set, the runtime linker faults instead of exiting on fatal errors,
+  so that you can examine the core file that's generated.
+  
+  
+</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Classification:</h2>
+
+<p class="p"><a class="xref" href="../summary.html#summary__CLASSIFICATION">POSIX 1003.1</a></p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+<thead class="thead" align="left">
+<tr><th class="entry" valign="top" id="d1354147e1252">Safety:</th>
+<th class="entry" valign="top" id="d1354147e1254">Â </th>
+</tr>
+
+</thead>
+
+<tbody class="tbody">
+<tr><td class="entry" valign="top" headers="d1354147e1252 d1354147e1254 ">Cancellation point</td>
+<td class="entry" valign="top" headers="d1354147e1252 d1354147e1254 ">Yes</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d1354147e1252 d1354147e1254 ">Interrupt handler</td>
+<td class="entry" valign="top" headers="d1354147e1252 d1354147e1254 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d1354147e1252 d1354147e1254 ">Signal handler</td>
+<td class="entry" valign="top" headers="d1354147e1252 d1354147e1254 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d1354147e1252 d1354147e1254 ">Thread</td>
+<td class="entry" valign="top" headers="d1354147e1252 d1354147e1254 ">Yes</td>
+</tr>
+
+</tbody>
+
+</table>
+</div>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Caveats:</h2>
+
+
+<p class="p">
+Some symbols defined in executables or shared objects might not be available to the runtime linker.  
+The symbol table created by
+<a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/l/ld.html"><span class="keyword cmdname">ld</span></a> 
+for use by the runtime linker might contain a subset of the symbols defined in the object.
+</p>
+
+</div>
+
+
+</div>
+
+
+<div class="related-links"><div class="relinfo relconcepts"><strong>Related concepts</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.sys_arch/topic/dll.html" title="Dynamic Linking (System Architecture)">Dynamic Linking (System Architecture)</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.prog/topic/devel_Lazy_loading.html" title="Lazy loading (QNX Neutrino Programmer's Guide)">Lazy loading (<span class="keyword">QNX Neutrino</span> Programmer's Guide)</a></div>
+</div>
+<div class="relinfo relref"><strong>Related reference</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/d/dl_iterate_phdr.html" title="Iterate over the shared objects that are loaded into a process's address space">dl_iterate_phdr()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/d/dladdr.html" title="Translate an address to symbolic information">dladdr()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/d/dlclose.html" title="Close a shared object">dlclose()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/d/dlerror.html" title="Get dynamic loading diagnostic information">dlerror()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/d/dlsym.html" title="Get the address of a symbol in a shared object">dlsym()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/p/procmgr_ability.html" title="Control a process's ability to perform certain operations">procmgr_ability()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.utilities/topic/l/ld.html" title="ld (Utilities Reference)">ld (Utilities Reference)</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.utilities/topic/q/qcc.html" title="qcc (Utilities Reference)">qcc (Utilities Reference)</a></div>
+</div>
+</div><div class="navfooter"><!---->
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-d.html" title="D"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">D</span></a></span>  </div>
+</body>
+</html>

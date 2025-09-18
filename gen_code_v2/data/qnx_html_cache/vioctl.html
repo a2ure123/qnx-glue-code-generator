@@ -1,0 +1,1827 @@
+
+<!DOCTYPE html
+  PUBLIC "" "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />        
+      <meta name="copyright" content="(C) Copyright 2005" /><meta name="DC.rights.owner" content="(C) Copyright 2005" /><meta name="DC.Type" content="reference" /><meta name="DC.Title" content="ioctl(), vioctl()" /><meta name="abstract" content="Control a device" /><meta name="description" content="Control a device" /><meta name="indexterms" content="ioctl(), vioctl()" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-i.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/d/devctl.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/f/fcntl.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/r/_register_ioctl_handler.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/t/tcgetattr.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/t/tcsetattr.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/t/tcsetsid.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/u/_unregister_ioctl_handler.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.devctl/topic/about.html" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="ioctl" /><meta name="DC.Language" content="en-us" /><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/commonltr.css"><!----></link><title>ioctl(), vioctl()</title><link rel="canonical" type="html" href="https://www.qnx.com/developers/docs/7.1/#com.qnx.doc.neutrino.lib_ref/" /><!--  Generated with Oxygen version 18.1, build number 2017020917.  --><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/webhelp_topic.css"><!----></link><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/skins/skin.css" /><script type="text/javascript"><!--
+            
+            var prefix = "../../../index.html";
+            
+            --></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-1.11.3.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.cookie.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-ui.custom.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.highlight-3.js"><!----></script><script type="text/javascript" charset="utf-8" src="../../../oxygen-webhelp/resources/js/webhelp_topic.js"><!----></script><script type="text/javascript"> var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-27400275-1']); _gaq.push(['_setDomainName', 'www.qnx.com']);_gaq.push(['_setAllowLinker', true]);_gaq.push(['_trackPageview']);(function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script></head>
+<body onload="highlightSearchTerm()" class="frmBody" id="ioctl">
+<table class="nav"><tbody><tr><td colspan="2"><div id="printlink"><button onClick="window.print()" title="Print this page" aria-label="Print this page"></button></div><div id="permalink"><a href="#" title="Link to this page"></a></div></td></tr><tr><td style="width:75%;"><span class="topic_breadcrumb_links"><span class="topic_breadcrumb_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-i.html" title="I">I</a></span></span></td><td><span id="topic_navigation_links" class="navheader">
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-i.html" title="I"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">I</span></a></span>  </span></td></tr></tbody></table>
+
+
+<h1 class="title topictitle1"><span class="keyword apiname">ioctl()</span>, <span class="keyword apiname">vioctl()</span></h1>
+<table width="100%"><tbody><tr><td align="left"><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">QNX SDP</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">7.1</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">C Library Reference</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">API</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">Developer</button></td><td align="right"><span style="margin:0px 5px; font-size:0.9em;">Updated: October 28, 2024</span></td></tr></tbody></table>
+
+
+<div class="body refbody"><p class="shortdesc"><em class="ph i">Control a device</em></p>
+
+
+<div class="section">
+
+<p class="p">
+
+
+
+
+
+</p>
+
+</div>
+
+
+<div class="section refsyn"><h2 class="title sectiontitle">Synopsis:</h2>
+
+<pre class="pre codeblock">
+#include &lt;sys/ioctl.h&gt; 
+
+int ioctl( int <var class="keyword varname">fd</var>, 
+           int <var class="keyword varname">request</var>, 
+           ... );
+
+int vioctl( int <var class="keyword varname">fd</var>, 
+            int <var class="keyword varname">request</var>, 
+            va_list <var class="keyword varname">arg</var> );
+</pre>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Arguments:</h2>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><var class="keyword varname">fd</var></dt>
+
+<dd class="dd">An open file descriptor for the file or device that you want to manipulate.</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">request</var></dt>
+
+<dd class="dd">What you want to do to the file or device; see below for a summary.
+  The macros and definitions that you use in specifying a request
+  are located in the file <span class="ph filepath">&lt;sys/ioctl.h&gt;</span>.
+</dd>
+
+
+
+  
+    <dt class="dt dlterm"><var class="keyword varname">arg</var></dt>
+
+    <dd class="dd">A variable-argument list of the additional arguments, which you must have initialized with
+            the <a class="xref" href="../v/va_start.html" title="Start getting items from a variable argument list"><span class="keyword apiname">va_start()</span></a> macro. Used with
+              <span class="keyword apiname">vioctl()</span> only.</dd>
+
+  
+
+
+<dt class="dt dlterm">Additional arguments</dt>
+
+<dd class="dd">As required by the request.</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Library:</h2>
+
+
+<p class="p"><span class="ph filepath">libc</span></p>
+
+
+<p class="p">
+Use the <span class="keyword option">-l c</span> option to
+<a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/q/qcc.html"><span class="keyword cmdname">qcc</span></a>
+to link against this library.
+This library is usually included automatically.
+</p>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Description:</h2>
+
+
+<p class="p">
+The <span class="keyword apiname">ioctl()</span> function manipulates the underlying
+parameters of files. In particular, it can be used to
+control many of the operating attributes of files (such as
+the attributes of terminals).
+</p>
+
+
+      <p class="p">The <span class="keyword apiname">vioctl()</span> function is a "varargs" version of
+          <span class="keyword apiname">ioctl()</span>.</p>
+
+
+<p class="p">The <var class="keyword varname">request</var> argument determines whether the subsequent arguments are an
+          <span class="q">&#147;in&#148;</span> or <span class="q">&#147;out&#148;</span> parameter; it also specifies the size of the arguments in bytes. </p>
+
+
+<h2 class="sectiontitle" id="ioctl__Commands">I/O control commands</h2>
+
+<p class="p">
+Use these macros to set up the  I/O control commands:
+</p>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><span class="keyword apiname">_IO</span>(<var class="keyword varname">class</var>, <var class="keyword varname">cmd</var>)</dt>
+
+<dd class="dd">A command with no associated data.
+  
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword apiname">_IOR</span>(<var class="keyword varname">class</var>, <var class="keyword varname">cmd</var>, <var class="keyword varname">data</var>)</dt>
+
+<dd class="dd">Get information from the device.
+  
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword apiname">_IOW</span>(<var class="keyword varname">class</var>, <var class="keyword varname">cmd</var>, <var class="keyword varname">data</var>)</dt>
+
+<dd class="dd">Pass information to the device.
+  
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword apiname">_IOWR</span>(<var class="keyword varname">class</var>, <var class="keyword varname">cmd</var>, <var class="keyword varname">data</var>)</dt>
+
+<dd class="dd">Pass some information to the device, and get some from it.
+  
+</dd>
+
+
+
+</dl>
+
+
+<p class="p">
+The arguments to these macros are:
+</p>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><var class="keyword varname">class</var></dt>
+
+<dd class="dd">A single character that denotes the major category for the command.</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">cmd</var></dt>
+
+<dd class="dd">An integer that identifies the command in the class.</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">data</var></dt>
+
+<dd class="dd">The type of data to pass to and/or from the device.
+  The additional argument to <span class="keyword apiname">ioctl()</span> must be
+  a pointer to this type of data.
+
+  <div class="note note"><span class="notetitle">Note:</span> 
+  The size of the structure that's passed as the last
+  field to the <span class="keyword apiname">__IO*</span> macros <strong class="ph b">must</strong> be less than
+  2^14Â ==Â 16 KB.
+  Anything larger than this interferes with the upper two directional bits.
+  </div>
+
+</dd>
+
+
+
+</dl>
+
+
+<h2 class="sectiontitle">How <span class="keyword apiname">ioctl()</span> commands map to other commands</h2>
+
+<p class="p"> Some <span class="keyword apiname">ioctl()</span> commands map to calls to <a class="xref" href="../f/fcntl.html" title="Provide control over an open file"><span class="keyword apiname">fcntl()</span></a>, <a class="xref" href="../t/tcgetattr.html" title="Get the current terminal control settings"><span class="keyword apiname">tcgetattr()</span></a>, <a class="xref" href="../t/tcsetattr.html" title="Change the terminal control settings for a device"><span class="keyword apiname">tcsetattr()</span></a>, and <a class="xref" href="../t/tcsetsid.html" title="Make a terminal device a controlling device"><span class="keyword apiname">tcsetsid()</span></a>. Other commands are transformed into <a class="xref" href="../d/devctl.html" title="Control a device"><span class="keyword apiname">devctl()</span></a> commands, and the rest are
+        simply passed to <span class="keyword apiname">devctl()</span>. Here's a summary (for details, see the <a class="xref" href="../../../com.qnx.doc.neutrino.devctl/topic/about.html"><em class="ph i">Devctl and Ioctl Commands</em></a> reference):
+            
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      </p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+
+<thead class="thead" align="left">
+<tr>
+  <th class="entry" valign="top" id="d1998669e1115"><span class="keyword apiname">ioctl()</span> command</th>
+
+  <th class="entry" valign="top" id="d1998669e1120">Description</th>
+
+  <th class="entry" valign="top" id="d1998669e1123">Maps to:</th>
+
+</tr>
+
+</thead>
+
+
+<tbody class="tbody">
+  <tr>
+    <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">CIO*</span>, <span class="keyword const">CRIOGET</span></td>
+
+    <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Handle cryptography operations</td>
+
+    <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">These commands are used by the legacy
+      <a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/d/devcrypto.html"><span class="keyword cmdname">devcrypto</span></a> system driver interface.
+      The preferred cryptography mechanism is the newer <span class="keyword cmdname">qcrypto</span> library; for more information, see
+      <span class="q">&#147;<a class="xref" href="../../../com.qnx.doc.security.system/topic/manual/crypto_developers.html">Cryptography for developers</a>&#148;</span> in the <cite class="cite">System Security Guide</cite>.</td>
+
+  </tr>
+
+
+  
+  <tr>
+    <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">FIOASYNC</span></td>
+
+    <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Set or clear asynchronous I/O</td>
+
+    <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword apiname">fcntl()</span>: <span class="keyword const">F_GETFL</span> (which becomes
+      a <span class="keyword apiname">devctl()</span>
+      <a class="xref" href="../../../com.qnx.doc.neutrino.devctl/topic/all/dcmd_all_getflags.html"><span class="keyword const">DCMD_ALL_GETFLAGS</span></a>), followed by
+      <span class="keyword apiname">fcntl()</span>: <span class="keyword const">F_SETFL</span> (which becomes
+      a <span class="keyword apiname">devctl()</span>
+      <a class="xref" href="../../../com.qnx.doc.neutrino.devctl/topic/all/dcmd_all_setflags.html"><span class="keyword const">DCMD_ALL_SETFLAGS</span></a>),
+      setting or clearing <span class="keyword const">O_ASYNC</span>
+    </td>
+
+  </tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">FIOCLEX</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Set <span class="q">&#147;close on exec&#148;</span> on a file descriptor</td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword apiname">fcntl()</span>: <span class="keyword const">F_SETFD</span> with
+        <span class="keyword const">FD_CLOEXEC</span>
+  </td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">FIOGETOWN</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Get the owner </td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword apiname">fcntl()</span>: <span class="keyword const">F_GETOWN</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">FIONBIO</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Set or clear non-blocking I/O </td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword apiname">fcntl()</span>: <span class="keyword const">F_GETFL</span> (which becomes
+    a <span class="keyword apiname">devctl()</span>
+    <a class="xref" href="../../../com.qnx.doc.neutrino.devctl/topic/all/dcmd_all_getflags.html"><span class="keyword const">DCMD_ALL_GETFLAGS</span></a>),
+    followed by <span class="keyword apiname">fcntl()</span>: <span class="keyword const">F_SETFL</span> (which becomes
+    a <span class="keyword apiname">devctl()</span>
+    <a class="xref" href="../../../com.qnx.doc.neutrino.devctl/topic/all/dcmd_all_setflags.html"><span class="keyword const">DCMD_ALL_SETFLAGS</span></a>),
+    setting or clearing <span class="keyword const">O_NONBLOCK</span>
+  </td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">FIONCLEX</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Remove <span class="q">&#147;close on exec&#148;</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword apiname">fcntl()</span>: <span class="keyword const">F_SETFD</span> with
+        ~<span class="keyword const">FD_CLOEXEC</span>
+  </td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">FIONREAD</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Get the number of bytes to read </td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword apiname">devctl()</span>:
+    <a class="xref" href="../../../com.qnx.doc.neutrino.devctl/topic/chr/dcmd_chr_ischars.html"><span class="keyword const">DCMD_CHR_ISCHARS</span></a>
+  </td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">FIOSETOWN</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Set the owner </td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword apiname">fcntl()</span>: <span class="keyword const">F_SETOWN</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">NOSIOCGIFCONF</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Get ifnet list </td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Passed to <span class="keyword apiname">devctl()</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">SIOCADDMULTI</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Add multicast address</td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Passed to <span class="keyword apiname">devctl()</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">SIOCADDRT</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Add route </td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Passed to <span class="keyword apiname">devctl()</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">SIOCAIFADDR</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Add or change an interface alias </td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Passed to <span class="keyword apiname">devctl()</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">SIOCALIFADDR</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Add interface address </td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Passed to <span class="keyword apiname">devctl()</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">SIOCATMARK</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">At out-of-band mark? </td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Passed to <span class="keyword apiname">devctl()</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">SIOCDELMULTI</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Delete multicast address</td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Passed to <span class="keyword apiname">devctl()</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">SIOCDELRT</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Delete route </td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Passed to <span class="keyword apiname">devctl()</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">SIOCDIFADDR</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Delete interface address </td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Passed to <span class="keyword apiname">devctl()</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">SIOCDIFPHYADDR</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Delete gif addresses </td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Passed to <span class="keyword apiname">devctl()</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">SIOCDLIFADDR</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Delete interface address </td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Passed to <span class="keyword apiname">devctl()</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">SIOCGDRVSPEC</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Get driver-specific parameters</td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Passed to <span class="keyword apiname">devctl()</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">SIOCGETSGCNT</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Get the source group packet count</td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Passed to <span class="keyword apiname">devctl()</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">SIOCGETVIFCNT</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Get the packet count for a virtual interface</td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Passed to <span class="keyword apiname">devctl()</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">SIOCGHIWAT</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Get high watermark </td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Passed to <span class="keyword apiname">devctl()</span></td>
+
+</tr>
+
+
+<tr>
+    <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">SIOCGIFADDR</span></td>
+
+    <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Get the interface address</td>
+
+    <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Passed to <span class="keyword apiname">devctl()</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">SIOCGIFALIAS</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Get interface alias </td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Passed to <span class="keyword apiname">devctl()</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">SIOCGIFASYNCMAP</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Get ppp asyncmap </td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Passed to <span class="keyword apiname">devctl()</span></td>
+
+</tr>
+
+
+<tr>
+    <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">SIOCGIFBRDADDR</span></td>
+
+    <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Get broadcast address</td>
+
+    <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Passed to <span class="keyword apiname">devctl()</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">SIOCGIFCAP</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Get capabilities </td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Passed to <span class="keyword apiname">devctl()</span></td>
+
+</tr>
+
+
+<tr>
+    <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">SIOCGIFCONF</span></td>
+
+    <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Return a list of interface (transport layer) addresses</td>
+
+    <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Passed to <span class="keyword apiname">devctl()</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">SIOCGIFDLT</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Get data link type</td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Passed to <span class="keyword apiname">devctl()</span></td>
+
+</tr>
+
+
+<tr>
+    <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">SIOCGIFDSTADDR</span></td>
+
+    <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Get point-to-point address</td>
+
+    <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Passed to <span class="keyword apiname">devctl()</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">SIOCGIFFLAGS</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Get ifnet flags </td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Passed to <span class="keyword apiname">devctl()</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">SIOCGIFGENERIC</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Generic interface get op </td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Passed to <span class="keyword apiname">devctl()</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">SIOCGIFMEDIA</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Get net media</td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Passed to <span class="keyword apiname">devctl()</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">SIOCGIFMETRIC</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Get interface metric</td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Passed to <span class="keyword apiname">devctl()</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">SIOCGIFMTU</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Get ifnet MTU </td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Passed to <span class="keyword apiname">devctl()</span></td>
+
+</tr>
+
+
+<tr>
+    <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">SIOCGIFNETMASK</span></td>
+
+    <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Get net address mask</td>
+
+    <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Passed to <span class="keyword apiname">devctl()</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">SIOCGIFPDSTADDR</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Get gif pdst address </td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Passed to <span class="keyword apiname">devctl()</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">SIOCGIFPSRCADDR</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Get gif psrc address </td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Passed to <span class="keyword apiname">devctl()</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">SIOCGLIFADDR</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Get interface address </td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Passed to <span class="keyword apiname">devctl()</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">SIOCGLIFPHYADDR</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Get gif addresses </td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Passed to <span class="keyword apiname">devctl()</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">SIOCGLOWAT</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Get low watermark </td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Passed to <span class="keyword apiname">devctl()</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">SIOCGPGRP</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Get process group </td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword apiname">fcntl()</span>: <span class="keyword const">F_GETOWN</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">SIOCIFCREATE</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Create clone interface </td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Passed to <span class="keyword apiname">devctl()</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">SIOCIFDESTROY</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Destroy clone interface </td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Passed to <span class="keyword apiname">devctl()</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">SIOCIFGCLONERS</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Get cloners</td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Passed to <span class="keyword apiname">devctl()</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">SIOCSDRVSPEC</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Set driver-specific parameters</td>
+
+<td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Passed to <span class="keyword apiname">devctl()</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">SIOCSHIWAT</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Set high watermark </td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Passed to <span class="keyword apiname">devctl()</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">SIOCSIFADDR</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Set ifnet address </td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Passed to <span class="keyword apiname">devctl()</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">SIOCSIFASYNCMAP</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Set ppp asyncmap </td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Passed to <span class="keyword apiname">devctl()</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">SIOCSIFBRDADDR</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Set broadcast address </td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Passed to <span class="keyword apiname">devctl()</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">SIOCSIFCAP</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Set capabilities </td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Passed to <span class="keyword apiname">devctl()</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">SIOCSIFDSTADDR</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Set point-to-point address </td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Passed to <span class="keyword apiname">devctl()</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">SIOCSIFFLAGS</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Set ifnet flags </td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Passed to <span class="keyword apiname">devctl()</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">SIOCSIFGENERIC</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Generic interface set op </td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Passed to <span class="keyword apiname">devctl()</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">SIOCSIFMEDIA</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Set net media </td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Passed to <span class="keyword apiname">devctl()</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">SIOCSIFMETRIC</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Set interface metric </td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Passed to <span class="keyword apiname">devctl()</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">SIOCSIFMTU</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Set ifnet MTU</td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Passed to <span class="keyword apiname">devctl()</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">SIOCSIFNETMASK</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Set net address mask </td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Passed to <span class="keyword apiname">devctl()</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">SIOCSIFPHYADDR</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Set gif address</td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Passed to <span class="keyword apiname">devctl()</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">SIOCSLIFPHYADDR</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Set gif addresses </td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Passed to <span class="keyword apiname">devctl()</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">SIOCSLOWAT</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Set low watermark </td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Passed to <span class="keyword apiname">devctl()</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">SIOCSPGRP</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Set process group </td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword apiname">fcntl()</span>: <span class="keyword const">F_SETOWN</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">TCFLSH</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Flush buffers</td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Passed to <span class="keyword apiname">devctl()</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">TCGETA</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Get the terminal's properties in a <span class="keyword dtype">termio</span> structure</td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword apiname">tcgetattr()</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">TCGETS</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Get the terminal's properties in a <span class="keyword dtype">termios</span> structure</td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword apiname">tcgetattr()</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">TCSBRK</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Send a break for a period of time</td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword apiname">devctl()</span> :
+    <a class="xref" href="../../../com.qnx.doc.neutrino.devctl/topic/chr/dcmd_chr_serctl.html"><span class="keyword const">DCMD_CHR_SERCTL</span></a></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">TCSETA</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Set the terminal's properties</td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword apiname">tcsetattr()</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">TCSETAF</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Set the terminal's properties, waiting until all currently written data has been transmitted,
+        and discarding any received but unread data
+  </td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword apiname">tcsetattr()</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">TCSETAW</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Set the terminal's properties, waiting until all currently written data has been transmitted</td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword apiname">tcsetattr()</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">TCSETS</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Set the terminal's properties from a <span class="keyword dtype">termios</span> structure</td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword apiname">devctl()</span> :
+    <a class="xref" href="../../../com.qnx.doc.neutrino.devctl/topic/chr/dcmd_chr_tcsetattr.html"><span class="keyword const">DCMD_CHR_TCSETATTR</span></a></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">TCSETSF</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Drain the output, flush the input, and set </td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Passed to <span class="keyword apiname">devctl()</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">TCSETSW</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Drain output, set </td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Passed to <span class="keyword apiname">devctl()</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">TCXONC</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Perform a flow-control operation on a data stream</td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword apiname">devctl()</span>:
+    <a class="xref" href="../../../com.qnx.doc.neutrino.devctl/topic/chr/dcmd_chr_tcflow.html"><span class="keyword const">DCMD_CHR_TCFLOW</span></a></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">TIOCCBRK</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Clear the break bit </td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword apiname">tcsetattr()</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">TIOCCDTR</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Clear the Data Terminal Ready line </td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword apiname">devctl()</span> :
+    <a class="xref" href="../../../com.qnx.doc.neutrino.devctl/topic/chr/dcmd_chr_linestatus.html"><span class="keyword const">DCMD_CHR_LINESTATUS</span></a>,
+    followed by 
+    <a class="xref" href="../../../com.qnx.doc.neutrino.devctl/topic/chr/dcmd_chr_serctl.html"><span class="keyword const">DCMD_CHR_SERCTL</span></a>
+  </td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">TIOCDRAIN</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Wait until output has drained </td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword apiname">devctl()</span>:
+    <a class="xref" href="../../../com.qnx.doc.neutrino.devctl/topic/chr/dcmd_chr_tcdrain.html"><span class="keyword const">DCMD_CHR_TCDRAIN</span></a></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">TIOCEXCL</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Set exclusive use of tty </td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword apiname">fcntl()</span>: <span class="keyword const">F_SETLK</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">TIOCFLUSH</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Flush buffers</td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword apiname">devctl()</span>:
+    <a class="xref" href="../../../com.qnx.doc.neutrino.devctl/topic/chr/dcmd_chr_tcflush.html"><span class="keyword const">DCMD_CHR_TCFLUSH</span></a></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">TIOCGETA</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Get the terminal's properties in a <span class="keyword dtype">termios</span> structure</td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword apiname">devctl()</span> :
+    <a class="xref" href="../../../com.qnx.doc.neutrino.devctl/topic/chr/dcmd_chr_tcgetattr.html"><span class="keyword const">DCMD_CHR_TCGETATTR</span></a></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">TIOCGETC</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Get special characters </td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword apiname">tcgetattr()</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">TIOCGETP</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Get the terminal's parameters in a <span class="keyword dtype">sgttyb</span> structure</td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword apiname">tcgetattr()</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">TIOCGETPGRP</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Get the process group of the tty (POSIX) </td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Passed to <span class="keyword apiname">devctl()</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">TIOCGLTC</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Get local special characters</td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword apiname">tcgetattr()</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">TIOCGPGRP</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Get the process group of the tty </td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword apiname">devctl()</span>:
+    <a class="xref" href="../../../com.qnx.doc.neutrino.devctl/topic/chr/dcmd_chr_tcgetpgrp.html"><span class="keyword const">DCMD_CHR_TCGETPGRP</span></a></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">TIOCGSIZE</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Get window size </td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword apiname">devctl()</span>:
+    <a class="xref" href="../../../com.qnx.doc.neutrino.devctl/topic/chr/dcmd_chr_getsize.html"><span class="keyword const">DCMD_CHR_GETSIZE</span></a>
+  </td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">TIOCGWINSZ</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Get window size </td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword apiname">devctl()</span>:
+    <a class="xref" href="../../../com.qnx.doc.neutrino.devctl/topic/chr/dcmd_chr_getsize.html"><span class="keyword const">DCMD_CHR_GETSIZE</span></a>
+  </td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">TIOCHPCL</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Hang up on last close </td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword apiname">tcsetattr()</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">TIOCLGET</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Get local modes </td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword apiname">tcgetattr()</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">TIOCLSET</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Set entire local mode word </td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword apiname">tcsetattr()</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">TIOCMBIC</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Clear modem port B interrupt</td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword apiname">devctl()</span> :
+    <a class="xref" href="../../../com.qnx.doc.neutrino.devctl/topic/chr/dcmd_chr_linestatus.html"><span class="keyword const">DCMD_CHR_LINESTATUS</span></a>,
+    followed by 
+    <a class="xref" href="../../../com.qnx.doc.neutrino.devctl/topic/chr/dcmd_chr_serctl.html"><span class="keyword const">DCMD_CHR_SERCTL</span></a>
+  </td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">TIOCMBIS</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Set modem port B interrupt</td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword apiname">devctl()</span> :
+    <a class="xref" href="../../../com.qnx.doc.neutrino.devctl/topic/chr/dcmd_chr_linestatus.html"><span class="keyword const">DCMD_CHR_LINESTATUS</span></a>,
+    followed by 
+    <a class="xref" href="../../../com.qnx.doc.neutrino.devctl/topic/chr/dcmd_chr_serctl.html"><span class="keyword const">DCMD_CHR_SERCTL</span></a>
+  </td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">TIOCMGET</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Get the state of the modem lines</td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword apiname">devctl()</span> :
+    <a class="xref" href="../../../com.qnx.doc.neutrino.devctl/topic/chr/dcmd_chr_serctl.html"><span class="keyword const">DCMD_CHR_SERCTL</span></a>
+  </td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">TIOCMSET</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Set all modem bits </td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Passed to <span class="keyword apiname">devctl()</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">TIOCNOTTY</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Make this terminal not be the controlling terminal for the process</td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword apiname">tcsetsid()</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">TIOCNXCL</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Reset exclusive use of tty </td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword apiname">fcntl()</span>: <span class="keyword const">F_SETLK</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">TIOCOUTQ</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Output queue size </td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword apiname">devctl()</span>:
+    <a class="xref" href="../../../com.qnx.doc.neutrino.devctl/topic/chr/dcmd_chr_oschars.html"><span class="keyword const">DCMD_CHR_OSCHARS</span></a>
+  </td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">TIOCPKT</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Pty: set/clear packet mode </td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Passed to <span class="keyword apiname">devctl()</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">TIOCSBRK</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Set break bit</td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Passed to <span class="keyword apiname">devctl()</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">TIOCSCTTY</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Make the terminal become the controlling tty</td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword apiname">tcsetsid()</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">TIOCSDTR</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Set the Data Terminal Ready line </td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword apiname">devctl()</span> :
+    <a class="xref" href="../../../com.qnx.doc.neutrino.devctl/topic/chr/dcmd_chr_linestatus.html"><span class="keyword const">DCMD_CHR_LINESTATUS</span></a>,
+    followed by 
+    <a class="xref" href="../../../com.qnx.doc.neutrino.devctl/topic/chr/dcmd_chr_serctl.html"><span class="keyword const">DCMD_CHR_SERCTL</span></a>
+  </td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">TIOCSETA</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Set the terminal's properties from a <span class="keyword dtype">termios</span> structure</td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword apiname">devctl()</span> :
+    <a class="xref" href="../../../com.qnx.doc.neutrino.devctl/topic/chr/dcmd_chr_tcsetattr.html"><span class="keyword const">DCMD_CHR_TCSETATTR</span></a>
+  </td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">TIOCSETAF</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Drain the output, flush the input, and set </td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword apiname">devctl()</span>:
+    <a class="xref" href="../../../com.qnx.doc.neutrino.devctl/topic/chr/dcmd_chr_tcsetattr.html"><span class="keyword const">DCMD_CHR_TCSETATTRF</span></a>
+  </td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">TIOCSETAW</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Drain output, set </td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword apiname">devctl()</span>:
+    <a class="xref" href="../../../com.qnx.doc.neutrino.devctl/topic/chr/dcmd_chr_tcsetattr.html"><span class="keyword const">DCMD_CHR_TCSETATTRD</span></a>
+  </td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">TIOCSETC</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Set special characters </td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword apiname">tcsetattr()</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">TIOCSETN</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Similar to <span class="keyword const">TIOCSETP</span>, but the changes are made
+        immediately without discarding any data.</td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword apiname">tcsetattr()</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">TIOCSETP</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Set the terminal's parameters in a <span class="keyword dtype">sgttyb</span> structure.
+        No change is made until all currently written data has been
+        transmitted, at which point any received but unread data is discarded.
+  </td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword apiname">tcsetattr()</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">TIOCSETPGRP</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Set the process group of the tty (POSIX) </td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Passed to <span class="keyword apiname">devctl()</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">TIOCSINUSE</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Set exclusive use of tty</td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword apiname">fcntl()</span>: <span class="keyword const">F_SETLK</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">TIOCSLTC</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Set local special characters</td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword apiname">tcsetattr()</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">TIOCSPGRP</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Set the process group of the tty </td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword apiname">devctl()</span>:
+    <a class="xref" href="../../../com.qnx.doc.neutrino.devctl/topic/chr/dcmd_chr_tcsetpgrp.html"><span class="keyword const">DCMD_CHR_TCSETPGRP</span></a>
+  </td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">TIOCSSIZE</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Set the window size</td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword apiname">devctl()</span>:
+    <a class="xref" href="../../../com.qnx.doc.neutrino.devctl/topic/chr/dcmd_chr_setsize.html"><span class="keyword const">DCMD_CHR_SETSIZE</span></a>
+  </td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">TIOCSTART</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Start output, like <span class="keyword keychord"><span class="keyword key">Ctrl</span>&#150;<span class="keyword key">Q</span></span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Passed to <span class="keyword apiname">devctl()</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">TIOCSTI</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Simulate terminal input </td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword apiname">devctl()</span>:
+    <a class="xref" href="../../../com.qnx.doc.neutrino.devctl/topic/chr/dcmd_chr_tcinjectc.html"><span class="keyword const">DCMD_CHR_TCINJECTC</span></a>
+  </td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">TIOCSTOP</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Stop output, like <span class="keyword keychord"><span class="keyword key">Ctrl</span>&#150;<span class="keyword key">S</span></span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Passed to <span class="keyword apiname">devctl()</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword const">TIOCSWINSZ</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Set window size </td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword apiname">devctl()</span>:
+    <a class="xref" href="../../../com.qnx.doc.neutrino.devctl/topic/chr/dcmd_chr_setsize.html"><span class="keyword const">DCMD_CHR_SETSIZE</span></a>
+  </td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 "><span class="keyword apiname">UIOCCMD()</span></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">User control operator <var class="keyword varname">n</var></td>
+
+  <td class="entry" valign="top" headers="d1998669e1115 d1998669e1120 d1998669e1123 ">Passed to <span class="keyword apiname">devctl()</span></td>
+
+</tr>
+
+
+</tbody>
+
+</table>
+</div>
+
+
+<div class="note note"><span class="notetitle">Note:</span> 
+
+
+
+
+
+
+If you're writing a resource manager, note that the
+<a class="xref" href="iofunc_devctl_default.html" title="Default handler for _IO_DEVCTL messages"><span class="keyword apiname">iofunc_devctl_default()</span></a>
+function handles the <span class="keyword const">DCMD_ALL_GETFLAGS</span> and
+<span class="keyword const">DCMD_ALL_SETFLAGS</span> commands; your resource manager will
+need to handle all other <span class="keyword cmdname">devctl</span> commands that apply to it.
+</div>
+
+
+ <h2 class="sectiontitle">Registering an I/O control handler </h2>
+  <p class="p">An <span class="keyword apiname">ioctl()</span> command with data to pass is often passed to
+          <span class="keyword apiname">devctl()</span>. However, this mechanism is not supported for commands that
+        pass data using pointers to data buffers. For these types of <span class="keyword apiname">ioctl()</span>
+        commands, you can register an I/O control handler that serializes the data. For more
+        information, see <a class="xref" href="../r/_register_ioctl_handler.html" title="Register an I/O control handler"><span class="keyword apiname">_register_ioctl_handler()</span></a> and
+        <a class="xref" href="../u/_unregister_ioctl_handler.html" title="Unregister an I/O control handler"><span class="keyword apiname">_unregister_ioctl_handler()</span></a>.</p>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Returns:</h2>
+
+
+<p class="p">
+A value based on the <var class="keyword varname">request</var>, or -1 if an error occurs
+(<a class="xref" href="../e/errno.html" title="Thread-local error variable"><var class="keyword varname">errno</var></a>
+is set).
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Errors:</h2>
+
+
+<dl class="dl" compact="compact">
+
+<dt class="dt dlterm"><span class="keyword const">EBADF</span></dt>
+
+<dd class="dd">Invalid descriptor <var class="keyword varname">fd</var>.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EINVAL</span></dt>
+
+<dd class="dd">The <var class="keyword varname">request</var> or optional variables aren't valid.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">ENOBUFS</span></dt>
+
+<dd class="dd">There wasn't enough memory available to allocate for data referred
+  to by embedded pointers.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">ENOTTY</span></dt>
+
+<dd class="dd">The <var class="keyword varname">fd</var> argument isn't associated with a character-special
+  device; the specified <var class="keyword varname">request</var> doesn't apply to
+  the kind of object that the descriptor <var class="keyword varname">fd</var> references.
+</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Classification:</h2>
+
+<p class="p">
+<span class="keyword apiname">ioctl()</span> is
+<a class="xref" href="../summary.html#summary__CLASSIFICATION">POSIX 1003.1 OB XSR</a>;
+<span class="keyword apiname">vioctl()</span> is
+<a class="xref" href="../summary.html#summary__CLASSIFICATION">QNX Neutrino</a>.
+The <span class="keyword apiname">ioctl()</span> function is marked as obsolescent, and may be removed from a future version of the standard.
+</p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+<thead class="thead" align="left">
+<tr><th class="entry" valign="top" id="d1998669e3370">Safety:</th>
+<th class="entry" valign="top" id="d1998669e3372">Â </th>
+</tr>
+
+</thead>
+
+<tbody class="tbody">
+<tr><td class="entry" valign="top" headers="d1998669e3370 d1998669e3372 ">Cancellation point</td>
+<td class="entry" valign="top" headers="d1998669e3370 d1998669e3372 ">Yes</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d1998669e3370 d1998669e3372 ">Interrupt handler</td>
+<td class="entry" valign="top" headers="d1998669e3370 d1998669e3372 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d1998669e3370 d1998669e3372 ">Signal handler</td>
+<td class="entry" valign="top" headers="d1998669e3370 d1998669e3372 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d1998669e3370 d1998669e3372 ">Thread</td>
+<td class="entry" valign="top" headers="d1998669e3370 d1998669e3372 ">No</td>
+</tr>
+
+</tbody>
+
+</table>
+</div>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Caveats:</h2>
+
+
+<p class="p">
+The <span class="keyword apiname">ioctl()</span> function is a Unix function that varies greatly from platform to platform.
+</p>
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="related-links"><div class="relinfo relref"><strong>Related reference</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/d/devctl.html" title="Control a device">devctl(),devctlv()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/f/fcntl.html" title="Provide control over an open file">fcntl()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/r/_register_ioctl_handler.html" title="Register an I/O control handler">_register_ioctl_handler()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/t/tcgetattr.html" title="Get the current terminal control settings">tcgetattr()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/t/tcsetattr.html" title="Change the terminal control settings for a device">tcsetattr()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/t/tcsetsid.html" title="Make a terminal device a controlling device">tcsetsid()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/u/_unregister_ioctl_handler.html" title="Unregister an I/O control handler">_unregister_ioctl_handler()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.devctl/topic/about.html" title="Devctl and Ioctl Commands">Devctl and Ioctl Commands</a></div>
+</div>
+</div><div class="navfooter"><!---->
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-i.html" title="I"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">I</span></a></span>  </div>
+</body>
+</html>

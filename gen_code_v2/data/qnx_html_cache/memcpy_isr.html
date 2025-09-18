@@ -1,0 +1,299 @@
+
+<!DOCTYPE html
+  PUBLIC "" "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />        
+      <meta name="copyright" content="(C) Copyright 2005" /><meta name="DC.rights.owner" content="(C) Copyright 2005" /><meta name="DC.Type" content="reference" /><meta name="DC.Title" content="memcpy(), memcpy_isr()" /><meta name="abstract" content="Copy bytes from one buffer to another" /><meta name="description" content="Copy bytes from one buffer to another" /><meta name="indexterms" content="memcpy(), memcpy_isr()" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-m.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/m/memccpy.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/m/memchr.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/m/memcmp.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/m/memicmp.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/m/memmove.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/m/memset.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/m/memset_s.html" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="memcpy" /><meta name="DC.Language" content="en-us" /><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/commonltr.css"><!----></link><title>memcpy(), memcpy_isr()</title><link rel="canonical" type="html" href="https://www.qnx.com/developers/docs/7.1/#com.qnx.doc.neutrino.lib_ref/" /><!--  Generated with Oxygen version 18.1, build number 2017020917.  --><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/webhelp_topic.css"><!----></link><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/skins/skin.css" /><script type="text/javascript"><!--
+            
+            var prefix = "../../../index.html";
+            
+            --></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-1.11.3.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.cookie.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-ui.custom.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.highlight-3.js"><!----></script><script type="text/javascript" charset="utf-8" src="../../../oxygen-webhelp/resources/js/webhelp_topic.js"><!----></script><script type="text/javascript"> var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-27400275-1']); _gaq.push(['_setDomainName', 'www.qnx.com']);_gaq.push(['_setAllowLinker', true]);_gaq.push(['_trackPageview']);(function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script></head>
+<body onload="highlightSearchTerm()" class="frmBody" id="memcpy">
+<table class="nav"><tbody><tr><td colspan="2"><div id="printlink"><button onClick="window.print()" title="Print this page" aria-label="Print this page"></button></div><div id="permalink"><a href="#" title="Link to this page"></a></div></td></tr><tr><td style="width:75%;"><span class="topic_breadcrumb_links"><span class="topic_breadcrumb_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-m.html" title="M">M</a></span></span></td><td><span id="topic_navigation_links" class="navheader">
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-m.html" title="M"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">M</span></a></span>  </span></td></tr></tbody></table>
+
+
+<h1 class="title topictitle1"><span class="keyword apiname">memcpy()</span>, <span class="keyword apiname">memcpy_isr()</span></h1>
+<table width="100%"><tbody><tr><td align="left"><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">QNX SDP</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">7.1</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">C Library Reference</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">API</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">Developer</button></td><td align="right"><span style="margin:0px 5px; font-size:0.9em;">Updated: October 28, 2024</span></td></tr></tbody></table>
+
+
+<div class="body refbody"><p class="shortdesc"><em class="ph i">Copy bytes from one buffer to another</em></p>
+
+
+<div class="section refsyn"><h2 class="title sectiontitle">Synopsis:</h2>
+
+<pre class="pre codeblock">
+#include &lt;string.h&gt;
+
+void* memcpy( void* <var class="keyword varname">dst</var>,
+              const void* <var class="keyword varname">src</var>,
+              size_t <var class="keyword varname">length</var> );
+
+void* memcpy_isr( void* <var class="keyword varname">dst</var>,
+                  const void* <var class="keyword varname">src</var>,
+                  size_t <var class="keyword varname">length</var> );
+</pre>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Arguments:</h2>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><var class="keyword varname">dest</var></dt>
+
+<dd class="dd">A pointer to where you want the function to copy the data.</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">src</var></dt>
+
+<dd class="dd">A pointer to the buffer that you want to copy data from.</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">length</var></dt>
+
+<dd class="dd">The number of bytes to copy.</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Library:</h2>
+
+
+<p class="p"><span class="ph filepath">libc</span></p>
+
+
+<p class="p">
+Use the <span class="keyword option">-l c</span> option to
+<a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/q/qcc.html"><span class="keyword cmdname">qcc</span></a>
+to link against this library.
+This library is usually included automatically.
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Description:</h2>
+
+
+<p class="p">
+
+
+
+The <span class="keyword apiname">memcpy()</span> function copies <var class="keyword varname">length</var> bytes from the
+buffer pointed to by <var class="keyword varname">src</var> into the buffer pointed to by
+<var class="keyword varname">dst</var>.
+</p>
+
+
+<p class="p">
+The <span class="keyword apiname">memcpy_isr()</span> function does the same thing, but avoids using special-purpose
+registers (e.g., sse2) that incur additional cost when their state is saved during context switches.
+<span class="ph" id="memcpy__isr_vs_nonisr">The relative performance of a process using this first or second function
+can be better or worse depending on the frequency and sizes of
+memory-copying operations, the specific target, and what other processes are doing.
+If memory copying does not play a major role in the process's overall performance,
+which function is faster isn't so important. Otherwise,
+developers are strongly encouraged to do their own testing and select the correct function.</span>
+</p>
+
+
+<p class="p">
+In this release, both <span class="keyword apiname">memcpy()</span> and <span class="keyword apiname">memcpy_isr()</span> are safe to
+call from an interrupt handler.
+</p>
+
+
+<div class="note note"><span class="notetitle">Note:</span> 
+Copying overlapping buffers isn't guaranteed to work; use
+<a class="xref" href="memmove.html" title="Copy bytes from one buffer to another, handling overlapping memory correctly"><span class="keyword apiname">memmove()</span></a>
+to copy buffers that overlap.
+</div>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Returns:</h2>
+
+
+<p class="p">
+A pointer to the destination buffer (that is, the value of <var class="keyword varname">dst</var>).
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Examples:</h2>
+
+
+<pre class="pre codeblock">
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main( void )
+{
+    char buffer[80];
+
+    memcpy( buffer, "Hello", 5 );
+    buffer[5] = '\0';
+    printf( "%s\n", buffer );
+    
+    return EXIT_SUCCESS;
+}
+</pre>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Environment variables:</h2>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><span class="keyword envar">LIBC_STRINGS</span></dt>
+
+<dd class="dd">On certain targets, you can use this environment variable to select the implementation of
+  <span class="keyword apiname">memcpy()</span>.
+  It doesn't affect the implementation of <span class="keyword apiname">memcpy_isr()</span>.
+  The value is one of the strings given below.
+  
+  
+
+  <ul class="ul">
+  <li class="li">for AArch64 targets:
+
+    <ul class="ul">
+    <li class="li"><tt class="ph tt">generic</tt> â the default</li>
+
+    </ul>
+
+  </li>
+
+
+  <li class="li">for ARMv7 targets:
+
+  <ul class="ul">
+  <li class="li"><tt class="ph tt">cortex_a9</tt> â optimized for the ARM Cortex-A9 processor;
+    assumes that no unaligned access is supported
+  </li>
+
+
+  <li class="li"><tt class="ph tt">cortex_a9_aligned</tt> â optimized for ARM Cortex-A9; requires that unaligned memory access
+    be enabled on the platform.
+    If memory access is misaligned, this implementation falls back to the NEON version.
+  </li>
+
+
+  <li class="li"><tt class="ph tt">cortex_a9_neon</tt> â optimized for ARM Cortex-A9 using NEON</li>
+
+
+  <li class="li"><tt class="ph tt">generic</tt> â the default</li>
+
+
+  <li class="li"><tt class="ph tt">krait</tt> â optimized for the Qualcomm Krait CPU</li>
+
+
+  <li class="li"><tt class="ph tt">krait_neon</tt> â optimized for Qualcomm Krait using NEON</li>
+
+
+  </ul>
+
+  </li>
+
+
+  </ul>
+
+
+  <p class="p">
+  Processes that register ISRs shouldn't use the NEON versions.
+  </p>
+
+</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+<div class="section"><h2 class="title sectiontitle">Classification:</h2>
+
+<p class="p"><span class="keyword apiname">memcpy()</span> is <a class="xref" href="../summary.html#summary__CLASSIFICATION">ANSI</a>,
+<a class="xref" href="../summary.html#summary__CLASSIFICATION">POSIX 1003.1</a>;
+<span class="keyword apiname">memcpy_isr()</span> is <a class="xref" href="../summary.html#summary__CLASSIFICATION">QNX Neutrino</a>.
+</p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+<thead class="thead" align="left">
+<tr><th class="entry" valign="top" id="d2185932e317">Safety:</th>
+<th class="entry" valign="top" id="d2185932e319">Â </th>
+</tr>
+
+</thead>
+
+<tbody class="tbody">
+<tr><td class="entry" valign="top" headers="d2185932e317 d2185932e319 ">Cancellation point</td>
+<td class="entry" valign="top" headers="d2185932e317 d2185932e319 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2185932e317 d2185932e319 ">Interrupt handler</td>
+<td class="entry" valign="top" headers="d2185932e317 d2185932e319 ">Yes</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2185932e317 d2185932e319 ">Signal handler</td>
+<td class="entry" valign="top" headers="d2185932e317 d2185932e319 ">Yes</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2185932e317 d2185932e319 ">Thread</td>
+<td class="entry" valign="top" headers="d2185932e317 d2185932e319 ">Yes</td>
+</tr>
+
+</tbody>
+
+</table>
+</div>
+
+
+</div>
+
+
+</div>
+
+
+<div class="related-links"><div class="relinfo relref"><strong>Related reference</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/m/memccpy.html" title="Copy bytes between buffers until a given byte is found">memccpy()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/m/memchr.html" title="Find the first occurrence of a character in a buffer">memchr(), memchr_isr()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/m/memcmp.html" title="Compare the bytes in two buffers">memcmp(), memcmp_isr()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/m/memicmp.html" title="Compare two buffers, ignoring case">memicmp()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/m/memmove.html" title="Copy bytes from one buffer to another, handling overlapping memory correctly">memmove()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/m/memset.html" title="Set memory to a given value">memset(), memset_isr()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/m/memset_s.html" title="Securely set memory to a given value">memset_s()</a></div>
+</div>
+</div><div class="navfooter"><!---->
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-m.html" title="M"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">M</span></a></span>  </div>
+</body>
+</html>

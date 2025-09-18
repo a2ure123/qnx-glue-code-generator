@@ -1,0 +1,29 @@
+{
+  "function_name": "accept",
+  "url": "https://www.qnx.com/developers/docs/7.1/com.qnx.doc.neutrino.lib_ref/topic/a/accept.html",
+  "synopsis": "int accept( int s,",
+  "description": "",
+  "headers": [
+    "#include <sys/types.h>",
+    "#include <sys/socket.h>"
+  ],
+  "parameters": [
+    {
+      "name": "s",
+      "description": "A socket that's been created with\n  socket()."
+    },
+    {
+      "name": "addr",
+      "description": "A result parameter that's filled in with the address of the connecting entity,\n      as known to the communications layer. \n      The exact format of the addr parameter is determined by \n      the domain in which the connection was made."
+    },
+    {
+      "name": "addrlen",
+      "description": "A value-result parameter.\n      It should initially contain the amount of space pointed to by addr; \n      on return it contains the actual length (in bytes) of the address returned. \n      This call is used with connection-based socket types, currently with SOCK_STREAM."
+    }
+  ],
+  "return_values": [],
+  "examples": [
+    "#include <sys/types.h>\n#include <sys/socket.h>\n\nint accept( int s,\n            struct sockaddr * addr,\n            socklen_t * addrlen );"
+  ],
+  "full_content": "Function: accept\nURL: https://www.qnx.com/developers/docs/7.1/com.qnx.doc.neutrino.lib_ref/topic/a/accept.html\nSynopsis: int accept( int s,\nHeaders: #include <sys/types.h>, #include <sys/socket.h>\nParameters:\n  - s: A socket that's been created with\n  socket().\n  - addr: A result parameter that's filled in with the address of the connecting entity,\n      as known to the communications layer. \n      The exact format of the addr parameter is determined by \n      the domain in which the connection was made.\n  - addrlen: A value-result parameter.\n      It should initially contain the amount of space pointed to by addr; \n      on return it contains the actual length (in bytes) of the address returned. \n      This call is used with connection-based socket types, currently with SOCK_STREAM.\nExamples:\nExample 1:\n#include <sys/types.h>\n#include <sys/socket.h>\n\nint accept( int s,\n            struct sockaddr * addr,\n            socklen_t * addrlen );"
+}

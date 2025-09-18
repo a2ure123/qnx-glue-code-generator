@@ -1,0 +1,202 @@
+
+<!DOCTYPE html
+  PUBLIC "" "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />        
+      <meta name="copyright" content="(C) Copyright 2005" /><meta name="DC.rights.owner" content="(C) Copyright 2005" /><meta name="DC.Type" content="reference" /><meta name="DC.Title" content="realpath()" /><meta name="abstract" content="Resolve a pathname" /><meta name="description" content="Resolve a pathname" /><meta name="indexterms" content="realpath()" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-r.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/g/getcwd.html" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="realpath" /><meta name="DC.Language" content="en-us" /><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/commonltr.css"><!----></link><title>realpath()</title><link rel="canonical" type="html" href="https://www.qnx.com/developers/docs/7.1/#com.qnx.doc.neutrino.lib_ref/" /><!--  Generated with Oxygen version 18.1, build number 2017020917.  --><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/webhelp_topic.css"><!----></link><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/skins/skin.css" /><script type="text/javascript"><!--
+            
+            var prefix = "../../../index.html";
+            
+            --></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-1.11.3.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.cookie.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-ui.custom.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.highlight-3.js"><!----></script><script type="text/javascript" charset="utf-8" src="../../../oxygen-webhelp/resources/js/webhelp_topic.js"><!----></script><script type="text/javascript"> var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-27400275-1']); _gaq.push(['_setDomainName', 'www.qnx.com']);_gaq.push(['_setAllowLinker', true]);_gaq.push(['_trackPageview']);(function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script></head>
+<body onload="highlightSearchTerm()" class="frmBody" id="realpath">
+<table class="nav"><tbody><tr><td colspan="2"><div id="printlink"><button onClick="window.print()" title="Print this page" aria-label="Print this page"></button></div><div id="permalink"><a href="#" title="Link to this page"></a></div></td></tr><tr><td style="width:75%;"><span class="topic_breadcrumb_links"><span class="topic_breadcrumb_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-r.html" title="R">R</a></span></span></td><td><span id="topic_navigation_links" class="navheader">
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-r.html" title="R"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">R</span></a></span>  </span></td></tr></tbody></table>
+
+
+<h1 class="title topictitle1"><span class="keyword apiname">realpath()</span></h1>
+<table width="100%"><tbody><tr><td align="left"><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">QNX SDP</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">7.1</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">C Library Reference</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">API</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">Developer</button></td><td align="right"><span style="margin:0px 5px; font-size:0.9em;">Updated: October 28, 2024</span></td></tr></tbody></table>
+
+
+<div class="body refbody"><p class="shortdesc"><em class="ph i">Resolve a pathname</em></p>
+
+
+<div class="section refsyn"><h2 class="title sectiontitle">Synopsis:</h2>
+
+<pre class="pre codeblock">
+#include &lt;stdlib.h&gt;
+
+char * realpath( const char * <var class="keyword varname">pathname</var>,
+                 char * <var class="keyword varname">resolved_name</var> );
+</pre>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Arguments:</h2>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><var class="keyword varname">pathname</var></dt>
+
+<dd class="dd">The pathname that you want to resolve.</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">resolved_name</var></dt>
+
+<dd class="dd"><span class="keyword const">NULL</span>, or a pointer to a buffer where the function can store the resolved name.</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Library:</h2>
+
+
+<p class="p"><span class="ph filepath">libc</span></p>
+
+
+<p class="p">
+Use the <span class="keyword option">-l c</span> option to
+<a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/q/qcc.html"><span class="keyword cmdname">qcc</span></a>
+to link against this library.
+This library is usually included automatically.
+</p>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Description:</h2>
+
+
+<p class="p">
+
+
+
+
+
+The <span class="keyword apiname">realpath()</span> function resolves all symbolic links, extra 
+slash (<samp class="ph codeph">/</samp>) characters
+and references to <samp class="ph codeph">/./</samp> and <samp class="ph codeph">/../</samp> in <var class="keyword varname">pathname</var>,
+and copies the resulting null-terminated
+absolute pathname into the memory referenced by <var class="keyword varname">resolved_name</var>. 
+</p>
+
+
+<div class="p">Use one of the following methods to specify the buffer for the resolved name:<ul class="ul" id="realpath__ul_llh_343_2gb">
+<li class="li">Pass <span class="keyword const">NULL</span> for <span class="keyword apiname">resolved_name</span> to make <span class="keyword apiname">realpath()</span>
+allocate an appropriately sized buffer. You're responsible for freeing this memory by calling
+<a class="xref" href="../f/free.html" title="Deallocate a block of memory"><span class="keyword apiname">free()</span></a>. </li>
+
+<li class="li">Specify a pointer to a buffer that is at least <span class="keyword const">PATH_MAX</span> in size.</li>
+
+</ul>
+</div>
+
+<p class="p">
+This function resolves both absolute and relative paths and
+returns the absolute pathname corresponding to <var class="keyword varname">pathname</var>.
+All components of the pathname must exist when you call <span class="keyword apiname">realpath()</span>.
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Returns:</h2>
+
+
+<p class="p">
+A pointer to <var class="keyword varname">resolved_name</var>, or <span class="keyword const">NULL</span> if an error
+occurred, in which case <var class="keyword varname">resolved_name</var> contains the pathname
+that caused the problem.
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Errors:</h2>
+
+
+<p class="p">
+The <span class="keyword apiname">realpath()</span> function may fail and set
+<a class="xref" href="../e/errno.html" title="Thread-local error variable"><var class="keyword varname">errno</var></a>
+to any of the errors specified for
+<a class="xref" href="../c/chdir.html" title="Change the current working directory"><span class="keyword apiname">chdir()</span></a>,
+<a class="xref" href="../c/close.html" title="Close a file"><span class="keyword apiname">close()</span></a>,
+<a class="xref" href="../f/fchdir.html" title="Change the working directory"><span class="keyword apiname">fchdir()</span></a>,
+<a class="xref" href="../l/lstat.html" title="Get information about a file or directory"><span class="keyword apiname">lstat()</span></a>,
+<a class="xref" href="../o/open.html" title="Open a file"><span class="keyword apiname">open()</span></a>,
+<a class="xref" href="readlink.html" title="Place the contents of a symbolic link into a buffer"><span class="keyword apiname">readlink()</span></a>
+and
+<a class="xref" href="../g/getcwd.html" title="Get the name of the current working directory"><span class="keyword apiname">getcwd()</span></a>.
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Classification:</h2>
+
+
+<p class="p"><a class="xref" href="../summary.html#summary__CLASSIFICATION">POSIX 1003.1</a></p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+<thead class="thead" align="left">
+<tr><th class="entry" valign="top" id="d2486304e294">Safety:</th>
+<th class="entry" valign="top" id="d2486304e296">Â </th>
+</tr>
+
+</thead>
+
+<tbody class="tbody">
+<tr><td class="entry" valign="top" headers="d2486304e294 d2486304e296 ">Cancellation point</td>
+<td class="entry" valign="top" headers="d2486304e294 d2486304e296 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2486304e294 d2486304e296 ">Interrupt handler</td>
+<td class="entry" valign="top" headers="d2486304e294 d2486304e296 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2486304e294 d2486304e296 ">Signal handler</td>
+<td class="entry" valign="top" headers="d2486304e294 d2486304e296 ">Yes</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2486304e294 d2486304e296 ">Thread</td>
+<td class="entry" valign="top" headers="d2486304e294 d2486304e296 ">Yes</td>
+</tr>
+
+</tbody>
+
+</table>
+</div>
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="related-links"><div class="relinfo relref"><strong>Related reference</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/g/getcwd.html" title="Get the name of the current working directory">getcwd()</a></div>
+</div>
+</div><div class="navfooter"><!---->
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-r.html" title="R"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">R</span></a></span>  </div>
+</body>
+</html>

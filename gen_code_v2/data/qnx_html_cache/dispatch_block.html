@@ -1,0 +1,258 @@
+
+<!DOCTYPE html
+  PUBLIC "" "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />        
+      <meta name="copyright" content="(C) Copyright 2005" /><meta name="DC.rights.owner" content="(C) Copyright 2005" /><meta name="DC.Type" content="reference" /><meta name="DC.Title" content="dispatch_block()" /><meta name="abstract" content="Block while waiting for an event" /><meta name="description" content="Block while waiting for an event" /><meta name="indexterms" content="dispatch_block()" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-d.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/d/dispatch_context_alloc.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/d/dispatch_context_free.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/d/dispatch_create.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/d/dispatch_create_channel.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/d/dispatch_destroy.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/d/dispatch_handler.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/d/dispatch_timeout.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/d/dispatch_unblock.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.resmgr/topic/skeleton_RESMGR_layers.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.getting_started/topic/s1_resmgr.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/c/channelcreate.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/m/message_attach.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/n/name_attach.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/p/pulse_attach.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/r/resmgr_attach.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/s/select_attach.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/t/timespec.html" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="dispatch_block" /><meta name="DC.Language" content="en-us" /><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/commonltr.css"><!----></link><title>dispatch_block()</title><link rel="canonical" type="html" href="https://www.qnx.com/developers/docs/7.1/#com.qnx.doc.neutrino.lib_ref/" /><!--  Generated with Oxygen version 18.1, build number 2017020917.  --><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/webhelp_topic.css"><!----></link><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/skins/skin.css" /><script type="text/javascript"><!--
+            
+            var prefix = "../../../index.html";
+            
+            --></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-1.11.3.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.cookie.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-ui.custom.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.highlight-3.js"><!----></script><script type="text/javascript" charset="utf-8" src="../../../oxygen-webhelp/resources/js/webhelp_topic.js"><!----></script><script type="text/javascript"> var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-27400275-1']); _gaq.push(['_setDomainName', 'www.qnx.com']);_gaq.push(['_setAllowLinker', true]);_gaq.push(['_trackPageview']);(function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script></head>
+<body onload="highlightSearchTerm()" class="frmBody" id="dispatch_block">
+<table class="nav"><tbody><tr><td colspan="2"><div id="printlink"><button onClick="window.print()" title="Print this page" aria-label="Print this page"></button></div><div id="permalink"><a href="#" title="Link to this page"></a></div></td></tr><tr><td style="width:75%;"><span class="topic_breadcrumb_links"><span class="topic_breadcrumb_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-d.html" title="D">D</a></span></span></td><td><span id="topic_navigation_links" class="navheader">
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-d.html" title="D"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">D</span></a></span>  </span></td></tr></tbody></table>
+
+
+<h1 class="title topictitle1"><span class="keyword apiname">dispatch_block()</span></h1>
+<table width="100%"><tbody><tr><td align="left"><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">QNX SDP</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">7.1</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">C Library Reference</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">API</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">Developer</button></td><td align="right"><span style="margin:0px 5px; font-size:0.9em;">Updated: October 28, 2024</span></td></tr></tbody></table>
+
+
+<div class="body refbody"><p class="shortdesc"><em class="ph i">Block while waiting for an event</em></p>
+
+
+<div class="section refsyn"><h2 class="title sectiontitle">Synopsis:</h2>
+
+<pre class="pre codeblock">
+#include &lt;sys/iofunc.h&gt;
+#include &lt;sys/dispatch.h&gt;
+
+dispatch_context_t* dispatch_block( dispatch_context_t * <var class="keyword varname">ctp</var> );
+</pre>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Arguments:</h2>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><var class="keyword varname">ctp</var></dt>
+
+<dd class="dd">A pointer to a <span class="keyword dtype">dispatch_context_t</span> structure that defines the dispatch context.</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Library:</h2>
+
+
+<p class="p"><span class="ph filepath">libc</span></p>
+
+
+<p class="p">
+Use the <span class="keyword option">-l c</span> option to
+<a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/q/qcc.html"><span class="keyword cmdname">qcc</span></a>
+to link against this library.
+This library is usually included automatically.
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Description:</h2>
+
+
+<p class="p">
+
+
+ The
+<span class="keyword apiname">dispatch_block()</span> function blocks by calling <a class="xref" href="../m/msgreceive.html" title="Wait for a message or pulse on a channel"><span class="keyword apiname">MsgReceive()</span></a> while waiting for an event that's registered using one of
+the attach functions, <a class="xref" href="../m/message_attach.html" title="Attach a message range"><span class="keyword apiname">message_attach()</span></a>, <a class="xref" href="../p/pulse_attach.html" title="Attach a handler function to a pulse code"><span class="keyword apiname">pulse_attach()</span></a>, <a class="xref" href="../r/resmgr_attach.html" title="Attach a path to the pathname space"><span class="keyword apiname">resmgr_attach()</span></a>, or <a class="xref" href="../s/select_attach.html" title="Attach a file descriptor to a dispatch handle"><span class="keyword apiname">select_attach()</span></a>. This function is part of the dispatch layer of a
+resource manager. For more information, see <span class="q">&#147;<a class="xref" href="../../../com.qnx.doc.neutrino.resmgr/topic/skeleton_RESMGR_layers.html">Layers in a resource
+manager</a>&#148;</span> in the <span class="q">&#147;Bones of a Resource Manager&#148;</span> chapter of <cite class="cite">Writing a Resource
+Manager</cite>. </p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Returns:</h2>
+
+
+<p class="p"> A dispatch context that was passed in, or <span class="keyword const">NULL</span> if an error occurs (<a class="xref" href="../e/errno.html" title="Thread-local error variable"><var class="keyword varname">errno</var></a> is set). </p>
+
+
+<div class="note note"><span class="notetitle">Note:</span> 
+In the case of a timeout, a valid <var class="keyword varname">ctp</var> is returned,
+but the <var class="keyword varname">ctp-&gt;message_context.rcvid</var> is set to -1.
+</div>
+
+
+<p class="p">If <span class="keyword const">NULL</span> is returned (for example, because a signal interrupted
+<span class="keyword apiname">MsgReceive()</span>), the old context pointer is still valid. Typically, a resource
+manager targets signals to a thread that is dedicated to handling signals. However, if a signal can
+be targeted to the thread doing <span class="keyword apiname">dispatch_block()</span>, you could use the following
+code:</p>
+
+
+<pre class="pre codeblock">
+dispatch_context_t *ctp;
+
+ctp = dispatch_context_alloc( â¦ );
+while (1) {
+  if ( dispatch_block( ctp ) == NULL ) {
+       /* handle the error condition */
+       â¦
+       } else {
+         dispatch_handler(ctp);
+      }
+}
+</pre>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Errors:</h2>
+
+
+<dl class="dl" compact="compact">
+
+<dt class="dt dlterm"><span class="keyword const">EFAULT</span></dt>
+
+<dd class="dd">A fault occurred when the kernel tried to access the buffers.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EINTR</span></dt>
+
+<dd class="dd">The call was interrupted by a signal.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EINVAL</span></dt>
+
+<dd class="dd">Invalid arguments passed to <span class="keyword apiname">dispatch_block()</span>.</dd>
+
+
+</dl>
+
+
+<p class="p"> See also the error constants returned by <a class="xref" href="../m/msgreceive.html" title="Wait for a message or pulse on a channel"><span class="keyword apiname">MsgReceive()</span></a>.
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Examples:</h2>
+
+
+<pre class="pre codeblock">
+#include &lt;sys/dispatch.h&gt;
+
+int main( int argc, char **argv ) {
+   dispatch_context_t   *ctp;
+
+   â¦
+
+   for(;;) {
+     if( dispatch_block( ctp ) ) {
+       dispatch_handler( ctp );
+     }
+   }
+}
+</pre>
+
+
+<p class="p">
+For examples using the dispatch interface, see
+<a class="xref" href="dispatch_create.html" title="Allocate a dispatch structure and create the channel associated with it"><span class="keyword apiname">dispatch_create()</span></a>,
+<a class="xref" href="../m/message_attach.html" title="Attach a message range"><span class="keyword apiname">message_attach()</span></a>,
+<a class="xref" href="../r/resmgr_attach.html" title="Attach a path to the pathname space"><span class="keyword apiname">resmgr_attach()</span></a>, and
+<a class="xref" href="../t/thread_pool_create.html" title="Create a thread pool handle"><span class="keyword apiname">thread_pool_create()</span></a>.
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Classification:</h2>
+
+<p class="p"><a class="xref" href="../summary.html#summary__CLASSIFICATION">QNX Neutrino</a></p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+<thead class="thead" align="left">
+<tr><th class="entry" valign="top" id="d1343873e317">Safety:</th>
+<th class="entry" valign="top" id="d1343873e319">Â </th>
+</tr>
+
+</thead>
+
+<tbody class="tbody">
+<tr><td class="entry" valign="top" headers="d1343873e317 d1343873e319 ">Cancellation point</td>
+<td class="entry" valign="top" headers="d1343873e317 d1343873e319 ">Yes</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d1343873e317 d1343873e319 ">Interrupt handler</td>
+<td class="entry" valign="top" headers="d1343873e317 d1343873e319 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d1343873e317 d1343873e319 ">Signal handler</td>
+<td class="entry" valign="top" headers="d1343873e317 d1343873e319 ">Yes</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d1343873e317 d1343873e319 ">Thread</td>
+<td class="entry" valign="top" headers="d1343873e317 d1343873e319 ">Yes</td>
+</tr>
+
+</tbody>
+
+</table>
+</div>
+
+</div>
+
+
+</div>
+
+
+<div class="related-links"><div class="relinfo relconcepts"><strong>Related concepts</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.resmgr/topic/skeleton_RESMGR_layers.html" title="Layers in a resource manager (Writing a Resource Manager)">Layers in a resource manager (Writing a Resource Manager)</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.getting_started/topic/s1_resmgr.html" title="Resource Managers (Getting Started with QNX Neutrino)">Resource Managers (Getting Started with <span class="keyword">QNX Neutrino</span>)</a></div>
+</div>
+<div class="relinfo relref"><strong>Related reference</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/d/dispatch_context_alloc.html" title="Return a dispatch context">dispatch_context_alloc()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/d/dispatch_context_free.html" title="Free a dispatch context">dispatch_context_free()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/d/dispatch_create.html" title="Allocate a dispatch structure and create the channel associated with it">dispatch_create()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/d/dispatch_create_channel.html" title="Allocate a dispatch structure, specifying a channel ID">dispatch_create_channel()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/d/dispatch_destroy.html" title="Destroy a dispatch handle, without cleaning up the dispatch framework">dispatch_destroy()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/d/dispatch_handler.html" title="Handle events received by dispatch_block()">dispatch_handler()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/d/dispatch_timeout.html" title="Set a timeout">dispatch_timeout()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/d/dispatch_unblock.html" title="Unblock a thread that is blocked on a dispatch handle">dispatch_unblock()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/c/channelcreate.html" title="Create a communications channel">ChannelCreate(), ChannelCreate_r(), ChannelCreatePulsePool()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/m/message_attach.html" title="Attach a message range">message_attach()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/n/name_attach.html" title="Register a name in the pathname space and create a channel">name_attach()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/p/pulse_attach.html" title="Attach a handler function to a pulse code">pulse_attach()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/r/resmgr_attach.html" title="Attach a path to the pathname space">resmgr_attach()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/s/select_attach.html" title="Attach a file descriptor to a dispatch handle">select_attach()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/t/timespec.html" title="Time-specification structure">timespec</a></div>
+</div>
+</div><div class="navfooter"><!---->
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-d.html" title="D"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">D</span></a></span>  </div>
+</body>
+</html>

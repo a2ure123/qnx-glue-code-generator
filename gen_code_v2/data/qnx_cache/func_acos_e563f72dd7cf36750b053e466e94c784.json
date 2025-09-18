@@ -1,0 +1,21 @@
+{
+  "function_name": "acos",
+  "url": "https://www.qnx.com/developers/docs/7.1/com.qnx.doc.neutrino.lib_ref/topic/a/acos.html",
+  "synopsis": "long double acosl( long double x );",
+  "description": "",
+  "headers": [
+    "#include <math.h>"
+  ],
+  "parameters": [
+    {
+      "name": "x",
+      "description": "The cosine for which you want to find the angle."
+    }
+  ],
+  "return_values": [],
+  "examples": [
+    "#include <math.h>\n\ndouble acos( double x );\n\nfloat acosf( float x );\n\nlong double acosl( long double x );",
+    "#include <stdio.h>\n#include <math.h>\n#include <fenv.h>\n#include <stdlib.h>\n\nint main( void )\n{\n    int except_flags;\n\n    feclearexcept(FE_ALL_EXCEPT);\n\n    printf( \"acos(0.5) is %f\\n\", acos(0.5) );\n\n    except_flags = fetestexcept(FE_ALL_EXCEPT);\n    if(except_flags) {\n        /* An error occurred; handle it appropriately. */\n    }\n\n    return EXIT_SUCCESS;\n}"
+  ],
+  "full_content": "Function: acos\nURL: https://www.qnx.com/developers/docs/7.1/com.qnx.doc.neutrino.lib_ref/topic/a/acos.html\nSynopsis: long double acosl( long double x );\nHeaders: #include <math.h>\nParameters:\n  - x: The cosine for which you want to find the angle.\nExamples:\nExample 1:\n#include <math.h>\n\ndouble acos( double x );\n\nfloat acosf( float x );\n\nlong double acosl( long double x );\nExample 2:\n#include <stdio.h>\n#include <math.h>\n#include <fenv.h>\n#include <stdlib.h>\n\nint main( void )\n{\n    int except_flags;\n\n    feclearexcept(FE_ALL_EXCEPT);\n\n    printf( \"acos(0.5) is %f\\n\", acos(0.5) );\n\n    except_flags = fetestexcept(FE_ALL_EXCEPT);\n    if(except_flags) {\n        /* An error occurred; handle it appropriately. */\n    }\n\n    return EXIT_SUCCESS;\n}"
+}

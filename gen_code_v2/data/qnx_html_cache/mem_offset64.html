@@ -1,0 +1,288 @@
+
+<!DOCTYPE html
+  PUBLIC "" "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />        
+      <meta name="copyright" content="(C) Copyright 2005" /><meta name="DC.rights.owner" content="(C) Copyright 2005" /><meta name="DC.Type" content="reference" /><meta name="DC.Title" content="mem_offset(), mem_offset64()" /><meta name="abstract" content="Get the physical address and length of a virtually mapped memory block" /><meta name="description" content="Get the physical address and length of a virtually mapped memory block" /><meta name="indexterms" content="mem_offset(), mem_offset64()" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-m.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.prog/topic/memory.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/m/mmap.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/p/posix_mem_offset.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/p/posix_mem_offset.html" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="mem_offset" /><meta name="DC.Language" content="en-us" /><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/commonltr.css"><!----></link><title>mem_offset(), mem_offset64()</title><link rel="canonical" type="html" href="https://www.qnx.com/developers/docs/7.1/#com.qnx.doc.neutrino.lib_ref/" /><!--  Generated with Oxygen version 18.1, build number 2017020917.  --><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/webhelp_topic.css"><!----></link><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/skins/skin.css" /><script type="text/javascript"><!--
+            
+            var prefix = "../../../index.html";
+            
+            --></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-1.11.3.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.cookie.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-ui.custom.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.highlight-3.js"><!----></script><script type="text/javascript" charset="utf-8" src="../../../oxygen-webhelp/resources/js/webhelp_topic.js"><!----></script><script type="text/javascript"> var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-27400275-1']); _gaq.push(['_setDomainName', 'www.qnx.com']);_gaq.push(['_setAllowLinker', true]);_gaq.push(['_trackPageview']);(function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script></head>
+<body onload="highlightSearchTerm()" class="frmBody" id="mem_offset">
+<table class="nav"><tbody><tr><td colspan="2"><div id="printlink"><button onClick="window.print()" title="Print this page" aria-label="Print this page"></button></div><div id="permalink"><a href="#" title="Link to this page"></a></div></td></tr><tr><td style="width:75%;"><span class="topic_breadcrumb_links"><span class="topic_breadcrumb_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-m.html" title="M">M</a></span></span></td><td><span id="topic_navigation_links" class="navheader">
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-m.html" title="M"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">M</span></a></span>  </span></td></tr></tbody></table>
+
+  <h1 class="title topictitle1"><span class="keyword apiname">mem_offset()</span>, <span class="keyword apiname">mem_offset64()</span></h1>
+<table width="100%"><tbody><tr><td align="left"><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">QNX SDP</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">7.1</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">C Library Reference</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">API</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">Developer</button></td><td align="right"><span style="margin:0px 5px; font-size:0.9em;">Updated: October 28, 2024</span></td></tr></tbody></table>
+  
+  <div class="body refbody"><p class="shortdesc"><em class="ph i">Get the physical address and length of a virtually mapped memory block</em></p>
+
+    <div class="section">
+      <p class="p">
+        
+        
+        
+        
+      </p>
+
+    </div>
+
+    <div class="section refsyn"><h2 class="title sectiontitle">Synopsis:</h2>
+      
+      <pre class="pre codeblock">
+#include &lt;sys/mman.h&gt;
+
+int mem_offset( const void * <var class="keyword varname">addr</var>,
+                int <var class="keyword varname">fd</var>,
+                size_t <var class="keyword varname">length</var>,
+                off_t * <var class="keyword varname">offset</var>,
+                size_t * <var class="keyword varname">contig_len</var> );
+
+int mem_offset64( const void * <var class="keyword varname">addr</var>,
+                  int <var class="keyword varname">fd</var>,
+                  size_t <var class="keyword varname">length</var>,
+                  off64_t * <var class="keyword varname">offset</var>,
+                  size_t * <var class="keyword varname">contig_len</var> );
+</pre>
+
+    </div>
+
+    <div class="section"><h2 class="title sectiontitle">Arguments:</h2>
+      
+      <dl class="dl">
+        
+          <dt class="dt dlterm"><var class="keyword varname">addr</var></dt>
+
+          <dd class="dd">The virtual address of the memory block whose physical address you want to get.
+            This address doesn't have to be page-aligned (i.e., a multiple of
+            <span class="keyword const">PAGESIZE</span>) because the function reports the physical address that backs
+            the virtual address.</dd>
+
+        
+        
+          <dt class="dt dlterm"><var class="keyword varname">fd</var></dt>
+
+          <dd class="dd">This must be <span class="keyword const">NOFD</span>, or the function fails.
+            </dd>
+
+        
+        
+          <dt class="dt dlterm"><var class="keyword varname">length</var></dt>
+
+          <dd class="dd">The length of the memory block that you want the location of.</dd>
+
+        
+        
+          <dt class="dt dlterm"><var class="keyword varname">offset</var></dt>
+
+          <dd class="dd"><span class="keyword const">NULL</span>, or a pointer to a location for storing the physical address
+            that the virtual address (<var class="keyword varname">addr</var>) maps to.</dd>
+
+        
+        
+          <dt class="dt dlterm"><var class="keyword varname">contig_len</var></dt>
+
+          <dd class="dd"><span class="keyword const">NULL</span>, or a pointer to a location for storing either
+            <var class="keyword varname">length</var> or the length of the physically contiguous block of memory
+            that starts at <var class="keyword varname">addr</var>, whichever is smaller.</dd>
+
+        
+      </dl>
+
+    </div>
+
+    <div class="section"><h2 class="title sectiontitle">Library:</h2>
+      
+      <p class="p"><span class="ph filepath">libc</span></p>
+
+      <p class="p">Use the <span class="keyword option">-l c</span> option to <a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/q/qcc.html"><span class="keyword cmdname">qcc</span></a> to link against this library. This library is usually
+        included automatically.</p>
+
+    </div>
+
+    <div class="section"><h2 class="title sectiontitle">Description:</h2>
+      
+      <p class="p">The <span class="keyword apiname">mem_offset()</span> and <span class="keyword apiname">mem_offset64()</span> functions set the
+        variable pointed to by <var class="keyword varname">offset</var> to the physical address of
+        <var class="keyword varname">addr</var>. The length of the physically contiguous block of memory at
+        <var class="keyword varname">addr</var> is written into the variable pointed to by
+        <var class="keyword varname">contig_len</var> if this argument is not NULL.</p>
+
+      <div class="note note"><span class="notetitle">Note:</span> 
+        <ul class="ul">
+          <li class="li">The <span class="keyword apiname">mem_offset64()</span> function is a large-file support version of
+            <span class="keyword apiname">mem_offset()</span>. The large-file support functions and data types appear
+            in the namespace only if you define <span class="keyword const">_LARGEFILE64_SOURCE</span> when you compile
+            your code.
+            For more information, see <span class="q">&#147;<a class="xref" href="../summary.html#summary__CLASSIFICATION">Classification</a>&#148;</span> in <span class="q">&#147;What's in a Function Description?&#148;</span>.</li>
+
+          <li class="li">If the physical address isn't a valid <span class="keyword dtype">off_t</span> value,
+              <span class="keyword apiname">mem_offset()</span> will fail with <var class="keyword varname">errno</var> set to
+              <span class="keyword const">EOVERFLOW</span>. This is typically the case with many ARM systems, and you
+            should use <span class="keyword apiname">mem_offset64()</span> to get the physical address.</li>
+
+          <li class="li">These functions also cause the initial copying or zero-filling of
+              <span class="keyword const">MAP_PRIVATE</span> or <span class="keyword const">MAP_ANON</span> pages.</li>
+
+          <li class="li">For best performance results, you should cache the result of
+              <span class="keyword apiname">mem_offset()</span>, rather than repeatedly call the function for a given
+            virtual address.</li>
+
+        </ul>
+
+      </div>
+
+      <p class="p">These functions succeed only if the memory in question is
+        locked (either explicitly with an <a class="xref" href="mlock.html" title="Lock a range of process address space in physical memory"><span class="keyword apiname">mlock()</span></a> or <a class="xref" href="mlockall.html" title="Lock all of a process's address space"><span class="keyword apiname">mlockall()</span></a> call, or implicitly, such as when an entire
+        process or system is fully locked).</p>
+
+    </div>
+
+    <div class="section"><h2 class="title sectiontitle">Returns:</h2>
+      
+      <dl class="dl" compact="compact">
+        
+          <dt class="dt dlterm">0</dt>
+
+          <dd class="dd">Success.</dd>
+
+        
+        
+          <dt class="dt dlterm">-1</dt>
+
+          <dd class="dd">An error occurred (<a class="xref" href="../e/errno.html" title="Thread-local error variable"><var class="keyword varname">errno</var></a> is
+            set).</dd>
+
+        
+      </dl>
+
+    </div>
+
+    <div class="section"><h2 class="title sectiontitle">Errors:</h2>
+      
+      <dl class="dl" compact="compact">
+        
+          <dt class="dt dlterm"><span class="keyword const">EACCES</span></dt>
+
+          <dd class="dd">The process hasn't mapped memory at the given address <var class="keyword varname">addr</var>, or the
+            address is of <span class="keyword const">MAP_LAZY</span> pages that aren't yet memory-resident. </dd>
+
+        
+        
+          <dt class="dt dlterm"><span class="keyword const">EAGAIN</span></dt>
+
+          <dd class="dd">The memory isn't locked. The returned offset might
+            correspond to the physical address associated with the given virtual one, but don't rely
+            on it for any functionality. The location that <var class="keyword varname">contig_len</var> points to
+            might also be updated. These values are transient and are reported back as a
+            debugging/testing aid only. </dd>
+
+        
+        
+          <dt class="dt dlterm"><span class="keyword const">ENODEV</span></dt>
+
+          <dd class="dd">The file descriptor <var class="keyword varname">fd</var> isn't <span class="keyword const">NOFD</span>.</dd>
+
+        
+        
+          <dt class="dt dlterm"><span class="keyword const">EOVERFLOW</span></dt>
+
+          <dd class="dd">This error is specific to <span class="keyword apiname">mem_offset()</span> and is returned when the
+            address is too large for the 32-bit <span class="keyword dtype">off_t</span>; use
+              <span class="keyword apiname">mem_offset64()</span> instead. </dd>
+
+        
+      </dl>
+
+    </div>
+
+    <div class="section"><h2 class="title sectiontitle">Examples:</h2>
+      
+<pre class="pre codeblock">
+off64_t offset;
+
+if (mem_offset64(addr, NOFD, 1, &amp;offset, NULL) == -1)
+{
+  /* Error */
+}
+else
+{
+  /* offset contains the physical address of the memory
+     mapped at addr. */
+}
+</pre>
+
+    </div>
+
+    <div class="section"><h2 class="title sectiontitle">Classification:</h2>
+      
+      <p class="p"><span class="keyword apiname">mem_offset()</span> is 
+          <a class="xref" href="../summary.html#summary__CLASSIFICATION"><span class="keyword">QNX Neutrino</span></a>;
+        <span class="keyword apiname">mem_offset64()</span> is
+          <a class="xref" href="../summary.html#summary__CLASSIFICATION">Large-file support</a></p>
+
+      
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+          <thead class="thead" align="left">
+            <tr>
+              <th class="entry" valign="top" id="d2182257e446">Safety:</th>
+
+              <th class="entry" valign="top" id="d2182257e449">Â </th>
+
+            </tr>
+
+          </thead>
+
+          <tbody class="tbody">
+            <tr>
+              <td class="entry" valign="top" headers="d2182257e446 d2182257e449 ">Cancellation point</td>
+
+              <td class="entry" valign="top" headers="d2182257e446 d2182257e449 ">No</td>
+
+            </tr>
+
+            <tr>
+              <td class="entry" valign="top" headers="d2182257e446 d2182257e449 ">Interrupt handler</td>
+
+              <td class="entry" valign="top" headers="d2182257e446 d2182257e449 ">No</td>
+
+            </tr>
+
+            <tr>
+              <td class="entry" valign="top" headers="d2182257e446 d2182257e449 ">Signal handler</td>
+
+              <td class="entry" valign="top" headers="d2182257e446 d2182257e449 ">Yes</td>
+
+            </tr>
+
+            <tr>
+              <td class="entry" valign="top" headers="d2182257e446 d2182257e449 ">Thread</td>
+
+              <td class="entry" valign="top" headers="d2182257e446 d2182257e449 ">Yes</td>
+
+            </tr>
+
+          </tbody>
+
+        </table>
+</div>
+
+    </div>
+
+  </div>
+
+
+
+
+
+<div class="related-links"><div class="relinfo relconcepts"><strong>Related concepts</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.prog/topic/memory.html" title="Working with Memory (QNX Neutrino Programmer's Guide)">Working with Memory (<span class="keyword">QNX Neutrino</span> Programmer's Guide)</a></div>
+</div>
+<div class="relinfo relref"><strong>Related reference</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/m/mmap.html" title="Map a memory region into a process's address space">mmap(), mmap64(), mmap_handle()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/p/posix_mem_offset.html" title="Get the physical address and length of a mapped memory block">posix_mem_offset(), posix_mem_offset64()</a></div>
+</div>
+</div><div class="navfooter"><!---->
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-m.html" title="M"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">M</span></a></span>  </div>
+</body>
+</html>

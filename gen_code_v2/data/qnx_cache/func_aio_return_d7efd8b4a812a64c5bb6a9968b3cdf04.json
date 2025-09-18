@@ -1,0 +1,20 @@
+{
+  "function_name": "aio_return",
+  "url": "https://www.qnx.com/developers/docs/7.1/com.qnx.doc.neutrino.lib_ref/topic/a/aio_return.html",
+  "synopsis": "ssize_t aio_return( struct aiocb * aiocbptr );",
+  "description": "",
+  "headers": [
+    "#include <aio.h>"
+  ],
+  "parameters": [
+    {
+      "name": "aiocbptr",
+      "description": "A pointer to an asynchronous I/O control block of type\n  aiocb\n  whose return status you want to get."
+    }
+  ],
+  "return_values": [],
+  "examples": [
+    "#include <aio.h>\n\nssize_t aio_return( struct aiocb * aiocbptr );"
+  ],
+  "full_content": "Function: aio_return\nURL: https://www.qnx.com/developers/docs/7.1/com.qnx.doc.neutrino.lib_ref/topic/a/aio_return.html\nSynopsis: ssize_t aio_return( struct aiocb * aiocbptr );\nHeaders: #include <aio.h>\nParameters:\n  - aiocbptr: A pointer to an asynchronous I/O control block of type\n  aiocb\n  whose return status you want to get.\nExamples:\nExample 1:\n#include <aio.h>\n\nssize_t aio_return( struct aiocb * aiocbptr );"
+}

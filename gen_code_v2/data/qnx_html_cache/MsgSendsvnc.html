@@ -1,0 +1,417 @@
+
+<!DOCTYPE html
+  PUBLIC "" "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />        
+      <meta name="copyright" content="(C) Copyright 2005" /><meta name="DC.rights.owner" content="(C) Copyright 2005" /><meta name="DC.Type" content="reference" /><meta name="DC.Title" content="MsgSendsvnc(), MsgSendsvnc_r()" /><meta name="abstract" content="Send a message to a channel (non-cancellation point)" /><meta name="description" content="Send a message to a channel (non-cancellation point)" /><meta name="indexterms" content="MsgSendsvnc(), MsgSendsvnc_r()" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-m.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.getting_started/topic/s1_msg.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/c/connectattach.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/m/msgerror.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/m/msgreceive.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/m/msgreceivev.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/m/msgreply.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/m/msgreplyv.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/m/msgsend.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/m/msgsendnc.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/m/msgsendpulse.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/m/msgsendpulseptr.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/m/msgsendsv.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/m/msgsendv.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/m/msgsendvnc.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/m/msgsendvs.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/m/msgsendvsnc.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/n/name_open.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/t/timertimeout.html" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="msgsendsvnc" /><meta name="DC.Language" content="en-us" /><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/commonltr.css"><!----></link><title>MsgSendsvnc(), MsgSendsvnc_r()</title><link rel="canonical" type="html" href="https://www.qnx.com/developers/docs/7.1/#com.qnx.doc.neutrino.lib_ref/" /><!--  Generated with Oxygen version 18.1, build number 2017020917.  --><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/webhelp_topic.css"><!----></link><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/skins/skin.css" /><script type="text/javascript"><!--
+            
+            var prefix = "../../../index.html";
+            
+            --></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-1.11.3.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.cookie.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-ui.custom.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.highlight-3.js"><!----></script><script type="text/javascript" charset="utf-8" src="../../../oxygen-webhelp/resources/js/webhelp_topic.js"><!----></script><script type="text/javascript"> var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-27400275-1']); _gaq.push(['_setDomainName', 'www.qnx.com']);_gaq.push(['_setAllowLinker', true]);_gaq.push(['_trackPageview']);(function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script></head>
+<body onload="highlightSearchTerm()" class="frmBody" id="msgsendsvnc">
+<table class="nav"><tbody><tr><td colspan="2"><div id="printlink"><button onClick="window.print()" title="Print this page" aria-label="Print this page"></button></div><div id="permalink"><a href="#" title="Link to this page"></a></div></td></tr><tr><td style="width:75%;"><span class="topic_breadcrumb_links"><span class="topic_breadcrumb_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-m.html" title="M">M</a></span></span></td><td><span id="topic_navigation_links" class="navheader">
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-m.html" title="M"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">M</span></a></span>  </span></td></tr></tbody></table>
+
+
+<h1 class="title topictitle1"><span class="keyword apiname">MsgSendsvnc()</span>, <span class="keyword apiname">MsgSendsvnc_r()</span></h1>
+<table width="100%"><tbody><tr><td align="left"><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">QNX SDP</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">7.1</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">C Library Reference</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">API</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">Developer</button></td><td align="right"><span style="margin:0px 5px; font-size:0.9em;">Updated: October 28, 2024</span></td></tr></tbody></table>
+
+
+<div class="body refbody"><p class="shortdesc"><em class="ph i">Send a message to a channel (non-cancellation point)</em></p>
+
+
+<div class="section refsyn"><h2 class="title sectiontitle">Synopsis:</h2>
+
+<pre class="pre codeblock">
+#include &lt;sys/neutrino.h&gt;
+
+long MsgSendsvnc( int <var class="keyword varname">coid</var>,
+                  const void* <var class="keyword varname">smsg</var>,
+                  size_t <var class="keyword varname">sbytes</var>,
+                  const iov_t* <var class="keyword varname">riov</var>,
+                  size_t <var class="keyword varname">rparts</var> );
+
+long MsgSendsvnc_r( int <var class="keyword varname">coid</var>,
+                    const void* <var class="keyword varname">smsg</var>,
+                    size_t <var class="keyword varname">sbytes</var>,
+                    const iov_t* <var class="keyword varname">riov</var>,
+                    size_t <var class="keyword varname">rparts</var> );
+</pre>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Arguments:</h2>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><var class="keyword varname">coid</var></dt>
+
+<dd class="dd">The ID of the connection to the channel to send the message on, which you've
+  established by calling 
+  <a class="xref" href="../c/connectattach.html" title="Establish a connection between a process and a channel"><span class="keyword apiname">ConnectAttach()</span></a>
+  or one of its cover functions, such as
+  <a class="xref" href="../n/name_open.html" title="Open a name to connect to a server"><span class="keyword apiname">name_open()</span></a>
+  or
+  <a class="xref" href="../o/open.html" title="Open a file"><span class="keyword apiname">open()</span></a>.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">smsg</var></dt>
+
+<dd class="dd">A pointer to a buffer that contains the message that you want to send.</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">sbytes</var></dt>
+
+<dd class="dd">The number of bytes to send.
+  This number must not exceed <span class="keyword const">SSIZE_MAX</span>, or the function will fail with 
+  <span class="keyword const">EOVERFLOW</span>.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">riov</var></dt>
+
+<dd class="dd">An array of buffers where the reply can be stored.
+  The sum of the IOV buffer lengths must not exceed <span class="keyword const">SSIZE_MAX</span>,
+  or the function will fail with <span class="keyword const">EOVERFLOW</span>.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">rparts</var></dt>
+
+<dd class="dd">The number of elements in the <var class="keyword varname">riov</var> array.
+  This number must not exceed 524288, or the function will fail with <span class="keyword const">EOVERFLOW</span>.
+  If the number exceeds <span class="keyword const">SSIZE_MAX</span>, the function will behave unpredictably;
+  for instance, it may fail with <span class="keyword const">EOVERFLOW</span>.
+</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Library:</h2>
+
+
+<p class="p"><span class="ph filepath">libc</span></p>
+
+
+<p class="p">
+Use the <span class="keyword option">-l c</span> option to
+<a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/q/qcc.html"><span class="keyword cmdname">qcc</span></a>
+to link against this library.
+This library is usually included automatically.
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Description:</h2>
+
+
+<p class="p">
+
+
+
+
+The <span class="keyword apiname">MsgSendsvnc()</span> and <span class="keyword apiname">MsgSendsvnc_r()</span>
+kernel calls send a message to a process's channel via the connection identified by <var class="keyword varname">coid</var>.
+</p>
+
+
+<p class="p">
+These functions are identical except in the way they indicate errors.
+See the <a class="xref" href="#msgsendsvnc__Returns">Returns</a> section for details.
+</p>
+
+
+<p class="p">
+The number of bytes transferred is the minimum of that specified
+by both the sender and the receiver. The send data isn't allowed
+to overflow the receive buffer area provided by the receiver. The reply
+data isn't allowed to overflow the reply buffer area provided.
+</p>
+
+
+<p class="p">
+The sending thread becomes blocked waiting for a reply. If the
+receiving process has a thread that's RECEIVE-blocked on the channel,
+the transfer of data into its address space occurs immediately, and the
+receiving thread is unblocked and made ready to run. The sending
+thread becomes <a class="xref" href="#msgsendsvnc__state_reply">REPLY-blocked</a>. If there are
+no waiting threads on the channel, the sending thread becomes
+<a class="xref" href="#msgsendsvnc__state_send">SEND-blocked</a>
+and is placed in a queue (perhaps with other threads).
+In this case, the actual transfer of data doesn't
+occur until a receiving thread receives on the channel. At this point,
+the sending thread becomes <a class="xref" href="#msgsendsvnc__state_reply">REPLY-blocked</a>.
+</p>
+
+
+<div class="note note"><span class="notetitle">Note:</span> 
+The receiving thread's effective priority might change when you send a message to it.
+For more information, see
+<span class="q">&#147;<a class="xref" href="../../../com.qnx.doc.neutrino.sys_arch/topic/ipc_Priority_inheritance_messages.html">Priority inheritance and messages</a>&#148;</span>
+in the Interprocess Communication (IPC) chapter of the <cite class="cite">System Architecture</cite> guide.
+</div>
+
+
+<p class="p">
+<span class="keyword apiname">MsgSendsv*()</span> is a cancellation point for the
+<span class="keyword apiname">ThreadCancel()</span> kernel call; <span class="keyword apiname">MsgSendsvnc*()</span> isn't.
+Another difference is that a <span class="keyword apiname">MsgSendsvnc*()</span> call that's interrupted to run a 
+signal handler while SEND-blocked will be automatically restarted, instead of failing with 
+<span class="keyword const">EINTR</span> like <span class="keyword apiname">MsgSendsv*()</span>.
+</p>
+
+
+<p class="p"><strong class="ph b">Blocking states</strong></p>
+
+
+
+
+<dl class="dl" compact="compact">
+
+<dt class="dt dlterm" id="msgsendsvnc__state_send"><span class="keyword const">STATE_SEND</span></dt>
+
+<dd class="dd">The message has been sent but not yet received. If a thread
+  is waiting to receive the message, this state is skipped
+  and the calling thread goes directly to <span class="keyword const">STATE_REPLY</span>.
+</dd>
+
+
+
+
+<dt class="dt dlterm" id="msgsendsvnc__state_reply"><span class="keyword const">STATE_REPLY</span></dt>
+
+<dd class="dd">The message has been received but not yet replied to. This
+  state may be entered directly, or from <span class="keyword const">STATE_SEND</span>.
+</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section" id="msgsendsvnc__Returns"><h2 class="title sectiontitle">Returns:</h2>
+
+    
+<p class="p">
+      The only difference between <span class="keyword apiname">MsgSendsvnc()</span> and <span class="keyword apiname">MsgSendsvnc_r()</span>
+      is the way they indicate errors:
+      
+</p>
+
+    
+<dl class="dl" compact="compact">
+
+<dt class="dt dlterm"><span class="keyword apiname">MsgSendsvnc()</span></dt>
+
+
+<dd class="dd">If an error occurs in <span class="keyword apiname">MsgSendsvnc()</span> itself, the function returns -1 and sets 
+<a class="xref" href="../e/errno.html" title="Thread-local error variable"><var class="keyword varname">errno</var></a> to a value from the 
+Errors section. If the receiving thread calls <a class="xref" href="msgerror.html" title="Unblock a client and set its error code"><span class="keyword apiname">MsgError()</span></a>
+to unblock the sending thread, <span class="keyword apiname">MsgSendsvnc()</span> returns -1 and sets <var class="keyword varname">errno</var> to the value passed to 
+<span class="keyword apiname">MsgError()</span>.
+</dd>
+
+
+      
+
+<dt class="dt dlterm"><span class="keyword apiname">MsgSendsvnc_r()</span></dt>
+
+
+<dd class="dd">If an error occurs in <span class="keyword apiname">MsgSendsvnc_r()</span> itself, the function returns the negative of 
+a value from the Errors section. If the receiving thread calls <a class="xref" href="msgerror.html" title="Unblock a client and set its error code"><span class="keyword apiname">MsgError()</span></a>
+to unblock the sending thread, <span class="keyword apiname">MsgSend()</span> returns the negative of the value 
+passed to <span class="keyword apiname">MsgError()</span>. <span class="keyword apiname">MsgSendsvnc_r()</span> does <strong class="ph b">NOT</strong> set <var class="keyword varname">errno</var>, even on success.
+</dd>
+
+
+      
+</dl>
+
+
+<p class="p">Any other return value is the status from <span class="keyword apiname">MsgReply*()</span>.</p>
+
+
+</div>
+
+  
+
+<div class="section"><h2 class="title sectiontitle">Errors:</h2>
+
+
+<p class="p">
+If the message passing itself failed, the errors include the following:
+</p>
+
+
+<dl class="dl" compact="compact">
+
+<dt class="dt dlterm"><span class="keyword const">EBADF</span></dt>
+
+<dd class="dd">The connection indicated by <var class="keyword varname">coid</var> is no longer
+  connected to a channel, or the connection indicated by <var class="keyword varname">coid</var>
+  doesn't exist. The channel may have been terminated by the server,
+  or the network manager if it failed to respond to multiple polls.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EFAULT</span></dt>
+
+<dd class="dd">A fault occurred when the kernel tried to access the buffers
+  provided. This may have occurred on the receive or the reply.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EHOSTDOWN</span></dt>
+
+<dd class="dd">The host is down (e.g., a send across Qnet failed).</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EHOSTUNREACH</span></dt>
+
+<dd class="dd">Unable to communicate with remote node (e.g., across Qnet).</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EOVERFLOW</span></dt>
+
+<dd class="dd">The sum of the IOV lengths exceeds <span class="keyword const">SSIZE_MAX</span>,
+  or the number of parts exceeds 524288. 
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">ESRCH</span></dt>
+
+<dd class="dd">The server died while the calling thread was SEND-blocked or REPLY-blocked.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">ESRVRFAULT</span></dt>
+
+<dd class="dd">A fault occurred in a server's address space when the kernel tried to access the server's message buffers.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">ETIMEDOUT</span></dt>
+
+<dd class="dd">A kernel timeout unblocked the call. See
+  <a class="xref" href="../t/timertimeout.html" title="Set a timeout on a blocking state"><span class="keyword apiname">TimerTimeout()</span></a>.
+</dd>
+
+
+
+</dl>
+
+
+<p class="p">
+If the message passing succeeded, but the server called <span class="keyword apiname">MsgError()</span>,
+the error code can be whatever the server wants it to be.
+</p>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Classification:</h2>
+
+<p class="p"><a class="xref" href="../summary.html#summary__CLASSIFICATION">QNX Neutrino</a></p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+<thead class="thead" align="left">
+<tr><th class="entry" valign="top" id="d2253475e566">Safety:</th>
+<th class="entry" valign="top" id="d2253475e568">Â </th>
+</tr>
+
+</thead>
+
+<tbody class="tbody">
+<tr><td class="entry" valign="top" headers="d2253475e566 d2253475e568 ">Cancellation point</td>
+<td class="entry" valign="top" headers="d2253475e566 d2253475e568 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2253475e566 d2253475e568 ">Interrupt handler</td>
+<td class="entry" valign="top" headers="d2253475e566 d2253475e568 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2253475e566 d2253475e568 ">Signal handler</td>
+<td class="entry" valign="top" headers="d2253475e566 d2253475e568 ">Yes</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2253475e566 d2253475e568 ">Thread</td>
+<td class="entry" valign="top" headers="d2253475e566 d2253475e568 ">Yes</td>
+</tr>
+
+</tbody>
+
+</table>
+</div>
+
+</div>
+
+
+</div>
+
+
+<div class="related-links"><div class="relinfo relconcepts"><strong>Related concepts</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.getting_started/topic/s1_msg.html" title="Message Passing (Getting Started with QNX Neutrino)">Message Passing (Getting Started with <span class="keyword">QNX Neutrino</span>)</a></div>
+</div>
+<div class="relinfo relref"><strong>Related reference</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/c/connectattach.html" title="Establish a connection between a process and a channel">ConnectAttach(), ConnectAttach_r()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/m/msgerror.html" title="Unblock a client and set its error code">MsgError(), MsgError_r()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/m/msgreceive.html" title="Wait for a message or pulse on a channel">MsgReceive(), MsgReceive_r()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/m/msgreceivev.html" title="Wait for a message or pulse on a channel">MsgReceivev(), MsgReceivev_r()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/m/msgreply.html" title="Reply with a message">MsgReply(), MsgReply_r()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/m/msgreplyv.html" title="Reply with a message">MsgReplyv(), MsgReplyv_r()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/m/msgsend.html" title="Send a message to a channel">MsgSend(), MsgSend_r()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/m/msgsendnc.html" title="Send a message to a channel (non-cancellation point)">MsgSendnc(), MsgSendnc_r()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/m/msgsendpulse.html" title="Send a pulse to a process">MsgSendPulse(), MsgSendPulse_r()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/m/msgsendpulseptr.html" title="Send a pulse (containing a pointer) to a process">MsgSendPulsePtr(), MsgSendPulsePtr_r()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/m/msgsendsv.html" title="Send a message to a channel">MsgSendsv(), MsgSendsv_r()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/m/msgsendv.html" title="Send a message to a channel">MsgSendv(), MsgSendv_r()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/m/msgsendvnc.html" title="Send a message to a channel (non-cancellation point)">MsgSendvnc(), MsgSendvnc_r()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/m/msgsendvs.html" title="Send a message to a channel">MsgSendvs(), MsgSendvs_r()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/m/msgsendvsnc.html" title="Send a message to a channel (non-cancellation point)">MsgSendvsnc(), MsgSendvsnc_r()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/n/name_open.html" title="Open a name to connect to a server">name_open()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/t/timertimeout.html" title="Set a timeout on a blocking state">TimerTimeout(), TimerTimeout_r()</a></div>
+</div>
+</div><div class="navfooter"><!---->
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-m.html" title="M"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">M</span></a></span>  </div>
+</body>
+</html>

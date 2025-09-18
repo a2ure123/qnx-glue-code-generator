@@ -1,0 +1,1765 @@
+
+<!DOCTYPE html
+  PUBLIC "" "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />        
+      <meta name="copyright" content="(C) Copyright 2005" /><meta name="DC.rights.owner" content="(C) Copyright 2005" /><meta name="DC.Type" content="reference" /><meta name="DC.Title" content="mallopt()" /><meta name="abstract" content="Control memory allocation and the extra checking for it" /><meta name="description" content="Control memory allocation and the extra checking for it" /><meta name="indexterms" content="mallopt()" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-m.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.prog/topic/memory.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/a/aligned_alloc.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/c/calloc.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/f/free.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/m/mallinfo.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/m/malloc.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/r/realloc.html" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="mallopt" /><meta name="DC.Language" content="en-us" /><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/commonltr.css"><!----></link><title>mallopt()</title><link rel="canonical" type="html" href="https://www.qnx.com/developers/docs/7.1/#com.qnx.doc.neutrino.lib_ref/" /><!--  Generated with Oxygen version 18.1, build number 2017020917.  --><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/webhelp_topic.css"><!----></link><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/skins/skin.css" /><script type="text/javascript"><!--
+            
+            var prefix = "../../../index.html";
+            
+            --></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-1.11.3.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.cookie.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-ui.custom.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.highlight-3.js"><!----></script><script type="text/javascript" charset="utf-8" src="../../../oxygen-webhelp/resources/js/webhelp_topic.js"><!----></script><script type="text/javascript"> var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-27400275-1']); _gaq.push(['_setDomainName', 'www.qnx.com']);_gaq.push(['_setAllowLinker', true]);_gaq.push(['_trackPageview']);(function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script></head>
+<body onload="highlightSearchTerm()" class="frmBody" id="mallopt">
+<table class="nav"><tbody><tr><td colspan="2"><div id="printlink"><button onClick="window.print()" title="Print this page" aria-label="Print this page"></button></div><div id="permalink"><a href="#" title="Link to this page"></a></div></td></tr><tr><td style="width:75%;"><span class="topic_breadcrumb_links"><span class="topic_breadcrumb_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-m.html" title="M">M</a></span></span></td><td><span id="topic_navigation_links" class="navheader">
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-m.html" title="M"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">M</span></a></span>  </span></td></tr></tbody></table>
+
+
+<h1 class="title topictitle1"><span class="keyword apiname">mallopt()</span></h1>
+<table width="100%"><tbody><tr><td align="left"><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">QNX SDP</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">7.1</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">C Library Reference</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">API</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">Developer</button></td><td align="right"><span style="margin:0px 5px; font-size:0.9em;">Updated: October 28, 2024</span></td></tr></tbody></table>
+
+
+<div class="body refbody"><p class="shortdesc"><em class="ph i">Control memory allocation and the extra checking for it</em></p>
+
+
+<div class="section">
+
+<div class="note note"><span class="notetitle">Note:</span> 
+
+
+
+The <span class="ph filepath">&lt;rcheck/malloc.h&gt;</span> file includes additional commands and settings that aren't in
+<span class="ph filepath">&lt;malloc.h&gt;</span>.
+To use the debug version of <span class="keyword apiname">mallopt()</span>, you need to link with <span class="ph filepath">librcheck.so</span>
+or use <samp class="ph codeph">LD_PRELOAD=librcheck.so</samp> at runtime.
+</div>
+
+
+</div>
+
+
+<div class="section refsyn"><h2 class="title sectiontitle">Synopsis:</h2>
+
+<pre class="pre codeblock">
+#include &lt;malloc.h&gt;
+
+int mallopt( int <var class="keyword varname">cmd</var>,
+             intptr_t <var class="keyword varname">value</var> );
+</pre>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Arguments:</h2>
+
+
+<dl class="dl" compact="compact">
+
+
+<dt class="dt dlterm"><var class="keyword varname">cmd</var></dt>
+
+<dd class="dd">The command or setting you wish to make.
+  The normal and debug versions of <span class="keyword apiname">mallopt()</span> both support the
+  following:
+
+  <ul class="ul">
+  <li class="li"><a class="xref" href="#mallopt__mallopt_MALLOC_ARENA_CACHE_FREE_NOW"><span class="keyword const">MALLOC_ARENA_CACHE_FREE_NOW</span></a></li>
+
+  <li class="li"><a class="xref" href="#mallopt__mallopt_MALLOC_ARENA_CACHE_MAXBLK"><span class="keyword const">MALLOC_ARENA_CACHE_MAXBLK</span></a></li>
+
+  <li class="li"><a class="xref" href="#mallopt__mallopt_MALLOC_ARENA_CACHE_MAXSZ"><span class="keyword const">MALLOC_ARENA_CACHE_MAXSZ</span></a></li>
+
+  <li class="li"><a class="xref" href="#mallopt__mallopt_MALLOC_ARENA_SIZE"><span class="keyword const">MALLOC_ARENA_SIZE</span></a></li>
+
+  
+  <li class="li"><a class="xref" href="#mallopt__mallopt_MALLOC_FREE_CHECK"><span class="keyword const">MALLOC_FREE_CHECK</span></a></li>
+
+  <li class="li"><a class="xref" href="#mallopt__mallopt_MALLOC_MAX_ALIGNMENT"><span class="keyword const">MALLOC_MAX_ALIGNMENT</span></a></li>
+
+  <li class="li"><a class="xref" href="#mallopt__mallopt_MALLOC_MEMORY_HOLD"><span class="keyword const">MALLOC_MEMORY_HOLD</span></a></li>
+
+  <li class="li"><a class="xref" href="#mallopt__mallopt_MALLOC_STATS"><span class="keyword const">MALLOC_STATS</span></a></li>
+
+  <li class="li"><a class="xref" href="#mallopt__mallopt_MALLOC_VERIFY"><span class="keyword const">MALLOC_VERIFY</span></a></li>
+
+  <li class="li"><a class="xref" href="#mallopt__mallopt_MALLOC_VERIFY_ON"><span class="keyword const">MALLOC_VERIFY_ON</span></a></li>
+
+  </ul>
+
+
+  
+
+  <p class="p">
+  The debug version also supports the following:
+  </p>
+
+
+  <ul class="ul">
+  
+  <li class="li"><a class="xref" href="#mallopt__mallopt_MALLOC_CKACCESS"><span class="keyword const">MALLOC_CKACCESS</span></a></li>
+
+  <li class="li"><a class="xref" href="#mallopt__mallopt_MALLOC_CKALLOC"><span class="keyword const">MALLOC_CKALLOC</span></a></li>
+
+  <li class="li"><a class="xref" href="#mallopt__mallopt_MALLOC_CKBOUNDS"><span class="keyword const">MALLOC_CKBOUNDS</span></a></li>
+
+  <li class="li"><a class="xref" href="#mallopt__mallopt_MALLOC_CKCHAIN"><span class="keyword const">MALLOC_CKCHAIN</span></a></li>
+
+  <li class="li"><a class="xref" href="#mallopt__mallopt_MALLOC_CTRL_CMD"><span class="keyword const">MALLOC_CTRL_CMD</span></a></li>
+
+  <li class="li"><a class="xref" href="#mallopt__mallopt_MALLOC_CTRL_CMD_FILE"><span class="keyword const">MALLOC_CTRL_CMD_FILE</span></a></li>
+
+  <li class="li"><a class="xref" href="#mallopt__mallopt_MALLOC_DUMP_LEAKS"><span class="keyword const">MALLOC_DUMP_LEAKS</span></a></li>
+
+  <li class="li"><a class="xref" href="#mallopt__mallopt_MALLOC_DUMP_STATS"><span class="keyword const">MALLOC_DUMP_STATS</span></a></li>
+
+  <li class="li"><a class="xref" href="#mallopt__mallopt_MALLOC_EVENTBTDEPTH"><span class="keyword const">MALLOC_EVENTBTDEPTH</span></a></li>
+
+  <li class="li"><a class="xref" href="#mallopt__mallopt_MALLOC_EVENTFILE"><span class="keyword const">MALLOC_EVENTFILE</span></a></li>
+
+  <li class="li"><a class="xref" href="#mallopt__mallopt_MALLOC_FATAL"><span class="keyword const">MALLOC_FATAL</span></a></li>
+
+  <li class="li"><a class="xref" href="#mallopt__mallopt_MALLOC_HANDLE_SIGNALS"><span class="keyword const">MALLOC_HANDLE_SIGNALS</span></a></li>
+
+  <li class="li"><a class="xref" href="#mallopt__mallopt_MALLOC_MARKER"><span class="keyword const">MALLOC_MARKER</span></a></li>
+
+  <li class="li"><a class="xref" href="#mallopt__mallopt_MALLOC_TRACEBTDEPTH"><span class="keyword const">MALLOC_TRACEBTDEPTH</span></a></li>
+
+  <li class="li"><a class="xref" href="#mallopt__mallopt_MALLOC_TRACEFILE"><span class="keyword const">MALLOC_TRACEFILE</span></a></li>
+
+  <li class="li"><a class="xref" href="#mallopt__mallopt_MALLOC_TRACEMAX"><span class="keyword const">MALLOC_TRACEMAX</span></a></li>
+
+  <li class="li"><a class="xref" href="#mallopt__mallopt_MALLOC_TRACEMIN"><span class="keyword const">MALLOC_TRACEMIN</span></a></li>
+
+  <li class="li"><a class="xref" href="#mallopt__mallopt_MALLOC_TRACING"><span class="keyword const">MALLOC_TRACING</span></a></li>
+
+  <li class="li"><a class="xref" href="#mallopt__mallopt_MALLOC_TRUNCATE"><span class="keyword const">MALLOC_TRUNCATE</span></a></li>
+
+  <li class="li"><a class="xref" href="#mallopt__mallopt_MALLOC_VERBOSE"><span class="keyword const">MALLOC_VERBOSE</span></a></li>
+
+  <li class="li"><span class="keyword const">MALLOC_WARN</span> (see
+    <a class="xref" href="#mallopt__mallopt_MALLOC_FATAL"><span class="keyword const">MALLOC_FATAL</span></a>)
+  </li>
+
+  </ul>
+
+
+  
+
+  <p class="p">
+  The normal version returns -1 and sets <var class="keyword varname">errno</var> to <span class="keyword const">EINVAL</span> if you pass it
+  one of the debug commands.
+  </p>
+
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">value</var></dt>
+
+<dd class="dd">A value corresponding to the command.</dd>
+
+
+
+</dl>
+
+
+<p class="p">
+For more information about the commands and their possible values, see below.
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Library:</h2>
+
+
+<p class="p"><span class="ph filepath">libc</span></p>
+
+<p class="p">Use the <span class="keyword option">-l c</span> option to
+<a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/q/qcc.html"><span class="keyword cmdname">qcc</span></a>
+to link against this library.
+This library is usually included automatically.</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Description:</h2>
+
+
+<p class="p">
+The <span class="keyword apiname">mallopt()</span> function controls memory allocation; the
+debug version also controls the extra checking of  memory allocation. 
+</p>
+
+
+<p class="p">
+You can set some of the variables by using environment variables, as
+listed below.
+This is an easy way to control the memory allocation, but the
+environment variables are checked only when your program starts.
+</p>
+
+
+
+<p class="p" id="mallopt__Allocation"><strong class="ph b">Controlling memory allocation</strong></p>
+
+
+<p class="p">
+As described in the
+<span class="q">&#147;<a class="xref" href="../../../com.qnx.doc.neutrino.prog/topic/memory.html">Working with Memory</a>&#148;</span>
+chapter of the <span class="keyword">QNX Neutrino</span> <cite class="cite">Programmer's Guide</cite>,
+the memory allocator requests memory from the OS in chunks called <em class="ph i">arenas</em> and can cache
+freed blocks instead of releasing them back to the OS.
+The <span class="ph filepath">libc</span> version of <span class="keyword apiname">mallopt()</span> supports these commands
+that control how allocation is done:
+</p>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm" id="mallopt__mallopt_MALLOC_ARENA_CACHE_FREE_NOW"><span class="keyword const">MALLOC_ARENA_CACHE_FREE_NOW</span></dt>
+
+<dd class="dd">Specify when changes to the arena cache occur:
+  
+
+  <ul class="ul">
+  <li class="li">If the <var class="keyword varname">value</var> argument is 1, the arena cache is adjusted immediately,
+    and all cached memory that can be freed to the OS is released.
+    Exactly what can be freed depends on how the allocations up to that point have been laid out in memory.
+  </li>
+
+
+  <li class="li">If <var class="keyword varname">value</var> is 0, the arena cache is adjusted immediately to correspond to
+    the current settings.
+    Enough cache blocks are freed to match the adjusted <span class="keyword const">MALLOC_ARENA_CACHE_MAXBLK</span> value.
+  </li>
+
+
+  </ul>
+
+
+  <p class="p">
+  If you don't use this command, changes made to the cache parameters take effect whenever memory is subsequently
+  released to the cache.
+  </p>
+
+</dd>
+
+
+
+
+<dt class="dt dlterm" id="mallopt__mallopt_MALLOC_ARENA_CACHE_MAXBLK"><span class="keyword const">MALLOC_ARENA_CACHE_MAXBLK</span></dt>
+
+<dd class="dd">The maximum number of cached blocks.
+  The default value is 12.
+  
+
+  <p class="p">
+  Environment variable: <span class="keyword envar">MALLOC_ARENA_CACHE_MAXBLK</span>.
+  If you set this environment variable to 0, it's ignored.
+  </p>
+
+
+  <p class="p">
+  If you don't want the allocator to cache any memory cached all, specify a value of 0.
+  This would adversely affect performance, as you'd go to the OS more often for memory,
+  but the heap wouldn't hold on to as much memory.
+  </p>
+
+</dd>
+
+
+
+
+<dt class="dt dlterm" id="mallopt__mallopt_MALLOC_ARENA_CACHE_MAXSZ"><span class="keyword const">MALLOC_ARENA_CACHE_MAXSZ</span></dt>
+
+<dd class="dd">The maximum size of the cache, in bytes.
+  The default is 0, indicating no maximum.
+  
+
+  <p class="p">
+  Environment variable: <span class="keyword envar">MALLOC_ARENA_CACHE_MAXSZ</span>.
+  If you set this environment variable to 0, it's ignored.
+  </p>
+
+</dd>
+
+
+
+
+<dt class="dt dlterm" id="mallopt__mallopt_MALLOC_ARENA_SIZE"><span class="keyword const">MALLOC_ARENA_SIZE</span></dt>
+
+<dd class="dd">The size, in bytes, of arenas that are subsequently allocated.
+  This size must be a multiple of 4 KB, and currently is limited to being
+  less than 256 KB.
+  Lowering the arena size can reduce the amount of memory required.
+  The default is 32 KB.
+  
+
+  <p class="p">
+  Environment variable: <span class="keyword envar">MALLOC_ARENA_SIZE</span>
+  
+  
+  </p>
+
+
+  <p class="p">
+  If the <var class="keyword varname">value</var> argument is 0, <span class="keyword apiname">mallopt()</span> returns the current
+  arena size; if <var class="keyword varname">value</var> is any other value, <span class="keyword apiname">mallopt()</span>
+  returns the previous size.
+  </p>
+
+</dd>
+
+
+
+
+
+
+<dt class="dt dlterm" id="mallopt__mallopt_MALLOC_FREE_CHECK"><span class="keyword const">MALLOC_FREE_CHECK</span></dt>
+
+<dd class="dd">Specify a <var class="keyword varname">value</var> of 1 to tell the library to
+  check to see if a block that's being passed to
+  <a class="xref" href="../f/free.html" title="Deallocate a block of memory"><span class="keyword apiname">free()</span></a>
+  has already been freed.
+  If you enable this option,
+  then if you try to free a block that's already freed, the library 
+  aborts the program.
+  
+</dd>
+
+
+
+
+<dt class="dt dlterm" id="mallopt__mallopt_MALLOC_MAX_ALIGNMENT"><span class="keyword const">MALLOC_MAX_ALIGNMENT</span></dt>
+
+<dd class="dd">Set the maximum allowable alignment size, as used by
+  <a class="xref" href="memalign.html" title="Allocate aligned memory"><span class="keyword apiname">memalign()</span></a>
+  and
+  <a class="xref" href="../p/posix_memalign.html" title="Allocate aligned memory"><span class="keyword apiname">posix_memalign()</span></a>.
+  The default is 128 KB.
+  The size used is the largest power of two that's less than or equal to <var class="keyword varname">value</var>.
+  
+</dd>
+
+
+
+
+<dt class="dt dlterm" id="mallopt__mallopt_MALLOC_MEMORY_HOLD"><span class="keyword const">MALLOC_MEMORY_HOLD</span></dt>
+
+<dd class="dd">Specify a <var class="keyword varname">value</var> of 1 to tell the allocator to never release
+  memory back to the OS.
+  In this case, the heap never shrinks.
+  The default behavior is not to hold the memory.
+  
+
+  <p class="p">
+  
+  
+  Environment variable: <span class="keyword envar">MALLOC_MEMORY_HOLD</span>
+  </p>
+
+</dd>
+
+
+
+
+
+
+<dt class="dt dlterm" id="mallopt__mallopt_MALLOC_STATS"><span class="keyword const">MALLOC_STATS</span></dt>
+
+<dd class="dd">Get statistics about the current state of the heap allocator.
+  The <var class="keyword varname">value</var> argument is a pointer to a
+  <span class="keyword dtype">struct malloc_stats</span> (defined in <span class="ph filepath">&lt;malloc.h&gt;</span>).
+  You need to allocate the memory for the structure.
+  The typical usage is as follows:
+  
+  
+
+<pre class="pre codeblock">
+struct malloc_stats ms;
+...
+mallopt(MALLOC_STATS, &amp;ms);
+</pre>
+
+</dd>
+
+
+
+
+<dt class="dt dlterm" id="mallopt__mallopt_MALLOC_VERIFY"><span class="keyword const">MALLOC_VERIFY</span></dt>
+
+<dd class="dd">Perform a <em class="ph i">chain check</em>, traversing the entire set of allocation chains
+  for all arenas and blocks in the heap.
+  If an error is found, the allocator aborts the program.
+  The <var class="keyword varname">value</var> argument is currently ignored; pass 1 for it.   
+  
+</dd>
+
+
+
+
+<dt class="dt dlterm" id="mallopt__mallopt_MALLOC_VERIFY_ON"><span class="keyword const">MALLOC_VERIFY_ON</span></dt>
+
+<dd class="dd">Specify a <var class="keyword varname">value</var> of 1 to enable additional checking on
+  operations involving the heap.
+  When this option is enabled, operations through the allocator
+  go through additional verification.
+  If any of the verifications of the state of the heap fail, the allocator 
+  aborts the program.
+  
+</dd>
+
+
+
+</dl>
+
+
+
+<p class="p" id="mallopt__Checking"><strong class="ph b">Controlling extra checking</strong></p>
+
+
+<p class="p">
+If you're using the <span class="ph filepath">librcheck</span> version of <span class="keyword apiname">mallopt()</span>, 
+you can use the following options to control additional checks in the library:
+</p>
+
+
+<dl class="dl" compact="compact">
+
+
+
+<dt class="dt dlterm" id="mallopt__mallopt_MALLOC_CKACCESS"><span class="keyword const">MALLOC_CKACCESS</span></dt>
+
+<dd class="dd">Turn on (1) or off (0) boundary checking for memory and string operations,
+  depending on the <var class="keyword varname">value</var> argument.
+  For more information, see
+  <span class="q">&#147;<a class="xref" href="../../../com.qnx.doc.neutrino.prog/topic/hat_CheckingLevel.html">Controlling the level of checking</a>&#148;</span>
+  in the <span class="q">&#147;Heap analysis&#148;</span> section of the <span class="q">&#147;Working with Memory&#148;</span> chapter
+  of the <span class="keyword">QNX Neutrino</span> <cite class="cite">Programmer's Guide</cite>.
+  
+
+  <p class="p">
+  
+  
+  Environment variable: <span class="keyword envar">MALLOC_CKACCESS</span>
+  </p>
+
+</dd>
+
+
+
+
+<dt class="dt dlterm" id="mallopt__mallopt_MALLOC_CKALLOC"><span class="keyword const">MALLOC_CKALLOC</span></dt>
+
+<dd class="dd">Turn on (1) or off (0) pointer checking for
+  <a class="xref" href="../r/realloc.html" title="Allocate, reallocate, or free a block of memory"><span class="keyword apiname">realloc()</span></a>
+  and
+  <a class="xref" href="../f/free.html" title="Deallocate a block of memory"><span class="keyword apiname">free()</span></a>,
+  depending on the <var class="keyword varname">value</var> argument.  
+  If this is on, the allocator makes sure that the pointers you pass to these functions
+  point to memory that it manages.
+  
+
+  <p class="p">
+  
+  
+  Environment variable: <span class="keyword envar">MALLOC_CKALLOC</span>
+  </p>
+
+</dd>
+
+
+
+
+<dt class="dt dlterm" id="mallopt__mallopt_MALLOC_CKBOUNDS"><span class="keyword const">MALLOC_CKBOUNDS</span></dt>
+
+<dd class="dd">Turn on (1) or off (0) fill-area boundary checking, depending on the <var class="keyword varname">value</var> argument.
+  For more information, see
+  <span class="q">&#147;<a class="xref" href="../../../com.qnx.doc.neutrino.prog/topic/hat_CheckingLevel.html">Controlling the level of checking</a>&#148;</span>
+  in the <span class="q">&#147;Heap analysis&#148;</span> section of the <span class="q">&#147;Working with Memory&#148;</span> chapter
+  of the <span class="keyword">QNX Neutrino</span> <cite class="cite">Programmer's Guide</cite>.
+  
+
+  <p class="p">
+  
+  
+  Environment variable: <span class="keyword envar">MALLOC_CKBOUNDS</span>
+  </p>
+
+</dd>
+
+
+
+
+<dt class="dt dlterm" id="mallopt__mallopt_MALLOC_CKCHAIN"><span class="keyword const">MALLOC_CKCHAIN</span></dt>
+
+<dd class="dd">Enable (1) or disable (0) full-chain checking, depending on the <var class="keyword varname">value</var> argument.
+  For more information, see
+  <span class="q">&#147;<a class="xref" href="../../../com.qnx.doc.neutrino.prog/topic/hat_CheckingLevel.html">Controlling the level of checking</a>&#148;</span>
+  in the <span class="q">&#147;Heap analysis&#148;</span> section of the <span class="q">&#147;Working with Memory&#148;</span> chapter
+  of the <span class="keyword">QNX Neutrino</span> <cite class="cite">Programmer's Guide</cite>.
+  
+
+  <p class="p">
+  
+  
+  Environment variable: <span class="keyword envar">MALLOC_CKCHAIN</span>
+  </p>
+
+</dd>
+
+
+
+
+<dt class="dt dlterm" id="mallopt__mallopt_MALLOC_CTRL_CMD"><span class="keyword const">MALLOC_CTRL_CMD</span></dt>
+
+<dd class="dd">(QNX Neutrino 6.6 or later) Execute the command that the <var class="keyword varname">value</var> points to.
+  This command is a convienient way to process non-API commands received from a socket or file.
+  
+
+  <div class="note note"><span class="notetitle">Note:</span> 
+  The library modifies the given string.
+  </div>
+
+
+  <p class="p">
+  The <var class="keyword varname">value</var> argument is a string containing one of the following commands (some
+  of which correspond to a <span class="keyword apiname">mallopt()</span> command), followed by the appropriate argument:
+  </p>
+
+
+
+  
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+
+  <thead class="thead" align="left">
+  <tr>
+    <th class="entry" valign="top" id="d2170133e922">String command</th>
+
+    <th class="entry" valign="top" id="d2170133e925">Argument</th>
+
+    <th class="entry" valign="top" id="d2170133e928"><span class="keyword apiname">mallopt()</span> command</th>
+
+  </tr>
+
+  </thead>
+
+
+  <tbody class="tbody">
+  <tr>
+    <td class="entry" valign="top" headers="d2170133e922 d2170133e925 d2170133e928 "><tt class="ph tt">check_access</tt></td>
+
+    <td class="entry" valign="top" headers="d2170133e922 d2170133e925 d2170133e928 ">0 or 1</td>
+
+    <td class="entry" valign="top" headers="d2170133e922 d2170133e925 d2170133e928 "><span class="keyword const">MALLOC_CKACCESS</span></td>
+
+  </tr>
+
+  <tr>
+    <td class="entry" valign="top" headers="d2170133e922 d2170133e925 d2170133e928 "><tt class="ph tt">check_alloc</tt></td>
+
+    <td class="entry" valign="top" headers="d2170133e922 d2170133e925 d2170133e928 ">0 or 1</td>
+
+    <td class="entry" valign="top" headers="d2170133e922 d2170133e925 d2170133e928 "><span class="keyword const">MALLOC_CKALLOC</span></td>
+
+  </tr>
+
+  <tr>
+    <td class="entry" valign="top" headers="d2170133e922 d2170133e925 d2170133e928 "><tt class="ph tt">check_chain</tt></td>
+
+    <td class="entry" valign="top" headers="d2170133e922 d2170133e925 d2170133e928 ">0 or 1</td>
+
+    <td class="entry" valign="top" headers="d2170133e922 d2170133e925 d2170133e928 "><span class="keyword const">MALLOC_CKCHAIN</span></td>
+
+  </tr>
+
+  <tr>
+    <td class="entry" valign="top" headers="d2170133e922 d2170133e925 d2170133e928 "><tt class="ph tt">check_bounds</tt></td>
+
+    <td class="entry" valign="top" headers="d2170133e922 d2170133e925 d2170133e928 ">An integer</td>
+
+    <td class="entry" valign="top" headers="d2170133e922 d2170133e925 d2170133e928 "><span class="keyword const">MALLOC_CKBOUNDS</span> </td>
+
+  </tr>
+
+  <tr>
+    <td class="entry" valign="top" headers="d2170133e922 d2170133e925 d2170133e928 "><tt class="ph tt">event_file</tt></td>
+
+    <td class="entry" valign="top" headers="d2170133e922 d2170133e925 d2170133e928 ">A filename</td>
+
+    <td class="entry" valign="top" headers="d2170133e922 d2170133e925 d2170133e928 "><span class="keyword const">MALLOC_EVENTFILE</span></td>
+
+  </tr>
+
+  <tr>
+    <td class="entry" valign="top" headers="d2170133e922 d2170133e925 d2170133e928 "><tt class="ph tt">event_dump_unref</tt></td>
+
+    <td class="entry" valign="top" headers="d2170133e922 d2170133e925 d2170133e928 ">None</td>
+
+    <td class="entry" valign="top" headers="d2170133e922 d2170133e925 d2170133e928 ">None; list the leak events</td>
+
+  </tr>
+
+  <tr>
+    <td class="entry" valign="top" headers="d2170133e922 d2170133e925 d2170133e928 "><tt class="ph tt">event_btdepth</tt></td>
+
+    <td class="entry" valign="top" headers="d2170133e922 d2170133e925 d2170133e928 ">An integer</td>
+
+    <td class="entry" valign="top" headers="d2170133e922 d2170133e925 d2170133e928 "><span class="keyword const">MALLOC_EVENTBTDEPTH</span></td>
+
+  </tr>
+
+  <tr>
+    <td class="entry" valign="top" headers="d2170133e922 d2170133e925 d2170133e928 "><tt class="ph tt">ldd_replay</tt></td>
+
+    <td class="entry" valign="top" headers="d2170133e922 d2170133e925 d2170133e928 ">None</td>
+
+    <td class="entry" valign="top" headers="d2170133e922 d2170133e925 d2170133e928 ">None; replay the loading of all DLLs</td>
+
+  </tr>
+
+  <tr>
+    <td class="entry" valign="top" headers="d2170133e922 d2170133e925 d2170133e928 "><tt class="ph tt">dump_leaks</tt></td>
+
+    <td class="entry" valign="top" headers="d2170133e922 d2170133e925 d2170133e928 ">None</td>
+
+    <td class="entry" valign="top" headers="d2170133e922 d2170133e925 d2170133e928 "><span class="keyword const">MALLOC_DUMP_LEAKS</span></td>
+
+  </tr>
+
+  <tr>
+    <td class="entry" valign="top" headers="d2170133e922 d2170133e925 d2170133e928 "><tt class="ph tt">trace_file</tt></td>
+
+    <td class="entry" valign="top" headers="d2170133e922 d2170133e925 d2170133e928 ">A filename</td>
+
+    <td class="entry" valign="top" headers="d2170133e922 d2170133e925 d2170133e928 "><span class="keyword const">MALLOC_TRACEFILE</span></td>
+
+  </tr>
+
+  <tr>
+    <td class="entry" valign="top" headers="d2170133e922 d2170133e925 d2170133e928 "><tt class="ph tt">truncate_files</tt></td>
+
+    <td class="entry" valign="top" headers="d2170133e922 d2170133e925 d2170133e928 ">An integer</td>
+
+    <td class="entry" valign="top" headers="d2170133e922 d2170133e925 d2170133e928 "><span class="keyword const">MALLOC_TRUNCATE</span></td>
+
+  </tr>
+
+  <tr>
+    <td class="entry" valign="top" headers="d2170133e922 d2170133e925 d2170133e928 "><tt class="ph tt">tracing_enabled</tt></td>
+
+    <td class="entry" valign="top" headers="d2170133e922 d2170133e925 d2170133e928 ">0 or 1</td>
+
+    <td class="entry" valign="top" headers="d2170133e922 d2170133e925 d2170133e928 "><span class="keyword const">MALLOC_TRACING</span></td>
+
+  </tr>
+
+  <tr>
+    <td class="entry" valign="top" headers="d2170133e922 d2170133e925 d2170133e928 "><tt class="ph tt">trace_btdepth</tt></td>
+
+    <td class="entry" valign="top" headers="d2170133e922 d2170133e925 d2170133e928 ">An integer</td>
+
+    <td class="entry" valign="top" headers="d2170133e922 d2170133e925 d2170133e928 "><span class="keyword const">MALLOC_TRACEBTDEPTH</span></td>
+
+  </tr>
+
+  <tr>
+    <td class="entry" valign="top" headers="d2170133e922 d2170133e925 d2170133e928 "><tt class="ph tt">trace_min</tt></td>
+
+    <td class="entry" valign="top" headers="d2170133e922 d2170133e925 d2170133e928 ">An integer</td>
+
+    <td class="entry" valign="top" headers="d2170133e922 d2170133e925 d2170133e928 "><span class="keyword const">MALLOC_TRACEMIN</span></td>
+
+  </tr>
+
+  <tr>
+    <td class="entry" valign="top" headers="d2170133e922 d2170133e925 d2170133e928 "><tt class="ph tt">trace_max</tt></td>
+
+    <td class="entry" valign="top" headers="d2170133e922 d2170133e925 d2170133e928 ">An integer</td>
+
+    <td class="entry" valign="top" headers="d2170133e922 d2170133e925 d2170133e928 "><span class="keyword const">MALLOC_TRACEMAX</span></td>
+
+  </tr>
+
+  <tr>
+    <td class="entry" valign="top" headers="d2170133e922 d2170133e925 d2170133e928 "><tt class="ph tt">trace_dump_all</tt></td>
+
+    <td class="entry" valign="top" headers="d2170133e922 d2170133e925 d2170133e928 ">A filename</td>
+
+    <td class="entry" valign="top" headers="d2170133e922 d2170133e925 d2170133e928 ">None; dump all traces</td>
+
+  </tr>
+
+  <tr>
+    <td class="entry" valign="top" headers="d2170133e922 d2170133e925 d2170133e928 "><tt class="ph tt">trace_dump_alloc</tt></td>
+
+    <td class="entry" valign="top" headers="d2170133e922 d2170133e925 d2170133e928 ">A filename</td>
+
+    <td class="entry" valign="top" headers="d2170133e922 d2170133e925 d2170133e928 ">None; dump all allocations</td>
+
+  </tr>
+
+  <tr>
+    <td class="entry" valign="top" headers="d2170133e922 d2170133e925 d2170133e928 "><tt class="ph tt">trace_dump_alloc_state</tt></td>
+
+    <td class="entry" valign="top" headers="d2170133e922 d2170133e925 d2170133e928 ">A filename</td>
+
+    <td class="entry" valign="top" headers="d2170133e922 d2170133e925 d2170133e928 ">None; dump the allocation statistics</td>
+
+  </tr>
+
+  <tr>
+    <td class="entry" valign="top" headers="d2170133e922 d2170133e925 d2170133e928 "><tt class="ph tt">trace_dump_free</tt></td>
+
+    <td class="entry" valign="top" headers="d2170133e922 d2170133e925 d2170133e928 ">A filename</td>
+
+    <td class="entry" valign="top" headers="d2170133e922 d2170133e925 d2170133e928 ">None; dump all deallocations</td>
+
+  </tr>
+
+  <tr>
+    <td class="entry" valign="top" headers="d2170133e922 d2170133e925 d2170133e928 "><tt class="ph tt">trace_dump_unref</tt></td>
+
+    <td class="entry" valign="top" headers="d2170133e922 d2170133e925 d2170133e928 ">A filename</td>
+
+    <td class="entry" valign="top" headers="d2170133e922 d2170133e925 d2170133e928 "><span class="keyword const">MALLOC_DUMP_LEAKS</span></td>
+
+  </tr>
+
+
+  <tr>
+    <td class="entry" valign="top" headers="d2170133e922 d2170133e925 d2170133e928 "><tt class="ph tt">verbose</tt></td>
+
+    <td class="entry" valign="top" headers="d2170133e922 d2170133e925 d2170133e928 ">An integer</td>
+
+    <td class="entry" valign="top" headers="d2170133e922 d2170133e925 d2170133e928 "><span class="keyword const">MALLOC_VERBOSE</span></td>
+
+  </tr>
+
+  <tr>
+    <td class="entry" valign="top" headers="d2170133e922 d2170133e925 d2170133e928 "><tt class="ph tt">set_action</tt></td>
+
+    <td class="entry" valign="top" headers="d2170133e922 d2170133e925 d2170133e928 ">An integer</td>
+
+    <td class="entry" valign="top" headers="d2170133e922 d2170133e925 d2170133e928 "><span class="keyword const">MALLOC_WARN</span>, <span class="keyword const">MALLOC_FATAL</span></td>
+
+  </tr>
+
+
+  </tbody>
+
+  </table>
+</div>
+
+</dd>
+
+
+
+
+<dt class="dt dlterm" id="mallopt__mallopt_MALLOC_CTRL_CMD_FILE"><span class="keyword const">MALLOC_CTRL_CMD_FILE</span></dt>
+
+<dd class="dd">(QNX Neutrino 6.6 or later) Execute a control command (see
+  <a class="xref" href="#mallopt__mallopt_MALLOC_CTRL_CMD"><span class="keyword const">MALLOC_CTRL_CMD</span></a>)
+  from the specified file.
+  If you include <samp class="ph codeph">${pid}</samp> in the filename, the library
+  replaces it with the process ID.
+  
+
+  <p class="p">
+  Environment variable: <span class="keyword envar">MALLOC_CTRL_FILE</span>
+  </p>
+
+</dd>
+
+
+
+
+<dt class="dt dlterm" id="mallopt__mallopt_MALLOC_DUMP_LEAKS"><span class="keyword const">MALLOC_DUMP_LEAKS</span></dt>
+
+<dd class="dd">List the leak events.
+  The <var class="keyword varname">value</var> argument is ignored.
+  
+
+  <p class="p">
+  
+  
+  Environment variable: <span class="keyword envar">MALLOC_DUMP_LEAKS</span>, which enables (1) or disables (0) leak
+  detection <em class="ph i">when the process exits</em>, depending on the value.
+  </p>
+
+</dd>
+
+
+
+
+<dt class="dt dlterm" id="mallopt__mallopt_MALLOC_DUMP_STATS"><span class="keyword const">MALLOC_DUMP_STATS</span></dt>
+
+<dd class="dd">(QNX Neutrino 6.6 or later) Dump statistics.
+  
+</dd>
+
+
+
+
+<dt class="dt dlterm" id="mallopt__mallopt_MALLOC_EVENTBTDEPTH"><span class="keyword const">MALLOC_EVENTBTDEPTH</span></dt>
+
+<dd class="dd">Set the depth of the backtrace for allocations (i.e., where the allocation
+  occurred) on CPUs that support deeper backtrace levels.
+  Currently the builtin-return-address feature of <span class="keyword cmdname">gcc</span> is used
+  to implement deeper backtraces for the <span class="ph filepath">librcheck</span> library.
+  The default is 5.
+  
+
+  <p class="p">
+  
+  
+  Environment variable: <span class="keyword envar">MALLOC_EVENTBTDEPTH</span>
+  </p>
+
+</dd>
+
+
+
+
+<dt class="dt dlterm" id="mallopt__mallopt_MALLOC_EVENTFILE"><span class="keyword const">MALLOC_EVENTFILE</span></dt>
+
+<dd class="dd">Redirect the event output to the file specified by the <var class="keyword varname">value</var> argument.
+  If you include <samp class="ph codeph">${pid}</samp> in the filename, <span class="keyword apiname">mallopt()</span>
+  replaces it with the process ID.
+  You can use a hyphen (<tt class="ph tt">-</tt>) to redirect the output to standard output.
+  
+
+  <p class="p">
+  
+  
+  Environment variable: <span class="keyword envar">MALLOC_EVENTFILE</span>.
+  You can use <span class="keyword envar">MALLOC_FILE</span> to send the event and trace output to the same file.
+  </p>
+
+</dd>
+
+
+
+
+<dt class="dt dlterm" id="mallopt__mallopt_MALLOC_FATAL"><span class="keyword const">MALLOC_FATAL</span>, <span class="keyword const">MALLOC_WARN</span></dt>
+
+<dd class="dd">Specify how to handle a fatal error or warning, respectively.
+  The default action is to provide a traceback.
+  
+  
+
+  <p class="p">
+  Environment variable: <span class="keyword envar">MALLOC_ACTION</span>, which sets the handling for fatal errors
+  and warnings to the same value.
+  
+  
+  </p>
+
+
+  <p class="p">
+  Use one of the following for the <var class="keyword varname">value</var> arguments:
+  
+  
+  
+  
+  
+  
+  </p>
+
+
+  
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+
+  <thead class="thead" align="left">
+  <tr>
+    <th class="entry" valign="top" id="d2170133e1486">Symbolic name</th>
+
+    <th class="entry" valign="top" id="d2170133e1489">Value</th>
+
+    <th class="entry" valign="top" id="d2170133e1492">Description</th>
+
+  </tr>
+
+  </thead>
+
+
+  <tbody class="tbody">
+  <tr>
+    <td class="entry" valign="top" headers="d2170133e1486 d2170133e1489 d2170133e1492 "><span class="keyword const">M_HANDLE_IGNORE</span></td>
+
+    <td class="entry" valign="top" headers="d2170133e1486 d2170133e1489 d2170133e1492 ">0</td>
+
+    <td class="entry" valign="top" headers="d2170133e1486 d2170133e1489 d2170133e1492 ">Ignore the error and continue</td>
+
+  </tr>
+
+
+  <tr>
+    <td class="entry" valign="top" headers="d2170133e1486 d2170133e1489 d2170133e1492 "><span class="keyword const">M_HANDLE_ABORT</span></td>
+
+    <td class="entry" valign="top" headers="d2170133e1486 d2170133e1489 d2170133e1492 ">1</td>
+
+    <td class="entry" valign="top" headers="d2170133e1486 d2170133e1489 d2170133e1492 ">Terminate execution with a call to
+      <a class="xref" href="../a/abort.html" title="Raise the SIGABRT signal to terminate program execution"><span class="keyword apiname">abort()</span></a>
+    </td>
+
+  </tr>
+
+
+  <tr>
+    <td class="entry" valign="top" headers="d2170133e1486 d2170133e1489 d2170133e1492 "><span class="keyword const">M_HANDLE_EXIT</span></td>
+
+    <td class="entry" valign="top" headers="d2170133e1486 d2170133e1489 d2170133e1492 ">2</td>
+
+    <td class="entry" valign="top" headers="d2170133e1486 d2170133e1489 d2170133e1492 ">Exit immediately</td>
+
+  </tr>
+
+
+  <tr>
+    <td class="entry" valign="top" headers="d2170133e1486 d2170133e1489 d2170133e1492 "><span class="keyword const">M_HANDLE_CORE</span></td>
+
+    <td class="entry" valign="top" headers="d2170133e1486 d2170133e1489 d2170133e1492 ">3</td>
+
+    <td class="entry" valign="top" headers="d2170133e1486 d2170133e1489 d2170133e1492 ">Cause the program to dump a core file</td>
+
+  </tr>
+
+
+  <tr>
+    <td class="entry" valign="top" headers="d2170133e1486 d2170133e1489 d2170133e1492 "><span class="keyword const">M_HANDLE_SIGNAL</span></td>
+
+    <td class="entry" valign="top" headers="d2170133e1486 d2170133e1489 d2170133e1492 ">4</td>
+
+    <td class="entry" valign="top" headers="d2170133e1486 d2170133e1489 d2170133e1492 ">Send a stop signal (<span class="keyword const">SIGSTOP</span>) to the current thread</td>
+
+  </tr>
+
+
+  </tbody>
+
+  </table>
+</div>
+
+
+  <div class="note note"><span class="notetitle">Note:</span> 
+  If you use the environment variable, you must set it to one of the numeric values, not the corresponding
+  <span class="keyword const">M_HANDLE_*</span> symbolic name.
+  </div>
+
+
+  <p class="p">
+  
+  If you call <span class="keyword apiname">mallopt()</span>, you can OR any of these handlers with <span class="keyword const">M_HANDLE_DUMP</span>,
+  to cause a complete dump of the heap before the handler takes action.
+  </p>
+
+
+  <p class="p">
+  These situations are considered to be fatal errors:
+  </p>
+
+
+  <ul class="ul">
+  <li class="li">A <span class="keyword apiname">malloc</span> chain is broken. </li>
+
+  <li class="li">The end of a chain isn't what was expected. </li>
+
+  <li class="li">A signal was caught. </li>
+
+  </ul>
+
+
+  <p class="p">
+  These situations cause a warning:
+  </p>
+
+
+  <ul class="ul">
+  <li class="li">Chain pointers are corrupt. </li>
+
+  <li class="li">A bad CRC was found in a block's header. </li>
+
+  <li class="li">A bad <span class="q">&#147;magic number&#148;</span> was found in a block's header. </li>
+
+  <li class="li">The thread that called
+    <a class="xref" href="../s/strtok.html" title="Break a string into tokens"><span class="keyword apiname">strtok()</span></a>
+    with a <span class="keyword const">NULL</span> first argument isn't the one that made the first call to the function.
+    
+  </li>
+
+  <li class="li">A block that the allocator thinks isn't in use is being freed or reallocated. </li>
+
+  <li class="li">A null-pointer dereference occurred. </li>
+
+  <li class="li">Overlapping memory regions were detected. </li>
+
+  <li class="li">A data overrun occurred in a <span class="keyword apiname">malloc</span> segment.  </li>
+
+  <li class="li">A pointer isn't in the expected range. </li>
+
+  <li class="li">An area has been used after being freed. </li>
+
+  </ul>
+
+
+  <p class="p">
+  These might be considered to be fatal errors or warnings, depending on the circumstances:
+  </p>
+
+
+  <ul class="ul">
+  <li class="li">A pointer isn't in a <span class="keyword apiname">malloc</span> area. </li>
+
+  <li class="li">A pointer is beyond the expected bounds. </li>
+
+  </ul>
+
+
+  
+</dd>
+
+
+
+
+<dt class="dt dlterm" id="mallopt__mallopt_MALLOC_HANDLE_SIGNALS"><span class="keyword const">MALLOC_HANDLE_SIGNALS</span></dt>
+
+<dd class="dd">Install (1) or don't install (0),
+  depending on the <var class="keyword varname">value</var> argument,
+  a handler for the abnormal-termination signals
+  (<span class="keyword const">SIGSEGV</span>, <span class="keyword const">SIGBUS</span>, <span class="keyword const">SIGILL</span>, and <span class="keyword const">SIGFPE</span>).
+  The default is to install a signal handler that prints an error message and then aborts the program.
+  
+
+  <p class="p">
+  
+  
+  Environment variable: <span class="keyword envar">MALLOC_HANDLE_SIGNALS</span>
+  </p>
+
+</dd>
+
+
+
+
+<dt class="dt dlterm" id="mallopt__mallopt_MALLOC_MARKER"><span class="keyword const">MALLOC_MARKER</span></dt>
+
+<dd class="dd">(QNX Neutrino 6.6 or later) Insert a marker.
+  The <var class="keyword varname">value</var> argument is an integer that you want to use as a marker.
+  
+</dd>
+
+
+
+
+<dt class="dt dlterm" id="mallopt__mallopt_MALLOC_TRACEBTDEPTH"><span class="keyword const">MALLOC_TRACEBTDEPTH</span></dt>
+
+<dd class="dd">Set the depth of the backtrace for errors and warnings on CPUs that
+  support deeper backtrace levels.
+  Currently the builtin-return-address feature of <span class="keyword cmdname">gcc</span> is used
+  to implement deeper backtraces for the <span class="ph filepath">librcheck</span> library.
+  The default is 5.
+  
+
+  <p class="p">
+  
+  
+  Environment variable: <span class="keyword envar">MALLOC_TRACEBTDEPTH</span>
+  </p>
+
+</dd>
+
+
+
+
+<dt class="dt dlterm" id="mallopt__mallopt_MALLOC_TRACEFILE"><span class="keyword const">MALLOC_TRACEFILE</span></dt>
+
+<dd class="dd">Redirect the trace output to the file specified by the <var class="keyword varname">value</var> argument.
+  If you include <samp class="ph codeph">${pid}</samp> in the filename, <span class="keyword apiname">mallopt()</span>
+  replaces it with the process ID.
+  You can use a hyphen (<tt class="ph tt">-</tt>) to redirect the output to standard output.
+  If the <var class="keyword varname">value</var> argument points to an empty string, the library turns off tracing.
+  
+
+  <p class="p">
+  Environment variable: <span class="keyword envar">MALLOC_FILE</span>, which sends the event and trace output to the same file.
+  </p>
+
+</dd>
+
+
+
+
+<dt class="dt dlterm" id="mallopt__mallopt_MALLOC_TRACEMAX"><span class="keyword const">MALLOC_TRACEMAX</span></dt>
+
+<dd class="dd">Specify the maximum size of allocations to track;
+  trace only the allocations that are less than or equal to the maximum number specified (in bytes).
+  The default is 0,  to indicate no maximum.
+  
+
+  <p class="p">
+  
+  
+  Environment variable: <span class="keyword envar">MALLOC_TRACEMAX</span>
+  </p>
+
+</dd>
+
+
+
+
+<dt class="dt dlterm" id="mallopt__mallopt_MALLOC_TRACEMIN"><span class="keyword const">MALLOC_TRACEMIN</span></dt>
+
+<dd class="dd">Specify the minimum size of allocations to track;
+  trace only the allocations that are greater than or equal to the minimum number specified (in bytes).
+  The default is 0,  to indicate no minimum.
+  
+
+  <p class="p">
+  
+  
+  Environment variable: <span class="keyword envar">MALLOC_TRACEMIN</span>
+  </p>
+
+</dd>
+
+
+
+
+<dt class="dt dlterm" id="mallopt__mallopt_MALLOC_TRACING"><span class="keyword const">MALLOC_TRACING</span></dt>
+
+<dd class="dd">Turn on (1) or off (0) the tracing of allocations.
+  By default, tracing is turned off.
+  
+</dd>
+
+
+
+
+<dt class="dt dlterm" id="mallopt__mallopt_MALLOC_TRUNCATE"><span class="keyword const">MALLOC_TRUNCATE</span></dt>
+
+<dd class="dd">Truncate (1) or don't truncate (0) output files when opening them.
+  The default is to truncate the files.
+  
+
+  <p class="p">
+  
+  
+  Environment variable: <span class="keyword envar">MALLOC_TRUNCATE</span>
+  </p>
+
+</dd>
+
+
+
+
+<dt class="dt dlterm" id="mallopt__mallopt_MALLOC_VERBOSE"><span class="keyword const">MALLOC_VERBOSE</span></dt>
+
+<dd class="dd">Be verbose; if the <var class="keyword varname">value</var> argument is nonzero, the library sends
+  extra information to standard error.
+  
+
+  <p class="p">
+  
+  
+  Environment variable: <span class="keyword envar">MALLOC_VERBOSE</span>
+  </p>
+
+</dd>
+
+
+
+</dl>
+
+
+<p class="p">
+For details, see
+<span class="q">&#147;<a class="xref" href="../../../com.qnx.doc.neutrino.prog/topic/hat_CheckingLevel.html">Controlling the level of checking</a>&#148;</span>
+in the <span class="q">&#147;Heap analysis&#148;</span> section of the <span class="q">&#147;Working with Memory&#148;</span> chapter
+of the <span class="keyword">QNX Neutrino</span> <cite class="cite">Programmer's Guide</cite>.
+</p>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Returns:</h2>
+
+
+<p class="p">
+0 on success, or -1 
+if an error occurs (<a class="xref" href="../e/errno.html" title="Thread-local error variable"><var class="keyword varname">errno</var></a> is set).
+</p>
+
+
+<p class="p">
+For <span class="keyword const">MALLOC_ARENA_SIZE</span>,
+if <var class="keyword varname">value</var> is 0, <span class="keyword apiname">mallopt()</span> returns the current
+arena size; if <var class="keyword varname">value</var> is any other value, <span class="keyword apiname">mallopt()</span>
+returns the previous size.
+</p>
+
+</div>
+
+
+<div class="section"><h2 class="title sectiontitle">Environment variables:</h2>
+
+
+<p class="p">
+The <span class="ph filepath">libc</span> and <span class="ph filepath">librcheck</span> libraries check
+some environment variables when you start your program:
+</p>
+
+
+<ul class="ul">
+<li class="li">some are supported by both <span class="ph filepath">libc</span> and <span class="ph filepath">librcheck</span></li>
+
+<li class="li">some are supported only by <span class="ph filepath">librcheck</span></li>
+
+</ul>
+
+
+
+<p class="p"><strong class="ph b">Variables supported by <span class="ph filepath">libc</span> and <span class="ph filepath">librcheck</span></strong></p>
+
+
+<p class="p">
+Both libraries support the following environment variables, which correspond to the command with the same name:
+</p>
+
+
+<ul class="ul">
+<li class="li"><a class="xref" href="#mallopt__mallopt_MALLOC_ARENA_CACHE_MAXBLK"><span class="keyword envar">MALLOC_ARENA_CACHE_MAXBLK</span></a></li>
+
+<li class="li"><a class="xref" href="#mallopt__mallopt_MALLOC_ARENA_CACHE_MAXSZ"><span class="keyword envar">MALLOC_ARENA_CACHE_MAXSZ</span></a></li>
+
+<li class="li"><a class="xref" href="#mallopt__mallopt_MALLOC_ARENA_SIZE"><span class="keyword envar">MALLOC_ARENA_SIZE</span></a></li>
+
+<li class="li"><a class="xref" href="#mallopt__mallopt_MALLOC_MEMORY_HOLD"><span class="keyword envar">MALLOC_MEMORY_HOLD</span></a></li>
+
+</ul>
+
+
+<p class="p">
+as well as the following:
+</p>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><span class="keyword envar">MALLOC_FREE_LIFO</span></dt>
+
+<dd class="dd">If set, <span class="keyword apiname">malloc()</span> changes the free queueing strategy from the
+  default (FIFO) to LIFO.
+  
+  
+</dd>
+
+
+
+
+
+
+<dt class="dt dlterm"><span class="keyword envar">MALLOC_BAND_CONFIG_STR</span></dt>
+
+<dd class="dd">Use this environment variable to configure the bands of memory.
+  The string format is:
+  
+  
+
+<pre class="pre codeblock">
+N:s1,n1,p1:s2,n2,p2:s3,n3,p3: ... :sN,nN,pN
+</pre>
+
+
+  <p class="p">
+  where the components are:
+  </p>
+
+
+  <dl class="dl">
+  
+  <dt class="dt dlterm"><var class="keyword varname">N</var></dt>
+
+  <dd class="dd">The number of bands.</dd>
+
+  
+
+  
+  <dt class="dt dlterm"><var class="keyword varname">s</var></dt>
+
+  <dd class="dd">The band size, in bytes.</dd>
+
+  
+
+  
+  <dt class="dt dlterm"><var class="keyword varname">n</var></dt>
+
+  <dd class="dd">The number of blocks in the band.</dd>
+
+  
+
+  
+  <dt class="dt dlterm"><var class="keyword varname">p</var></dt>
+
+  <dd class="dd">The number of blocks to preallocate, which can be zero.</dd>
+
+  
+
+  </dl>
+
+
+  <p class="p">
+  The parsing is simple and strict:
+  </p>
+
+
+  <ul class="ul">
+  <li class="li">The sizes must all be distinct and be provided in ascending order
+    (i.e., <var class="keyword varname">s1</var> &lt; <var class="keyword varname">s2</var> &lt; <var class="keyword varname">s3</var>, and so on).
+  </li>
+
+
+  <li class="li">You must specify <var class="keyword varname">s</var>, <var class="keyword varname">n</var>, and <var class="keyword varname">p</var> for each band.</li>
+
+  
+  <li class="li">The string can't include any spaces; the only valid characters are
+    digits, colons (<samp class="ph codeph">:</samp>), and commas (<samp class="ph codeph">,</samp>).
+  </li>
+
+
+  </ul>
+
+
+  <p class="p">
+  If the allocator doesn't like the string, it ignores it completely.
+  </p>
+
+
+  <p class="p">
+  The default bands are 16, 24, 32, 48, 64, 80, 96, and 128.
+  The 24-byte band is defined only when you compile for 32-bit architectures.  
+  </p>
+
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword envar">MALLOC_MEMORY_PREALLOCATE</span></dt>
+
+<dd class="dd">Preallocate and populate the arena cache by setting this
+  environment variable to a value that specifies the size of the total
+  arena cache.
+  The default is 0.
+  
+  
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword envar">MALLOC_OPTIONS</span></dt>
+
+<dd class="dd">(QNX Neutrino 6.4.1 or later)
+  Control the way <span class="keyword apiname">calloc()</span>, <span class="keyword apiname">malloc()</span>, and
+  <span class="keyword apiname">realloc()</span> behave if you specify a size of 0 (or a value of
+  0 for the <var class="keyword varname">n</var> argument to <span class="keyword apiname">calloc()</span>).
+  The <samp class="ph codeph">V</samp> (<span class="q">&#147;System V&#148;</span>) and <samp class="ph codeph">R</samp>
+  (<span class="q">&#147;use the <span class="keyword apiname">realloc()</span> behavior of QNX Neutrino 6.4.0
+  and earlier&#148;</span>) columns below indicate how the
+  functions behave if the value of <span class="keyword envar">MALLOC_OPTIONS</span>
+  includes that letter:
+  
+  
+
+  
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+
+  <thead class="thead" align="left">
+  <tr>
+    <th class="entry" valign="top" id="d2170133e2320">Function</th>
+
+    <th class="entry" valign="top" id="d2170133e2323">Default</th>
+
+    <th class="entry" valign="top" id="d2170133e2326"><samp class="ph codeph">V</samp></th>
+
+    <th class="entry" valign="top" id="d2170133e2330"><samp class="ph codeph">R</samp></th>
+
+  </tr>
+
+  </thead>
+
+
+  <tbody class="tbody">
+  <tr>
+    <td class="entry" valign="top" headers="d2170133e2320 d2170133e2323 d2170133e2326 d2170133e2330 "><span class="keyword apiname">calloc(n, 0)</span></td>
+
+    <td class="entry" valign="top" headers="d2170133e2320 d2170133e2323 d2170133e2326 d2170133e2330 ">Non-<span class="keyword const">NULL</span></td>
+
+    <td class="entry" valign="top" headers="d2170133e2320 d2170133e2323 d2170133e2326 d2170133e2330 "><span class="keyword const">NULL</span></td>
+
+    <td class="entry" valign="top" headers="d2170133e2320 d2170133e2323 d2170133e2326 d2170133e2330 ">No effect</td>
+
+  </tr>
+
+
+  <tr>
+    <td class="entry" valign="top" headers="d2170133e2320 d2170133e2323 d2170133e2326 d2170133e2330 "><span class="keyword apiname">malloc(0)</span></td>
+
+    <td class="entry" valign="top" headers="d2170133e2320 d2170133e2323 d2170133e2326 d2170133e2330 ">Non-<span class="keyword const">NULL</span></td>
+
+    <td class="entry" valign="top" headers="d2170133e2320 d2170133e2323 d2170133e2326 d2170133e2330 "><span class="keyword const">NULL</span></td>
+
+    <td class="entry" valign="top" headers="d2170133e2320 d2170133e2323 d2170133e2326 d2170133e2330 ">No effect</td>
+
+  </tr>
+
+
+  <tr>
+    <td class="entry" valign="top" headers="d2170133e2320 d2170133e2323 d2170133e2326 d2170133e2330 "><span class="keyword apiname">realloc(NULL, 0)</span></td>
+
+    <td class="entry" valign="top" headers="d2170133e2320 d2170133e2323 d2170133e2326 d2170133e2330 ">Non-<span class="keyword const">NULL</span></td>
+
+    <td class="entry" valign="top" headers="d2170133e2320 d2170133e2323 d2170133e2326 d2170133e2330 "><span class="keyword const">NULL</span></td>
+
+    <td class="entry" valign="top" headers="d2170133e2320 d2170133e2323 d2170133e2326 d2170133e2330 ">No effect</td>
+
+  </tr>
+
+
+  <tr>
+    <td class="entry" valign="top" headers="d2170133e2320 d2170133e2323 d2170133e2326 d2170133e2330 "><span class="keyword apiname">realloc(non-NULL, 0)</span></td>
+
+    <td class="entry" valign="top" headers="d2170133e2320 d2170133e2323 d2170133e2326 d2170133e2330 ">Non-<span class="keyword const">NULL</span></td>
+
+    <td class="entry" valign="top" headers="d2170133e2320 d2170133e2323 d2170133e2326 d2170133e2330 "><span class="keyword const">NULL</span></td>
+
+    <td class="entry" valign="top" headers="d2170133e2320 d2170133e2323 d2170133e2326 d2170133e2330 "><span class="keyword const">NULL</span></td>
+
+  </tr>
+
+
+  </tbody>
+
+  </table>
+</div>
+
+
+  <p class="p">
+  In all the above cases, if the function returns a non-<span class="keyword const">NULL</span>
+  pointer, it's valid only for a corresponding call to <span class="keyword apiname">free()</span>
+  or <span class="keyword apiname">realloc()</span>.
+  By default, neither <samp class="ph codeph">V</samp> nor <samp class="ph codeph">R</samp> is set.
+  </p>
+
+</dd>
+
+
+
+</dl>
+
+
+
+
+
+<p class="p"><strong class="ph b">Variables supported only by <span class="ph filepath">librcheck</span></strong></p>
+
+
+<p class="p">
+The <span class="ph filepath">librcheck</span> library also checks the following environment variables,
+which correspond to the command with the same name:
+</p>
+
+
+<ul class="ul">
+<li class="li"><a class="xref" href="#mallopt__mallopt_MALLOC_CKACCESS"><span class="keyword envar">MALLOC_CKACCESS</span></a></li>
+
+<li class="li"><a class="xref" href="#mallopt__mallopt_MALLOC_CKALLOC"><span class="keyword envar">MALLOC_CKALLOC</span></a></li>
+
+<li class="li"><a class="xref" href="#mallopt__mallopt_MALLOC_CKBOUNDS"><span class="keyword envar">MALLOC_CKBOUNDS</span></a></li>
+
+<li class="li"><a class="xref" href="#mallopt__mallopt_MALLOC_CKCHAIN"><span class="keyword envar">MALLOC_CKCHAIN</span></a></li>
+
+<li class="li"><a class="xref" href="#mallopt__mallopt_MALLOC_DUMP_LEAKS"><span class="keyword envar">MALLOC_DUMP_LEAKS</span></a></li>
+
+<li class="li"><a class="xref" href="#mallopt__mallopt_MALLOC_EVENTBTDEPTH"><span class="keyword envar">MALLOC_EVENTBTDEPTH</span></a></li>
+
+<li class="li"><a class="xref" href="#mallopt__mallopt_MALLOC_EVENTFILE"><span class="keyword envar">MALLOC_EVENTFILE</span></a></li>
+
+<li class="li"><a class="xref" href="#mallopt__mallopt_MALLOC_HANDLE_SIGNALS"><span class="keyword envar">MALLOC_HANDLE_SIGNALS</span></a></li>
+
+<li class="li"><a class="xref" href="#mallopt__mallopt_MALLOC_TRACEBTDEPTH"><span class="keyword envar">MALLOC_TRACEBTDEPTH</span></a></li>
+
+<li class="li"><a class="xref" href="#mallopt__mallopt_MALLOC_TRACEMAX"><span class="keyword envar">MALLOC_TRACEMAX</span></a></li>
+
+<li class="li"><a class="xref" href="#mallopt__mallopt_MALLOC_TRACEMIN"><span class="keyword envar">MALLOC_TRACEMIN</span></a></li>
+
+<li class="li"><a class="xref" href="#mallopt__mallopt_MALLOC_TRUNCATE"><span class="keyword envar">MALLOC_TRUNCATE</span></a></li>
+
+
+<li class="li"><a class="xref" href="#mallopt__mallopt_MALLOC_VERBOSE"><span class="keyword envar">MALLOC_VERBOSE</span></a></li>
+
+</ul>
+
+
+<p class="p">
+as well as the following:
+</p>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><span class="keyword envar">MALLOC_ACTION</span>=0|1|2|3|4</dt>
+
+<dd class="dd">Specify the handling for fatal errors and warnings; for more information, see the
+  <a class="xref" href="#mallopt__mallopt_MALLOC_FATAL"><span class="keyword const">MALLOC_FATAL</span> and <span class="keyword const">MALLOC_WARNING</span></a>
+  commands.
+  The default action is to provide a traceback.
+  
+  
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword envar">MALLOC_CTHREAD</span>=0|1|2</dt>
+
+<dd class="dd">Start (1 or 2) or don't start (0) a control thread.
+  A control thread lets the <span class="keyword">IDE</span> send commands to the application.
+  Set the value to 1 if you want the IDE to send commands via <span class="ph filepath">/dev/rcheck</span>
+  (but you need to be <span class="ph filepath">root</span>).
+  Set the value to 2 if you want the IDE to send commands using signals.
+  The default is 0.
+  
+  
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword envar">MALLOC_CTRL_FILE</span>=<var class="keyword varname">file</var></dt>
+
+<dd class="dd">Specify a file for the control command (to use with the control signal).
+  If you include <samp class="ph codeph">${pid}</samp> in the filename, the library
+  replaces it with the process ID; quote the <samp class="ph codeph">$</samp> if you're running from the shell.
+  
+  
+</dd>
+
+
+
+
+<dt class="dt dlterm"><a name="mallopt__MALLOC_CTRL_SIG"><!-- --></a><span class="keyword envar">MALLOC_CTRL_SIG</span>=<var class="keyword varname">sigs</var></dt>
+
+<dd class="dd">Override the default mapping of commands to signals.
+  The value is a string in the form:
+  
+  
+
+  <p class="p">
+  <var class="keyword varname">command</var>:<var class="keyword varname">signal_num</var>, ...
+  </p>
+
+
+  <p class="p">
+  where <var class="keyword varname">command</var> is one of <tt class="ph tt">control</tt>, <tt class="ph tt">leaks</tt>, <tt class="ph tt">stop</tt>, <tt class="ph tt">start</tt>,
+  and <tt class="ph tt">marker</tt>.
+  For example, the default mapping is <samp class="ph codeph">"control:41,leaks:42,stop:43,start:44,marker:45"</samp>.
+  Specifying 0 as the signal number disables the command;
+  specifying 0 for the environment variable disables all signals. 
+  </p>
+
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword envar">MALLOC_FILE</span>=<var class="keyword varname">file</var></dt>
+
+<dd class="dd">Redirect both event and trace output to the given file.
+  If you include <samp class="ph codeph">${pid}</samp> in the filename, the library
+  replaces it with the process ID; quote the <samp class="ph codeph">$</samp> if you're running from the shell.
+  You can use a hyphen (<tt class="ph tt">-</tt>) to redirect the output to standard output (the default).
+  
+  
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword envar">MALLOC_HELP</span>=1</dt>
+
+<dd class="dd">Display a list of the supported environment variables and then exit; for example:
+  
+  
+
+<pre class="pre codeblock">
+LD_PRELOAD=librcheck.so MALLOC_HELP=1 ./my_app
+</pre>
+
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword envar">MALLOC_SAMPLING</span>=<var class="keyword varname">millis</var></dt>
+
+<dd class="dd">Run a sampling thread to produce heap statistics every <var class="keyword varname">millis</var> milliseconds.
+  
+  
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword envar">MALLOC_START_TRACING</span>=0|1</dt>
+
+<dd class="dd">Enable (1) or disable (0) the automatic tracing of memory when the application starts. 
+  If tracing isn't enabled when application starts, the only way you can enable it is to use the
+  <a class="xref" href="#mallopt__mallopt_MALLOC_TRACING"><span class="keyword const">MALLOC_TRACING</span></a>
+  command or the control thread interface (see
+  <span class="q">&#147;<a class="xref" href="../../../com.qnx.doc.ide.userguide/topic/memanalysis_tool.html">Memory Analysis</a>&#148;</span>
+  in the References chapter of the IDE <cite class="cite">User's Guide</cite>).
+  The default is 0.
+  
+  
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword envar">MALLOC_STAT_BINS</span>=<em class="ph i">bin1</em>,<em class="ph i">bin2</em>,...</dt>
+
+<dd class="dd">Set the custom bins.
+  Bins are used to define allocation ranges that you want to collect usage statistics for.
+  For example, you can check how many allocations are done for the 40-, 80-, and 120-byte bins.
+  The default bins are 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096, and <span class="keyword const">ULONG_MAX</span>
+  (the last bin catches all allocations larger than 4096 bytes).
+  
+  
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword envar">MALLOC_USE_CACHE</span>=<var class="keyword varname">number</var></dt>
+
+<dd class="dd">Specify the size of the pointer cache; the value must be a power of 2 in the range from 0 through 2048.
+  Set to 0 to disable optimization.
+  The default is 32 (turn off optimization if the application crashes during the run).
+  
+  
+</dd>
+
+
+
+</dl>
+
+
+
+
+
+<p class="p"><strong class="ph b">Reverting to the behavior of Neutrino 6.2</strong></p>
+
+
+<p class="p">
+In order to revert to the allocator behavior from QNX Neutrino 6.2,
+do one of the following:
+</p>
+
+
+<ul class="ul">
+<li class="li">Set <span class="keyword envar">MALLOC_ARENA_CACHE_MAXBLK</span> to 0, which results in no
+  caching of freed blocks.
+
+<p class="p">
+Or:
+</p>
+
+
+</li>
+
+
+<li class="li">Set <span class="keyword envar">MALLOC_ARENA_CACHE_MAXSZ</span> to 400000, which limits the
+  total caching of the blocks to 400000 bytes.
+</li>
+
+</ul>
+
+
+<p class="p">
+You can also set both variables to fine-tune the allocator's behavior.
+The easiest way is to explicitly set the 
+<span class="keyword envar">MALLOC_ARENA_CACHE_MAXSZ</span> value to set a cap on the total
+amount of memory held in the allocator.
+The <span class="keyword envar">MALLOC_ARENA_CACHE_MAXBLK</span> value is more difficult to
+configure, because the blocks aren't necessarily the same size, and hence
+setting the number alone may not give the exact desired behavior.
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Classification:</h2>
+
+<p class="p"><a class="xref" href="../summary.html#summary__CLASSIFICATION">QNX Neutrino</a></p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+<thead class="thead" align="left">
+<tr><th class="entry" valign="top" id="d2170133e2908">Safety:</th>
+<th class="entry" valign="top" id="d2170133e2910">Â </th>
+</tr>
+
+</thead>
+
+<tbody class="tbody">
+<tr><td class="entry" valign="top" headers="d2170133e2908 d2170133e2910 ">Cancellation point</td>
+<td class="entry" valign="top" headers="d2170133e2908 d2170133e2910 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2170133e2908 d2170133e2910 ">Interrupt handler</td>
+<td class="entry" valign="top" headers="d2170133e2908 d2170133e2910 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2170133e2908 d2170133e2910 ">Signal handler</td>
+<td class="entry" valign="top" headers="d2170133e2908 d2170133e2910 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2170133e2908 d2170133e2910 ">Thread</td>
+<td class="entry" valign="top" headers="d2170133e2908 d2170133e2910 ">Yes</td>
+</tr>
+
+</tbody>
+
+</table>
+</div>
+
+</div>
+
+
+</div>
+
+
+<div class="related-links"><div class="relinfo relconcepts"><strong>Related concepts</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.prog/topic/memory.html" title="Working with Memory (QNX Neutrino Programmer's Guide)">Working with Memory (<span class="keyword">QNX Neutrino</span> Programmer's Guide)</a></div>
+</div>
+<div class="relinfo relref"><strong>Related reference</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/a/aligned_alloc.html" title="Allocate aligned memory">aligned_alloc()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/c/calloc.html" title="Allocate space for an array">calloc()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/f/free.html" title="Deallocate a block of memory">free()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/m/mallinfo.html" title="Get memory allocation information">mallinfo()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/m/malloc.html" title="Allocate memory">malloc()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/r/realloc.html" title="Allocate, reallocate, or free a block of memory">realloc()</a></div>
+</div>
+</div><div class="navfooter"><!---->
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-m.html" title="M"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">M</span></a></span>  </div>
+</body>
+</html>

@@ -1,0 +1,21 @@
+{
+  "function_name": "asin",
+  "url": "https://www.qnx.com/developers/docs/7.1/com.qnx.doc.neutrino.lib_ref/topic/a/asin.html",
+  "synopsis": "long double asinl( long double x );",
+  "description": "",
+  "headers": [
+    "#include <math.h>"
+  ],
+  "parameters": [
+    {
+      "name": "x",
+      "description": "The sine for which you want to find the angle."
+    }
+  ],
+  "return_values": [],
+  "examples": [
+    "#include <math.h>\n\ndouble asin( double x );\n\nfloat asinf( float x );\n\nlong double asinl( long double x );",
+    "#include <stdio.h>\n#include <math.h>\n#include <fenv.h>\n#include <stdlib.h>\n\nint main( void )\n{\n    int except_flags;\n\n    feclearexcept(FE_ALL_EXCEPT);\n\n    printf( \"%f\\n\", asin(.5) );\n\n    except_flags = fetestexcept(FE_ALL_EXCEPT);\n    if(except_flags) {\n        /* An error occurred; handle it appropriately. */\n    }\n\n    return EXIT_SUCCESS;\n}"
+  ],
+  "full_content": "Function: asin\nURL: https://www.qnx.com/developers/docs/7.1/com.qnx.doc.neutrino.lib_ref/topic/a/asin.html\nSynopsis: long double asinl( long double x );\nHeaders: #include <math.h>\nParameters:\n  - x: The sine for which you want to find the angle.\nExamples:\nExample 1:\n#include <math.h>\n\ndouble asin( double x );\n\nfloat asinf( float x );\n\nlong double asinl( long double x );\nExample 2:\n#include <stdio.h>\n#include <math.h>\n#include <fenv.h>\n#include <stdlib.h>\n\nint main( void )\n{\n    int except_flags;\n\n    feclearexcept(FE_ALL_EXCEPT);\n\n    printf( \"%f\\n\", asin(.5) );\n\n    except_flags = fetestexcept(FE_ALL_EXCEPT);\n    if(except_flags) {\n        /* An error occurred; handle it appropriately. */\n    }\n\n    return EXIT_SUCCESS;\n}"
+}

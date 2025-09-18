@@ -1,0 +1,624 @@
+
+<!DOCTYPE html
+  PUBLIC "" "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />        
+      <meta name="copyright" content="(C) Copyright 2005" /><meta name="DC.rights.owner" content="(C) Copyright 2005" /><meta name="DC.Type" content="reference" /><meta name="DC.Title" content="ConnectAttach(), ConnectAttach_r()" /><meta name="abstract" content="Establish a connection between a process and a channel" /><meta name="description" content="Establish a connection between a process and a channel" /><meta name="indexterms" content="ConnectAttach(), ConnectAttach_r()" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-c.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.getting_started/topic/s1_msg.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/c/channelcreate.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/c/connectdetach.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/c/connectflags.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/m/msgsendpulse.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/m/msgsendpulseptr.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/m/msgsendv.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/n/name_attach.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/n/name_open.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/n/netmgr_remote_nd.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/o/open.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/o/open_ext.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/r/resmgr_attach.html" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="connectattach" /><meta name="DC.Language" content="en-us" /><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/commonltr.css"><!----></link><title>ConnectAttach(), ConnectAttach_r()</title><link rel="canonical" type="html" href="https://www.qnx.com/developers/docs/7.1/#com.qnx.doc.neutrino.lib_ref/" /><!--  Generated with Oxygen version 18.1, build number 2017020917.  --><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/webhelp_topic.css"><!----></link><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/skins/skin.css" /><script type="text/javascript"><!--
+            
+            var prefix = "../../../index.html";
+            
+            --></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-1.11.3.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.cookie.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-ui.custom.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.highlight-3.js"><!----></script><script type="text/javascript" charset="utf-8" src="../../../oxygen-webhelp/resources/js/webhelp_topic.js"><!----></script><script type="text/javascript"> var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-27400275-1']); _gaq.push(['_setDomainName', 'www.qnx.com']);_gaq.push(['_setAllowLinker', true]);_gaq.push(['_trackPageview']);(function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script></head>
+<body onload="highlightSearchTerm()" class="frmBody" id="connectattach">
+<table class="nav"><tbody><tr><td colspan="2"><div id="printlink"><button onClick="window.print()" title="Print this page" aria-label="Print this page"></button></div><div id="permalink"><a href="#" title="Link to this page"></a></div></td></tr><tr><td style="width:75%;"><span class="topic_breadcrumb_links"><span class="topic_breadcrumb_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-c.html" title="C">C</a></span></span></td><td><span id="topic_navigation_links" class="navheader">
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-c.html" title="C"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">C</span></a></span>  </span></td></tr></tbody></table>
+
+
+<h1 class="title topictitle1"><span class="keyword apiname">ConnectAttach()</span>, <span class="keyword apiname">ConnectAttach_r()</span></h1>
+<table width="100%"><tbody><tr><td align="left"><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">QNX SDP</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">7.1</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">C Library Reference</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">API</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">Developer</button></td><td align="right"><span style="margin:0px 5px; font-size:0.9em;">Updated: October 28, 2024</span></td></tr></tbody></table>
+
+
+<div class="body refbody"><p class="shortdesc"><em class="ph i">Establish a connection between a process and a channel</em></p>
+
+
+<div class="section refsyn"><h2 class="title sectiontitle">Synopsis:</h2>
+
+<pre class="pre codeblock">
+#include &lt;sys/neutrino.h&gt;
+#include &lt;sys/netmgr.h&gt;
+
+int ConnectAttach( uint32_t <var class="keyword varname">nd</var>,
+                   pid_t <var class="keyword varname">pid</var>,
+                   int <var class="keyword varname">chid</var>,
+                   unsigned <var class="keyword varname">index</var>,
+                   int <var class="keyword varname">flags</var> );
+
+int ConnectAttach_r( uint32_t <var class="keyword varname">nd</var>,
+                     pid_t <var class="keyword varname">pid</var>,
+                     int <var class="keyword varname">chid</var>,
+                     unsigned <var class="keyword varname">index</var>,
+                     int <var class="keyword varname">flags</var> );
+</pre>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Arguments:</h2>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><var class="keyword varname">nd</var></dt>
+
+<dd class="dd">The node descriptor of the node (e.g., <span class="keyword const">ND_LOCAL_NODE</span> for
+  the local node) on which the process that owns the
+  channel is running; see
+  <span class="q">&#147;<a class="xref" href="#connectattach__NodeDescriptors">Node descriptors</a>,&#148;</span>
+  below.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">pid</var></dt>
+
+<dd class="dd">The process ID of the owner of the channel.
+  If <var class="keyword varname">pid</var> is zero, the calling process is assumed.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">chid</var></dt>
+
+<dd class="dd">The channel ID, returned by
+  <a class="xref" href="channelcreate.html" title="Create a communications channel"><span class="keyword apiname">ChannelCreate()</span></a>,
+  of the channel to connect to the process.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">index</var></dt>
+
+<dd class="dd" id="connectattach__side_channel">
+  
+  
+  
+  If <span class="keyword const">_NTO_SIDE_CHANNEL</span> is not set, the lowest acceptable connection ID.
+  The ID returned by the function will then be a file descriptor greater than or equal to this value.
+  If <span class="keyword const">_NTO_SIDE_CHANNEL</span> is set, the connection is created as a side channel, meaning the ID returned is from a different space
+  than file descriptors. In this case, any other bits in <var class="keyword varname">index</var> are ignored.
+  <div class="note note"><span class="notetitle">Note:</span> 
+  <p class="p">
+    Having a connection ID in the file descriptor range can lead to unexpected behavior.
+    Therefore, you should pass in  <span class="keyword const">_NTO_SIDE_CHANNEL</span> for <var class="keyword varname">index</var> when you create a connection.
+    The C library creates connections at various times without <span class="keyword const">_NTO_SIDE_CHANNEL</span> (e.g., during <span class="keyword apiname">open()</span>);
+    however, it's unlikely that any applications would want to call it this way.
+  </p>
+
+  <p class="p">
+    Once the ID is created, there's no difference in the use of the messaging primitives on it.
+  </p>
+
+  </div>
+
+
+</dd>
+
+
+
+
+<dt class="dt dlterm" id="connectattach__flags"><var class="keyword varname">flags</var></dt>
+
+<dd class="dd">Flags that affect the connection; a bitwise OR of zero or more of the following:
+
+  <ul class="ul">
+  <li class="li"><span class="keyword const">_NTO_COF_CLOEXEC</span> â close the connection when the calling process calls an 
+    <span class="keyword apiname">exec*()</span> function to start a new process.
+    
+  </li>
+
+
+  <li class="li"><span class="keyword const">_NTO_COF_INSECURE</span> (QNX Neutrino 6.6 or later) â mark the connection as insecure.
+    The kernel sets this flag on a connection if the client program replaces its process image
+    (e.g., by calling <a class="xref" href="../lib-e.html"><span class="keyword apiname">exec*()</span></a>)
+    with a setuid or setgid binary.
+    If this flag is set on a connection, calls to
+    <a class="xref" href="../m/msgdeliverevent.html" title="Deliver an event through a channel"><span class="keyword apiname">MsgDeliverEvent()</span></a>
+    with an event type of <span class="keyword const">SIGEV_MEMORY</span> or <span class="keyword const">SIGEV_THREAD</span>
+    fail with an error of <span class="keyword const">EACCES</span>.
+    
+
+    <p class="p">
+    In QNX Neutrino 7.0 and later,
+    the server or client can set this flag if it doesn't trust the program at the other end of the connection,
+    but only the kernel can clear it.
+    Currently the flag stays set until the connection is detached.
+    </p>
+
+  </li>
+
+
+  <li class="li"><span class="keyword const">_NTO_COF_NOEVENT</span> (QNX Neutrino 7.0 or later) â prevent the server from sending
+    <a class="xref" href="../s/sigevent.html" title="Structure that describes an event"><span class="keyword dtype">sigevent</span></a>s over the channel to the client.
+    
+  </li>
+
+
+  <li class="li"><span class="keyword const">_NTO_COF_REG_EVENTS</span> (QNX Neutrino 7.0.1 or later) â require that the connection
+    use only registered events; reject the delivery of any
+    <a class="xref" href="../s/sigevent.html" title="Structure that describes an event"><span class="keyword dtype">sigevent</span>s</a>
+    that weren't registered as secure events with
+    <a class="xref" href="../m/msgregisterevent.html" title="Register a secure event"><span class="keyword apiname">MsgRegisterEvent()</span></a>.
+    
+    
+    
+    
+    
+  </li>
+
+
+  <li class="li"><span class="keyword const">_NTO_COF_UNREG_EVENTS</span> (QNX Neutrino 7.1 or later) â override the OS requirement
+    that all <span class="keyword dtype">sigevent</span>s be registered, allowing this connection to use registered and unregistered events.
+
+    <p class="p">
+    You can use
+    <a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/p/procnto.html"><span class="keyword cmdname">procnto</span></a>'s
+    <span class="keyword option">-U</span> option to allow all processes to use registered and unregistered events;
+    <span class="keyword const">_NTO_COF_UNREG_EVENTS</span> lets you do this for a specific connection.
+    
+    
+    
+    
+    
+    </p>
+
+
+    <div class="note note"><span class="notetitle">Note:</span> 
+    Both <span class="keyword const">_NTO_COF_UNREG_EVENTS</span> and <span class="keyword cmdname">procnto</span>'s <span class="keyword option">-U</span> option
+    are temporary measures that weaken security. You should use them only while updating your code to use registered events.
+    </div>
+
+  </li>
+
+
+  </ul>
+
+</dd>
+
+
+
+</dl>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Library:</h2>
+
+
+<p class="p"><span class="ph filepath">libc</span></p>
+
+
+<p class="p">
+Use the <span class="keyword option">-l c</span> option to
+<a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/q/qcc.html"><span class="keyword cmdname">qcc</span></a>
+to link against this library.
+This library is usually included automatically.
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Description:</h2>
+
+
+<p class="p">
+
+
+
+
+
+
+The <span class="keyword apiname">ConnectAttach()</span> and <span class="keyword apiname">ConnectAttach_r()</span>
+kernel calls establish a connection between the calling process and
+the channel specified by <var class="keyword varname">chid</var> owned by the
+process specified by <var class="keyword varname">pid</var> on the node specified by
+<var class="keyword varname">nd</var>. Any function that passes a node descriptor can
+use either the value 0 or the constant <span class="keyword const">ND_LOCAL_NODE</span> to refer to the local node.
+</p>
+
+
+<p class="p">
+These functions are identical 
+except in the way they indicate errors. See the <a class="xref" href="#connectattach__Returns">Returns</a> section for details.
+</p>
+
+
+<div class="note note"><span class="notetitle">Note:</span> 
+If a process wants other processes to communicate with it, it typically will register a name with
+<a class="xref" href="../n/name_attach.html" title="Register a name in the pathname space and create a channel"><span class="keyword apiname">name_attach()</span></a>
+or <a class="xref" href="../r/resmgr_attach.html" title="Attach a path to the pathname space"><span class="keyword apiname">resmgr_attach()</span></a>
+to create a channel and associate a name with it, and the sender process uses
+<a class="xref" href="../n/name_open.html" title="Open a name to connect to a server"><span class="keyword apiname">name_open()</span></a> or one of
+<a class="xref" href="../o/open.html" title="Open a file"><span class="keyword apiname">open()</span></a> or <a class="xref" href="../o/open_ext.html" title="Open a path and set connection flags"><span class="keyword apiname">open_ext()</span></a>
+to locate that name and create a connection to it.
+</div>
+
+
+<p class="p">
+The return value is a connection ID, which is a small <span class="keyword dtype">int</span>
+representing the connection. The system returns the
+first available connection ID starting at the value specified by the
+<var class="keyword varname">index</var> argument. Any thread in the calling process can use the
+<a class="xref" href="../m/msgsend.html" title="Send a message to a channel"><span class="keyword apiname">MsgSend*()</span></a> or
+<a class="xref" href="../m/msgsendv.html" title="Send a message to a channel"><span class="keyword apiname">MsgSendv*()</span></a> functions to send messages or
+<a class="xref" href="../m/msgsendpulse.html" title="Send a pulse to a process"><span class="keyword apiname">MsgSendPulse()</span></a> 
+to send pulses over the connection.
+The connection ID is used directly as a POSIX file descriptor
+(<em class="ph i">fd</em>) when communicating with I/O Resource managers such as a
+filesystem manager.
+
+
+
+</p>
+
+
+<p class="p">
+We recommend that you OR <span class="keyword const">_NTO_SIDE_CHANNEL</span> into <var class="keyword varname">index</var>,
+to create the connection as a side channel. In this case, the <var class="keyword varname">index</var> argument
+is ignored, and the connection ID returned is the first available index in the 
+<span class="keyword const">_NTO_SIDE_CHANNEL</span> space, which is different than the file descriptor space.
+</p>
+
+    
+<p class="p">
+If you don't OR <span class="keyword const">_NTO_SIDE_CHANNEL</span> into <var class="keyword varname">index</var>,
+this behavior might result:
+</p>
+
+
+<ul class="ul">
+<li class="li">If file descriptor 0 is in use, file descriptor 1 isn't in use, and 
+  you call <span class="keyword apiname">ConnectAttach()</span> with 0 specified for <var class="keyword varname">index</var>, 
+  a connection ID of 1 is returned.
+
+  <p class="p">
+  File descriptor 1 (i.e., connection ID 1) is used as <var class="keyword varname">stdout</var>,
+  which is what <span class="keyword apiname">printf()</span> writes to. 
+  If your process makes any calls to <span class="keyword apiname">printf()</span>,
+  <span class="keyword const">NULL</span>-terminated character strings are sent to the channel
+  that you've connected to.
+  Similar situations can happen with connection IDs 0 (<var class="keyword varname">stdin</var>) and
+  2 (<var class="keyword varname">stderr</var>).
+  </p>
+
+</li>
+
+
+<li class="li">Depending on how a child process is created, it may inherit the parent's file descriptors.
+
+  <p class="p">
+  Since connections are treated like file descriptors, a connection created by the parent
+  without <span class="keyword const">_NTO_SIDE_CHANNEL</span> in <var class="keyword varname">index</var> and 
+  without <span class="keyword const">_NTO_COF_CLOEXEC</span> in <var class="keyword varname">flags</var>,
+  causes a child process to inherit that connection during process creation.
+  This inheritance is done during process creation by duplicating file descriptors.
+  </p>
+
+
+  <p class="p">
+  During duplication, an <span class="keyword const">_IO_DUP</span> message (with <samp class="ph codeph">0x115</samp>
+  as the first 2 bytes) is sent to the receiver on the other side of the connection.
+  The receiver won't be expecting this message.
+  </p>
+
+
+  <p class="p">
+  Connections created with <span class="keyword const">_NTO_SIDE_CHANNEL</span> are never inherited by child processes
+  created by a <span class="keyword apiname">fork()</span> call or new process images executed by an 
+  <span class="keyword apiname">exec*()</span> call. This means the receiver won't get an unexpected 
+  <span class="keyword const">_IO_DUP</span> message.
+  </p>
+
+</li>
+
+
+</ul>
+
+
+<p class="p">
+If a client process creates multiple connections to the same channel,
+the system maintains a link count and shares internal kernel object resources for efficiency.
+The client should avoid using different flags (<var class="keyword varname">flags</var>) when making multiple connections,
+or unexpected behavior could result.
+</p>
+
+
+<p class="p">
+Connections are owned by the process and may be used simultaneously by any thread in the process.
+You can detach a connection by calling
+<a class="xref" href="connectdetach.html" title="Break a connection between a process and a channel"><span class="keyword apiname">ConnectDetach()</span></a>. 
+</p>
+
+
+<div class="note note"><span class="notetitle">Note:</span> 
+Connections and connection IDs persist until you call
+<span class="keyword apiname">ConnectDetach()</span>, even if the other process dies.
+</div>
+
+
+<p class="p">
+The connection is strictly local (i.e., it doesn't resolve across the network)
+and is resolved on the first use of the connection ID.
+</p>
+
+
+<h2 class="sectiontitle">Blocking states</h2>
+
+
+
+<p class="p">
+These calls don't block.
+</p>
+
+
+<h2 class="sectiontitle" id="connectattach__NodeDescriptors">Node descriptors</h2>
+
+<p class="p">
+The <var class="keyword varname">nd</var> (node descriptor) is a temporary numeric description of a remote node.
+For more information, see the
+<a class="xref" href="../../../com.qnx.doc.neutrino.sys_arch/topic/qnet.html">Qnet Networking</a>
+chapter of the <cite class="cite">System Architecture</cite> guide.
+</p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+
+<thead class="thead" align="left">
+<tr>
+  <th class="entry" valign="top" id="d1313234e716">To:</th>
+
+  <th class="entry" valign="top" id="d1313234e719">Use this function:</th>
+
+</tr>
+
+</thead>
+
+
+<tbody class="tbody">
+
+<tr>
+  <td class="entry" valign="top" headers="d1313234e716 d1313234e719 ">Compare two <var class="keyword varname">nd</var> objects</td>
+
+  <td class="entry" valign="top" headers="d1313234e716 d1313234e719 "><a class="xref" href="../n/nd_node_cmp.html" title="Compare two node descriptors"><span class="keyword apiname">ND_NODE_CMP()</span></a></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1313234e716 d1313234e719 ">Convert a <var class="keyword varname">nd</var> to text</td>
+
+  <td class="entry" valign="top" headers="d1313234e716 d1313234e719 "><a class="xref" href="../n/netmgr_ndtostr.html" title="Convert a node descriptor into a string"><span class="keyword apiname">netmgr_ndtostr()</span></a></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d1313234e716 d1313234e719 ">Convert text to a <var class="keyword varname">nd</var></td>
+
+  <td class="entry" valign="top" headers="d1313234e716 d1313234e719 "><a class="xref" href="../n/netmgr_strtond.html" title="Convert a string into a node descriptor"><span class="keyword apiname">netmgr_strtond()</span></a></td>
+
+</tr>
+
+
+</tbody>
+
+</table>
+</div>
+
+
+</div>
+
+
+
+<div class="section" id="connectattach__Returns"><h2 class="title sectiontitle">Returns:</h2>
+
+
+<p class="p">
+A connection ID (<dfn class="term">coid</dfn>) that's used by the message primitives.
+If an error occurs:
+</p>
+
+
+<ul class="ul">
+<li class="li"><span class="keyword apiname">ConnectAttach()</span> returns -1 and sets
+  <a class="xref" href="../e/errno.html" title="Thread-local error variable"><var class="keyword varname">errno</var></a>. 
+</li>
+
+
+<li class="li"><span class="keyword apiname">ConnectAttach_r()</span> returns the negative of a value from the Errors section
+  and <strong class="ph b">doesn't</strong> set <var class="keyword varname">errno</var>.
+</li>
+
+
+</ul>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Errors:</h2>
+
+
+<dl class="dl" compact="compact">
+
+<dt class="dt dlterm"><span class="keyword const">EAGAIN</span></dt>
+
+<dd class="dd">Insufficent resources.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EINVAL</span></dt>
+
+<dd class="dd">One of the following:
+
+  <ul class="ul">
+  <li class="li">The value of <var class="keyword varname">index</var> is outside the range of valid connection IDs.
+    This error applies only to file descriptors, not side channels (there's
+    no limit on the range for side channels).
+  </li>
+
+
+  <li class="li">The combination of bits in the <var class="keyword varname">flags</var> argument is invalid.</li>
+
+
+  </ul>
+
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EMFILE</span></dt>
+
+<dd class="dd">
+  <div class="p">One of the following occurred:
+  <ul class="ul">
+      <li class="li">The process has no unused file descriptors.</li>
+
+      <li class="li">The number of connections already owned by the process is greater than or equal to the 
+        limit specified for <span class="keyword const">RLIMIT_NOCONN_NP</span> (see
+        <a class="xref" href="../s/setrlimit.html" title="Set the limit on a system resource"><span class="keyword apiname">setrlimit()</span></a>).</li>
+
+      <li class="li">No file descriptors greater than or equal to <var class="keyword varname">index</var> are available.</li>
+
+  </ul>
+
+  </div>
+
+
+  <div class="p">If you aren't creating a side channel, the following also applies:
+  <ul class="ul">
+      <li class="li">There was no acceptable connection ID less than <span class="keyword const">RLIMIT_NOFILE</span>.</li>
+
+  </ul>
+
+  </div>
+
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">ENOREMOTE</span></dt>
+
+<dd class="dd">The node indicated by <var class="keyword varname">nd</var> doesn't exist.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">ENXIO</span></dt>
+
+<dd class="dd">The process indicated by <var class="keyword varname">pid</var> is no longer valid. 
+  It's going away, has core dumped, or become a zombie.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EPERM</span></dt>
+
+<dd class="dd">The process that created the channel used the <span class="keyword const">_NTO_CHF_PRIVATE</span> flag to mark it as
+            being private (see <a class="xref" href="channelcreate.html" title="Create a communications channel"><span class="keyword apiname">ChannelCreate()</span></a> for more information), or the process
+            doesn't have the necessary ability to connect
+              (<span class="keyword const">PROCMGR_AID_CHANNEL_CONNECT</span>).
+                
+          </dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">ESRCH</span></dt>
+
+<dd class="dd">The process indicated by <var class="keyword varname">pid</var>, or the channel indicated by
+  <var class="keyword varname">chid</var>, doesn't exist.
+</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Classification:</h2>
+
+<p class="p"><a class="xref" href="../summary.html#summary__CLASSIFICATION">QNX Neutrino</a></p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+<thead class="thead" align="left">
+<tr><th class="entry" valign="top" id="d1313234e1012">Safety:</th>
+<th class="entry" valign="top" id="d1313234e1014">Â </th>
+</tr>
+
+</thead>
+
+<tbody class="tbody">
+<tr><td class="entry" valign="top" headers="d1313234e1012 d1313234e1014 ">Cancellation point</td>
+<td class="entry" valign="top" headers="d1313234e1012 d1313234e1014 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d1313234e1012 d1313234e1014 ">Interrupt handler</td>
+<td class="entry" valign="top" headers="d1313234e1012 d1313234e1014 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d1313234e1012 d1313234e1014 ">Signal handler</td>
+<td class="entry" valign="top" headers="d1313234e1012 d1313234e1014 ">Yes</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d1313234e1012 d1313234e1014 ">Thread</td>
+<td class="entry" valign="top" headers="d1313234e1012 d1313234e1014 ">Yes</td>
+</tr>
+
+</tbody>
+
+</table>
+</div>
+
+</div>
+
+
+</div>
+
+
+<div class="related-links"><div class="relinfo relconcepts"><strong>Related concepts</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.getting_started/topic/s1_msg.html" title="Message Passing (Getting Started with QNX Neutrino)">Message Passing (Getting Started with <span class="keyword">QNX Neutrino</span>)</a></div>
+</div>
+<div class="relinfo relref"><strong>Related reference</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/c/channelcreate.html" title="Create a communications channel">ChannelCreate(), ChannelCreate_r(), ChannelCreatePulsePool()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/c/connectdetach.html" title="Break a connection between a process and a channel">ConnectDetach(), ConnectDetach_r()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/c/connectflags.html" title="Modify or query the flags associated with a connection">ConnectFlags(), ConnectFlags_r()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/m/msgsendpulse.html" title="Send a pulse to a process">MsgSendPulse(), MsgSendPulse_r()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/m/msgsendpulseptr.html" title="Send a pulse (containing a pointer) to a process">MsgSendPulsePtr(), MsgSendPulsePtr_r()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/m/msgsendv.html" title="Send a message to a channel">MsgSendv(), MsgSendv_r()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/n/name_attach.html" title="Register a name in the pathname space and create a channel">name_attach()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/n/name_open.html" title="Open a name to connect to a server">name_open()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/n/netmgr_remote_nd.html" title="Get a node descriptor that's relative to a remote node">netmgr_remote_nd()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/o/open.html" title="Open a file">open(), open64()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/o/open_ext.html" title="Open a path and set connection flags">open_ext()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/r/resmgr_attach.html" title="Attach a path to the pathname space">resmgr_attach()</a></div>
+</div>
+</div><div class="navfooter"><!---->
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-c.html" title="C"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">C</span></a></span>  </div>
+</body>
+</html>

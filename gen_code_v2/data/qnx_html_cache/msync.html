@@ -1,0 +1,366 @@
+
+<!DOCTYPE html
+  PUBLIC "" "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />        
+      <meta name="copyright" content="(C) Copyright 2005" /><meta name="DC.rights.owner" content="(C) Copyright 2005" /><meta name="DC.Type" content="reference" /><meta name="DC.Title" content="msync()" /><meta name="abstract" content="Synchronize memory with physical storage" /><meta name="description" content="Synchronize memory with physical storage" /><meta name="indexterms" content="msync()" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-m.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/m/mmap.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/m/munmap.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/s/sysconf.html" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="msync" /><meta name="DC.Language" content="en-us" /><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/commonltr.css"><!----></link><title>msync()</title><link rel="canonical" type="html" href="https://www.qnx.com/developers/docs/7.1/#com.qnx.doc.neutrino.lib_ref/" /><!--  Generated with Oxygen version 18.1, build number 2017020917.  --><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/webhelp_topic.css"><!----></link><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/skins/skin.css" /><script type="text/javascript"><!--
+            
+            var prefix = "../../../index.html";
+            
+            --></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-1.11.3.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.cookie.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-ui.custom.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.highlight-3.js"><!----></script><script type="text/javascript" charset="utf-8" src="../../../oxygen-webhelp/resources/js/webhelp_topic.js"><!----></script><script type="text/javascript"> var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-27400275-1']); _gaq.push(['_setDomainName', 'www.qnx.com']);_gaq.push(['_setAllowLinker', true]);_gaq.push(['_trackPageview']);(function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script></head>
+<body onload="highlightSearchTerm()" class="frmBody" id="msync">
+<table class="nav"><tbody><tr><td colspan="2"><div id="printlink"><button onClick="window.print()" title="Print this page" aria-label="Print this page"></button></div><div id="permalink"><a href="#" title="Link to this page"></a></div></td></tr><tr><td style="width:75%;"><span class="topic_breadcrumb_links"><span class="topic_breadcrumb_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-m.html" title="M">M</a></span></span></td><td><span id="topic_navigation_links" class="navheader">
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-m.html" title="M"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">M</span></a></span>  </span></td></tr></tbody></table>
+
+
+<h1 class="title topictitle1"><span class="keyword apiname">msync()</span></h1>
+<table width="100%"><tbody><tr><td align="left"><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">QNX SDP</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">7.1</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">C Library Reference</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">API</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">Developer</button></td><td align="right"><span style="margin:0px 5px; font-size:0.9em;">Updated: October 28, 2024</span></td></tr></tbody></table>
+
+
+<div class="body refbody"><p class="shortdesc"><em class="ph i">Synchronize memory with physical storage</em></p>
+
+
+<div class="section">
+
+<p class="p">
+
+
+
+
+</p>
+
+</div>
+
+
+<div class="section refsyn"><h2 class="title sectiontitle">Synopsis:</h2>
+
+<pre class="pre codeblock">
+#include &lt;sys/mman.h&gt;
+
+int msync( void * <var class="keyword varname">addr</var>, 
+           size_t <var class="keyword varname">len</var>, 
+           int <var class="keyword varname">flags</var> );
+</pre>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Arguments:</h2>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><var class="keyword varname">addr</var></dt>
+
+<dd class="dd">The beginning of the range of addresses that you want to synchronize.</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">len</var></dt>
+
+<dd class="dd">The length of the range of addresses, in bytes.</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">flags</var></dt>
+
+<dd class="dd">A bitwise inclusive OR of one or more of the following flags:
+
+  <ul class="ul">
+  <li class="li"><span class="keyword const">MS_ASYNC</span> â perform asynchronous writes.
+    The function returns immediately once all the write operations are
+    initiated or queued for servicing.
+    
+  </li>
+
+
+  <li class="li"><span class="keyword const">MS_CACHE_ONLY</span>
+    (<span class="keyword">QNX Neutrino</span> extension; QNX Neutrino Core OS 6.3.2 or later) â
+    now that <span class="keyword">QNX Neutrino</span> includes POSIX support for memory-mapped files, 
+    <span class="keyword apiname">msync()</span> performs its intended operation of writing changes
+    in the mapped memory back to the underlying file.
+    Specify this bit if you want to perform the <span class="keyword">QNX Neutrino</span> extension of
+    having the function flush or invalidate the data cache (via the
+    <span class="keyword const">MS_ASYNC</span>, <span class="keyword const">MS_SYNC</span>, or
+    <span class="keyword const">MS_INVALIDATE</span> flags), instead of the POSIX standard behavior.
+    
+   </li>
+
+
+  <li class="li"><span class="keyword const">MS_INVALIDATE</span> â invalidate cached data. 
+     Invalidates all cached copies of mapped data that are inconsistent with
+     the permanent storage locations
+     such that subsequent references obtain data that was consistent with
+     the permanent storage locations
+     sometime between the call to <span class="keyword apiname">msync()</span> and the first subsequent
+     memory reference to the data.
+     
+   </li>
+
+
+  
+
+  <li class="li"><span class="keyword const">MS_INVALIDATE_ICACHE</span> (<span class="keyword">QNX Neutrino</span> extension) â if
+     you're dynamically modifying code, 
+     use this flag to make sure that the new code is what will be executed.
+    
+  </li>
+
+
+  <li class="li"><span class="keyword const">MS_CLEAN_ONLY</span>
+    (<span class="keyword">QNX Neutrino</span> extension; QNX Neutrino 7.0 or later) â operate only on clean pages.
+    
+  </li>
+
+
+  <li class="li"><span class="keyword const">MS_SYNC</span> â perform synchronous writes.
+     The function doesn't return until all write operations are completed
+     as defined for synchronized I/O data integrity completion.
+    
+  </li>
+
+
+  </ul>
+
+
+  <div class="note note"><span class="notetitle">Note:</span> 
+  You can specify at most one of <span class="keyword const">MS_ASYNC</span> and
+  <span class="keyword const">MS_SYNC</span>, not both.
+  </div>
+
+</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Library:</h2>
+
+
+<p class="p"><span class="ph filepath">libc</span></p>
+
+
+<p class="p">
+Use the <span class="keyword option">-l c</span> option to
+<a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/q/qcc.html"><span class="keyword cmdname">qcc</span></a>
+to link against this library.
+This library is usually included automatically.
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Description:</h2>
+
+
+<p class="p">
+The <span class="keyword apiname">msync()</span> function writes all modified data to permanent storage locations, if any, 
+in those whole pages containing any part of the address space of the process 
+starting at address <var class="keyword varname">addr</var> and continuing for <var class="keyword varname">len</var> bytes.
+The <span class="keyword apiname">msync()</span> function is used with memory mapped files.
+If no such storage exists, <span class="keyword apiname">msync()</span> need not have any effect.
+If requested, the <span class="keyword apiname">msync()</span> function then invalidates cached copies of data.
+</p>
+
+
+<p class="p">
+For mappings to files, this function ensures that all write operations are completed 
+as defined for synchronized I/O data integrity completion.
+</p>
+
+
+<div class="note note"><span class="notetitle">Note:</span> 
+Mappings to files aren't implemented on all filesystems.
+</div>
+
+
+
+
+<p class="p">
+If you call <span class="keyword apiname">msync()</span> on <span class="keyword const">MAP_PRIVATE</span> 
+mappings, any modified data isn't written to the underlying object
+and doesn't cause such data to be made visible to other processes.
+
+</p>
+
+
+<p class="p">
+The behavior of <span class="keyword apiname">msync()</span> is undefined if the mapping wasn't established by a call to
+<a class="xref" href="mmap.html" title="Map a memory region into a process's address space"><span class="keyword apiname">mmap()</span></a>.
+</p>
+
+
+<p class="p">
+If <span class="keyword apiname">msync()</span> causes any write to a file, the file's
+<var class="keyword varname">st_ctime</var> and <var class="keyword varname">st_mtime</var> fields are marked for update.
+</p>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Returns:</h2>
+
+
+<dl class="dl" compact="compact">
+
+<dt class="dt dlterm">0</dt>
+
+<dd class="dd">Success.</dd>
+
+
+
+
+<dt class="dt dlterm">-1</dt>
+
+<dd class="dd">An error occurred
+  (<a class="xref" href="../e/errno.html" title="Thread-local error variable"><var class="keyword varname">errno</var></a> is set).
+</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Errors:</h2>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><span class="keyword const">EBUSY</span></dt>
+
+<dd class="dd">Some or all of the addresses in the range starting at
+  <var class="keyword varname">addr</var> and continuing for <var class="keyword varname">len</var> bytes are locked,
+  and <span class="keyword const">MS_INVALIDATE</span> is specified.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EINTR</span></dt>
+
+<dd class="dd">The call was interrupted by a signal.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EINVAL</span></dt>
+
+<dd class="dd">Invalid <var class="keyword varname">flags</var> value.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">ENOMEM</span></dt>
+
+<dd class="dd">The addresses in the range starting at <var class="keyword varname">addr</var> and continuing for
+  <var class="keyword varname">len</var> bytes are outside the range allowed for the address space of a process
+  or specify one or more pages that aren't mapped.
+</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Examples:</h2>
+
+
+<p class="p">
+See the entry for
+<a class="xref" href="mmap.html" title="Map a memory region into a process's address space"><span class="keyword apiname">mmap()</span></a>.
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Classification:</h2>
+
+<p class="p"><a class="xref" href="../summary.html#summary__CLASSIFICATION">POSIX 1003.1 SIO</a></p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+<thead class="thead" align="left">
+<tr><th class="entry" valign="top" id="d2262939e420">Safety:</th>
+<th class="entry" valign="top" id="d2262939e422">Â </th>
+</tr>
+
+</thead>
+
+<tbody class="tbody">
+<tr><td class="entry" valign="top" headers="d2262939e420 d2262939e422 ">Cancellation point</td>
+<td class="entry" valign="top" headers="d2262939e420 d2262939e422 ">Yes</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2262939e420 d2262939e422 ">Interrupt handler</td>
+<td class="entry" valign="top" headers="d2262939e420 d2262939e422 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2262939e420 d2262939e422 ">Signal handler</td>
+<td class="entry" valign="top" headers="d2262939e420 d2262939e422 ">Yes</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2262939e420 d2262939e422 ">Thread</td>
+<td class="entry" valign="top" headers="d2262939e420 d2262939e422 ">Yes</td>
+</tr>
+
+</tbody>
+
+</table>
+</div>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Caveats:</h2>
+
+
+<p class="p">
+<span class="keyword const">MS_INVALIDATE_ICACHE</span> and <span class="keyword const">MS_CACHE_ONLY</span> are
+<span class="keyword">QNX Neutrino</span> extensions.
+The behavior of this function changed in the QNX Neutrino Core OS 6.3.2;
+to get the previous behavior of just data-cache operations, add the 
+<span class="keyword const">MS_CACHE_ONLY</span> flag to the call in addition to
+<span class="keyword const">MS_ASYNC</span>, <span class="keyword const">MS_SYNC</span>, or
+<span class="keyword const">MS_INVALIDATE</span>.
+</p>
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="related-links"><div class="relinfo relref"><strong>Related reference</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/m/mmap.html" title="Map a memory region into a process's address space">mmap(), mmap64(), mmap_handle()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/m/munmap.html" title="Unmap previously mapped addresses">munmap()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/s/sysconf.html" title="Return the value of a configurable system limit or option">sysconf()</a></div>
+</div>
+</div><div class="navfooter"><!---->
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-m.html" title="M"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">M</span></a></span>  </div>
+</body>
+</html>

@@ -1,0 +1,24 @@
+{
+  "function_name": "asctime",
+  "url": "https://www.qnx.com/developers/docs/7.1/com.qnx.doc.neutrino.lib_ref/topic/a/asctime.html",
+  "synopsis": "char* asctime_r( const struct tm* timeptr,",
+  "description": "",
+  "headers": [
+    "#include <time.h>"
+  ],
+  "parameters": [
+    {
+      "name": "timeptr",
+      "description": "A pointer to a tm structure that contains the time\n  that you want to convert to a string."
+    },
+    {
+      "name": "buf",
+      "description": "(asctime_r() only)\n  A buffer in which asctime_r() can store the resulting string.\n  This buffer must be large enough to hold at least 26 characters."
+    }
+  ],
+  "return_values": [],
+  "examples": [
+    "#include <time.h>\n\nchar* asctime( const struct tm* timeptr );\n\nchar* asctime_r( const struct tm* timeptr, \n                 char* buf );"
+  ],
+  "full_content": "Function: asctime\nURL: https://www.qnx.com/developers/docs/7.1/com.qnx.doc.neutrino.lib_ref/topic/a/asctime.html\nSynopsis: char* asctime_r( const struct tm* timeptr,\nHeaders: #include <time.h>\nParameters:\n  - timeptr: A pointer to a tm structure that contains the time\n  that you want to convert to a string.\n  - buf: (asctime_r() only)\n  A buffer in which asctime_r() can store the resulting string.\n  This buffer must be large enough to hold at least 26 characters.\nExamples:\nExample 1:\n#include <time.h>\n\nchar* asctime( const struct tm* timeptr );\n\nchar* asctime_r( const struct tm* timeptr, \n                 char* buf );"
+}

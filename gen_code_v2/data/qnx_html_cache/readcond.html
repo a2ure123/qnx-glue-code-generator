@@ -1,0 +1,555 @@
+
+<!DOCTYPE html
+  PUBLIC "" "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />        
+      <meta name="copyright" content="(C) Copyright 2005" /><meta name="DC.rights.owner" content="(C) Copyright 2005" /><meta name="DC.Type" content="reference" /><meta name="DC.Title" content="readcond()" /><meta name="abstract" content="Read data from a terminal device" /><meta name="description" content="Read data from a terminal device" /><meta name="indexterms" content="readcond()" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-r.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/e/errno.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/r/read.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/t/tcgetattr.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/t/tcsetattr.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/t/termios.html" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="readcond" /><meta name="DC.Language" content="en-us" /><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/commonltr.css"><!----></link><title>readcond()</title><link rel="canonical" type="html" href="https://www.qnx.com/developers/docs/7.1/#com.qnx.doc.neutrino.lib_ref/" /><!--  Generated with Oxygen version 18.1, build number 2017020917.  --><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/webhelp_topic.css"><!----></link><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/skins/skin.css" /><script type="text/javascript"><!--
+            
+            var prefix = "../../../index.html";
+            
+            --></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-1.11.3.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.cookie.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-ui.custom.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.highlight-3.js"><!----></script><script type="text/javascript" charset="utf-8" src="../../../oxygen-webhelp/resources/js/webhelp_topic.js"><!----></script><script type="text/javascript"> var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-27400275-1']); _gaq.push(['_setDomainName', 'www.qnx.com']);_gaq.push(['_setAllowLinker', true]);_gaq.push(['_trackPageview']);(function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script></head>
+<body onload="highlightSearchTerm()" class="frmBody" id="readcond">
+<table class="nav"><tbody><tr><td colspan="2"><div id="printlink"><button onClick="window.print()" title="Print this page" aria-label="Print this page"></button></div><div id="permalink"><a href="#" title="Link to this page"></a></div></td></tr><tr><td style="width:75%;"><span class="topic_breadcrumb_links"><span class="topic_breadcrumb_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-r.html" title="R">R</a></span></span></td><td><span id="topic_navigation_links" class="navheader">
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-r.html" title="R"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">R</span></a></span>  </span></td></tr></tbody></table>
+
+
+<h1 class="title topictitle1"><span class="keyword apiname">readcond()</span></h1>
+<table width="100%"><tbody><tr><td align="left"><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">QNX SDP</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">7.1</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">C Library Reference</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">API</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">Developer</button></td><td align="right"><span style="margin:0px 5px; font-size:0.9em;">Updated: October 28, 2024</span></td></tr></tbody></table>
+
+
+<div class="body refbody"><p class="shortdesc"><em class="ph i">Read data from a terminal device</em></p>
+
+
+<div class="section refsyn"><h2 class="title sectiontitle">Synopsis:</h2>
+
+<pre class="pre codeblock">
+#include &lt;unistd.h&gt;
+
+int readcond( int <var class="keyword varname">fd</var>,
+              void * <var class="keyword varname">buf</var>,
+              int <var class="keyword varname">n</var>,
+              int <var class="keyword varname">min</var>,
+              int <var class="keyword varname">time</var>,
+              int <var class="keyword varname">timeout</var> );
+</pre>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Arguments:</h2>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><var class="keyword varname">fd</var></dt>
+
+<dd class="dd">The file descriptor associated with the terminal device that you want to read from.</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">buf</var></dt>
+
+<dd class="dd">A pointer to a buffer into which <span class="keyword apiname">readcond()</span> can put the data.</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">n</var></dt>
+
+<dd class="dd">The maximum number of bytes to read.</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">min</var>, <var class="keyword varname">time</var>, <var class="keyword varname">timeout</var></dt>
+
+<dd class="dd">When used in RAW mode, these arguments override the behavior of the
+  <var class="keyword varname">MIN</var> and <var class="keyword varname">TIME</var> members of the terminal's
+  <a class="xref" href="../t/termios.html" title="Terminal control structure"><span class="keyword dtype">termios</span></a>
+  structure.
+  For more information, see below.
+</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Library:</h2>
+
+
+<p class="p"><span class="ph filepath">libc</span></p>
+
+
+<p class="p">
+Use the <span class="keyword option">-l c</span> option to
+<a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/q/qcc.html"><span class="keyword cmdname">qcc</span></a>
+to link against this library.
+This library is usually included automatically.
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Description:</h2>
+
+
+<p class="p">
+
+
+
+The <span class="keyword apiname">readcond()</span> function reads up to <var class="keyword varname">n</var> bytes of
+data from the terminal device indicated by <var class="keyword varname">fd</var> into the buffer
+pointed to by <var class="keyword varname">buf</var>.
+</p>
+
+
+<p class="p">
+
+This function is an alternative to the
+<a class="xref" href="read.html" title="Read bytes from a file"><span class="keyword apiname">read()</span></a>
+function for terminal devices,
+providing additional arguments for timed read operations.
+These additional arguments can be used to minimize overhead when dealing with terminal devices.
+</p>
+
+
+<p class="p">  
+
+The three arguments (<var class="keyword varname">min</var>, <var class="keyword varname">time</var>, and <var class="keyword varname">timeout</var>), 
+when used on terminal devices in RAW mode,
+override the behavior of the <var class="keyword varname">MIN</var> and <var class="keyword varname">TIME</var> elements of the currently defined
+<a class="xref" href="../t/termios.html" title="Terminal control structure"><span class="keyword dtype">termios</span></a>
+structure (for the duration of this call only).  
+The <span class="keyword dtype">termios</span> structure also defines a forwarding character 
+(in <var class="keyword varname">c_cc[VFWD]</var>) that can be used to bypass <var class="keyword varname">min</var>, <var class="keyword varname">time</var>,
+and <var class="keyword varname">timeout</var>.
+</p>
+
+
+<p class="p">
+The normal case of a simple read by an application would block until at least one character was available.
+</p>
+
+
+<div class="fig fignone">
+
+<img class="image" src="../../images/condread.png" />
+<span class="figcap">Figure 1. Conditions that satisfy an input request.</span></div>
+
+
+<p class="p">
+In the case where multiple conditions are specified, the read will be satisfied when any one of them is satisfied.
+
+</p>
+
+
+<p class="p"><strong class="ph b"><var class="keyword varname">MIN</var></strong></p>
+
+
+<p class="p">
+The qualifier <var class="keyword varname">MIN</var> is useful when an application has
+knowledge of the number of characters it expects to receive.
+
+</p>
+
+
+<p class="p">
+Any protocol that knows the character count for a frame of data can
+use <var class="keyword varname">MIN</var> to wait for the entire frame to arrive. 
+This significantly reduces IPC and process scheduling. 
+<var class="keyword varname">MIN</var> is often used in conjunction with <var class="keyword varname">TIME</var> or <var class="keyword varname">TIMEOUT</var>. 
+<var class="keyword varname">MIN</var> is part of the POSIX standard.
+</p>
+
+
+<p class="p"><strong class="ph b"><var class="keyword varname">TIME</var></strong></p>
+
+
+<p class="p">
+The qualifier <var class="keyword varname">TIME</var> is useful when an application
+is receiving streaming data and wishes to be notified when the data stops or pauses.
+The pause time is specified in tenths of a second. 
+<var class="keyword varname">TIME</var> is part of the POSIX standard.
+
+</p>
+
+
+<p class="p"><strong class="ph b"><var class="keyword varname">TIMEOUT</var></strong></p>
+
+
+<p class="p">
+The qualifier <var class="keyword varname">TIMEOUT</var> is useful when an application has
+knowledge of how long it should wait for data before timing out.
+The timeout is specified in tenths of a second.
+
+</p>
+
+
+<p class="p">
+Any protocol that knows the character count for a frame of
+data it expects to receive can use <var class="keyword varname">TIMEOUT</var>. 
+This in combination with the baud rate allows a reasonable guess
+to be made when data should be available. 
+It acts as a deadman timer to detect dropped characters. 
+It can also be used in interactive programs with user input to time out a
+read if no response is available within a given time.
+</p>
+
+
+<p class="p">
+<var class="keyword varname">TIMEOUT</var> is a <span class="keyword">QNX Neutrino</span> extension and isn't part of the POSIX standard.
+</p>
+
+
+<p class="p"><strong class="ph b"><var class="keyword varname">FORWARD</var></strong></p>
+
+
+<p class="p">
+The qualifier <var class="keyword varname">FORWARD</var> is useful when a protocol is delimited by a special framing character. 
+For example, the PPP protocol used for TCP/IP over a serial link start and end its packets with a framing character.
+When used in conjunction with <var class="keyword varname">TIMEOUT</var>, 
+the <var class="keyword varname">FORWARD</var> character can greatly improve the
+efficiency of a protocol implementation. 
+The protocol process will receive complete frames, rather than character by character. 
+In the case of a dropped framing character,
+<var class="keyword varname">TIMEOUT</var> or <var class="keyword varname">TIME</var> can be used to quickly recover.
+
+</p>
+
+
+<p class="p">
+This greatly minimizes the amount of IPC work for the OS and
+results in a much lower processor utilization for a given TCP/IP data rate. 
+It is interesting to note that PPP doesn't contain a character count for its frames.
+Without the data-forwarding character, an implementation would be forced to read the data one character at a time.
+</p>
+
+
+<p class="p">
+<var class="keyword varname">FORWARD</var> is a <span class="keyword">QNX Neutrino</span> extension and isn't part of the POSIX standard.
+</p>
+
+
+<p class="p">
+To enable the <var class="keyword varname">FORWARD</var> character, you must set the <span class="keyword const">VFWD</span> character in the
+<var class="keyword varname">c_cc</var> member of the <span class="keyword dtype">termios</span> structure:
+</p>
+
+
+<pre class="pre codeblock">
+/* PPP forwarding character */
+const char fwd_char = 0x7e;
+
+#include &lt;termios.h&gt;
+
+â¦
+
+int fd;
+struct termios termio;
+
+â¦
+
+tcgetattr( fd, &amp;termio );
+termio.c_cc[VFWD] = fwd_char;
+tcsetattr( fd, TCSANOW, &amp;termio );
+</pre>
+
+
+<p class="p">
+The following table summarizes the interaction of <var class="keyword varname">min</var>,
+<var class="keyword varname">time</var>, and <var class="keyword varname">timeout</var>:
+</p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+
+<thead class="thead" align="left">
+<tr>
+  <th class="entry" valign="top" id="d2478832e430"><var class="keyword varname">min</var></th>
+
+  <th class="entry" valign="top" id="d2478832e434"><var class="keyword varname">time</var></th>
+
+  <th class="entry" valign="top" id="d2478832e438"><var class="keyword varname">timeout</var></th>
+
+  <th class="entry" valign="top" id="d2478832e442">Description</th>
+
+</tr>
+
+</thead>
+
+
+<tbody class="tbody">
+
+<tr>
+  <td class="entry" valign="top" headers="d2478832e430 d2478832e434 d2478832e438 d2478832e442 ">0</td>
+
+  <td class="entry" valign="top" headers="d2478832e430 d2478832e434 d2478832e438 d2478832e442 ">0</td>
+
+  <td class="entry" valign="top" headers="d2478832e430 d2478832e434 d2478832e438 d2478832e442 ">0</td>
+
+  <td class="entry" valign="top" headers="d2478832e430 d2478832e434 d2478832e438 d2478832e442 ">Returns immediately with as many bytes as are currently available (up to <var class="keyword varname">n</var> bytes).</td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d2478832e430 d2478832e434 d2478832e438 d2478832e442 "><var class="keyword varname">M</var></td>
+
+  <td class="entry" valign="top" headers="d2478832e430 d2478832e434 d2478832e438 d2478832e442 ">0</td>
+
+  <td class="entry" valign="top" headers="d2478832e430 d2478832e434 d2478832e438 d2478832e442 ">0</td>
+
+  <td class="entry" valign="top" headers="d2478832e430 d2478832e434 d2478832e438 d2478832e442 ">Return with up to <var class="keyword varname">n</var> bytes only when at least <var class="keyword varname">M</var>
+    bytes are available.
+  </td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d2478832e430 d2478832e434 d2478832e438 d2478832e442 ">0</td>
+
+  <td class="entry" valign="top" headers="d2478832e430 d2478832e434 d2478832e438 d2478832e442 "><var class="keyword varname">T</var></td>
+
+  <td class="entry" valign="top" headers="d2478832e430 d2478832e434 d2478832e438 d2478832e442 ">0</td>
+
+  <td class="entry" valign="top" headers="d2478832e430 d2478832e434 d2478832e438 d2478832e442 ">Return with up to <var class="keyword varname">n</var> bytes when at least one byte is 
+      available, or <var class="keyword varname">T</var> * .1 sec has expired.
+  </td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d2478832e430 d2478832e434 d2478832e438 d2478832e442 "><var class="keyword varname">M</var></td>
+
+  <td class="entry" valign="top" headers="d2478832e430 d2478832e434 d2478832e438 d2478832e442 "><var class="keyword varname">T</var></td>
+
+  <td class="entry" valign="top" headers="d2478832e430 d2478832e434 d2478832e438 d2478832e442 ">0</td>
+
+  <td class="entry" valign="top" headers="d2478832e430 d2478832e434 d2478832e438 d2478832e442 ">Return with up to <var class="keyword varname">n</var> bytes when either <var class="keyword varname">M</var> bytes
+      are available, or at least one byte has been received and the inter-byte 
+      time between any subsequently received characters exceeds <var class="keyword varname">T</var> * .1 sec.
+  </td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d2478832e430 d2478832e434 d2478832e438 d2478832e442 ">0</td>
+
+  <td class="entry" valign="top" headers="d2478832e430 d2478832e434 d2478832e438 d2478832e442 ">0</td>
+
+  <td class="entry" valign="top" headers="d2478832e430 d2478832e434 d2478832e438 d2478832e442 "><var class="keyword varname">t</var></td>
+
+  <td class="entry" valign="top" headers="d2478832e430 d2478832e434 d2478832e438 d2478832e442 ">RESERVED.</td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d2478832e430 d2478832e434 d2478832e438 d2478832e442 "><var class="keyword varname">M</var></td>
+
+  <td class="entry" valign="top" headers="d2478832e430 d2478832e434 d2478832e438 d2478832e442 ">0</td>
+
+  <td class="entry" valign="top" headers="d2478832e430 d2478832e434 d2478832e438 d2478832e442 "><var class="keyword varname">t</var></td>
+
+  <td class="entry" valign="top" headers="d2478832e430 d2478832e434 d2478832e438 d2478832e442 ">Return with up to <var class="keyword varname">n</var> bytes when <var class="keyword varname">t</var> * .1 sec has
+      expired, or <var class="keyword varname">M</var> bytes are available.
+  </td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d2478832e430 d2478832e434 d2478832e438 d2478832e442 ">0</td>
+
+  <td class="entry" valign="top" headers="d2478832e430 d2478832e434 d2478832e438 d2478832e442 "><var class="keyword varname">T</var></td>
+
+  <td class="entry" valign="top" headers="d2478832e430 d2478832e434 d2478832e438 d2478832e442 "><var class="keyword varname">t</var></td>
+
+  <td class="entry" valign="top" headers="d2478832e430 d2478832e434 d2478832e438 d2478832e442 ">RESERVED.</td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d2478832e430 d2478832e434 d2478832e438 d2478832e442 "><var class="keyword varname">M</var></td>
+
+  <td class="entry" valign="top" headers="d2478832e430 d2478832e434 d2478832e438 d2478832e442 "><var class="keyword varname">T</var></td>
+
+  <td class="entry" valign="top" headers="d2478832e430 d2478832e434 d2478832e438 d2478832e442 "><var class="keyword varname">t</var></td>
+
+  <td class="entry" valign="top" headers="d2478832e430 d2478832e434 d2478832e438 d2478832e442 ">Return with up to <var class="keyword varname">n</var> bytes when <var class="keyword varname">M</var> bytes are
+      available, or <var class="keyword varname">t</var> * .1 sec has expired and no characters are 
+      received, or at least one byte has been received and the inter-byte time 
+      between any subsequently received characters exceeds <var class="keyword varname">T</var> * .1 sec.
+  </td>
+
+</tr>
+
+
+</tbody>
+
+</table>
+</div>
+
+
+<p class="p">
+Note that when <var class="keyword varname">timeout</var> is zero, 
+the behavior of <var class="keyword varname">min</var> and <var class="keyword varname">time</var> is exactly the same as the behavior of the 
+<samp class="ph codeph">MIN</samp> and <samp class="ph codeph">TIME</samp> parameters of the <span class="keyword dtype">termios</span> controlling structure. 
+Thus, 
+<a class="xref" href="readcond.html" title="Read data from a terminal device"><span class="keyword apiname">readcond()</span></a> 
+can be used as a higher speed alternative to consecutive calls of 
+<a class="xref" href="../t/tcgetattr.html" title="Get the current terminal control settings"><span class="keyword apiname">tcgetattr()</span></a>,
+<a class="xref" href="../t/tcsetattr.html" title="Change the terminal control settings for a device"><span class="keyword apiname">tcsetattr()</span></a>, 
+and 
+<a class="xref" href="read.html" title="Read bytes from a file"><span class="keyword apiname">read()</span></a>
+when dealing with RAW terminal I/O.
+</p>
+
+
+<p class="p">
+The (<var class="keyword varname">M</var>, 0, <var class="keyword varname">t</var>) case is useful for communications 
+protocols that cannot afford to block forever waiting for data that may never arrive.
+</p>
+
+
+<p class="p">
+The (<var class="keyword varname">M</var>, <var class="keyword varname">T</var>, <var class="keyword varname">t</var>) case is provided to permit 
+<span class="keyword apiname">readcond()</span> to return when a burst of data ends 
+(as in the (<var class="keyword varname">M</var>, <var class="keyword varname">T</var>, 0) case), 
+but also to return if no burst at all is detected within a reasonable amount of time.
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Returns:</h2>
+
+
+<p class="p">
+The number of bytes read, or -1 if an error occurs
+(<a class="xref" href="../e/errno.html" title="Thread-local error variable"><var class="keyword varname">errno</var></a> is set).
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Errors:</h2>
+
+
+<dl class="dl" compact="compact">
+
+<dt class="dt dlterm"><span class="keyword const">EAGAIN</span></dt>
+
+<dd class="dd">The <span class="keyword const">O_NONBLOCK</span> flag is set on this <var class="keyword varname">fd</var>,
+  and the process would have been blocked in trying to perform this operation.
+  
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EBADF</span></dt>
+
+<dd class="dd">The argument <var class="keyword varname">fd</var> is invalid or file isn't opened for reading.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EINTR</span></dt>
+
+<dd class="dd">The <span class="keyword apiname">readcond()</span> call was interrupted by the process being signalled.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EIO</span></dt>
+
+<dd class="dd">This process isn't currently able to read data from this <var class="keyword varname">fd</var>.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">ENOSYS</span></dt>
+
+<dd class="dd">This function isn't supported for this <var class="keyword varname">fd</var>.</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Classification:</h2>
+
+<p class="p"><a class="xref" href="../summary.html#summary__CLASSIFICATION">QNX Neutrino</a></p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+<thead class="thead" align="left">
+<tr><th class="entry" valign="top" id="d2478832e837">Safety:</th>
+<th class="entry" valign="top" id="d2478832e839">Â </th>
+</tr>
+
+</thead>
+
+<tbody class="tbody">
+<tr><td class="entry" valign="top" headers="d2478832e837 d2478832e839 ">Cancellation point</td>
+<td class="entry" valign="top" headers="d2478832e837 d2478832e839 ">Yes</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2478832e837 d2478832e839 ">Interrupt handler</td>
+<td class="entry" valign="top" headers="d2478832e837 d2478832e839 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2478832e837 d2478832e839 ">Signal handler</td>
+<td class="entry" valign="top" headers="d2478832e837 d2478832e839 ">Yes</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2478832e837 d2478832e839 ">Thread</td>
+<td class="entry" valign="top" headers="d2478832e837 d2478832e839 ">Yes</td>
+</tr>
+
+</tbody>
+
+</table>
+</div>
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="related-links"><div class="relinfo relref"><strong>Related reference</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/e/errno.html" title="Thread-local error variable">errno</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/r/read.html" title="Read bytes from a file">read()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/t/tcgetattr.html" title="Get the current terminal control settings">tcgetattr()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/t/tcsetattr.html" title="Change the terminal control settings for a device">tcsetattr()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/t/termios.html" title="Terminal control structure">termios</a></div>
+</div>
+</div><div class="navfooter"><!---->
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-r.html" title="R"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">R</span></a></span>  </div>
+</body>
+</html>

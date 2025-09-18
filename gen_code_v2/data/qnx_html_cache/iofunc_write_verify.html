@@ -1,0 +1,328 @@
+
+<!DOCTYPE html
+  PUBLIC "" "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />        
+      <meta name="copyright" content="(C) Copyright 2005" /><meta name="DC.rights.owner" content="(C) Copyright 2005" /><meta name="DC.Type" content="reference" /><meta name="DC.Title" content="iofunc_write_verify()" /><meta name="abstract" content="Verify a client's write access to a resource" /><meta name="description" content="Verify a client's write access to a resource" /><meta name="indexterms" content="iofunc_write_verify()" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-i.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.resmgr/topic/about.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.getting_started/topic/s1_resmgr.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/f/fwrite.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/i/iofunc_write_default.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/w/write.html" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="iofunc_write_verify" /><meta name="DC.Language" content="en-us" /><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/commonltr.css"><!----></link><title>iofunc_write_verify()</title><link rel="canonical" type="html" href="https://www.qnx.com/developers/docs/7.1/#com.qnx.doc.neutrino.lib_ref/" /><!--  Generated with Oxygen version 18.1, build number 2017020917.  --><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/webhelp_topic.css"><!----></link><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/skins/skin.css" /><script type="text/javascript"><!--
+            
+            var prefix = "../../../index.html";
+            
+            --></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-1.11.3.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.cookie.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-ui.custom.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.highlight-3.js"><!----></script><script type="text/javascript" charset="utf-8" src="../../../oxygen-webhelp/resources/js/webhelp_topic.js"><!----></script><script type="text/javascript"> var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-27400275-1']); _gaq.push(['_setDomainName', 'www.qnx.com']);_gaq.push(['_setAllowLinker', true]);_gaq.push(['_trackPageview']);(function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script></head>
+<body onload="highlightSearchTerm()" class="frmBody" id="iofunc_write_verify">
+<table class="nav"><tbody><tr><td colspan="2"><div id="printlink"><button onClick="window.print()" title="Print this page" aria-label="Print this page"></button></div><div id="permalink"><a href="#" title="Link to this page"></a></div></td></tr><tr><td style="width:75%;"><span class="topic_breadcrumb_links"><span class="topic_breadcrumb_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-i.html" title="I">I</a></span></span></td><td><span id="topic_navigation_links" class="navheader">
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-i.html" title="I"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">I</span></a></span>  </span></td></tr></tbody></table>
+
+
+<h1 class="title topictitle1"><span class="keyword apiname">iofunc_write_verify()</span></h1>
+<table width="100%"><tbody><tr><td align="left"><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">QNX SDP</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">7.1</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">C Library Reference</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">API</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">Developer</button></td><td align="right"><span style="margin:0px 5px; font-size:0.9em;">Updated: October 28, 2024</span></td></tr></tbody></table>
+
+
+<div class="body refbody"><p class="shortdesc"><em class="ph i">Verify a client's write access to a resource</em></p>
+
+
+<div class="section refsyn"><h2 class="title sectiontitle">Synopsis:</h2>
+
+<pre class="pre codeblock">
+#include &lt;sys/iofunc.h&gt;
+
+int iofunc_write_verify( resmgr_context_t* <var class="keyword varname">ctp</var>,
+                         io_write_t* <var class="keyword varname">msg</var>,
+                         iofunc_ocb_t* <var class="keyword varname">ocb</var>,
+                         int* <var class="keyword varname">nonblock</var> );
+</pre>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Arguments:</h2>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><var class="keyword varname">ctp</var></dt>
+
+<dd class="dd">A pointer to a
+  <a class="xref" href="../r/resmgr_context_t.html" title="Context information that's passed between resource-manager functions"><span class="keyword dtype">resmgr_context_t</span></a>
+  structure that the resource-manager library uses to pass context information
+  between functions.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">msg</var></dt>
+
+<dd class="dd">A pointer to the <span class="keyword dtype">io_write_t</span> structure that contains the message that the 
+  resource manager received. For information on this structure, see the
+  <span class="q">&#147;<a class="xref" href="../../../com.qnx.doc.neutrino.resmgr/topic/read_write_HANDLING_WRITE_MSG.html">Handling the _IO_WRITE message</a>&#148;</span> topic
+    in the <cite class="cite">Writing a Resource Manager</cite> guide.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">ocb</var></dt>
+
+<dd class="dd">A pointer to the
+  <a class="xref" href="iofunc_ocb_t.html" title="Open Control Block structure"><span class="keyword dtype">iofunc_ocb_t</span></a>
+  structure for the Open Control Block that was created when the
+  client opened the resource.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">nonblock</var></dt>
+
+<dd class="dd"><span class="keyword const">NULL</span>, or a pointer to a location where the function can
+  store a value that indicates whether or not the device is nonblocking:
+
+  <ul class="ul">
+  <li class="li"><span class="keyword const">O_NONBLOCK</span> â the client doesn't want to be blocked.
+    
+  </li>
+
+
+  <li class="li">Zero â the client wants to be blocked.</li>
+
+
+  </ul>
+
+</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Library:</h2>
+
+
+<p class="p"><span class="ph filepath">libc</span></p>
+
+
+<p class="p">
+Use the <span class="keyword option">-l c</span> option to
+<a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/q/qcc.html"><span class="keyword cmdname">qcc</span></a>
+to link against this library.
+This library is usually included automatically.
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Description:</h2>
+
+
+<p class="p">
+
+
+The <span class="keyword apiname">iofunc_write_verify()</span> function checks that the client 
+<span class="keyword const">_IO_WRITE</span> or <span class="keyword const">_IO_WRITE64</span> message is well-formed and the operation
+should be allowed to succeed. This function may update fields for proper behavior. Optionally,
+it further reports if the operation may be treated as nonblocking.
+</p>
+
+
+<p class="p">
+All write handlers should start with a call to <span class="keyword apiname">iofunc_write_verify()</span> and 
+proceed only if it returns EOK.
+</p>
+
+
+<div class="p">This function checks at least that:
+<ul class="ul">
+  <li class="li">the original open included write access</li>
+
+  <li class="li">the incoming message is well-formed, including that: <ul class="ul">
+    <li class="li">if an xtype is specified that includes extra data headers, the extra data is in the 
+      receive buffer</li>
+
+    <li class="li">at least as many bytes of data were sent as what was specified in the message</li>
+
+    </ul>
+</li>
+
+  <li class="li">the write offset to be used is non-negative</li>
+
+  <li class="li">this operation is not attempting to write to a directory</li>
+
+  <li class="li">the file is not on a read-only filesystem</li>
+
+  <li class="li">on 32-bit systems, an <span class="keyword const">_IO_WRITE64</span> was not sent</li>
+
+  <li class="li">on regular files on 32-bit filesystems: <ul class="ul">
+    <li class="li">the offset to be written to does not exceed <span class="keyword const">INT32_MAX</span></li>
+
+    <li class="li">the offset plus number of bytes to be written does not exceed <span class="keyword const">INT32_MAX</span></li>
+
+  </ul>
+</li>
+
+</ul>
+
+</div>
+
+
+<div class="p">This function updates the following:
+<ul class="ul">
+  <li class="li">If a non-NULL <var class="keyword varname">nonblock</var> pointer is passed in, the value pointed to will be
+    set to 0 if the operation may be allowed to block, and to <span class="keyword const">O_NONBLOCK</span> if the
+    operation should not be allowed to block.</li>
+
+  <li class="li">If the file was opened with <span class="keyword const">O_APPEND</span>, and the message xtype is not 
+    <span class="keyword const">_IO_XTYPE_OFFSET</span>, then the <var class="keyword varname">ocb</var>-&gt;<var class="keyword varname">offset</var>
+    will be set to the size of the file, 
+    <var class="keyword varname">ocb</var>-&gt;<var class="keyword varname">attr</var>-&gt;<var class="keyword varname">nbytes</var>.</li>
+
+  <li class="li">If the write is to a 32-bit filesystem, and the sum of the offset and the number of bytes to
+    write would have exceeded <span class="keyword const">INT32_MAX</span>, then 
+    <var class="keyword varname">msg</var>-&gt;<var class="keyword varname">i</var>.<var class="keyword varname">nbytes</var> 
+    will be reduced such that this sum is exactly <span class="keyword const">INT32_MAX</span>.</li>
+
+  <li class="li">If the write is more than zero bytes to an executable file with any setid bits set
+    (e.g., the setuid bit), then all setid bits will be zeroed (unset)
+    in the attribute structure, unless the write is from a root (i.e., an euid of 0) process.</li>
+
+</ul>
+
+</div>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Returns:</h2>
+
+
+<dl class="dl" compact="compact">
+
+
+<dt class="dt dlterm"><span class="keyword const">EOK</span></dt>
+
+<dd class="dd">The client is allowed to perform this write operation.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EBADF</span></dt>
+
+<dd class="dd">The client didn't open the resource for write access.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EBADMSG</span></dt>
+
+<dd class="dd">The message is improperly formatted or doesn't include enough data.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EFBIG</span></dt>
+
+<dd class="dd">The offset to be written to is greater than <span class="keyword const">INT32_MAX</span> on a 32-bit filesystem
+  and the write is greater than 0 bytes.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EINVAL</span></dt>
+
+<dd class="dd">The offset to be written to is negative.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EISDIR</span></dt>
+
+<dd class="dd">The file is a directory.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EOVERFLOW</span></dt>
+
+<dd class="dd">An _IO_WRITE64 message was received on a 32-bit system.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EROFS</span></dt>
+
+<dd class="dd">The file is on a read-only filesystem.</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Classification:</h2>
+
+<p class="p"><a class="xref" href="../summary.html#summary__CLASSIFICATION">QNX Neutrino</a></p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+<thead class="thead" align="left">
+<tr><th class="entry" valign="top" id="d2068140e409">Safety:</th>
+<th class="entry" valign="top" id="d2068140e411">Â </th>
+</tr>
+
+</thead>
+
+<tbody class="tbody">
+<tr><td class="entry" valign="top" headers="d2068140e409 d2068140e411 ">Cancellation point</td>
+<td class="entry" valign="top" headers="d2068140e409 d2068140e411 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2068140e409 d2068140e411 ">Interrupt handler</td>
+<td class="entry" valign="top" headers="d2068140e409 d2068140e411 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2068140e409 d2068140e411 ">Signal handler</td>
+<td class="entry" valign="top" headers="d2068140e409 d2068140e411 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2068140e409 d2068140e411 ">Thread</td>
+<td class="entry" valign="top" headers="d2068140e409 d2068140e411 ">Yes</td>
+</tr>
+
+</tbody>
+
+</table>
+</div>
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="related-links"><div class="relinfo relconcepts"><strong>Related concepts</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.resmgr/topic/about.html" title="Writing a Resource Manager">Writing a Resource Manager</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.getting_started/topic/s1_resmgr.html" title="Resource Managers (Getting Started with QNX Neutrino)">Resource Managers (Getting Started with <span class="keyword">QNX Neutrino</span>)</a></div>
+</div>
+<div class="relinfo relref"><strong>Related reference</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/f/fwrite.html" title="Write elements to a file">fwrite()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/i/iofunc_write_default.html" title="Default handler for _IO_WRITE messages">iofunc_write_default()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/w/write.html" title="Write bytes to a file">write()</a></div>
+</div>
+</div><div class="navfooter"><!---->
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-i.html" title="I"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">I</span></a></span>  </div>
+</body>
+</html>

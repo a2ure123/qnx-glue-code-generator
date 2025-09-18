@@ -1,0 +1,629 @@
+
+<!DOCTYPE html
+  PUBLIC "" "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />        
+      <meta name="copyright" content="(C) Copyright 2005" /><meta name="DC.rights.owner" content="(C) Copyright 2005" /><meta name="DC.Type" content="reference" /><meta name="DC.Title" content="name_attach()" /><meta name="abstract" content="Register a name in the pathname space and create a channel" /><meta name="description" content="Register a name in the pathname space and create a channel" /><meta name="indexterms" content="name_attach()" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-n.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.getting_started/topic/s1_msg.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/c/channelcreate.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/d/dispatch_block.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/d/dispatch_context_alloc.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/d/dispatch_context_free.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/d/dispatch_create.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/d/dispatch_create_channel.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/d/dispatch_destroy.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/d/dispatch_handler.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/d/dispatch_timeout.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/d/dispatch_unblock.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/m/msgreceive.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/n/name_detach.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/n/name_open.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/n/name_close.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/p/procmgr_ability.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/p/_pulse.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/r/resmgr_attach.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.utilities/topic/g/gns.html" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="name_attach" /><meta name="DC.Language" content="en-us" /><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/commonltr.css"><!----></link><title>name_attach()</title><link rel="canonical" type="html" href="https://www.qnx.com/developers/docs/7.1/#com.qnx.doc.neutrino.lib_ref/" /><!--  Generated with Oxygen version 18.1, build number 2017020917.  --><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/webhelp_topic.css"><!----></link><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/skins/skin.css" /><script type="text/javascript"><!--
+            
+            var prefix = "../../../index.html";
+            
+            --></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-1.11.3.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.cookie.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-ui.custom.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.highlight-3.js"><!----></script><script type="text/javascript" charset="utf-8" src="../../../oxygen-webhelp/resources/js/webhelp_topic.js"><!----></script><script type="text/javascript"> var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-27400275-1']); _gaq.push(['_setDomainName', 'www.qnx.com']);_gaq.push(['_setAllowLinker', true]);_gaq.push(['_trackPageview']);(function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script></head>
+<body onload="highlightSearchTerm()" class="frmBody" id="name_attach">
+<table class="nav"><tbody><tr><td colspan="2"><div id="printlink"><button onClick="window.print()" title="Print this page" aria-label="Print this page"></button></div><div id="permalink"><a href="#" title="Link to this page"></a></div></td></tr><tr><td style="width:75%;"><span class="topic_breadcrumb_links"><span class="topic_breadcrumb_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-n.html" title="N">N</a></span></span></td><td><span id="topic_navigation_links" class="navheader">
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-n.html" title="N"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">N</span></a></span>  </span></td></tr></tbody></table>
+
+
+<h1 class="title topictitle1"><span class="keyword apiname">name_attach()</span></h1>
+<table width="100%"><tbody><tr><td align="left"><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">QNX SDP</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">7.1</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">C Library Reference</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">API</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">Developer</button></td><td align="right"><span style="margin:0px 5px; font-size:0.9em;">Updated: October 28, 2024</span></td></tr></tbody></table>
+
+
+
+<div class="body refbody"><p class="shortdesc"><em class="ph i">Register a name in the pathname space and create a channel</em></p>
+
+
+<div class="section refsyn"><h2 class="title sectiontitle">Synopsis:</h2>
+
+<pre class="pre codeblock">
+#include &lt;sys/iofunc.h&gt;
+#include &lt;sys/dispatch.h&gt;
+
+name_attach_t * name_attach( dispatch_t * <var class="keyword varname">dpp</var>,
+                             const char * <var class="keyword varname">path</var>,
+                             unsigned <var class="keyword varname">flags</var> );
+</pre>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Arguments:</h2>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><var class="keyword varname">dpp</var></dt>
+
+<dd class="dd"><span class="keyword const">NULL</span>, or a dispatch handle returned by a successful call to
+  <a class="xref" href="../d/dispatch_create.html" title="Allocate a dispatch structure and create the channel associated with it"><span class="keyword apiname">dispatch_create()</span></a>
+  or
+  <a class="xref" href="../d/dispatch_create_channel.html" title="Allocate a dispatch structure, specifying a channel ID"><span class="keyword apiname">dispatch_create_channel()</span></a>.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">path</var></dt>
+
+<dd class="dd">The path that you want to register under
+  <span class="ph filepath">/dev/name/[local|global]/</span>.
+  This name shouldn't contain any path components consisting of <samp class="ph codeph">..</samp> or
+  start with a leading slash (<samp class="ph codeph">/</samp>).
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">flags</var></dt>
+
+<dd class="dd">Flags that affect the function's behavior:
+
+  <ul class="ul">
+  <li class="li"><span class="keyword const">NAME_FLAG_ATTACH_GLOBAL</span> â attach the name globally instead of locally.
+    See the
+    <a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/g/gns.html"><span class="keyword cmdname">gns</span></a>  utility.
+    
+  </li>
+
+
+  </ul>
+
+</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Library:</h2>
+
+
+<p class="p"><span class="ph filepath">libc</span></p>
+
+
+<p class="p">
+Use the <span class="keyword option">-l c</span> option to
+<a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/q/qcc.html"><span class="keyword cmdname">qcc</span></a>
+to link against this library.
+This library is usually included automatically.
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Description:</h2>
+
+
+<p class="p">
+
+
+
+
+The <span class="keyword apiname">name_attach()</span>,
+<a class="xref" href="name_close.html" title="Close a server connection that was opened by name_open()"><span class="keyword apiname">name_close()</span></a>,
+<a class="xref" href="name_detach.html" title="Remove a name from the namespace and destroy the channel"><span class="keyword apiname">name_detach()</span></a>, and
+<a class="xref" href="name_open.html" title="Open a name to connect to a server"><span class="keyword apiname">name_open()</span></a> functions
+provide the basic pathname-to-server-connection mapping, without having
+to become a <em class="ph i">full</em> resource manager.
+</p>
+
+
+<div class="note note"><span class="notetitle">Note:</span> 
+In order to create a public channel (i.e., <em class="ph i">without</em> <span class="keyword const">_NTO_CHF_PRIVATE</span> set),
+your process needs the <span class="keyword const">PROCMGR_AID_PUBLIC_CHANNEL</span> ability enabled.
+
+For more information, see
+<a class="xref" href="../p/procmgr_ability.html" title="Control a process's ability to perform certain operations"><span class="keyword apiname">procmgr_ability()</span></a>.
+</div>
+
+
+
+
+<p class="p">
+If you've already created a dispatch structure, pass it in as
+the <var class="keyword varname">dpp</var>. If you provide your own <var class="keyword varname">dpp</var>, set <var class="keyword varname">flags</var>
+to <span class="keyword const">NAME_FLAG_DETACH_SAVEDPP</span>  when calling <span class="keyword apiname">name_detach()</span>;
+otherwise, your <var class="keyword varname">dpp</var> is detached and destroyed automatically.
+</p>
+
+
+<p class="p">
+
+
+
+If you pass <span class="keyword const">NULL</span> as the <var class="keyword varname">dpp</var>, <span class="keyword apiname">name_attach()</span>
+creates a dispatch structure and a channel.
+The channel will be created with the <span class="keyword const">_NTO_CHF_COID_DISCONNECT</span>, 
+<span class="keyword const">_NTO_CHF_UNBLOCK</span>, and <span class="keyword const">_NTO_CHF_DISCONNECT</span> flags set, 
+and you will need to handle the generated pulses correctly.
+See <a class="xref" href="../c/channelcreate.html" title="Create a communications channel"><span class="keyword apiname">ChannelCreate()</span></a> for details.
+</p>
+
+
+<p class="p">
+
+
+
+The <span class="keyword apiname">name_attach()</span> function puts the name <var class="keyword varname">path</var> into the pathname space
+under <span class="ph filepath">/dev/name/[local|global]/<var class="keyword varname">path</var></span>.
+This pathname space is unprivileged, meaning your process doesn't need the <span class="keyword const">PROCMGR_AID_PATHSPACE</span> ability,
+unlike with <span class="keyword apiname">pathmgr_symlink()</span> and <span class="keyword apiname">resmgr_attach()</span>.
+The name is attached locally by default, or globally when
+you set <span class="keyword const">NAME_FLAG_ATTACH_GLOBAL</span> in the <var class="keyword varname">flags</var>.
+You can see attached names in <span class="ph filepath">/dev/name/local</span> and
+<span class="ph filepath">/dev/name/global</span> directories.
+</p>
+
+
+
+
+
+
+<div class="note note"><span class="notetitle">Note:</span> 
+If the global name service,
+<a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/g/gns.html"><span class="keyword cmdname">gns</span></a>,
+is running on your system, the server application that calls <span class="keyword apiname">name_attach()</span> receives
+an <span class="keyword const">_IO_CONNECT</span> message with a subtype of <span class="keyword const">_IO_CONNECT_OPEN</span> when a client calls
+<a class="xref" href="name_open.html" title="Open a name to connect to a server"><span class="keyword apiname">name_open()</span></a>.
+The server has to handle this message properly with a reply of <span class="keyword const">EOK</span> to allow
+<span class="keyword apiname">name_open()</span> to connect.
+</div>
+
+
+
+
+<p class="p">
+If the receive buffer that the server provides isn't large enough to hold a pulse, then
+<a class="xref" href="../m/msgreceive.html" title="Wait for a message or pulse on a channel"><span class="keyword apiname">MsgReceive()</span></a>
+returns -1 with
+<a class="xref" href="../e/errno.html" title="Thread-local error variable"><var class="keyword varname">errno</var></a>
+set to <span class="keyword const">EFAULT</span>.
+</p>
+
+
+<h2 class="sectiontitle"><span class="keyword dtype">name_attach_t</span></h2>
+
+<p class="p">
+
+The <span class="keyword apiname">name_attach()</span> function returns a pointer to a
+<span class="keyword dtype">name_attach_t</span> structure that looks like this:
+</p>
+
+
+<pre class="pre codeblock">
+typedef struct _name_attach {
+    dispatch_t* dpp;
+    int         chid;
+    int         mntid;
+    int         zero[2];
+} name_attach_t;
+</pre>
+
+
+<p class="p">
+The members include:
+</p>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><var class="keyword varname">dpp</var></dt>
+
+<dd class="dd">The dispatch handle used in the creation of this connection.</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">chid</var></dt>
+
+<dd class="dd">The channel ID used for <span class="keyword apiname">MsgReceive()</span> directly.</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">mntid</var></dt>
+
+<dd class="dd">the mount ID for this name.</dd>
+
+
+
+</dl>
+
+
+<p class="p">
+The information that's generally required by a server using these services
+is the <var class="keyword varname">chid</var>.
+</p>
+
+
+<div class="note note"><span class="notetitle">Note:</span> 
+The <span class="keyword cmdname">gns</span> utility must be started and running first before an application can
+call <span class="keyword apiname">name_attach()</span> to globally advertise (or attach) a service (i.e.,
+one represented by a path name).
+
+<p class="p">
+If an application attaches a service locally, then applications from another machine can't lookup
+this service through the <span class="keyword cmdname">gns</span> utility. If an application attaches its
+services globally, then any machine that's on the network and is running
+the <span class="keyword cmdname">gns</span> manager can access the services.
+</p>
+
+
+<p class="p">
+An application can attach a service locally,
+only if there isn't another application that's attached locally to the same service.
+There's no credential restriction for applications that are attached as local services.
+An application can attach a service globally only if the application has
+<span class="ph filepath">root</span> privilege.
+</p>
+
+</div>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Returns:</h2>
+
+
+<p class="p">
+A pointer to a filled-in <span class="keyword dtype">name_attach_t</span> structure, or <span class="keyword const">NULL</span> if the call fails
+(<a class="xref" href="../e/errno.html" title="Thread-local error variable"><var class="keyword varname">errno</var></a>
+is set).
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Errors:</h2>
+
+
+<dl class="dl" compact="compact">
+
+<dt class="dt dlterm"><span class="keyword const">EEXIST</span></dt>
+
+<dd class="dd">The specified path already exists.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EINVAL</span></dt>
+
+<dd class="dd">An argument was invalid.
+  For example, the <var class="keyword varname">path</var> argument was <span class="keyword const">NULL</span>, the path was empty,
+  it started with a leading slash (<samp class="ph codeph">/</samp>), or it contained <samp class="ph codeph">..</samp> components.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">ENOENT</span></dt>
+
+<dd class="dd">You're attempting to attach a global name, but
+  <a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/g/gns.html"><span class="keyword cmdname">gns</span></a>
+  isn't running.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">ENOMEM</span></dt>
+
+<dd class="dd">There wasn't enough free memory to complete the operation.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">ENOTDIR</span></dt>
+
+<dd class="dd">A component of the pathname wasn't a directory entry.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EPERM</span></dt>
+
+<dd class="dd">The calling process doesn't have the required permission; see
+  <a class="xref" href="../p/procmgr_ability.html" title="Control a process's ability to perform certain operations"><span class="keyword apiname">procmgr_ability()</span></a>.
+</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section" id="name_attach__Examples"><h2 class="title sectiontitle">Examples:</h2>
+
+
+<pre class="pre codeblock">
+#include &lt;stdio.h&gt;
+#include &lt;errno.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+#include &lt;sys/dispatch.h&gt;
+
+#define ATTACH_POINT "myname"
+
+/* All your messages should start with a type field */
+typedef struct _my_data
+{
+	uint16_t type;
+	int value;
+} my_data_t;
+
+typedef union recv_buf
+{
+	uint16_t type; // all messages start with a type
+	struct _pulse pulse;
+	my_data_t data;
+} my_recv_buf_t;
+
+/*** Server Side of the code ***/
+int server() {
+   name_attach_t *attach;
+   my_recv_buf_t msg;
+   int rcvid;
+
+   /* Create a local name (/dev/name/local/...) */
+   if ((attach = name_attach(NULL, ATTACH_POINT, 0)) == NULL) {
+       return EXIT_FAILURE;
+   }
+
+   /* Do your MsgReceive's here now with the chid */
+   while (1) {
+       rcvid = MsgReceive(attach-&gt;chid, &amp;msg, sizeof(msg), NULL);
+
+       if (rcvid == -1) {/* Error condition, exit */
+           break;
+       }
+
+       if (rcvid == 0) {/* Pulse received */
+           switch (msg.pulse.code) {
+           case _PULSE_CODE_DISCONNECT:
+               /*
+                * A client disconnected all its connections (called
+                * name_close() for each name_open() of our name) or
+                * terminated
+                */
+               ConnectDetach(msg.pulse.scoid);
+               break;
+           case _PULSE_CODE_UNBLOCK:
+               /*
+                * REPLY blocked client wants to unblock (was hit by
+                * a signal or timed out).  It's up to you if you
+                * reply now or later.
+                */
+               break;
+           default:
+               /*
+                * A pulse sent by one of your processes or a
+                * _PULSE_CODE_COIDDEATH or _PULSE_CODE_THREADDEATH
+                * from the kernel?
+                */
+               break;
+           }
+           continue;
+       }
+
+       /* A system message was received, reject it. */
+       if (msg.type &lt;= _IO_MAX ) {
+           MsgError( rcvid, ENOSYS );
+           continue;
+       }
+
+       /* A message (presumable ours) received, handle */
+       printf("Server receive %d \n", msg.data.value);
+       MsgReply(rcvid, EOK, 0, 0);
+
+   }
+
+   /* Remove the name from the space */
+   name_detach(attach, 0);
+
+   return EXIT_SUCCESS;
+}
+
+
+/*** Client Side of the code ***/
+int client() {
+    my_data_t msg;
+    int server_coid;
+
+    if ((server_coid = name_open(ATTACH_POINT, 0)) == -1) {
+        return EXIT_FAILURE;
+    }
+
+    /* We would have pre-defined data to stuff here */
+    msg.type = (_IO_MAX+5);
+
+    /* Do whatever work you wanted with server connection */
+    for (msg.value=0; msg.value &lt; 5; msg.value++) {
+        printf("Client sending %d \n", msg.value);
+        if (MsgSend(server_coid, &amp;msg, sizeof(msg), NULL, 0) == -1) {
+            break;
+        }
+    }
+
+    /* Close the connection */
+    name_close(server_coid);
+    return EXIT_SUCCESS;
+}
+
+int main(int argc, char **argv) {
+    int ret;
+
+    if (argc &lt; 2) {
+        printf("Usage %s -s | -c \n", argv[0]);
+        ret = EXIT_FAILURE;
+    }
+    else if (strcmp(argv[1], "-c") == 0) {
+        printf("Running Client ... \n");
+        ret = client();   /* see name_open() for this code */
+    }
+    else if (strcmp(argv[1], "-s") == 0) {
+        printf("Running Server ... \n");
+        ret = server();   /* see name_attach() for this code */
+    }
+    else {
+        printf("Usage %s -s | -c \n", argv[0]);
+        ret = EXIT_FAILURE;
+    }
+    return ret;
+}
+</pre>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Classification:</h2>
+
+<p class="p"><a class="xref" href="../summary.html#summary__CLASSIFICATION">QNX Neutrino</a></p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+<thead class="thead" align="left">
+<tr><th class="entry" valign="top" id="d2273528e639">Safety:</th>
+<th class="entry" valign="top" id="d2273528e641">Â </th>
+</tr>
+
+</thead>
+
+<tbody class="tbody">
+<tr><td class="entry" valign="top" headers="d2273528e639 d2273528e641 ">Cancellation point</td>
+<td class="entry" valign="top" headers="d2273528e639 d2273528e641 ">Yes</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2273528e639 d2273528e641 ">Interrupt handler</td>
+<td class="entry" valign="top" headers="d2273528e639 d2273528e641 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2273528e639 d2273528e641 ">Signal handler</td>
+<td class="entry" valign="top" headers="d2273528e639 d2273528e641 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2273528e639 d2273528e641 ">Thread</td>
+<td class="entry" valign="top" headers="d2273528e639 d2273528e641 ">No</td>
+</tr>
+
+</tbody>
+
+</table>
+</div>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Caveats:</h2>
+
+
+<p class="p">
+As a server, you shouldn't assume that you're doing a <span class="keyword apiname">MsgReceive()</span> on a clean channel.
+Anyone can create a random message and send it to a process or a channel.
+</p>
+
+
+<p class="p">
+We recommend that you do the following to assure that you're playing safely with others in the system:
+</p>
+
+
+<pre class="pre codeblock">
+#include &lt;sys/neutrino.h&gt;
+
+/* All your messages should start with a type field */
+typedef struct _my_data { 
+        uint16_t  type; 
+        int       data; 
+} my_data_t;
+
+typedef union recv_buf { 
+        struct _pulse  pulse; 
+        my_data_t      msg; 
+} my_recv_buf_t;
+</pre>
+
+
+<p class="p">
+where:
+</p>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><var class="keyword varname">type</var></dt>
+
+<dd class="dd">Is a messsage type, and you should not use message types in the reserved system range
+    0 to <span class="keyword const">_IO_MAX</span> (0 to 511).
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">my_recv_buf_t</var></dt>
+
+<dd class="dd">Is the receive buffer, and it must be large enough to contain at least a pulse because
+    you'll receive a disconnect pulse when clients are detached.
+</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+</div>
+
+
+<div class="related-links"><div class="relinfo relconcepts"><strong>Related concepts</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.getting_started/topic/s1_msg.html" title="Message Passing (Getting Started with QNX Neutrino)">Message Passing (Getting Started with <span class="keyword">QNX Neutrino</span>)</a></div>
+</div>
+<div class="relinfo relref"><strong>Related reference</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/c/channelcreate.html" title="Create a communications channel">ChannelCreate(), ChannelCreate_r(), ChannelCreatePulsePool()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/d/dispatch_block.html" title="Block while waiting for an event">dispatch_block()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/d/dispatch_context_alloc.html" title="Return a dispatch context">dispatch_context_alloc()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/d/dispatch_context_free.html" title="Free a dispatch context">dispatch_context_free()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/d/dispatch_create.html" title="Allocate a dispatch structure and create the channel associated with it">dispatch_create()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/d/dispatch_create_channel.html" title="Allocate a dispatch structure, specifying a channel ID">dispatch_create_channel()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/d/dispatch_destroy.html" title="Destroy a dispatch handle, without cleaning up the dispatch framework">dispatch_destroy()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/d/dispatch_handler.html" title="Handle events received by dispatch_block()">dispatch_handler()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/d/dispatch_timeout.html" title="Set a timeout">dispatch_timeout()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/d/dispatch_unblock.html" title="Unblock a thread that is blocked on a dispatch handle">dispatch_unblock()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/m/msgreceive.html" title="Wait for a message or pulse on a channel">MsgReceive(), MsgReceive_r()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/n/name_detach.html" title="Remove a name from the namespace and destroy the channel">name_detach()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/n/name_open.html" title="Open a name to connect to a server">name_open()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/n/name_close.html" title="Close a server connection that was opened by name_open()">name_close()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/p/procmgr_ability.html" title="Control a process's ability to perform certain operations">procmgr_ability()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/p/_pulse.html" title="Structure that describes a pulse">_pulse</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/r/resmgr_attach.html" title="Attach a path to the pathname space">resmgr_attach()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.utilities/topic/g/gns.html" title="gns (Utilities Reference)">gns (Utilities Reference)</a></div>
+</div>
+</div><div class="navfooter"><!---->
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-n.html" title="N"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">N</span></a></span>  </div>
+</body>
+</html>

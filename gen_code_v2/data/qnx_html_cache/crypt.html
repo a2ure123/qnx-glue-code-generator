@@ -1,0 +1,208 @@
+
+<!DOCTYPE html
+  PUBLIC "" "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />        
+      <meta name="copyright" content="(C) Copyright 2005" /><meta name="DC.rights.owner" content="(C) Copyright 2005" /><meta name="DC.Type" content="reference" /><meta name="DC.Title" content="crypt()" /><meta name="abstract" content="Hash a password" /><meta name="description" content="Hash a password" /><meta name="indexterms" content="crypt()" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-c.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/e/encrypt.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/g/getpass.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/s/setkey.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.utilities/topic/l/login.html" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="crypt" /><meta name="DC.Language" content="en-us" /><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/commonltr.css"><!----></link><title>crypt()</title><link rel="canonical" type="html" href="https://www.qnx.com/developers/docs/7.1/#com.qnx.doc.neutrino.lib_ref/" /><!--  Generated with Oxygen version 18.1, build number 2017020917.  --><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/webhelp_topic.css"><!----></link><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/skins/skin.css" /><script type="text/javascript"><!--
+            
+            var prefix = "../../../index.html";
+            
+            --></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-1.11.3.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.cookie.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-ui.custom.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.highlight-3.js"><!----></script><script type="text/javascript" charset="utf-8" src="../../../oxygen-webhelp/resources/js/webhelp_topic.js"><!----></script><script type="text/javascript"> var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-27400275-1']); _gaq.push(['_setDomainName', 'www.qnx.com']);_gaq.push(['_setAllowLinker', true]);_gaq.push(['_trackPageview']);(function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script></head>
+<body onload="highlightSearchTerm()" class="frmBody" id="crypt">
+<table class="nav"><tbody><tr><td colspan="2"><div id="printlink"><button onClick="window.print()" title="Print this page" aria-label="Print this page"></button></div><div id="permalink"><a href="#" title="Link to this page"></a></div></td></tr><tr><td style="width:75%;"><span class="topic_breadcrumb_links"><span class="topic_breadcrumb_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-c.html" title="C">C</a></span></span></td><td><span id="topic_navigation_links" class="navheader">
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-c.html" title="C"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">C</span></a></span>  </span></td></tr></tbody></table>
+
+
+<h1 class="title topictitle1"><span class="keyword apiname">crypt()</span></h1>
+<table width="100%"><tbody><tr><td align="left"><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">QNX SDP</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">7.1</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">C Library Reference</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">API</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">Developer</button></td><td align="right"><span style="margin:0px 5px; font-size:0.9em;">Updated: October 28, 2024</span></td></tr></tbody></table>
+
+
+<div class="body refbody"><p class="shortdesc"><em class="ph i">Hash a password</em></p>
+
+
+<div class="section refsyn"><h2 class="title sectiontitle">Synopsis:</h2>
+
+<pre class="pre codeblock">
+#include &lt;unistd.h&gt;
+
+char * crypt( const char * <var class="keyword varname">key</var>, 
+              const char * <var class="keyword varname">salt</var> );
+</pre>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Arguments:</h2>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><var class="keyword varname">key</var></dt>
+
+<dd class="dd">A NUL-terminated string (normally a password typed by a user).</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">salt</var></dt>
+
+<dd class="dd">One of the following strings: <ul class="ul">
+<li class="li">A string of at least two characters that represents the salt, where the first character is not @
+(at sign). If this format is used, <span class="keyword apiname">crypt()</span> returns the result of a call to
+<span class="keyword apiname">r_crypt()</span>, which uses the older DES implementation for hashing.</li>
+
+<li class="li">A string that uses the format
+<samp class="ph codeph">@</samp><var class="keyword varname">digest</var><samp class="ph codeph">@X@</samp><var class="keyword varname">salt</var> or
+<samp class="ph codeph">@</samp><var class="keyword varname">digest</var><samp class="ph codeph">,</samp><var class="keyword varname">iterations</var><samp class="ph codeph">@X@</samp><var class="keyword varname">salt</var>,
+which specifies the standard PBKDF2 implementation and where:<ul class="ul">
+<li class="li"><var class="keyword varname">digest</var> is either <samp class="ph codeph">S</samp> (use SHA512 digest) or <samp class="ph codeph">s</samp>
+(use SHA256 digest).</li>
+
+<li class="li">
+<var class="keyword varname">iterations</var> is an optional value that follows the digest character and a comma
+that specifies an iterations value to use instead of the default value used in PBKDF2 (4096).</li>
+
+<li class="li"><var class="keyword varname">salt</var> is the Base64-encoded salt value.</li>
+
+</ul>
+ For example: <pre class="pre codeblock">@S,8192@X@<var class="keyword varname">salt</var></pre>
+</li>
+
+</ul>
+
+</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Library:</h2>
+
+
+<p class="p"><span class="ph filepath">liblogin</span></p>
+
+
+<p class="p">
+Use the <span class="keyword option">-l login</span> option to
+<a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/q/qcc.html"><span class="keyword cmdname">qcc</span></a>
+to link against this library.
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Description:</h2>
+
+
+<p class="p">
+
+
+
+
+
+
+The <span class="keyword apiname">crypt()</span> function hashes a password.  
+It's based on the Data Encryption Standard algorithm, 
+and also includes code to deter key search attempts.  
+</p>
+
+
+<div class="note note"><span class="notetitle">Note:</span> 
+This function checks only the first eight characters of <var class="keyword varname">key</var>.
+</div>
+
+
+<p class="p">
+The algorithm obtains a 56-bit key by taking the lowest 7 bits of the first eight characters of <var class="keyword varname">key</var>.
+The 56-bit key is used to repeatedly hash a constant string (usually all zeroes).
+</p>
+
+
+<p class="p">
+For license information, see
+<span class="q">&#147;<a class="xref" href="../../../com.qnx.doc.copyright/topic/ic_licensing_coverpage.html">Licensing information</a>&#148;</span>
+in <cite class="cite">Typographical Conventions, Support, and Licensing</cite>.
+</p>
+
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Returns:</h2>
+
+
+<p class="p">
+A pointer to the 13-character hashed value, or <span class="keyword const">NULL</span> on failure.
+The first two characters of the hashed value are the <var class="keyword varname">salt</var> itself.
+</p>
+
+
+<div class="note note"><span class="notetitle">Note:</span> 
+The return value points to static data that's overwritten by each call to <span class="keyword apiname">crypt()</span>.
+</div>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Classification:</h2>
+
+<p class="p"><a class="xref" href="../summary.html#summary__CLASSIFICATION">POSIX 1003.1 XSI</a></p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+<thead class="thead" align="left">
+<tr><th class="entry" valign="top" id="d1326733e253">Safety:</th>
+<th class="entry" valign="top" id="d1326733e255">Â </th>
+</tr>
+
+</thead>
+
+<tbody class="tbody">
+<tr><td class="entry" valign="top" headers="d1326733e253 d1326733e255 ">Cancellation point</td>
+<td class="entry" valign="top" headers="d1326733e253 d1326733e255 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d1326733e253 d1326733e255 ">Interrupt handler</td>
+<td class="entry" valign="top" headers="d1326733e253 d1326733e255 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d1326733e253 d1326733e255 ">Signal handler</td>
+<td class="entry" valign="top" headers="d1326733e253 d1326733e255 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d1326733e253 d1326733e255 ">Thread</td>
+<td class="entry" valign="top" headers="d1326733e253 d1326733e255 ">No</td>
+</tr>
+
+</tbody>
+
+</table>
+</div>
+
+</div>
+
+
+</div>
+
+
+<div class="related-links"><div class="relinfo relref"><strong>Related reference</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/e/encrypt.html" title="Encrypt or decrypt a string">encrypt()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/g/getpass.html" title="Prompt for and read a password">getpass()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/s/setkey.html" title="Set the key used in encryption">setkey()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.utilities/topic/l/login.html" title="login (Utilities Reference)">login (Utilities Reference)</a></div>
+</div>
+</div><div class="navfooter"><!---->
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-c.html" title="C"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">C</span></a></span>  </div>
+</body>
+</html>

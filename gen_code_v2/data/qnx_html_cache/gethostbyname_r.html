@@ -1,0 +1,300 @@
+
+<!DOCTYPE html
+  PUBLIC "" "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />        
+      <meta name="copyright" content="(C) Copyright 2005" /><meta name="DC.rights.owner" content="(C) Copyright 2005" /><meta name="DC.Type" content="reference" /><meta name="DC.Title" content="gethostbyname_r()" /><meta name="abstract" content="Get a network host entry by name" /><meta name="description" content="Get a network host entry by name" /><meta name="indexterms" content="gethostbyname_r()" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-g.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/g/gethostbyaddr.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/g/gethostbyaddr_r.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/g/gethostbyname.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.utilities/topic/h/hosts.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.utilities/topic/n/nsswitch.conf.html" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="gethostbyname_r" /><meta name="DC.Language" content="en-us" /><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/commonltr.css"><!----></link><title>gethostbyname_r()</title><link rel="canonical" type="html" href="https://www.qnx.com/developers/docs/7.1/#com.qnx.doc.neutrino.lib_ref/" /><!--  Generated with Oxygen version 18.1, build number 2017020917.  --><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/webhelp_topic.css"><!----></link><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/skins/skin.css" /><script type="text/javascript"><!--
+            
+            var prefix = "../../../index.html";
+            
+            --></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-1.11.3.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.cookie.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-ui.custom.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.highlight-3.js"><!----></script><script type="text/javascript" charset="utf-8" src="../../../oxygen-webhelp/resources/js/webhelp_topic.js"><!----></script><script type="text/javascript"> var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-27400275-1']); _gaq.push(['_setDomainName', 'www.qnx.com']);_gaq.push(['_setAllowLinker', true]);_gaq.push(['_trackPageview']);(function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script></head>
+<body onload="highlightSearchTerm()" class="frmBody" id="gethostbyname_r">
+<table class="nav"><tbody><tr><td colspan="2"><div id="printlink"><button onClick="window.print()" title="Print this page" aria-label="Print this page"></button></div><div id="permalink"><a href="#" title="Link to this page"></a></div></td></tr><tr><td style="width:75%;"><span class="topic_breadcrumb_links"><span class="topic_breadcrumb_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-g.html" title="G">G</a></span></span></td><td><span id="topic_navigation_links" class="navheader">
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-g.html" title="G"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">G</span></a></span>  </span></td></tr></tbody></table>
+
+
+<h1 class="title topictitle1"><span class="keyword apiname">gethostbyname_r()</span></h1>
+<table width="100%"><tbody><tr><td align="left"><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">QNX SDP</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">7.1</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">C Library Reference</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">API</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">Developer</button></td><td align="right"><span style="margin:0px 5px; font-size:0.9em;">Updated: October 28, 2024</span></td></tr></tbody></table>
+
+
+<div class="body refbody"><p class="shortdesc"><em class="ph i">Get a network host entry by name</em></p>
+
+
+<div class="section refsyn"><h2 class="title sectiontitle">Synopsis:</h2>
+
+<pre class="pre codeblock">
+#include &lt;sys/types.h&gt;
+#include &lt;sys/socket.h&gt;
+#include &lt;netinet/in.h&gt;
+#include &lt;arpa/inet.h&gt;
+#include &lt;netdb.h&gt;
+
+struct hostent *gethostbyname_r(
+                   const char * <var class="keyword varname">name</var>,
+                   struct hostent * <var class="keyword varname">result</var>,
+                   char * <var class="keyword varname">buffer</var>,
+                   int <var class="keyword varname">bufflen</var>,
+                   int * <var class="keyword varname">h_errnop</var> );
+</pre>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Arguments:</h2>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><var class="keyword varname">name</var></dt>
+
+<dd class="dd">The name of the Internet host whose entry you want to find.</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">result</var></dt>
+
+<dd class="dd">A pointer to a <span class="keyword dtype">struct hostent</span> where the function can
+  store the host entry.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">buffer</var></dt>
+
+<dd class="dd">A pointer to a buffer that the function can use during the operation
+  to store host database entries; <var class="keyword varname">buffer</var> should be large enough to
+  hold all of the data associated with the host entry.
+  A 2 KB buffer is usually more than enough; a 256-byte buffer is safe in most cases.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">buflen</var></dt>
+
+<dd class="dd">The length of the area pointed to by <var class="keyword varname">buffer</var>.</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">h_errnop</var></dt>
+
+<dd class="dd">A pointer to a location where the function can store an
+  <a class="xref" href="../h/h_errno.html" title="Host error variable"><var class="keyword varname">herrno</var></a>
+  value if an error occurs.
+</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Library:</h2>
+
+
+<p class="p"><span class="ph filepath">libsocket</span></p>
+
+<p class="p">Use the <span class="keyword option">-l socket</span> option to
+<a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/q/qcc.html"><span class="keyword cmdname">qcc</span></a>
+to link against this library.</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Description:</h2>
+
+
+<p class="p">
+
+
+
+
+
+The <span class="keyword apiname">gethostbyname_r()</span> function is a thread-safe version of
+<a class="xref" href="gethostbyname.html" title="Get a network host entry, given a name"><span class="keyword apiname">gethostbyname()</span></a>.
+This function gets the network host entry for the host specified by
+<var class="keyword varname">name</var>, and stores the entry in the <span class="keyword dtype">struct hostent</span>
+pointed to by <var class="keyword varname">result</var>.
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Returns:</h2>
+
+
+<p class="p">
+A pointer to <var class="keyword varname">result</var>, or <span class="keyword const">NULL</span> if an error occurs.
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Errors:</h2>
+
+
+<p class="p">
+If an error occurs, the <span class="keyword dtype">int</span> pointed to by <var class="keyword varname">h_errnop</var>
+is set to:
+</p>
+
+
+<dl class="dl" compact="compact">
+
+<dt class="dt dlterm"><span class="keyword const">ERANGE</span></dt>
+
+<dd class="dd">The supplied <var class="keyword varname">buffer</var> isn't large enough to store the result.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">HOST_NOT_FOUND</span></dt>
+
+<dd class="dd">Authoritative answer: Unknown host.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">NO_ADDRESS</span></dt>
+
+<dd class="dd">No address associated with name; look for an MX record.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">NO_DATA</span></dt>
+
+<dd class="dd">Valid name, but no data record of the requested type.
+  The name is known to the name server, but has no IP
+  address associated with itâthis isn't a temporary error.
+  Another type of request to the name server using this
+  domain name will result in an answer (e.g., a
+  mail-forwarder may be registered for this domain).
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">NO_RECOVERY</span></dt>
+
+<dd class="dd">Unknown server error. An unexpected server failure was encountered.
+  This is a nonrecoverable network error.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">TRY_AGAIN</span></dt>
+
+<dd class="dd">Nonauthoritative answer: Host name lookup failure.
+  This is usually a temporary error and means that the
+  local server didn't receive a response from an authoritative server.
+  A retry at some later time may succeed.
+</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Files:</h2>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/h/hosts.html"><span class="ph filepath">/etc/hosts</span></a></dt>
+
+<dd class="dd">Local host database file.
+  
+</dd>
+
+
+
+
+<dt class="dt dlterm"><a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/n/nsswitch.conf.html"><span class="ph filepath">/etc/nsswitch.conf</span></a></dt>
+
+<dd class="dd">Name-service switch configuration file.</dd>
+
+
+
+</dl>
+
+
+<p class="p">
+For information about these files, see the <cite class="cite">Utilities Reference</cite>.
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Classification:</h2>
+
+<p class="p"><a class="xref" href="../summary.html#summary__CLASSIFICATION">Unix</a></p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+<thead class="thead" align="left">
+<tr><th class="entry" valign="top" id="d1885716e356">Safety:</th>
+<th class="entry" valign="top" id="d1885716e358">Â </th>
+</tr>
+
+</thead>
+
+<tbody class="tbody">
+<tr><td class="entry" valign="top" headers="d1885716e356 d1885716e358 ">Cancellation point</td>
+<td class="entry" valign="top" headers="d1885716e356 d1885716e358 ">Yes</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d1885716e356 d1885716e358 ">Interrupt handler</td>
+<td class="entry" valign="top" headers="d1885716e356 d1885716e358 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d1885716e356 d1885716e358 ">Signal handler</td>
+<td class="entry" valign="top" headers="d1885716e356 d1885716e358 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d1885716e356 d1885716e358 ">Thread</td>
+<td class="entry" valign="top" headers="d1885716e356 d1885716e358 ">Yes</td>
+</tr>
+
+</tbody>
+
+</table>
+</div>
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="related-links"><div class="relinfo relref"><strong>Related reference</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/g/gethostbyaddr.html" title="Get a network host entry, given an Internet address">gethostbyaddr()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/g/gethostbyaddr_r.html" title="Get a network host entry, in a thread-safe manner">gethostbyaddr_r()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/g/gethostbyname.html" title="Get a network host entry, given a name">gethostbyname(), gethostbyname2()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.utilities/topic/h/hosts.html" title="/etc/hosts (Utilities Reference)">/etc/hosts (Utilities Reference)</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.utilities/topic/n/nsswitch.conf.html" title="/etc/nsswitch.conf (Utilities Reference)">/etc/nsswitch.conf (Utilities Reference)</a></div>
+</div>
+</div><div class="navfooter"><!---->
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-g.html" title="G"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">G</span></a></span>  </div>
+</body>
+</html>

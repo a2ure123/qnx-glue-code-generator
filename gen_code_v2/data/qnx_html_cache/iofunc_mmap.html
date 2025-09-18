@@ -1,0 +1,480 @@
+
+<!DOCTYPE html
+  PUBLIC "" "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />        
+      <meta name="copyright" content="(C) Copyright 2005" /><meta name="DC.rights.owner" content="(C) Copyright 2005" /><meta name="DC.Type" content="reference" /><meta name="DC.Title" content="iofunc_mmap()" /><meta name="abstract" content="Handle an _IO_MMAP message" /><meta name="description" content="Handle an _IO_MMAP message" /><meta name="indexterms" content="iofunc_mmap()" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-i.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.resmgr/topic/about.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.getting_started/topic/s1_resmgr.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.getting_started/topic/s1_resmgr_io_mmap.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/i/iofunc_attr_t.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/i/iofunc_mmap_default.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/i/iofunc_mmap_ext.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/i/iofunc_ocb_t.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/m/_msg_info.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/m/mmap.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/m/mmap_device_io.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/m/mmap_device_memory.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/m/munmap.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/r/resmgr_context_t.html" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="iofunc_mmap" /><meta name="DC.Language" content="en-us" /><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/commonltr.css"><!----></link><title>iofunc_mmap()</title><link rel="canonical" type="html" href="https://www.qnx.com/developers/docs/7.1/#com.qnx.doc.neutrino.lib_ref/" /><!--  Generated with Oxygen version 18.1, build number 2017020917.  --><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/webhelp_topic.css"><!----></link><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/skins/skin.css" /><script type="text/javascript"><!--
+            
+            var prefix = "../../../index.html";
+            
+            --></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-1.11.3.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.cookie.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-ui.custom.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.highlight-3.js"><!----></script><script type="text/javascript" charset="utf-8" src="../../../oxygen-webhelp/resources/js/webhelp_topic.js"><!----></script><script type="text/javascript"> var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-27400275-1']); _gaq.push(['_setDomainName', 'www.qnx.com']);_gaq.push(['_setAllowLinker', true]);_gaq.push(['_trackPageview']);(function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script></head>
+<body onload="highlightSearchTerm()" class="frmBody" id="iofunc_mmap">
+<table class="nav"><tbody><tr><td colspan="2"><div id="printlink"><button onClick="window.print()" title="Print this page" aria-label="Print this page"></button></div><div id="permalink"><a href="#" title="Link to this page"></a></div></td></tr><tr><td style="width:75%;"><span class="topic_breadcrumb_links"><span class="topic_breadcrumb_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-i.html" title="I">I</a></span></span></td><td><span id="topic_navigation_links" class="navheader">
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-i.html" title="I"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">I</span></a></span>  </span></td></tr></tbody></table>
+
+
+<h1 class="title topictitle1"><span class="keyword apiname">iofunc_mmap()</span></h1>
+<table width="100%"><tbody><tr><td align="left"><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">QNX SDP</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">7.1</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">C Library Reference</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">API</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">Developer</button></td><td align="right"><span style="margin:0px 5px; font-size:0.9em;">Updated: October 28, 2024</span></td></tr></tbody></table>
+
+
+<div class="body refbody"><p class="shortdesc"><em class="ph i">Handle an <span class="keyword const">_IO_MMAP</span> message</em></p>
+
+
+<div class="section refsyn"><h2 class="title sectiontitle">Synopsis:</h2>
+
+<pre class="pre codeblock">
+#include &lt;sys/iofunc.h&gt;
+
+int iofunc_mmap ( resmgr_context_t * <var class="keyword varname">ctp</var>,
+                  io_mmap_t * <var class="keyword varname">msg</var>,
+                  iofunc_ocb_t * <var class="keyword varname">ocb</var>,
+                  iofunc_attr_t * <var class="keyword varname">attr</var> );
+</pre>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Arguments:</h2>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><var class="keyword varname">ctp</var></dt>
+
+<dd class="dd">A pointer to a
+  <a class="xref" href="../r/resmgr_context_t.html" title="Context information that's passed between resource-manager functions"><span class="keyword dtype">resmgr_context_t</span></a>
+  structure that the resource-manager library uses to pass context information
+  between functions.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">msg</var></dt>
+
+<dd class="dd">A pointer to the
+  <a class="xref" href="#iofunc_mmap__io_mmap_t"><span class="keyword dtype">io_mmap_t</span></a>
+  structure that contains the message that the resource manager received; see below.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">ocb</var></dt>
+
+<dd class="dd">A pointer to the
+  <a class="xref" href="iofunc_ocb_t.html" title="Open Control Block structure"><span class="keyword dtype">iofunc_ocb_t</span></a>
+  structure for the Open Control Block that was created when the
+  client opened the resource.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">attr</var></dt>
+
+<dd class="dd">A pointer to the
+  <a class="xref" href="iofunc_attr_t.html" title="I/O attribute structure"><span class="keyword dtype">iofunc_attr_t</span></a>
+  structure that describes the characteristics of the device that's
+  associated with your resource manager.
+</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Library:</h2>
+
+
+<p class="p"><span class="ph filepath">libc</span></p>
+
+
+<p class="p">
+Use the <span class="keyword option">-l c</span> option to
+<a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/q/qcc.html"><span class="keyword cmdname">qcc</span></a>
+to link against this library.
+This library is usually included automatically.
+</p>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Description:</h2>
+
+
+<p class="p">
+
+
+
+
+
+The <span class="keyword apiname">iofunc_mmap()</span> helper function
+provides functionality for the <span class="keyword const">_IO_MMAP</span> message.
+The <span class="keyword const">_IO_MMAP</span> message is an outcall from the memory manager
+(a part of the <span class="keyword">microkernel</span>'s
+<a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/p/procnto.html"><span class="keyword cmdname">procnto</span></a>).
+</p>
+
+
+<p class="p">
+(QNX Neutrino 7.1 or later) The
+<a class="xref" href="iofunc_mmap_ext.html" title="Handle an _IO_MMAP message"><span class="keyword apiname">iofunc_mmap_ext()</span></a>
+function is an extended version of <span class="keyword apiname">iofunc_mmap()</span> that can pass addition information back to
+the memory manager.
+</p>
+
+
+<p class="p">
+This helper function checks that the requested mapping permissions don't conflict with the open
+mode for the file descriptor and that the mountpoint isn't read only.
+It also checks that the file is executable before setting <span class="keyword const">PROT_EXEC</span> in <var class="keyword varname">allowed_prot</var>.
+The helper obtains an exclusive write lock on the file if it's being mapped with execute permissions.
+</p>
+
+
+<p class="p">
+Note that if you write your own handler for <span class="keyword const">_IO_MMAP</span> messages, and you want the process manager
+to be able to execute binaries from the resource, then your handler must use the <span class="keyword apiname">iofunc_mmap()</span>
+or <span class="keyword apiname">iofunc_mmap_ext()</span> function.
+</p>
+
+
+<p class="p" id="iofunc_mmap__io_mmap_t"><strong class="ph b"><span class="keyword dtype">io_mmap_t</span> structure</strong></p>
+
+
+<p class="p">
+
+The <span class="keyword dtype">io_mmap_t</span> structure holds the <span class="keyword const">_IO_MMAP</span>
+message received by the resource manager:
+</p>
+
+
+<pre class="pre codeblock">
+struct _io_mmap {
+    uint16_t                    type;
+    uint16_t                    combine_len;
+    uint32_t                    prot;
+    uint64_t                    offset;
+    struct _msg_info32          info;
+    uint32_t                    required_prot;
+    uint32_t                    zero[3];
+    uint64_t                    requested_len;
+
+};
+
+struct _io_mmap_reply {
+    uint32_t                    zero;
+    uint32_t                    allowed_prot;
+    uint64_t                    offset;
+    int32_t                     coid;
+    int32_t                     fd;
+};
+
+typedef union {
+    struct _io_mmap             i;
+    struct _io_mmap_reply       o;
+} io_mmap_t;
+</pre>
+
+
+<p class="p">
+The I/O message structures are unions of an input message (coming to the
+resource manager) and an output or reply message (going back to the client).
+</p>
+
+
+<p class="p">
+The <var class="keyword varname">i</var> member is a structure of type <span class="keyword dtype">_io_mmap</span> that
+contains the following members:
+</p>
+
+
+<dl class="dl">
+
+
+<dt class="dt dlterm"><var class="keyword varname">type</var></dt>
+
+<dd class="dd"><span class="keyword const">_IO_MMAP</span>.</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">combine_len</var></dt>
+
+<dd class="dd">If the message is a combine message, <span class="keyword const">_IO_COMBINE_FLAG</span>
+  is set in this member.
+  For more information, see
+  <a class="xref" href="../../../com.qnx.doc.neutrino.resmgr/topic/combine.html">Combine Messages</a>
+  chapter of <cite class="cite">Writing a Resource Manager</cite>.
+  
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">prot</var></dt>
+
+<dd class="dd">The set of protection bits that <span class="keyword cmdname">procnto</span> would <em class="ph i">like</em> to have for the
+  memory-mapped file.
+  This can be a combination of at least the following protection bits, as
+  defined in <span class="ph filepath">&lt;sys/mman.h&gt;</span>:
+
+  <ul class="ul">
+  <li class="li"><span class="keyword const">PROT_EXEC</span> â the region can be executed.
+    
+  </li>
+
+
+  <li class="li"><span class="keyword const">PROT_NONE</span> â the region can't be accessed.
+    
+  </li>
+
+
+  <li class="li"><span class="keyword const">PROT_READ</span> â the region can be read.
+    
+  </li>
+
+
+  <li class="li"><span class="keyword const">PROT_WRITE</span> â the region can be written.
+     
+  </li>
+
+
+  </ul>
+
+
+  <p class="p">
+  See the <var class="keyword varname">required_prot</var> field, below.
+  </p>
+
+
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">offset</var></dt>
+
+<dd class="dd">The offset into shared memory of the location that the client wants to start mapping.</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">info</var></dt>
+
+<dd class="dd">A pointer to a
+  <a class="xref" href="../m/_msg_info.html" title="Information about a message"><span class="keyword dtype">_msg_info32</span></a>,
+  structure that contains information about the message received by the resource manager.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">required_prot</var></dt>
+
+<dd class="dd">(QNX Neutrino 6.6 or later)
+  The set of permission bits that <span class="keyword cmdname">procnto</span> <em class="ph i">must</em> have for the
+  memory-mapped file.
+  Typically the difference between <var class="keyword varname">prot</var> and <var class="keyword varname">required_prot</var>
+  is that <var class="keyword varname">prot</var> may specify <span class="keyword const">PROT_WRITE</span> while
+  <var class="keyword varname">required_prot</var> omits it.
+  This means that <span class="keyword cmdname">procnto</span> would like
+  to have write permissions on the file, but it's OK if it isn't present.
+
+  <p class="p">
+  To determine whether the version of <span class="keyword cmdname">procnto</span> your resource manager is talking to
+  supports this field, look at the <var class="keyword varname">prot</var> field:
+  
+  </p>
+
+
+  <ul class="ul">
+  <li class="li">If <samp class="ph codeph">(prot &amp; ~PROT_MASK)</samp> is nonzero, <span class="keyword cmdname">procnto</span> supports the
+    <var class="keyword varname">required_prot</var> field, so the code should pay attention to it.
+  </li>
+
+
+  <li class="li">If <samp class="ph codeph">(prot &amp; ~PROT_MASK)</samp> is zero, <span class="keyword cmdname">procnto</span> doesn't support
+    <var class="keyword varname">required_prot</var>, so the code should use <var class="keyword varname">prot</var> as the required permissions.
+  </li>
+
+
+  </ul>
+
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">requested_len</var></dt>
+
+<dd class="dd">The length requested in the call to
+  <a class="xref" href="../m/mmap.html" title="Map a memory region into a process's address space"><span class="keyword apiname">mmap()</span></a>.
+</dd>
+
+
+
+</dl>
+
+
+<p class="p">
+The <var class="keyword varname">o</var> member of the <span class="keyword dtype">io_mmap_t</span> structure is a
+structure of type <span class="keyword dtype">_io_mmap_reply</span> that contains the following members:
+</p>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><var class="keyword varname">allowed_prot</var></dt>
+
+<dd class="dd">(QNX Neutrino 6.6 or later)
+  The allowed protections for the file: <span class="keyword const">PROT_READ</span> is always present,
+  <span class="keyword const">PROT_WRITE</span> is present if the file is opened for writing,
+  and <span class="keyword const">PROT_EXEC</span> is present if the client process that opened the file has execute
+  permissions specified for the file.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">offset</var></dt>
+
+<dd class="dd">Reserved for future use.</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">coid</var></dt>
+
+<dd class="dd">A file descriptor that the process manager can use to access the mapped file.</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">fd</var></dt>
+
+<dd class="dd">Reserved for future use.</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Returns:</h2>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm">A nonpositive value (i.e., less than or equal to 0)</dt>
+
+<dd class="dd">Successful completion.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EROFS</span></dt>
+
+<dd class="dd">An attempt was made to memory map (mmap) a read-only file, using the
+  <span class="keyword const">PROT_WRITE</span> page protection mode.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EACCES</span></dt>
+
+<dd class="dd">The client doesn't have the appropriate permissions.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">ENOMEM</span></dt>
+
+<dd class="dd">Insufficient memory exists to allocate internal resources required to effect the mapping.</dd>
+
+
+
+</dl>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Classification:</h2>
+
+<p class="p"><a class="xref" href="../summary.html#summary__CLASSIFICATION">QNX Neutrino</a></p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+<thead class="thead" align="left">
+<tr><th class="entry" valign="top" id="d2035914e631">Safety:</th>
+<th class="entry" valign="top" id="d2035914e633">Â </th>
+</tr>
+
+</thead>
+
+<tbody class="tbody">
+<tr><td class="entry" valign="top" headers="d2035914e631 d2035914e633 ">Cancellation point</td>
+<td class="entry" valign="top" headers="d2035914e631 d2035914e633 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2035914e631 d2035914e633 ">Interrupt handler</td>
+<td class="entry" valign="top" headers="d2035914e631 d2035914e633 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2035914e631 d2035914e633 ">Signal handler</td>
+<td class="entry" valign="top" headers="d2035914e631 d2035914e633 ">Yes</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2035914e631 d2035914e633 ">Thread</td>
+<td class="entry" valign="top" headers="d2035914e631 d2035914e633 ">Yes</td>
+</tr>
+
+</tbody>
+
+</table>
+</div>
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="related-links"><div class="relinfo relconcepts"><strong>Related concepts</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.resmgr/topic/about.html" title="Writing a Resource Manager">Writing a Resource Manager</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.getting_started/topic/s1_resmgr.html" title="Resource Managers (Getting Started with QNX Neutrino)">Resource Managers (Getting Started with <span class="keyword">QNX Neutrino</span>)</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.getting_started/topic/s1_resmgr_io_mmap.html" title="Map memory I/O function handler (Getting Started with QNX Neutrino)">Map memory I/O function handler (Getting Started with <span class="keyword">QNX Neutrino</span>)</a></div>
+</div>
+<div class="relinfo relref"><strong>Related reference</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/i/iofunc_attr_t.html" title="I/O attribute structure">iofunc_attr_t</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/i/iofunc_mmap_default.html" title="Default handler for _IO_MMAP messages">iofunc_mmap_default(), iofunc_mmap_default_ext()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/i/iofunc_mmap_ext.html" title="Handle an _IO_MMAP message">iofunc_mmap_ext()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/i/iofunc_ocb_t.html" title="Open Control Block structure">iofunc_ocb_t</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/m/_msg_info.html" title="Information about a message">_msg_info</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/m/mmap.html" title="Map a memory region into a process's address space">mmap(), mmap64(), mmap_handle()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/m/mmap_device_io.html" title="Gain access to a device's registers">mmap_device_io()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/m/mmap_device_memory.html" title="Map a device's physical memory into a process's address space">mmap_device_memory()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/m/munmap.html" title="Unmap previously mapped addresses">munmap()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/r/resmgr_context_t.html" title="Context information that's passed between resource-manager functions">resmgr_context_t</a></div>
+</div>
+</div><div class="navfooter"><!---->
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-i.html" title="I"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">I</span></a></span>  </div>
+</body>
+</html>

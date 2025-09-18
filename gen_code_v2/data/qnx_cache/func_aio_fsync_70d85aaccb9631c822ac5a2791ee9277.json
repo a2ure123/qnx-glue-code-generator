@@ -1,0 +1,24 @@
+{
+  "function_name": "aio_fsync",
+  "url": "https://www.qnx.com/developers/docs/7.1/com.qnx.doc.neutrino.lib_ref/topic/a/aio_fsync.html",
+  "synopsis": "int aio_fsync( int op,",
+  "description": "",
+  "headers": [
+    "#include <aio.h>"
+  ],
+  "parameters": [
+    {
+      "name": "op",
+      "description": "One of the following:\n\n  \nO_DSYNC â complete all queued operations as if\n    done by calling\n    fdatasync()\n    (i.e., as defined for synchronized I/O data integrity completion).\n    \n  \nO_SYNC â complete all queued operations as if\n    done by calling\n    fsync()\n    (i.e., as defined for synchronized I/O file integrity completion)."
+    },
+    {
+      "name": "aiocbptr",
+      "description": "A pointer to an asynchronous I/O control block of type\n  aiocb\n  for which you want to\n  asynchronously force all queued I/O operations to the synchronized\n  I/O completion state."
+    }
+  ],
+  "return_values": [],
+  "examples": [
+    "#include <aio.h>\n\nint aio_fsync( int op, \n               struct aiocb * aiocbptr );"
+  ],
+  "full_content": "Function: aio_fsync\nURL: https://www.qnx.com/developers/docs/7.1/com.qnx.doc.neutrino.lib_ref/topic/a/aio_fsync.html\nSynopsis: int aio_fsync( int op,\nHeaders: #include <aio.h>\nParameters:\n  - op: One of the following:\n\n  \nO_DSYNC â complete all queued operations as if\n    done by calling\n    fdatasync()\n    (i.e., as defined for synchronized I/O data integrity completion).\n    \n  \nO_SYNC â complete all queued operations as if\n    done by calling\n    fsync()\n    (i.e., as defined for synchronized I/O file integrity completion).\n  - aiocbptr: A pointer to an asynchronous I/O control block of type\n  aiocb\n  for which you want to\n  asynchronously force all queued I/O operations to the synchronized\n  I/O completion state.\nExamples:\nExample 1:\n#include <aio.h>\n\nint aio_fsync( int op, \n               struct aiocb * aiocbptr );"
+}

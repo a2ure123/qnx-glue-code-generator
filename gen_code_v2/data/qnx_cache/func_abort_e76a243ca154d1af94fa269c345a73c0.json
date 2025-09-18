@@ -1,0 +1,16 @@
+{
+  "function_name": "abort",
+  "url": "https://www.qnx.com/developers/docs/7.1/com.qnx.doc.neutrino.lib_ref/topic/a/abort.html",
+  "synopsis": "void abort( void );",
+  "description": "",
+  "headers": [
+    "#include <stdlib.h>"
+  ],
+  "parameters": [],
+  "return_values": [],
+  "examples": [
+    "#include <stdlib.h>\n\nvoid abort( void );",
+    "#include <stdlib.h>\n\nint main( void )\n{\n    int major_error = 1;\n\n    if( major_error )\n        abort();\n\n    /* You'll never get here. */\n    return EXIT_SUCCESS;\n}"
+  ],
+  "full_content": "Function: abort\nURL: https://www.qnx.com/developers/docs/7.1/com.qnx.doc.neutrino.lib_ref/topic/a/abort.html\nSynopsis: void abort( void );\nHeaders: #include <stdlib.h>\nExamples:\nExample 1:\n#include <stdlib.h>\n\nvoid abort( void );\nExample 2:\n#include <stdlib.h>\n\nint main( void )\n{\n    int major_error = 1;\n\n    if( major_error )\n        abort();\n\n    /* You'll never get here. */\n    return EXIT_SUCCESS;\n}"
+}

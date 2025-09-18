@@ -1,0 +1,1565 @@
+
+<!DOCTYPE html
+  PUBLIC "" "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />        
+      <meta name="copyright" content="(C) Copyright 2005" /><meta name="DC.rights.owner" content="(C) Copyright 2005" /><meta name="DC.Type" content="reference" /><meta name="DC.Title" content="posix_spawn(), posix_spawnp()" /><meta name="abstract" content="Spawn a process" /><meta name="description" content="Spawn a process" /><meta name="indexterms" content="posix_spawn(), posix_spawnp()" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-p.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.getting_started/topic/s1_procs.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/p/posix_spawn_file_actions_addclose.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/p/posix_spawn_file_actions_adddup2.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/p/posix_spawn_file_actions_addopen.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/p/posix_spawn_file_actions_destroy.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/p/posix_spawn_file_actions_init.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/p/posix_spawnattr_destroy.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/p/posix_spawnattr_init.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/p/posix_spawnattr_setasid.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/p/posix_spawnattr_setaslr.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/p/posix_spawnattr_setcred.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/p/posix_spawnattr_setcwd_np.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/p/posix_spawnattr_setflags.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/p/posix_spawnattr_setpgroup.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/p/posix_spawnattr_setrunmask.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/p/posix_spawnattr_setschedparam.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/p/posix_spawnattr_setschedpolicy.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/p/posix_spawnattr_setsigdefault.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/p/posix_spawnattr_setsigignore.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/p/posix_spawnattr_setsigmask.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/p/posix_spawnattr_setstackmax.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/p/posix_spawnattr_settypeid.html" /><meta name="DC.Relation" scheme="URI" content="../../../com.qnx.doc.neutrino.lib_ref/topic/p/posix_spawnattr_setxflags.html" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="posix_spawn" /><meta name="DC.Language" content="en-us" /><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/commonltr.css"><!----></link><title>posix_spawn(), posix_spawnp()</title><link rel="canonical" type="html" href="https://www.qnx.com/developers/docs/7.1/#com.qnx.doc.neutrino.lib_ref/" /><!--  Generated with Oxygen version 18.1, build number 2017020917.  --><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/css/webhelp_topic.css"><!----></link><link rel="stylesheet" type="text/css" href="../../../oxygen-webhelp/resources/skins/skin.css" /><script type="text/javascript"><!--
+            
+            var prefix = "../../../index.html";
+            
+            --></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-1.11.3.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.cookie.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery-ui.custom.min.js"><!----></script><script type="text/javascript" src="../../../oxygen-webhelp/resources/js/jquery.highlight-3.js"><!----></script><script type="text/javascript" charset="utf-8" src="../../../oxygen-webhelp/resources/js/webhelp_topic.js"><!----></script><script type="text/javascript"> var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-27400275-1']); _gaq.push(['_setDomainName', 'www.qnx.com']);_gaq.push(['_setAllowLinker', true]);_gaq.push(['_trackPageview']);(function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script></head>
+<body onload="highlightSearchTerm()" class="frmBody" id="posix_spawn">
+<table class="nav"><tbody><tr><td colspan="2"><div id="printlink"><button onClick="window.print()" title="Print this page" aria-label="Print this page"></button></div><div id="permalink"><a href="#" title="Link to this page"></a></div></td></tr><tr><td style="width:75%;"><span class="topic_breadcrumb_links"><span class="topic_breadcrumb_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-p.html" title="P">P</a></span></span></td><td><span id="topic_navigation_links" class="navheader">
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-p.html" title="P"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">P</span></a></span>  </span></td></tr></tbody></table>
+
+
+<h1 class="title topictitle1"><span class="keyword apiname">posix_spawn()</span>, <span class="keyword apiname">posix_spawnp()</span></h1>
+<table width="100%"><tbody><tr><td align="left"><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">QNX SDP</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">7.1</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">C Library Reference</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">API</button><button style="margin:3px 5px; background-color:default; border:default; pointer-events: none; font-size:0.9em;">Developer</button></td><td align="right"><span style="margin:0px 5px; font-size:0.9em;">Updated: October 28, 2024</span></td></tr></tbody></table>
+
+
+
+<div class="body refbody"><p class="shortdesc"><em class="ph i">Spawn a process</em></p>
+
+
+<div class="section">
+<p class="p">
+
+
+
+</p>
+
+</div>
+
+
+<div class="section refsyn"><h2 class="title sectiontitle">Synopsis:</h2>
+
+
+<pre class="pre codeblock">
+#include &lt;spawn.h&gt;
+
+int posix_spawn( pid_t *_Restrict <var class="keyword varname">pid</var>,
+                 const char *_Restrict <var class="keyword varname">path</var>,
+                 const posix_spawn_file_actions_t *<var class="keyword varname">file_actions</var>,
+                 const posix_spawnattr_t *_Restrict <var class="keyword varname">attrp</var>,
+                 char * const <var class="keyword varname">argv</var>[_Restrict_arr],
+                 char * const <var class="keyword varname">envp</var>[_Restrict_arr] );
+
+int posix_spawnp( pid_t *_Restrict <var class="keyword varname">pid</var>,
+                  const char *_Restrict <var class="keyword varname">file</var>,
+                  const posix_spawn_file_actions_t *<var class="keyword varname">file_actions</var>,
+                  const posix_spawnattr_t *_Restrict <var class="keyword varname">attrp</var>,
+                  char * const <var class="keyword varname">argv</var>[_Restrict_arr],
+                  char * const <var class="keyword varname">envp</var>[_Restrict_arr] );</pre>
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Arguments:</h2>
+
+
+<dl class="dl" compact="compact">
+
+<dt class="dt dlterm"><var class="keyword varname">pid</var></dt>
+
+<dd class="dd"><span class="keyword const">NULL</span>, or a pointer to a location where the function can store the process ID of the child process.</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">path</var></dt>
+
+<dd class="dd">(<span class="keyword apiname">posix_spawn()</span> only) A path to the executable.</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">file</var></dt>
+
+<dd class="dd">(<span class="keyword apiname">posix_spawnp()</span> only) The name of the executable file, which
+  is used to construct a pathname that identifies the new process image file:
+
+  <ul class="ul">
+  <li class="li">If <var class="keyword varname">file</var> contains a slash, the argument is used as the pathname
+    for the new process image file.
+  </li>
+
+
+  <li class="li">Otherwise, the path prefix for this file is obtained by a search of
+  the directories passed as the <span class="keyword envar">PATH</span> environment variable.
+  In <span class="keyword">QNX Neutrino</span>, if <span class="keyword envar">PATH</span> isn't defined, the
+  function searches for the executable in the current working directory.
+  </li>
+
+
+  </ul>
+
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">file_actions</var></dt>
+
+<dd class="dd"><span class="keyword const">NULL</span>, or a pointer to an opaque spawn file actions object that specifies
+  the actions you want to perform on the file descriptors in the child process.
+  For more information, see <span class="q">&#147;File actions,&#148;</span> below.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">attrp</var></dt>
+
+<dd class="dd"><span class="keyword const">NULL</span>, or a pointer to an opaque spawn attributes object that describes attributes to be applied
+  during the spawn.
+  If <var class="keyword varname">attrp</var> is <span class="keyword const">NULL</span>, then the default attribute values are used.
+  For more information, see the <span class="q">&#147;Attributes&#148;</span> section, below.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">argv</var></dt>
+
+<dd class="dd">A pointer to an argument vector. The value in <var class="keyword varname">argv[0]</var> should
+  represent the filename of the program being loaded, but can be <span class="keyword const">NULL</span> if no
+  arguments are being passed.
+  The last member of <var class="keyword varname">argv</var> <em class="ph i">must</em> be <span class="keyword const">NULL</span>.
+
+  <p class="p">
+  As a <span class="keyword">QNX Neutrino</span> extension, the value of <var class="keyword varname">argv</var> can be <span class="keyword const">NULL</span>.
+  In this case, the behavior is exactly as if <var class="keyword varname">argv</var> were a pointer to the two-element array:
+  </p>
+
+
+  <ul class="ul">
+  <li class="li">{<var class="keyword varname">path</var>, <span class="keyword const">NULL</span>} for <span class="keyword apiname">posix_spawn()</span></li>
+
+  <li class="li">{<var class="keyword varname">file</var>, <span class="keyword const">NULL</span>} for <span class="keyword apiname">posix_spawnp()</span></li>
+
+  </ul>
+
+</dd>
+
+
+
+
+<dt class="dt dlterm"><var class="keyword varname">envp</var></dt>
+
+<dd class="dd">A pointer to an array of character pointers, each pointing to a string defining an
+  environment variable. The array is terminated with a <span class="keyword const">NULL</span> pointer.
+  Each pointer points to a character string of the form:
+  
+  
+
+<pre class="pre codeblock">
+<var class="keyword varname">variable</var>=<var class="keyword varname">value</var>
+</pre>
+
+
+  <p class="p">
+  that's used to define an environment variable. If the value of <var class="keyword varname">envp</var> is
+  <span class="keyword const">NULL</span>, then the child process inherits the environment of the parent process.
+  </p>
+
+
+  <p class="p">
+  If a variable appears more than once in the <var class="keyword varname">envp</var> array, the behavior is undefined.
+  </p>
+
+</dd>
+
+
+
+</dl>
+
+
+<div class="note note"><span class="notetitle">Note:</span> 
+The <samp class="ph codeph">_Restrict_arr</samp> attribute informs the compiler that the <var class="keyword varname">argv</var>
+and <var class="keyword varname">envp</var> pointers don't alias each other, and that the compiler is
+therefore free to perform certain optimizations that otherwise might not be legal.
+</div>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Library:</h2>
+
+
+<p class="p">
+<span class="ph filepath">libc</span>
+</p>
+
+
+<p class="p">
+Use the <span class="keyword option">-l c</span> option to
+<a class="xref" href="../../../com.qnx.doc.neutrino.utilities/topic/q/qcc.html"><span class="keyword cmdname">qcc</span></a>
+to link against this library. This library is usually included automatically.
+</p>
+
+</div>
+
+
+<div class="section"><h2 class="title sectiontitle">Description:</h2>
+
+
+<div class="p">
+The <span class="keyword apiname">posix_spawn()</span> and <span class="keyword apiname">posix_spawnp()</span> functions create a
+new process (child process) from the specified process image. The new process image is
+constructed from a regular executable file called the <em class="ph i">new process image file</em>. The difference
+between these two functions is only in the means by which they specify the new process image file:
+
+<ul class="ul">
+<li class="li"><span class="keyword apiname">posix_spawn()</span> takes an absolute path to the executable</li>
+
+
+<li class="li"><span class="keyword apiname">posix_spawnp()</span> performs a path search for the file</li>
+
+
+</ul>
+
+</div>
+
+
+<p class="p">
+
+
+
+
+
+
+
+
+A running process has two sets of credentials of importance during its execution: the
+real user and group IDs (<var class="keyword varname">ruid</var> and <var class="keyword varname">rgid</var> respectively)
+and the effective user and group IDs (<var class="keyword varname">euid</var> and <var class="keyword varname">egid</var>
+respectively). Typically, when a new process (a child process) is spawned, both sets of
+credentials (real and effective) are taken from the spawning (parent) process. The exception
+to this is if the executable file being spawned has either its <var class="keyword varname">setuid</var>
+and/or <var class="keyword varname">setgid</var> mode bits set, in which case the <var class="keyword varname">euid</var>
+is set to the <var class="keyword varname">uid</var> of the executable, and/or the
+<var class="keyword varname">egid</var> is set to the <var class="keyword varname">gid</var> of the executable.
+POSIX doesn't define a way to directly specify the <var class="keyword varname">ruid</var> and <var class="keyword varname">rgid</var> of
+a spawned process.
+If you want to do this, call
+<a class="xref" href="posix_spawnattr_setcred.html" title="Set the user and group ID attributes in a spawn attributes object"><span class="keyword apiname">posix_spawnattr_setcred()</span></a>
+âa <span class="keyword">QNX Neutrino</span> extensionâbefore spawning the child process.
+</p>
+
+
+<div class="p">
+The ability to do certain operations is controlled by
+<a class="xref" href="procmgr_ability.html" title="Control a process's ability to perform certain operations"><span class="keyword apiname">procmgr_ability()</span></a>:
+
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+<thead class="thead" align="left">
+<tr>
+  <th class="entry" valign="top" id="d2324556e501">The ability to:</th>
+
+  <th class="entry" valign="top" id="d2324556e504">Is controlled by:</th>
+
+</tr>
+
+</thead>
+
+
+<tbody class="tbody">
+
+<tr>
+  <td class="entry" valign="top" headers="d2324556e501 d2324556e504 ">Create a thread whose priority is above the maximum permitted for unprivileged processes</td>
+
+  <td class="entry" valign="top" headers="d2324556e501 d2324556e504 "><span class="keyword const">PROCMGR_AID_PRIORITY</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d2324556e501 d2324556e504 ">Spawn new processes</td>
+
+  <td class="entry" valign="top" headers="d2324556e501 d2324556e504 "><span class="keyword const">PROCMGR_AID_SPAWN</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d2324556e501 d2324556e504 ">Set the group ID of the child process</td>
+
+  <td class="entry" valign="top" headers="d2324556e501 d2324556e504 "><span class="keyword const">PROCMGR_AID_SPAWN_SETGID</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d2324556e501 d2324556e504 ">Set the user ID of the child process</td>
+
+  <td class="entry" valign="top" headers="d2324556e501 d2324556e504 "><span class="keyword const">PROCMGR_AID_SPAWN_SETUID</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d2324556e501 d2324556e504 ">Create a new application ID for the child process</td>
+
+  <td class="entry" valign="top" headers="d2324556e501 d2324556e504 "><span class="keyword const">PROCMGR_AID_CHILD_NEWAPP</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d2324556e501 d2324556e504 ">Specify a type identifier for the child process</td>
+
+  <td class="entry" valign="top" headers="d2324556e501 d2324556e504 "><span class="keyword const">PROCMGR_AID_SETTYPEID</span></td>
+
+</tr>
+
+  
+<tr>
+  <td class="entry" valign="top" headers="d2324556e501 d2324556e504 ">Let the child process link a library at load time or at run time (i.e., with <span class="keyword apiname">dlopen()</span>)</td>
+
+  <td class="entry" valign="top" headers="d2324556e501 d2324556e504 "><span class="keyword const">PROCMGR_AID_PROT_EXEC</span> and <span class="keyword const">PROCMGR_AID_MAP_FIXED</span>; these abilities must be given to the child</td>
+
+</tr>
+
+
+</tbody>
+
+</table>
+</div>
+
+</div>
+
+
+<p class="p">
+When a C program is executed as the result of calling <span class="keyword apiname">posix_spawn()</span>
+or <span class="keyword apiname">posix_spawnp()</span>, it's entered as a C-language function call as follows:
+</p>
+
+
+<pre class="pre codeblock">
+int main(int argc, char *argv[]);
+</pre>
+
+
+<p class="p">
+where <var class="keyword varname">argc</var> is the argument count and <var class="keyword varname">argv</var> is an array
+of character pointers to the arguments themselves.
+</p>
+
+
+<p class="p">
+In addition, the global <var class="keyword varname">environ</var> variable is initialized
+as a pointer to an array of character pointers to the environment strings. The argument
+<var class="keyword varname">argv</var> is an array of character pointers to
+<span class="keyword const">NULL</span>-terminated strings. The last member of this array is a
+<span class="keyword const">NULL</span> pointer and isn't counted in <var class="keyword varname">argc</var>. These strings
+constitute the argument list available to the new process image. The value in
+<var class="keyword varname">argv[0]</var> should point to a filename that's associated with the process
+image that you're starting.
+</p>
+
+
+<p class="p">
+The number of bytes available for the child process's combined argument and environment lists is
+{<span class="keyword envar">ARG_MAX</span>}.
+
+</p>
+
+
+<p class="p">
+On successful completion, <span class="keyword apiname">posix_spawn()</span> and
+<span class="keyword apiname">posix_spawnp()</span> store the process ID of
+the child process in the variable pointed to by a non-<span class="keyword const">NULL</span>
+<var class="keyword varname">pid</var> argument, and return zero as the function return value.
+Otherwise, no child process is created, the value stored in the variable pointed to by
+a non-<span class="keyword const">NULL</span>
+<var class="keyword varname">pid</var> is undefined, and the functions return an error number.
+If the <var class="keyword varname">pid</var> argument is <span class="keyword const">NULL</span>, the process ID of the child isn't returned to the caller.
+</p>
+
+
+<p class="p">
+
+
+If you're using adaptive partitioning, the child runs in the same partition as the parent; you can use
+<a class="xref" href="../s/schedctl.html" title="Control the scheduler"><span class="keyword apiname">SchedCtl()</span></a>
+to control that after the child has been spawned.
+</p>
+
+
+<h2 class="sectiontitle">File actions</h2>
+
+<p class="p">
+
+The spawn file actions let you control which files are open in the spawned process.
+These actions are defined in an opaque <span class="keyword dtype">posix_spawn_file_actions_t</span> object.
+</p>
+
+
+<p class="p">
+
+If <var class="keyword varname">file_actions</var> is <span class="keyword const">NULL</span>, then the
+file descriptors that are open in the calling process remain open in the child process,
+except for those whose close-on-exec flag, <span class="keyword const">FD_CLOEXEC</span>, is set.
+For those file descriptors that remain open, all
+attributes of the corresponding open file descriptions, including file locks, remain unchanged.
+For more information about <span class="keyword const">FD_CLOEXEC</span> and file locks, see
+<a class="xref" href="../f/fcntl.html" title="Provide control over an open file"><span class="keyword apiname">fcntl()</span></a>.
+</p>
+
+
+<div class="p">
+
+
+
+
+
+
+
+
+
+
+If <var class="keyword varname">file_actions</var>
+isn't <span class="keyword const">NULL</span>, then the file descriptors open in the child process are
+those open in the calling process as modified by the spawn file actions object pointed
+to by <var class="keyword varname">file_actions</var> and the <span class="keyword const">FD_CLOEXEC</span> flag for each
+remaining open file descriptor after the spawn file actions have been processed. The
+effective order of processing the spawn file actions is:
+
+<ol class="ol">
+<li class="li">The set of open file descriptors for the child process is initially the same
+  set as is open for the calling process. All attributes of the corresponding open
+  file descriptions, including file locks, remain unchanged.
+</li>
+
+
+<li class="li">The signal mask, signal default actions, and the effective user and group IDs for
+  the child process are changed as specified in the attributes object referenced
+  by <var class="keyword varname">attrp</var>.
+</li>
+
+
+<li class="li">The file actions specified by the spawn file actions object are performed in the
+  order in which they were added to the spawn file actions object.
+</li>
+
+
+<li class="li">Any file descriptor that has its <span class="keyword const">FD_CLOEXEC</span> flag set is closed.</li>
+
+
+</ol>
+
+</div>
+
+
+<div class="p">
+
+To initialize a file actions object, call
+<a class="xref" href="posix_spawn_file_actions_init.html" title="Initialize a spawn file actions object"><span class="keyword apiname">posix_spawn_file_actions_init()</span></a>,
+and then:
+
+
+
+
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+<thead class="thead" align="left">
+<tr>
+  <th class="entry" valign="top" id="d2324556e878">Call:</th>
+
+  <th class="entry" valign="top" id="d2324556e881">To specify a file descriptor that you want to:</th>
+
+</tr>
+
+</thead>
+
+
+<tbody class="tbody">
+<tr>
+  <td class="entry" valign="top" headers="d2324556e878 d2324556e881 "><a class="xref" href="posix_spawn_file_actions_addclose.html" title="Add a &#147;close a file descriptor&#148; action to a spawn file actions object"><span class="keyword apiname">posix_spawn_file_actions_addclose()</span></a></td>
+
+  <td class="entry" valign="top" headers="d2324556e878 d2324556e881 ">Close</td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d2324556e878 d2324556e881 "><a class="xref" href="posix_spawn_file_actions_adddup2.html" title="Add a &#147;duplicate a file descriptor&#148; action to a spawn file actions object"><span class="keyword apiname">posix_spawn_file_actions_adddup2()</span></a></td>
+
+  <td class="entry" valign="top" headers="d2324556e878 d2324556e881 ">Duplicate with
+    <a class="xref" href="../d/dup2.html" title="Duplicate a file descriptor, specifying the new descriptor"><span class="keyword apiname">dup2()</span></a>
+  </td>
+
+  </tr>
+
+
+<tr>
+  <td class="entry" valign="top" headers="d2324556e878 d2324556e881 "><a class="xref" href="posix_spawn_file_actions_addopen.html" title="Add an &#147;open a file&#148; action to a spawn file action object"><span class="keyword apiname">posix_spawn_file_actions_addopen()</span></a></td>
+
+  <td class="entry" valign="top" headers="d2324556e878 d2324556e881 ">Open</td>
+
+</tr>
+
+
+</tbody>
+
+</table>
+</div>
+
+</div>
+
+
+<p class="p">
+
+To destroy the file actions object, call
+<a class="xref" href="posix_spawn_file_actions_destroy.html" title="Destroy a spawn file actions object"><span class="keyword apiname">posix_spawn_file_actions_destroy()</span></a>.
+</p>
+
+
+<h2 class="sectiontitle">Attributes</h2>
+
+<p class="p">
+
+
+
+
+The spawn attributes are defined in an opaque <span class="keyword dtype">posix_spawnattr_t</span> object.
+Use
+<a class="xref" href="posix_spawnattr_init.html" title="Initialize a spawn attributes object"><span class="keyword apiname">posix_spawnattr_init()</span></a>
+to initialize the object, and
+<a class="xref" href="posix_spawnattr_destroy.html" title="Destroy a spawn attributes object"><span class="keyword apiname">posix_spawnattr_destroy()</span></a>
+to destroy it.
+</p>
+
+
+<div class="note note"><span class="notetitle">Note:</span> 
+In order to set an attribute, you must typically call the appropriate <span class="keyword apiname">posix_spawnattr_*()</span>
+function <em class="ph i">and</em> set the corresponding flag.
+</div>
+
+
+<div class="p">
+By default (i.e., if you don't provide a spawn attributes object, or you don't set the appropriate attribute):
+
+<ul class="ul">
+<li class="li">The child process inherits the parent's process group.
+  
+</li>
+
+
+<li class="li">Signals set to the default action in the parent process are set to the default action in the child process.
+  
+  
+</li>
+
+
+<li class="li">Signals set to be caught by the calling process are set to the default action in the child process.</li>
+
+
+<li class="li">Signals (including <span class="keyword const">SIGCHLD</span>) set to be ignored by
+    the calling process are set to be ignored by the child process.
+  
+ </li>
+
+        <li class="li">The child process inherits the signal mask of the calling thread.</li>
+
+
+<li class="li">The child process uses the same scheduling policy and parameters as the calling thread.
+  
+  
+  
+  
+  
+  
+</li>
+
+
+<li class="li">The child process inherits the parent's effective user and group IDs.
+  
+  
+  
+  
+  
+  
+  
+  
+
+  <p class="p">
+  
+  
+  
+  
+  If the setuid bit is set for the process image file, the child process's effective user ID
+  becomes the file's owner ID before the process starts.
+  Similarly, if the setgid bit is set for the process image file, the child process's effective group ID
+  becomes the file's group ID before the process starts.
+  </p>
+
+</li>
+
+
+<li class="li">The child process is started on the same node that the calling process is running on.
+  
+</li>
+
+
+<li class="li">The child's runmask is set to the calling thread's inherit mask.
+  
+  
+  
+  
+</li>
+
+
+<li class="li">The child process's stack will be set to the default, 512 KB, if the maximum stack is not
+  specified. 
+  
+</li>
+
+
+<li class="li">The child becomes a zombie on its death.
+  
+  
+  
+</li>
+
+
+<li class="li">The child isn't held for debugging purposes.
+  
+  
+</li>
+
+
+<li class="li">The child uses the system default settings for alignment.
+  
+  
+</li>
+
+
+<li class="li">The child uses Address Space Layout Randomization (ASLR) if the parent uses it.
+  
+  
+  
+</li>
+
+
+</ul>
+
+</div>
+
+
+<div class="note note"><span class="notetitle">Note:</span> 
+<p class="p">
+If the value of the <var class="keyword varname">attrp</var> pointer is <span class="keyword const">NULL</span>, then the
+default values are used.
+</p>
+
+
+<p class="p">
+All process attributes, except those influenced by the spawn attributes 
+or the file actions, appear in the new process image
+as though <span class="keyword apiname">fork()</span> had been called to create the child process
+and then <span class="keyword apiname">exec*()</span> had been called by the child to execute the new
+process image.
+</p>
+
+
+<p class="p">
+In <span class="keyword">QNX Neutrino</span>, fork handlers aren't run when you call
+<span class="keyword apiname">posix_spawn()</span> or <span class="keyword apiname">posix_spawnp()</span>.
+</p>
+
+</div>
+
+
+<p class="p">
+
+
+
+
+You can do the following by using the attributes defined by POSIX.
+You can get and set the POSIX flags by calling the POSIX
+<a class="xref" href="posix_spawnattr_getflags.html" title="Get the POSIX flags from a spawn attributes object"><span class="keyword apiname">posix_spawnattr_getflags()</span></a>
+and
+<a class="xref" href="posix_spawnattr_setflags.html" title="Set the POSIX flags in a spawn attributes object"><span class="keyword apiname">posix_spawnattr_setflags()</span></a>
+routines, or the <span class="keyword">QNX Neutrino</span>
+<a class="xref" href="posix_spawnattr_getxflags.html" title="Get the POSIX flags and the QNX Neutrino extended flags from a spawn attributes object"><span class="keyword apiname">posix_spawnattr_getxflags()</span></a>
+and
+<a class="xref" href="posix_spawnattr_setxflags.html" title="Set the POSIX flags and the QNX Neutrino extended flags in a spawn attributes object"><span class="keyword apiname">posix_spawnattr_setxflags()</span></a>
+routines.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+</p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+
+
+
+
+<thead class="thead" align="left">
+<tr>
+  <th class="entry" valign="top" width="40%" id="d2324556e1595">If you want to:</th>
+
+  <th class="entry" valign="top" width="60%" id="d2324556e1598">Do the following:</th>
+
+</tr>
+
+</thead>
+
+
+<tbody class="tbody">
+<tr>
+  <td class="entry" valign="top" width="40%" headers="d2324556e1595 ">Explicitly specify the process group for the child process</td>
+
+  <td class="entry" valign="top" width="60%" headers="d2324556e1598 ">Set the <span class="keyword const">POSIX_SPAWN_SETPGROUP</span> flag and call
+    <a class="xref" href="posix_spawnattr_setpgroup.html" title="Set the process group attribute in a spawn attributes object"><span class="keyword apiname">posix_spawnattr_setpgroup()</span></a>,
+    specifying a nonzero process group ID
+  </td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" width="40%" headers="d2324556e1595 ">Put the child in a new process group with a process group ID equal to its process ID</td>
+
+  <td class="entry" valign="top" width="60%" headers="d2324556e1598 ">Set <span class="keyword const">POSIX_SPAWN_SETPGROUP</span> and call
+    <a class="xref" href="posix_spawnattr_setpgroup.html" title="Set the process group attribute in a spawn attributes object"><span class="keyword apiname">posix_spawnattr_setpgroup()</span></a>,
+    specifying a process group ID of zero
+  </td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" width="40%" headers="d2324556e1595 ">Set the initial signal mask of the child process</td>
+
+  <td class="entry" valign="top" width="60%" headers="d2324556e1598 ">
+    Set <span class="keyword const">POSIX_SPAWN_SETSIGMASK</span> and call
+    <a class="xref" href="posix_spawnattr_setsigmask.html" title="Set the signal mask attribute of a spawn attributes object"><span class="keyword apiname">posix_spawnattr_setsigmask()</span></a>,
+    specifying the set of signals to mask
+  </td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" width="40%" headers="d2324556e1595 ">Set actions for certain signals to the default action in the child process</td>
+
+  <td class="entry" valign="top" width="60%" headers="d2324556e1598 ">Set <span class="keyword const">POSIX_SPAWN_SETSIGDEF</span> and call
+    <a class="xref" href="posix_spawnattr_setsigdefault.html" title="Set the &#147;default signals&#148; attribute of a spawn attributes object"><span class="keyword apiname">posix_spawnattr_setsigdefault()</span></a>,
+    specifying the set of signals for which you're defining actions
+  </td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" width="40%" headers="d2324556e1595 ">Explicitly set the child process's scheduling policy and parameters</td>
+
+  <td class="entry" valign="top" width="60%" headers="d2324556e1598 ">Set <span class="keyword const">POSIX_SPAWN_SETSCHEDULER</span> (in this case, you don't have to set
+    <span class="keyword const">POSIX_SPAWN_SETSCHEDPARAM</span>), call
+    <a class="xref" href="posix_spawnattr_setschedpolicy.html" title="Set the scheduling policy attribute of a spawn attributes object"><span class="keyword apiname">posix_spawnattr_setschedpolicy()</span></a>
+    to set the scheduling policy, and call
+    <a class="xref" href="posix_spawnattr_setschedparam.html" title="Set the scheduling parameters attribute of a spawn attributes object"><span class="keyword apiname">posix_spawnattr_setschedparam()</span></a>
+    to set the scheduling parameters
+  </td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" width="40%" headers="d2324556e1595 ">Set the child process's scheduling parameters, but use the parent's scheduling policy</td>
+
+  <td class="entry" valign="top" width="60%" headers="d2324556e1598 ">Set <span class="keyword const">POSIX_SPAWN_SETSCHEDPARAM</span> and call
+    <a class="xref" href="posix_spawnattr_setschedparam.html" title="Set the scheduling parameters attribute of a spawn attributes object"><span class="keyword apiname">posix_spawnattr_setschedparam()</span></a>
+    to set the scheduling parameters
+  </td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" width="40%" headers="d2324556e1595 ">Reset the child process's effective user and group IDs to the parent's real user and group IDs,
+    and make the child process inherit the parent's real (rather than the effective) user and group IDs
+  </td>
+
+  <td class="entry" valign="top" width="60%" headers="d2324556e1598 ">Set <span class="keyword const">POSIX_SPAWN_RESETIDS</span>.
+
+    <p class="p">
+    If the setuid bit is set for the process image file, the child process's effective user ID
+    becomes the file's owner ID before the process starts.
+    Similarly, if the setgid bit is set for the process image file, the child process's effective group ID
+    becomes the file's group ID before the process starts.
+    </p>
+
+  </td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+
+
+<p class="p">
+You can do the following by using the attributes defined as extensions by <span class="keyword">QNX Neutrino</span>.
+You can get and set the <span class="keyword">QNX Neutrino</span> <em class="ph i">and</em> POSIX flags by calling
+<a class="xref" href="posix_spawnattr_getxflags.html" title="Get the POSIX flags and the QNX Neutrino extended flags from a spawn attributes object"><span class="keyword apiname">posix_spawnattr_getxflags()</span></a>
+and
+<a class="xref" href="posix_spawnattr_setxflags.html" title="Set the POSIX flags and the QNX Neutrino extended flags in a spawn attributes object"><span class="keyword apiname">posix_spawnattr_setxflags()</span></a>.
+Both of these routines are <span class="keyword">QNX Neutrino</span> extensions.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+
+
+
+
+<thead class="thead" align="left">
+<tr>
+  <th class="entry" valign="top" width="50%" id="d2324556e2118">If you want to:</th>
+
+  <th class="entry" valign="top" width="50%" id="d2324556e2121">Do the following:</th>
+
+</tr>
+
+</thead>
+
+
+<tbody class="tbody">
+<tr>
+  <td class="entry" valign="top" width="50%" headers="d2324556e2118 ">Spawn the child process on a different node</td>
+
+  <td class="entry" valign="top" width="50%" headers="d2324556e2121 ">Set the <span class="keyword const">POSIX_SPAWN_SETND</span> flag and call
+    <a class="xref" href="posix_spawnattr_setnode.html" title="Set the remote node attribute in a spawn attributes object"><span class="keyword apiname">posix_spawnattr_setnode()</span></a>,
+    specifying the remote node ID
+  </td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" width="50%" headers="d2324556e2118 ">Make the child process ignore specific signals</td>
+
+  <td class="entry" valign="top" width="50%" headers="d2324556e2121 ">Set <span class="keyword const">POSIX_SPAWN_SETSIGIGN</span> and call
+    <a class="xref" href="posix_spawnattr_setsigignore.html" title="Set the &#147;ignored signals&#148; attribute of a spawn attributes object"><span class="keyword apiname">posix_spawnattr_setsigignore()</span></a>,
+    specifying the signals you want to ignore
+  </td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" width="50%" headers="d2324556e2118 ">Restrict the CPUs that the child process can run on</td>
+
+  <td class="entry" valign="top" width="50%" headers="d2324556e2121 ">Set <span class="keyword const">POSIX_SPAWN_EXPLICIT_CPU</span> and call
+    <a class="xref" href="posix_spawnattr_setrunmask.html" title="Set the runmask attribute in a spawn attributes object"><span class="keyword apiname">posix_spawnattr_setrunmask()</span></a>,
+    specifying the processor affinity/runmask.
+    If you don't set this flag, the child inherits the calling thread's runmask.
+    
+  </td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" width="50%" headers="d2324556e2118 ">Specify the user and group IDs for the child process</td>
+
+  <td class="entry" valign="top" width="50%" headers="d2324556e2121 ">Set <span class="keyword const">POSIX_SPAWN_SETCRED</span> and call
+    <a class="xref" href="posix_spawnattr_setcred.html" title="Set the user and group ID attributes in a spawn attributes object"><span class="keyword apiname">posix_spawnattr_setcred()</span></a>,
+    specifying the IDs
+  </td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" width="50%" headers="d2324556e2118 ">Set the maximum stack size for the child process</td>
+
+  <td class="entry" valign="top" width="50%" headers="d2324556e2121 ">Set <span class="keyword const">POSIX_SPAWN_SETSTACKMAX</span> and call <a class="xref" href="posix_spawnattr_setstackmax.html" title="Set the maximum stack size attribute in a spawn attributes object"><span class="keyword apiname">posix_spawnattr_setstackmax()</span></a>, specifying the stack size.
+    If you don't set this flag, the stack size for the child's main thread will be the default, 512
+    KB. You can get the maximum size by calling <a class="xref" href="posix_spawnattr_getstackmax.html" title="Get the maximum stack size attribute from a spawn attributes object"><span class="keyword apiname">posix_spawnattr_getstackmax()</span></a>. 
+  </td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" width="50%" headers="d2324556e2118 ">Assign a new application ID to the process. For 
+    more information, see <a class="xref" href="../../../com.qnx.doc.security.system/topic/manual/application_groups.html">"Application groups"</a> in the <cite class="cite">QNX Neutrino System Security Guide</cite>.
+  </td>
+
+  <td class="entry" valign="top" width="50%" headers="d2324556e2121 ">Set <span class="keyword const">POSIX_SPAWN_NEWAPP</span>.
+    If you don't set this flag, the process inherits the parent's application ID.</td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" width="50%" headers="d2324556e2118 ">Prevent the child process from becoming a zombie on its death</td>
+
+  <td class="entry" valign="top" width="50%" headers="d2324556e2121 ">Set <span class="keyword const">POSIX_SPAWN_NOZOMBIE</span>.
+     No child return or exit information will be available.
+  </td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" width="50%" headers="d2324556e2118 ">Hold the child process as if it had received a <span class="keyword const">SIGSTOP</span> as soon as it was 
+      spawned. To resume this process, you must send it a <span class="keyword const">SIGCONT</span>.
+    This is useful for debugging, configuring the process's abilities, or using
+    <a class="xref" href="../s/setgroupspid.html" title="Set supplementary group IDs for a child process"><span class="keyword apiname">setgroupspid()</span></a>
+    to set the child's supplementary group set.
+  </td>
+
+  <td class="entry" valign="top" width="50%" headers="d2324556e2121 ">Set <span class="keyword const">POSIX_SPAWN_HOLD</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" width="50%" headers="d2324556e2118 ">(QNX Neutrino 7.0 or later) Start the child as a different security type</td>
+
+  <td class="entry" valign="top" width="50%" headers="d2324556e2121 ">Set <span class="keyword const">POSIX_SPAWN_SETTYPEID</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" width="50%" headers="d2324556e2118 ">Use the system default settings for alignment</td>
+
+  <td class="entry" valign="top" width="50%" headers="d2324556e2121 ">Set <span class="keyword const">POSIX_SPAWN_ALIGN_DEFAULT</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" width="50%" headers="d2324556e2118 ">Attempt to always fault data misalignment references</td>
+
+  <td class="entry" valign="top" width="50%" headers="d2324556e2121 ">Set <span class="keyword const">POSIX_SPAWN_ALIGN_FAULT</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" width="50%" headers="d2324556e2118 ">Make the child process not fault on misalignment; attempt to fix it instead
+    (this approach might be slow)
+  </td>
+
+  <td class="entry" valign="top" width="50%" headers="d2324556e2121 ">Set <span class="keyword const">POSIX_SPAWN_ALIGN_NOFAULT</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" width="50%" headers="d2324556e2118 ">Make the new process a session leader</td>
+
+  <td class="entry" valign="top" width="50%" headers="d2324556e2121 ">Set <span class="keyword const">POSIX_SPAWN_SETSID</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" width="50%" headers="d2324556e2118 ">Debug process (this is used only for debugging the kernel itself)</td>
+
+  <td class="entry" valign="top" width="50%" headers="d2324556e2121 ">Set <span class="keyword const">POSIX_SPAWN_DEBUG</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" width="50%" headers="d2324556e2118 ">Cause the spawn to act like <span class="keyword apiname">exec*()</span>,
+    replacing the calling program in memory with the newly loaded program.
+    If successful, no return is made to the calling program.
+  </td>
+
+  <td class="entry" valign="top" width="50%" headers="d2324556e2121 ">Set <span class="keyword const">POSIX_SPAWN_EXEC</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" width="50%" headers="d2324556e2118 ">Search the <span class="keyword envar">PATH</span> environment variable for the executable</td>
+
+  <td class="entry" valign="top" width="50%" headers="d2324556e2121 ">Set <span class="keyword const">POSIX_SPAWN_SEARCH_PATH</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" width="50%" headers="d2324556e2118 ">Start a shell, passing <var class="keyword varname">path</var> as a script,
+    if unable to run <var class="keyword varname">path</var> in any other way
+  </td>
+
+  <td class="entry" valign="top" width="50%" headers="d2324556e2121 ">Set <span class="keyword const">POSIX_SPAWN_CHECK_SCRIPT</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" width="50%" headers="d2324556e2118 ">Start a new terminal group</td>
+
+  <td class="entry" valign="top" width="50%" headers="d2324556e2121 ">Set <span class="keyword const">POSIX_SPAWN_TCSETPGROUP</span></td>
+
+</tr>
+
+
+<tr>
+    <td class="entry" valign="top" width="50%" headers="d2324556e2118 ">(QNX Neutrino 7.0.4 or later) Assign the preset address space ID to the child</td>
+
+    <td class="entry" valign="top" width="50%" headers="d2324556e2121 ">Set <span class="keyword const">POSIX_SPAWN_SETASID</span></td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" width="50%" headers="d2324556e2118 ">(QNX Neutrino 7.0.4 or later) Indicate that the process is critical to the system 
+    functionality, meaning if this critical process dies, the system will crash.</td>
+
+  <td class="entry" valign="top" width="50%" headers="d2324556e2121 ">Set <span class="keyword const">POSIX_SPAWN_CRITICAL</span>. To create a critical process with
+                  <span class="keyword const">POSIX_SPAWN_CRITICAL</span>, your process needs the
+                  <span class="keyword const">PROCMGR_AID_REBOOT</span> ability. For more information, see <a class="xref" href="procmgr_ability.html" title="Control a process's ability to perform certain operations"><span class="keyword apiname">procmgr_ability()</span></a>.</td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" width="50%" headers="d2324556e2118 ">(QNX Neutrino 7.1 or later) Set the current working directory for the child process</td>
+
+  <td class="entry" valign="top" width="50%" headers="d2324556e2121 ">Set <span class="keyword const">POSIX_SPAWN_SETCWD</span> and call
+    <a class="xref" href="posix_spawnattr_setcwd_np.html" title="Set the current working directory attribute in a spawn attributes object"><span class="keyword apiname">posix_spawnattr_setcwd_np()</span></a>.
+    If you don't set this flag, the child process has the same current working directory as the parent process.
+    
+  </td>
+
+</tr>
+
+
+<tr>
+  <td class="entry" valign="top" width="50%" headers="d2324556e2118 ">Enable or disable Address Space Layout Randomization (ASLR) for the child process, or have
+                the child inherit the parent's settings (the default). </td>
+
+  <td class="entry" valign="top" width="50%" headers="d2324556e2121 ">Call <a class="xref" href="posix_spawnattr_setaslr.html" title="Control how the Address Space Layout Randomization (ASLR) setting of a child is determined"><span class="keyword apiname">posix_spawnattr_setaslr()</span></a>.</td>
+
+</tr>
+
+            <tr>
+              <td class="entry" valign="top" width="50%" headers="d2324556e2118 ">Toggle the Address Space Layout Randomization (ASLR) feature. If it's enabled
+                for the parent, disable it for the child; if it's disabled for the parent, enable it
+                for the child.</td>
+
+              <td class="entry" valign="top" width="50%" headers="d2324556e2121 ">Set <span class="keyword const">POSIX_SPAWN _ASLR_INVERT</span>. However, QNX recommends that you
+                use <a class="xref" href="posix_spawnattr_setaslr.html" title="Control how the Address Space Layout Randomization (ASLR) setting of a child is determined"><span class="keyword apiname">posix_spawnattr_setaslr()</span></a> instead.</td>
+
+            </tr>
+
+
+
+</tbody>
+
+</table>
+</div>
+
+
+</div>
+
+
+
+<div class="section"><h2 class="title sectiontitle">Returns:</h2>
+
+
+<dl class="dl">
+
+<dt class="dt dlterm"><span class="keyword const">EOK</span></dt>
+
+<dd class="dd">The child was successfully spawned.</dd>
+
+
+
+
+  <dt class="dt dlterm"><span class="keyword const">EACCES</span></dt>
+
+  <dd class="dd">The calling process doesn't have permission to search a directory listed in <span class="ph filepath">path</span>,
+    or it doesn't have permission to execute <span class="ph filepath">path</span>, or <span class="ph filepath">path</span>'s filesystem was mounted with the <span class="keyword const">ST_NOEXEC</span> flag.</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EBADF</span></dt>
+
+<dd class="dd">A problem occurred when <span class="keyword apiname">posix_spawn()</span> was duplicating a file descriptor.
+  For example, another thread might have opened or closed a file descriptor while the
+  <span class="keyword apiname">posix_spawn()</span> was occurring.
+  You can add synchronization around the operations that involve file descriptors,
+  or try calling <span class="keyword apiname">posix_spawn()</span> again.
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EINVAL</span></dt>
+
+<dd class="dd">An argument was invalid; the spawn attributes or file actions object is invalid, or
+  the name of the process image file is <span class="keyword const">NULL</span> or an empty string.
+
+  <p class="p">
+  If you specify an invalid value in the file actions or spawn attributes,
+  <span class="keyword apiname">posix_spawn()</span> or <span class="keyword apiname">posix_spawnp()</span> might fail;
+  if the value causes an error to occur after the child has been successfully spawned,
+  the child process may exit with a status of 127.
+  </p>
+
+
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">EIO</span></dt>
+
+<dd class="dd">An internal error occurred in the library. </dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">ENAMETOOLONG</span></dt>
+
+<dd class="dd">
+
+  <ul class="ul">
+  <li class="li">The length of the <var class="keyword varname">path</var> argument is greater than <span class="keyword const">PATH_MAX</span>.</li>
+
+
+  <li class="li">An action set with <span class="keyword apiname">posix_spawn_file_actions_addopen()</span> has a path that's longer
+    than <span class="keyword const">PATH_MAX</span>.
+  </li>
+
+
+  </ul>
+
+
+  <p class="p">
+  In both cases the length of the path used for comparing against <span class="keyword const">PATH_MAX</span> includes the terminating NUL. 
+  </p>
+
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">ENOENT</span></dt>
+
+<dd class="dd">
+  <ul class="ul">
+  <li class="li">For <span class="keyword apiname">posix_spawn()</span>, the executable specified by the
+    <var class="keyword varname">path</var> argument couldn't be found.
+  </li>
+
+
+  <li class="li">For <span class="keyword apiname">posix_spawnp()</span>, the executable specified by the
+    <var class="keyword varname">file</var> argument couldn't be found in
+            any of the <span class="keyword envar">PATH</span> environment variable locations.
+  </li>
+
+
+  </ul>
+
+
+</dd>
+
+
+
+
+<dt class="dt dlterm"><span class="keyword const">ENOMEM</span></dt>
+
+<dd class="dd">The memory required to create the message to send to <span class="keyword cmdname">procnto</span>
+  couldn't be allocated memory to create the new process and its associated data
+  structures couldn't be allocated.
+</dd>
+
+
+
+  
+    <dt class="dt dlterm"><span class="keyword const">ENOTSUP</span></dt>
+
+    <dd class="dd"><ul class="ul">
+      <li class="li">The <span class="keyword const">POSIX_SPAWN_SETTYPEID</span> flag was set without loading a security policy.</li>
+
+      <li class="li">An address space ID <var class="keyword varname">asid</var> was specified that's invalid for the architecture of the target system;
+        see <span class="keyword apiname">posix_spawn_setasid()</span> for information on the valid values.</li>
+
+      </ul>
+ </dd>
+
+  
+
+
+<dt class="dt dlterm"><span class="keyword const">EPERM</span></dt>
+
+<dd class="dd">The calling process doesn't have the required permission (see <a class="xref" href="procmgr_ability.html" title="Control a process's ability to perform certain operations"><span class="keyword apiname">procmgr_ability()</span></a>), or an
+            underlying call to <a class="xref" href="../m/mmap.html" title="Map a memory region into a process's address space"><span class="keyword apiname">mmap()</span></a> failed
+            because it attempted to set <span class="keyword const">PROT_EXEC</span> for a region of memory covered by
+            an untrusted memory-mapped file. This error may also indicate that the process lacks the
+              <span class="keyword const">PROCMGR_AID_SETTYPEID</span> ability or does not have a subrange that includes
+              <var class="keyword varname">typeid</var>. </dd>
+
+
+
+  
+    <dt class="dt dlterm"><span class="keyword const">ESECTYPEINVAL</span></dt>
+
+    <dd class="dd">The type identifier either does not exist or has no abilities associated with it. A type
+      must be the source type in at least one <span class="keyword option">allow</span>,
+      <span class="keyword option">allow_attach</span> or <span class="keyword option">allow_link</span> rule for a process to
+      have its type identifier set to it. (These rules are defined in the security policy.)
+    </dd>
+
+  
+
+
+<dt class="dt dlterm"><span class="keyword const">ETXTBSY</span></dt>
+
+<dd class="dd">The file that you're trying to execute is open for writing.</dd>
+
+
+</dl>
+
+
+<p class="p">
+If <span class="keyword apiname">posix_spawn()</span> or <span class="keyword apiname">posix_spawnp()</span> fails for any of
+the reasons that would cause
+<a class="xref" href="../f/fork.html" title="Create a new process"><span class="keyword apiname">fork()</span></a>
+or one of the
+<a class="xref" href="../lib-e.html"><span class="keyword apiname">exec*()</span></a>
+family of functions to fail, an error value is returned
+as described for those functions (or,
+if the error occurs after the calling process successfully returns, the child process
+exits with exit status 127).
+</p>
+
+
+<p class="p">
+If <span class="keyword const">POSIX_SPAWN_SETPGROUP</span> is set in the <var class="keyword varname">spawn-flags</var>
+attribute of the object referenced by <var class="keyword varname">attrp</var>, and
+<span class="keyword apiname">posix_spawn()</span> or <span class="keyword apiname">posix_spawnp()</span> fails while
+changing the child's process group, an error value is returned as described for
+<a class="xref" href="../s/setpgid.html" title="Join or create a process group"><span class="keyword apiname">setpgid()</span></a>
+(or, if the error occurs after the calling process
+successfully returns, the child process exits with exit status 127).
+</p>
+
+
+<p class="p">
+If <span class="keyword const">POSIX_SPAWN_SETSCHEDPARAM</span> is set and
+<span class="keyword const">POSIX_SPAWN_SETSCHEDULER</span> isn't set in the <var class="keyword varname">spawn-flags</var>
+attribute of the object referenced by <var class="keyword varname">attrp</var>, then if
+<span class="keyword apiname">posix_spawn()</span> or <span class="keyword apiname">posix_spawnp()</span> fails for any of
+the reasons that would cause
+<a class="xref" href="../s/sched_setparam.html" title="Change the priority of a process"><span class="keyword apiname">sched_setparam()</span></a>
+to fail, an error value
+is returned as described for <span class="keyword apiname">sched_setparam()</span> (or, if the error
+occurs after the calling process successfully returns, the child process exits with exit
+status 127).
+</p>
+
+
+<p class="p">
+If <span class="keyword const">POSIX_SPAWN_SETSCHEDULER</span> is set in the <var class="keyword varname">spawn-flags</var>
+attribute of the object referenced by <var class="keyword varname">attrp</var>, and
+if <span class="keyword apiname">posix_spawn()</span> or <span class="keyword apiname">posix_spawnp()</span> fails for any of
+the reasons that would cause
+<a class="xref" href="../s/sched_setscheduler.html" title="Change the priority and scheduling policy of a process"><span class="keyword apiname">sched_setscheduler()</span></a>
+to fail, an error
+value is returned as described for <span class="keyword apiname">sched_setscheduler()</span> (or, if the
+error occurs after the calling process successfully returns, the child process exits with
+exit status 127).
+</p>
+
+
+<p class="p">
+If the <var class="keyword varname">file_actions</var> argument isn't <span class="keyword const">NULL</span>, and specifies
+any
+<a class="xref" href="../c/close.html" title="Close a file"><span class="keyword apiname">close()</span></a>,
+<a class="xref" href="../d/dup2.html" title="Duplicate a file descriptor, specifying the new descriptor"><span class="keyword apiname">dup2()</span></a>,
+or
+<a class="xref" href="../o/open.html" title="Open a file"><span class="keyword apiname">open()</span></a>
+actions to be performed, and if <span class="keyword apiname">posix_spawn()</span> or
+<span class="keyword apiname">posix_spawnp()</span> fails for any of the reasons that would cause
+<span class="keyword apiname">close()</span>, <span class="keyword apiname">dup2()</span>, or <span class="keyword apiname">open()</span> to
+fail, an error value is returned as described for those functions (or, if the
+error occurs after the calling process successfully returns, the child process exits
+with exit status 127).
+For example, if the parent process closes a file descriptor while it's being duplicated, you'll get an error
+of <span class="keyword const">EBADF</span>.
+An <span class="keyword apiname"> open()</span> file action may, by itself, result in
+any of the errors described by <span class="keyword apiname">close()</span> or <span class="keyword apiname">dup2()</span>, in
+addition to those described by <span class="keyword apiname"> open()</span>.
+</p>
+
+
+<p class="p">
+The <span class="keyword apiname">posix_spawn()</span> and <span class="keyword apiname">posix_spawnp()</span> functions can
+also return any error returned by a
+<a class="xref" href="../s/stat.html" title="Get information about a file or directory, given a path"><span class="keyword apiname">stat()</span></a>
+on <var class="keyword varname">path</var>.
+See also the errors for
+<a class="xref" href="../c/connectattach.html" title="Establish a connection between a process and a channel"><span class="keyword apiname">ConnectAttach()</span></a>
+and
+<a class="xref" href="../m/msgsendvnc.html" title="Send a message to a channel (non-cancellation point)"><span class="keyword apiname">MsgSendvnc()</span></a>.
+</p>
+
+
+</div>
+
+
+<div class="section" id="posix_spawn__Examples"><h2 class="title sectiontitle">Examples:</h2>
+
+
+<p class="p">
+Specify an absolute path, using <span class="keyword apiname">posix_spawn()</span>:
+</p>
+
+
+<pre class="pre codeblock">
+pid_t child_pid;
+int ret;
+
+ret = posix_spawn (&amp;child_pid, "/home/dpr/hello", NULL, NULL, NULL, NULL);
+if (ret != EOK)
+{
+    printf("posix_spawn() failed: %s\n", strerror(ret) );
+    return EXIT_FAILURE;
+}
+
+printf ("Child pid: %d\n\n", child_pid);
+</pre>
+
+
+<p class="p">
+To specify a relative path, use <span class="keyword apiname">posix_spawnp()</span>:
+</p>
+
+
+<pre class="pre codeblock">
+ret = posix_spawnp (&amp;child_pid, "./hello", NULL, NULL, NULL, NULL);
+</pre>
+
+
+<p class="p">
+If the path doesn't include a slash, search the <span class="keyword envar">PATH</span> for the executable:
+</p>
+
+
+<pre class="pre codeblock">
+ret = posix_spawnp (&amp;child_pid, "hello", NULL, NULL, NULL, NULL);
+</pre>
+
+
+<p class="p">
+Use the spawn attributes and flags to lower the child process's priority (with error checking
+omitted, in the interest of brevity):
+</p>
+
+
+<pre class="pre codeblock">
+pid_t child_pid;
+posix_spawnattr_t attr;
+int policy;
+struct sched_param param;
+
+/* Get the parent's scheduling policy and parameters. */
+pthread_getschedparam (pthread_self(), &amp;policy, &amp;param);
+
+/* Initialize the spawn attributes structure. */
+posix_spawnattr_init (&amp;attr);
+
+/* Set the child's priority to be two levels lower. */
+param.sched_priority -= 2;
+posix_spawnattr_setschedparam (&amp;attr, &amp;param);
+
+/* Set the appropriate flag to make the changes take effect. */
+posix_spawnattr_setflags (&amp;attr, POSIX_SPAWN_SETSCHEDPARAM);
+  
+/* Spawn the child process. */
+posix_spawnp (&amp;child_pid, "./hello", NULL, &amp;attr, NULL, NULL);
+</pre>
+
+
+</div>
+
+
+<div class="section"><h2 class="title sectiontitle">Classification:</h2>
+
+
+
+<p class="p">
+<a class="xref" href="../summary.html#summary__CLASSIFICATION">POSIX 1003.1 SPN</a>
+</p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all">
+<thead class="thead" align="left">
+<tr><th class="entry" valign="top" id="d2324556e3097">Safety:</th>
+<th class="entry" valign="top" id="d2324556e3099">Â </th>
+</tr>
+
+</thead>
+
+<tbody class="tbody">
+<tr><td class="entry" valign="top" headers="d2324556e3097 d2324556e3099 ">Cancellation point</td>
+<td class="entry" valign="top" headers="d2324556e3097 d2324556e3099 ">Yes</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2324556e3097 d2324556e3099 ">Interrupt handler</td>
+<td class="entry" valign="top" headers="d2324556e3097 d2324556e3099 ">No</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2324556e3097 d2324556e3099 ">Signal handler</td>
+<td class="entry" valign="top" headers="d2324556e3097 d2324556e3099 ">Yes</td>
+</tr>
+
+<tr><td class="entry" valign="top" headers="d2324556e3097 d2324556e3099 ">Thread</td>
+<td class="entry" valign="top" headers="d2324556e3097 d2324556e3099 ">Yes</td>
+</tr>
+
+</tbody>
+
+</table>
+</div>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="related-links"><div class="relinfo relconcepts"><strong>Related concepts</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.getting_started/topic/s1_procs.html" title="Processes and Threads (Getting Started with QNX Neutrino)">Processes and Threads (Getting Started with <span class="keyword">QNX Neutrino</span>)</a></div>
+</div>
+<div class="relinfo relref"><strong>Related reference</strong><br />
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/p/posix_spawn_file_actions_addclose.html" title="Add a &#147;close a file descriptor&#148; action to a spawn file actions object">posix_spawn_file_actions_addclose()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/p/posix_spawn_file_actions_adddup2.html" title="Add a &#147;duplicate a file descriptor&#148; action to a spawn file actions object">posix_spawn_file_actions_adddup2()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/p/posix_spawn_file_actions_addopen.html" title="Add an &#147;open a file&#148; action to a spawn file action object">posix_spawn_file_actions_addopen()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/p/posix_spawn_file_actions_destroy.html" title="Destroy a spawn file actions object">posix_spawn_file_actions_destroy()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/p/posix_spawn_file_actions_init.html" title="Initialize a spawn file actions object">posix_spawn_file_actions_init()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/p/posix_spawnattr_destroy.html" title="Destroy a spawn attributes object">posix_spawnattr_destroy()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/p/posix_spawnattr_init.html" title="Initialize a spawn attributes object">posix_spawnattr_init()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/p/posix_spawnattr_setasid.html" title="Set the address space ID attribute in a spawn attributes object">posix_spawnattr_setasid()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/p/posix_spawnattr_setaslr.html" title="Control how the Address Space Layout Randomization (ASLR) setting of a child is determined">posix_spawnattr_setaslr()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/p/posix_spawnattr_setcred.html" title="Set the user and group ID attributes in a spawn attributes object">posix_spawnattr_setcred()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/p/posix_spawnattr_setcwd_np.html" title="Set the current working directory attribute in a spawn attributes object">posix_spawnattr_setcwd_np()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/p/posix_spawnattr_setflags.html" title="Set the POSIX flags in a spawn attributes object">posix_spawnattr_setflags()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/p/posix_spawnattr_setpgroup.html" title="Set the process group attribute in a spawn attributes object">posix_spawnattr_setpgroup()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/p/posix_spawnattr_setrunmask.html" title="Set the runmask attribute in a spawn attributes object">posix_spawnattr_setrunmask()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/p/posix_spawnattr_setschedparam.html" title="Set the scheduling parameters attribute of a spawn attributes object">posix_spawnattr_setschedparam()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/p/posix_spawnattr_setschedpolicy.html" title="Set the scheduling policy attribute of a spawn attributes object">posix_spawnattr_setschedpolicy()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/p/posix_spawnattr_setsigdefault.html" title="Set the &#147;default signals&#148; attribute of a spawn attributes object">posix_spawnattr_setsigdefault()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/p/posix_spawnattr_setsigignore.html" title="Set the &#147;ignored signals&#148; attribute of a spawn attributes object">posix_spawnattr_setsigignore()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/p/posix_spawnattr_setsigmask.html" title="Set the signal mask attribute of a spawn attributes object">posix_spawnattr_setsigmask()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/p/posix_spawnattr_setstackmax.html" title="Set the maximum stack size attribute in a spawn attributes object">posix_spawnattr_setstackmax()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/p/posix_spawnattr_settypeid.html" title="Set the type identifier of a spawn attributes object">posix_spawnattr_settypeid()</a></div>
+<div class="related_link"><a class="navheader_parent_path" href="../../../com.qnx.doc.neutrino.lib_ref/topic/p/posix_spawnattr_setxflags.html" title="Set the POSIX flags and the QNX Neutrino extended flags in a spawn attributes object">posix_spawnattr_setxflags()</a></div>
+</div>
+</div><div class="navfooter"><!---->
+<span class="navparent"><a class="link" href="../../../com.qnx.doc.neutrino.lib_ref/topic/lib-p.html" title="P"><span class="navheader_label">Parent topic</span><span class="navheader_separator">: </span><span class="navheader_linktext">P</span></a></span>  </div>
+</body>
+</html>

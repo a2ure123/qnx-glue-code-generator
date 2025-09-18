@@ -1,0 +1,20 @@
+{
+  "function_name": "atanhl",
+  "url": "https://www.qnx.com/developers/docs/7.1/com.qnx.doc.neutrino.lib_ref/topic/a/atanh.html",
+  "synopsis": "long double atanhl( long double x );",
+  "description": "",
+  "headers": [
+    "#include <math.h>"
+  ],
+  "parameters": [
+    {
+      "name": "x",
+      "description": "The value for which you want to compute the inverse hyperbolic tangent."
+    }
+  ],
+  "return_values": [],
+  "examples": [
+    "#include <math.h>\n\ndouble atanh( double x );\n\nfloat atanhf( float x );\n\nlong double atanhl( long double x );"
+  ],
+  "full_content": "Function: atanhl\nURL: https://www.qnx.com/developers/docs/7.1/com.qnx.doc.neutrino.lib_ref/topic/a/atanh.html\nSynopsis: long double atanhl( long double x );\nHeaders: #include <math.h>\nParameters:\n  - x: The value for which you want to compute the inverse hyperbolic tangent.\nExamples:\nExample 1:\n#include <math.h>\n\ndouble atanh( double x );\n\nfloat atanhf( float x );\n\nlong double atanhl( long double x );"
+}
