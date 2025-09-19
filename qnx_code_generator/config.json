@@ -21,7 +21,14 @@
     "preferred_architecture": "x86_64"
   },
   "ai_settings": {
-    "provider": "gemini",
+    "provider": "claude",
+    "claude": {
+      "api_key_env": "CLAUDE_API_KEY",
+      "base_url": "http://10.12.190.50:3000/api",
+      "model": "claude-3-haiku-20240307",
+      "max_tokens": 4000,
+      "temperature": 0.1
+    },
     "gemini": {
       "api_key_env": "GEMINI_API_KEY",
       "model": "gemini-2.5-flash",
@@ -59,10 +66,18 @@
     "max_function_declarations": 20,
     "header_content_preview_size": 2000
   },
+  "linux_system": {
+    "musl_source_path": "/home/a2ure/Desktop/afl-qnx/qol/musl",
+    "libc_path": "/home/a2ure/Desktop/afl-qnx/qol/musl/lib/libc.so",
+    "qnx_support_dir": "/home/a2ure/Desktop/afl-qnx/qol/qnxsupport",
+    "dynlink_path": "/home/a2ure/Desktop/afl-qnx/qol/musl/ldso/dynlink.c",
+    "compiler": "gcc",
+    "compile_flags": ["-O2", "-fPIC", "-shared"]
+  },
   "processing_settings": {
-    "max_worker_threads": 3,
-    "api_request_delay_range": [0.5, 2.0],
-    "enable_multithreading": true
+    "max_worker_threads": 1,
+    "api_request_delay_range": [5.0, 10.0],
+    "enable_multithreading": false
   },
   "logging": {
     "level": "INFO",

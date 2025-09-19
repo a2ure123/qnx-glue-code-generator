@@ -1,139 +1,252 @@
-# QNX Glue Code Generator
+# QNX-Linux Glue Code Generator
 
-An AI-based QNX to Linux function migration system that supports automatic crawling of QNX official documentation, structured data extraction, and vectorized storage.
+An intelligent system for generating C glue code that bridges QNX functions to Linux equivalents. The system uses MCP (Model Context Protocol) servers to provide function information from both QNX and Linux systems, then generates appropriate wrapper code for function migration.
 
-## 🚀 System Features
+## 🎯 Project Overview
 
-- **Intelligent Crawler**: Automatically crawls function documentation from QNX official website
-- **AI Extraction**: Uses OpenAI GPT-4o-mini for structured JSON data extraction
-- **Hybrid Vectorization**: Supports OpenAI embedding, stable and reliable
-- **Vector Database**: Efficient storage and querying based on ChromaDB
-- **Batch Processing**: Efficiently processes large volumes of QNX function documentation
+This project implements a complete pipeline for migrating QNX applications to Linux by automatically generating glue code. The system analyzes QNX functions, finds Linux equivalents, and generates C wrapper functions that maintain compatibility.
+
+## 🏗️ Architecture
+
+```
+┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
+│   QNX MCP       │    │   Linux MCP     │    │  Glue Code      │
+│   Server        │    │   Server        │    │  Generator      │
+│                 │    │                 │    │                 │
+│ • QNX Docs RAG  │    │ • musl libc     │    │ • Strategy      │
+│ • Function Info │────│ • glibc info    │────│   Analysis      │
+│ • Vector Search │    │ • Compatibility │    │ • Code          │
+│                 │    │   Analysis      │    │   Templates     │
+└─────────────────┘    └─────────────────┘    └─────────────────┘
+```
 
 ## 📁 Project Structure
 
 ```
-gen_code_v2/
-├── 🔧 Core Modules
-│   ├── qnx_batch_processor.py          # Main batch processor
-│   ├── qnx_web_crawler.py              # QNX web crawler
-│   ├── openai_json_extractor.py        # JSON data extractor
-│   └── hybrid_vectorizer.py            # Hybrid vectorizer
+qnx_code_generator/
+├── 🎮 Main Entry Point
+│   └── main.py                     # Command-line interface
 │
-├── ⚙️ Configuration Files
-│   ├── config.json                     # System configuration
-│   ├── requirements.txt                # Python dependencies
-│   ├── .env.example                    # Environment variable template
-│   └── .env                           # API key configuration
+├── 📦 Source Code
+│   ├── qnx_mcp/                    # QNX MCP Server
+│   │   ├── qnx_mcp_server.py       # QNX function information server
+│   │   ├── qnx_web_crawler.py      # QNX documentation crawler
+│   │   ├── qnx_step_processor.py   # Multi-step processing pipeline
+│   │   ├── claude_json_extractor.py # Claude API JSON extraction
+│   │   ├── hybrid_vectorizer.py    # Vector embedding system
+│   │   └── qnx_gdb_type_enhancer.py # GDB type analysis (single & multi-threaded)
+│   │
+│   ├── linux_mcp/                  # Linux MCP Server
+│   │   └── linux_mcp_server.py     # Linux function information server
+│   │
+│   ├── glue_generator/             # Code Generation Engine
+│   │   └── code_generator.py       # Main glue code generator
+│   │
+│   └── core/                       # Shared Utilities
+│       └── mcp_client.py           # MCP client utilities
 │
 ├── 📚 Documentation
-│   ├── README.md                       # Project description
-│   ├── SETUP_GUIDE.md                  # Installation and setup guide
-│   ├── OPENAI_INTEGRATION.md           # OpenAI integration documentation
-│   └── architecture.md                 # System architecture documentation
+│   ├── README.md                   # This file
+│   ├── MCP_USAGE.md                # MCP server usage guide
+│   ├── docs/                       # Detailed documentation
+│   │   ├── architecture.md         # System architecture
+│   │   ├── SETUP_GUIDE.md          # Installation guide
+│   │   └── README_MCP_SYSTEM.md    # MCP system details
+│   │
+├── 🧪 Tests
+│   ├── test_mcp_server.py          # MCP server tests
+│   └── test_qnx_system.py          # System integration tests
 │
-├── 🧪 Test Directory  
-│   ├── test_qnx_system.py              # Comprehensive system tests
-│   └── test_openai_json_extractor.py   # JSON extractor tests
+├── 🛠️ Utilities
+│   └── scripts/                    # Helper scripts
+│       ├── analyze_qnx_structure.py
+│       └── qnx_full_index.py
 │
-├── 🛠️ Utility Scripts
-│   ├── analyze_qnx_structure.py        # Documentation structure analysis
-│   └── qnx_full_index.py              # Complete index building
+├── ⚙️ Configuration
+│   ├── config.json                 # System configuration
+│   ├── requirements.txt            # Python dependencies
+│   └── .env.example                # Environment variables template
 │
-└── 📦 Data Directory
-    ├── qnx_web_cache/                  # Web page cache
-    ├── processed_functions/             # Processing results
-    └── chroma_db/                      # Vector database
-```
-
-## 🏗️ System Architecture
-
-```mermaid
-graph TD
-    A[QNX Official Documentation] --> B[QNX Web Crawler]
-    B --> C[HTML Cache]
-    C --> D[OpenAI GPT-4o-mini]
-    D --> E[Structured JSON Data]
-    E --> F[Hybrid Vectorizer]
-    F --> G[OpenAI Embedding]
-    G --> H[ChromaDB Vector Database]
-    H --> I[Similarity Query]
+└── 📊 Data (Generated at runtime)
+    ├── qnx_web_cache/              # QNX documentation cache
+    ├── processed_functions/         # Processed function data
+    │   ├── extracted_functions.json  # Raw JSON extracted functions (1618 functions)
+    │   └── qnx_functions_enhanced_full.json # GDB enhanced functions with type info
+    └── chroma_db/                  # Vector database
 ```
 
 ## 🚀 Quick Start
 
-### 1. Environment Setup
+### 1. Installation
 
 ```bash
+# Clone the repository
+git clone <repository-url>
+cd qnx_code_generator
+
 # Install dependencies
 pip install -r requirements.txt
 
-# Configure API keys
+# Set up environment variables
 cp .env.example .env
-# Edit .env file and add your API keys
+# Edit .env and add your API keys
 ```
 
-### 2. API Key Configuration
-
-Configure in `.env` file:
-```bash
-OPENAI_API_KEY=your_openai_api_key
-```
-
-### 3. Run Tests
+### 2. Initialize QNX Knowledge Base
 
 ```bash
-# Run comprehensive tests
-python tests/test_qnx_system.py
+# Two-step process: JSON extraction then GDB enhancement
 
-# Test API status
-python tests/test_qnx_system.py
+# Step 1: Extract all QNX functions to JSON (without GDB enhancement)
+source .env && python src/qnx_mcp/qnx_step_processor.py --skip-discover --skip-crawl --skip-gdb
+
+# Step 2: Apply GDB type enhancement to extracted functions (multi-threaded)
+python src/qnx_mcp/qnx_gdb_type_enhancer.py --input data/processed_functions/extracted_functions.json --output data/processed_functions/qnx_functions_enhanced_full.json --workers 6
 ```
 
-### 4. Batch Processing
+### 3. Generate Glue Code
 
 ```bash
-# Process specific functions
-python qnx_batch_processor.py --functions abort malloc printf --output my_functions.json
+# Generate glue code for specific functions
+python main.py -f malloc free printf sprintf -o output/glue.c
 
-# Process all A-Z functions (complete crawl)
-python qnx_batch_processor.py --all --output all_qnx_functions.json
+# Generate from a function list file
+echo -e "malloc\nfree\nprintf" > functions.txt
+python main.py --functions-file functions.txt -o output/glue.c
 
-# Process functions for specific letters
-python qnx_batch_processor.py --letters a b c --output abc_functions.json
-
-# Limit processing count
-python qnx_batch_processor.py --all --max-functions 100 --output limited_functions.json
-
-# Process and test query
-python qnx_batch_processor.py --letters m --test-query "memory allocation" --output memory_funcs.json
+# Run system test
+python main.py --test
 ```
 
-## 💡 使用示例
+## 🔧 Migration Strategies
 
-### 基本批量处理
+The system uses multiple strategies for function migration:
+
+### 1. **Direct Wrapper**
+For functions with identical signatures:
+```c
+// QNX malloc -> Linux malloc
+void* malloc(size_t size) {
+    return malloc(size);  // Direct mapping
+}
+```
+
+### 2. **Parameter Adaptation**
+For functions needing parameter conversion:
+```c
+// QNX function with different parameter types
+int qnx_function(qnx_type_t param) {
+    linux_type_t converted = convert_param(param);
+    return linux_function(converted);
+}
+```
+
+### 3. **Heuristic Implementation**
+For QNX-specific functions without Linux equivalents:
+```c
+// QNX-specific function - placeholder implementation
+uint64_t __stackavail(void) {
+    // Return large value indicating plenty of stack space
+    return 0xffffffffffffffff;
+}
+```
+
+### 4. **Complex Migration**
+For functions requiring detailed analysis and custom logic.
+
+## 🛠️ MCP Servers
+
+### QNX MCP Server
+- **Purpose**: Provides QNX function information
+- **Tools**:
+  - `get_qnx_function_info`: Get detailed function information
+  - `search_qnx_functions`: Search functions by name/description
+  - `list_qnx_functions`: List available functions
+
+### Linux MCP Server  
+- **Purpose**: Provides Linux function information
+- **Tools**:
+  - `get_linux_function_info`: Get Linux function details
+  - `search_linux_functions`: Search Linux functions
+  - `analyze_function_compatibility`: Compare QNX vs Linux functions
+
+## 📊 Usage Examples
+
+### Command Line Usage
+
+```bash
+# Basic usage
+python main.py -f printf sprintf malloc
+
+# With output file
+python main.py -f printf sprintf -o my_glue_code.c
+
+# Process many functions
+python main.py --functions-file all_functions.txt --output output/
+
+# Test the system
+python main.py --test
+
+# List available functions
+python main.py --list-functions
+```
+
+### Python API Usage
+
 ```python
-from qnx_batch_processor_final import QNXBatchProcessorFinal
+from src.glue_generator.code_generator import GlueCodeGenerator
 
-# 初始化处理器
-processor = QNXBatchProcessorFinal()
+# Initialize generator
+generator = GlueCodeGenerator()
 
-# 处理函数列表
-functions = ["abort", "malloc", "printf", "strlen"]
-result = processor.process_functions(functions, "output.json")
+# Generate code for functions
+results = await generator.generate_bulk_glue_code([
+    "malloc", "free", "printf", "pthread_create"
+])
 
-print(f"处理成功: {result['stats']['stored']}/{result['stats']['total_functions']}")
+# Access generated code
+print(results["header_code"])
+print(results["function_code"])
+print(results["statistics"])
 ```
 
-### 查询相似函数
-```python
-# 查询相似函数
-results = processor.query_functions("内存分配函数", n_results=5)
-for result in results:
-    print(f"{result['function_name']}: {result['similarity']:.3f}")
+## 🔍 Output Format
+
+The system generates:
+
+1. **C Header Code**: Includes and declarations
+2. **C Function Code**: Wrapper function implementations
+3. **Migration Report**: JSON report with statistics and migration plans
+
+Example output structure:
+```c
+// QNX to Linux glue code
+// Generated automatically - do not edit manually
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+// Direct wrapper for malloc -> malloc
+void* malloc(size_t size) {
+    return malloc(size);
+}
+
+// Heuristic implementation for qnx_specific_func
+int qnx_specific_func(void) {
+    // TODO: Implement based on QNX behavior
+    return 0; // Placeholder
+}
 ```
 
-## 🔧 配置说明
+## ⚙️ Configuration
+
+### Environment Variables
+```bash
+OPENAI_API_KEY=your_openai_key_here    # For QNX documentation processing
+GEMINI_API_KEY=your_gemini_key_here    # Alternative AI provider
+CLAUDE_API_KEY=your_claude_key_here    # For Claude API access
+```
 
 ### config.json
 ```json
@@ -141,94 +254,58 @@ for result in results:
   "ai_settings": {
     "openai": {
       "chat_model": "gpt-4o-mini",
-      "embedding_model": "text-embedding-3-small",
-      "batch_size": 16,
-      "max_tokens": 4000,
-      "temperature": 0.1
+      "embedding_model": "text-embedding-3-small"
     }
+  },
+  "qnx_system": {
+    "root_path": "/path/to/qnx700",
+    "gdb_executable": "ntox86_64-gdb"
+  },
+  "claude_api": {
+    "endpoint": "http://your-claude-server:3000/api",
+    "model": "claude-3-sonnet"
   }
 }
 ```
 
-## 📊 Processing Result Format
+## 🧪 Testing
 
-```json
-{
-  "abort": {
-    "function_data": {
-      "name": "abort",
-      "synopsis": "#include <stdlib.h>\\nvoid abort( void );",
-      "description": "Abnormally terminates program execution...",
-      "parameters": [],
-      "return_type": "void",
-      "headers": [{"filename": "stdlib.h", "is_system": true}],
-      "examples": ["..."],
-      "see_also": ["exit()", "atexit()"]
-    },
-    "embedding": [0.014, 0.048, ...],
-    "has_embedding": true
-  }
-}
+```bash
+# Run MCP server tests
+python tests/test_mcp_server.py
+
+# Run system integration tests  
+python tests/test_qnx_system.py
+
+# Run interactive MCP test
+python tests/interactive_mcp_test.py
 ```
 
-## 🛡️ API Management
+## 🤝 Contributing
 
-The system uses OpenAI API for:
-- **GPT-4o-mini**: JSON data extraction, stable and reliable
-- **text-embedding-3-small**: Vectorization, high-quality embeddings
-
-OpenAI API provides stable service quality, avoiding quota limitation issues.
-
-## 🔍 Troubleshooting
-
-### Common Issues
-
-1. **OpenAI API Error**
-   ```
-   Error: Invalid API key provided
-   ```
-   Solution: Check OPENAI_API_KEY setting in .env file
-
-2. **Module Import Error**
-   ```
-   ImportError: No module named 'openai'
-   ```
-   Solution: `pip install openai`
-
-3. **Vector Database Permission Error**
-   ```
-   PermissionError: Permission denied: './data/chroma_db'
-   ```
-   Solution: `chmod -R 755 ./data`
-
-### Debug Mode
-
-```python
-import logging
-logging.basicConfig(level=logging.DEBUG)
-```
-
-## 📈 Performance Recommendations
-
-- **Concurrency Settings**: Adjust max_workers based on hardware (recommended 4-8)
-- **Batch Size**: Set embedding batch_size to 10-32
-- **Cache Management**: Regularly clean expired cache files
-- **API Limits**: Pay attention to rate limits of various APIs
-
-## 🤝 Contributing Guide
-
-1. Fork the project
+1. Fork the repository
 2. Create a feature branch
-3. Commit your changes
-4. Push to the branch
-5. Create a Pull Request
+3. Make your changes
+4. Add tests for new functionality
+5. Submit a pull request
 
 ## 📄 License
 
 This project is licensed under the MIT License.
 
-## 🔗 Related Links
+## 🔗 Related Documentation
 
-- [QNX Official Documentation](https://www.qnx.com/developers/docs/7.1/)
-- [OpenAI API Documentation](https://platform.openai.com/docs)
-- [ChromaDB Documentation](https://docs.trychroma.com/)
+- [MCP Usage Guide](MCP_USAGE.md) - Detailed MCP server usage
+- [Architecture Design](docs/architecture.md) - System architecture details
+- [Setup Guide](docs/SETUP_GUIDE.md) - Detailed installation instructions
+
+## 🆘 Support
+
+For issues and questions:
+1. Check the documentation in the `docs/` directory
+2. Review existing issues on GitHub
+3. Create a new issue with detailed information
+
+---
+
+**Note**: This system is designed for QNX to Linux migration assistance. The generated code should be reviewed and tested thoroughly before production use.

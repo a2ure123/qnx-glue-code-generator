@@ -10,17 +10,21 @@ import sys
 import json
 import logging
 import time
+import threading
+import sqlite3
 from typing import Dict, List, Optional, Any, Tuple
 from pathlib import Path
 from dataclasses import dataclass, asdict
 from concurrent.futures import ThreadPoolExecutor, as_completed
+from queue import Queue, Empty
 
 # Add current directory to Python path
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from qnx_web_crawler import QNXWebCrawler, QNXFunction
-from openai_json_extractor import OpenAIJSONExtractor
+from claude_json_extractor import ClaudeJSONExtractor
 from hybrid_vectorizer import HybridVectorizer, VectorizeTask, VectorizeResult
+from qnx_gdb_type_enhancer import QNXGDBTypeEnhancer
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -79,8 +83,23 @@ class QNXBatchProcessor:
         
         # Initialize components
         self.crawler = QNXWebCrawler(config_path)
-        self.json_extractor = OpenAIJSONExtractor(config_path)
+        # Enable GDB enhancement by default
+        self.json_extractor = ClaudeJSONExtractor(config_path, enable_gdb_in_extraction=True)
         self.vectorizer = HybridVectorizer(config_path)
+        
+        # Output settings
+        self.output_dir = Path("./data/processed_functions")
+        self.output_dir.mkdir(parents=True, exist_ok=True)
+        
+        # Initialize GDB type enhancer
+        self.gdb_enhancer = QNXGDBTypeEnhancer(config_path)
+        
+        # GDB async processing setup
+        self.gdb_queue = Queue()
+        self.gdb_results = {}
+        self.gdb_thread = None
+        self.gdb_stop_flag = threading.Event()
+        self.gdb_db_path = self.output_dir / "gdb_tasks.db"
         
         # Statistics
         self.stats = ProcessingStats()
@@ -93,10 +112,6 @@ class QNXBatchProcessor:
         
         # Batch settings
         self.embedding_batch_size = 10  # Process 10 function names per embedding batch
-        
-        # Output settings
-        self.output_dir = Path("./data/processed_functions")
-        self.output_dir.mkdir(parents=True, exist_ok=True)
         
         logger.info("QNX Batch Processor Final initialized")
         logger.info(f"Embedding batch size: {self.embedding_batch_size}")
@@ -111,6 +126,172 @@ class QNXBatchProcessor:
                 return json.load(f)
         except Exception as e:
             logger.warning(f"Failed to load config file: {e}")
+            return {}
+
+    def _init_gdb_database(self):
+        """Initialize SQLite database for GDB task queue"""
+        try:
+            conn = sqlite3.connect(str(self.gdb_db_path))
+            cursor = conn.cursor()
+            
+            cursor.execute('''
+                CREATE TABLE IF NOT EXISTS gdb_tasks (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    function_name TEXT UNIQUE,
+                    json_data TEXT,
+                    status TEXT DEFAULT 'pending',
+                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                    processed_at TIMESTAMP
+                )
+            ''')
+            
+            cursor.execute('''
+                CREATE TABLE IF NOT EXISTS gdb_results (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    function_name TEXT UNIQUE,
+                    enhanced_data TEXT,
+                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                )
+            ''')
+            
+            conn.commit()
+            conn.close()
+            logger.info("GDB database initialized")
+        except Exception as e:
+            logger.error(f"Failed to initialize GDB database: {e}")
+
+    def _gdb_consumer_worker(self):
+        """GDB consumer worker thread"""
+        logger.info("GDB consumer worker started")
+        
+        while not self.gdb_stop_flag.is_set():
+            try:
+                # Check for tasks in database
+                conn = sqlite3.connect(str(self.gdb_db_path))
+                cursor = conn.cursor()
+                
+                cursor.execute('''
+                    SELECT function_name, json_data FROM gdb_tasks 
+                    WHERE status = 'pending' 
+                    ORDER BY created_at 
+                    LIMIT 1
+                ''')
+                
+                task = cursor.fetchone()
+                
+                if task:
+                    function_name, json_data_str = task
+                    logger.info(f"Processing GDB enhancement for: {function_name}")
+                    
+                    try:
+                        # Parse JSON data
+                        json_data = json.loads(json_data_str)
+                        
+                        # Enhance function parameters using GDB
+                        if 'parameters' in json_data:
+                            enhanced_params = self.gdb_enhancer.enhance_function_parameters(
+                                json_data['parameters']
+                            )
+                            json_data['parameters'] = enhanced_params
+                        
+                        # Mark task as processed
+                        cursor.execute('''
+                            UPDATE gdb_tasks 
+                            SET status = 'completed', processed_at = CURRENT_TIMESTAMP 
+                            WHERE function_name = ?
+                        ''', (function_name,))
+                        
+                        # Store enhanced result
+                        cursor.execute('''
+                            INSERT OR REPLACE INTO gdb_results 
+                            (function_name, enhanced_data) 
+                            VALUES (?, ?)
+                        ''', (function_name, json.dumps(json_data)))
+                        
+                        conn.commit()
+                        logger.debug(f"GDB enhancement completed for: {function_name}")
+                        
+                    except Exception as e:
+                        logger.error(f"GDB enhancement failed for {function_name}: {e}")
+                        cursor.execute('''
+                            UPDATE gdb_tasks 
+                            SET status = 'failed', processed_at = CURRENT_TIMESTAMP 
+                            WHERE function_name = ?
+                        ''', (function_name,))
+                        conn.commit()
+                
+                conn.close()
+                
+                # Sleep before checking for next task
+                time.sleep(1.0)
+                
+            except Exception as e:
+                logger.error(f"GDB worker error: {e}")
+                time.sleep(5.0)
+        
+        logger.info("GDB consumer worker stopped")
+
+    def start_gdb_processing(self):
+        """Start async GDB processing"""
+        if self.gdb_thread and self.gdb_thread.is_alive():
+            return
+        
+        # Initialize database
+        self._init_gdb_database()
+        
+        # Start worker thread
+        self.gdb_stop_flag.clear()
+        self.gdb_thread = threading.Thread(target=self._gdb_consumer_worker, daemon=True)
+        self.gdb_thread.start()
+        logger.info("GDB async processing started")
+
+    def stop_gdb_processing(self):
+        """Stop async GDB processing"""
+        if self.gdb_thread and self.gdb_thread.is_alive():
+            self.gdb_stop_flag.set()
+            self.gdb_thread.join(timeout=10)
+            logger.info("GDB async processing stopped")
+
+    def enqueue_gdb_task(self, function_name: str, json_data: Dict[str, Any]):
+        """Enqueue function for GDB enhancement"""
+        try:
+            conn = sqlite3.connect(str(self.gdb_db_path))
+            cursor = conn.cursor()
+            
+            cursor.execute('''
+                INSERT OR REPLACE INTO gdb_tasks 
+                (function_name, json_data, status) 
+                VALUES (?, ?, 'pending')
+            ''', (function_name, json.dumps(json_data)))
+            
+            conn.commit()
+            conn.close()
+            logger.debug(f"Enqueued GDB task for: {function_name}")
+        except Exception as e:
+            logger.error(f"Failed to enqueue GDB task for {function_name}: {e}")
+
+    def get_gdb_results(self) -> Dict[str, Dict[str, Any]]:
+        """Get all completed GDB enhancement results"""
+        try:
+            conn = sqlite3.connect(str(self.gdb_db_path))
+            cursor = conn.cursor()
+            
+            cursor.execute('''
+                SELECT function_name, enhanced_data 
+                FROM gdb_results
+            ''')
+            
+            results = {}
+            for function_name, enhanced_data_str in cursor.fetchall():
+                try:
+                    results[function_name] = json.loads(enhanced_data_str)
+                except json.JSONDecodeError:
+                    logger.warning(f"Failed to parse GDB result for {function_name}")
+            
+            conn.close()
+            return results
+        except Exception as e:
+            logger.error(f"Failed to get GDB results: {e}")
             return {}
     
     def crawl_functions(self, function_names: List[str]) -> List[QNXFunction]:
@@ -151,6 +332,9 @@ class QNXBatchProcessor:
                     json_data[func.name] = serializable_info
                     self.stats.json_extracted += 1
                     logger.debug(f"✓ Extracted JSON for {func.name}")
+                    
+                    # Enqueue for async GDB enhancement
+                    self.enqueue_gdb_task(func.name, serializable_info)
                 else:
                     logger.warning(f"✗ Failed to extract JSON for {func.name}")
                     self.stats.errors.append(f"JSON extraction failed: {func.name}")
@@ -181,8 +365,8 @@ class QNXBatchProcessor:
                 delay_min, delay_max = api_delay_range
                 time.sleep(random.uniform(delay_min, delay_max))
                 
-                # Create a separate JSON extractor instance for each thread
-                thread_extractor = OpenAIJSONExtractor(config_path)
+                # Create a separate JSON extractor instance for each thread with GDB enhancement enabled
+                thread_extractor = ClaudeJSONExtractor(config_path, enable_gdb_in_extraction=True)
                 
                 function_info = thread_extractor.extract_function_info(
                     func.html_content, 
@@ -223,6 +407,9 @@ class QNXBatchProcessor:
                     if result:
                         json_data[func_name] = result
                         self.stats.json_extracted += 1
+                        
+                        # Enqueue for async GDB enhancement
+                        self.enqueue_gdb_task(func_name, result)
                     else:
                         self.stats.errors.append(error)
                         
@@ -372,20 +559,59 @@ class QNXBatchProcessor:
         except Exception as e:
             logger.error(f"Failed to save results: {e}")
     
+    def load_existing_data(self) -> Dict[str, Dict[str, Any]]:
+        """Load existing processed data for incremental processing"""
+        existing_file = self.output_dir / "qnx_functions_processed.json"
+        if existing_file.exists():
+            try:
+                with open(existing_file, 'r', encoding='utf-8') as f:
+                    data = json.load(f)
+                logger.info(f"Loaded {len(data)} existing processed functions")
+                return data
+            except Exception as e:
+                logger.warning(f"Failed to load existing data: {e}")
+        return {}
+
     def process_functions(self, function_names: List[str], output_file: str = "qnx_functions_final.json") -> Dict[str, Any]:
-        """Complete processing pipeline"""
+        """Complete processing pipeline with incremental support"""
         start_time = time.time()
-        self.stats.total_functions = len(function_names)
+        
+        # Load existing data for incremental processing
+        existing_data = self.load_existing_data()
+        
+        # Filter out already processed functions
+        new_functions = [name for name in function_names if name not in existing_data]
+        skipped_count = len(function_names) - len(new_functions)
         
         logger.info("=" * 60)
-        logger.info("Starting QNX Batch Processing Final")
-        logger.info(f"Functions to process: {len(function_names)}")
+        logger.info("Starting QNX Batch Processing Final (Incremental Mode)")
+        logger.info(f"Total functions: {len(function_names)}")
+        logger.info(f"Already processed: {skipped_count}")
+        logger.info(f"New functions to process: {len(new_functions)}")
         logger.info("=" * 60)
+        
+        if not new_functions:
+            logger.info("All functions already processed! Using existing data.")
+            return {
+                "success": True,
+                "data": existing_data,
+                "stats": {
+                    "total_functions": len(function_names),
+                    "skipped": skipped_count,
+                    "processed": 0,
+                    "stored": len(existing_data)
+                }
+            }
+        
+        self.stats.total_functions = len(new_functions)
+        
+        # Start async GDB processing
+        self.start_gdb_processing()
         
         try:
-            # Step 1: Crawl function documentation
+            # Step 1: Crawl function documentation (only for new functions)
             logger.info("Step 1: Crawling function documentation")
-            functions = self.crawl_functions(function_names)
+            functions = self.crawl_functions(new_functions)
             
             if not functions:
                 logger.error("No functions crawled successfully")
@@ -407,8 +633,28 @@ class QNXBatchProcessor:
             logger.info("Step 4: Storing to vector database")
             store_success = self.store_vector_database(json_data, embeddings)
             
-            # Step 5: Save results file
-            logger.info("Step 5: Saving results")
+            # Step 5: Wait for GDB processing to complete and merge results
+            logger.info("Step 5: Waiting for GDB processing and merging results")
+            
+            # Allow some time for GDB processing
+            logger.info("Allowing time for GDB processing to complete...")
+            wait_time = min(30, len(json_data) * 2)  # Maximum 30 seconds or 2 seconds per function
+            time.sleep(wait_time)
+            
+            # Get GDB enhanced results
+            gdb_results = self.get_gdb_results()
+            if gdb_results:
+                logger.info(f"Merging {len(gdb_results)} GDB enhanced results")
+                for func_name, enhanced_data in gdb_results.items():
+                    if func_name in json_data:
+                        json_data[func_name] = enhanced_data
+                        logger.debug(f"Merged GDB enhancement for: {func_name}")
+            
+            # Stop GDB processing
+            self.stop_gdb_processing()
+            
+            # Step 6: Save results file
+            logger.info("Step 6: Saving results")
             self.save_results(json_data, embeddings, output_file)
             
             # Calculate final statistics
@@ -442,6 +688,9 @@ class QNXBatchProcessor:
             logger.error(error_msg)
             self.stats.errors.append(error_msg)
             return {"error": error_msg}
+        finally:
+            # Ensure GDB processing is stopped
+            self.stop_gdb_processing()
     
     def query_functions(self, query: str, n_results: int = 5) -> List[Dict[str, Any]]:
         """Query functions"""

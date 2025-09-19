@@ -1,111 +1,91 @@
-# QNX Functions MCP Server Test
+# Test Suite
 
-This directory contains test scripts for the QNX Functions MCP Server.
+This directory contains comprehensive tests for the QNX-Linux Glue Code Generator system.
 
-## File Description
+## Running Tests
 
-- `test_mcp_server.py` - Basic MCP server functionality test script
-- `interactive_mcp_test.py` - Interactive test script for manual vector database queries
-- `mcp_config.json` - MCP server configuration file
-- `config.json` - Main configuration file (copied from parent directory)
-
-## Usage
-
-### 1. Basic Test
-
+Run all tests:
 ```bash
-cd tests
-python test_mcp_server.py
+python run_all_tests.py
 ```
 
-This script tests:
-- Retrieving available function list
-- Function search feature
-- Getting function details
-
-### 2. Interactive Test
-
+Run individual test suites:
 ```bash
-cd tests
-python interactive_mcp_test.py
+python system_test_summary.py
+python test_linux_mcp_system.py
+python test_intelligent_agent_system.py
+python test_gdb_analysis.py
 ```
 
-This script provides an interactive interface for manual vector database queries.
+## Test Suites
 
-#### Available Commands:
+### Core System Tests
+- `system_test_summary.py` - Comprehensive system integration test
+- `test_linux_mcp_system.py` - Linux MCP server functionality
+- `test_intelligent_agent_system.py` - LangGraph intelligent agent tests
+- `test_gdb_analysis.py` - GDB analysis functionality
 
-- `search <query>` - Search for functions (e.g., `search abort`)
-- `details <name>` - Get function details (e.g., `details abort`)
-- `top <query>` - Search and display best match details
-- `help` - Show help
-- `quit` - Exit
+### Legacy Tests
+- `legacy/test_qnx_system.py` - Old QNX web crawler system tests
+- `legacy/test_mcp_server.py` - Old MCP server tests
+- `interactive_mcp_test.py` - Interactive testing script
 
-#### Example Usage:
+## Test Configuration
 
-```
-💬 Enter command: search abort
-
-🔍 Search query: 'abort'
---------------------------------------------------
-✅ Found 3 related functions:
-1. abort (similarity: 0.856)
-2. aborted (similarity: 0.732)
-3. abort_message (similarity: 0.689)
-
-💬 Enter command: details abort
-
-📋 Get function details: 'abort'
---------------------------------------------------
-✅ Function name: abort
-
-📝 Function prototype:
-   void abort(void);
-
-📖 Description:
-   Terminates the program abnormally...
-```
+Test configuration files:
+- `config.json` - Test-specific configuration
+- `mcp_config.json` - MCP server test configuration
 
 ## Prerequisites
 
-Before running the tests, please ensure:
+Before running tests:
 
-1. **Vector database is generated**:
+1. **System Dependencies**:
    ```bash
-   # Run in parent directory
-   python qnx_batch_processor.py --all --output all_qnx_functions.json
+   pip install langgraph chromadb
    ```
 
-2. **API key is configured**:
-   Make sure the correct OpenAI API key is set in `config.json`
-
-3. **Dependencies are installed**:
+2. **Musl Library Compiled**:
    ```bash
-   pip install openai chromadb
+   cd /home/a2ure/Desktop/afl-qnx/qol/musl
+   ./configure --enable-shared && make
    ```
+
+3. **Configuration**:
+   - Ensure `config.json` has correct paths
+   - Set up API keys if needed
+
+## Test Results
+
+Tests verify:
+- ✅ Linux MCP server musl analysis
+- ✅ QNX function hijacking mechanism
+- ✅ Intelligent agent state management
+- ✅ GDB integration functionality
+- ✅ Glue code generation strategies
 
 ## Troubleshooting
 
 ### Common Issues
 
-1. **"No existing database found"**
-   - Solution: Run the batch processor to generate the vector database first
-   - Command: `python qnx_batch_processor.py --all`
+1. **LangGraph not available**:
+   ```bash
+   pip install langgraph
+   ```
 
-2. **API connection failed**
-   - Check network connection
-   - Verify API key configuration
-   - Check API quota
+2. **musl libc.so not found**:
+   ```bash
+   cd /path/to/musl && make clean && ./configure --enable-shared && make
+   ```
 
-3. **Configuration file error**
-   - Ensure `config.json` exists and is correctly formatted
-   - Check all required configuration items
+3. **Import errors**:
+   - Check Python path includes src directory
+   - Verify all dependencies installed
 
-### Debug Information
+### Debug Mode
 
-Test scripts output detailed logs, including:
-- Initialization status
-- API connection status
-- Vector database connection status
-- Search result details
-
-If you encounter issues, check these logs to diagnose the problem.
+For detailed logging:
+```python
+import logging
+logging.basicConfig(level=logging.DEBUG)
+```
